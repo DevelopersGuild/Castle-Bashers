@@ -39,6 +39,10 @@ public class MoveController : MonoBehaviour
         {
             VerticalCollisions(ref velocity);
         }
+        if (velocity.z != 0)
+        {
+            DepthCollisions(ref velocity);
+        }
 
         transform.Translate(velocity);
     }
@@ -55,7 +59,7 @@ public class MoveController : MonoBehaviour
             RaycastHit hitInfo;
             bool hit = Physics.Raycast(rayOrigin, Vector3.right * directionX, out hitInfo, rayLength, collisionMask);
 
-            Debug.DrawRay(rayOrigin, Vector2.up * directionX * rayLength, Color.red);
+            Debug.DrawRay(rayOrigin, Vector3.right * directionX * rayLength, Color.red);
             if (hit)
             {
                 velocity.x = (hitInfo.distance - skinWidth) * directionX;
@@ -63,6 +67,30 @@ public class MoveController : MonoBehaviour
 
                 collisions.left = directionX == -1;
                 collisions.right = directionX == 1;
+            }
+        }
+    }
+
+    void DepthCollisions(ref Vector3 velocity)
+    {
+        float directionZ = Mathf.Sign(velocity.z);
+        float rayLength = Mathf.Abs(velocity.z) + skinWidth;
+
+        for (int i = 0; i < verticalRayCount; i++)
+        {
+            Vector3 rayOrigin = (directionZ == -1) ? raycastOrigins.bottomLeft : raycastOrigins.bottomLeft;
+            rayOrigin += Vector3.right * (verticalRaySpacing * i);
+            RaycastHit hitInfo;
+            bool hit = Physics.Raycast(rayOrigin, Vector3.forward * directionZ, out hitInfo, rayLength, collisionMask);
+
+            Debug.DrawRay(rayOrigin, Vector3.forward * directionZ * rayLength, Color.red);
+            if (hit)
+            {
+                velocity.z = (hitInfo.distance - skinWidth) * directionZ;
+                rayLength = hitInfo.distance;
+
+                collisions.backward = directionZ == -1;
+                collisions.forward = directionZ == 1;
             }
         }
     }
@@ -79,7 +107,7 @@ public class MoveController : MonoBehaviour
             RaycastHit hitInfo;
             bool hit = Physics.Raycast(rayOrigin, Vector2.up * directionY,out hitInfo, rayLength, collisionMask);
 
-            Debug.DrawRay(rayOrigin, Vector2.up * directionY * rayLength, Color.red);
+            Debug.DrawRay(rayOrigin, Vector3.up * directionY * rayLength, Color.red);
             if (hit)
             {
                 velocity.y = (hitInfo.distance - skinWidth) * directionY;
@@ -124,11 +152,13 @@ public class MoveController : MonoBehaviour
     {
         public bool above, below;
         public bool left, right;
+        public bool forward, backward;
 
         public void Reset()
         {
             above = below = false;
             left = right = false;
+            forward = backward = false;
         }
     }
 
