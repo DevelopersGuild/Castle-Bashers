@@ -8,6 +8,8 @@ public class MoveController : MonoBehaviour
 
     public LayerMask collisionMask;
 
+    private bool facingRight = true;
+
     const float skinWidth = .015f;
     public int horizontalRayCount = 4;
     private int count = 0;
@@ -42,6 +44,15 @@ public class MoveController : MonoBehaviour
         if (velocity.z != 0)
         {
             DepthCollisions(ref velocity);
+        }
+
+        if (velocity.x < 0 && facingRight)
+        {
+            Flip();
+        }
+        else if(velocity.x > 0 && !facingRight)
+        {
+            Flip();
         }
 
         transform.Translate(velocity);
@@ -140,6 +151,12 @@ public class MoveController : MonoBehaviour
 
         horizontalRaySpacing = bounds.size.y / (horizontalRayCount - 1);
         verticalRaySpacing = bounds.size.x / (verticalRayCount - 1);
+    }
+
+    private void Flip()
+    {
+        facingRight = !facingRight;
+        transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
     }
 
     struct RaycastOrigins
