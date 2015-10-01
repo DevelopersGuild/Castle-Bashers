@@ -24,7 +24,7 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        target = FindObjectOfType<Player>();
+        target = FindObjectOfType<Player>().GetComponent<MoveController>();
         focusArea = new FocusArea(target.GetComponent<BoxCollider>().bounds, focusAreaSize, GetComponent<Transform>().position.y);
     }
 
