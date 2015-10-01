@@ -14,9 +14,12 @@ public class MoveController : MonoBehaviour
     public int horizontalRayCount = 4;
     private int count = 0;
     public int verticalRayCount = 4;
-
     float horizontalRaySpacing;
     float verticalRaySpacing;
+
+    [HideInInspector]
+    public Vector2 playerInput;
+    private Vector2 noMovement = new Vector2(0, 0);
 
     BoxCollider collider;
     RaycastOrigins raycastOrigins;
@@ -28,10 +31,11 @@ public class MoveController : MonoBehaviour
         CalculateRaySpacing();
     }
 
-    public void Move(Vector3 velocity)
+    public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
         UpdateRaycastOrigins();
         collisions.Reset();
+        playerInput = input;
 
         if (velocity.x != 0)
         {
