@@ -17,7 +17,7 @@ public class RandomAreas : MonoBehaviour {
 
           rnd = new System.Random(Guid.NewGuid().GetHashCode());
           //min rand areas/2, max rand areas/2
-          rndTimes = rnd.Next(50, 100) / 2;
+          rndTimes = rnd.Next(10, 26) / 2;
 
           //distance between areas
           aL = new Vector3(2, 0, 0);
