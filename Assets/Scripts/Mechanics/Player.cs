@@ -9,7 +9,8 @@ public class Player : MonoBehaviour
     public float timeToJumpApex = .4f;
     float accelerationTimeAirborne = .2f;
     float accelerationTimeGrounded = .1f;
-    public float moveSpeed = 6;
+    public float horizontalMoveSpeed = 6;
+    public float verticalMoveSpeed = 10;
 
     float gravity;
     float jumpVelocity;
@@ -43,11 +44,11 @@ public class Player : MonoBehaviour
             velocity.y = jumpVelocity;
         }
 
-        float targetVelocityX = input.x * moveSpeed;
-        float targetVelocityZ = input.y * moveSpeed;
+        float targetVelocityX = input.x * horizontalMoveSpeed;
+        float targetVelocityZ = input.y * verticalMoveSpeed;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.y += gravity * Time.deltaTime;
-        controller.Move(velocity * Time.deltaTime);
+        controller.Move(velocity * Time.deltaTime, input);
     }
 }
