@@ -4,6 +4,24 @@ using System.Collections;
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
 {
+     private IPlayerState state;
+
+     public void HandleInput(Input input)
+    {
+        IPlayerState newState = state.HandleInput(this, input);
+        if(newState != null)
+        {
+            state = newState;
+        }
+
+    }
+
+    public void UpdateState()
+    {
+        state.UpdateState(this);
+    }
+
+
 
      public float jumpHeight = 4;
      public float timeToJumpApex = .4f;
