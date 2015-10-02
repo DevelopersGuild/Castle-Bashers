@@ -196,7 +196,7 @@ public class MoveController : MonoBehaviour
      public void knockback(Vector3 dir, float force = 1)
      {
           kb = true;
-          kbDir = dir * force;
+          kbDir = dir.normalized * force;
      }
 
      public void checkKnock()
@@ -208,6 +208,7 @@ public class MoveController : MonoBehaviour
                     player.setAct(false);
                     Move(kbDir * kbTime);
                     kbTime -= Time.deltaTime;
+                    player.setInvincible(true);
 
                }
                else
