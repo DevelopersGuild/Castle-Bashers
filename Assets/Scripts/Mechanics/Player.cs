@@ -22,6 +22,8 @@ public class Player : MonoBehaviour
      private bool canAct = true;
      private bool isInvincible = false;
 
+     private float invTime;
+
      float gravity;
      float jumpVelocity;
      Vector3 velocity;
@@ -56,11 +58,25 @@ public class Player : MonoBehaviour
                knockReset = 0;
           }
 
+          if (invTime >= 0)
+          {
+               if (invTime != 0)
+               {
+                    isInvincible = true;
+                    invTime -= Time.deltaTime;
+               }
+          }
+          else
+          {
+               isInvincible = false;
+               invTime = 0;
+          }
+
           controller.checkKnock();
-     
+
           velocity.y += gravity * Time.deltaTime;
           Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
-          
+
           hp.setKnock(true);
           if (controller.collisions.above || controller.collisions.below)
           {
@@ -89,13 +105,19 @@ public class Player : MonoBehaviour
 
      public void Knock(Vector3 dir, float amt, float force)
      {
-          kbDir = new Vector3(dir.x, dir.y -0.3f, dir.z);
+          kbDir = new Vector3(dir.x, dir.y - 0.3f, dir.z);
           kbCounter += amt;
           kbForce = force;
           knockReset = 0;
+          controller.knockback(kbDir, kbForce/3);
      }
 
      //Reset hitReset when hit
+     public void setInvTime(float time)
+     {
+          invTime = time;
+     }
+
 
      public void setAct(bool x)
      {

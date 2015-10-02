@@ -49,6 +49,7 @@ public class PlayerHealth : MonoBehaviour
      public void PlayerDown()
      {
           //use other object to check if all players down, if so then Death() + lose level
+          Death();
      }
 
      public void Death()
