@@ -33,7 +33,6 @@ public class DealDamageToPlayer : MonoBehaviour
                GameObject playerObject = other.gameObject;
                Player player = playerObject.GetComponent<Player>();
                PlayerHealth hp = playerObject.GetComponent<PlayerHealth>();
-
                //Take damage if the player isnt already currently invincible
                if (!player.getInvincible())
                {
@@ -53,6 +52,7 @@ public class DealDamageToPlayer : MonoBehaviour
      //Same code just make sure it happens
      public void OnTriggerStay(Collider other)
      {
+
           //Check for player collision
           if (other.gameObject.GetComponent<Player>())
           {

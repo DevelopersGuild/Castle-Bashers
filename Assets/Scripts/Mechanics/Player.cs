@@ -71,7 +71,6 @@ public class Player : MonoBehaviour
                isInvincible = false;
                invTime = 0;
           }
-
           controller.checkKnock();
 
           velocity.y += gravity * Time.deltaTime;
@@ -109,7 +108,7 @@ public class Player : MonoBehaviour
           kbCounter += amt;
           kbForce = force;
           knockReset = 0;
-          controller.knockback(kbDir, kbForce/3);
+          controller.knockback(kbDir, kbForce/2);
      }
 
      //Reset hitReset when hit
