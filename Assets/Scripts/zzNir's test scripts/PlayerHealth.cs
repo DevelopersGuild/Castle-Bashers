@@ -64,7 +64,6 @@ public class PlayerHealth : MonoBehaviour
      {
           Vector3 contactPoint = other.transform.position;
           Vector3 center = currentPos;
-               Debug.Log("hey");
           if (canKnock || overrideKnock)
           {
                Vector3 pushDirection = new Vector3(contactPoint.x - center.x, 0, 0);
