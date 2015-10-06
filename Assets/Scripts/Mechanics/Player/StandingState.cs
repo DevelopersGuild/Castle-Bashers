@@ -1,10 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
-using System;
 
-public class JumpState : IPlayerState
+public class StandingState : IPlayerState
 {
-
     public void EnterState(Player player)
     {
 
@@ -12,19 +10,15 @@ public class JumpState : IPlayerState
 
     public IPlayerState HandleInput(Player player)
     {
-        if(player.GetIsGrounded() == true)
+        if(Input.GetButtonDown("Jump"))
         {
-            return new StandingState();
+            return new JumpState();
         }
         return null;
     }
 
     public void UpdateState(Player player)
     {
-       
+
     }
-
-
-
-
 }

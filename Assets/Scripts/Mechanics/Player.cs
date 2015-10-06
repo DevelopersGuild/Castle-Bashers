@@ -8,7 +8,7 @@ public class Player : MonoBehaviour
 
      public void HandleInput(Input input)
     {
-        IPlayerState newState = state.HandleInput(this, input);
+        IPlayerState newState = state.HandleInput(this);
         if(newState != null)
         {
             state = newState;
@@ -21,7 +21,7 @@ public class Player : MonoBehaviour
         state.UpdateState(this);
     }
 
-
+    private bool isGrounded = true;
 
      public float jumpHeight = 4;
      public float timeToJumpApex = .4f;
@@ -37,7 +37,7 @@ public class Player : MonoBehaviour
 
      private double knockReset, hitReset;
 
-     private bool canAct = true;
+     private bool isNotStunned = true;
      private bool isInvincible = false;
 
      private float invTime;
@@ -92,30 +92,32 @@ public class Player : MonoBehaviour
 
           controller.checkKnock();
 
-          velocity.y += gravity * Time.deltaTime;
-          Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+
+
+
+          
 
           hp.setKnock(true);
           if (controller.collisions.above || controller.collisions.below)
           {
                velocity.y = 0;
+                isGrounded = true;
+               
           }
 
-          if (Input.GetKey(KeyCode.Space) && controller.collisions.below && canAct)
+          if (Input.GetKey(KeyCode.Space) && controller.collisions.below && isNotStunned)
           {
                velocity.y = jumpVelocity;
+                isGrounded = false;
           }
 
 
-          if (canAct)
+          if (isNotStunned)
           {
-               float targetVelocityX = input.x * horizontalMoveSpeed;
-               float targetVelocityZ = input.y * verticalMoveSpeed;
-               velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-               velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+            Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
           }
 
-          controller.Move(velocity * Time.deltaTime, input);
+          
 
           knockReset += Time.deltaTime;
           hitReset += Time.deltaTime;
@@ -139,7 +141,7 @@ public class Player : MonoBehaviour
 
      public void setAct(bool x)
      {
-          canAct = x;
+          isNotStunned = x;
      }
 
      public bool getInvincible()
@@ -151,4 +153,29 @@ public class Player : MonoBehaviour
      {
           isInvincible = x;
      }
+
+    public void Move(Vector2 input)
+    {
+        velocity.y += gravity * Time.deltaTime;
+        float targetVelocityX = input.x * horizontalMoveSpeed;
+        float targetVelocityZ = input.y * verticalMoveSpeed;
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+        velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
+        controller.Move(velocity * Time.deltaTime, input);
+    }
+
+    public bool GetIsGrounded()
+    {
+        return isGrounded;
+    }
+
+    public MoveController GetMoveController()
+    {
+        return controller;
+    }
+
+    public void AssignJumpVolicity(float jumpVelocity)
+    {
+        velocity.y = jumpVelocity;
+    }
 }
