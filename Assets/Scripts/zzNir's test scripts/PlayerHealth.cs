@@ -35,15 +35,25 @@ public class PlayerHealth : MonoBehaviour
 
      public void takeDamage(float dmg)
      {
-          if (!player.getInvincible())
+          if (player)
+          {
+               if (!player.getInvincible())
+               {
+                    currentHealth -= dmg;
+                    if (currentHealth <= 0)
+                    {
+                         //Player can be revived by teammates
+                         PlayerDown();
+                    }
+               }
+          }
+          else
           {
                currentHealth -= dmg;
                if (currentHealth <= 0)
                {
-                    //Player can be revived by teammates
-                    PlayerDown();
+                    Death();
                }
-          }
      }
 
      public void PlayerDown()
@@ -67,7 +77,10 @@ public class PlayerHealth : MonoBehaviour
           if (canKnock || overrideKnock)
           {
                Vector3 pushDirection = new Vector3(contactPoint.x - center.x, 0, 0);
-               player.Knock(pushDirection.normalized, amt, force);
+               if (player)
+               {
+                    player.Knock(pushDirection.normalized, amt, force);
+               }
           }
 
      }
@@ -80,7 +93,10 @@ public class PlayerHealth : MonoBehaviour
           if (canKnock || overrideKnock)
           {
                Vector3 pushDirection = new Vector3(contactPoint.x - center.x, center.y, center.z);
-               player.Knock(pushDirection.normalized, amt, force);
+               if (player)
+               {
+                    player.Knock(pushDirection.normalized, amt, force);
+               }
           }
 
      }
