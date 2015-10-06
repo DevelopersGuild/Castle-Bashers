@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 465792}
   - 212: {fileID: 21209550}
   - 114: {fileID: 11421750}
+  - 65: {fileID: 6535612}
   m_Layer: 0
   m_Name: Floor BY
   m_TagString: Untagged
@@ -26,6 +27,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 407272}
   - 212: {fileID: 21234928}
+  - 114: {fileID: 11409502}
   m_Layer: 0
   m_Name: Floor Y 1
   m_TagString: Untagged
@@ -51,13 +53,38 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 152060}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
+  m_LocalRotation: {x: .819152117, y: 0, z: 0, w: .573576331}
   m_LocalPosition: {x: 5.32999992, y: 0, z: 0}
-  m_LocalScale: {x: 2, y: 10, z: 10}
+  m_LocalScale: {x: 10, y: 50, z: 50}
   m_Children:
   - {fileID: 407272}
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!65 &6535612
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 152060}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: .159999996, y: .159999967, z: .0199999996}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11409502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 174968}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b12f798161da0f4498275f2d12b380d5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  numID: 
+  transitions: []
 --- !u!114 &11421750
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -129,7 +156,39 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.z
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.x
+      value: .819152117
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.w
+      value: .573576331
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: .0199999996
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 152060}

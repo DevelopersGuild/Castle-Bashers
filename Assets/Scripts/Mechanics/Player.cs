@@ -38,7 +38,8 @@ public class Player : MonoBehaviour
           hp = GetComponent<PlayerHealth>();
           controller = GetComponent<MoveController>();
           knockReset = hitReset = 0;
-          gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+          //gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
+          gravity = -1;
           jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
           print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
      }
@@ -79,6 +80,7 @@ public class Player : MonoBehaviour
           hp.setKnock(true);
           if (controller.collisions.above || controller.collisions.below)
           {
+               Debug.Log("Got");
                velocity.y = 0;
           }
 

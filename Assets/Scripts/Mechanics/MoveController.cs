@@ -28,7 +28,7 @@ public class MoveController : MonoBehaviour
      public Vector2 playerInput;
      private Vector2 noMovement = new Vector2(0, 0);
 
-     BoxCollider collider;
+     BoxCollider coll;
      RaycastOrigins raycastOrigins;
      public CollisionInfo collisions;
 
@@ -36,7 +36,7 @@ public class MoveController : MonoBehaviour
      {
           kbDir = new Vector3(0, 0, 0);
           player = GetComponent<Player>();
-          collider = GetComponent<BoxCollider>();
+          coll = GetComponent<BoxCollider>();
           CalculateRaySpacing();
      }
 
@@ -146,7 +146,7 @@ public class MoveController : MonoBehaviour
 
      void UpdateRaycastOrigins()
      {
-          Bounds bounds = collider.bounds;
+          Bounds bounds = coll.bounds;
           bounds.Expand(skinWidth * -2);
 
           raycastOrigins.bottomLeft = new Vector3(bounds.min.x, bounds.min.y, transform.position.z);
@@ -157,7 +157,7 @@ public class MoveController : MonoBehaviour
 
      void CalculateRaySpacing()
      {
-          Bounds bounds = collider.bounds;
+          Bounds bounds = coll.bounds;
           bounds.Expand(skinWidth * -2);
 
           horizontalRayCount = Mathf.Clamp(horizontalRayCount, 2, int.MaxValue);
