@@ -197,6 +197,7 @@ public class MoveController : MonoBehaviour
      {
           kb = true;
           kbDir = dir.normalized * force;
+          kbTime = 0.4f;
      }
 
      public void checkKnock()
