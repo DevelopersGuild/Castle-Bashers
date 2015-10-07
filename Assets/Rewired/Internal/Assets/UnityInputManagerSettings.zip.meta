@@ -1,0 +1,21 @@
+fileFormatVersion: 2
+guid: 51d8873918852fc4bba784b39e090d42
+labels:
+- Input
+- Joysticks
+- Controllers
+- Rewired
+- Hotplugging
+- Keyboard
+- Mouse
+- Touch
+- InputManager
+- Control
+- Gamepad
+- Controller
+- Joystick
+- Xbox360
+- XInput
+- DirectInput
+DefaultImporter:
+  userData: 

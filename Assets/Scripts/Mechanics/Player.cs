@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Rewired;
 
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
@@ -37,6 +38,11 @@ public class Player : MonoBehaviour
     private MoveController controller;
     private PlayerHealth hp;
 
+    [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
+    private bool initialized;
+    private Rewired.Player playerRewired;
+    public int playerId; // The Rewired player id of this character
+
     void Start()
     {
         state = new StandingState();
@@ -51,6 +57,9 @@ public class Player : MonoBehaviour
 
     void Update()
     {
+        if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
+        if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
+
         if (kbCounter >= kbLimit)
         {
             controller.knockback(kbDir, kbForce);
@@ -81,10 +90,14 @@ public class Player : MonoBehaviour
         hp.setKnock(true);
 
         HandleInput();
+        Vector2 input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
+
         if (isNotStunned)
         {
-            Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+
+            Move(input);
         }
+
         UpdateState();
         knockReset += Time.deltaTime;
         hitReset += Time.deltaTime;
@@ -130,7 +143,7 @@ public class Player : MonoBehaviour
             state.EnterState(this);
         }
         IAttack newAttackState = attackState.HandleInput(this);
-        if(newAttackState != null)
+        if (newAttackState != null)
         {
             attackState.ExitState(this);
             attackState = newAttackState;
@@ -176,5 +189,13 @@ public class Player : MonoBehaviour
     public void Jump()
     {
         velocity.y = jumpVelocity;
+    }
+
+    private void Initialize()
+    {
+        // Get the Rewired Player object for this player.
+        playerRewired = ReInput.players.GetPlayer(playerId);
+        Debug.Log("unit");
+        initialized = true;
     }
 }
