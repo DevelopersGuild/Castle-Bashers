@@ -4,10 +4,11 @@ using System.Collections;
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
 {
+    public GameObject BasicAttackPrefab;
     private IPlayerState state;
+    private IAttack attackState;
 
     private bool isGrounded = true;
-
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
     private float accelerationTimeAirborne = .2f;
@@ -39,6 +40,7 @@ public class Player : MonoBehaviour
     void Start()
     {
         state = new StandingState();
+        attackState = new IdleAttackState();
         hp = GetComponent<PlayerHealth>();
         controller = GetComponent<MoveController>();
         knockReset = hitReset = 0;
@@ -103,7 +105,6 @@ public class Player : MonoBehaviour
         invTime = time;
     }
 
-
     public void setAct(bool x)
     {
         isNotStunned = x;
@@ -119,7 +120,7 @@ public class Player : MonoBehaviour
         isInvincible = x;
     }
 
-    public void HandleInput()
+    private void HandleInput()
     {
         IPlayerState newState = state.HandleInput(this);
         if (newState != null)
@@ -128,14 +129,22 @@ public class Player : MonoBehaviour
             state = newState;
             state.EnterState(this);
         }
+        IAttack newAttackState = attackState.HandleInput(this);
+        if(newAttackState != null)
+        {
+            attackState.ExitState(this);
+            attackState = newAttackState;
+            attackState.EnterState(this);
+        }
     }
 
-    public void UpdateState()
+    private void UpdateState()
     {
         state.UpdateState(this);
+        attackState.UpdateState(this);
     }
 
-    public void Move(Vector2 input)
+    private void Move(Vector2 input)
     {
         velocity.y += gravity * Time.deltaTime;
         float targetVelocityX = input.x * horizontalMoveSpeed;
