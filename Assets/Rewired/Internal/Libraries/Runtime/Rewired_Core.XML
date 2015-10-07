@@ -1,0 +1,2724 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>Rewired_Core</name>
+    </assembly>
+    <members>
+        <member name="T:Rewired.ControllerStatusChangedEventArgs">
+            <summary>
+            Event args returned by controller connect and disconnect events.
+            Contains information about the controller that was changed.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputActionEventData">
+            <summary>
+            Event data returned by an Input Action update event.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerPollingInfo">
+            <summary>
+            Contains polling information recieved from a controller element polling request.
+            Use this to determine which controller element was activated.
+            </summary>
+        </member>
+        <member name="T:Rewired.ElementAssignmentConflictInfo">
+            <summary>
+            Information about a controller element assignment conflict.
+            </summary>
+        </member>
+        <member name="T:Rewired.ElementAssignmentConflictCheck">
+            <summary>
+            A struct for performing a controller element assignment conflict check.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,Rewired.ElementAssignmentType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for complete assignment.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,Rewired.ElementAssignmentType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean,System.Int32)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for complete assignment to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,Rewired.ControllerElementType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for complete assignment.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,Rewired.ControllerElementType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean,System.Int32)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for complete assignment to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a full axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a full axis to replace an existing element map..
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,System.Int32,Rewired.AxisRange,System.Int32,Rewired.Pole)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a split axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,System.Int32,Rewired.AxisRange,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a split axis to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,System.Int32,System.Int32,Rewired.Pole)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a button.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,System.Int32,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a button to replace an existing element map..
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a keyboard key.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignmentConflictCheck.#ctor(System.Int32,Rewired.ControllerType,System.Int32,System.Int32,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            A struct for use in element assignment conflict checking.
+            Overload for assignment of a keyboard key to replace an existing element map..
+            </summary>
+        </member>
+        <member name="T:Rewired.ElementAssignment">
+            <summary>
+            A struct for making a controller element assignement.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(Rewired.ElementAssignmentType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean,System.Int32)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for complete assignment to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(Rewired.ControllerType,Rewired.ControllerElementType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean,System.Int32)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for complete assignment to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(Rewired.ElementAssignmentType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for complete new assignment.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(Rewired.ControllerType,Rewired.ControllerElementType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for complete new assignment.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a full axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a full axis to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(System.Int32,Rewired.AxisRange,System.Int32,Rewired.Pole)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a split axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(System.Int32,Rewired.AxisRange,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a split axis to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(System.Int32,System.Int32,Rewired.Pole)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a button.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(System.Int32,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a button to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a keyboard key.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.#ctor(UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            A struct for use in element assignment.
+            Overload for assignment of a keyboard key to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.CompleteAssignment(Rewired.ElementAssignmentType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean,System.Int32)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For complete assignment to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.CompleteAssignment(Rewired.ControllerType,Rewired.ControllerElementType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean,System.Int32)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For complete assignment to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.CompleteAssignment(Rewired.ElementAssignmentType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For complete new assignment.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.CompleteAssignment(Rewired.ControllerType,Rewired.ControllerElementType,System.Int32,Rewired.AxisRange,UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Boolean)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For complete new assignment.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.FullAxisAssignment(System.Int32,System.Int32,System.Boolean)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a full axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.FullAxisAssignment(System.Int32,System.Int32,System.Boolean,System.Int32)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a full axis to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.SplitAxisAssignment(System.Int32,Rewired.AxisRange,System.Int32,Rewired.Pole)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a split axis.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.SplitAxisAssignment(System.Int32,Rewired.AxisRange,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a split axis to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.ButtonAssignment(System.Int32,System.Int32,Rewired.Pole)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a button.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.ButtonAssignment(System.Int32,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a button to replace an existing element map.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.KeyboardKeyAssignment(UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a keyboard key.
+            </summary>
+        </member>
+        <member name="M:Rewired.ElementAssignment.KeyboardKeyAssignment(UnityEngine.KeyCode,Rewired.ModifierKeyFlags,System.Int32,Rewired.Pole,System.Int32)">
+            <summary>
+            Creates a struct for use in element assignment.
+            For assignment of a keyboard key to replace an existing element map.
+            </summary>
+        </member>
+        <member name="F:Rewired.PlatformInputManager._DeviceConnectedEvent">
+            Events
+        </member>
+        <member name="T:Rewired.Config.UpdateLoopSetting">
+            <summary>
+            The update loop(s) in which input will be updated.
+            </summary>
+        </member>
+        <member name="T:Rewired.Consts">
+            <summary>
+            Constants
+            </summary>
+        </member>
+        <member name="F:Rewired.Consts._keyboardKeyValues">
+            <summary>
+            Original array! DO NOT WRITE TO THIS!
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Controller">
+            <summary>
+            The base class for all controllers.
+            </summary>
+        </member>
+        <member name="T:Rewired.Controller.Element">
+            <summary>
+            The base class for all controller elements.
+            </summary>
+        </member>
+        <member name="T:Rewired.Controller.Axis">
+            <summary>
+            An Axis controller element.
+            </summary>
+        </member>
+        <member name="T:Rewired.Controller.Button">
+            <summary>
+            A Button controller element.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerWithAxes">
+            <summary>
+            A controller with buttons and axes.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerWithMap">
+            <summary>
+            A controller which uses a hardware map to map controller elements.
+            </summary>
+        </member>
+        <member name="T:Rewired.CustomController">
+            <summary>
+            A virtual controller with a user-defined input source.
+            </summary>
+        </member>
+        <member name="T:Rewired.Joystick">
+            <summary>
+            A joystick with buttons and axes.
+            </summary>
+        </member>
+        <member name="T:Rewired.Keyboard">
+            <summary>
+            A keyboard with keys.
+            </summary>
+        </member>
+        <member name="T:Rewired.Mouse">
+            <summary>
+            A mouse with buttons and axes.
+            </summary>
+        </member>
+        <member name="T:Rewired.Data.ConfigVars">
+            <summary>
+            Configuration variables for the Input Manager.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.ControllerDataFiles">
+            <summary>
+            Stores the supported controller hardware maps.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.CustomController_Editor">
+            <summary>
+            Custom Controller data stored in the InputManager.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.EditorSettings">
+            <summary>
+            Stores editor data.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.ActionCategoryMap">
+            <summary>
+            Maps actions to an action category.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap">
+            <summary>
+            A hardware controller profile. Maps physical hardware elements to identifiable elements on supported platforms.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Interfaces.IHardwareControllerMap">
+            <summary>
+            Interface for hardware controller maps.
+            </summary>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Elements_Base">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.MatchingCriteria_Base">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawOrDirectInput">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawOrDirectInput.MatchingCriteria">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawOrDirectInput.Elements_Platform_Base">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawOrDirectInput.Element">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawOrDirectInput.Button_Base">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawOrDirectInput.Axis_Base">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawOrDirectInput.DeviceType">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_DirectInput">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_DirectInput.Elements">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_DirectInput.Button">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_DirectInput.Axis">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawInput">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawInput.Elements">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawInput.Button">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_RawInput.Axis">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_XInput">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_XInput.MatchingCriteria">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_XInput.Elements">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_XInput.Element">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_XInput.Button">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_XInput.Axis">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_XInput.SubType">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_OSX">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_OSX.MatchingCriteria">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_OSX.Elements">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_OSX.Element">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_OSX.Button">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_OSX.Axis">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Fallback">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Fallback.MatchingCriteria">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Fallback.Elements">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Fallback.Element">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Fallback.Button">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Fallback.Axis">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Custom">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Custom.MatchingCriteria">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Custom.Elements">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Custom.Element">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Custom.Button">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Custom.Axis">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Ouya">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Ouya.MatchingCriteria">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Ouya.Elements">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Ouya.Button">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickMap.Platform_Ouya.Axis">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareJoystickTemplateMap">
+            <summary>
+            Maps hardware joystick maps to a common template.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareElementSourceType">
+            <summary>
+            The type of this hardware element.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HardwareElementSourceTypeWithHat">
+            <summary>
+            The type of this hardware element including hats.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HatDirection">
+            <summary>
+            A specific direction of a hat.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.HatType">
+            <summary>
+            The type of hat.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.Mapping.AxisDirection">
+            <summary>
+            A specific direction of an axis.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.RuntimeData">
+            <summary>
+            Data used during runtime.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.EditorPlatformData">
+            <summary>
+            Data used in the editor.
+            </summary>
+        </member>
+        <member name="T:Rewired.Data.EditorPlatformData.Platform">
+            <summary>
+            Represents a platform.
+            </summary>
+        </member>
+        <member name="T:Rewired.Data.Player_Editor">
+            <summary>
+            Player data stored in an InputManager.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Data.UserData">
+            <summary>
+            User data stored in an InputManager.
+            </summary>
+            <exclude></exclude>
+        </member>
+        <member name="M:Rewired.Data.UserData.FindJoystickMap_Game(Rewired.InputSource,System.Int32,System.Guid,System.Int32)">
+            <summary>
+            Searches the user-defined maps for a matching map based on category, layout, controller Guid, and template Guid.
+            First it will search for an exact controller guid + category + layout match. If no controller guid's match, it search for a template
+            map. Failing that, it will search for a generic map. If no map is found, a blank map will be loaded.
+            </summary>
+        </member>
+        <member name="M:Rewired.Data.UserData.FindKeyboardMap_Game(System.Int32,System.Int32)">
+            <summary>
+            Searches the user-defined maps for a matching map based on category, layout, controller Guid, and template Guid.
+            First it will search for an exact controller guid + category + layout match. If no controller guid's match, it search for a template
+            map. Failing that, it will search for a generic map. If no map is found, a blank map will be loaded.
+            </summary>
+        </member>
+        <member name="M:Rewired.Data.UserData.FindMouseMap_Game(System.Int32,System.Int32)">
+            <summary>
+            Searches the user-defined maps for a matching map based on category, layout, controller Guid, and template Guid.
+            First it will search for an exact controller guid + category + layout match. If no controller guid's match, it search for a template
+            map. Failing that, it will search for a generic map. If no map is found, a blank map will be loaded.
+            </summary>
+        </member>
+        <member name="M:Rewired.Data.UserData.FindCustomControllerMap_Game(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Searches the user-defined maps for a matching map based on category, layout, controller Guid, and template Guid.
+            First it will search for an exact controller guid + category + layout match. If no controller guid's match, it search for a template
+            map. Failing that, it will search for a generic map. If no map is found, a blank map will be loaded.
+            </summary>
+        </member>
+        <member name="T:Rewired.ModifierKey">
+            <summary>
+            A keyboard modifier key type.
+            </summary>
+        </member>
+        <member name="T:Rewired.ModifierKeyFlags">
+            <summary>
+            Keyboard modifier keys as flags.
+            </summary>
+        </member>
+        <member name="T:Rewired.KeyboardKeyCode">
+            <summary>
+            A keyboard key code.
+            </summary>
+        </member>
+        <member name="T:Rewired.MouseInputElement">
+            <summary>
+            An input element on the mouse.
+            </summary>
+        </member>
+        <member name="T:Rewired.MouseXYAxisMode">
+            <summary>
+            The mode for the mouse's X and Y axes.
+            </summary>
+        </member>
+        <member name="T:Rewired.MouseXYAxisDeltaCalc">
+            <summary>
+            The delta calulation mode for the mouse's X and Y axes.
+            </summary>
+        </member>
+        <member name="T:Rewired.MouseOtherAxisMode">
+            <summary>
+            The mode for the mouse's other axes apart from X and Y.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputActionType">
+            <summary>
+            The expected element type of an action.
+            </summary>
+        </member>
+        <member name="T:Rewired.AxisType">
+            <summary>
+            The type of axis.
+            </summary>
+        </member>
+        <member name="T:Rewired.Pole">
+            <summary>
+            A positive or negative value.
+            </summary>
+        </member>
+        <member name="T:Rewired.AxisRange">
+            <summary>
+            The range of an axis.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerType">
+            <summary>
+            The type of a controller.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerElementType">
+            <summary>
+            The type of an element on a controller.
+            </summary>
+        </member>
+        <member name="T:Rewired.ElementAssignmentType">
+            <summary>
+            The type of an element assignment.
+            </summary>
+        </member>
+        <member name="T:Rewired.UpdateLoopType">
+            <summary>
+            Unity update loop type.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputActionEventType">
+            <summary>
+            Input action events. When using event based input, this is used to specify when to send an event.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputManager_Base">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Workpool_DataContainer`1">
+            <summary>
+            A Workpool which uses objects to hold data.
+            Creates an object for every entry. These objects remain even when Clear is called, but the contents are cleared.
+            Data is added by padding another instance of T object from which the contents are copied to the public object.
+            The passed object itself is not added, but objects contained in the passer object are stored by reference (not cloned).
+            You cannot add objects to the list directly, only data witin the object.
+            Your T must implement the Workpool_DataContainer&lt;T&gt;.IEntry interface.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Rewired.Internal.OnGUIHelper">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.ActionElementMap">
+            <summary>
+            Maps an action to a controller element.
+            </summary>
+        </member>
+        <member name="T:Rewired.CalibrationMapSaveData">
+            <summary>
+            Save data for a Calibration Map.
+            </summary>
+        </member>
+        <member name="T:Rewired.JoystickCalibrationMapSaveData">
+            <summary>
+            Save data for a Joystick Calibration Map.
+            </summary>
+        </member>
+        <member name="T:Rewired.CalibrationMap">
+            <summary>
+            Maps calibration data to a controller's axes.
+            </summary>
+        </member>
+        <member name="T:Rewired.AxisCalibration">
+            <summary>
+            Holds calibration information for a controller axis.
+            </summary>
+        </member>
+        <member name="T:Rewired.AxisCalibrationData">
+            <summary>
+            A struct for working with axis calibration data.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerElementIdentifier">
+            <summary>
+            Represents a single element on a controller. Used to identify physical elements on controllers by type and name.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerMapSaveData">
+            <summary>
+            Base class for controller map save data.
+            </summary>
+        </member>
+        <member name="T:Rewired.KeyboardMapSaveData">
+            <summary>
+            Used to retrieve saveable keyboard map data.
+            </summary>
+        </member>
+        <member name="T:Rewired.MouseMapSaveData">
+            <summary>
+            Used to retrieve saveable mouse map data.
+            </summary>
+        </member>
+        <member name="T:Rewired.JoystickMapSaveData">
+            <summary>
+            Used to retrieve saveable joystick map data.
+            </summary>
+        </member>
+        <member name="T:Rewired.CustomControllerMapSaveData">
+            <summary>
+            Used to retrieve saveable custom controller map data.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerMap">
+            <summary>
+            the base class for all controller maps. Maps actions to specific controller elements.
+            </summary>
+        </member>
+        <member name="T:Rewired.ControllerMapWithAxes">
+            <summary>
+            Maps actions to controller elements for a controller with axes.
+            </summary>
+        </member>
+        <member name="T:Rewired.KeyboardMap">
+            <summary>
+            Maps actions to controller elements for a keyboard.
+            </summary>
+        </member>
+        <member name="T:Rewired.MouseMap">
+            <summary>
+            Maps actions to controller elements for a mouse.
+            </summary>
+        </member>
+        <member name="T:Rewired.JoystickMap">
+            <summary>
+            Maps actions to controller elements for a joystick.
+            </summary>
+        </member>
+        <member name="T:Rewired.CustomControllerMap">
+            <summary>
+            Maps actions to controller elements for a custom controller.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputAction">
+            <summary>
+            Represents a single action.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputBehavior">
+            <summary>
+            Provides configutaion options for an InputAction.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputCategory">
+            <summary>
+            A category for organizing input-related data.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputMapCategory">
+            <summary>
+            A category for organizing controller maps.
+            </summary>
+        </member>
+        <member name="T:Rewired.InputLayout">
+            <summary>
+            A layout for organizing input maps.
+            </summary>
+        </member>
+        <member name="T:Rewired.PlayerSaveData">
+            <summary>
+            A struct used for retrieving all the saveable data in a Player.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.Platform">
+            <summary>
+            The runtime platform.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.EditorPlatform">
+            <summary>
+            The editor platform.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.WebplayerPlatform">
+            <summary>
+            The webplayer platform.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.DirectInputAxis">
+            <summary>
+            Axes supported by DirectInput.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.RawInputAxis">
+            <summary>
+            Axes supported by RawInput in the Generic Desktop Usage Page.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.XInputAxis">
+            <summary>
+            Axes supported by XInput.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.XInputButton">
+            <summary>
+            Buttons supported by XInput.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.OSXAxis">
+            <summary>
+            Axes supported by OSX.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.UnityAxis">
+            <summary>
+            Axes supported by Unity input.
+            </summary>
+        </member>
+        <member name="T:Rewired.Platforms.UnityButton">
+            <summary>
+            Buttons supported by Unity input.
+            </summary>
+        </member>
+        <member name="T:Rewired.Player">
+            <summary>
+            Represents a player to which controllers are assigned. Input should normally be managed through the Player class.
+            </summary>
+        </member>
+        <member name="M:Rewired.Player.GetButton(System.String)">
+            <summary>
+            Gets the button held state of an Action. This will return TRUE as long as the button is held.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButton(System.Int32)">
+            <summary>
+            Gets the button held state of an Action. This will return TRUE as long as the button is held.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDown(System.String)">
+            <summary>
+            Gets the button just pressed state of an Action. This will only return TRUE only on the first frame the button is pressed or for the duration of the Button Down Buffer time limit if set in the Input Behavior assigned to this Action.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDown(System.Int32)">
+            <summary>
+            Gets the button just pressed state of an Action. This will only return TRUE only on the first frame the button is pressed or for the duration of the Button Down Buffer time limit if set in the Input Behavior assigned to this Action.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonUp(System.String)">
+            <summary>
+            Get the button just released state for an Action. This will only return TRUE for the first frame the button is released.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The button just released state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonUp(System.Int32)">
+            <summary>
+            Get the button just released state for an Action. This will only return TRUE for the first frame the button is released.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The button just released state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressHold(System.String,System.Single)">
+            <summary>
+            Gets the button double pressed and held state of an Action. This will return TRUE after a double press and the button is then held.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressHold(System.Int32,System.Single)">
+            <summary>
+            Gets the button double pressed and held state of an Action. This will return TRUE after a double press and the button is then held.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressHold(System.String)">
+            <summary>
+            Gets the button double pressed and held state of an Action. This will return TRUE after a double press and the button is then held.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressHold(System.Int32)">
+            <summary>
+            Gets the button double pressed and held state of an Action. This will return TRUE after a double press and the button is then held.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressDown(System.String,System.Single)">
+            <summary>
+            Gets the button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressDown(System.Int32,System.Single)">
+            <summary>
+            Gets the button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressDown(System.String)">
+            <summary>
+            Gets the button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonDoublePressDown(System.Int32)">
+            <summary>
+            Gets the button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonTimePressed(System.String)">
+            <summary>
+            Gets the length of time in seconds that a button has been continuously held down. Returns 0 if the button is not currently pressed.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration of the button hold.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonTimePressed(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that a button has been continuously held down. Returns 0 if the button is not currently pressed.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration of the button hold.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonTimeUnpressed(System.String)">
+            <summary>
+            Gets the length of time in seconds that a button has not been pressed. Returns 0 if the button is currently pressed.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration of the button inactivity.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonTimeUnpressed(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that a button has not been pressed. Returns 0 if the button is currently pressed.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration of the button inactivity.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButton(System.String)">
+            <summary>
+            Gets the negative button held state of an Action. This will return TRUE as long as the negative button is held.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButton(System.Int32)">
+            <summary>
+            Gets the negative button held state of an Action. This will return TRUE as long as the negative button is held.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDown(System.String)">
+            <summary>
+            Gets the negative button just pressed state of an Action. This will only return TRUE only on the first frame the negative button is pressed or for the duration of the Button Down Buffer time limit if set in the Input Behavior assigned to this Action.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The negative button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDown(System.Int32)">
+            <summary>
+            Gets the negative button just pressed state of an Action. This will only return TRUE only on the first frame the negative button is pressed or for the duration of the Button Down Buffer time limit if set in the Input Behavior assigned to this Action.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The negative button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonUp(System.String)">
+            <summary>
+            Get the negative button just released state for an Action. This will only return TRUE for the first frame the negative button is released.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The negative button just released state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonUp(System.Int32)">
+            <summary>
+            Get the negative button just released state for an Action. This will only return TRUE for the first frame the negative button is released.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The negative button just released state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressHold(System.String,System.Single)">
+            <summary>
+            Gets the negative button double pressed and held state of an Action. This will return TRUE after a double press and the negative button is then held.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressHold(System.Int32,System.Single)">
+            <summary>
+            Gets the negative button double pressed and held state of an Action. This will return TRUE after a double press and the negative button is then held.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressHold(System.String)">
+            <summary>
+            Gets the negative button double pressed and held state of an Action. This will return TRUE after a double press and the negative button is then held.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressHold(System.Int32)">
+            <summary>
+            Gets the negative button double pressed and held state of an Action. This will return TRUE after a double press and the negative button is then held.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressDown(System.String,System.Single)">
+            <summary>
+            Gets the negative button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The negative button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressDown(System.Int32,System.Single)">
+            <summary>
+            Gets the negative button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <param name="speed">Allowed time for a double press in seconds.</param>
+            <returns>The negative button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressDown(System.String)">
+            <summary>
+            Gets the negative button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The negative button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonDoublePressDown(System.Int32)">
+            <summary>
+            Gets the negative button double pressed state of an Action. This will return TRUE only on the first frame of a double press.
+            The double press speed is set in the Input Behavior assigned to the Action.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The negative button just pressed state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonTimePressed(System.String)">
+            <summary>
+            Gets the length of time in seconds that a negative button has been continuously held down. Returns 0 if the negative button is not currently pressed.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration of the negative button hold.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonTimePressed(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that a negative button has been continuously held down. Returns 0 if the negative button is not currently pressed.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration of the negative button hold.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonTimeUnpressed(System.String)">
+            <summary>
+            Gets the length of time in seconds that a negative button has not been pressed. Returns 0 if the negative button is currently pressed.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration of the negative button inactivity.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonTimeUnpressed(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that a negative button has not been pressed. Returns 0 if the negative button is currently pressed.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration of the negative button inactivity.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxis(System.String)">
+            <summary>
+            Gets the axis value of an Action.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxis(System.Int32)">
+            <summary>
+            Gets the axis value of an Action.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRaw(System.String)">
+            <summary>
+            Gets the raw axis value of an Action. The raw value excludes any digital axis simulation modification by the Input Behavior assigned to this Action.
+            This raw value is modified by deadzone and axis calibration settings in the controller. To get truly raw values, you must get the raw value directly from the Controller element.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The raw axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRaw(System.Int32)">
+            <summary>
+            Gets the raw axis value of an Action. The raw value excludes any digital axis simulation modification by the Input Behavior assigned to this Action.
+            This raw value is modified by deadzone and axis calibration settings in the controller. To get truly raw values, you must get the raw value directly from the Controller element.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The raw axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonPrev(System.String)">
+            <summary>
+            Gets the button held state of an Action during the previous frame.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The previous button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetButtonPrev(System.Int32)">
+            <summary>
+            Gets the button held state of an Action during the previous frame.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The previous button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonPrev(System.String)">
+            <summary>
+            Gets the negative button held state of an Action during the previous frame.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The previous negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetNegativeButtonPrev(System.Int32)">
+            <summary>
+            Gets the negative button held state of an Action during the previous frame.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The previous negative button held state</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisPrev(System.String)">
+            <summary>
+            Gets the axis value of an Action during the previous frame..
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The previous axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisPrev(System.Int32)">
+            <summary>
+            Gets the axis value of an Action during the previous frame..
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The previous axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRawPrev(System.String)">
+            <summary>
+            Gets the raw axis value of an Action during the previous frame. The raw value excludes any digital axis simulation modification by the Input Behavior assigned to this Action.
+            This raw value is modified by deadzone and axis calibration settings in the controller. To get truly raw values, you must get the raw value directly from the Controller element.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The previous raw axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRawPrev(System.Int32)">
+            <summary>
+            Gets the raw axis value of an Action during the previous frame. The raw value excludes any digital axis simulation modification by the Input Behavior assigned to this Action.
+            This raw value is modified by deadzone and axis calibration settings in the controller. To get truly raw values, you must get the raw value directly from the Controller element.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The previous raw axis value.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisTimeActive(System.String)">
+            <summary>
+            Gets the length of time in seconds that an axis has been continuously active. Returns 0 if the axis is not currently active.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration the axis has been continuously active.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisTimeActive(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that an axis has been continuously active. Returns 0 if the axis is not currently active.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration the axis has been continuously active.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisTimeInactive(System.String)">
+            <summary>
+            Gets the length of time in seconds that an axis has been inactive. Returns 0 if the axis is currently active.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration the axis has been continuously inactive.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisTimeInactive(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that an axis has been inactive. Returns 0 if the axis is currently active.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration the axis has been continuously inactive.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRawTimeActive(System.String)">
+            <summary>
+            Gets the length of time in seconds that an axis has been continuously active as calculated from the raw value. Returns 0 if the axis is not currently active.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration the raw axis has been continuously active.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRawTimeActive(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that an axis has been continuously active as calculated from the raw value. Returns 0 if the axis is not currently active.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration the raw axis has been continuously active.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRawTimeInactive(System.String)">
+            <summary>
+            Gets the length of time in seconds that an axis has been inactive as calculated from the raw value. Returns 0 if the axis is currently active.
+            </summary>
+            <param name="actionName">Name of the Action</param>
+            <returns>The duration the axis has been continuously inactive.</returns>
+        </member>
+        <member name="M:Rewired.Player.GetAxisRawTimeInactive(System.Int32)">
+            <summary>
+            Gets the length of time in seconds that an axis has been inactive as calculated from the raw value. Returns 0 if the axis is currently active.
+            </summary>
+            <param name="actionId">Id of the Action</param>
+            <returns>The duration the axis has been continuously inactive.</returns>
+        </member>
+        <member name="M:Rewired.Player.AddInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType)">
+            <summary>
+            Add a delegate to receive input action events every time any input action value is updated.
+            </summary>
+            <param name="delegate">The delegate that will be called.</param>
+            <param name="updateLoop">The update loop in which to monitor changes.</param>
+        </member>
+        <member name="M:Rewired.Player.AddInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,System.Int32)">
+            <summary>
+            Add a delegate to receive input action events every time a specific input action value is updated.
+            </summary>
+            <param name="delegate">The delegate that will be called.</param>
+            <param name="updateLoop">The update loop in which to monitor changes.</param>
+            <param name="actionId">The id of the action for which to receive change events.</param>
+        </member>
+        <member name="M:Rewired.Player.AddInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,System.String)">
+            <summary>
+            Add a delegate to receive input action events every time a specific input action value is updated.
+            </summary>
+            <param name="delegate">The delegate that will be called.</param>
+            <param name="updateLoop">The update loop in which to monitor changes.</param>
+            <param name="actionName">The name of the action for which to receive change events.</param>
+        </member>
+        <member name="M:Rewired.Player.AddInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,Rewired.InputActionEventType)">
+            <summary>
+            Add a delegate to receive input action events every time a specific event occurs in any action.
+            </summary>
+            <param name="delegate">The delegate that will be called.</param>
+            <param name="updateLoop">The update loop in which to monitor changes.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+        </member>
+        <member name="M:Rewired.Player.AddInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,Rewired.InputActionEventType,System.Int32)">
+            <summary>
+            Add a delegate to receive input action events every time a specific event occurs in a specific action.
+            </summary>
+            <param name="delegate">The delegate that will be called.</param>
+            <param name="updateLoop">The update loop in which to monitor changes.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+            <param name="actionId">The id of the action for which to receive change events.</param>
+        </member>
+        <member name="M:Rewired.Player.AddInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,Rewired.InputActionEventType,System.String)">
+            <summary>
+            Add a delegate to receive input action events every time a specific event occurs in a specific action.
+            </summary>
+            <param name="delegate">The delegate that will be called.</param>
+            <param name="updateLoop">The update loop in which to monitor changes.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+            <param name="actionName">The name of the action for which to receive change events.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData})">
+            <summary>
+            Remove a delegate to no longer receive input action events from any update loop for all actions.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},System.Int32)">
+            <summary>
+            Remove a delegate to no longer receive input action events from any update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="actionId">The id of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},System.String)">
+            <summary>
+            Remove a delegate to no longer receive input action events from any update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="actionName">The name of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType)">
+            <summary>
+            Remove a delegate to no longer receive input action events from the specified update loop for all actions.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="updateLoop">The update loop.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.InputActionEventType)">
+            <summary>
+            Remove a delegate to no longer receive input action events from the specified update loop for all actions.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,System.Int32)">
+            <summary>
+            Remove a delegate to no longer receive input action events from the specified update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="updateLoop">The update loop.</param>
+            <param name="actionId">The id of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,System.String)">
+            <summary>
+            Remove a delegate to no longer receive input action events from the specified update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="updateLoop">The update loop.</param>
+            <param name="actionName">The name of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.InputActionEventType,System.Int32)">
+            <summary>
+            Remove a delegate to no longer receive input action events from any update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+            <param name="actionId">The id of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.InputActionEventType,System.String)">
+            <summary>
+            Remove a delegate to no longer receive input action events from any update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+            <param name="actionName">The name of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,Rewired.InputActionEventType)">
+            <summary>
+            Remove a delegate to no longer receive input action events from the specified update loop for all actions.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="updateLoop">The update loop.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,Rewired.InputActionEventType,System.Int32)">
+            <summary>
+            Remove a delegate to no longer receive input action events from the specified update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="updateLoop">The update loop.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+            <param name="actionId">The id of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.RemoveInputEventDelegate(System.Action{Rewired.InputActionEventData},Rewired.UpdateLoopType,Rewired.InputActionEventType,System.String)">
+            <summary>
+            Remove a delegate to no longer receive input action events from the specified update loop for the specified action.
+            </summary>
+            <param name="delegate">The delegate to be removed.</param>
+            <param name="updateLoop">The update loop.</param>
+            <param name="eventType">The event type for which to send an event.</param>
+            <param name="actionName">The name of the action.</param>
+        </member>
+        <member name="M:Rewired.Player.ClearInputEventDelegates">
+            <summary>
+            Clears all input action event delegates. You will no longer receive any input action update events.
+            </summary>
+        </member>
+        <member name="T:Rewired.Player.ControllerHelper">
+            <summary>
+            Provides access to all controller-related members in Player.
+            </summary>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetController``1(System.Int32)">
+            <summary>
+            Gets a controller of the specified type assigned to this Player.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+            <param name="controllerId">Controller id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetControllerWithTag``1(System.String)">
+            <summary>
+            Gets a controller of the specificed type with the specified tag assigned to this Player.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+            <param name="tag">The tag</param>
+            <returns>Controller</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.AddController``1(System.Int32,System.Boolean)">
+            <summary>
+            Assigns a controller to this Player.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+            <param name="controllerId">Controller id</param>
+            <param name="removeFromOtherPlayers">Unassign this controller from all other players.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.RemoveController``1(System.Int32)">
+            <summary>
+            Unassigns a controller from this Player.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+            <param name="controllerId">Controller id</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.ContainsController``1(System.Int32)">
+            <summary>
+            Checks if a controller is assigned to this Player.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+            <param name="controllerId">Controller id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.ClearControllersOfType``1">
+            <summary>
+            Unassign all controllers of a specific type from this Player.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.ClearAllControllers">
+            <summary>
+            Unassign all controllers from this Player.
+            </summary>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetLastActiveController">
+            <summary>
+            Get the last controller that contributed input through the Player.
+            </summary>
+            <returns>Controller</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetLastActiveController(Rewired.ControllerType)">
+            <summary>
+            Get the last controller that contributed input through the Player.
+            </summary>
+            <param name="controllerType">The controller type.</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.GetLastActiveController``1">
+            <summary>
+            Get the last controller that contributed input through the Player.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+            <returns>Controller</returns>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.hasMouse">
+            <summary>
+            Is the mouse assigned to this Player?
+            </summary>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.Keyboard">
+            <summary>
+            Gets the Keyboard.
+            </summary>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.Mouse">
+            <summary>
+            Gets the Mouse.
+            </summary>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.joystickCount">
+            <summary>
+            The number of joysticks assigned to this Player.
+            </summary>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.Joysticks">
+            <summary>
+            A list of joysticks assigned to this Player.
+            </summary>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.customControllerCount">
+            <summary>
+            The number of Custom Controllers assigned to this Player.
+            </summary>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.CustomControllers">
+            <summary>
+            Gets a list of Custom Controllers assigned to this Player.
+            </summary>
+        </member>
+        <member name="P:Rewired.Player.ControllerHelper.Controllers">
+            <summary>
+            Enumerates all controllers of all types assigned to this Player.
+            </summary>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Rewired.Player.ControllerHelper.MapHelper" -->
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.LoadMap``1(System.Int32,System.Int32,System.Int32)">
+            <summary>
+            Loads a controller map from the maps defined in the Rewired Editor.
+            </summary>
+            <typeparam name="T">Controller map type</typeparam>
+            <param name="controllerId">Controller id</param>
+            <param name="categoryId">Category id</param>
+            <param name="layoutId">Layout id</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMaps">
+            <summary>
+            Enumerates all controller maps assigned to this Player.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetAllMapsInCategory(System.String)">
+            <summary>
+            Enumerates all controller maps assigned to this player in a specific category.
+            </summary>
+            <param name="categoryName">Category name</param>
+            <returns>IEnumerable of controller maps</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMaps``1(System.Int32)">
+            <summary>
+            Gets a list of controller maps for a specific controller assigned to this Player.
+            </summary>
+            <typeparam name="T">Controller map type</typeparam>
+            <param name="controllerId">Controller id</param>
+            <returns>IList of controller maps</returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetMap``1(System.Int32,System.Int32)">
+            <summary>
+            Gets a controller map for a specific controller by id assigned to this Player.
+            </summary>
+            <typeparam name="T">Controller map type</typeparam>
+            <param name="controllerId">Controller id</param>
+            <param name="mapId">Controller map id</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.GetFirstMapInCategory``1(System.Int32,System.String)">
+            <summary>
+            Gets the first controller map for the specified controller in the matching category assigned to this player.
+            </summary>
+            <typeparam name="T">Controller map type</typeparam>
+            <param name="controllerId">Controller id</param>
+            <param name="categoryName">Category name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetAllMapsEnabled(System.Boolean)">
+            <summary>
+            Set the enabled state in all controller maps.
+            </summary>
+            <param name="state">The enabled state.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetAllMapsEnabled(System.Boolean,Rewired.ControllerType)">
+            <summary>
+            Set the enabled state in all controller maps for a particular controller type.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="controllerType">The controller type.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,System.Int32)">
+            <summary>
+            Set the enabled state in all maps in a particular category.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="categoryId">The id of the category.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,System.String)">
+            <summary>
+            Set the enabled state in all maps in a particular category.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="categoryName">The name of the category.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,System.Int32,System.Int32)">
+            <summary>
+            DEPRECATED: Use SetMapsEnabled(bool state, string categoryName, string layoutName) instead. Reason: LayoutId is not specific enough because this method applies to all controller map types but each controller type has its own unique layout ids.
+            Set the enabled state in all maps in a particular category and layout.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="categoryId">The id of the category.</param>
+            <param name="layoutId">The id of the layout.</param>
+            <exclude></exclude>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,System.String,System.String)">
+            <summary>
+            Set the enabled state in all maps in a particular category and layout.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="categoryName">The name of the category.</param>
+            <param name="layoutName">The name of the layout.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,Rewired.ControllerType,System.Int32)">
+            <summary>
+            Set the enabled state in all maps in a category for a particular controller type.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="controllerType">The controller type.</param>
+            <param name="categoryId">The id of the category.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,Rewired.ControllerType,System.String)">
+            <summary>
+            Set the enabled state in all maps in a category for a particular controller type.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="controllerType">The controller type.</param>
+            <param name="categoryName">The name of the category.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,Rewired.ControllerType,System.Int32,System.Int32)">
+            <summary>
+            Set the enabled state in all maps in a category and layout for a particular controller type.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="controllerType">The controller type.</param>
+            <param name="categoryId">The id of the category.</param>
+            <param name="layoutId">The id of the layout.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.SetMapsEnabled(System.Boolean,Rewired.ControllerType,System.String,System.String)">
+            <summary>
+            Set the enabled state in all maps in a category and layout for a particular controller type.
+            </summary>
+            <param name="state">The enabled state.</param>
+            <param name="controllerType">The controller type.</param>
+            <param name="categoryName">The name of the category.</param>
+            <param name="layoutName">The name of the layout.</param>
+        </member>
+        <member name="M:Rewired.Player.ControllerHelper.MapHelper.LoadDefaultMaps(Rewired.ControllerType)">
+            <summary>
+            Loads the maps defined in the Rewired Editor and assigned to this player for the specified controller type.
+            All existing maps will be cleared and replaced with the default maps.
+            The Enabled state of each map will attempt to be preserved, but if you have
+            added or removed maps through scripting, the result may not be as expected and you should set the Enabled states manually.
+            </summary>
+            <param name="controllerType">The controller type.</param>
+        </member>
+        <!-- Badly formed XML comment ignored for member "T:Rewired.Player.ControllerHelper.PollingHelper" -->
+        <!-- Badly formed XML comment ignored for member "T:Rewired.Player.ControllerHelper.ConflictCheckingHelper" -->
+        <member name="T:Rewired.ReInput">
+            <summary>
+            The main class for accessing all input-related information.
+            </summary>
+        </member>
+        <member name="E:Rewired.ReInput.ControllerConnectedEvent">
+            <summary>
+            Event triggered when a controller is conected.
+            </summary>
+        </member>
+        <member name="E:Rewired.ReInput.ControllerPreDisconnectEvent">
+            <summary>
+            Event triggered just before a controller is disconnected. You can use this event to save controller maps before the controller is removed.
+            </summary>
+        </member>
+        <member name="E:Rewired.ReInput.ControllerDisconnectedEvent">
+            <summary>
+            Event triggered after a controller is disconnected.
+            </summary>
+        </member>
+        <member name="E:Rewired.ReInput.InputSourceUpdateEvent">
+            <summary>
+            Event triggered before all input sources are updated. Use this event to update the element values Custom Controllers.
+            </summary>
+        </member>
+        <member name="E:Rewired.ReInput.EditorRecompileEvent">
+            <summary>
+            Event triggered when editor begins recompiling scripts.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.players">
+            <summary>
+            Gets an object that contains all player-related members.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.controllers">
+            <summary>
+            Gets an object that contains all controller-related members.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.mapping">
+            <summary>
+            Gets an object that contains all mapping-related members.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.touch">
+            <summary>
+            Gets an object that contains all touch-related members.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.programVersion">
+            <summary>
+            Gets the current Rewired version number as a string.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.usingUnityInput">
+            <summary>
+            Is Unity (fallback) input currently being used to drive input?
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.unityJoystickIdentificationRequired">
+            <summary>
+            Does the current platform require manual joystick identification?
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.isReady">
+            <summary>
+            Is the input system ready?
+            </summary>
+        </member>
+        <member name="T:Rewired.ReInput.PlayerHelper">
+            <summary>
+            Provides access to all player-related members.
+            </summary>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetPlayers(System.Boolean)">
+            <summary>
+            Gets a list of Players.
+            </summary>
+            <param name="includeSystemPlayer">Optionally include the System player</param>
+            <returns>Player collection</returns>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetPlayer(System.Int32)">
+            <summary>
+            Gets a Player at a specific id
+            </summary>
+            <param name="playerId">The id of the player</param>
+            <returns>Player with id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetPlayer(System.String)">
+            <summary>
+            Gets a Player by name
+            </summary>
+            <param name="name">The name of the player</param>
+            <returns>Player with name</returns>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetSystemPlayer">
+            <summary>
+            Gets the System Player
+            </summary>
+            <returns>The system player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetPlayerId(System.String)">
+            <summary>
+            Gets the id of a Player by name
+            </summary>
+            <param name="playerName">The name of the player</param>
+            <returns>Id of the Player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetPlayerNames(System.Boolean)">
+            <summary>
+            Gets an array of player names. Optionally includes the System player.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <param name="includeSystemPlayer"></param>
+            <returns>Player names</returns>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetPlayerDescriptiveNames(System.Boolean)">
+            <summary>
+            Gets an array of player descriptive names. Optionally includes the System player.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <param name="includeSystemPlayer"></param>
+            <returns>Player descriptive names</returns>
+        </member>
+        <member name="M:Rewired.ReInput.PlayerHelper.GetPlayerIds(System.Boolean)">
+            <summary>
+            Gets an array of player ids. Optionally includes System player.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <param name="includeSystemPlayer"></param>
+            <returns>Player ids</returns>
+        </member>
+        <member name="P:Rewired.ReInput.PlayerHelper.playerCount">
+            <summary>
+            Count of Players excluding system player
+            </summary>
+            <returns>Count of Players excluding system player</returns>
+        </member>
+        <member name="P:Rewired.ReInput.PlayerHelper.allPlayerCount">
+            <summary>
+            Count of all players including system player
+            </summary>
+            <returns>Count of all players including system player</returns>
+        </member>
+        <member name="P:Rewired.ReInput.PlayerHelper.Players">
+            <summary>
+            List of all Players excluding System player
+            </summary>
+            <returns>Player collection excluding the system player</returns>
+        </member>
+        <member name="P:Rewired.ReInput.PlayerHelper.AllPlayers">
+            <summary>
+            List of all Players including System player
+            </summary>
+            <returns>Player collection including the system player</returns>
+        </member>
+        <member name="P:Rewired.ReInput.PlayerHelper.SystemPlayer">
+            <summary>
+            The System player
+            </summary>
+            <returns>System player</returns>
+        </member>
+        <member name="T:Rewired.ReInput.ControllerHelper">
+            <summary>
+            Provides access to all controller-related members.
+            </summary>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetController``1(System.Int32)">
+            <summary>
+            Gets a controller of type by id.
+            </summary>
+            <typeparam name="T">Type of Controller</typeparam>
+            <param name="controllerId">The controller id</param>
+            <returns>A controller of type T</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetControllerCount(Rewired.ControllerType)">
+            <summary>
+            Gets the number of controllers that exist of a specific type.
+            </summary>
+            <param name="controllerType">Type of controller</param>
+            <returns>Number of controllers of a specific type</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetController(Rewired.ControllerType,System.Int32)">
+            <summary>
+            Gets a controller of a specific type with a specific id.
+            </summary>
+            <param name="controllerType">Type of controller</param>
+            <param name="controllerId">Controller id</param>
+            <returns>Controller</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetControllers(Rewired.ControllerType)">
+            <summary>
+            Get a collection of connected controllers.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <returns>An array of all Controllers of this type</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetControllerNames(Rewired.ControllerType)">
+            <summary>
+            Get an array of connected controller names.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <returns>An array of the names of all controllers of this type</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsControllerAssigned(Rewired.ControllerType,Rewired.Controller)">
+            <summary>
+            Is the specified controller assigned to any players?
+            </summary>
+            <param name="controllerType">Type of controller</param>
+            <param name="controller">The controller</param>
+            <returns>Boolean determining whether this controller is assigned to any player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsControllerAssigned(Rewired.ControllerType,System.Int32)">
+            <summary>
+            Is the specified controller assigned to any players?
+            </summary>
+            <param name="controllerType">Type of controller</param>
+            <param name="controllerId">Id of the controller</param>
+            <returns>Boolean determining whether this controller is assigned to any player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsControllerAssignedToPlayer(Rewired.ControllerType,System.Int32,System.Int32)">
+            <summary>
+            Is the specified controller assigned to the specified player?
+            </summary>
+            <param name="controllerType">Type of controller</param>
+            <param name="controllerId">Id of the controller</param>
+            <param name="playerId">Id of the player</param>
+            <returns>Boolean determining whether this controller is assigned to the player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.RemoveControllerFromAllPlayers(Rewired.Controller,System.Boolean)">
+            <summary>
+            De-assigns the specified controller from all players.
+            </summary>
+            <param name="controller">The controller</param>
+            <param name="includeSystemPlayer">Do we de-assign from the System player also?</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.RemoveControllerFromAllPlayers(Rewired.ControllerType,System.Int32,System.Boolean)">
+            <summary>
+            De-assigns the specified controller from all players.
+            </summary>
+            <param name="controllerType">Tyoe of the controller</param>
+            <param name="controllerId">Id of the controller</param>
+            <param name="includeSystemPlayer">Do we de-assign from the System player also?</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetJoystick(System.Int32)">
+            <summary>
+            Gets a specific joystick.
+            </summary>
+            <param name="joystickId">The id of the joystick</param>
+            <returns>The Joystick</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetJoysticks">
+            <summary>
+            Gets a collection of connected joysticks.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <returns>Array of Joysticks</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetJoystickNames">
+            <summary>
+            Gets an array of connected joystick names.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <returns>Array of joystick names</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsJoystickAssigned(Rewired.Joystick)">
+            <summary>
+            Is a specific Joystick assigned to any players?
+            </summary>
+            <param name="joystick">The Joystick</param>
+            <returns>Boolean determining if the specified joystick is assigned to any players</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsJoystickAssigned(System.Int32)">
+            <summary>
+            Is a specific Joystick assigned to any players?
+            </summary>
+            <param name="joystickId">Id of the Joystick</param>
+            <returns>Boolean determining if the specified joystick is assigned to any players</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsJoystickAssignedToPlayer(System.Int32,System.Int32)">
+            <summary>
+            Is a specific Joystick assigned to a specific player?
+            </summary>
+            <param name="joystickId">Id of the Joystick</param>
+            <param name="playerId">Id of the Player</param>
+            <returns>Boolean determining if the specified joystick is assigned to the specified player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.RemoveJoystickFromAllPlayers(Rewired.Joystick,System.Boolean)">
+            <summary>
+            De-assigns a specific Joystick from all Players
+            </summary>
+            <param name="joystick">The Joystick</param>
+            <param name="includeSystemPlayer">De-assign from System player also?</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.RemoveJoystickFromAllPlayers(System.Int32,System.Boolean)">
+            <summary>
+            De-assigns a specific Joystick from all Players
+            </summary>
+            <param name="joystickId">Id of the Joystick</param>
+            <param name="includeSystemPlayer">De-assign from System player also?</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetUnityJoystickIdFromAnyButtonPress">
+            <summary>
+            Returns the 0 based id of the Unity joystick whose button was pressed. -1 if no button was pressed on any joystick.
+            Use this to identify joysticks when using Unity's input system.
+            This has no effect if Unity Input is not handling input on the current platform.
+            </summary>
+            <returns>0-based index of the Unity joystick whose button was pressed</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetUnityJoystickIdFromAnyButtonOrAxisPress(System.Single,System.Boolean)">
+            <summary>
+            Returns the 0 based id of the Unity joystick whose button or axis was pressed. -1 if no button or axis was pressed on any joystick.
+            Use this to identify joysticks when using Unity's input system.
+            This has no effect if Unity Input is not handling input on the current platform.
+            </summary>
+            <returns>0-based index of the Unity joystick whose button or axis was pressed</returns>
+            <param name="axisThreshold">Any axis value below this threshold will be ignored.</param>
+            <param name="positiveAxesOnly">Ignore negative axis values.</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.SetUnityJoystickId(System.Int32,System.Int32)">
+            <summary>
+            Sets a Unity joystick as the input source of a Joystick.
+            Use this to remap a joystick to its source when reconnected on platforms that use Unity Input.
+            This has no effect if Unity Input is not handling input on the current platform.
+            </summary>
+            <param name="joystickId">The id of the Joystick whose input source you are remapping.</param>
+            <param name="unityJoystickId">The 0 based index of the Unity joystick which will become the Joystick's new input source.</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.SetUnityJoystickIdFromAnyButtonPress(System.Int32)">
+            <summary>
+            Sets a Unity joystick as the input source of a Joystick.
+            The first Unity joystick that returns a button press will be assigned to the Joystick.
+            While no buttons are pressed, this will return False. When a button press is detected, it will return True and assign the joystick id.
+            </summary>
+            <param name="joystickId">The id of the Joystick</param>
+            <returns>True if a joystick button was pressed and a joystick id was assigned.</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.SetUnityJoystickIdFromAnyButtonOrAxisPress(System.Int32,System.Single,System.Boolean)">
+            <summary>
+            Sets a Unity joystick as the input source of a Joystick.
+            The first Unity joystick that returns a button or axis press will be assigned to the Joystick.
+            While no buttons or axes are pressed, this will return False. When a press is detected, it will return True and assign the joystick id.
+            </summary>
+            <param name="joystickId">The id of the Joystick</param>
+            <returns>True if a joystick button was pressed and a joystick id was assigned.</returns>
+            <param name="axisThreshold">Any axis value below this threshold will be ignored.</param>
+            <param name="positiveAxesOnly">Ignore negative axis values.</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetCustomController(System.Int32)">
+            <summary>
+            Gets a specific custom controller
+            </summary>
+            <param name="customControllerId">The id of the custom controller</param>
+            <returns>The Custom Controller</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetCustomControllers">
+            <summary>
+            Get a collection of connected custom controllers.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <returns>CustomController[]</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetCustomControllerNames">
+            <summary>
+            Get an array of connected custom controller names.
+            Allocates an array, so use sparingly to reduce garbage collection.
+            </summary>
+            <returns>string[]</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsCustomControllerAssigned(Rewired.CustomController)">
+            <summary>
+            Is a specific Custom Controller assigned to any players?
+            </summary>
+            <param name="customController">The Custom Controller</param>
+            <returns>Boolean determining if the specified custom controller is assigned to any players</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsCustomControllerAssigned(System.Int32)">
+            <summary>
+            Is a specific Custom Controller assigned to any players?
+            </summary>
+            <param name="customControllerId">Id of the Custom Controller</param>
+            <returns>Boolean determining if the specified custom controller is assigned to any players</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.IsCustomControllerAssignedToPlayer(System.Int32,System.Int32)">
+            <summary>
+            Is a specific Custom Controller assigned to a specific player?
+            </summary>
+            <param name="customControllerId">Id of the Custom Controller</param>
+            <param name="playerId">Id of the Player</param>
+            <returns>Boolean determining if the specified custom controller is assigned to the specified player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.RemoveCustomControllerFromAllPlayers(Rewired.CustomController,System.Boolean)">
+            <summary>
+            De-assigns a specific Custom Controller from all Players
+            </summary>
+            <param name="customController">The Custom Controller</param>
+            <param name="includeSystemPlayer">De-assign from System player also?</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.RemoveCustomControllerFromAllPlayers(System.Int32,System.Boolean)">
+            <summary>
+            De-assigns a specific Custom Controller from all Players
+            </summary>
+            <param name="customControllerId">Id of the Custom Controller</param>
+            <param name="includeSystemPlayer">De-assign from System player also?</param>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetLastActiveController">
+            <summary>
+            Get the last controller that produced input.
+            </summary>
+            <returns>Controller</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetLastActiveController(Rewired.ControllerType)">
+            <summary>
+            Get the last controller that produced input.
+            </summary>
+            <param name="controllerType">The controller type.</param>
+            <returns>Controller</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.GetLastActiveController``1">
+            <summary>
+            Get the last controller that produced input.
+            </summary>
+            <typeparam name="T">Controller type</typeparam>
+            <returns>Controller</returns>
+        </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.Controllers">
+            <summary>
+            Gets an enumeration of connected controllers.
+            </summary>
+            <returns>IEnumerable of Controller</returns>
+        </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.Mouse">
+            <summary>
+            Gets the primary Mouse controller.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.Keyboard">
+            <summary>
+            Gets the primary Keyboard controller.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.joystickCount">
+            <summary>
+            The number of joysticks currently connected.
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.Joysticks">
+            <summary>
+            Get a collection of connected joysticks.
+            </summary>
+            <returns>List of Joysticks</returns>
+        </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.customControllerCount">
+            <summary>
+            The number of custom controllers
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.ControllerHelper.CustomControllers">
+            <summary>
+            Get a collection of connected custom controllers.
+            </summary>
+            <returns>List of Custom Controllers</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.PollingHelper.PollAllControllersForFirstElement">
+            <summary>
+            Poll every connected controller and gets information about the first element that is activated.
+            Does not return Player information. If you need information about the Player, poll through Player instead.
+            </summary>
+            <returns>ControllerPollingInfo</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.PollingHelper.PollAllControllersForAllElements">
+            <summary>
+            Poll every connected controller and gets information about all elements that are activated.
+            Does not return Player information. If you need information about the Player, poll through Player instead.
+            </summary>
+            <returns>IEnumerable of ControllerPollingInfo</returns>
+        </member>
+        <member name="M:Rewired.ReInput.ControllerHelper.PollingHelper.PollAllCustomControllersForFirstElement">
+            <summary>
+            Poll every connected customController and get information about the first element that is activated.
+            Does not return Player information. If you need information about the Player, poll through Player instead.
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:Rewired.ReInput.MappingHelper">
+            <summary>
+            Provides access to all mapping-related members.
+            </summary>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMapCategory(System.Int32)">
+            <summary>
+            Gets a specific map category
+            </summary>
+            <param name="categoryId">Map Category id</param>
+            <returns>Map Category</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMapCategory(System.String)">
+            <summary>
+            Gets a specific map category
+            </summary>
+            <param name="name">Map Category name</param>
+            <returns>Map Category</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMapCategoryId(System.String)">
+            <summary>
+            Gets id of a specific map category
+            </summary>
+            <param name="name">Map Category name</param>
+            <returns>Map Category id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.MapCategoriesWithTag(System.String)">
+            <summary>
+            Enumerates all map categories with matching tag
+            </summary>
+            <param name="tag">Tag</param>
+            <returns>IEnumerable of Map Categories with tag</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.UserAssignableMapCategoriesWithTag(System.String)">
+            <summary>
+            Enumerates all user-assignable map categories with matching tag
+            </summary>
+            <param name="tag">Tag</param>
+            <returns>IEnumerable of user-assignable Map Categories with tag</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.IsMapCategoryUserAssignable(System.Int32)">
+            <summary>
+            Is the specified map category user assignable?
+            </summary>
+            <param name="categoryId">Map Category id</param>
+            <returns>True = is user assignable</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetActionCategory(System.Int32)">
+            <summary>
+            Gets a specific action category
+            </summary>
+            <param name="categoryId">Action Category id</param>
+            <returns>Action Category</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetActionCategory(System.String)">
+            <summary>
+            Gets a specific action category
+            </summary>
+            <param name="name">Action Category name</param>
+            <returns>Action Category</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetActionCategoryId(System.String)">
+            <summary>
+            Gets the id of a specific action category
+            </summary>
+            <param name="name">Action Category name</param>
+            <returns>Id of the Action Category</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.ActionCategoriesWithTag(System.String)">
+            <summary>
+            Enumerates all action categories with matching tag
+            </summary>
+            <param name="tag">Tag</param>
+            <returns>IEnumerable of Action Categories with tag</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.UserAssignableActionCategoriesWithTag(System.String)">
+            <summary>
+            Enumerates all user-assignable action categories with matching tag
+            </summary>
+            <param name="tag">Tag</param>
+            <returns>IEnumerable of user-assignable Action Categories with tag</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.IsActionCategoryUserAssignable(System.Int32)">
+            <summary>
+            Is the specified action category user-assignable?
+            </summary>
+            <param name="categoryId">Action Category id</param>
+            <returns>True = is user assignable</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetLayout(Rewired.ControllerType,System.Int32)">
+            <summary>
+            Gets a layout by specifying the controller type and layout id
+            </summary>
+            <param name="controllerType">Controller type</param>
+            <param name="layoutId">Layout id</param>
+            <returns>Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetLayout(Rewired.ControllerType,System.String)">
+            <summary>
+            Gets a layout by specifying the controller type and layout name
+            </summary>
+            <param name="controllerType">Controller type</param>
+            <param name="name">Layout name</param>
+            <returns>Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetLayoutId(Rewired.ControllerType,System.String)">
+            <summary>
+            Gets id of a layout by controller type
+            </summary>
+            <param name="controllerType">Controller type</param>
+            <param name="name">Layout name</param>
+            <returns>Layout id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetJoystickLayout(System.Int32)">
+            <summary>
+            Gets a joystick layout
+            </summary>
+            <param name="layoutId">Layout id</param>
+            <returns>Joystick Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetJoystickLayout(System.String)">
+            <summary>
+            Gets a joystick layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Joystick Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetJoystickLayoutId(System.String)">
+            <summary>
+            Gets the id of a joystick layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Joystick Layout id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetKeyboardLayout(System.Int32)">
+            <summary>
+            Gets a keyboard layout
+            </summary>
+            <param name="layoutId">Layout id</param>
+            <returns>Keyboard Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetKeyboardLayout(System.String)">
+            <summary>
+            Gets a keyboard layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Keyboard layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetKeyboardLayoutId(System.String)">
+            <summary>
+            Gets the id of a keyboard layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Keyboard Layout id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMouseLayout(System.Int32)">
+            <summary>
+            Get a mouse layout
+            </summary>
+            <param name="layoutId">Layout id</param>
+            <returns>Mouse Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMouseLayout(System.String)">
+            <summary>
+            Gets a mouse layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Mouse Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMouseLayoutId(System.String)">
+            <summary>
+            Gets the id of a mouse layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Mouse Layout id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetCustomControllerLayout(System.Int32)">
+            <summary>
+            Gets a custom controller layout
+            </summary>
+            <param name="layoutId">Layout id</param>
+            <returns>Custom Controller Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetCustomControllerLayout(System.String)">
+            <summary>
+            Gets a custom controller layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Custom Controller Layout</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetCustomControllerLayoutId(System.String)">
+            <summary>
+            Gets the id of a custom controller layout
+            </summary>
+            <param name="name">Layout name</param>
+            <returns>Custom Controller id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.MapLayouts(Rewired.ControllerType)">
+            <summary>
+            Gets a list of all map layouts for the specified controller type
+            </summary>
+            <param name="controllerType">Type of controller</param>
+            <returns>List of map layouts</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetAction(System.Int32)">
+            <summary>
+            Gets a specific action
+            </summary>
+            <param name="actionId">Action id</param>
+            <returns>Action</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetAction(System.String)">
+            <summary>
+            Gets a specific action
+            </summary>
+            <param name="name">Action name</param>
+            <returns>Action</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetActionId(System.String)">
+            <summary>
+            Gets the id of a specific action
+            </summary>
+            <param name="name">Action name</param>
+            <returns>Action id</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.ActionsInCategory(System.String)">
+            <summary>
+            Enumerates all actions in a specific category
+            </summary>
+            <param name="categoryName">Category name</param>
+            <returns>IEnumerable of actions in category</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.ActionsInCategory(System.Int32)">
+            <summary>
+            Enumerates all actions in a specific category
+            </summary>
+            <param name="categoryId">Caregory id</param>
+            <returns>IEnumerable of actions in category</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.ActionsInCategoriesWithTag(System.String)">
+            <summary>
+            Enumerates all actions with a tag
+            </summary>
+            <param name="tag">Tag</param>
+            <returns>IEnumerable of actions with tag</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.UserAssignableActionsInCategory(System.Int32)">
+            <summary>
+            Enumerates all user-assignable actions in a specific category
+            </summary>
+            <param name="categoryId">Category id</param>
+            Enumerates all user-assignable actions in a specific category
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.UserAssignableActionsInCategory(System.String)">
+            <summary>
+            Enumerates all user-assignable actions in a specific category
+            </summary>
+            <param name="categoryName">Category name</param>
+            Enumerates all user-assignable actions in a specific category
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetInputBehaviors(System.Int32)">
+            <summary>
+            Gets a list of input behaviors from a specific player
+            </summary>
+            <param name="playerId">Player id</param>
+            <returns>List of input behaviors from the player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetSystemPlayerInputBehaviors">
+            <summary>
+            Gets a list of input behaviors from the system player
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetInputBehavior(System.Int32,System.Int32)">
+            <summary>
+            Gets a specific input behavior from a specific player
+            </summary>
+            <param name="playerId">Player id</param>
+            <param name="behaviorId">Input Behavior id</param>
+            <returns>Input Behavior from the player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetInputBehavior(System.Int32,System.String)">
+            <summary>
+            Gets a specific input behavior from a specific player
+            </summary>
+            <param name="playerId">Player id</param>
+            <param name="behaviorName">Input Behavior name</param>
+            <returns>Input Behavior from the player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetSystemPlayerInputBehavior(System.Int32)">
+            <summary>
+            Gets a specific input behavior from the System player
+            </summary>
+            <param name="behaviorId">Input Behavior id</param>
+            <returns>Input Behavior from the System player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetSystemPlayerInputBehavior(System.String)">
+            <summary>
+            Gets a specific input behavior from the System player
+            </summary>
+            <param name="behaviorName">Input Behavior name</param>
+            <returns>Input Behavior from the System player</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetInputBehaviorId(System.String)">
+            <summary>
+            Gets the id of a specific input behavior
+            </summary>
+            <param name="behaviorName">Input Behavior name</param>
+            <returns></returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetJoystickMapInstance(Rewired.Joystick,System.Int32,System.Int32)">
+            <summary>
+            Gets an instanced copy of a joystick map
+            </summary>
+            <param name="joystick">Joystick for which to retrieve the map</param>
+            <param name="categoryId">Category Id</param>
+            <param name="layoutId">Layout Id</param>
+            <returns>Joystick Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetJoystickMapInstance(Rewired.Joystick,System.String,System.String)">
+            <summary>
+            Gets an instanced copy of a joystick map
+            </summary>
+            <param name="joystick">Joystick for which to retrieve the map</param>
+            <param name="categoryName">Category Name</param>
+            <param name="layoutName">Layout Name</param>
+            <returns>Joystick Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetKeyboardMapInstance(System.Int32,System.Int32)">
+            <summary>
+            Gets an instanced copy of a keyboard map
+            </summary>
+            <param name="categoryId">Category Id</param>
+            <param name="layoutId">Layout Id</param>
+            <returns>Keyboard Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetKeyboardMapInstance(System.String,System.String)">
+            <summary>
+            Gets an instanced copy of a keyboard map
+            </summary>
+            <param name="categoryName">Category Name</param>
+            <param name="layoutName">Layout Name</param>
+            <returns>Keyboard Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMouseMapInstance(System.Int32,System.Int32)">
+            <summary>
+            Gets an instanced copy of a mouse map
+            </summary>
+            <param name="categoryId">Category Id</param>
+            <param name="layoutId">Layout Id</param>
+            <returns>Mouse Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetMouseMapInstance(System.String,System.String)">
+            <summary>
+            Gets an instanced copy of a mouse map
+            </summary>
+            <param name="categoryName">Category Name</param>
+            <param name="layoutName">Layout Name</param>
+            <returns>Mouse Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetCustomControllerMapInstance(Rewired.CustomController,System.Int32,System.Int32)">
+            <summary>
+            Gets an instanced copy of a Custom Controller map
+            </summary>
+            <param name="customController">Custom Controller for which to retrieve the map</param>
+            <param name="categoryId">Category Id</param>
+            <param name="layoutId">Layout Id</param>
+            <returns>CustomController Map</returns>
+        </member>
+        <member name="M:Rewired.ReInput.MappingHelper.GetCustomControllerMapInstance(Rewired.CustomController,System.String,System.String)">
+            <summary>
+            Gets an instanced copy of a Custom Controller map
+            </summary>
+            <param name="customController">Custom Controller for which to retrieve the map</param>
+            <param name="categoryName">Category Name</param>
+            <param name="layoutName">Layout Name</param>
+            <returns>CustomController Map</returns>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.MapCategories">
+            <summary>
+            Gets list of all map categories
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.UserAssignableMapCategories">
+            <summary>
+            Enumerates all user-assignable map categories
+            </summary>
+            <returns>IEnumerable of user-assignable Map Categories</returns>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.ActionCategories">
+            <summary>
+            Gets list of all action categories
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.UserAssignableActionCategories">
+            <summary>
+            Enumerates all user-assignable action categories
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.JoystickLayouts">
+            <summary>
+            Gets a list of all joystick layouts
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.KeyboardLayouts">
+            <summary>
+            Gets a list of all keyboard layouts
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.MouseLayouts">
+            <summary>
+            Gets a list of all mouse layouts
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.CustomControllerLayouts">
+            <summary>
+            Gets a list of all custom controller layouts
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.Actions">
+            <summary>
+            Gets a list of all actions
+            </summary>
+        </member>
+        <member name="P:Rewired.ReInput.MappingHelper.UserAssignableActions">
+            <summary>
+            Enumerates all user-assignable actions
+            </summary>
+        </member>
+        <member name="T:Rewired.ReInput.UnityTouch">
+            <summary>
+            Provides access to touch-related members.
+            </summary>
+        </member>
+        <member name="T:Rewired.ReInput.TimeManager">
+            <summary>
+            Manages unscaled time.
+            </summary>
+        </member>
+        <member name="T:Rewired.Dev.Tools.DirectInputJoystickElementIdentifier">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Dev.Tools.OSXJoystickElementIdentifier">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Dev.Tools.RawInputJoystickElementIdentifier">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Dev.Tools.UnityJoystickElementIdentifier">
+            <exclude></exclude>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Pool`1">
+            <summary>
+            An expandable array pool.
+            Searches for first empty element before expanding.
+            NOTE: DOES NOT WORK FOR INT or FLOAT since Default(T) = 0!!!
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Workpool`1">
+            <summary>
+            A fixed-length array that is more efficient because it only works on entries that have been filled.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Workpool_int">
+            <summary>
+            A fixed-length array that is more efficient because it only works on entries that have been filled.
+            Type: int
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Workpool_float">
+            <summary>
+            A fixed-length array that is more efficient because it only works on entries that have been filled.
+            Type: float
+            </summary>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Workpool_bool">
+            <summary>
+            A fixed-length array that is more efficient because it only works on entries that have been filled.
+            Type: bool
+            </summary>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Workpool_Vector3">
+            <summary>
+            A fixed-length array that is more efficient because it only works on entries that have been filled.
+            Type: Vector3
+            </summary>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Workpool_object">
+            <summary>
+            A fixed-length array that is more efficient because it only works on entries that have been filled.
+            Type: object
+            </summary>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.WorkQueue`1">
+            <summary>
+            A fixed-length array that is more efficient because it only works on entries that have been filled.
+            It behaves like a queue where older items scroll off the list as new ones are added.
+            However, instead of pushing every item down in the list when an entry is added, we advance the
+            current position each time and wrap back to 0 when the end is reached.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="T:Rewired.Utils.Classes.Data.Queue`1">
+            <summary>
+            A fixed-length list. New items are added at the end. When Process is called, the first item is taken out of the queue and the list collapsed.
+            </summary>
+            <typeparam name="T"></typeparam>
+        </member>
+        <member name="M:Rewired.Utils.Classes.Data.ThreadSafeList`1.ProcessList(System.Action{`0})">
+            <summary>
+            Perform some process on the entire list with a delegate.
+            List is locked during the entire iteration.
+            </summary>
+            <param name="del"></param>
+        </member>
+        <member name="M:Rewired.Utils.Classes.Data.ThreadSafeQueue`1.ProcessQueue(System.Action{`0,System.Object},System.Object)">
+            <summary>
+            Processes the entire queue with a delegate.
+            Queue is locked during the entire iteration and the queue will be empty when finished.
+            </summary>
+            <param name="del"></param>
+        </member>
+        <member name="M:Rewired.Utils.MathTools.MaxMagnitude(System.Single,System.Single)">
+            <summary>
+            Compares absolute values. If magnitude of a >= b, a will be returned.
+            </summary>
+        </member>
+        <member name="M:Rewired.Utils.MathTools.MaxMagnitude(System.Int32,System.Int32)">
+            <summary>
+            Compares absolute values. If magnitude of a >= b, a will be returned.
+            </summary>
+        </member>
+        <member name="M:Rewired.Utils.MathTools.MinMagnitude(System.Single,System.Single)">
+            <summary>
+            Compares absolute values. If magnitude of a &lt;= b, a will be returned.
+            </summary>
+        </member>
+        <member name="M:Rewired.Utils.MathTools.MinMagnitude(System.Int32,System.Int32)">
+            <summary>
+            Compares absolute values. If magnitude of a &lt;= b, a will be returned.
+            </summary>
+        </member>
+        <member name="M:Rewired.Utils.UnityTools.DetermineWebplayerPlatformType(Rewired.Platforms.Platform,Rewired.Platforms.EditorPlatform)">
+            <summary>
+            Only works if called from within #if UNITY_WEBPLAYER so we KNOW this a webplayer.
+            Always call before setting platform to Webplayer.
+            Platform should have info about the real system platform based on #ifs
+            </summary>
+            <returns></returns>
+        </member>
+    </members>
+</doc>

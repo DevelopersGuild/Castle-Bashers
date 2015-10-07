@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Rewired;
 
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
@@ -31,7 +32,12 @@ public class Player : MonoBehaviour
      MoveController controller;
      PlayerHealth hp;
 
-     void Start()
+    [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
+    private bool initialized;
+    private Rewired.Player player;
+    public int playerId = 0; // The Rewired player id of this character
+
+    void Start()
      {
           hp = GetComponent<PlayerHealth>();
           controller = GetComponent<MoveController>();
@@ -39,11 +45,22 @@ public class Player : MonoBehaviour
           gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
           jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
           print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
-     }
+    }
 
-     void Update()
+    private void Initialize()
+    {
+        // Get the Rewired Player object for this player.
+        player = ReInput.players.GetPlayer(playerId);
+
+        initialized = true;
+    }
+
+    void Update()
      {
-          if (kbCounter >= kbLimit)
+        if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
+        if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
+
+        if (kbCounter >= kbLimit)
           {
                controller.knockback(kbDir, kbForce);
                isInvincible = true;
@@ -59,7 +76,7 @@ public class Player : MonoBehaviour
           controller.checkKnock();
      
           velocity.y += gravity * Time.deltaTime;
-          Vector2 input = new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical"));
+          Vector2 input = new Vector2(player.GetAxisRaw("MoveHorizontal"), player.GetAxisRaw("MoveVertical"));
           
           hp.setKnock(true);
           if (controller.collisions.above || controller.collisions.below)
@@ -67,7 +84,7 @@ public class Player : MonoBehaviour
                velocity.y = 0;
           }
 
-          if (Input.GetKey(KeyCode.Space) && controller.collisions.below && canAct)
+          if ((player.GetButton("Jump")) && controller.collisions.below && canAct)
           {
                velocity.y = jumpVelocity;
           }
