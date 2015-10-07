@@ -34,8 +34,8 @@ public class Player : MonoBehaviour
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
-    private Rewired.Player player;
-    public int playerId = 0; // The Rewired player id of this character
+    private Rewired.Player playerRewired;
+    public int playerId; // The Rewired player id of this character
 
     void Start()
      {
@@ -50,8 +50,8 @@ public class Player : MonoBehaviour
     private void Initialize()
     {
         // Get the Rewired Player object for this player.
-        player = ReInput.players.GetPlayer(playerId);
-
+        playerRewired = ReInput.players.GetPlayer(playerId);
+        Debug.Log("unit");
         initialized = true;
     }
 
@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
           controller.checkKnock();
      
           velocity.y += gravity * Time.deltaTime;
-          Vector2 input = new Vector2(player.GetAxisRaw("MoveHorizontal"), player.GetAxisRaw("MoveVertical"));
+          Vector2 input = new Vector2(playerRewired.GetAxis("MoveHorizontal"), playerRewired.GetAxis("MoveVertical"));
           
           hp.setKnock(true);
           if (controller.collisions.above || controller.collisions.below)
@@ -84,7 +84,7 @@ public class Player : MonoBehaviour
                velocity.y = 0;
           }
 
-          if ((player.GetButton("Jump")) && controller.collisions.below && canAct)
+          if ((playerRewired.GetButton("Jump")) && controller.collisions.below && canAct)
           {
                velocity.y = jumpVelocity;
           }
