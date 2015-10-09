@@ -13,7 +13,7 @@ public class Title_Space_Detective : MonoBehaviour {
         Title_TransScene tts;
         tts=GetComponent<Title_TransScene>();
         if (Input.GetKey(KeyCode.Space)){
-            tts.StartSplash (1);
+            tts.StartSplash (3);
         }
 	}
 }

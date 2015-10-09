@@ -8,6 +8,7 @@ public class PlayerHealth : MonoBehaviour
      private float currentHealth;
      private Player player;
      private bool canKnock = true;
+    private MoveController moveController;
      //Create hp bars for players and bosses
 
 
@@ -15,13 +16,8 @@ public class PlayerHealth : MonoBehaviour
      void Start()
      {
           player = GetComponent<Player>();
+        moveController = GetComponent<MoveController>();
           currentHealth = startingHealth;
-     }
-
-     // Update is called once per frame
-     void Update()
-     {
-
      }
 
      public void regen()
@@ -40,6 +36,11 @@ public class PlayerHealth : MonoBehaviour
             if (!player.getInvincible())
             {
                 currentHealth -= dmg;
+                if(moveController)
+                {
+                    moveController.SetKnockback(true);
+                }
+
                 if (currentHealth <= 0)
                 {
                     //Player can be revived by teammates
@@ -70,47 +71,9 @@ public class PlayerHealth : MonoBehaviour
           Destroy(gameObject);
      }
 
-     //for triggers
-     public void findKnockback(Collider other, Vector3 currentPos, float amt, float force = 1f, bool overrideKnock = false)
-     {
-          Vector3 contactPoint = other.transform.position;
-          Vector3 center = currentPos;
-          if (canKnock || overrideKnock)
-          {
-               Vector3 pushDirection = new Vector3(contactPoint.x - center.x, 0, 0);
-               if (player)
-               {
-                    player.Knock(pushDirection.normalized, amt, force);
-               }
-          }
-
-     }
-
-     //for colliders
-     public void findKnockback(Collision other, Vector3 currentPos, float amt, float force = 1f, bool overrideKnock = false)
-     {
-          Vector3 contactPoint = other.transform.position;
-          Vector3 center = currentPos;
-          if (canKnock || overrideKnock)
-          {
-               Vector3 pushDirection = new Vector3(contactPoint.x - center.x, center.y, center.z);
-               if (player)
-               {
-                    player.Knock(pushDirection.normalized, amt, force);
-               }
-          }
-
-     }
-
-
      public float getCurrentHp()
      {
           return currentHealth;
      }
 
-     //Same as canAct?
-     public void setKnock(bool x)
-     {
-          canKnock = x;
-     }
 }

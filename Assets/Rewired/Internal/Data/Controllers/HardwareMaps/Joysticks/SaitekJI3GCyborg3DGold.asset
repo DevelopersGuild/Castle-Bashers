@@ -1,0 +1,925 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 323110133, guid: 09c9b883b79ef864a99683bb36c5776d, type: 3}
+  m_Name: SaitekJI3GCyborg3DGold
+  m_EditorClassIdentifier: 
+  controllerName: Saitek JI3 Cyborg 3D Gold
+  editorControllerName: 
+  description: Saitek JI3 Cyborg 3D Gold
+  controllerGuid: 6e9e03d9-b0be-4105-b1cb-f2fa09f56d03
+  templateGuids: []
+  elementIdentifiers:
+  - _id: 1
+    _name: Stick X
+    _elementType: 0
+  - _id: 2
+    _name: Stick Y
+    _elementType: 0
+  - _id: 3
+    _name: Stick Twist
+    _elementType: 0
+  - _id: 4
+    _name: Throttle
+    _elementType: 0
+  - _id: 5
+    _name: Trigger
+    _elementType: 1
+  - _id: 6
+    _name: Left Thumb
+    _elementType: 1
+  - _id: 7
+    _name: Middle Thumb
+    _elementType: 1
+  - _id: 8
+    _name: Right Thumb
+    _elementType: 1
+  - _id: 9
+    _name: F1
+    _elementType: 1
+  - _id: 10
+    _name: F2
+    _elementType: 1
+  - _id: 11
+    _name: F3
+    _elementType: 1
+  - _id: 12
+    _name: F4
+    _elementType: 1
+  - _id: 13
+    _name: Left Throttle Button
+    _elementType: 1
+  - _id: 14
+    _name: Right Throttle Button
+    _elementType: 1
+  - _id: 15
+    _name: Hat Up
+    _elementType: 1
+  - _id: 20
+    _name: Hat Up-Right
+    _elementType: 1
+  - _id: 18
+    _name: Hat Right
+    _elementType: 1
+  - _id: 22
+    _name: Hat Down-Right
+    _elementType: 1
+  - _id: 16
+    _name: Hat Down
+    _elementType: 1
+  - _id: 21
+    _name: Hat Down-Left
+    _elementType: 1
+  - _id: 17
+    _name: Hat Left
+    _elementType: 1
+  - _id: 19
+    _name: Hat Up-Left
+    _elementType: 1
+  directInput:
+    matchingCriteria:
+      axisCount: 4
+      buttonCount: 14
+      disabled: 0
+      hatCount: 1
+      productName_useRegex: 0
+      productName:
+      - CYBORG 3D USB
+      productGUID:
+      - 000606a3-0000-0000-0000-504944564944
+      productId: 06000000
+      deviceType: 20
+    elements:
+      axes:
+      - elementIdentifier: 1
+        sourceType: 1
+        sourceAxis: 1
+        sourceAxisRange: 0
+        invert: 0
+        axisDeadZone: .0599999987
+        calibrateAxis: 0
+        axisZero: 0
+        axisMin: 0
+        axisMax: 0
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+      - elementIdentifier: 2
+        sourceType: 1
+        sourceAxis: 2
+        sourceAxisRange: 0
+        invert: 1
+        axisDeadZone: .0599999987
+        calibrateAxis: 0
+        axisZero: 0
+        axisMin: 0
+        axisMax: 0
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+      - elementIdentifier: 3
+        sourceType: 1
+        sourceAxis: 6
+        sourceAxisRange: 0
+        invert: 0
+        axisDeadZone: .0599999987
+        calibrateAxis: 0
+        axisZero: 0
+        axisMin: 0
+        axisMax: 0
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+      - elementIdentifier: 4
+        sourceType: 1
+        sourceAxis: 7
+        sourceAxisRange: 0
+        invert: 1
+        axisDeadZone: 0
+        calibrateAxis: 1
+        axisZero: 1
+        axisMin: -1
+        axisMax: 1
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+      buttons:
+      - elementIdentifier: 5
+        sourceType: 0
+        sourceButton: 0
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 6
+        sourceType: 0
+        sourceButton: 1
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 7
+        sourceType: 0
+        sourceButton: 2
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 8
+        sourceType: 0
+        sourceButton: 3
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 9
+        sourceType: 0
+        sourceButton: 4
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 10
+        sourceType: 0
+        sourceButton: 5
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 11
+        sourceType: 0
+        sourceButton: 6
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 12
+        sourceType: 0
+        sourceButton: 7
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 13
+        sourceType: 0
+        sourceButton: 8
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 14
+        sourceType: 0
+        sourceButton: 9
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 15
+        sourceType: 0
+        sourceButton: 10
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0b0000000c000000
+      - elementIdentifier: 20
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 1
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0a0000000c000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 18
+        sourceType: 0
+        sourceButton: 12
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0a0000000d000000
+      - elementIdentifier: 22
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 1
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0d0000000c000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 16
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0b0000000c000000
+      - elementIdentifier: 21
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 1
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0d0000000b000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+      - elementIdentifier: 17
+        sourceType: 0
+        sourceButton: 11
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0a0000000d000000
+      - elementIdentifier: 19
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 1
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0a0000000b000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+  rawInput:
+    matchingCriteria:
+      axisCount: 4
+      buttonCount: 14
+      disabled: 0
+      hatCount: 1
+      productName_useRegex: 0
+      productName:
+      - CYBORG 3D USB
+      productGUID:
+      - 000606a3-0000-0000-0000-504944564944
+      productId: 06000000
+      deviceType: 20
+    elements:
+      axes:
+      - elementIdentifier: 1
+        sourceType: 1
+        sourceAxis: 1
+        sourceAxisRange: 0
+        invert: 0
+        axisDeadZone: 0
+        calibrateAxis: 0
+        axisZero: 0
+        axisMin: 0
+        axisMax: 0
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+        sourceOtherAxis: 0
+      - elementIdentifier: 2
+        sourceType: 1
+        sourceAxis: 2
+        sourceAxisRange: 0
+        invert: 1
+        axisDeadZone: 0
+        calibrateAxis: 0
+        axisZero: 0
+        axisMin: 0
+        axisMax: 0
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+        sourceOtherAxis: 0
+      - elementIdentifier: 3
+        sourceType: 1
+        sourceAxis: 6
+        sourceAxisRange: 0
+        invert: 0
+        axisDeadZone: 0
+        calibrateAxis: 0
+        axisZero: 0
+        axisMin: 0
+        axisMax: 0
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+        sourceOtherAxis: 0
+      - elementIdentifier: 4
+        sourceType: 1
+        sourceAxis: 7
+        sourceAxisRange: 0
+        invert: 1
+        axisDeadZone: 0
+        calibrateAxis: 1
+        axisZero: 1
+        axisMin: -1
+        axisMax: 1
+        sourceButton: 0
+        buttonAxisContribution: 0
+        sourceHat: 0
+        sourceHatDirection: 0
+        sourceHatRange: 0
+        sourceOtherAxis: 0
+      buttons:
+      - elementIdentifier: 5
+        sourceType: 0
+        sourceButton: 0
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 6
+        sourceType: 0
+        sourceButton: 1
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 7
+        sourceType: 0
+        sourceButton: 2
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 8
+        sourceType: 0
+        sourceButton: 3
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 9
+        sourceType: 0
+        sourceButton: 4
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 10
+        sourceType: 0
+        sourceButton: 5
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 11
+        sourceType: 0
+        sourceButton: 6
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 12
+        sourceType: 0
+        sourceButton: 7
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 13
+        sourceType: 0
+        sourceButton: 8
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 14
+        sourceType: 0
+        sourceButton: 9
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 15
+        sourceType: 0
+        sourceButton: 10
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0b0000000c000000
+        sourceOtherAxis: 0
+      - elementIdentifier: 20
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0a0000000c000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 18
+        sourceType: 0
+        sourceButton: 12
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0a0000000d000000
+        sourceOtherAxis: 0
+      - elementIdentifier: 22
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0d0000000c000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 16
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0b0000000c000000
+        sourceOtherAxis: 0
+      - elementIdentifier: 21
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0d0000000b000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+      - elementIdentifier: 17
+        sourceType: 0
+        sourceButton: 11
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 0
+        requiredButtons: 
+        ignoreIfButtonsActive: 1
+        ignoreIfButtonsActiveButtons: 0a0000000d000000
+        sourceOtherAxis: 0
+      - elementIdentifier: 19
+        sourceType: 0
+        sourceButton: 13
+        sourceAxis: 0
+        sourceAxisPole: 0
+        axisDeadZone: 0
+        sourceHat: 0
+        sourceHatType: 0
+        sourceHatDirection: 0
+        requireMultipleButtons: 1
+        requiredButtons: 0a0000000b000000
+        ignoreIfButtonsActive: 0
+        ignoreIfButtonsActiveButtons: 
+        sourceOtherAxis: 0
+  xInput:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      subType: 
+    elements:
+      axes: []
+      buttons: []
+  osx:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      hatCount: 0
+      productName_useRegex: 0
+      productName: []
+      manufacturer: []
+      productId: 
+      vendorId: 
+    elements:
+      axes: []
+      buttons: []
+  fallback_Windows:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_OSX:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_Linux:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_Android:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_iOS:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_Blackberry:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_WindowsPhone8:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_XBox360:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_XBoxOne:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_PS3:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_PS4:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_PSM:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_PSVita:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_Wii:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  fallback_WiiU:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+      productName_useRegex: 0
+      productName: []
+    elements:
+      axes: []
+      buttons: []
+  ouya:
+    matchingCriteria:
+      axisCount: 0
+      buttonCount: 0
+      disabled: 0
+      alwaysMatch: 0
+    elements:
+      axes: []
+      buttons: []
+  elementIdentifierIdCounter: 23

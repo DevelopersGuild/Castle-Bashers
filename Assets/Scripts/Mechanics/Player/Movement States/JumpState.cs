@@ -7,8 +7,11 @@ public class JumpState : IPlayerState
 
     public void EnterState(Player player)
     {
-        player.Jump();
-        player.SetIsGrounded(false);
+        if (player.GetMoveController().isStunned == false)
+        {
+            player.Jump();
+            player.SetIsGrounded(false);
+        }
     }
 
     public IPlayerState HandleInput(Player player)

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using Rewired;
 
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
@@ -7,8 +8,10 @@ public class Player : MonoBehaviour
     public GameObject BasicAttackPrefab;
     private IPlayerState state;
     private IAttack attackState;
+    public Animator animator;
 
     private bool isGrounded = true;
+    private bool isMoving = false;
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
     private float accelerationTimeAirborne = .2f;
@@ -37,10 +40,16 @@ public class Player : MonoBehaviour
     private MoveController controller;
     private PlayerHealth hp;
 
+    [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
+    private bool initialized;
+    private Rewired.Player playerRewired;
+    public int playerId; // The Rewired player id of this character
+
     void Start()
     {
         state = new StandingState();
         attackState = new IdleAttackState();
+        animator = GetComponent<Animator>();
         hp = GetComponent<PlayerHealth>();
         controller = GetComponent<MoveController>();
         knockReset = hitReset = 0;
@@ -51,19 +60,15 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (kbCounter >= kbLimit)
+        if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
+        if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
+
+        if (controller.collisions.above || controller.collisions.below)
         {
-            controller.knockback(kbDir, kbForce);
-            isInvincible = true;
-            kbCounter = 0;
-            hp.setKnock(false);
-        }
-        if (knockReset > 10)
-        {
-            kbCounter = 0;
-            knockReset = 0;
+            velocity.y = 0;
         }
 
+        //Invincibility timer
         if (invTime >= 0)
         {
             if (invTime != 0)
@@ -77,27 +82,26 @@ public class Player : MonoBehaviour
             isInvincible = false;
             invTime = 0;
         }
-        controller.checkKnock();
-        hp.setKnock(true);
 
         HandleInput();
+        Vector2 input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
+
+        if (input.x == 0 && input.y == 0)
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
         if (isNotStunned)
         {
-            Move(new Vector2(Input.GetAxisRaw("Horizontal"), Input.GetAxisRaw("Vertical")));
+            ReadyMove(input);
         }
+
         UpdateState();
-        knockReset += Time.deltaTime;
-        hitReset += Time.deltaTime;
     }
 
-    public void Knock(Vector3 dir, float amt, float force)
-    {
-        kbDir = new Vector3(dir.x, dir.y - 0.3f, dir.z);
-        kbCounter += amt;
-        kbForce = force;
-        knockReset = 0;
-        controller.knockback(kbDir, kbForce / 2);
-    }
 
     //Reset hitReset when hit
     public void setInvTime(float time)
@@ -130,7 +134,7 @@ public class Player : MonoBehaviour
             state.EnterState(this);
         }
         IAttack newAttackState = attackState.HandleInput(this);
-        if(newAttackState != null)
+        if (newAttackState != null)
         {
             attackState.ExitState(this);
             attackState = newAttackState;
@@ -144,7 +148,7 @@ public class Player : MonoBehaviour
         attackState.UpdateState(this);
     }
 
-    private void Move(Vector2 input)
+    private void ReadyMove(Vector2 input)
     {
         velocity.y += gravity * Time.deltaTime;
         float targetVelocityX = input.x * horizontalMoveSpeed;
@@ -163,6 +167,11 @@ public class Player : MonoBehaviour
         return isGrounded;
     }
 
+    public bool GetIsMoving()
+    {
+        return isMoving;
+    }
+
     public MoveController GetMoveController()
     {
         return controller;
@@ -176,5 +185,12 @@ public class Player : MonoBehaviour
     public void Jump()
     {
         velocity.y = jumpVelocity;
+    }
+
+    private void Initialize()
+    {
+        // Get the Rewired Player object for this player.
+        playerRewired = ReInput.players.GetPlayer(playerId);
+        initialized = true;
     }
 }
