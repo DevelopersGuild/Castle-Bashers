@@ -2,7 +2,7 @@
 using UnityEngine;
 using System.Collections;
 
-[RequireComponent(typeof(BoxCollider))]
+[RequireComponent(typeof(Collider))]
 public class MoveController : MonoBehaviour
 {
 
@@ -197,14 +197,14 @@ public class MoveController : MonoBehaviour
      {
           kb = true;
           kbDir = dir.normalized * force;
-          kbTime = 0.4f;
+          kbTime = 0.5f;
      }
 
      public void checkKnock()
      {
           if (kb)
           {
-               if (kbTime >= 0)
+               if (kbTime >= 0.3)
                {
                     player.setAct(false);
                     Move(kbDir * kbTime);
@@ -214,12 +214,21 @@ public class MoveController : MonoBehaviour
                }
                else
                {
-                    player.setAct(true);
                     player.setInvincible(false);
                     kb = false;
                     kbTime = 0.4f;
+                    player.setAct(true);
+                    Move(new Vector3(0, 0, 0));
+                    player.happened = false;
                }
           }
      }
 
+     public float GetFacing()
+     {
+          if (facingRight)
+               return -1;
+
+          return 1;
+     }
 }
