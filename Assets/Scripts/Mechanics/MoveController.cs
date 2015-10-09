@@ -40,6 +40,15 @@ public class MoveController : MonoBehaviour
         currentKnockbacktime = knockbackTime;
     }
 
+
+    public float GetFacing()
+    {
+        if (facingRight)
+            return -1;
+
+        return 1;
+    }
+
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
         UpdateRaycastOrigins();
@@ -80,7 +89,7 @@ public class MoveController : MonoBehaviour
 
     private void HandleKnockback(ref Vector3 velocity)
     {
-        if(isKnockedBack)
+        if (isKnockedBack)
         {
             isStunned = true;
             if (!facingRight)
@@ -97,14 +106,14 @@ public class MoveController : MonoBehaviour
         }
 
         // Stop pushing the player after knockbacktime and after hes hit the floor
-        if(currentKnockbacktime <= 0 && collisions.below == true)
+        if (currentKnockbacktime <= 0 && collisions.below == true)
         {
             isStunned = false;
             isKnockedBack = false;
             currentKnockbacktime = knockbackTime;
         }
     }
-   
+
     public void SetKnockback(bool knockback)
     {
         isKnockedBack = knockback;
@@ -234,4 +243,6 @@ public class MoveController : MonoBehaviour
             forward = backward = false;
         }
     }
+
 }
+

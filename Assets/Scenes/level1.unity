@@ -597,7 +597,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 413464, guid: 122a5f1a75830a941becf2130961ee37, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -16.9200001
+      value: -17.4300003
       objectReference: {fileID: 0}
     - target: {fileID: 413464, guid: 122a5f1a75830a941becf2130961ee37, type: 2}
       propertyPath: m_LocalPosition.y
@@ -625,11 +625,15 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 413464, guid: 122a5f1a75830a941becf2130961ee37, type: 2}
       propertyPath: m_RootOrder
-      value: 12
+      value: 11
       objectReference: {fileID: 0}
     - target: {fileID: 11479170, guid: 122a5f1a75830a941becf2130961ee37, type: 2}
       propertyPath: kbForce
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6597988, guid: 122a5f1a75830a941becf2130961ee37, type: 2}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 122a5f1a75830a941becf2130961ee37, type: 2}
@@ -1636,3 +1640,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   regenAmount: .200000003
+--- !u!114 &2020331430
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2020331428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5df888501d03124590f7ec73b36e887, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill1: {fileID: 11447298, guid: c35cf83e6af4fd749959a62a9934b838, type: 2}
+  skill2: {fileID: 11496034, guid: 4934b66a2af72f840872f3c846fc7c57, type: 2}
+  skill3: {fileID: 0}
+  skill4: {fileID: 0}
+  skill5: {fileID: 0}
