@@ -35,25 +35,26 @@ public class PlayerHealth : MonoBehaviour
 
      public void takeDamage(float dmg)
      {
-          if (player)
-          {
-               if (!player.getInvincible())
-               {
-                    currentHealth -= dmg;
-                    if (currentHealth <= 0)
-                    {
-                         //Player can be revived by teammates
-                         PlayerDown();
-                    }
-               }
-          }
-          else
-          {
-               currentHealth -= dmg;
-               if (currentHealth <= 0)
-               {
-                    Death();
-               }
+        if (player)
+        {
+            if (!player.getInvincible())
+            {
+                currentHealth -= dmg;
+                if (currentHealth <= 0)
+                {
+                    //Player can be revived by teammates
+                    PlayerDown();
+                }
+            }
+        }
+        else
+        {
+            currentHealth -= dmg;
+            if (currentHealth <= 0)
+            {
+                Death();
+            }
+        }
      }
 
      public void PlayerDown()
