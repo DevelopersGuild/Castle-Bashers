@@ -40,7 +40,7 @@ public class DealDamageToEnemy : MonoBehaviour
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
-                    hp.findKnockback(other, transform.position, 1, 1, knockOverride);
+                    //hp.findKnockback(other, transform.position, 1, 1, knockOverride);
                     hp.takeDamage(1);
                     enem.setInvTime(invTime);
                }
@@ -69,7 +69,7 @@ public class DealDamageToEnemy : MonoBehaviour
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
-                    hp.findKnockback(other, transform.position, 1, 1, knockOverride);
+                    //hp.findKnockback(other, transform.position, 1, 1, knockOverride);
                     hp.takeDamage(1);
                     enem.setInvTime(invTime);
                }
