@@ -60,19 +60,12 @@ public class Player : MonoBehaviour
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
 
-        if (kbCounter >= kbLimit)
+        if (controller.collisions.above || controller.collisions.below)
         {
-            controller.knockback(kbDir, kbForce);
-            isInvincible = true;
-            kbCounter = 0;
-            hp.setKnock(false);
-        }
-        if (knockReset > 10)
-        {
-            kbCounter = 0;
-            knockReset = 0;
+            velocity.y = 0;
         }
 
+        //Invincibility timer
         if (invTime >= 0)
         {
             if (invTime != 0)
@@ -86,31 +79,17 @@ public class Player : MonoBehaviour
             isInvincible = false;
             invTime = 0;
         }
-        controller.checkKnock();
-        hp.setKnock(true);
 
         HandleInput();
         Vector2 input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
 
-        if (isNotStunned)
-        {
 
-            Move(input);
-        }
+         Move(input);
+      
 
         UpdateState();
-        knockReset += Time.deltaTime;
-        hitReset += Time.deltaTime;
     }
 
-    public void Knock(Vector3 dir, float amt, float force)
-    {
-        kbDir = new Vector3(dir.x, dir.y - 0.3f, dir.z);
-        kbCounter += amt;
-        kbForce = force;
-        knockReset = 0;
-        controller.knockback(kbDir, kbForce / 2);
-    }
 
     //Reset hitReset when hit
     public void setInvTime(float time)
@@ -195,7 +174,6 @@ public class Player : MonoBehaviour
     {
         // Get the Rewired Player object for this player.
         playerRewired = ReInput.players.GetPlayer(playerId);
-        Debug.Log("unit");
         initialized = true;
     }
 }

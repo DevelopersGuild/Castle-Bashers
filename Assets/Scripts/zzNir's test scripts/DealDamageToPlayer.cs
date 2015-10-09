@@ -38,7 +38,6 @@ public class DealDamageToPlayer : MonoBehaviour
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
-                    hp.findKnockback(other, transform.position, 1);
                     hp.takeDamage(1);
                     player.setInvTime(0.5f);
                }
@@ -66,7 +65,6 @@ public class DealDamageToPlayer : MonoBehaviour
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
-                    hp.findKnockback(other, transform.position, 1);
                     hp.takeDamage(1);
                     player.setInvTime(0.5f);
                     if(CompareTag("One Time"))

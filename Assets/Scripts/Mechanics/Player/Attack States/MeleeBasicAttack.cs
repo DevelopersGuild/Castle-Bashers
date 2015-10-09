@@ -21,7 +21,7 @@ public class MeleeBasicAttack : IAttack
 
     public void EnterState(Player player)
     {
-        basicAttack = GameObject.Instantiate(player.BasicAttackPrefab, player.transform.position, Quaternion.identity) as GameObject;
+        //basicAttack = GameObject.Instantiate(player.BasicAttackPrefab, player.transform.position, Quaternion.identity) as GameObject;
     }
 
     public void UpdateState(Player player)
