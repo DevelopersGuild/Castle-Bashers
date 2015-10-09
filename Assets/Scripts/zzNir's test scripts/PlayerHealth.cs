@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 
 public class PlayerHealth : MonoBehaviour
@@ -36,7 +36,6 @@ public class PlayerHealth : MonoBehaviour
             if (!player.getInvincible())
             {
                 currentHealth -= dmg;
-
                 if(moveController)
                 {
                     moveController.SetKnockback(true);
@@ -45,11 +44,6 @@ public class PlayerHealth : MonoBehaviour
                 {
                     //Player can be revived by teammates
                     PlayerDown();
-                }
-
-                if(moveController)
-                {
-                    //moveController.setKnockback(true);
                 }
             }
         }

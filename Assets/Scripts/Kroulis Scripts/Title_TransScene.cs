@@ -101,11 +101,11 @@ public class Title_TransScene : MonoBehaviour {
                 break;
             case 2:
                 fadeSpeed = 0.8f;
-                waitTime = 1.0f;
+                waitTime = 0.8f;
                 break;
             case 3:
                 fadeSpeed = 0.8f;
-                waitTime = 1.0f;
+                waitTime = 0;
                 break;
         }
     }
