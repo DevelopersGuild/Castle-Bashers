@@ -1,22 +1,22 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class StandingState : IPlayerState
+public class WalkingState : IPlayerState
 {
     public void EnterState(Player player)
     {
-        player.animator.SetBool("IsMoving", false);
+        player.animator.SetBool("IsMoving", true);
     }
 
     public IPlayerState HandleInput(Player player)
     {
-        if(Input.GetButtonDown("Jump") && player.GetMoveController().collisions.below)
+        if (Input.GetButtonDown("Jump") && player.GetMoveController().collisions.below)
         {
             return new JumpState();
         }
-        if(player.GetIsMoving() == true)
+        if(player.GetIsMoving() == false)
         {
-            return new WalkingState();
+            return new StandingState();
         }
         return null;
     }

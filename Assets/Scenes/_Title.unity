@@ -274,7 +274,7 @@ MonoBehaviour:
   waitForInput: 0
   startAutomatically: 0
   IsDealPlayer: 0
-  splashType: 1
+  splashType: 0
   logoPositioning: 0
 --- !u!114 &1916857168
 MonoBehaviour:

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class MeleeBasicAttack : IAttack
 {
-    GameObject basicAttack;
     public float LengthOfAttack = 2.0f;
     private float timer = 1.0f;
     public IAttack HandleInput(Player player)
@@ -21,7 +20,7 @@ public class MeleeBasicAttack : IAttack
 
     public void EnterState(Player player)
     {
-        //basicAttack = GameObject.Instantiate(player.BasicAttackPrefab, player.transform.position, Quaternion.identity) as GameObject;
+        player.animator.SetBool("IsUsingBasicAttack", true);
     }
 
     public void UpdateState(Player player)
@@ -31,6 +30,6 @@ public class MeleeBasicAttack : IAttack
 
     public void ExitState(Player player)
     {
-        GameObject.Destroy(basicAttack);
+        player.animator.SetBool("IsUsingBasicAttack", false);
     }
 }
