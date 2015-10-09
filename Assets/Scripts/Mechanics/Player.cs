@@ -9,6 +9,7 @@ public class Player : MonoBehaviour
     private IPlayerState state;
     private IAttack attackState;
     public Animator animator;
+    public ISkill[] Skills = new ISkill[4];
 
     private bool isGrounded = true;
     private bool isMoving = false;
@@ -192,5 +193,25 @@ public class Player : MonoBehaviour
         // Get the Rewired Player object for this player.
         playerRewired = ReInput.players.GetPlayer(playerId);
         initialized = true;
+    }
+
+    private void UseSkill1()
+    {
+        Skills[0].UseSkill();
+    }
+
+    private void UseSkill2()
+    {
+        Skills[1].UseSkill();  
+    }
+
+    private void UseSkill3()
+    {
+        Skills[2].UseSkill();
+    }
+
+    private void UseSkill4()
+    {
+        Skills[3].UseSkill();
     }
 }
