@@ -1,11 +1,12 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DealDamageToPlayer : MonoBehaviour
+public class DealDamageToEnemy : MonoBehaviour
 {
 
      private float dmgAmount = 1;
-
+     public float invTime = 0.1f;
+     public bool knockOverride = false;
      // Use this for initialization
      void Start()
      {
@@ -26,56 +27,58 @@ public class DealDamageToPlayer : MonoBehaviour
 
      public void OnCollisionStay(Collision other)
      {
+          Debug.Log(other.gameObject);
           //Check for player collision
-          if (other.gameObject.GetComponent<Player>())
+          if (other.gameObject.GetComponent<Enemy>())
           {
                //Find components necessary to take damage and knockback
-               GameObject playerObject = other.gameObject;
-               Player player = playerObject.GetComponent<Player>();
-               PlayerHealth hp = playerObject.GetComponent<PlayerHealth>();
+               GameObject enemObj = other.gameObject;
+               Enemy enem = enemObj.GetComponent<Enemy>();
+               PlayerHealth hp = enemObj.GetComponent<PlayerHealth>();
                //Take damage if the player isnt already currently invincible
-               if (!player.getInvincible())
+               if (!enem.getInvincible())
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
+                    //hp.findKnockback(other, transform.position, 1, 1, knockOverride);
                     hp.takeDamage(1);
-                    player.setInvTime(0.5f);
+                    enem.setInvTime(invTime);
                }
 
-               //Destroy gameobject if its a projectile
-               //Destroy(gameObject);
+               if(GetComponent<Projectile>())
+               {
+                    Destroy(gameObject);
+               }
           }
-         
+
      }
 
      //Same code just make sure it happens
      public void OnTriggerStay(Collider other)
      {
-
+          Debug.Log(name);
           //Check for player collision
-          if (other.gameObject.GetComponent<Player>())
+          if (other.gameObject.GetComponent<Enemy>())
           {
                //Find components necessary to take damage and knockback
-               GameObject playerObject = other.gameObject;
-               Player player = playerObject.GetComponent<Player>();
-               PlayerHealth hp = playerObject.GetComponent<PlayerHealth>();
-
+               GameObject enemObj = other.gameObject;
+               Enemy enem = enemObj.GetComponent<Enemy>();
+               PlayerHealth hp = enemObj.GetComponent<PlayerHealth>();
                //Take damage if the player isnt already currently invincible
-               if (!player.getInvincible())
+               if (!enem.getInvincible())
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
+                    //hp.findKnockback(other, transform.position, 1, 1, knockOverride);
                     hp.takeDamage(1);
-                    player.setInvTime(0.5f);
-                    if(CompareTag("One Time"))
-                    {
-                         Destroy(gameObject);
-                    }
+                    enem.setInvTime(invTime);
                }
 
-               //if prjectile
-               //Destroy(gameObject);
+               if (GetComponent<Projectile>())
+               {
+                    if(tag == "DProj")
+                    Destroy(gameObject);
+               }
           }
      }
 }
-

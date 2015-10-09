@@ -40,7 +40,6 @@ public class PlayerHealth : MonoBehaviour
                 {
                     moveController.SetKnockback(true);
                 }
-
                 if (currentHealth <= 0)
                 {
                     //Player can be revived by teammates
