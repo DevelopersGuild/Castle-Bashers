@@ -13,6 +13,7 @@ GameObject:
   - 114: {fileID: 11430466}
   - 114: {fileID: 11441140}
   - 114: {fileID: 11424088}
+  - 54: {fileID: 5430232}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -32,6 +33,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!54 &5430232
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 182430}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 1
+  m_IsKinematic: 0
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
 --- !u!65 &6509768
 BoxCollider:
   m_ObjectHideFlags: 1
@@ -39,7 +55,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 182430}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: .819999993, y: .819999993, z: .400000006}
@@ -73,6 +89,9 @@ MonoBehaviour:
     m_Bits: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  knockbackVelocity: 0
+  knockbackTime: 0
+  isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11441140
 MonoBehaviour:
@@ -130,6 +149,10 @@ Prefab:
       objectReference: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
     - target: {fileID: 0}
       propertyPath: startingHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

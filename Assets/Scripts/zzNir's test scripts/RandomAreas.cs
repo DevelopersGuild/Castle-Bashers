@@ -16,7 +16,7 @@ public class RandomAreas : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        chunkSpacing = 90f;
+        chunkSpacing = 20f;
         //create black screen with loading
 
         rnd = new System.Random(Guid.NewGuid().GetHashCode());
