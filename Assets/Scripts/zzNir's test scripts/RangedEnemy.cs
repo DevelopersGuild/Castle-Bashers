@@ -1,34 +1,47 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
-public class TestEnemy : Enemy
+public class RangedEnemy : Enemy
 {
-    public GameObject attackCollider;
-    private GameObject attCol;
+    public Projectile shotObj;
+    private Projectile shot;
     public Type classification;
+
+    private float zDiff;
 
     // Use this for initialization
     void Start()
     {
         base.Start();
-        speed = 4;
+        speed = 2;
+        zDiff = 0;
     }
 
     // Update is called once per frame
     void Update()
     {
-
-
         if (target != null)
         {
-
-
             if (!isStunned)
             {
-                Act(classification);
-
-                if (distL <= attackRange || distR <= attackRange)
-                Attack();
+                if (distL > attackRange || distR > attackRange)
+                {
+                    Act(classification);
+                }
+                else
+                {
+                    zDiff = targetPos.z - transform.position.z;
+                    if(Math.Abs(zDiff) > 0.5f)
+                    {
+                        Move(new Vector3(0, 0, zDiff), speed);
+                    }
+                    else
+                    {
+                        dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
+                        Attack();
+                    }
+                }
             }
         }
         else
@@ -54,19 +67,10 @@ public class TestEnemy : Enemy
 
     private void Attack()
     {
-        bool facing = distL <= distR;
         isStunned = true;
         stunTimer = 1f;
-        if (facing)
-        {
-            attCol = Instantiate(attackCollider, transform.position + right, transform.rotation) as GameObject;
-        }
-        else
-        {
-            attCol = Instantiate(attackCollider, transform.position + left, transform.rotation) as GameObject;
-        }
-        Destroy(attCol, 0.5f);
-
+        shot = Instantiate(shotObj, transform.position, transform.rotation) as Projectile;
+        shot.Shoot(dir);
     }
 
 }
