@@ -44,11 +44,12 @@ public class DealDamageToEnemy : MonoBehaviour
                     enem.setInvTime(invTime);
                }
 
-               if(GetComponent<Projectile>())
-               {
+            if (GetComponent<Projectile>())
+            {
+                if (tag == "DProj")
                     Destroy(gameObject);
-               }
-          }
+            }
+        }
 
      }
 

@@ -14,8 +14,9 @@ public class RangedEnemy : Enemy
     void Start()
     {
         base.Start();
-        speed = 2;
+        speed = 3;
         zDiff = 0;
+        attack_CD = 3;
     }
 
     // Update is called once per frame
@@ -25,20 +26,21 @@ public class RangedEnemy : Enemy
         {
             if (!isStunned)
             {
-                if (distL > attackRange || distR > attackRange)
+                if (distL > attackRange && distR > attackRange)
                 {
                     Act(classification);
                 }
                 else
                 {
                     zDiff = targetPos.z - transform.position.z;
-                    if(Math.Abs(zDiff) > 0.5f)
+                    if(Math.Abs(zDiff) > 0.25f)
                     {
                         Move(new Vector3(0, 0, zDiff), speed);
                     }
                     else
                     {
                         dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
+                        if(attack_CD >= 4)
                         Attack();
                     }
                 }
@@ -62,11 +64,17 @@ public class RangedEnemy : Enemy
         if (invTime <= 0)
             isInvincible = false;
 
+        attack_CD += Time.deltaTime;
         invTime -= Time.deltaTime;
     }
 
     private void Attack()
     {
+        distL = (transform.position - targetPos - left).magnitude;
+        distR = (transform.position - targetPos - right).magnitude;
+        toLeft = (attackRange + distL) <= distR;
+        attack_CD = 0;
+
         isStunned = true;
         stunTimer = 1f;
         shot = Instantiate(shotObj, transform.position, transform.rotation) as Projectile;

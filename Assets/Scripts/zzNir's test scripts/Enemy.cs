@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Enemy : MonoBehaviour
 {
 
     public float agroRange;
     public float attackRange;
+    public float attack_CD;
 
     [HideInInspector] 
     public GameObject target;
@@ -44,6 +46,7 @@ public class Enemy : MonoBehaviour
         stunTimer = 0;
         speed = 1;
 
+        distL = distR = 50;
         toLeft = true;
         isStunned = false;
         left = new Vector3(-attackRange, 0, 0);
@@ -90,15 +93,17 @@ public class Enemy : MonoBehaviour
     {
         targetPos = target.transform.position;
         distance = (transform.position - targetPos).magnitude;
+
+        distL = (transform.position - targetPos - left).magnitude;
+        distR = (transform.position - targetPos - right).magnitude;
+        toLeft = (attackRange + distL) <= distR;
+
         if (t == Type.Melee)
         {
 
-            distL = (transform.position - targetPos - left).magnitude;
-            distR = (transform.position - targetPos - right).magnitude;
-            toLeft = (attackRange + distL) <= distR;
             if (distance > agroRange)
             {
-                Move(new Vector3(target.transform.position.x - targetPos.x, 0, 0), speed);
+                Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
             }
             else
             {
@@ -110,18 +115,19 @@ public class Enemy : MonoBehaviour
                 if(distL > attackRange && distR > attackRange)
                 Move(dir, speed);
 
-                Debug.Log("OH and" + distL + " Vs " + distR);
             }
         }
         else if (t == Type.Ranged)
         {
-            if(distance > agroRange)
+            Debug.Log("L v R v Distance" + distL + " " + distR + " " + distance);
+            distance = targetPos.x - transform.position.x;
+            if(Math.Abs(distance) > attackRange)
             {
-                Move(new Vector3(target.transform.position.x - targetPos.x, 0, 0), speed);
+                Move(new Vector3(distance, 0, 0), 1);
             }
             else
             {
-
+                Move(targetPos - transform.position, speed);
             }
         }
         else if (t == Type.Other)

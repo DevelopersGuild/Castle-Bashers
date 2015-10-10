@@ -12,6 +12,7 @@ public class TestEnemy : Enemy
     {
         base.Start();
         speed = 4;
+        attack_CD = 2;
     }
 
     // Update is called once per frame
@@ -28,7 +29,10 @@ public class TestEnemy : Enemy
                 Act(classification);
 
                 if (distL <= attackRange || distR <= attackRange)
-                Attack();
+                {
+                    if (attack_CD >= 2)
+                        Attack();
+                }
             }
         }
         else
@@ -50,13 +54,17 @@ public class TestEnemy : Enemy
             isInvincible = false;
 
         invTime -= Time.deltaTime;
+        attack_CD += Time.deltaTime;
     }
 
     private void Attack()
     {
         bool facing = distL <= distR;
-        isStunned = true;
-        stunTimer = 1f;
+        attack_CD = 0;
+        distL = (transform.position - targetPos - left).magnitude;
+        distR = (transform.position - targetPos - right).magnitude;
+        toLeft = (attackRange + distL) <= distR;
+
         if (facing)
         {
             attCol = Instantiate(attackCollider, transform.position + right, transform.rotation) as GameObject;
