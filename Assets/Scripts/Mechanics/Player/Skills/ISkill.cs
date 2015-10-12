@@ -3,5 +3,5 @@ using System.Collections;
 
 public interface ISkill
 {
-    void UseSkill();
+    void UseSkill(GameObject caller);
 }
