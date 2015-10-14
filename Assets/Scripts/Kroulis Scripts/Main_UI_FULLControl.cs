@@ -19,7 +19,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
         public int headiconid;
         public int hp, maxhp;
     };
-    //Full Ccale
+    //Full Scale
     float full_scale;
     //Mode Control
     public bool One_player_per_client;
@@ -33,6 +33,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
     public int[] itemid = new int[3]; //to set the item id of 3 item space
     public Playerinfo[] partner;
     public Bossinfo boss;
+    public GameObject Main_Process;
 
     //Temp Control
     public int hp, maxhp, mp, maxmp, exp, nexp,lv,cid;
@@ -65,6 +66,8 @@ public class Main_UI_FULLControl : MonoBehaviour {
         Text[] finds1;
         Image[] finds2;
         GameObject GOResult;
+        //Set Static
+        DontDestroyOnLoad(this.gameObject);
         //Link Database
         GOResult = GameObject.Find("DataBase");
         Boss_HeadIcon_Script = GOResult.GetComponent<Boss_HeadIcon>();
@@ -307,15 +310,11 @@ public class Main_UI_FULLControl : MonoBehaviour {
         {
 
         }
-        
 	}
 	
 	// Update is called once per frame
     void Update()
     {
-        //Adjust
-        full_scale = (float)(Screen.width / 1920.00);
-        this.GetComponent<CanvasScaler>().scaleFactor = full_scale;
         if (Menu_open == true)
         {
             OPM.SetActive(false);
@@ -324,6 +323,9 @@ public class Main_UI_FULLControl : MonoBehaviour {
         }
         else
         {
+            //Adjust
+            full_scale = (float)(Screen.width / 1920.00);
+            this.GetComponent<CanvasScaler>().scaleFactor = full_scale;
             //Cilent Control
             if (One_player_per_client == true)
             {
@@ -347,7 +349,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
             if (Team_mode == true)
             {
                 TeamMode.SetActive(true);
-                teamsize = partner.GetLength(1);
+                teamsize = partner.Length;
                 TeamMode.GetComponent<Image>().fillAmount=(float)((teamsize+1)*1.00/6); 
                 //if()
 
@@ -367,26 +369,34 @@ public class Main_UI_FULLControl : MonoBehaviour {
             {
                 BossMode.SetActive(false);
             }
+            if (In_Battle == false)
+            {
+                if (Input.GetKeyDown(KeyCode.Escape)) //Open Settings
+                {
+                    Main_Process.GetComponent<Main_Process>().Menu_id = 4;
+                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                    Main_Process.GetComponent<Main_Process>().esckey_up = true;
+                }
+                if (Input.GetKeyDown(KeyCode.P))//Open Character
+                {
+                    Main_Process.GetComponent<Main_Process>().Menu_id = 1;
+                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                }
+                if (Input.GetKeyDown(KeyCode.K))//Open Skill
+                {
+                    Main_Process.GetComponent<Main_Process>().Menu_id = 3;
+                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                }
+                if (Input.GetKeyDown(KeyCode.B))//Open Bag
+                {
+                    Main_Process.GetComponent<Main_Process>().Menu_id = 2;
+                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                }
+            }
+
+
         }
-        if(In_Battle==false)
-        {
-            if(Input.GetKeyDown(KeyCode.Escape)) //Open Settings
-            {
 
-            }
-            if(Input.GetKeyDown(KeyCode.P))//Open Character
-            {
-
-            }
-            if (Input.GetKeyDown(KeyCode.K))//Open Skill
-            {
-
-            }
-            if(Input.GetKeyDown(KeyCode.B))//Open Bag
-            {
-
-            }
-        }
     }
 
 }
