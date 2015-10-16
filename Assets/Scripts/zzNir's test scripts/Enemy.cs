@@ -89,7 +89,7 @@ public class Enemy : MonoBehaviour
         moveController.Move(velocity * Time.deltaTime * force);
     }
 
-    public void Act(Type t)
+    public virtual void Act(Type t)
     {
         targetPos = target.transform.position;
         distance = (transform.position - targetPos).magnitude;
@@ -119,7 +119,6 @@ public class Enemy : MonoBehaviour
         }
         else if (t == Type.Ranged)
         {
-            Debug.Log("L v R v Distance" + distL + " " + distR + " " + distance);
             distance = targetPos.x - transform.position.x;
             if(Math.Abs(distance) > attackRange)
             {
