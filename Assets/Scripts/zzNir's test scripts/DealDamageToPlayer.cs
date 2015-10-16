@@ -42,9 +42,12 @@ public class DealDamageToPlayer : MonoBehaviour
                     player.setInvTime(0.5f);
                }
 
-               //Destroy gameobject if its a projectile
-               //Destroy(gameObject);
-          }
+            if (GetComponent<Projectile>())
+            {
+                if (tag == "DProj")
+                    Destroy(gameObject);
+            }
+        }
          
      }
 
@@ -73,9 +76,12 @@ public class DealDamageToPlayer : MonoBehaviour
                     }
                }
 
-               //if prjectile
-               //Destroy(gameObject);
-          }
+            if (GetComponent<Projectile>())
+            {
+                if (tag == "DProj")
+                    Destroy(gameObject);
+            }
+        }
      }
 }
 
