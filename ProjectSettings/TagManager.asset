@@ -6,6 +6,8 @@ TagManager:
   tags:
   - One Time
   - Proj
+  - Enemy
+  - Destructible
   layers:
   - Default
   - TransparentFX

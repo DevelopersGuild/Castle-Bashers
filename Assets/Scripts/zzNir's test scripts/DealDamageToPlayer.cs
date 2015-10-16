@@ -4,7 +4,7 @@ using System.Collections;
 public class DealDamageToPlayer : MonoBehaviour
 {
 
-     private float dmgAmount = 1;
+     public float dmgAmount = 1;
 
      // Use this for initialization
      void Start()
