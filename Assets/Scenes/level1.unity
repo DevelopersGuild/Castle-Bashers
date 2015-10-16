@@ -1916,6 +1916,7 @@ GameObject:
   - 114: {fileID: 2020331431}
   - 114: {fileID: 2020331429}
   - 114: {fileID: 2020331430}
+  - 114: {fileID: 2020331438}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -2077,3 +2078,24 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 13
+--- !u!114 &2020331438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 2020331428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6112a187eae3e804a97f95b5540e0dc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatText: {fileID: 11418386, guid: a782bd70ba51ef1448df6b6c05a70427, type: 2}
+  effectOffset: {x: 0, y: 2, z: 0}
+  canStun: 1
+  stunEffect: {fileID: 0}
+  canSlow: 1
+  slowEffect: {fileID: 0}
+  canSilence: 1
+  silenceEffect: {fileID: 0}
+  canSnare: 1
+  snareEffect: {fileID: 0}
