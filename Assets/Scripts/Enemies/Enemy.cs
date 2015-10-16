@@ -9,6 +9,7 @@ public class Enemy : MonoBehaviour {
      public MoveController moveController;
      public bool isInvincible;
      public float invTime;
+     public int EnemyID; //use for random generation. IDs must match with Area IDs
 
      private float velocityXSmoothing, velocityZSmoothing;
 
