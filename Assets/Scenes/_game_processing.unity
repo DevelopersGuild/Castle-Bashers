@@ -484,7 +484,8 @@ Transform:
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 379823601}
   m_Father: {fileID: 0}
   m_RootOrder: 1
 --- !u!114 &211478220
@@ -500,13 +501,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Main_UI: {fileID: 257600367}
   Menu_UI: {fileID: 733907343}
-  Hide_UI: 1
+  Hide_UI: 0
   Menu_Open: 0
   Menu_id: 0
   One_player_per_client: 1
   In_Battle: 0
   Killing_boss: 0
   Team_Mode: 0
+  esckey_up: 0
 --- !u!1 &242030181
 GameObject:
   m_ObjectHideFlags: 0
@@ -610,7 +612,6 @@ RectTransform:
   m_Children:
   - {fileID: 167830767}
   - {fileID: 2022575234}
-  - {fileID: 379823601}
   m_Father: {fileID: 0}
   m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
@@ -916,6 +917,7 @@ GameObject:
   - 4: {fileID: 379823601}
   - 114: {fileID: 379823603}
   - 114: {fileID: 379823602}
+  - 114: {fileID: 379823604}
   m_Layer: 5
   m_Name: DataBase
   m_TagString: Untagged
@@ -930,11 +932,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 379823600}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 377.5, y: 139, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 257600368}
-  m_RootOrder: 2
+  m_Father: {fileID: 211478219}
+  m_RootOrder: 0
 --- !u!114 &379823602
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -962,6 +964,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon:
   - {fileID: 21300000, guid: 883b6dc844107b24586f16fb94249957, type: 3}
+--- !u!114 &379823604
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 379823600}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9cbe5e92db80d429814c1b2f7efc60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGM: []
 --- !u!1 &397481044
 GameObject:
   m_ObjectHideFlags: 0
@@ -4647,6 +4661,7 @@ GameObject:
   - 224: {fileID: 1777437076}
   - 222: {fileID: 1777437078}
   - 114: {fileID: 1777437077}
+  - 114: {fileID: 1777437079}
   m_Layer: 5
   m_Name: Menu_Background
   m_TagString: Untagged
@@ -4709,6 +4724,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1777437075}
+--- !u!114 &1777437079
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1777437075}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6edcb43a1a3eb2641ae8da473a92e80a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1832310534
 GameObject:
   m_ObjectHideFlags: 0
