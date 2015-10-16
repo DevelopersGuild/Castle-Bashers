@@ -6,7 +6,7 @@ public class RandomAreas : MonoBehaviour
 {
 
     public Area area1, area2, area3;
-    private float chunkSpacing;
+    private float chunkSPIcing;
     private Area[] ar = new Area[3];
     private System.Random rnd;
     private int rndArea, rndTimes, tempArea;
@@ -16,7 +16,7 @@ public class RandomAreas : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        chunkSpacing = 20f;
+        chunkSPIcing = 90f;
         //create black screen with loading
 
         rnd = new System.Random(Guid.NewGuid().GetHashCode());
@@ -24,7 +24,7 @@ public class RandomAreas : MonoBehaviour
         rndTimes = rnd.Next(10, 26) / 2;
 
         //distance between areas
-        aL = new Vector3(chunkSpacing, 0, 0);
+        aL = new Vector3(chunkSPIcing, 0, 0);
         distMult = 0;
 
         ar[0] = area1;

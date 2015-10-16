@@ -6,9 +6,7 @@ TagManager:
   tags:
   - One Time
   - Proj
-  - Enemy
-  - Destructible
-  - Destructibile
+  - DProj
   layers:
   - Default
   - TransparentFX
@@ -19,11 +17,11 @@ TagManager:
   - 
   - 
   - Platforms
-  - Destructible
-  - Enemy
-  - EnemyProjectile
-  - Player
-  - PlayerProjectile
+  - 
+  - 
+  - 
+  - 
+  - 
   - 
   - 
   - 
