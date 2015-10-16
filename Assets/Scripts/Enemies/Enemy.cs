@@ -138,5 +138,6 @@ public class Enemy : MonoBehaviour
             Debug.LogError("Incorrect type of enemy, no movement possible");
         }
     }
+
 }
 
