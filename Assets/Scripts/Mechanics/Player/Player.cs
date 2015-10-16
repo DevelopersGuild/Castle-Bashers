@@ -5,10 +5,11 @@ using Rewired;
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
 {
-    public GameObject BasicAttackPrefab;
     private IPlayerState state;
     private IAttack attackState;
     public Animator animator;
+    public GameObject AttackCollider;
+    public ISkill[] Skills = new ISkill[4];
 
     private bool isGrounded = true;
     private bool isMoving = false;
@@ -50,6 +51,7 @@ public class Player : MonoBehaviour
         state = new StandingState();
         attackState = new IdleAttackState();
         animator = GetComponent<Animator>();
+        AttackCollider.SetActive(false);
         hp = GetComponent<PlayerHealth>();
         controller = GetComponent<MoveController>();
         knockReset = hitReset = 0;
@@ -140,6 +142,7 @@ public class Player : MonoBehaviour
             attackState = newAttackState;
             attackState.EnterState(this);
         }
+
     }
 
     private void UpdateState()
@@ -187,10 +190,35 @@ public class Player : MonoBehaviour
         velocity.y = jumpVelocity;
     }
 
+    public GameObject GetAttackCollider()
+    {
+        return AttackCollider;
+    }
+
     private void Initialize()
     {
         // Get the Rewired Player object for this player.
         playerRewired = ReInput.players.GetPlayer(playerId);
         initialized = true;
+    }
+
+    private void UseSkill1()
+    {
+        Skills[0].UseSkill(this.gameObject);
+    }
+
+    private void UseSkill2()
+    {
+        Skills[1].UseSkill(this.gameObject);  
+    }
+
+    private void UseSkill3()
+    {
+        Skills[2].UseSkill(this.gameObject);
+    }
+
+    private void UseSkill4()
+    {
+        Skills[3].UseSkill(this.gameObject);
     }
 }
