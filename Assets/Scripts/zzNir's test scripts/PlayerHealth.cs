@@ -5,7 +5,7 @@ public class PlayerHealth : MonoBehaviour
 {
 
      public float startingHealth, regenAmount;
-     private float currentHealth;
+     public float currentHealth;
      private Player player;
      private bool canKnock = true;
     private MoveController moveController;

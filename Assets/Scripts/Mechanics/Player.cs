@@ -19,13 +19,6 @@ public class Player : MonoBehaviour
     public float horizontalMoveSpeed = 6;
     public float verticalMoveSpeed = 10;
 
-    public float kbLimit = 3;
-    public float kbCounter = 0;
-    public float kbForce = 1;
-    private Vector3 kbDir;
-
-    private double knockReset, hitReset;
-
     private bool isNotStunned = true;
     private bool isInvincible = false;
 
@@ -52,7 +45,6 @@ public class Player : MonoBehaviour
         animator = GetComponent<Animator>();
         hp = GetComponent<PlayerHealth>();
         controller = GetComponent<MoveController>();
-        knockReset = hitReset = 0;
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);

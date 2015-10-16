@@ -6,6 +6,7 @@ public class Projectile : Skill
      public float projectileSpeed;
      public float damageAmount;
      public float TimeToLive;
+    public bool destroyOnCollision;
 
      public void Start()
      {
@@ -22,6 +23,14 @@ public class Projectile : Skill
      {
           GetComponent<Rigidbody>().velocity = dir * projectileSpeed;
      }
+
+    public void OnTriggerEnter(Collider other)
+    {
+        if(destroyOnCollision)
+        {
+            Destroy(gameObject);
+        }
+    }
 
 }
 

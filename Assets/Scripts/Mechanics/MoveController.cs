@@ -103,7 +103,6 @@ public class MoveController : MonoBehaviour
                 velocity.x = -knockbackVelocity;
             }
 
-
             currentKnockbacktime -= Time.deltaTime;
         }
 
