@@ -3,92 +3,78 @@ using System.Collections;
 
 public class TestEnemy : Enemy
 {
-     public GameObject attackCollider;
+    public GameObject attackCollider;
+    private GameObject attCol;
+    public Type classification;
 
-     private float distL, distR, stunTimer;
-     private bool toLeft, isStunned;
-     private Vector3 left, right, dir;
+    // Use this for initialization
+    void Start()
+    {
+        base.Start();
+        speed = 4;
+        attack_CD = 2;
+    }
 
-     // Use this for initialization
-     void Start()
-     {
-          base.Start();
-          stunTimer = 0;
-          toLeft = true;
-          isStunned = false;
-          left = new Vector3(-0.5f, 0, 0);
-          right = new Vector3(0.5f, 0, 0);
-     }
-
-     // Update is called once per frame
-     void Update()
-     {
+    // Update is called once per frame
+    void Update()
+    {
 
 
-          if (target != null)
-          {
-               distL = (transform.position - targetPos.position - left).magnitude;
-               distR = (transform.position - targetPos.position - right).magnitude;
-               toLeft = (0.5f + distL) <= distR;
+        if (target != null)
+        {
 
-               if (!isStunned)
-               {
-                    if (toLeft)
-                         dir = (targetPos.position + left - transform.position).normalized;
-                    else
-                         dir = (targetPos.position + right - transform.position).normalized;
 
-                    if (toLeft)
-                         if (distL > 0.6f)
-                              Move(dir, 3);
-                         else
-                              Attack();
-                    else
-                    {
-                         if (distR > 0.6f)
-                              Move(dir, 3);
-                         else
-                              Attack();
-                    }
-               }
-          }
-          else
-          {
-               if (FindObjectOfType<Player>())
-                    target = FindObjectOfType<Player>().gameObject;
-               else 
-               {
-                    //player lost
-                    //Destroy(gameObject);
-               }
-          }
-          if (stunTimer > 0)
-               stunTimer -= Time.deltaTime;
-          else
-               isStunned = false;
+            if (!isStunned)
+            {
+                Act(classification);
 
-          if (invTime <= 0)
-               isInvincible = false;
+                if (distL <= attackRange || distR <= attackRange)
+                {
+                    if (attack_CD >= 2)
+                        Attack();
+                }
+            }
+        }
+        else
+        {
+            if (FindObjectOfType<Player>())
+                target = FindObjectOfType<Player>().gameObject;
+            else
+            {
+                //player lost
+                //Destroy(gameObject);
+            }
+        }
+        if (stunTimer > 0)
+            stunTimer -= Time.deltaTime;
+        else
+            isStunned = false;
 
-          invTime -= Time.deltaTime;
-     }
+        if (invTime <= 0)
+            isInvincible = false;
 
-     private void Attack()
-     {
-          bool facing = distL <= distR;
-          isStunned = true;
-          stunTimer = 2f;
-          GameObject attCol;
-          if (facing)
-          {
-               attCol = Instantiate(attackCollider, transform.position + right * 2, transform.rotation) as GameObject;
-          }
-          else
-          {
-               attCol = Instantiate(attackCollider, transform.position + left * 2, transform.rotation) as GameObject;
-          }
-          Destroy(attCol, 0.5f);
+        invTime -= Time.deltaTime;
+        attack_CD += Time.deltaTime;
+    }
 
-     }
+    private void Attack()
+    {
+        bool facing = distL <= distR;
+        attack_CD = 0;
+        distL = (transform.position - targetPos - left).magnitude;
+        distR = (transform.position - targetPos - right).magnitude;
+        toLeft = (attackRange + distL) <= distR;
+
+        if (facing)
+        {
+            attCol = Instantiate(attackCollider, transform.position + right, transform.rotation) as GameObject;
+        }
+        else
+        {
+            attCol = Instantiate(attackCollider, transform.position + left, transform.rotation) as GameObject;
+        }
+        Destroy(attCol, 0.5f);
+
+    }
 
 }

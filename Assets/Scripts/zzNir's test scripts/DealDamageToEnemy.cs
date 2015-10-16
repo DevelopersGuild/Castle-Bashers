@@ -27,7 +27,6 @@ public class DealDamageToEnemy : MonoBehaviour
 
      public void OnCollisionStay(Collision other)
      {
-          Debug.Log(other.gameObject);
           //Check for player collision
           if (other.gameObject.GetComponent<Enemy>())
           {
@@ -45,18 +44,18 @@ public class DealDamageToEnemy : MonoBehaviour
                     enem.setInvTime(invTime);
                }
 
-               if(GetComponent<Projectile>())
-               {
+            if (GetComponent<Projectile>())
+            {
+                if (tag == "DProj")
                     Destroy(gameObject);
-               }
-          }
+            }
+        }
 
      }
 
      //Same code just make sure it happens
      public void OnTriggerStay(Collider other)
      {
-          Debug.Log(name);
           //Check for player collision
           if (other.gameObject.GetComponent<Enemy>())
           {
