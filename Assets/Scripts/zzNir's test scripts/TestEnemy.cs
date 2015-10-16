@@ -59,7 +59,7 @@ public class TestEnemy : Enemy
                else 
                {
                     //player lost
-                    Destroy(gameObject);
+                    //Destroy(gameObject);
                }
           }
           if (stunTimer > 0)

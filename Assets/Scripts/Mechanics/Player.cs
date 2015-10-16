@@ -8,8 +8,10 @@ public class Player : MonoBehaviour
     public GameObject BasicAttackPrefab;
     private IPlayerState state;
     private IAttack attackState;
+    public Animator animator;
 
     private bool isGrounded = true;
+    private bool isMoving = false;
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
     private float accelerationTimeAirborne = .2f;
@@ -47,6 +49,7 @@ public class Player : MonoBehaviour
     {
         state = new StandingState();
         attackState = new IdleAttackState();
+        animator = GetComponent<Animator>();
         hp = GetComponent<PlayerHealth>();
         controller = GetComponent<MoveController>();
         knockReset = hitReset = 0;
@@ -83,9 +86,18 @@ public class Player : MonoBehaviour
         HandleInput();
         Vector2 input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
 
-
-         Move(input);
-      
+        if (input.x == 0 && input.y == 0)
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
+        if (isNotStunned)
+        {
+            ReadyMove(input);
+        }
 
         UpdateState();
     }
@@ -136,7 +148,7 @@ public class Player : MonoBehaviour
         attackState.UpdateState(this);
     }
 
-    private void Move(Vector2 input)
+    private void ReadyMove(Vector2 input)
     {
         velocity.y += gravity * Time.deltaTime;
         float targetVelocityX = input.x * horizontalMoveSpeed;
@@ -153,6 +165,11 @@ public class Player : MonoBehaviour
     public bool GetIsGrounded()
     {
         return isGrounded;
+    }
+
+    public bool GetIsMoving()
+    {
+        return isMoving;
     }
 
     public MoveController GetMoveController()

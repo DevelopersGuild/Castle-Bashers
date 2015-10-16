@@ -5,7 +5,6 @@ using System;
 public class RandomAreas : MonoBehaviour
 {
 
-
     public int MIN_AREAS;
     public int MAX_AREAS;
     public int enemyMinimum;
@@ -30,7 +29,7 @@ public class RandomAreas : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        chunkSpacing = 90f;
+        chunkSPIcing = 90f;
         //create black screen with loading
 
         rnd = new System.Random(Guid.NewGuid().GetHashCode());
@@ -38,8 +37,10 @@ public class RandomAreas : MonoBehaviour
         rndTimes = rnd.Next(MIN_AREAS, MAX_AREAS);
 
         //distance between areas
+
         aL = new Vector3(chunkSpacing, 0, 0);
         vShift = new Vector3(0, 1, 0);
+
         distMult = 0;
 
         

@@ -5,7 +5,7 @@ public class StandingState : IPlayerState
 {
     public void EnterState(Player player)
     {
-
+        player.animator.SetBool("IsMoving", false);
     }
 
     public IPlayerState HandleInput(Player player)
@@ -14,9 +14,10 @@ public class StandingState : IPlayerState
         {
             return new JumpState();
         }
-
-
-
+        if(player.GetIsMoving() == true)
+        {
+            return new WalkingState();
+        }
         return null;
     }
 
