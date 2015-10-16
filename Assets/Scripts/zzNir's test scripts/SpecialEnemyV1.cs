@@ -118,7 +118,6 @@ public class SpecialEnemyV1 : Enemy
         {
             distance = targetPos.x - transform.position.x;
             zDiff = targetPos.z - transform.position.z;
-            Debug.Log(distance);
             if (Math.Abs(distance) <= dashRange)
             {
                 if (Math.Abs(zDiff) > 0.25f)

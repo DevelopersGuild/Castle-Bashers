@@ -44,34 +44,6 @@ public class DealDamageToEnemy : MonoBehaviour
 
     }
 
-    public void OnCollisionStay(Collision other)
-    {
-        //Check for player collision
-        if (other.gameObject.GetComponent<Enemy>())
-        {
-            //Find components necessary to take damage and knockback
-            GameObject enemObj = other.gameObject;
-            Enemy enem = enemObj.GetComponent<Enemy>();
-            PlayerHealth hp = enemObj.GetComponent<PlayerHealth>();
-            //Take damage if the player isnt already currently invincible
-            if (!enem.getInvincible())
-            {
-                //Deal damage, knockback
-                //get amt (1), dmgAmount(1) from Enemy/Hazard
-                //hp.findKnockback(other, transform.position, 1, 1, knockOverride);
-                hp.takeDamage(1);
-                enem.setInvTime(invTime);
-            }
-
-            if (GetComponent<Projectile>())
-            {
-                if (tag == "DProj")
-                    Destroy(gameObject);
-            }
-        }
-
-    }
-
     //Same code just make sure it happens
     public void OnTriggerEnter(Collider other)
     {
