@@ -124,7 +124,35 @@ Prefab:
       propertyPath: m_RootOrder
       value: 2
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: enemy1
+      value: 
+      objectReference: {fileID: 11443122, guid: 274de596be3efb348a2cefa63f5b13a1,
+        type: 2}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: enemy2
+      value: 
+      objectReference: {fileID: 11438012, guid: 3014cf481c361a241ac2a417d6df5211,
+        type: 2}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: enemy3
+      value: 
+      objectReference: {fileID: 11434124, guid: cc201d397c1d5b940a564c43c9d7bb70,
+        type: 2}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: enemyMinimum
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: MIN_AREAS
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: MAX_AREAS
+      value: 4
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11494242, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1610029069
