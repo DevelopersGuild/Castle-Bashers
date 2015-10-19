@@ -7,6 +7,7 @@ public class Main_Process : MonoBehaviour {
     //UI Objects
     public GameObject Main_UI;
     public GameObject Menu_UI;
+    public GameObject Other_Windows;
     //UI Infomations
     public bool Hide_UI;
     public bool Menu_Open;

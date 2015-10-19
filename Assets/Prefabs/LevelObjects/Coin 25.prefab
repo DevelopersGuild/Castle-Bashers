@@ -26,7 +26,7 @@ Transform:
   m_GameObject: {fileID: 135736}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -15.6800003, y: 1.20000005, z: 2.08999991}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 25
-  pickupSound: {fileID: 0}
+  pickupSound: {fileID: 8300000, guid: de445aded17de394f8eeed6d87d42455, type: 3}
 --- !u!212 &21281992
 SpriteRenderer:
   m_ObjectHideFlags: 1

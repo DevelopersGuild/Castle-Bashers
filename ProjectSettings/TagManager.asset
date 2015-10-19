@@ -8,6 +8,8 @@ TagManager:
   - Proj
   - DProj
   - Destructible
+  - Player
+  - Enemy
   layers:
   - Default
   - TransparentFX

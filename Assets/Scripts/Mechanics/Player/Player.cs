@@ -204,7 +204,7 @@ public class Player : MonoBehaviour
 
     private void UseSkill2()
     {
-        Skills[1].UseSkill(this.gameObject);  
+        Skills[1].UseSkill(this.gameObject);
     }
 
     private void UseSkill3()
