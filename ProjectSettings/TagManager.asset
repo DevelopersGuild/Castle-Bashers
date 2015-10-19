@@ -7,6 +7,9 @@ TagManager:
   - One Time
   - Proj
   - DProj
+  - Destructible
+  - Player
+  - Enemy
   layers:
   - Default
   - TransparentFX
