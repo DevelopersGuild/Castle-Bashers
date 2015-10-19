@@ -8,7 +8,7 @@ public class HealthRegenSkill : ISkill
         //TODO Fix this once new health script is created, add ability to pass in regen amount.
         if(caller.tag == "Player")
         {
-            caller.GetComponent<PlayerHealth>().regen();
+            caller.GetComponent<Health>().regen();
         }
     }
 }

@@ -10,6 +10,9 @@ public class Player : MonoBehaviour
     public Animator animator;
     public GameObject AttackCollider;
     public ISkill[] Skills = new ISkill[4];
+    public int Strength;
+    public int Agility;
+    public int Intelligence;
 
     private bool isGrounded = true;
     private bool isMoving = false;
@@ -32,7 +35,7 @@ public class Player : MonoBehaviour
     private float velocityZSmoothing;
 
     private MoveController controller;
-    private PlayerHealth hp;
+    private Health hp;
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
@@ -45,7 +48,7 @@ public class Player : MonoBehaviour
         attackState = new IdleAttackState();
         animator = GetComponent<Animator>();
         AttackCollider.SetActive(false);
-        hp = GetComponent<PlayerHealth>();
+        hp = GetComponent<Health>();
         controller = GetComponent<MoveController>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;

@@ -32,7 +32,7 @@ public class DealDamageToPlayer : MonoBehaviour
                //Find components necessary to take damage and knockback
                GameObject playerObject = other.gameObject;
                Player player = playerObject.GetComponent<Player>();
-               PlayerHealth hp = playerObject.GetComponent<PlayerHealth>();
+               Health hp = playerObject.GetComponent<Health>();
                //Take damage if the player isnt already currently invincible
                if (!player.getInvincible())
                {
@@ -61,7 +61,7 @@ public class DealDamageToPlayer : MonoBehaviour
                //Find components necessary to take damage and knockback
                GameObject playerObject = other.gameObject;
                Player player = playerObject.GetComponent<Player>();
-               PlayerHealth hp = playerObject.GetComponent<PlayerHealth>();
+               Health hp = playerObject.GetComponent<Health>();
 
                //Take damage if the player isnt already currently invincible
                if (!player.getInvincible())

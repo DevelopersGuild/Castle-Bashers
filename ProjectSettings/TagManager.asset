@@ -7,6 +7,7 @@ TagManager:
   - One Time
   - Proj
   - DProj
+  - Destructible
   layers:
   - Default
   - TransparentFX
