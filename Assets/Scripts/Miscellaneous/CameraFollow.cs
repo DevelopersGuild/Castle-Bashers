@@ -3,16 +3,72 @@ using UnityEngine;
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour
-{
+    {
+    //public variables
+    public GameObject gobjCameraTarget;
+    public Vector3 v3DefaultCameraRotationVector;
+    public Vector3 v3DefaultCameraPositionVector;
+    public float flVerticalOffset;
+    public float flDepthOffset;
+    public float flXAxisTolerance;
+
+
+    //local variables
+    Vector3 v3PreviousFrameCameraPosition;
+
+
+    void Start()
+        {
+        gobjCameraTarget = GameObject.Find("Player");
+
+
+        }
+
+    void LateUpdate()
+        {
+        Vector3 v3CameraTargetPosition = gobjCameraTarget.transform.position;
+
+
+
+        Vector3 v3FinalCameraPosition;
+
+        v3FinalCameraPosition.x = GetXCameraPosition(v3CameraTargetPosition.x);
+        v3FinalCameraPosition.z = flDepthOffset;
+        v3FinalCameraPosition.y = v3CameraTargetPosition.y + flVerticalOffset;
+
+
+        transform.position = v3FinalCameraPosition;
+
+        v3PreviousFrameCameraPosition = v3FinalCameraPosition;
+        }
+
+    float GetXCameraPosition(float flCameraTargetXPosition)
+        {
+
+        float flFrameXDifference = v3PreviousFrameCameraPosition.x - flCameraTargetXPosition;
+
+        if ((Mathf.Abs(flFrameXDifference)) > flXAxisTolerance)
+            {
+            return flCameraTargetXPosition + Mathf.Sign(flFrameXDifference) * flXAxisTolerance;
+            }
+        return v3PreviousFrameCameraPosition.x;
+        }
+    }
+
+//Junk
+/*
+
+
 
     public MoveController target;
-    public float verticalOffset;
+    
     public float lookAheadDstX;
     public float lookSmoothTimeX;
     public float verticalSmoothTime;
     public float focusAreaSize;
 
-    FocusArea focusArea;
+
+     //FocusArea focusArea;
 
     float currentLookAheadX;
     float targetLookAheadX;
@@ -22,13 +78,15 @@ public class CameraFollow : MonoBehaviour
 
     bool lookAheadStopped;
 
-    void Start()
-    {
-        target = FindObjectOfType<Player>().GetComponent<MoveController>();
-        focusArea = new FocusArea(target.GetComponent<BoxCollider>().bounds, focusAreaSize, GetComponent<Transform>().position.y);
-    }
+    //focusArea = new FocusArea(target.GetComponent<BoxCollider>().bounds, focusAreaSize, GetComponent<Transform>().position.y);
 
-    void LateUpdate()
+
+
+
+
+
+
+      void LateUpdate()
     {
         focusArea.Update(target.GetComponent<BoxCollider>().bounds);
 
@@ -100,4 +158,13 @@ public class CameraFollow : MonoBehaviour
         }
     }
 
-}
+
+
+
+
+
+
+
+
+
+*/
