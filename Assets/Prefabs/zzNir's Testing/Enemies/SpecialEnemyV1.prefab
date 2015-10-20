@@ -94,6 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 4
   regenAmount: 0
+  currentHealth: 0
 --- !u!114 &11424640
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -105,6 +106,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
 --- !u!114 &11432314
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -159,7 +161,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300436, guid: 9cdac2a0d96488a4a9ca17143515a4fd, type: 3}
+  m_Sprite: {fileID: 21300370, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -167,7 +169,12 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300370, guid: 97e4e29e536724a48832d0557cdbd7a6,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 184386}
