@@ -11,16 +11,19 @@ public class CameraFollow : MonoBehaviour
     public float flVerticalOffset;
     public float flDepthOffset;
     public float flXAxisTolerance;
+    public float flYAxisTolerance;
+    public float flYChangeSpeed;
 
 
     //local variables
     Vector3 v3PreviousFrameCameraPosition;
+    float flCameraYBaseLine;
 
 
     void Start()
         {
         gobjCameraTarget = GameObject.Find("Player");
-
+        flCameraYBaseLine = gobjCameraTarget.transform.position.y;
 
         }
 
@@ -34,7 +37,7 @@ public class CameraFollow : MonoBehaviour
 
         v3FinalCameraPosition.x = GetXCameraPosition(v3CameraTargetPosition.x);
         v3FinalCameraPosition.z = flDepthOffset;
-        v3FinalCameraPosition.y = v3CameraTargetPosition.y + flVerticalOffset;
+        v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
 
 
         transform.position = v3FinalCameraPosition;
@@ -52,6 +55,23 @@ public class CameraFollow : MonoBehaviour
             return flCameraTargetXPosition + Mathf.Sign(flFrameXDifference) * flXAxisTolerance;
             }
         return v3PreviousFrameCameraPosition.x;
+        }
+
+    float GetYCameraPosition(float flCameraTargetYPosition)
+        {
+
+        float flDifference = flCameraTargetYPosition - flCameraYBaseLine;
+
+        if (flDifference < 0)
+            {
+            flCameraYBaseLine = flCameraTargetYPosition;
+            }
+        else if (flDifference > flYAxisTolerance)
+            {
+            flCameraYBaseLine = flCameraYBaseLine + Mathf.Min(flYChangeSpeed, flDifference); 
+            }
+
+        return flCameraYBaseLine + flVerticalOffset;
         }
     }
 

@@ -359,6 +359,14 @@ Prefab:
       propertyPath: flXAxisTolerance
       value: .600000024
       objectReference: {fileID: 0}
+    - target: {fileID: 11413180, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
+      propertyPath: flYAxisTolerance
+      value: 3.3599999
+      objectReference: {fileID: 0}
+    - target: {fileID: 11413180, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
+      propertyPath: flYChangeSpeed
+      value: .100000001
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
   m_IsPrefabParent: 0
