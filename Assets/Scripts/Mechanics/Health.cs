@@ -33,7 +33,7 @@ public class Health : MonoBehaviour
      {
         if (player)
         {
-            if (!player.getInvincible())
+            if (!player.GetInvincible())
             {
                 currentHealth -= dmg;
                 if(moveController)

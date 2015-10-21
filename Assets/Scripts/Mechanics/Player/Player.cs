@@ -5,42 +5,40 @@ using Rewired;
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
 {
-    private IPlayerState state;
-    private IAttack attackState;
+
     public Animator animator;
     public GameObject AttackCollider;
     public ISkill[] Skills = new ISkill[4];
     public int Strength;
     public int Agility;
     public int Intelligence;
-
     private bool isGrounded = true;
     private bool isMoving = false;
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
-    private float accelerationTimeAirborne = .2f;
-    private float accelerationTimeGrounded = .1f;
     public float horizontalMoveSpeed = 6;
     public float verticalMoveSpeed = 10;
+    public int playerId; // The Rewired player id of this character
 
+    private float accelerationTimeAirborne = .2f;
+    private float accelerationTimeGrounded = .1f;
     private bool isNotStunned = true;
     private bool isInvincible = false;
-
     private float invTime;
-
+    private IPlayerState state;
+    private IAttack attackState;
     private float gravity;
     private float jumpVelocity;
     private Vector3 velocity;
     private float velocityXSmoothing;
     private float velocityZSmoothing;
-
     private MoveController controller;
-    private Health hp;
+    private Health health;
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
     private Rewired.Player playerRewired;
-    public int playerId; // The Rewired player id of this character
+
 
     void Start()
     {
@@ -48,7 +46,7 @@ public class Player : MonoBehaviour
         attackState = new IdleAttackState();
         animator = GetComponent<Animator>();
         AttackCollider.SetActive(false);
-        hp = GetComponent<Health>();
+        health = GetComponent<Health>();
         controller = GetComponent<MoveController>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
@@ -101,24 +99,75 @@ public class Player : MonoBehaviour
 
 
     //Reset hitReset when hit
-    public void setInvTime(float time)
+    public void SetInvTime(float time)
     {
         invTime = time;
     }
 
-    public void setAct(bool x)
+    public void SetAct(bool x)
     {
         isNotStunned = x;
     }
 
-    public bool getInvincible()
+    public bool GetInvincible()
     {
         return isInvincible;
     }
 
-    public void setInvincible(bool x)
+    public void SetInvincible(bool x)
     {
         isInvincible = x;
+    }
+
+    public void SetStrength(int strength)
+    {
+        if(strength > 0)
+        {
+            Strength = strength;
+        }
+        else
+        {
+            Strength = 1;
+        }
+    }
+
+    public int GetStrength()
+    {
+        return Strength;
+    }
+
+    public void SetAgility(int agility)
+    {
+        if(agility > 0)
+        {
+            Agility = agility;
+        }
+        else
+        {
+            Agility = 1;
+        }
+    }
+
+    public int GetAgility()
+    {
+        return Agility;
+    }
+
+    public void SetIntelligence(int intelligence)
+    {
+        if(intelligence > 0)
+        {
+            Intelligence = intelligence;
+        }
+        else
+        {
+            Intelligence = 1;
+        }
+    }
+
+    public int GetIntelligence()
+    {
+        return Intelligence;
     }
 
     private void HandleInput()

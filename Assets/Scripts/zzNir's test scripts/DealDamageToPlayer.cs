@@ -34,12 +34,12 @@ public class DealDamageToPlayer : MonoBehaviour
                Player player = playerObject.GetComponent<Player>();
                Health hp = playerObject.GetComponent<Health>();
                //Take damage if the player isnt already currently invincible
-               if (!player.getInvincible())
+               if (!player.GetInvincible())
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
                     hp.takeDamage(1);
-                    player.setInvTime(0.5f);
+                    player.SetInvTime(0.5f);
                }
 
             if (GetComponent<Projectile>())
@@ -64,12 +64,12 @@ public class DealDamageToPlayer : MonoBehaviour
                Health hp = playerObject.GetComponent<Health>();
 
                //Take damage if the player isnt already currently invincible
-               if (!player.getInvincible())
+               if (!player.GetInvincible())
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
                     hp.takeDamage(1);
-                    player.setInvTime(0.5f);
+                    player.SetInvTime(0.5f);
                     if(CompareTag("One Time"))
                     {
                          Destroy(gameObject);
