@@ -22,48 +22,52 @@ public class RangedEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        base.Update();
+
+        if (!freeFall)
         {
-            if (!isStunned)
+            if (target != null)
             {
-                if (distL > attackRange && distR > attackRange)
+                if (!isStunned)
                 {
-                    Act(classification);
-                }
-                else
-                {
-                    zDiff = targetPos.z - transform.position.z;
-                    if(Math.Abs(zDiff) > 0.25f)
+                    if (distL > attackRange && distR > attackRange)
                     {
-                        Move(new Vector3(0, 0, zDiff), speed);
+                        Act(classification);
                     }
                     else
                     {
-                        dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
-                        if(attack_CD >= 4)
-                        Attack();
+                        zDiff = targetPos.z - transform.position.z;
+                        if (Math.Abs(zDiff) > 0.25f)
+                        {
+                            Move(new Vector3(0, 0, zDiff), speed);
+                        }
+                        else
+                        {
+                            dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
+                            if (attack_CD >= 4)
+                                Attack();
+                        }
                     }
                 }
             }
-        }
-        else
-        {
-            if (FindObjectOfType<Player>())
-                target = FindObjectOfType<Player>().gameObject;
             else
             {
-                //player lost
-                //Destroy(gameObject);
+                if (FindObjectOfType<Player>())
+                    target = FindObjectOfType<Player>().gameObject;
+                else
+                {
+                    //player lost
+                    //Destroy(gameObject);
+                }
             }
+            if (stunTimer > 0)
+                stunTimer -= Time.deltaTime;
+            else
+                isStunned = false;
+
+            if (invTime <= 0)
+                isInvincible = false;
         }
-        if (stunTimer > 0)
-            stunTimer -= Time.deltaTime;
-        else
-            isStunned = false;
-
-        if (invTime <= 0)
-            isInvincible = false;
-
         attack_CD += Time.deltaTime;
         invTime -= Time.deltaTime;
     }

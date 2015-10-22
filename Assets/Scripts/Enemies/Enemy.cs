@@ -9,13 +9,13 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public float attack_CD;
 
-    [HideInInspector] 
+    [HideInInspector]
     public GameObject target;
     [HideInInspector]
-    public Vector3 targetPos, dir;
+    public Vector3 targetPos, dir, gravity;
     private MoveController moveController;
     [HideInInspector]
-    public bool isInvincible, isStunned;
+    public bool isInvincible, isStunned, freeFall;
     [HideInInspector]
     public float invTime, stunTimer;
     [HideInInspector]
@@ -51,11 +51,25 @@ public class Enemy : MonoBehaviour
         isStunned = false;
         left = new Vector3(-attackRange, 0, 0);
         right = new Vector3(attackRange, 0, 0);
+
+        gravity = new Vector3(0, -1, 0);
     }
 
     // Update is called once per frame
-    void Update()
+    public void Update()
     {
+        if (!moveController.collisions.above && !moveController.collisions.below)
+        {
+            gravity.y += -0.1f;
+            Move(gravity, Math.Abs(gravity.y));
+            //Debug.Log(gravity.y);
+            freeFall = true;
+        }
+        else
+        {
+            gravity.y = -1;
+            freeFall = false;
+        }
 
     }
 
@@ -82,7 +96,7 @@ public class Enemy : MonoBehaviour
 
     public void Move(Vector3 velocity, float force = 1)
     {
-        velocity.y = 0f;
+        //velocity.y = 0f;
         velocity = velocity.normalized;
         //velocity.x = Mathf.SmoothDamp(velocity.x, 6, ref velocityXSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         //velocity.z = Mathf.SmoothDamp(velocity.z, 10, ref velocityZSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
@@ -91,51 +105,54 @@ public class Enemy : MonoBehaviour
 
     public virtual void Act(Type t)
     {
-        targetPos = target.transform.position;
-        distance = (transform.position - targetPos).magnitude;
-
-        distL = (transform.position - targetPos - left).magnitude;
-        distR = (transform.position - targetPos - right).magnitude;
-        toLeft = (attackRange + distL) <= distR;
-
-        if (t == Type.Melee)
+        if (!freeFall)
         {
+            targetPos = target.transform.position;
+            distance = (transform.position - targetPos).magnitude;
 
-            if (distance > agroRange)
+            distL = (transform.position - targetPos - left).magnitude;
+            distR = (transform.position - targetPos - right).magnitude;
+            toLeft = (attackRange + distL) <= distR;
+
+            if (t == Type.Melee)
             {
-                Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
-            }
-            else
-            {
-                if (toLeft)
-                    dir = (targetPos + left - transform.position);
+
+                if (distance > agroRange)
+                {
+                    Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
+                }
                 else
-                    dir = (targetPos + right - transform.position);
+                {
+                    if (toLeft)
+                        dir = (targetPos + left - transform.position);
+                    else
+                        dir = (targetPos + right - transform.position);
 
-                if(distL > attackRange && distR > attackRange)
-                Move(dir, speed);
+                    if (distL > attackRange && distR > attackRange)
+                        Move(dir, speed);
 
+                }
             }
-        }
-        else if (t == Type.Ranged)
-        {
-            distance = targetPos.x - transform.position.x;
-            if(Math.Abs(distance) > attackRange)
+            else if (t == Type.Ranged)
             {
-                Move(new Vector3(distance, 0, 0), 1);
+                distance = targetPos.x - transform.position.x;
+                if (Math.Abs(distance) > attackRange)
+                {
+                    Move(new Vector3(distance, 0, 0), 1);
+                }
+                else
+                {
+                    Move(targetPos - transform.position, speed);
+                }
+            }
+            else if (t == Type.Other)
+            {
+
             }
             else
             {
-                Move(targetPos - transform.position, speed);
+                Debug.LogError("Incorrect type of enemy, no movement possible");
             }
-        }
-        else if (t == Type.Other)
-        {
-
-        }
-        else
-        {
-            Debug.LogError("Incorrect type of enemy, no movement possible");
         }
     }
 

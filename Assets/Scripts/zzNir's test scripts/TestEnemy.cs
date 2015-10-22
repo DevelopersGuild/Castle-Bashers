@@ -18,41 +18,42 @@ public class TestEnemy : Enemy
     // Update is called once per frame
     void Update()
     {
-
-
-        if (target != null)
+        base.Update();
+        if (!freeFall)
         {
-
-
-            if (!isStunned)
+            if (target != null)
             {
-                Act(classification);
 
-                if (distL <= attackRange || distR <= attackRange)
+
+                if (!isStunned)
                 {
-                    if (attack_CD >= 2)
-                        Attack();
+                    Act(classification);
+
+                    if (distL <= attackRange || distR <= attackRange)
+                    {
+                        if (attack_CD >= 2)
+                            Attack();
+                    }
                 }
             }
-        }
-        else
-        {
-            if (FindObjectOfType<Player>())
-                target = FindObjectOfType<Player>().gameObject;
             else
             {
-                //player lost
-                //Destroy(gameObject);
+                if (FindObjectOfType<Player>())
+                    target = FindObjectOfType<Player>().gameObject;
+                else
+                {
+                    //player lost
+                    //Destroy(gameObject);
+                }
             }
+            if (stunTimer > 0)
+                stunTimer -= Time.deltaTime;
+            else
+                isStunned = false;
+
+            if (invTime <= 0)
+                isInvincible = false;
         }
-        if (stunTimer > 0)
-            stunTimer -= Time.deltaTime;
-        else
-            isStunned = false;
-
-        if (invTime <= 0)
-            isInvincible = false;
-
         invTime -= Time.deltaTime;
         attack_CD += Time.deltaTime;
     }

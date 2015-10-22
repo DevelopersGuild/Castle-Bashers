@@ -85,6 +85,7 @@ public class MoveController : MonoBehaviour
         }
 
         transform.Translate(velocity);
+       
     }
 
     private void HandleKnockback(ref Vector3 velocity)
@@ -92,7 +93,6 @@ public class MoveController : MonoBehaviour
 
         if (isKnockedBack)
         {
-            Debug.Log("KB");
             isStunned = true;
             if (!facingRight)
             {

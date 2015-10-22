@@ -27,48 +27,52 @@ public class SpecialEnemyV1 : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        base.Update();
+
+        if (!freeFall)
         {
-            if (!isStunned)
+            if (target != null)
             {
-                if (!isDashing)
+                if (!isStunned)
                 {
-                        Act(classification);
-                }
-                else
-                {
-                    if(dashTime > 0)
+                    if (!isDashing)
                     {
-                        Move(new Vector3(dir.x, 0, 0), 40);
-                        dashTime -= Time.deltaTime;
+                        Act(classification);
                     }
                     else
                     {
-                        GetComponent<DealDamageToPlayer>().enabled = false;
-                        isDashing = false;
+                        if (dashTime > 0)
+                        {
+                            Move(new Vector3(dir.x, 0, 0), 40);
+                            dashTime -= Time.deltaTime;
+                        }
+                        else
+                        {
+                            GetComponent<DealDamageToPlayer>().enabled = false;
+                            isDashing = false;
+                        }
                     }
+
                 }
-                
             }
-        }
-        else
-        {
-            if (FindObjectOfType<Player>())
-                target = FindObjectOfType<Player>().gameObject;
             else
             {
-                //player lost
-                //Destroy(gameObject);
+                if (FindObjectOfType<Player>())
+                    target = FindObjectOfType<Player>().gameObject;
+                else
+                {
+                    //player lost
+                    //Destroy(gameObject);
+                }
             }
+            if (stunTimer > 0)
+                stunTimer -= Time.deltaTime;
+            else
+                isStunned = false;
+
+            if (invTime <= 0)
+                isInvincible = false;
         }
-        if (stunTimer > 0)
-            stunTimer -= Time.deltaTime;
-        else
-            isStunned = false;
-
-        if (invTime <= 0)
-            isInvincible = false;
-
         attack_CD += Time.deltaTime;
         dash_CD += Time.deltaTime;
         invTime -= Time.deltaTime;
@@ -96,7 +100,6 @@ public class SpecialEnemyV1 : Enemy
 
     private void Dash()
     {
-        Debug.Log("cool");
         isDashing = true;
         dashTime = 0.4f;
         dash_CD = 0;
