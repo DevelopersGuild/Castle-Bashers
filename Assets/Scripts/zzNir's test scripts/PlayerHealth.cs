@@ -29,16 +29,35 @@ public class PlayerHealth : MonoBehaviour
           }
      }
 
-     public void takeDamage(float dmg)
+     public void takeDamage(float dmg, float knockback = 4, float flinch = 5)
      {
         if (player)
         {
-            if (!player.getInvincible())
+            if (!player.GetInvincible())
             {
                 currentHealth -= dmg;
+                player.ModifyKBCount(knockback);
+                if (knockback > 0)
+                    player.ResetKB();
+
+                player.ModifyFlinchCount(flinch);
+                if (flinch > 0)
+                    player.ResetFlinch();
+
                 if(moveController)
                 {
-                    moveController.SetKnockback(true);
+                    if (player.GetKnockable())
+                    {
+                        Debug.Log("Hey");
+                        moveController.SetKnockback(true);
+                        player.ModifyKBCount(0, 0);
+                    }
+                    else if(player.GetFlinchable())
+                    {
+                        Debug.Log("Ho");
+                        moveController.SetFlinch(true);
+                        player.ModifyFlinchCount(0, 0);
+                    }
                 }
                 if (currentHealth <= 0)
                 {

@@ -83,11 +83,18 @@ public class RangedEnemy : Enemy
         distL = (transform.position - targetPos - left).magnitude;
         distR = (transform.position - targetPos - right).magnitude;
         toLeft = (attackRange + distL) <= distR;
-        attack_CD = 0;
+        bool facing = distL <= distR;
+        short faceDir;
+        if (facing)
+            faceDir = -1;
+        else
+            faceDir = 1;
+
+            attack_CD = 0;
 
         isStunned = true;
         stunTimer = 1f;
-        shot = Instantiate(shotObj, transform.position, transform.rotation) as Projectile;
+        shot = Instantiate(shotObj, transform.position + faceDir * half, transform.rotation) as Projectile;
         shot.Shoot(dir.normalized);
     }
 

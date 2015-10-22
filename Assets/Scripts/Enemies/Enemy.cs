@@ -9,10 +9,12 @@ public class Enemy : MonoBehaviour
     public float attackRange;
     public float attack_CD;
 
+
+
     [HideInInspector]
     public GameObject target;
     [HideInInspector]
-    public Vector3 targetPos, dir, gravity;
+    public Vector3 targetPos, dir, gravity, half;
     public MoveController moveController;
     [HideInInspector]
     public bool isInvincible, isStunned, freeFall;
@@ -53,6 +55,8 @@ public class Enemy : MonoBehaviour
         right = new Vector3(attackRange, 0, 0);
 
         gravity = new Vector3(0, -1, 0);
+
+        half = new Vector3(GetComponent<BoxCollider>().size.x / 2, 0, 0);
     }
 
     // Update is called once per frame

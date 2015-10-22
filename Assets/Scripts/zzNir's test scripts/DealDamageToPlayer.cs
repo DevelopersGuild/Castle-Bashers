@@ -5,6 +5,8 @@ public class DealDamageToPlayer : MonoBehaviour
 {
 
     public float dmgAmount = 1;
+    public float knockback = 4;
+    public float flinch = 5;
 
     // Use this for initialization
     void Start()
@@ -34,12 +36,12 @@ public class DealDamageToPlayer : MonoBehaviour
             Player player = playerObject.GetComponent<Player>();
             PlayerHealth hp = playerObject.GetComponent<PlayerHealth>();
             //Take damage if the player isnt already currently invincible
-            if (!player.getInvincible())
+            if (!player.GetInvincible())
             {
                 //Deal damage, knockback
                 //get amt (1), dmgAmount(1) from Enemy/Hazard
-                hp.takeDamage(1);
-                player.setInvTime(0.5f);
+                hp.takeDamage(dmgAmount, knockback, flinch);
+                player.SetInvTime(0.5f);
             }
 
             if (tag == "DProj")
@@ -60,14 +62,13 @@ public class DealDamageToPlayer : MonoBehaviour
             GameObject playerObject = other.gameObject;
             Player player = playerObject.GetComponent<Player>();
             PlayerHealth hp = playerObject.GetComponent<PlayerHealth>();
-
             //Take damage if the player isnt already currently invincible
-            if (!player.getInvincible())
+            if (!player.GetInvincible())
             {
                 //Deal damage, knockback
                 //get amt (1), dmgAmount(1) from Enemy/Hazard
-                hp.takeDamage(1);
-                player.setInvTime(0.5f);
+                hp.takeDamage(dmgAmount, knockback, flinch);
+                player.SetInvTime(0.5f);
                 if (CompareTag("One Time"))
                 {
                     Destroy(gameObject);

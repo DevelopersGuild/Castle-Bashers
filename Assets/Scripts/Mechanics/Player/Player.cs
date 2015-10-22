@@ -24,6 +24,8 @@ public class Player : MonoBehaviour
     private bool isInvincible = false;
 
     private float invTime, initialRegenTime, regenTick;
+    private float knockBackResistance, knockBackReset, knockBackCounter;
+    private float flinchResistance, flinchReset, flinchCounter;
 
     private float gravity;
     private float jumpVelocity;
@@ -53,6 +55,14 @@ public class Player : MonoBehaviour
 
         initialRegenTime = 6;
         regenTick = 2;
+
+        knockBackResistance = 10;
+        knockBackCounter = 0;
+        knockBackReset = 0;
+
+        flinchResistance = 10;
+        flinchCounter = 0;
+        flinchReset = 0;
     }
 
     void Update()
@@ -65,9 +75,9 @@ public class Player : MonoBehaviour
             velocity.y = 0;
         }
 
-        if(initialRegenTime > 6)
+        if (initialRegenTime > 6)
         {
-            if(regenTick > 2)
+            if (regenTick > 2)
             {
                 regenTick = 0;
                 hp.regen();
@@ -105,6 +115,26 @@ public class Player : MonoBehaviour
             ReadyMove(input);
         }
 
+        if (knockBackCounter > 0)
+        {
+            knockBackReset += Time.deltaTime;
+            if (knockBackReset >= 5)
+            {
+                knockBackReset = 0;
+                knockBackCounter = 0;
+            }
+        }
+
+        if (flinchCounter > 0)
+        {
+            flinchReset += Time.deltaTime;
+            if (flinchReset >= 2)
+            {
+               // flinchReset = 0;
+               // flinchCounter = 0;
+            }
+        }
+
         initialRegenTime += Time.deltaTime;
         regenTick += Time.deltaTime;
         UpdateState();
@@ -112,25 +142,77 @@ public class Player : MonoBehaviour
 
 
     //Reset hitReset when hit
-    public void setInvTime(float time)
+    public void SetInvTime(float time)
     {
         invTime = time;
         initialRegenTime = 0;
     }
 
-    public void setAct(bool x)
+    public void SetAct(bool x)
     {
         isNotStunned = x;
     }
 
-    public bool getInvincible()
+    public bool GetInvincible()
     {
         return isInvincible;
     }
 
-    public void setInvincible(bool x)
+    public void SetInvincible(bool x)
     {
         isInvincible = x;
+    }
+
+    public float GetKBResist()
+    {
+        return knockBackResistance;
+    }
+
+    public void ModifyKBCount(float set, float multiplier = 1)
+    {
+        knockBackCounter += set;
+        knockBackCounter *= multiplier;
+    }
+
+    public bool GetKnockable()
+    {
+        Debug.Log(knockBackCounter + " and " + knockBackResistance);
+        if (knockBackCounter >= knockBackResistance)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetKB()
+    {
+        knockBackReset = 0;
+    }
+
+    public float GetFlinchResist()
+    {
+        return flinchResistance;
+    }
+
+    public void ModifyFlinchCount(float set, float multiplier = 1)
+    {
+        flinchCounter += set;
+        flinchCounter *= multiplier;
+    }
+
+    public bool GetFlinchable()
+    {
+        Debug.Log(flinchCounter + " vs " + flinchResistance);
+        if (flinchCounter >= flinchResistance)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetFlinch()
+    {
+        flinchReset = 0;
     }
 
     private void HandleInput()
@@ -216,7 +298,7 @@ public class Player : MonoBehaviour
 
     private void UseSkill2()
     {
-        Skills[1].UseSkill(this.gameObject);  
+        Skills[1].UseSkill(this.gameObject);
     }
 
     private void UseSkill3()

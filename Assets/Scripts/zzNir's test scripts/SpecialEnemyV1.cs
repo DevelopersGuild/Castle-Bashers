@@ -88,11 +88,11 @@ public class SpecialEnemyV1 : Enemy
 
         if (facing)
         {
-            attCol = Instantiate(attackCollider, transform.position + right, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + half + right, transform.rotation) as GameObject;
         }
         else
         {
-            attCol = Instantiate(attackCollider, transform.position + left, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + (-1 * half) + left, transform.rotation) as GameObject;
         }
         Destroy(attCol, 0.5f);
 
