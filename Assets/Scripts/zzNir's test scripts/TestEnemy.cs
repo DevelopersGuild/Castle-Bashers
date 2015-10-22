@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class TestEnemy : Enemy
 {
@@ -28,9 +29,14 @@ public class TestEnemy : Enemy
 
                 if (!isStunned)
                 {
+                    zDiff = targetPos.z - transform.position.z;
                     Act(classification);
-
-                    if (distL <= attackRange || distR <= attackRange)
+                    Debug.Log(zDiff + " vs " + half.z);
+                    if (Math.Abs(zDiff) > half.z)
+                    {
+                        Move(new Vector3(0, 0, zDiff), speed);
+                    }
+                    else if (distL <= attackRange || distR <= attackRange)
                     {
                         if (attack_CD >= 2)
                             Attack();
@@ -70,11 +76,11 @@ public class TestEnemy : Enemy
 
         if (facing)
         {
-            attCol = Instantiate(attackCollider, transform.position + half + right, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + xhalf + right, transform.rotation) as GameObject;
         }
         else
         {
-            attCol = Instantiate(attackCollider, transform.position + (-1 * half) + left, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + (-1 * xhalf) + left, transform.rotation) as GameObject;
         }
         Destroy(attCol, 0.5f);
 

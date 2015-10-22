@@ -14,7 +14,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public GameObject target;
     [HideInInspector]
-    public Vector3 targetPos, dir, gravity, half;
+    public Vector3 targetPos, dir, gravity, xhalf, half;
     public MoveController moveController;
     [HideInInspector]
     public bool isInvincible, isStunned, freeFall;
@@ -23,7 +23,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public enum Type { Melee, Ranged, Other };
     [HideInInspector]
-    public float distance, speed;
+    public float distance, speed, zDiff;
 
     //for melee
     [HideInInspector]
@@ -56,7 +56,11 @@ public class Enemy : MonoBehaviour
 
         gravity = new Vector3(0, -1, 0);
 
-        half = new Vector3(GetComponent<BoxCollider>().size.x / 2, 0, 0);
+        half = GetComponent<BoxCollider>().size / 2;
+        xhalf = new Vector3(half.x, 0, 0);
+
+        attackRange += half.x;
+        zDiff = 0;
     }
 
     // Update is called once per frame

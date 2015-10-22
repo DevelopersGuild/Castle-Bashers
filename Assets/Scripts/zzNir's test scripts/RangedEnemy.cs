@@ -8,14 +8,12 @@ public class RangedEnemy : Enemy
     private Projectile shot;
     public Type classification;
 
-    private float zDiff;
 
     // Use this for initialization
     void Start()
     {
         base.Start();
         speed = 3;
-        zDiff = 0;
         attack_CD = 3;
     }
 
@@ -94,7 +92,7 @@ public class RangedEnemy : Enemy
 
         isStunned = true;
         stunTimer = 1f;
-        shot = Instantiate(shotObj, transform.position + faceDir * half, transform.rotation) as Projectile;
+        shot = Instantiate(shotObj, transform.position + faceDir * xhalf, transform.rotation) as Projectile;
         shot.Shoot(dir.normalized);
     }
 

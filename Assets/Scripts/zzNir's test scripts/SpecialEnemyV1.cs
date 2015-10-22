@@ -35,6 +35,7 @@ public class SpecialEnemyV1 : Enemy
             {
                 if (!isStunned)
                 {
+                    zDiff = targetPos.z - transform.position.z;
                     if (!isDashing)
                     {
                         Act(classification);
@@ -88,11 +89,11 @@ public class SpecialEnemyV1 : Enemy
 
         if (facing)
         {
-            attCol = Instantiate(attackCollider, transform.position + half + right, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + xhalf + right, transform.rotation) as GameObject;
         }
         else
         {
-            attCol = Instantiate(attackCollider, transform.position + (-1 * half) + left, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + (-1 * xhalf) + left, transform.rotation) as GameObject;
         }
         Destroy(attCol, 0.5f);
 
@@ -123,7 +124,7 @@ public class SpecialEnemyV1 : Enemy
             zDiff = targetPos.z - transform.position.z;
             if (Math.Abs(distance) <= dashRange)
             {
-                if (Math.Abs(zDiff) > 0.25f)
+                if (Math.Abs(zDiff) > half.z)
                 {
                     Move(new Vector3(0, 0, zDiff * 1.2f), speed);
                 }
@@ -139,7 +140,11 @@ public class SpecialEnemyV1 : Enemy
         }
         else
         {
-            if (distL <= attackRange || distR <= attackRange)
+            if (Math.Abs(zDiff) > half.z * 2)
+            {
+                Move(new Vector3(0, 0, zDiff), speed);
+            }
+            else if (distL <= attackRange || distR <= attackRange)
             {
                 if (attack_CD >= 2)
                     Attack();
