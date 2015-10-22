@@ -25,6 +25,7 @@ public class Main_Process : MonoBehaviour {
         DontDestroyOnLoad(this.gameObject);
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_Process = this.gameObject;
         Menu_UI.GetComponent<Menu_UI_FullControl>().Main_Process = this.gameObject;
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Main_Process = this.gameObject;
         Debug.Log(Is_Character_Created());
 	}
 
