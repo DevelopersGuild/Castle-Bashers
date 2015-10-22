@@ -49,6 +49,22 @@ public class MoveController : MonoBehaviour
         return 1;
     }
 
+
+    // true for right, false for left
+    public void OrientFacingLeft(bool set, float lookDir)
+    {
+        float temp = 1;
+        if(!set)
+            temp = -1;
+
+        if (lookDir != temp)
+        {
+            facingRight = !set;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+
+    }
+
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
         UpdateRaycastOrigins();
@@ -85,7 +101,7 @@ public class MoveController : MonoBehaviour
         }
 
         transform.Translate(velocity);
-       
+
     }
 
     private void HandleKnockback(ref Vector3 velocity)

@@ -28,6 +28,7 @@ public class RangedEnemy : Enemy
         {
             if (target != null)
             {
+                targetPos = target.transform.position;
                 if (!isStunned)
                 {
                     if (distL > attackRange && distR > attackRange)
@@ -37,13 +38,17 @@ public class RangedEnemy : Enemy
                     else
                     {
                         zDiff = targetPos.z - transform.position.z;
+                        //Debug.Log(targetPos.x - transform.position.x);
+                        if (Math.Abs(targetPos.x - transform.position.x) > 0.3)
+                        {
+                            moveController.OrientFacingLeft((targetPos.x - transform.position.x) < 0, moveController.GetFacing());
+                        }
                         if (Math.Abs(zDiff) > 0.25f)
                         {
                             Move(new Vector3(0, 0, zDiff), speed);
                         }
                         else
                         {
-                            dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
                             if (attack_CD >= 4)
                                 Attack();
                         }
@@ -74,6 +79,7 @@ public class RangedEnemy : Enemy
 
     private void Attack()
     {
+        dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
         distL = (transform.position - targetPos - left).magnitude;
         distR = (transform.position - targetPos - right).magnitude;
         toLeft = (attackRange + distL) <= distR;
@@ -82,7 +88,7 @@ public class RangedEnemy : Enemy
         isStunned = true;
         stunTimer = 1f;
         shot = Instantiate(shotObj, transform.position, transform.rotation) as Projectile;
-        shot.Shoot(dir);
+        shot.Shoot(dir.normalized);
     }
 
 }

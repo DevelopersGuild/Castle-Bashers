@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     public GameObject target;
     [HideInInspector]
     public Vector3 targetPos, dir, gravity;
-    private MoveController moveController;
+    public MoveController moveController;
     [HideInInspector]
     public bool isInvincible, isStunned, freeFall;
     [HideInInspector]
