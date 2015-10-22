@@ -201,8 +201,8 @@ public class Player : MonoBehaviour
     private void ReadyMove(Vector2 input)
     {
         velocity.y += gravity * Time.deltaTime;
-        float targetVelocityX = input.x * horizontalMoveSpeed;
-        float targetVelocityZ = input.y * verticalMoveSpeed;
+        float targetVelocityX = input.x * horizontalMoveSpeed * Agility;
+        float targetVelocityZ = input.y * verticalMoveSpeed * Agility;
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         controller.Move(velocity * Time.deltaTime, input);
@@ -251,21 +251,21 @@ public class Player : MonoBehaviour
 
     private void UseSkill1()
     {
-        Skills[0].UseSkill(this.gameObject);
+        Skills[0].UseSkill(gameObject);
     }
 
     private void UseSkill2()
     {
-        Skills[1].UseSkill(this.gameObject);
+        Skills[1].UseSkill(gameObject);
     }
 
     private void UseSkill3()
     {
-        Skills[2].UseSkill(this.gameObject);
+        Skills[2].UseSkill(gameObject);
     }
 
     private void UseSkill4()
     {
-        Skills[3].UseSkill(this.gameObject);
+        Skills[3].UseSkill(gameObject);
     }
 }
