@@ -22,7 +22,7 @@ public class PlayerHealth : MonoBehaviour
 
      public void regen()
      {
-          startingHealth += regenAmount;
+          currentHealth += regenAmount;
           if (currentHealth > startingHealth)
           {
                currentHealth = startingHealth;

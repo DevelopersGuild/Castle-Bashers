@@ -23,7 +23,7 @@ public class Player : MonoBehaviour
     private bool isNotStunned = true;
     private bool isInvincible = false;
 
-    private float invTime;
+    private float invTime, initialRegenTime, regenTick;
 
     private float gravity;
     private float jumpVelocity;
@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+
+        initialRegenTime = 6;
+        regenTick = 2;
     }
 
     void Update()
@@ -60,6 +63,15 @@ public class Player : MonoBehaviour
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
+        }
+
+        if(initialRegenTime > 6)
+        {
+            if(regenTick > 2)
+            {
+                regenTick = 0;
+                hp.regen();
+            }
         }
 
         //Invincibility timer
@@ -93,6 +105,8 @@ public class Player : MonoBehaviour
             ReadyMove(input);
         }
 
+        initialRegenTime += Time.deltaTime;
+        regenTick += Time.deltaTime;
         UpdateState();
     }
 
@@ -101,6 +115,7 @@ public class Player : MonoBehaviour
     public void setInvTime(float time)
     {
         invTime = time;
+        initialRegenTime = 0;
     }
 
     public void setAct(bool x)
