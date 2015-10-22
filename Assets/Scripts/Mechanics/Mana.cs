@@ -7,12 +7,18 @@ public class Mana : MonoBehaviour
     public int ManaRegenRate = 1;
     public int MaxMana = 0;
     private float mana;
-    private int regenModifier = 12;
+    private float regenModifier = 12;
+    private Player player;
 
     // Use this for initialization
     void Start()
     {
-
+        player = GetComponent<Player>();
+        if(player != null)
+        {
+            mana = StartingMana * player.GetIntelligence();
+            regenModifier = player.GetIntelligence();
+        }
     }
 
     // Update is called once per frame
@@ -24,7 +30,7 @@ public class Mana : MonoBehaviour
         }
     }
 
-    public void SetRegenModifier(int modifier)
+    public void SetRegenModifier(float modifier)
     {
         if(modifier > 0)
         {
@@ -32,7 +38,7 @@ public class Mana : MonoBehaviour
         }
     }
 
-    public void RegenMana(int modifier = 1)
+    public void RegenMana(float modifier = 1f)
     {
         mana += (ManaRegenRate * modifier) * Time.deltaTime;
     }
