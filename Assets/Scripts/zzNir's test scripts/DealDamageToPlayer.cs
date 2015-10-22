@@ -38,7 +38,7 @@ public class DealDamageToPlayer : MonoBehaviour
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
-                    hp.takeDamage(1);
+                    hp.TakeDamage(1);
                     player.SetInvTime(0.5f);
                }
 
@@ -68,7 +68,7 @@ public class DealDamageToPlayer : MonoBehaviour
                {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard
-                    hp.takeDamage(1);
+                    hp.TakeDamage(1);
                     player.SetInvTime(0.5f);
                     if(CompareTag("One Time"))
                     {

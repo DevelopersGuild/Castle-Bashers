@@ -62,7 +62,7 @@ public class DealDamageToEnemy : MonoBehaviour
                 //Find components necessary to take damage and knockback
 
                 Enemy enem = enemObj.GetComponent<Enemy>();
-                Health hp = enemObj.GetComponent<Health>();
+                EnemyHealth hp = enemObj.GetComponent<EnemyHealth>();
                 //Take damage if the player isnt already currently invincible
                 if (!enem.getInvincible())
                 {

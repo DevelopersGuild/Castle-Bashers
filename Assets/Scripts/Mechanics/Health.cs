@@ -4,8 +4,9 @@ using System.Collections;
 public class Health : MonoBehaviour
 {
 
-     public float startingHealth, regenAmount;
-     public float currentHealth;
+    public float StartingHealth;
+    public float RegenAmount;
+     private float currentHealth;
      private Player player;
      private bool canKnock = true;
     private MoveController moveController;
@@ -17,19 +18,19 @@ public class Health : MonoBehaviour
      {
           player = GetComponent<Player>();
         moveController = GetComponent<MoveController>();
-          currentHealth = startingHealth;
+          currentHealth = StartingHealth * player.GetStrength();
      }
 
-     public void regen()
+     public void Regen()
      {
-          startingHealth += regenAmount;
-          if (currentHealth > startingHealth)
+        StartingHealth += RegenAmount * player.GetStrength();
+          if (currentHealth > StartingHealth)
           {
-               currentHealth = startingHealth;
+               currentHealth = StartingHealth * player.GetStrength();
           }
      }
 
-     public void takeDamage(float dmg)
+     public void TakeDamage(float dmg)
      {
         if (player)
         {
@@ -70,7 +71,7 @@ public class Health : MonoBehaviour
           Destroy(gameObject);
      }
 
-     public float getCurrentHp()
+     public float GetCurrentHealth()
      {
           return currentHealth;
      }
