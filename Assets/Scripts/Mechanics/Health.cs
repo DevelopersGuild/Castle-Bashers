@@ -1,15 +1,16 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Health : MonoBehaviour
 {
 
-    public float StartingHealth;
+    public float startingHealth;
     public float RegenAmount;
      private float currentHealth;
      private Player player;
      private bool canKnock = true;
     private MoveController moveController;
+    public Vector3 damageTextOffset;
      //Create hp bars for players and bosses
 
 
@@ -18,28 +19,57 @@ public class Health : MonoBehaviour
      {
           player = GetComponent<Player>();
         moveController = GetComponent<MoveController>();
-          currentHealth = StartingHealth * player.GetStrength();
+          currentHealth = startingHealth;
+        damageTextOffset = new Vector3(0, 2, 0);
+
+        if (player)
+            currentHealth = startingHealth * (player.GetStrength() + 1);
+        else
+            currentHealth = startingHealth;
      }
 
      public void Regen()
      {
-        StartingHealth += RegenAmount * player.GetStrength();
-          if (currentHealth > StartingHealth)
+          currentHealth += RegenAmount * player.GetStrength();
+          if (currentHealth > startingHealth)
           {
-               currentHealth = StartingHealth * player.GetStrength();
+               currentHealth = startingHealth * player.GetStrength();
           }
      }
 
-     public void TakeDamage(float dmg)
+     public void takeDamage(float dmg, float knockback = 4, float flinch = 5)
      {
         if (player)
         {
             if (!player.GetInvincible())
             {
                 currentHealth -= dmg;
+                GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
+                floatText.GetComponent<TextMesh>().text = "" + dmg;
+                floatText.transform.position = gameObject.transform.position + damageTextOffset;
+
+                player.ModifyKBCount(knockback);
+                if (knockback > 0)
+                    player.ResetKB();
+
+                player.ModifyFlinchCount(flinch);
+                if (flinch > 0)
+                    player.ResetFlinch();
+
                 if(moveController)
                 {
-                    moveController.SetKnockback(true);
+                    if (player.GetKnockable())
+                    {
+                        Debug.Log("Hey");
+                        moveController.SetKnockback(true);
+                        player.ModifyKBCount(0, 0);
+                    }
+                    else if(player.GetFlinchable())
+                    {
+                        Debug.Log("Ho");
+                        moveController.SetFlinch(true);
+                        player.ModifyFlinchCount(0, 0);
+                    }
                 }
                 if (currentHealth <= 0)
                 {

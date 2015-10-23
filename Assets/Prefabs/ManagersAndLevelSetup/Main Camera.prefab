@@ -91,12 +91,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7f39fcd2d25eb4f41838cb14ccb860c7, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  target: {fileID: 0}
-  verticalOffset: 5.71999979
-  lookAheadDstX: .300000012
-  lookSmoothTimeX: .300000012
-  verticalSmoothTime: 0
-  focusAreaSize: 6.26999998
+  gobjCameraTarget: {fileID: 0}
+  v3DefaultCameraRotationVector: {x: 0, y: 0, z: 0}
+  v3DefaultCameraPositionVector: {x: 0, y: 0, z: 0}
+  flVerticalOffset: 3
+  flDepthOffset: -10
+  flXAxisTolerance: 0
+  flYAxisTolerance: 0
+  flYChangeSpeed: 0
+  camerShakeIsOn: 0
 --- !u!124 &12495810
 Behaviour:
   m_ObjectHideFlags: 1
