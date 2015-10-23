@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Rewired;
 
@@ -27,9 +27,13 @@ public class Player : MonoBehaviour
     private float accelerationTimeGrounded = .1f;
     private bool isNotStunned = true;
     private bool isInvincible = false;
-    private float invTime;
     private IPlayerState state;
     private IAttack attackState;
+
+    private float invTime, initialRegenTime, regenTick;
+    private float knockBackResistance, knockBackReset, knockBackCounter;
+    private float flinchResistance, flinchReset, flinchCounter;
+
     private float gravity;
     private float jumpVelocity;
     private Vector3 velocity;
@@ -54,6 +58,17 @@ public class Player : MonoBehaviour
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+
+        initialRegenTime = 6;
+        regenTick = 2;
+
+        knockBackResistance = 10;
+        knockBackCounter = 0;
+        knockBackReset = 0;
+
+        flinchResistance = 10;
+        flinchCounter = 0;
+        flinchReset = 0;
     }
 
     void Update()
@@ -64,6 +79,15 @@ public class Player : MonoBehaviour
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
+        }
+
+        if (initialRegenTime > 6)
+        {
+            if (regenTick > 2)
+            {
+                regenTick = 0;
+                hp.regen();
+            }
         }
 
         //Invincibility timer
@@ -97,6 +121,28 @@ public class Player : MonoBehaviour
             ReadyMove(input);
         }
 
+        if (knockBackCounter > 0)
+        {
+            knockBackReset += Time.deltaTime;
+            if (knockBackReset >= 5)
+            {
+                knockBackReset = 0;
+                knockBackCounter = 0;
+            }
+        }
+
+        if (flinchCounter > 0)
+        {
+            flinchReset += Time.deltaTime;
+            if (flinchReset >= 2)
+            {
+               // flinchReset = 0;
+               // flinchCounter = 0;
+            }
+        }
+
+        initialRegenTime += Time.deltaTime;
+        regenTick += Time.deltaTime;
         UpdateState();
     }
 
@@ -105,6 +151,7 @@ public class Player : MonoBehaviour
     public void SetInvTime(float time)
     {
         invTime = time;
+        initialRegenTime = 0;
     }
 
     public void SetAct(bool x)
@@ -171,6 +218,59 @@ public class Player : MonoBehaviour
     public float GetIntelligence()
     {
         return Intelligence;
+
+    }
+
+    public float GetKBResist()
+    {
+        return knockBackResistance;
+    }
+
+    public void ModifyKBCount(float set, float multiplier = 1)
+    {
+        knockBackCounter += set;
+        knockBackCounter *= multiplier;
+    }
+
+    public bool GetKnockable()
+    {
+        Debug.Log(knockBackCounter + " and " + knockBackResistance);
+        if (knockBackCounter >= knockBackResistance)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetKB()
+    {
+        knockBackReset = 0;
+    }
+
+    public float GetFlinchResist()
+    {
+        return flinchResistance;
+    }
+
+    public void ModifyFlinchCount(float set, float multiplier = 1)
+    {
+        flinchCounter += set;
+        flinchCounter *= multiplier;
+    }
+
+    public bool GetFlinchable()
+    {
+        Debug.Log(flinchCounter + " vs " + flinchResistance);
+        if (flinchCounter >= flinchResistance)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetFlinch()
+    {
+        flinchReset = 0;
     }
 
     private void HandleInput()

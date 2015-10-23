@@ -15,10 +15,10 @@ public class MoveController : MonoBehaviour
     float horizontalRaySpacing;
     float verticalRaySpacing;
 
-    private bool isKnockedBack;
+    private bool isKnockedBack, isFlinched;
     public float knockbackVelocity;
-    public float knockbackTime;
-    private float currentKnockbacktime;
+    public float knockbackTime = 1, flinchTime = 0.4f;
+    private float currentKnockbacktime, currentFlinchTime;
     public bool isStunned;
 
     private Player player;
@@ -49,6 +49,22 @@ public class MoveController : MonoBehaviour
         return 1;
     }
 
+
+    // true for right, false for left
+    public void OrientFacingLeft(bool set, float lookDir)
+    {
+        float temp = 1;
+        if(!set)
+            temp = -1;
+
+        if (lookDir != temp)
+        {
+            facingRight = !set;
+            transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        }
+
+    }
+
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
         UpdateRaycastOrigins();
@@ -73,6 +89,7 @@ public class MoveController : MonoBehaviour
         }
 
         HandleKnockback(ref velocity);
+        HandleFlinch();
 
         if (velocity.x != 0)
         {
@@ -84,7 +101,9 @@ public class MoveController : MonoBehaviour
             DepthCollisions(ref velocity);
         }
 
+        if(!isFlinched)
         transform.Translate(velocity);
+
     }
 
     private void HandleKnockback(ref Vector3 velocity)
@@ -92,7 +111,6 @@ public class MoveController : MonoBehaviour
 
         if (isKnockedBack)
         {
-            Debug.Log("KB");
             isStunned = true;
             if (!facingRight)
             {
@@ -115,9 +133,35 @@ public class MoveController : MonoBehaviour
         }
     }
 
+    private void HandleFlinch()
+    {
+        if (!isKnockedBack)
+        {
+            if (isFlinched)
+            {
+                isStunned = true;
+                currentFlinchTime -= Time.deltaTime;
+            }
+
+            // Stop pushing the player after knockbacktime and after hes hit the floor
+            if (currentFlinchTime <= 0 && collisions.below == true)
+            {
+                isStunned = false;
+                isFlinched = false;
+                currentFlinchTime = flinchTime;
+            }
+        }
+    }
+
     public void SetKnockback(bool knockback)
     {
         isKnockedBack = knockback;
+    }
+
+
+    public void SetFlinch(bool flinch)
+    {
+        isFlinched = flinch;
     }
 
     void HorizontalCollisions(ref Vector3 velocity)
