@@ -17,16 +17,19 @@ public class Health : MonoBehaviour
      void Start()
      {
           player = GetComponent<Player>();
-        moveController = GetComponent<MoveController>();
-          currentHealth = StartingHealth * player.GetStrength();
+          moveController = GetComponent<MoveController>();
+        if (player)
+            currentHealth = StartingHealth * (player.GetStrength() + 1);
+        else
+            currentHealth = StartingHealth;
      }
 
      public void Regen()
      {
-          CurrentHealth += RegenAmount * player.GetStrength();
-          if (CurrentHealth > StartingHealth)
+          currentHealth += RegenAmount * player.GetStrength();
+          if (currentHealth > StartingHealth)
           {
-               CurrentHealth = StartingHealth * player.GetStrength();
+               currentHealth = StartingHealth * player.GetStrength();
           }
      }
 

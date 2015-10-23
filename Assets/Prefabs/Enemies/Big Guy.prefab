@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11472708}
   - 114: {fileID: 11469100}
   - 54: {fileID: 5448660}
-  - 114: {fileID: 11451728}
+  - 114: {fileID: 11488884}
   m_Layer: 0
   m_Name: Big Guy
   m_TagString: Untagged
@@ -60,19 +60,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 6.4000001, y: 6.4000001, z: .800000012}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11451728
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 155938}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3bc44eab05baa448a313e8aee7c1f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
-  regenAmount: 0
 --- !u!114 &11469100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agroRange: 20
   attackRange: 1
-  attack_CD: 3
+  attack_CD: 5
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
@@ -130,6 +117,19 @@ MonoBehaviour:
   flinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
+--- !u!114 &11488884
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHealth: 3
+  RegenAmount: 0
 --- !u!212 &21278490
 SpriteRenderer:
   m_ObjectHideFlags: 1

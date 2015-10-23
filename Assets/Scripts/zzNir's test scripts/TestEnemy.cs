@@ -31,7 +31,6 @@ public class TestEnemy : Enemy
                 {
                     zDiff = targetPos.z - transform.position.z;
                     Act(classification);
-                    Debug.Log(zDiff + " vs " + half.z);
                     if (Math.Abs(zDiff) > half.z)
                     {
                         Move(new Vector3(0, 0, zDiff), speed);

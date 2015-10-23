@@ -86,7 +86,7 @@ public class Player : MonoBehaviour
             if (regenTick > 2)
             {
                 regenTick = 0;
-                hp.regen();
+                health.Regen();
             }
         }
 

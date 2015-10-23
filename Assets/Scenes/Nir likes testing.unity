@@ -1764,6 +1764,10 @@ Prefab:
       propertyPath: flinchTime
       value: .400000006
       objectReference: {fileID: 0}
+    - target: {fileID: 11492828, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
+      propertyPath: StartingHealth
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
   m_IsPrefabParent: 0
