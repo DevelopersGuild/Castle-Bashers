@@ -14,6 +14,8 @@ public class CameraFollow : MonoBehaviour
     public float flYAxisTolerance;
     public float flYChangeSpeed;
 
+    public bool camerShakeIsOn = false;
+
 
     //local variables
     Vector3 v3PreviousFrameCameraPosition;
@@ -43,10 +45,13 @@ public class CameraFollow : MonoBehaviour
         
 
         v3PreviousFrameCameraPosition = v3FinalCameraPosition;
+        if(camerShakeIsOn == true)
+        {
+            Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
+            v3FinalCameraPosition.x += v2ScreenShakeVector.x;
+            v3FinalCameraPosition.y += v2ScreenShakeVector.y;
 
-        Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
-        v3FinalCameraPosition.x += v2ScreenShakeVector.x;
-        v3FinalCameraPosition.y += v2ScreenShakeVector.y;
+        }
 
 
         transform.position = v3FinalCameraPosition;
