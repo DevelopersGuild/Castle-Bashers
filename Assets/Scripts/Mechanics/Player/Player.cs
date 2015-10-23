@@ -33,6 +33,7 @@ public class Player : MonoBehaviour
     private float velocityXSmoothing;
     private float velocityZSmoothing;
     private MoveController controller;
+    private CrowdControllable crowdControllable;
     private Health health;
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
@@ -48,6 +49,7 @@ public class Player : MonoBehaviour
         AttackCollider.SetActive(false);
         health = GetComponent<Health>();
         controller = GetComponent<MoveController>();
+        crowdControllable = GetComponent<CrowdControllable>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
@@ -89,8 +91,9 @@ public class Player : MonoBehaviour
         {
             isMoving = true;
         }
-        if (isNotStunned)
+        if (!crowdControllable.getStun())
         {
+ 
             ReadyMove(input);
         }
 
@@ -198,8 +201,8 @@ public class Player : MonoBehaviour
     private void ReadyMove(Vector2 input)
     {
         velocity.y += gravity * Time.deltaTime;
-        float targetVelocityX = input.x * horizontalMoveSpeed;
-        float targetVelocityZ = input.y * verticalMoveSpeed;
+        float targetVelocityX = input.x * horizontalMoveSpeed * crowdControllable.getSlow();
+        float targetVelocityZ = input.y * verticalMoveSpeed * crowdControllable.getSlow();
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         controller.Move(velocity * Time.deltaTime, input);

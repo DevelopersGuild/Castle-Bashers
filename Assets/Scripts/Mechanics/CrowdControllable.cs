@@ -71,9 +71,9 @@ public class CrowdControllable : MonoBehaviour {
         {
             addSnare(2);
         }
-        if (Input.GetKeyDown("j"))
+        if (Input.GetKeyDown("u"))
         {
-            addSlow(0.15f, 2);
+            addSlow(0.50f, 2);
         }
         if (Input.GetKeyDown("k"))
         {
@@ -195,15 +195,15 @@ public class CrowdControllable : MonoBehaviour {
     //A player with 15% slow on will return 0.85.
     public float getSlow()
     {
-        Effect strongest = new Effect();
-        for (int i = slows.Count; i >= 0; i++)
+        float strongest = 0.0f;
+        for (int i = slows.Count; i > 0; i--)
         {
-            if (strongest.value <= slows[i].value)
+            if (strongest < slows[i-1].value)
             {
-                strongest = slows[i];
+                strongest = slows[i-1].value;
             }
         }
-        return (1 - strongest.value);
+        return (1 - strongest);
     }
 
     //stun will return true if there is at least one active stun

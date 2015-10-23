@@ -9,6 +9,7 @@ public class Health : MonoBehaviour
      private Player player;
      private bool canKnock = true;
     private MoveController moveController;
+    public Vector3 damageTextOffset;
      //Create hp bars for players and bosses
 
 
@@ -18,6 +19,7 @@ public class Health : MonoBehaviour
           player = GetComponent<Player>();
         moveController = GetComponent<MoveController>();
           currentHealth = startingHealth;
+        damageTextOffset = new Vector3(0, 2, 0);
      }
 
      public void regen()
@@ -36,6 +38,10 @@ public class Health : MonoBehaviour
             if (!player.GetInvincible())
             {
                 currentHealth -= dmg;
+                GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
+
+                floatText.GetComponent<TextMesh>().text = "" + dmg;
+                floatText.transform.position = gameObject.transform.position + damageTextOffset;
                 if(moveController)
                 {
                     moveController.SetKnockback(true);
