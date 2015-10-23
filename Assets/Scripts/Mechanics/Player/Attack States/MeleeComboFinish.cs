@@ -4,8 +4,8 @@ using System.Collections;
 public class MeleeComboFinish : IAttack
 {
 
-    public float LengthOfAttack = 2.0f;
-    private float timer = 1.0f;
+    public float LengthOfAttack = 1;
+    private float timer = 0;
     public IAttack HandleInput(Player player)
     {
         if (Input.GetButtonDown("Fire1"))

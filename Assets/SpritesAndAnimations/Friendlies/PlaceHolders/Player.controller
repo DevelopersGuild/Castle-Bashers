@@ -151,9 +151,9 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .0183333158
-  m_TransitionOffset: .17215392
-  m_ExitTime: .621666729
+  m_TransitionDuration: .00836081803
+  m_TransitionOffset: 0
+  m_ExitTime: .980676651
   m_HasExitTime: 1
   m_HasFixedDuration: 1
   m_InterruptionSource: 0
@@ -190,7 +190,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Walk
-  m_Speed: .699999988
+  m_Speed: 1
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110122828}
