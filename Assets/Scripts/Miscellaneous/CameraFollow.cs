@@ -14,6 +14,8 @@ public class CameraFollow : MonoBehaviour
     public float flYAxisTolerance;
     public float flYChangeSpeed;
 
+    public bool camerShakeIsOn = false;
+
 
     //local variables
     Vector3 v3PreviousFrameCameraPosition;
@@ -40,9 +42,19 @@ public class CameraFollow : MonoBehaviour
         v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
 
 
-        transform.position = v3FinalCameraPosition;
+        
 
         v3PreviousFrameCameraPosition = v3FinalCameraPosition;
+        if(camerShakeIsOn == true)
+        {
+            Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
+            v3FinalCameraPosition.x += v2ScreenShakeVector.x;
+            v3FinalCameraPosition.y += v2ScreenShakeVector.y;
+
+        }
+
+
+        transform.position = v3FinalCameraPosition;
         }
 
     float GetXCameraPosition(float flCameraTargetXPosition)
@@ -72,6 +84,19 @@ public class CameraFollow : MonoBehaviour
             }
 
         return flCameraYBaseLine + flVerticalOffset;
+        }
+    }
+
+public class ScreenShake : MonoBehaviour
+    {
+    
+
+    public static Vector2 ScreenShakeTest()
+        {
+        float Magnitude = 0.1f;
+        Vector2 random_direction = Random.insideUnitCircle;
+
+        return random_direction * Magnitude;
         }
     }
 

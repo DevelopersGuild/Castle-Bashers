@@ -27,48 +27,53 @@ public class SpecialEnemyV1 : Enemy
     // Update is called once per frame
     void Update()
     {
-        if (target != null)
+        base.Update();
+
+        if (!freeFall)
         {
-            if (!isStunned)
+            if (target != null)
             {
-                if (!isDashing)
+                if (!isStunned)
                 {
-                        Act(classification);
-                }
-                else
-                {
-                    if(dashTime > 0)
+                    zDiff = targetPos.z - transform.position.z;
+                    if (!isDashing)
                     {
-                        Move(new Vector3(dir.x, 0, 0), 40);
-                        dashTime -= Time.deltaTime;
+                        Act(classification);
                     }
                     else
                     {
-                        GetComponent<DealDamageToPlayer>().enabled = false;
-                        isDashing = false;
+                        if (dashTime > 0)
+                        {
+                            Move(new Vector3(dir.x, 0, 0), 40);
+                            dashTime -= Time.deltaTime;
+                        }
+                        else
+                        {
+                            GetComponent<DealDamageToPlayer>().enabled = false;
+                            isDashing = false;
+                        }
                     }
+
                 }
-                
             }
-        }
-        else
-        {
-            if (FindObjectOfType<Player>())
-                target = FindObjectOfType<Player>().gameObject;
             else
             {
-                //player lost
-                //Destroy(gameObject);
+                if (FindObjectOfType<Player>())
+                    target = FindObjectOfType<Player>().gameObject;
+                else
+                {
+                    //player lost
+                    //Destroy(gameObject);
+                }
             }
+            if (stunTimer > 0)
+                stunTimer -= Time.deltaTime;
+            else
+                isStunned = false;
+
+            if (invTime <= 0)
+                isInvincible = false;
         }
-        if (stunTimer > 0)
-            stunTimer -= Time.deltaTime;
-        else
-            isStunned = false;
-
-        if (invTime <= 0)
-            isInvincible = false;
-
         attack_CD += Time.deltaTime;
         dash_CD += Time.deltaTime;
         invTime -= Time.deltaTime;
@@ -84,11 +89,11 @@ public class SpecialEnemyV1 : Enemy
 
         if (facing)
         {
-            attCol = Instantiate(attackCollider, transform.position + right, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + xhalf + right, transform.rotation) as GameObject;
         }
         else
         {
-            attCol = Instantiate(attackCollider, transform.position + left, transform.rotation) as GameObject;
+            attCol = Instantiate(attackCollider, transform.position + (-1 * xhalf) + left, transform.rotation) as GameObject;
         }
         Destroy(attCol, 0.5f);
 
@@ -96,7 +101,6 @@ public class SpecialEnemyV1 : Enemy
 
     private void Dash()
     {
-        Debug.Log("cool");
         isDashing = true;
         dashTime = 0.4f;
         dash_CD = 0;
@@ -120,7 +124,7 @@ public class SpecialEnemyV1 : Enemy
             zDiff = targetPos.z - transform.position.z;
             if (Math.Abs(distance) <= dashRange)
             {
-                if (Math.Abs(zDiff) > 0.25f)
+                if (Math.Abs(zDiff) > half.z)
                 {
                     Move(new Vector3(0, 0, zDiff * 1.2f), speed);
                 }
@@ -136,7 +140,11 @@ public class SpecialEnemyV1 : Enemy
         }
         else
         {
-            if (distL <= attackRange || distR <= attackRange)
+            if (Math.Abs(zDiff) > half.z * 2)
+            {
+                Move(new Vector3(0, 0, zDiff), speed);
+            }
+            else if (distL <= attackRange || distR <= attackRange)
             {
                 if (attack_CD >= 2)
                     Attack();

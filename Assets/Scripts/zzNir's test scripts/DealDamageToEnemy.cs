@@ -18,7 +18,7 @@ public class DealDamageToEnemy : MonoBehaviour
             //Find components necessary to take damage and knockback
 
             Enemy enem = enemObj.GetComponent<Enemy>();
-            EnemyHealth hp = enemObj.GetComponent<EnemyHealth>();
+            Health hp = enemObj.GetComponent<Health>();
             //Take damage if the player isnt already currently invincible
             if (!enem.getInvincible())
             {
@@ -47,13 +47,8 @@ public class DealDamageToEnemy : MonoBehaviour
     //Same code just make sure it happens
     public void OnTriggerEnter(Collider other)
     {
-        GameObject enemObj = other.gameObject;
-        if (enemObj.GetComponent<EnemyHealth>())
-        {
-            enemObj.GetComponent<EnemyHealth>().takeDamage(dmgAmount);
-            Debug.Log(enemObj.GetComponent<EnemyHealth>().getCurrentHp());
-        }
 
+        GameObject enemObj = other.gameObject;
         //Check for player collision
         if (other.gameObject.GetComponent<Enemy>())
             //Check for player collision

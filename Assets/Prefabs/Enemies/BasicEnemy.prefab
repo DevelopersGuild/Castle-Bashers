@@ -12,8 +12,8 @@ GameObject:
   - 65: {fileID: 6545914}
   - 114: {fileID: 11416722}
   - 114: {fileID: 11437056}
-  - 114: {fileID: 11494398}
   - 54: {fileID: 5481220}
+  - 114: {fileID: 11461634}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.0600004, y: 2, z: 6.46999979}
-  m_LocalScale: {x: 2.5, y: 3.79999995, z: 1}
+  m_LocalPosition: {x: -8.57074165, y: 5.31021309, z: 6.46999979}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +44,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -58,7 +58,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .819999993, y: .819999993, z: .400000006}
+  m_Size: {x: 1.5, y: 3, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11416722
 MonoBehaviour:
@@ -73,11 +73,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   horizontalRayCount: 4
   verticalRayCount: 4
   knockbackVelocity: 0
   knockbackTime: 0
+  flinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11437056
@@ -93,16 +94,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agroRange: 20
   attackRange: 1
-  attack_CD: 0
+  attack_CD: 2
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
+  moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
+  freeFall: 0
   invTime: 0
   stunTimer: 0
   distance: 0
   speed: 3
+  zDiff: 0
   distL: 0
   distR: 0
   toLeft: 0
@@ -110,7 +117,7 @@ MonoBehaviour:
   right: {x: 0, y: 0, z: 0}
   attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
   classification: 0
---- !u!114 &11494398
+--- !u!114 &11461634
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -121,8 +128,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1
-  regenAmount: 0
+  StartingHealth: 3
+  RegenAmount: 0
 --- !u!212 &21231798
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -147,7 +154,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300336, guid: 2f0c5ebb101e36b4c8232b85cf538883, type: 3}
+  m_Sprite: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -155,7 +162,44 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: startingHealth
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: .5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attack_CD
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StartingHealth
+      value: 3
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110718}

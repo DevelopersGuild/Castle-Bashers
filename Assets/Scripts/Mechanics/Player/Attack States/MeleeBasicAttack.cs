@@ -9,7 +9,7 @@ public class MeleeBasicAttack : IAttack
     {
         if(Input.GetButtonDown("Fire1"))
         {
-            return new MeleeBasicAttack();
+            return new MeleeComboStart();
         }
         if(timer > LengthOfAttack)
         {

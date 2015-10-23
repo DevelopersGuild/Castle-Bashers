@@ -4,6 +4,8 @@ using UnityEngine.UI;
 
 public class Other_Windows_FullControl : MonoBehaviour {
 
+    //link Main_Process
+    public GameObject Main_Process;
     //Full Scale
     float full_scale;
 

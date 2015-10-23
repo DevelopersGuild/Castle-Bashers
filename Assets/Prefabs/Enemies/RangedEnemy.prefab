@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11412610}
   - 114: {fileID: 11444124}
   - 54: {fileID: 5401372}
-  - 114: {fileID: 11417774}
+  - 114: {fileID: 11478724}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -28,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.8499999, y: 2, z: 7.28000021}
-  m_LocalScale: {x: 2.5, y: 3.79999995, z: 1}
+  m_LocalPosition: {x: -3.98570442, y: 6.97750092, z: 7.28000021}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -44,7 +44,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -58,7 +58,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: .519999981, y: .660000026, z: .5}
+  m_Size: {x: 2.5, y: 3.29999995, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11412610
 MonoBehaviour:
@@ -73,26 +73,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 256
   horizontalRayCount: 4
   verticalRayCount: 4
   knockbackVelocity: 0
   knockbackTime: 0
+  flinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
---- !u!114 &11417774
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 107678}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 4
-  regenAmount: 0
 --- !u!114 &11444124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -106,16 +94,22 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   agroRange: 25
   attackRange: 11
-  attack_CD: 0
+  attack_CD: 2
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
+  moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
+  freeFall: 0
   invTime: 0
   stunTimer: 0
   distance: 0
   speed: 0
+  zDiff: 0
   distL: 0
   distR: 0
   toLeft: 0
@@ -123,6 +117,19 @@ MonoBehaviour:
   right: {x: 0, y: 0, z: 0}
   shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
   classification: 1
+--- !u!114 &11478724
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHealth: 2
+  RegenAmount: 0
 --- !u!212 &21225504
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -155,7 +162,35 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: startingHealth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsKinematic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionMask.m_Bits
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attack_CD
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StartingHealth
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107678}

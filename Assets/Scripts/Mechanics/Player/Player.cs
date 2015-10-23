@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using Rewired;
 
@@ -9,9 +9,12 @@ public class Player : MonoBehaviour
     public Animator animator;
     public GameObject AttackCollider;
     public ISkill[] Skills = new ISkill[4];
-    public int Strength;
-    public int Agility;
-    public int Intelligence;
+    //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
+    //with starting values of the ares they are used in.
+    public float Strength;
+    public float Agility;
+    public float Intelligence;
+
     private bool isGrounded = true;
     private bool isMoving = false;
     public float jumpHeight = 4;
@@ -24,9 +27,13 @@ public class Player : MonoBehaviour
     private float accelerationTimeGrounded = .1f;
     private bool isNotStunned = true;
     private bool isInvincible = false;
-    private float invTime;
     private IPlayerState state;
     private IAttack attackState;
+
+    private float invTime, initialRegenTime, regenTick;
+    private float knockBackResistance, knockBackReset, knockBackCounter;
+    private float flinchResistance, flinchReset, flinchCounter;
+
     private float gravity;
     private float jumpVelocity;
     private Vector3 velocity;
@@ -53,6 +60,17 @@ public class Player : MonoBehaviour
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
         print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
+
+        initialRegenTime = 6;
+        regenTick = 2;
+
+        knockBackResistance = 10;
+        knockBackCounter = 0;
+        knockBackReset = 0;
+
+        flinchResistance = 10;
+        flinchCounter = 0;
+        flinchReset = 0;
     }
 
     void Update()
@@ -63,6 +81,15 @@ public class Player : MonoBehaviour
         if (controller.collisions.above || controller.collisions.below)
         {
             velocity.y = 0;
+        }
+
+        if (initialRegenTime > 6)
+        {
+            if (regenTick > 2)
+            {
+                regenTick = 0;
+                health.Regen();
+            }
         }
 
         //Invincibility timer
@@ -97,6 +124,28 @@ public class Player : MonoBehaviour
             ReadyMove(input);
         }
 
+        if (knockBackCounter > 0)
+        {
+            knockBackReset += Time.deltaTime;
+            if (knockBackReset >= 5)
+            {
+                knockBackReset = 0;
+                knockBackCounter = 0;
+            }
+        }
+
+        if (flinchCounter > 0)
+        {
+            flinchReset += Time.deltaTime;
+            if (flinchReset >= 2)
+            {
+               // flinchReset = 0;
+               // flinchCounter = 0;
+            }
+        }
+
+        initialRegenTime += Time.deltaTime;
+        regenTick += Time.deltaTime;
         UpdateState();
     }
 
@@ -105,6 +154,7 @@ public class Player : MonoBehaviour
     public void SetInvTime(float time)
     {
         invTime = time;
+        initialRegenTime = 0;
     }
 
     public void SetAct(bool x)
@@ -134,7 +184,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int GetStrength()
+    public float GetStrength()
     {
         return Strength;
     }
@@ -151,7 +201,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int GetAgility()
+    public float GetAgility()
     {
         return Agility;
     }
@@ -168,9 +218,62 @@ public class Player : MonoBehaviour
         }
     }
 
-    public int GetIntelligence()
+    public float GetIntelligence()
     {
         return Intelligence;
+
+    }
+
+    public float GetKBResist()
+    {
+        return knockBackResistance;
+    }
+
+    public void ModifyKBCount(float set, float multiplier = 1)
+    {
+        knockBackCounter += set;
+        knockBackCounter *= multiplier;
+    }
+
+    public bool GetKnockable()
+    {
+        Debug.Log(knockBackCounter + " and " + knockBackResistance);
+        if (knockBackCounter >= knockBackResistance)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetKB()
+    {
+        knockBackReset = 0;
+    }
+
+    public float GetFlinchResist()
+    {
+        return flinchResistance;
+    }
+
+    public void ModifyFlinchCount(float set, float multiplier = 1)
+    {
+        flinchCounter += set;
+        flinchCounter *= multiplier;
+    }
+
+    public bool GetFlinchable()
+    {
+        Debug.Log(flinchCounter + " vs " + flinchResistance);
+        if (flinchCounter >= flinchResistance)
+        {
+            return true;
+        }
+        return false;
+    }
+
+    public void ResetFlinch()
+    {
+        flinchReset = 0;
     }
 
     private void HandleInput()
@@ -201,8 +304,9 @@ public class Player : MonoBehaviour
     private void ReadyMove(Vector2 input)
     {
         velocity.y += gravity * Time.deltaTime;
-        float targetVelocityX = input.x * horizontalMoveSpeed * crowdControllable.getSlow();
-        float targetVelocityZ = input.y * verticalMoveSpeed * crowdControllable.getSlow();
+
+        float targetVelocityX = input.x * horizontalMoveSpeed * Agility * crowdControllable.getSlow();
+        float targetVelocityZ = input.y * verticalMoveSpeed * Agility * crowdControllable.getSlow();
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         controller.Move(velocity * Time.deltaTime, input);
@@ -251,21 +355,23 @@ public class Player : MonoBehaviour
 
     private void UseSkill1()
     {
-        Skills[0].UseSkill(this.gameObject);
+        Skills[0].UseSkill(gameObject);
     }
 
     private void UseSkill2()
     {
-        Skills[1].UseSkill(this.gameObject);
+        Skills[1].UseSkill(gameObject);
     }
 
     private void UseSkill3()
     {
-        Skills[2].UseSkill(this.gameObject);
+        Skills[2].UseSkill(gameObject);
     }
 
     private void UseSkill4()
     {
-        Skills[3].UseSkill(this.gameObject);
+        Skills[3].UseSkill(gameObject);
     }
+
+
 }

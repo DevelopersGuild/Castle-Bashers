@@ -1,11 +1,12 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 public class Health : MonoBehaviour
 {
 
-     public float startingHealth, regenAmount;
-     public float currentHealth;
+    public float startingHealth;
+    public float RegenAmount;
+     private float currentHealth;
      private Player player;
      private bool canKnock = true;
     private MoveController moveController;
@@ -20,18 +21,23 @@ public class Health : MonoBehaviour
         moveController = GetComponent<MoveController>();
           currentHealth = startingHealth;
         damageTextOffset = new Vector3(0, 2, 0);
+
+        if (player)
+            currentHealth = startingHealth * (player.GetStrength() + 1);
+        else
+            currentHealth = startingHealth;
      }
 
-     public void regen()
+     public void Regen()
      {
-          startingHealth += regenAmount;
+          currentHealth += RegenAmount * player.GetStrength();
           if (currentHealth > startingHealth)
           {
-               currentHealth = startingHealth;
+               currentHealth = startingHealth * player.GetStrength();
           }
      }
 
-     public void takeDamage(float dmg)
+     public void takeDamage(float dmg, float knockback = 4, float flinch = 5)
      {
         if (player)
         {
@@ -39,12 +45,31 @@ public class Health : MonoBehaviour
             {
                 currentHealth -= dmg;
                 GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
-
                 floatText.GetComponent<TextMesh>().text = "" + dmg;
                 floatText.transform.position = gameObject.transform.position + damageTextOffset;
+
+                player.ModifyKBCount(knockback);
+                if (knockback > 0)
+                    player.ResetKB();
+
+                player.ModifyFlinchCount(flinch);
+                if (flinch > 0)
+                    player.ResetFlinch();
+
                 if(moveController)
                 {
-                    moveController.SetKnockback(true);
+                    if (player.GetKnockable())
+                    {
+                        Debug.Log("Hey");
+                        moveController.SetKnockback(true);
+                        player.ModifyKBCount(0, 0);
+                    }
+                    else if(player.GetFlinchable())
+                    {
+                        Debug.Log("Ho");
+                        moveController.SetFlinch(true);
+                        player.ModifyFlinchCount(0, 0);
+                    }
                 }
                 if (currentHealth <= 0)
                 {
@@ -76,7 +101,7 @@ public class Health : MonoBehaviour
           Destroy(gameObject);
      }
 
-     public float getCurrentHp()
+     public float GetCurrentHealth()
      {
           return currentHealth;
      }
