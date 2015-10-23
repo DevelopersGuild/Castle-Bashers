@@ -33,6 +33,8 @@ GameObject:
   - 114: {fileID: 11492828}
   - 95: {fileID: 9581878}
   - 114: {fileID: 11493054}
+  - 114: {fileID: 11476382}
+  - 114: {fileID: 11492768}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -47,7 +49,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.60000002, y: 14.8999996, z: 2.4000001}
+  m_LocalPosition: {x: -20.4799995, y: 2.1500001, z: 5}
   m_LocalScale: {x: 2.54750299, y: 3.87353134, z: 1}
   m_Children:
   - {fileID: 450512}
@@ -121,6 +123,27 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11476382
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6112a187eae3e804a97f95b5540e0dc4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  floatText: {fileID: 0}
+  effectOffset: {x: 0, y: 2, z: 0}
+  canStun: 1
+  stunEffect: {fileID: 0}
+  canSlow: 1
+  slowEffect: {fileID: 0}
+  canSilence: 1
+  silenceEffect: {fileID: 0}
+  canSnare: 1
+  snareEffect: {fileID: 0}
 --- !u!114 &11478880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -155,6 +178,17 @@ MonoBehaviour:
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
   playerId: 0
+--- !u!114 &11492768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2574487eb01986e468143c9b4907c150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11492828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -166,8 +200,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingHealth: 100
+  startingHealth: 0
   RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &11493054
 MonoBehaviour:
   m_ObjectHideFlags: 1
