@@ -299,58 +299,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 2
---- !u!1 &978216138
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 978216140}
-  - 114: {fileID: 978216139}
-  m_Layer: 0
-  m_Name: Map_Trans_Database
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &978216139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 978216138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fda247e94a29a74ab6b77dc620de3df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapinfo:
-  - name: _Title
-    bg_texture: {fileID: 0}
-    System_Map: 1
-  - name: Level1
-    bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
-    System_Map: 0
-  maptag:
-  - text: When you are in battle, you cannot open the menu.
-  - text: Try to make your level high before you go to any high difficulty adventure.
-  - text: You can use not only keyboard but also playstation to control your chracter.
-  - text: Really hard? Try to go on your adventure with your friends.
-  - text: "Your can change the hotkeys of the controler, but we haven't finished yet.\u256E(\u256F_\u2570)\u256D"
---- !u!4 &978216140
-Transform:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 978216138}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 446.528595, y: 150.937164, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 3
 --- !u!1 &1647891273
 GameObject:
   m_ObjectHideFlags: 0
