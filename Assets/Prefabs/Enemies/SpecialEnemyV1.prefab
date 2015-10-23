@@ -14,7 +14,7 @@ GameObject:
   - 54: {fileID: 5467970}
   - 114: {fileID: 11419406}
   - 114: {fileID: 11440506}
-  - 114: {fileID: 11412684}
+  - 114: {fileID: 11472164}
   m_Layer: 0
   m_Name: SpecialEnemyV1
   m_TagString: Untagged
@@ -61,19 +61,6 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4000001, y: 2.4000001, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11412684
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 105472}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3bc44eab05baa448a313e8aee7c1f51, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
-  regenAmount: 0
 --- !u!114 &11419406
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -124,6 +111,19 @@ MonoBehaviour:
   dmgAmount: 1
   knockback: 10
   flinch: 4
+--- !u!114 &11472164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 105472}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  StartingHealth: 3
+  RegenAmount: 0
 --- !u!114 &11484948
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -210,6 +210,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: flinch
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StartingHealth
+      value: 3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

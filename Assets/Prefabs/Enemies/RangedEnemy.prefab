@@ -13,7 +13,7 @@ GameObject:
   - 114: {fileID: 11412610}
   - 114: {fileID: 11444124}
   - 54: {fileID: 5401372}
-  - 114: {fileID: 11468876}
+  - 114: {fileID: 11478724}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -117,7 +117,7 @@ MonoBehaviour:
   right: {x: 0, y: 0, z: 0}
   shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
   classification: 1
---- !u!114 &11468876
+--- !u!114 &11478724
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -125,11 +125,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 107678}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d3bc44eab05baa448a313e8aee7c1f51, type: 3}
+  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 1
-  regenAmount: 0
+  StartingHealth: 2
+  RegenAmount: 0
 --- !u!212 &21225504
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -185,6 +185,10 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attack_CD
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: StartingHealth
       value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
