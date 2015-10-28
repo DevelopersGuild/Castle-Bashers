@@ -9,6 +9,7 @@ public class ManaRegenSkill :MonoBehaviour, ISkill
     private SkillLevel skillLevel = SkillLevel.Level1;
     public void UseSkill(GameObject caller, GameObject target = null, float coolDownTimer = 0)
     {
+        coolDown = coolDownTimer;
         if(caller.tag == "Player")
         {
             
