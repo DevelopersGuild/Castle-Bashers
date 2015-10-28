@@ -23,17 +23,17 @@ public class Health : MonoBehaviour
         damageTextOffset = new Vector3(0, 2, 0);
 
         if (player)
-            currentHealth = startingHealth * (player.GetStrength() + 1);
+            currentHealth = startingHealth + player.GetStrength();
         else
             currentHealth = startingHealth;
      }
 
      public void Regen()
      {
-          currentHealth += RegenAmount * player.GetStrength();
+          currentHealth += (RegenAmount + player.GetStrength());
           if (currentHealth > startingHealth)
           {
-               currentHealth = startingHealth * player.GetStrength();
+               currentHealth = (startingHealth + player.GetStrength());
           }
      }
 
@@ -100,6 +100,11 @@ public class Health : MonoBehaviour
           //end level
           Destroy(gameObject);
      }
+
+    public float GetStartingHealth()
+    {
+        return startingHealth;
+    }
 
      public float GetCurrentHealth()
      {

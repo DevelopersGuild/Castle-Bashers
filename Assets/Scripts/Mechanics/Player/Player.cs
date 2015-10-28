@@ -59,7 +59,6 @@ public class Player : MonoBehaviour
         crowdControllable = GetComponent<CrowdControllable>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-        print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
 
         initialRegenTime = 6;
         regenTick = 2;
@@ -305,8 +304,8 @@ public class Player : MonoBehaviour
     {
         velocity.y += gravity * Time.deltaTime;
 
-        float targetVelocityX = input.x * horizontalMoveSpeed * Agility * crowdControllable.getSlow();
-        float targetVelocityZ = input.y * verticalMoveSpeed * Agility * crowdControllable.getSlow();
+        float targetVelocityX = input.x * (horizontalMoveSpeed + Agility) * crowdControllable.getSlow();
+        float targetVelocityZ = input.y * (verticalMoveSpeed + Agility) * crowdControllable.getSlow();
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         controller.Move(velocity * Time.deltaTime, input);
