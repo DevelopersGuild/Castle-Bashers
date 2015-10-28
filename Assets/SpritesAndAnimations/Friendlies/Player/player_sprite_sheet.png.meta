@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 98cebe1569348d4428cebf8cb1fef22c
-timeCreated: 1445624446
+timeCreated: 1445929026
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -25,6 +25,17 @@ TextureImporter:
     21300036: player_sprite_sheet_18
     21300038: player_sprite_sheet_19
     21300040: player_sprite_sheet_20
+    21300042: player_sprite_sheet_21
+    21300044: player_sprite_sheet_22
+    21300046: player_sprite_sheet_23
+    21300048: player_sprite_sheet_24
+    21300050: player_sprite_sheet_25
+    21300052: player_sprite_sheet_26
+    21300054: player_sprite_sheet_27
+    21300056: player_sprite_sheet_28
+    21300058: player_sprite_sheet_29
+    21300060: player_sprite_sheet_30
+    21300062: player_sprite_sheet_31
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -75,17 +86,17 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: player_sprite_sheet_1
       rect:
         serializedVersion: 2
         x: 54
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -95,7 +106,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -105,7 +116,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 162
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -115,7 +126,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 216
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -125,7 +136,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 270
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -135,7 +146,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 324
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -145,7 +156,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 378
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -155,7 +166,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 432
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -165,7 +176,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 486
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -175,7 +186,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 540
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -185,7 +196,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 594
-        y: 108
+        y: 216
         width: 54
         height: 54
       alignment: 0
@@ -194,18 +205,18 @@ TextureImporter:
     - name: player_sprite_sheet_12
       rect:
         serializedVersion: 2
-        x: 648
-        y: 108
+        x: 646
+        y: 216
         width: 54
         height: 54
       alignment: 0
-      pivot: {x: 0, y: 0}
+      pivot: {x: .5, y: .5}
       border: {x: 0, y: 0, z: 0, w: 0}
     - name: player_sprite_sheet_13
       rect:
         serializedVersion: 2
         x: 0
-        y: 54
+        y: 162
         width: 54
         height: 54
       alignment: 0
@@ -215,7 +226,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 54
-        y: 54
+        y: 162
         width: 54
         height: 54
       alignment: 0
@@ -225,7 +236,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 108
-        y: 54
+        y: 162
         width: 54
         height: 54
       alignment: 0
@@ -235,7 +246,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 162
-        y: 54
+        y: 162
         width: 54
         height: 54
       alignment: 0
@@ -245,7 +256,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 216
-        y: 54
+        y: 162
         width: 54
         height: 54
       alignment: 0
@@ -255,7 +266,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 270
-        y: 54
+        y: 162
         width: 54
         height: 54
       alignment: 0
@@ -265,7 +276,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 324
-        y: 54
+        y: 162
         width: 54
         height: 54
       alignment: 0
@@ -275,6 +286,116 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 378
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_21
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 108
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_22
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 108
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_23
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 108
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_24
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 108
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_25
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 54
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_26
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 54
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_27
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 54
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_28
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 54
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_29
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 54
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_30
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 54
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_sprite_sheet_31
+      rect:
+        serializedVersion: 2
+        x: 324
         y: 54
         width: 54
         height: 54
