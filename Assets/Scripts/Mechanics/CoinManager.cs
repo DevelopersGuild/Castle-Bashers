@@ -26,4 +26,9 @@ public class CoinManager : MonoBehaviour {
         coins = coinsSet;
     }
 
+    public int getCoins()
+    {
+        return coins;
+    }
+
 }

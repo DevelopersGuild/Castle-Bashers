@@ -16,7 +16,7 @@ public class SmashSkill : MonoBehaviour, ISkill
     public int GetPrice()
     {
         //TODO Temporary value change 
-        return 0;
+        return 200;
     }
     public SkillLevel GetSkillLevel()
     {
