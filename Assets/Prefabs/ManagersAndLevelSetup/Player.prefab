@@ -31,10 +31,11 @@ GameObject:
   - 114: {fileID: 11487910}
   - 114: {fileID: 11498620}
   - 114: {fileID: 11492828}
+  - 114: {fileID: 11472082}
   - 95: {fileID: 9581878}
   - 114: {fileID: 11493054}
-  - 114: {fileID: 11473658}
-  - 114: {fileID: 11415810}
+  - 114: {fileID: 11476382}
+  - 114: {fileID: 11492768}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -49,7 +50,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.7200003, y: 2.32999992, z: 1.87}
+  m_LocalPosition: {x: -31.0608273, y: 3.31167793, z: 5}
   m_LocalScale: {x: 2.54750299, y: 3.87353134, z: 1}
   m_Children:
   - {fileID: 450512}
@@ -123,7 +124,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
---- !u!114 &11415810
+--- !u!114 &11472082
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PhysicalDefense: 0
+  MagicalDefense: 0
+--- !u!114 &11476382
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -134,7 +148,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6112a187eae3e804a97f95b5540e0dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatText: {fileID: 11418386, guid: a782bd70ba51ef1448df6b6c05a70427, type: 2}
+  floatText: {fileID: 0}
   effectOffset: {x: 0, y: 2, z: 0}
   canStun: 1
   stunEffect: {fileID: 0}
@@ -144,17 +158,6 @@ MonoBehaviour:
   silenceEffect: {fileID: 0}
   canSnare: 1
   snareEffect: {fileID: 0}
---- !u!114 &11473658
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192152}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bc562083fa73d5b4d807e40a78fb38f4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11478880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -189,6 +192,17 @@ MonoBehaviour:
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
   playerId: 0
+--- !u!114 &11492768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 192152}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2574487eb01986e468143c9b4907c150, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11492828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -200,8 +214,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 20
-  RegenAmount: 0
+  startingHealth: 10
+  RegenAmount: 1
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &11493054
 MonoBehaviour:

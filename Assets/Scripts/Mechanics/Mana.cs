@@ -16,7 +16,7 @@ public class Mana : MonoBehaviour
         player = GetComponent<Player>();
         if(player != null)
         {
-            mana = StartingMana * player.GetIntelligence();
+            mana = StartingMana + player.GetIntelligence();
             regenModifier = player.GetIntelligence();
         }
     }
@@ -40,7 +40,7 @@ public class Mana : MonoBehaviour
 
     public void RegenMana(float modifier = 1f)
     {
-        mana += (ManaRegenRate * modifier) * Time.deltaTime;
+        mana += (ManaRegenRate + modifier) * Time.deltaTime;
     }
 
     public float GetMana()

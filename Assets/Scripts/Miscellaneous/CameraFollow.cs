@@ -3,7 +3,7 @@ using UnityEngine;
 using System.Collections;
 
 public class CameraFollow : MonoBehaviour
-    {
+{
     //public variables
     public GameObject gobjCameraTarget;
     public Vector3 v3DefaultCameraRotationVector;
@@ -23,14 +23,14 @@ public class CameraFollow : MonoBehaviour
 
 
     void Start()
-        {
+    {
         gobjCameraTarget = GameObject.Find("Player");
         flCameraYBaseLine = gobjCameraTarget.transform.position.y;
 
-        }
+    }
 
     void LateUpdate()
-        {
+    {
         Vector3 v3CameraTargetPosition = gobjCameraTarget.transform.position;
 
 
@@ -42,10 +42,10 @@ public class CameraFollow : MonoBehaviour
         v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
 
 
-        
+
 
         v3PreviousFrameCameraPosition = v3FinalCameraPosition;
-        if(camerShakeIsOn == true)
+        if (camerShakeIsOn == true)
         {
             Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
             v3FinalCameraPosition.x += v2ScreenShakeVector.x;
@@ -55,50 +55,50 @@ public class CameraFollow : MonoBehaviour
 
 
         transform.position = v3FinalCameraPosition;
-        }
+    }
 
     float GetXCameraPosition(float flCameraTargetXPosition)
-        {
+    {
 
         float flFrameXDifference = v3PreviousFrameCameraPosition.x - flCameraTargetXPosition;
 
         if ((Mathf.Abs(flFrameXDifference)) > flXAxisTolerance)
-            {
+        {
             return flCameraTargetXPosition + Mathf.Sign(flFrameXDifference) * flXAxisTolerance;
-            }
-        return v3PreviousFrameCameraPosition.x;
         }
+        return v3PreviousFrameCameraPosition.x;
+    }
 
     float GetYCameraPosition(float flCameraTargetYPosition)
-        {
+    {
 
         float flDifference = flCameraTargetYPosition - flCameraYBaseLine;
 
         if (flDifference < 0)
-            {
+        {
             flCameraYBaseLine = flCameraTargetYPosition;
-            }
+        }
         else if (flDifference > flYAxisTolerance)
-            {
-            flCameraYBaseLine = flCameraYBaseLine + Mathf.Min(flYChangeSpeed, flDifference); 
-            }
+        {
+            flCameraYBaseLine = flCameraYBaseLine + Mathf.Min(flYChangeSpeed, flDifference);
+        }
 
         return flCameraYBaseLine + flVerticalOffset;
-        }
     }
+}
 
 public class ScreenShake : MonoBehaviour
-    {
-    
+{
+
 
     public static Vector2 ScreenShakeTest()
-        {
+    {
         float Magnitude = 0.1f;
         Vector2 random_direction = Random.insideUnitCircle;
 
         return random_direction * Magnitude;
-        }
     }
+}
 
 //Junk
 /*

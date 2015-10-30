@@ -11,7 +11,9 @@ public class JumpState : IPlayerState
         {
             player.Jump();
             player.SetIsGrounded(false);
-        }
+            player.animator.SetBool("IsJumping", true);
+            player.animator.SetBool("IsGrounded", false);
+       }
     }
 
     public IPlayerState HandleInput(Player player)
@@ -28,6 +30,7 @@ public class JumpState : IPlayerState
         if (player.GetMoveController().collisions.above || player.GetMoveController().collisions.below)
         {
             player.SetIsGrounded(true);
+            player.animator.SetBool("IsJumping", false);
         }
     }
 
