@@ -144,7 +144,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAmount: 3
+  dmgAmount: 2
+  knockback: 4
+  flinch: 5
 --- !u!212 &21220872
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -188,7 +190,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dmgAmount
-      value: 3
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: speed

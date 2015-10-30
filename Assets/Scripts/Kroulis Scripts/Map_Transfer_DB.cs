@@ -8,6 +8,7 @@ public class Map_Transfer_DB : MonoBehaviour {
     {
        public string name;
        public Texture bg_texture;
+       public Sprite mini_bg_texture;
        public bool System_Map;
        public int limit_time;
        public int limit_death;
