@@ -63,6 +63,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+        DontDestroyOnLoad(this.gameObject);
         Text[] finds1;
         Image[] finds2;
         GameObject GOResult;

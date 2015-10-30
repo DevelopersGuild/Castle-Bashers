@@ -16,6 +16,7 @@ public class Level_Select_FullControl : MonoBehaviour {
     Text Map_name;
     Image Bar;
     Image Diff;
+    GameObject Other_Window;
 
 
 
@@ -56,6 +57,7 @@ public class Level_Select_FullControl : MonoBehaviour {
         GameObject Mainprocess = GameObject.Find("Main Process");
         Level_Select_mapinfo_script = Mainprocess.GetComponentInChildren<Level_Select_mapinfo>();
         Map_Transfer_DB_Script = Mainprocess.GetComponentInChildren<Map_Transfer_DB>();
+        Other_Window = GameObject.Find("Other_Windows");
 	
 	}
 	
@@ -74,6 +76,32 @@ public class Level_Select_FullControl : MonoBehaviour {
             if (currentdiff != 4)
                 //if(the difficulty had unlocked)
                 currentdiff = currentdiff + 1;
+        }
+        else if(Input.GetKeyDown(KeyCode.UpArrow))
+        {
+            if (currentmap != 0)
+                currentmap = currentmap - 1;
+        }
+        else if(Input.GetKeyDown(KeyCode.DownArrow))
+        {
+            if(currentmap!=Level_Select_mapinfo_script.Chapter[chapid].mapinfo.Length-1)
+            {
+                currentmap = currentmap + 1;
+            }
+        }
+        else if(Input.GetKeyDown(KeyCode.Return))
+        {
+            Debug.Log("Go to the map:"+Map_name.text.ToString());
+            Globe.Map_Load_id = Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid;
+            this.gameObject.SetActive(false);
+            Other_Window.SetActive(false);
+            Application.LoadLevel("_loading");
+        }
+        else if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            Debug.Log("Go Back to the town.");
+            this.gameObject.SetActive(false);
+            Other_Window.SetActive(false);
         }
 	}
 }

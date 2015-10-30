@@ -6064,7 +6064,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   shop_class_id: 0
-  store_skill_id: 
+  store_skill_id: 000000000000000000000000000000000000000000000000000000000000000000000000
 --- !u!1 &904521095
 GameObject:
   m_ObjectHideFlags: 0
