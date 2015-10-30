@@ -11,9 +11,9 @@ public class Player : MonoBehaviour
     public ISkill[] Skills = new ISkill[4];
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
-    public float Strength;
-    public float Agility;
-    public float Intelligence;
+    public int Strength;
+    public int Agility;
+    public int Intelligence;
 
     private bool isGrounded = true;
     private bool isMoving = false;
@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float GetStrength()
+    public int GetStrength()
     {
         return Strength;
     }
@@ -201,7 +201,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float GetAgility()
+    public int GetAgility()
     {
         return Agility;
     }
@@ -218,7 +218,7 @@ public class Player : MonoBehaviour
         }
     }
 
-    public float GetIntelligence()
+    public int GetIntelligence()
     {
         return Intelligence;
 
