@@ -62,23 +62,6 @@ public class CrowdControllable : MonoBehaviour {
 	void Update () {
         effectPosition = gameObject.transform.position + effectOffset;
 
-        //Testing buttons
-        if (Input.GetKeyDown("n"))
-        {
-            addStun(5);
-        }
-        if (Input.GetKeyDown("m"))
-        {
-            addSnare(2);
-        }
-        if (Input.GetKeyDown("u"))
-        {
-            addSlow(0.50f, 2);
-        }
-        if (Input.GetKeyDown("k"))
-        {
-            addSilence(2);
-        }
 
         //update stuns
         for (int i = stuns.Count - 1; i >= 0; i--)
