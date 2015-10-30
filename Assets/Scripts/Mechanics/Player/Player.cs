@@ -50,6 +50,12 @@ public class Player : MonoBehaviour
 
     void Start()
     {
+        //TODO Add actual skills to the player once they are finished
+        Skills[0] = gameObject.AddComponent<ManaRegenSkill>();
+        Skills[1] = gameObject.AddComponent<ManaRegenSkill>();
+        Skills[2] = gameObject.AddComponent<ManaRegenSkill>();
+        Skills[3] = gameObject.AddComponent<ManaRegenSkill>();
+
         state = new StandingState();
         attackState = new IdleAttackState();
         animator = GetComponent<Animator>();
@@ -59,7 +65,6 @@ public class Player : MonoBehaviour
         crowdControllable = GetComponent<CrowdControllable>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
-        print("Gravity: " + gravity + "  Jump Velocity: " + jumpVelocity);
 
         initialRegenTime = 6;
         regenTick = 2;
@@ -71,6 +76,7 @@ public class Player : MonoBehaviour
         flinchResistance = 10;
         flinchCounter = 0;
         flinchReset = 0;
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
@@ -147,6 +153,26 @@ public class Player : MonoBehaviour
         initialRegenTime += Time.deltaTime;
         regenTick += Time.deltaTime;
         UpdateState();
+
+        if(Input.GetButtonDown("UseSkill1"))
+        {
+            UseSkill1();
+        }
+
+        if (Input.GetButtonDown("UseSkill2"))
+        {
+            UseSkill2();
+        }
+
+        if (Input.GetButtonDown("UseSkill3"))
+        {
+            UseSkill3();
+        }
+
+        if (Input.GetButtonDown("UseSkill4"))
+        {
+            UseSkill4();
+        }
     }
 
 
@@ -305,8 +331,8 @@ public class Player : MonoBehaviour
     {
         velocity.y += gravity * Time.deltaTime;
 
-        float targetVelocityX = input.x * horizontalMoveSpeed * Agility * crowdControllable.getSlow();
-        float targetVelocityZ = input.y * verticalMoveSpeed * Agility * crowdControllable.getSlow();
+        float targetVelocityX = input.x * (horizontalMoveSpeed + Agility) * crowdControllable.getSlow();
+        float targetVelocityZ = input.y * (verticalMoveSpeed + Agility) * crowdControllable.getSlow();
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         controller.Move(velocity * Time.deltaTime, input);
@@ -355,22 +381,40 @@ public class Player : MonoBehaviour
 
     private void UseSkill1()
     {
-        Skills[0].UseSkill(gameObject);
+        if(Skills[0].GetCoolDownTimer() <= 0)
+        {
+            Skills[0].UseSkill(gameObject, null, 1f);
+            Debug.Log("Use Skill 1");
+        }
+        
     }
 
     private void UseSkill2()
     {
-        Skills[1].UseSkill(gameObject);
+        if (Skills[1].GetCoolDownTimer() <= 0)
+        {
+            Skills[1].UseSkill(gameObject,null, 1f);
+            Debug.Log("Use Skill 2");
+        }
+
     }
 
     private void UseSkill3()
     {
-        Skills[2].UseSkill(gameObject);
+        if (Skills[2].GetCoolDownTimer() <= 0)
+        {
+            Skills[2].UseSkill(gameObject, null, 1f);
+            Debug.Log("Use Skill 3");
+        }
     }
 
     private void UseSkill4()
     {
-        Skills[3].UseSkill(gameObject);
+        if (Skills[3].GetCoolDownTimer() <= 0)
+        {
+            Skills[3].UseSkill(gameObject, null, 1f);
+            Debug.Log("Use Skill 4");
+        }
     }
 
 

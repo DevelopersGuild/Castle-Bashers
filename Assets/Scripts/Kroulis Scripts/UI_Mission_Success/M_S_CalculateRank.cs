@@ -92,5 +92,7 @@ public class M_S_CalculateRank : MonoBehaviour {
             M_S_GetGold.text = "<color=#00ff00ff>" + get_gold.ToString() + "</color>";
         }
         Rank_Control_I.sprite = Rank_Control_L.Rank_Image[onlimit];
+        M_S_RDEXP.text = M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit].ToString();
+        M_S_RDGold.text = M_T_DB.mapinfo[Globe.Map_Load_id].Reward_Gold[onlimit].ToString();
     }
 }
