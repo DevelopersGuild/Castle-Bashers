@@ -153,7 +153,7 @@ public class Player : MonoBehaviour
         initialRegenTime += Time.deltaTime;
         regenTick += Time.deltaTime;
         UpdateState();
-
+        
         if(Input.GetButtonDown("UseSkill1"))
         {
             UseSkill1();
