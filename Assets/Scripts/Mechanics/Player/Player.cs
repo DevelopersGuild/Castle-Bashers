@@ -76,6 +76,7 @@ public class Player : MonoBehaviour
         flinchResistance = 10;
         flinchCounter = 0;
         flinchReset = 0;
+        DontDestroyOnLoad(gameObject);
     }
 
     void Update()
