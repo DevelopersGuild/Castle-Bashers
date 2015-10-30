@@ -158,10 +158,19 @@ public class MoveController : MonoBehaviour
         isKnockedBack = knockback;
     }
 
+    public bool GetKnockedBack()
+    {
+        return isKnockedBack;
+    }
 
     public void SetFlinch(bool flinch)
     {
         isFlinched = flinch;
+    }
+
+    public bool GetFlinched()
+    {
+        return isFlinched;
     }
 
     void HorizontalCollisions(ref Vector3 velocity)
