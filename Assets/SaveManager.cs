@@ -28,6 +28,7 @@ public class SaveManager : MonoBehaviour {
         }
         if (Input.GetKeyDown("f"))
         {
+            Debug.Log("f down");
             readFile();
             processCode(loadCode);
         }
@@ -43,6 +44,10 @@ public class SaveManager : MonoBehaviour {
 
     void processCode(string code)
     {
+        strength = -1;
+        intelligence = -1;
+        agility = -1;
+        Debug.Log(code);
         //Reset values in case of previous load
         string temp = "";
 
