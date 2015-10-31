@@ -8,6 +8,7 @@ public class Player : MonoBehaviour
 
     public Animator animator;
     public GameObject AttackCollider;
+    public SkillManager skillManager;
     public ISkill[] Skills = new ISkill[4];
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
@@ -156,22 +157,22 @@ public class Player : MonoBehaviour
         
         if(Input.GetButtonDown("UseSkill1"))
         {
-            UseSkill1();
+            skillManager.UseSkill1();
         }
 
         if (Input.GetButtonDown("UseSkill2"))
         {
-            UseSkill2();
+            skillManager.UseSkill2();
         }
 
         if (Input.GetButtonDown("UseSkill3"))
         {
-            UseSkill3();
+            skillManager.UseSkill3();
         }
 
         if (Input.GetButtonDown("UseSkill4"))
         {
-            UseSkill4();
+            skillManager.UseSkill4();
         }
     }
 
