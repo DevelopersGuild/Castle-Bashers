@@ -17,6 +17,7 @@ public class Character_Class_Info : MonoBehaviour {
     {
         public string name;
         public Sprite icon;
+        public int[] skillid;
         public Equipment_info[] weapon;
         public Equipment_info[] armor;
         public Equipment_info[] accessory;

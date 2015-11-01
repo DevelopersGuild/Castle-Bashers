@@ -14,10 +14,10 @@ public class Level_Select_FullControl : MonoBehaviour {
     Image Map_BG;
     Image Windows_BG;
     Text Map_name;
+    Text Chapter_name;
     Image Bar;
     Image Diff;
-    GameObject Other_Window;
-
+    GameObject Mainprocess;
 
 
 	// Use this for initialization
@@ -53,16 +53,21 @@ public class Level_Select_FullControl : MonoBehaviour {
                 Map_name = t;
                 continue;
             }
+            if(t.name=="Level_Select_Chapter")
+            {
+                Chapter_name = t;
+                continue;
+            }
         }
-        GameObject Mainprocess = GameObject.Find("Main Process");
+        Mainprocess = GameObject.Find("Main Process");
         Level_Select_mapinfo_script = Mainprocess.GetComponentInChildren<Level_Select_mapinfo>();
         Map_Transfer_DB_Script = Mainprocess.GetComponentInChildren<Map_Transfer_DB>();
-        Other_Window = GameObject.Find("Other_Windows");
 	
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        Chapter_name.text = chapid.ToString();
         Map_name.text = Map_Transfer_DB_Script.mapinfo[Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid].name;
         Windows_BG.sprite= Map_Transfer_DB_Script.mapinfo[Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid].mini_bg_texture;
         Diff.sprite = Diff_ImageLab.diff[currentdiff];
@@ -94,14 +99,14 @@ public class Level_Select_FullControl : MonoBehaviour {
             Debug.Log("Go to the map:"+Map_name.text.ToString());
             Globe.Map_Load_id = Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid;
             this.gameObject.SetActive(false);
-            Other_Window.SetActive(false);
+            Mainprocess.GetComponent<Main_Process>().OtherWindows_Close();
             Application.LoadLevel("_loading");
         }
         else if(Input.GetKeyDown(KeyCode.Escape))
         {
             Debug.Log("Go Back to the town.");
             this.gameObject.SetActive(false);
-            Other_Window.SetActive(false);
+            Mainprocess.GetComponent<Main_Process>().OtherWindows_Close();
         }
 	}
 }
