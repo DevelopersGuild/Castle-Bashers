@@ -95,4 +95,14 @@ public class M_S_CalculateRank : MonoBehaviour {
         M_S_RDEXP.text = M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit].ToString();
         M_S_RDGold.text = M_T_DB.mapinfo[Globe.Map_Load_id].Reward_Gold[onlimit].ToString();
     }
+    void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Return))
+        {
+            Globe.Map_Load_id = 3;
+            this.gameObject.SetActive(false);
+            GetComponentInParent<Other_Windows_FullControl>().Main_Process.GetComponent<Main_Process>().OtherWindows_Close();
+            Application.LoadLevel(2);
+        }
+    }
 }

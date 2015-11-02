@@ -6,6 +6,7 @@ public class DealDamageToPlayer : MonoBehaviour
     public float dmgAmount = 1;
     public float knockback = 4;
     public float flinch = 5;
+    public bool IsPhysicalDamage = true;
 
     // Use this for initialization
     void Start()
@@ -33,15 +34,22 @@ public class DealDamageToPlayer : MonoBehaviour
             //Find components necessary to take damage and knockback
             GameObject playerObject = other.gameObject;
             Player player = playerObject.GetComponent<Player>();
-            Health hp = playerObject.GetComponent<Health>();
+            Defense defense = playerObject.GetComponent<Defense>();
             //Take damage if the player isnt already currently invincible
             if (!player.GetInvincible())
             {
                 //Deal damage, knockback
                 //get amt (1), dmgAmount(1) from Enemy/Hazard
-                hp.takeDamage(dmgAmount, knockback, flinch);
+                if(IsPhysicalDamage == true)
+                {
+                    defense.CheckPhysicalDefense(dmgAmount, knockback, flinch);
+                }
+                else
+                {
+                    defense.CheckMagicalDefense(dmgAmount, knockback, flinch);
+                }
                 
-                player.SetInvTime(0.5f);
+                player.SetInvTime(1.5f);
             }
 
             if (tag == "DProj")
@@ -60,14 +68,21 @@ public class DealDamageToPlayer : MonoBehaviour
             //Find components necessary to take damage and knockback
             GameObject playerObject = other.gameObject;
             Player player = playerObject.GetComponent<Player>();
-            Health hp = playerObject.GetComponent<Health>();
+            Defense defense = playerObject.GetComponent<Defense>();
             //Take damage if the player isnt already currently invincible
             if (!player.GetInvincible())
             {
                 //Deal damage, knockback
                 //get amt (1), dmgAmount(1) from Enemy/Hazard
-                hp.takeDamage(dmgAmount, knockback, flinch);
-                player.SetInvTime(0.5f);
+                if (IsPhysicalDamage == true)
+                {
+                    defense.CheckPhysicalDefense(dmgAmount, knockback, flinch);
+                }
+                else
+                {
+                    defense.CheckMagicalDefense(dmgAmount, knockback, flinch);
+                }
+                player.SetInvTime(1.5f);
                 if (CompareTag("One Time"))
                 {
                     Destroy(gameObject);
