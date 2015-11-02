@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-
+    public int ExperinceAmount = 0;
     public float startingHealth;
     public float RegenAmount;
     private float currentHealth;
@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     private bool canKnock = true;
     private MoveController moveController;
     public Vector3 damageTextOffset;
+    
     //Create hp bars for players and bosses
 
 
@@ -83,6 +84,11 @@ public class Health : MonoBehaviour
             currentHealth -= dmg;
             if (currentHealth <= 0)
             {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                foreach(GameObject character in players)
+                {
+                    character.GetComponent<Experience>().AddExperince(ExperinceAmount);
+                }
                 Death();
             }
         }
