@@ -20,7 +20,12 @@ public class Experience : MonoBehaviour
         return currentExperince;
     }
 
-    public int GeCurrentLevel()
+    public int GetNEXP()
+    {
+        return experinceUntilNextLevel;
+    }
+
+    public int GetCurrentLevel()
     {
         return currentLevel;
     }
