@@ -28,6 +28,11 @@ public class Health : MonoBehaviour
             currentHealth = startingHealth;
     }
 
+    void Update()
+    {
+ 
+    }
+
     public void Regen()
     {
         currentHealth += (RegenAmount + player.GetStrength());
@@ -81,6 +86,10 @@ public class Health : MonoBehaviour
         else
         {
             currentHealth -= dmg;
+            GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
+            floatText.GetComponent<TextMesh>().text = "" + dmg;
+            floatText.transform.position = gameObject.transform.position + damageTextOffset;
+
             if (currentHealth <= 0)
             {
                 Death();

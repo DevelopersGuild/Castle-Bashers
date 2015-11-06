@@ -5,7 +5,7 @@ using Rewired;
 [RequireComponent(typeof(MoveController))]
 public class Player : MonoBehaviour
 {
-
+    //private static Player player;
     public Animator animator;
     public GameObject AttackCollider;
     public SkillManager skillManager;
@@ -48,7 +48,17 @@ public class Player : MonoBehaviour
     private bool initialized;
     private Rewired.Player playerRewired;
 
-
+    /*
+    void Awake()
+    {
+        if (player == null)
+        {
+            player = gameObject;
+        }else if(player != gameObject)
+        {
+            Destroy(gameObject);
+        }
+    }*/
     void Start()
     {
         //TODO Add actual skills to the player once they are finished
