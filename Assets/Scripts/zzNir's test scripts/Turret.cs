@@ -2,7 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class Turret : Skill
+public class Turret : SkillOld
 {
      private Vector3 offset = new Vector3(1,0,0);
      private List<GameObject> enemies = new List<GameObject>();

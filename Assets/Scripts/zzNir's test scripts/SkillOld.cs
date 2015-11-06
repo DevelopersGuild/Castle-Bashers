@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Skill : MonoBehaviour
+public class SkillOld : MonoBehaviour
 {
      public GameObject skill1;
 
