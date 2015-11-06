@@ -18,14 +18,11 @@ public class Menu_UI_FullControl : MonoBehaviour {
     public GameObject Main_Process;
     //Gold
     Text GoldAmount;
-    //Character Infos
-    Text ATK, DEF, STA, SPI, AGI, BATK, MATK,PDEF,MDEF,CRIR,C_HP, C_MP, C_EXP, C_NEXP, C_Name, C_LV;
-    Image C_ICON;
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         Text[] finds1;
-        Image[] finds2;
+        //Image[] finds2;
         GameObject GOResult;
         //Link UI
         GOResult = GameObject.Find("Menu_Background");
@@ -42,100 +39,6 @@ public class Menu_UI_FullControl : MonoBehaviour {
         //Link Menu->Character
         GOResult = GameObject.Find("Character_Menu");
         Character_Menu = GOResult;
-        finds1 = GOResult.GetComponentsInChildren<Text>();
-        foreach(Text t in finds1)
-        {
-            if (t.name == "ATK")
-            {
-                ATK = t;
-                continue;
-            }
-            if (t.name == "DEF")
-            {
-                DEF = t;
-                continue;
-            }
-            if (t.name == "STA")
-            {
-                STA = t;
-                continue;
-            }
-            if (t.name == "SPI")
-            {
-                SPI = t;
-                continue;
-            }
-            if (t.name == "AGI")
-            {
-                AGI = t;
-                continue;
-            }
-            if (t.name == "BATK")
-            {
-                BATK = t;
-                continue;
-            }
-            if (t.name == "MATK")
-            {
-                MATK = t;
-                continue;
-            }
-            if (t.name == "PDEF")
-            {
-                PDEF = t;
-                continue;
-            }
-            if (t.name == "MDEF")
-            {
-                MDEF = t;
-                continue;
-            }
-            if (t.name == "CRIR")
-            {
-                CRIR = t;
-                continue;
-            }
-            if (t.name == "C_HP")
-            {
-                C_HP = t;
-                continue;
-            }
-            if (t.name == "C_MP")
-            {
-                C_MP = t;
-                continue;
-            }
-            if (t.name == "C_EXP")
-            {
-                C_EXP = t;
-                continue;
-            }
-            if (t.name == "C_NEXP")
-            {
-                C_NEXP = t;
-                continue;
-            }
-            if (t.name == "C_Name")
-            {
-                C_Name = t;
-                continue;
-            }
-            if (t.name == "C_LV")
-            {
-                C_LV = t;
-                continue;
-            }
-
-        }
-        finds2 = GOResult.GetComponentsInChildren<Image>();
-        foreach(Image i in finds2)
-        {
-            if(i.name=="C_ICON")
-            {
-                C_ICON = i;
-                break;
-            }
-        }
         //Link Menu->Bag
         GOResult = GameObject.Find("Bag_Menu");
         Bag_Menu = GOResult;
