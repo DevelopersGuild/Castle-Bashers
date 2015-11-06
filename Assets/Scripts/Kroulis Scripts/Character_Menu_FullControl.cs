@@ -139,8 +139,8 @@ public class Character_Menu_FullControl : MonoBehaviour {
 	public void Change()
     {
         ATK.text = Player_Script.Strength.ToString();
-        //DEF.text = Player_Defense.defense.ToString();
-        //STA.text = Player_Script.Stamina.ToString();
+        DEF.text = Player_Defense.defense.ToString();
+        STA.text = Player_Script.Stamina.ToString();
         SPI.text = Player_Script.Intelligence.ToString();
         AGI.text = Player_Script.Agility.ToString();
         BATK.text = "<color=#ffffffff>" + Player_ATK.dmgAmount.ToString() + "</color>";
@@ -153,6 +153,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
         C_LV.text = Player_EXP.GetCurrentLevel().ToString();
         C_EXP.text = Player_EXP.GetExperience().ToString();
         C_NEXP.text = (Player_EXP.GetNEXP()-Player_EXP.GetExperience()).ToString();
+        C_Name.text = Player_Script.Player_Name;
 
         //xxx~yyy
 

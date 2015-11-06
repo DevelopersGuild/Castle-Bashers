@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Defense : MonoBehaviour
 {
+    public int defense = 0;
     public int PhysicalDefense = 0;
     public int MagicalDefense = 0;
     private Health health;

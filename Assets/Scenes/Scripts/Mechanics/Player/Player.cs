@@ -12,6 +12,8 @@ public class Player : MonoBehaviour
     public Skill[] Skills = new Skill[4];
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
+    public string Player_Name;
+    public int Stamina;
     public int Strength;
     public int Agility;
     public int Intelligence;
