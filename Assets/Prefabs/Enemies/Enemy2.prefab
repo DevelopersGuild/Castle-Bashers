@@ -86,6 +86,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  knockback: 4
+  flinch: 5
 --- !u!114 &11434124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -97,12 +100,29 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9fecaceea67774e46a8f171d5d674a67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  agroRange: 0
+  attackRange: 0
+  attack_CD: 0
   target: {fileID: 0}
-  targetPos: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
   moveController: {fileID: 0}
   isInvincible: 0
+  isStunned: 0
+  freeFall: 0
   invTime: 0
-  EnemyID: 2
+  stunTimer: 0
+  distance: 0
+  speed: 0
+  zDiff: 0
+  distL: 0
+  distR: 0
+  toLeft: 0
+  left: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
