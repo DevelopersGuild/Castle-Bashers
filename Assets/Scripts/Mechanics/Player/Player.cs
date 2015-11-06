@@ -9,7 +9,7 @@ public class Player : MonoBehaviour
     public Animator animator;
     public GameObject AttackCollider;
     public SkillManager skillManager;
-    public ISkill[] Skills = new ISkill[4];
+    public Skill[] Skills = new Skill[4];
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
     public int Strength;
@@ -51,15 +51,10 @@ public class Player : MonoBehaviour
 
     void Start()
     {
-        //TODO Add actual skills to the player once they are finished
-        Skills[0] = gameObject.AddComponent<ManaRegenSkill>();
-        Skills[1] = gameObject.AddComponent<ManaRegenSkill>();
-        Skills[2] = gameObject.AddComponent<ManaRegenSkill>();
-        Skills[3] = gameObject.AddComponent<ManaRegenSkill>();
-
         state = new StandingState();
         attackState = new IdleAttackState();
         animator = GetComponent<Animator>();
+        skillManager = gameObject.AddComponent<SkillManager>();
         AttackCollider.SetActive(false);
         health = GetComponent<Health>();
         controller = GetComponent<MoveController>();
@@ -379,44 +374,5 @@ public class Player : MonoBehaviour
         playerRewired = ReInput.players.GetPlayer(playerId);
         initialized = true;
     }
-
-    private void UseSkill1()
-    {
-        if(Skills[0].GetCoolDownTimer() <= 0)
-        {
-            Skills[0].UseSkill(gameObject, null, 1f);
-            Debug.Log("Use Skill 1");
-        }
-        
-    }
-
-    private void UseSkill2()
-    {
-        if (Skills[1].GetCoolDownTimer() <= 0)
-        {
-            Skills[1].UseSkill(gameObject,null, 1f);
-            Debug.Log("Use Skill 2");
-        }
-
-    }
-
-    private void UseSkill3()
-    {
-        if (Skills[2].GetCoolDownTimer() <= 0)
-        {
-            Skills[2].UseSkill(gameObject, null, 1f);
-            Debug.Log("Use Skill 3");
-        }
-    }
-
-    private void UseSkill4()
-    {
-        if (Skills[3].GetCoolDownTimer() <= 0)
-        {
-            Skills[3].UseSkill(gameObject, null, 1f);
-            Debug.Log("Use Skill 4");
-        }
-    }
-
 
 }

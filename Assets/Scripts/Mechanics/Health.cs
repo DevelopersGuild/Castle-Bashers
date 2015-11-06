@@ -32,7 +32,7 @@ public class Health : MonoBehaviour
     public void Regen()
     {
         currentHealth += (RegenAmount + player.GetStrength());
-        if (currentHealth > startingHealth)
+        if (currentHealth > startingHealth + player.GetStrength())
         {
             currentHealth = (startingHealth + player.GetStrength());
         }
@@ -40,6 +40,7 @@ public class Health : MonoBehaviour
 
     public void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
+        Debug.Log(currentHealth);
         if (player)
         {
             if (!player.GetInvincible())
@@ -115,6 +116,15 @@ public class Health : MonoBehaviour
     public float GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public void AddHealth(float healthAmount)
+    {
+        currentHealth = currentHealth + healthAmount;
+        if(currentHealth > startingHealth + player.GetStrength())
+        {
+            currentHealth = startingHealth + player.GetStrength();
+        }
     }
 
 }
