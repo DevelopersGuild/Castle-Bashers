@@ -53,32 +53,20 @@ public class CrowdControllable : MonoBehaviour {
     List<Effect> snares = new List<Effect>();
     public GameObject snareEffect;
 
-    
-	// Use this for initialization
-	void Start () {
+    public bool canPoly = true;
+    private bool isPoly = false;
+    List<Effect> polymorphs = new List<Effect>();
+    public GameObject PolyEffect;
+
+
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame
 	void Update () {
         effectPosition = gameObject.transform.position + effectOffset;
 
-        //Testing buttons
-        if (Input.GetKeyDown("n"))
-        {
-            addStun(5);
-        }
-        if (Input.GetKeyDown("m"))
-        {
-            addSnare(2);
-        }
-        if (Input.GetKeyDown("u"))
-        {
-            addSlow(0.50f, 2);
-        }
-        if (Input.GetKeyDown("k"))
-        {
-            addSilence(2);
-        }
 
         //update stuns
         for (int i = stuns.Count - 1; i >= 0; i--)

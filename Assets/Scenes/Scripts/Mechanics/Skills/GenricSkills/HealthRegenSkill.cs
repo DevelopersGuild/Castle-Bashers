@@ -1,33 +1,23 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class HealthRegenSkill : MonoBehaviour, ISkill
+public class HealthRegenSkill : Skill
 {
-    private float coolDown = 0;
-    private float timeSinceSkilledUsed = 0;
-    private int price = 0;
-    private SkillLevel skillLevel = SkillLevel.Level1;
-    public void UseSkill(GameObject caller, GameObject target = null, float coolDownTimer = 0)
+
+    protected override void Start()
     {
-        if (caller.tag == "Player")
-        {
-            caller.GetComponent<Health>().Regen();
-        }
+        base.Start();
+        base.SetBaseValues(20, 1000, 10, "Health Regen");
     }
 
-    public float GetCoolDownTimer()
+    public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
     {
-        //TODO Temporary value change 
-        return coolDown;
+        base.UseSkill(caller, target, optionalParameters);
+        AddHealth(caller);
     }
-    public int GetPrice()
+
+    private void AddHealth(GameObject caller)
     {
-        //TODO Temporary value change 
-        return price;
-    }
-    public SkillLevel GetSkillLevel()
-    {
-        //TODO Temporary value change 
-        return skillLevel;
+        caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetStartingHealth() / 4);
     }
 }

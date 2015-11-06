@@ -20,7 +20,7 @@ public class DealDamageToEnemy : MonoBehaviour
             Enemy enem = enemObj.GetComponent<Enemy>();
             Health hp = enemObj.GetComponent<Health>();
             //Take damage if the player isnt already currently invincible
-            if (!enem.getInvincible())
+            if (!enem.GetInvincible())
             {
                 //Deal damage, knockback
                 //get amt (1), dmgAmount(1) from Enemy/Hazard
@@ -59,7 +59,7 @@ public class DealDamageToEnemy : MonoBehaviour
                 Enemy enem = enemObj.GetComponent<Enemy>();
                 Health hp = enemObj.GetComponent<Health>();
                 //Take damage if the player isnt already currently invincible
-                if (!enem.getInvincible())
+                if (!enem.GetInvincible())
                 {
                     //Deal damage, knockback
                     //get amt (1), dmgAmount(1) from Enemy/Hazard

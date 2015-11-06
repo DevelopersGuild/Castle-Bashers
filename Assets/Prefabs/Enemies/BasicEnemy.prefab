@@ -12,9 +12,8 @@ GameObject:
   - 65: {fileID: 6545914}
   - 114: {fileID: 11416722}
   - 114: {fileID: 11437056}
-  - 114: {fileID: 11461634}
   - 54: {fileID: 5481220}
-  - 114: {fileID: 11439900}
+  - 114: {fileID: 11461634}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -116,42 +115,9 @@ MonoBehaviour:
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
+  sprRend: {fileID: 0}
   classification: 0
---- !u!114 &11439900
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fecaceea67774e46a8f171d5d674a67, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agroRange: 0
-  attackRange: 0
-  attack_CD: 0
-  target: {fileID: 0}
-  targetPos: {x: 0, y: 0, z: 0}
-  dir: {x: 0, y: 0, z: 0}
-  gravity: {x: 0, y: 0, z: 0}
-  xhalf: {x: 0, y: 0, z: 0}
-  half: {x: 0, y: 0, z: 0}
-  moveController: {fileID: 0}
-  isInvincible: 0
-  isStunned: 0
-  freeFall: 0
-  invTime: 0
-  stunTimer: 0
-  distance: 0
-  speed: 0
-  zDiff: 0
-  distL: 0
-  distR: 0
-  toLeft: 0
-  left: {x: 0, y: 0, z: 0}
-  right: {x: 0, y: 0, z: 0}
+  attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
 --- !u!114 &11461634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -163,7 +129,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 0
+  startingHealth: 3
   RegenAmount: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!212 &21231798

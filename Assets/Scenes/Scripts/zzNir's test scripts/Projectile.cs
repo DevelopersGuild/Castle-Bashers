@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Projectile : Skill
+public class Projectile : SkillOld
 {
      public float projectileSpeed;
      public float damageAmount;

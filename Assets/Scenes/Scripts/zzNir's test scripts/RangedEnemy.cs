@@ -6,7 +6,6 @@ public class RangedEnemy : Enemy
 {
     public Projectile shotObj;
     private Projectile shot;
-    public Type classification;
 
 
     // Use this for initialization
@@ -68,11 +67,10 @@ public class RangedEnemy : Enemy
             else
                 isStunned = false;
 
-            if (invTime <= 0)
-                isInvincible = false;
+         
         }
         attack_CD += Time.deltaTime;
-        invTime -= Time.deltaTime;
+       
     }
 
     private void Attack()
