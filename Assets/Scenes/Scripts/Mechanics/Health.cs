@@ -11,11 +11,7 @@ public class Health : MonoBehaviour
     private bool canKnock = true;
     private MoveController moveController;
     public Vector3 damageTextOffset;
-<<<<<<< HEAD
-=======
-    
-    //Create hp bars for players and bosses
->>>>>>> 745840507f66fe00ca452fa1318c17e17b3f14d6
+
 
 
     // Use this for initialization
