@@ -8,9 +8,7 @@ public class Enemy : MonoBehaviour
     public float agroRange;
     public float attackRange;
     public float attack_CD;
-
-
-
+    
     [HideInInspector]
     public GameObject target;
     [HideInInspector]
@@ -32,9 +30,12 @@ public class Enemy : MonoBehaviour
     public bool toLeft;
     [HideInInspector]
     public Vector3 left, right;
+    [HideInInspector]
+    public SpriteRenderer sprRend;
 
-
+    public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
+
 
     // Use this for initialization
     public void Start()
@@ -43,10 +44,12 @@ public class Enemy : MonoBehaviour
         target = FindObjectOfType<Player>().gameObject;
         targetPos = target.transform.position;
         moveController = GetComponent<MoveController>();
+        sprRend = GetComponent<SpriteRenderer>();
         isInvincible = false;
         invTime = 0;
         stunTimer = 0;
         speed = 1;
+      
 
         distL = distR = 50;
         toLeft = true;
@@ -79,6 +82,12 @@ public class Enemy : MonoBehaviour
             freeFall = false;
         }
 
+        if (invTime <= 0)
+        {
+            isInvincible = false;
+        }
+
+        invTime -= Time.deltaTime;
     }
 
     public GameObject GetTarget()
@@ -91,7 +100,7 @@ public class Enemy : MonoBehaviour
         target = tar;
     }
 
-    public bool getInvincible()
+    public bool GetInvincible()
     {
         return isInvincible;
     }
@@ -163,6 +172,8 @@ public class Enemy : MonoBehaviour
             }
         }
     }
+
+    
 
 }
 

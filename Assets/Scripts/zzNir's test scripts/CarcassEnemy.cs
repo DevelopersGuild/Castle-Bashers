@@ -2,18 +2,21 @@
 using System.Collections;
 using System;
 
-public class TestEnemy : Enemy
+public class CarcassEnemy : Enemy
 {
     public GameObject attackCollider;
     private GameObject attCol;
+    public float TimeToLive;
+    public GameObject Explosion;
+
+    private Vector3 offset = new Vector3(0, -1.1f, 0);
 
     // Use this for initialization
     void Start()
     {
         base.Start();
-        speed = 4;
-        attack_CD = 2;
-        
+        speed = 3;
+
     }
 
     // Update is called once per frame
@@ -59,12 +62,20 @@ public class TestEnemy : Enemy
 
         }
 
+        if(TimeToLive <= 0)
+        {
+            //explosion animation
+            Instantiate(Explosion, transform.position + offset, Explosion.transform.rotation);
+            Destroy(gameObject);
+        }
+
         attack_CD += Time.deltaTime;
+        TimeToLive -= Time.deltaTime;
     }
 
     private void Attack()
     {
-        
+
         bool facing = distL <= distR;
         attack_CD = 0;
         distL = (transform.position - targetPos - left).magnitude;

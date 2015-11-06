@@ -11,7 +11,6 @@ public class Health : MonoBehaviour
     private bool canKnock = true;
     private MoveController moveController;
     public Vector3 damageTextOffset;
-    //Create hp bars for players and bosses
 
 
     // Use this for initialization
@@ -37,7 +36,7 @@ public class Health : MonoBehaviour
         }
     }
 
-    public void takeDamage(float dmg, float knockback = 4, float flinch = 5)
+    public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
         if (player)
         {
@@ -94,7 +93,7 @@ public class Health : MonoBehaviour
         Death();
     }
 
-    public void Death()
+    public virtual void Death()
     {
         //death animation
         //end level

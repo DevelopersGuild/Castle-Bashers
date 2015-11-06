@@ -1,44 +1,44 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &110718
+--- !u!1 &135014
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 456066}
-  - 212: {fileID: 21231798}
-  - 65: {fileID: 6545914}
-  - 114: {fileID: 11416722}
-  - 114: {fileID: 11437056}
-  - 54: {fileID: 5481220}
-  - 114: {fileID: 11461634}
+  - 4: {fileID: 405704}
+  - 212: {fileID: 21261418}
+  - 65: {fileID: 6523976}
+  - 114: {fileID: 11492072}
+  - 54: {fileID: 5468934}
+  - 114: {fileID: 11486974}
+  - 114: {fileID: 11450068}
   m_Layer: 0
-  m_Name: BasicEnemy
+  m_Name: Carcass
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &456066
+--- !u!4 &405704
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
+  m_GameObject: {fileID: 135014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.57074165, y: 5.31021309, z: 6.46999979}
+  m_LocalPosition: {x: -23.5637283, y: .794429779, z: -5.2580018}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!54 &5481220
+--- !u!54 &5468934
 Rigidbody:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
+  m_GameObject: {fileID: 135014}
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
@@ -48,24 +48,77 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
---- !u!65 &6545914
+--- !u!65 &6523976
 BoxCollider:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
+  m_GameObject: {fileID: 135014}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 3, z: .5}
+  m_Size: {x: 2.4000001, y: 2.29999995, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11416722
+--- !u!114 &11450068
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
+  m_GameObject: {fileID: 135014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b69f059926e6329409277ad85ebd0aea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agroRange: 1000
+  attackRange: 1
+  attack_CD: 3
+  target: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
+  moveController: {fileID: 0}
+  isInvincible: 0
+  isStunned: 0
+  freeFall: 0
+  invTime: 0
+  stunTimer: 0
+  distance: 0
+  speed: 0
+  zDiff: 0
+  distL: 0
+  distR: 0
+  toLeft: 0
+  left: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
+  sprRend: {fileID: 0}
+  classification: 0
+  attackCollider: {fileID: 167148, guid: c102b43560d112f40b7b1b4d75ead218, type: 2}
+  TimeToLive: 5
+  Explosion: {fileID: 186334, guid: 673c232db88f5294c8f3d7509605c4ba, type: 2}
+--- !u!114 &11486974
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  startingHealth: 3
+  RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &11492072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135014}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 7b0f8416ad849e64486fe9ba9c5500a4, type: 3}
@@ -81,63 +134,12 @@ MonoBehaviour:
   flinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
---- !u!114 &11437056
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9f8e38db5d1ebd241a1d1b09ca8356fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  agroRange: 20
-  attackRange: 1
-  attack_CD: 2
-  target: {fileID: 0}
-  targetPos: {x: 0, y: 0, z: 0}
-  dir: {x: 0, y: 0, z: 0}
-  gravity: {x: 0, y: 0, z: 0}
-  xhalf: {x: 0, y: 0, z: 0}
-  half: {x: 0, y: 0, z: 0}
-  moveController: {fileID: 0}
-  isInvincible: 0
-  isStunned: 0
-  freeFall: 0
-  invTime: 0
-  stunTimer: 0
-  distance: 0
-  speed: 3
-  zDiff: 0
-  distL: 0
-  distR: 0
-  toLeft: 0
-  left: {x: 0, y: 0, z: 0}
-  right: {x: 0, y: 0, z: 0}
-  sprRend: {fileID: 0}
-  classification: 0
-  attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
---- !u!114 &11461634
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  startingHealth: 3
-  RegenAmount: 0
-  damageTextOffset: {x: 0, y: 0, z: 0}
---- !u!212 &21231798
+--- !u!212 &21261418
 SpriteRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
+  m_GameObject: {fileID: 135014}
   m_Enabled: 1
   m_CastShadows: 0
   m_ReceiveShadows: 0
@@ -156,7 +158,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300502, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -166,6 +168,11 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300502, guid: 97e4e29e536724a48832d0557cdbd7a6,
+        type: 3}
+    - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
@@ -174,35 +181,30 @@ Prefab:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_Sprite
-      value: 
-      objectReference: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6,
-        type: 3}
-    - target: {fileID: 0}
-      propertyPath: startingHealth
-      value: 3
+      propertyPath: agroRange
+      value: 1000
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: collisionMask.m_Bits
-      value: 256
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
-      propertyPath: m_IsKinematic
+      propertyPath: attackRange
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_Size.z
-      value: .5
-      objectReference: {fileID: 0}
-    - target: {fileID: 0}
       propertyPath: attack_CD
-      value: 2
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: StartingHealth
-      value: 3
+      propertyPath: attackCollider
+      value: 
+      objectReference: {fileID: 167148, guid: c102b43560d112f40b7b1b4d75ead218, type: 2}
+    - target: {fileID: 0}
+      propertyPath: Explosion
+      value: 
+      objectReference: {fileID: 186334, guid: 673c232db88f5294c8f3d7509605c4ba, type: 2}
+    - target: {fileID: 0}
+      propertyPath: TimeToLive
+      value: 5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 110718}
+  m_RootGameObject: {fileID: 135014}
   m_IsPrefabParent: 1

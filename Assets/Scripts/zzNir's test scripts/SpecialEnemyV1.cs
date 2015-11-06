@@ -6,7 +6,6 @@ public class SpecialEnemyV1 : Enemy
 {
     public GameObject attackCollider;
     private GameObject attCol;
-    public Type classification;
     private float dash_CD, dashRange, dashTime;
     private bool isDashing;
 
@@ -71,12 +70,10 @@ public class SpecialEnemyV1 : Enemy
             else
                 isStunned = false;
 
-            if (invTime <= 0)
-                isInvincible = false;
         }
         attack_CD += Time.deltaTime;
         dash_CD += Time.deltaTime;
-        invTime -= Time.deltaTime;
+
     }
 
     private void Attack()

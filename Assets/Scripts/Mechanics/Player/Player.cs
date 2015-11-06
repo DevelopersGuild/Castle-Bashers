@@ -27,6 +27,8 @@ public class Player : MonoBehaviour
     private float accelerationTimeGrounded = .1f;
     private bool isNotStunned = true;
     private bool isInvincible = false;
+    private bool isPoly = false;
+    private float polyTime = 0;
     private IPlayerState state;
     private IAttack attackState;
 
@@ -175,6 +177,12 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void setPoly(float val, float time)
+    {
+        crowdControllable.addSlow(val, time);
+        polyTime = time;
+        //do not let state attack for polyTime time, ask joseph how to do that while still keeping it neat
+    }
 
     //Reset hitReset when hit
     public void SetInvTime(float time)
@@ -263,7 +271,6 @@ public class Player : MonoBehaviour
 
     public bool GetKnockable()
     {
-        Debug.Log(knockBackCounter + " and " + knockBackResistance);
         if (knockBackCounter >= knockBackResistance)
         {
             return true;
@@ -289,7 +296,6 @@ public class Player : MonoBehaviour
 
     public bool GetFlinchable()
     {
-        Debug.Log(flinchCounter + " vs " + flinchResistance);
         if (flinchCounter >= flinchResistance)
         {
             return true;
