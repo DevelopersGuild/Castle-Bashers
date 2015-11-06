@@ -4,8 +4,8 @@ using System.Collections;
 public class Job : MonoBehaviour
 {
 
-     public Skill skill1, skill2, skill3, skill4, skill5;
-     private Skill s1, s2, s3, s4, s5;
+     public SkillOld skill1, skill2, skill3, skill4, skill5;
+     private SkillOld s1, s2, s3, s4, s5;
      private float s1_CD, s2_CD, s3_CD, s4_CD, s5_CD;
      private float facing;
      private MoveController moveController;
@@ -30,7 +30,7 @@ public class Job : MonoBehaviour
                if (s1_CD >= 3)
                {
                     facing = moveController.GetFacing();
-                    s1 = Instantiate(skill1, transform.position, transform.rotation) as Skill;
+                    s1 = Instantiate(skill1, transform.position, transform.rotation) as SkillOld;
                     s1.Init(facing);
                     s1_CD = 0;
                }
@@ -42,7 +42,7 @@ public class Job : MonoBehaviour
                if (s2_CD >= 3)
                {
                     facing = moveController.GetFacing();
-                    s2 = Instantiate(skill2, transform.position, transform.rotation) as Skill;
+                    s2 = Instantiate(skill2, transform.position, transform.rotation) as SkillOld;
                     s2.Init(facing);
                     s2_CD = 0;
                }
@@ -52,7 +52,7 @@ public class Job : MonoBehaviour
                if (s3_CD >= 5)
                {
                     facing = moveController.GetFacing();
-                    s3 = Instantiate(skill3, transform.position, transform.rotation) as Skill;
+                    s3 = Instantiate(skill3, transform.position, transform.rotation) as SkillOld;
                     s3.Init(facing);
                     s3_CD = 0;
                }

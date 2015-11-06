@@ -2,7 +2,7 @@
 using System.Collections;
 using System;
 
-public class TestEnemy : Enemy
+public class MeleeEnemy : Enemy
 {
     public GameObject attackCollider;
     private GameObject attCol;

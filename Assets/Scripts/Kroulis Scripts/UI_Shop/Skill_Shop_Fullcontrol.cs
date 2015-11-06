@@ -7,6 +7,7 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
     //APIs
     public int shop_class_id = 0;
     public int[] store_skill_id;
+    public Sprite null_image;
     //only Inscript
     struct shop_skill_control
     {
@@ -228,7 +229,7 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
         if(max_skill_id+1<=14)
             for (int i = max_skill_id + 1; i <= 14;i++)
             {
-                //shop_skill[i].skillicon.sprite=
+                shop_skill[i].skillicon.sprite = null_image;
                 shop_skill[i].skillname.text = "";
                 shop_skill[i].have = false;
                 shop_skill[i].id = 0;

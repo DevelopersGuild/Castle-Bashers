@@ -27,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 137518}
   m_LocalRotation: {x: .151326999, y: 0, z: 0, w: .988483846}
-  m_LocalPosition: {x: 0, y: 5.51000023, z: -9.28999996}
+  m_LocalPosition: {x: 0, y: 8.89999962, z: -8.19999981}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,11 +94,11 @@ MonoBehaviour:
   gobjCameraTarget: {fileID: 0}
   v3DefaultCameraRotationVector: {x: 0, y: 0, z: 0}
   v3DefaultCameraPositionVector: {x: 0, y: 0, z: 0}
-  flVerticalOffset: 3
+  flVerticalOffset: 3.80999994
   flDepthOffset: -10
-  flXAxisTolerance: 0
-  flYAxisTolerance: 0
-  flYChangeSpeed: 0
+  flXAxisTolerance: .600000024
+  flYAxisTolerance: 3.3599999
+  flYChangeSpeed: .100000001
   camerShakeIsOn: 0
 --- !u!124 &12495810
 Behaviour:
