@@ -3,7 +3,7 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-
+    public int ExperinceAmount = 0;
     public float startingHealth;
     public float RegenAmount;
     private float currentHealth;
@@ -11,6 +11,7 @@ public class Health : MonoBehaviour
     private bool canKnock = true;
     private MoveController moveController;
     public Vector3 damageTextOffset;
+    
     //Create hp bars for players and bosses
 
 
@@ -36,7 +37,7 @@ public class Health : MonoBehaviour
     public void Regen()
     {
         currentHealth += (RegenAmount + player.GetStrength());
-        if (currentHealth > startingHealth)
+        if (currentHealth > startingHealth + player.GetStrength())
         {
             currentHealth = (startingHealth + player.GetStrength());
         }
@@ -44,6 +45,7 @@ public class Health : MonoBehaviour
 
     public void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
+        Debug.Log(currentHealth);
         if (player)
         {
             if (!player.GetInvincible())
@@ -92,6 +94,11 @@ public class Health : MonoBehaviour
 
             if (currentHealth <= 0)
             {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                foreach(GameObject character in players)
+                {
+                    character.GetComponent<Experience>().AddExperince(ExperinceAmount);
+                }
                 Death();
             }
         }
@@ -118,6 +125,15 @@ public class Health : MonoBehaviour
     public float GetCurrentHealth()
     {
         return currentHealth;
+    }
+
+    public void AddHealth(float healthAmount)
+    {
+        currentHealth = currentHealth + healthAmount;
+        if(currentHealth > startingHealth + player.GetStrength())
+        {
+            currentHealth = startingHealth + player.GetStrength();
+        }
     }
 
 }

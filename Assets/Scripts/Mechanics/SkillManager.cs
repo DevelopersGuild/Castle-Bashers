@@ -4,16 +4,17 @@ using System.Collections.Generic;
 
 public class SkillManager : MonoBehaviour {
 
-    public List<ISkill> unlockedSkills;
-    public ISkill[] currentSkillLoadout;
+    public List<Skill> unlockedSkills;
+    public Skill[] currentSkillLoadout;
 
 	// Use this for initialization
 	void Start () {
-        unlockedSkills = new List<ISkill>();
+        unlockedSkills = new List<Skill>();
+        unlockedSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
 	}
 
 
-    public void unlockSkill(ISkill newSkill)
+    public void unlockSkill(Skill newSkill)
     {
         unlockedSkills.Add(newSkill);
     }
@@ -27,7 +28,7 @@ public class SkillManager : MonoBehaviour {
     {
         if (unlockedSkills[0].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[0].UseSkill(gameObject, null, 1f);
+            unlockedSkills[0].UseSkill(gameObject, null);
             Debug.Log("Use Skill 1");
         }
 
@@ -37,7 +38,7 @@ public class SkillManager : MonoBehaviour {
     {
         if (unlockedSkills[1].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[1].UseSkill(gameObject, null, 1f);
+            unlockedSkills[1].UseSkill(gameObject, null);
             Debug.Log("Use Skill 2");
         }
 
@@ -47,7 +48,7 @@ public class SkillManager : MonoBehaviour {
     {
         if (unlockedSkills[2].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[2].UseSkill(gameObject, null, 1f);
+            unlockedSkills[2].UseSkill(gameObject, null);
             Debug.Log("Use Skill 3");
         }
     }
@@ -56,7 +57,7 @@ public class SkillManager : MonoBehaviour {
     {
         if (unlockedSkills[3].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[3].UseSkill(gameObject, null, 1f);
+            unlockedSkills[3].UseSkill(gameObject, null);
             Debug.Log("Use Skill 4");
         }
     }
