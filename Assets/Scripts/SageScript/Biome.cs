@@ -7,6 +7,7 @@ public class Biome : MonoBehaviour {
    public enum BiomeName {SnowyForest, Desert, Fort, Forest}
 
     public static string[,] EnemyList = new string[20, 30];
+    public static string[,] Backgrounds = new string[20, 3];
 
     int SnowyForest = 0;
     int Desert = 1;
@@ -23,6 +24,8 @@ public class Biome : MonoBehaviour {
         EnemyList[Desert, 1] = "Assets/Prefabs/Enemies/RangedEnemy.prefab";
         EnemyList[Fort, 0] = "Assets/Prefabs/Enemies/BasicEnemy.prefab";
         EnemyList[Fort, 1] = "Assets/Prefabs/Enemies/RangedEnemy.prefab";
+
+        Backgrounds[SnowyForest, 0] = "Assets/Prefabs/Maps/SnowForestBackgroundContainer.prefab";
 
     }
 	
