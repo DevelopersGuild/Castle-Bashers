@@ -63,7 +63,6 @@ public class Main_UI_FULLControl : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        DontDestroyOnLoad(this.gameObject);
         Text[] finds1;
         Image[] finds2;
         GameObject GOResult;
@@ -380,11 +379,13 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 }
                 if (Input.GetKeyDown(KeyCode.P))//Open Character
                 {
+                    Main_Process.GetComponent<Main_Process>().Menu_UI.GetComponentInChildren<Character_Menu_FullControl>().Change();
                     Main_Process.GetComponent<Main_Process>().Menu_id = 1;
                     Main_Process.GetComponent<Main_Process>().Menu_Open = true;
                 }
                 if (Input.GetKeyDown(KeyCode.K))//Open Skill
                 {
+                    Main_Process.GetComponent<Main_Process>().Menu_UI.GetComponentInChildren<Menu_Ability_Fullcontrol>().Change();
                     Main_Process.GetComponent<Main_Process>().Menu_id = 3;
                     Main_Process.GetComponent<Main_Process>().Menu_Open = true;
                 }

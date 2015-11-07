@@ -17,6 +17,10 @@ public class Main_Process : MonoBehaviour {
     public bool Killing_boss;
     public bool Team_Mode;
     public bool esckey_up; // Avoid key conflict
+    GameObject Player_GO;
+    Health Player_Health;
+    Mana Player_Mana;
+    Experience Player_EXP;
     //dlls
     [DllImport("Char_Proc")]
     private static extern bool Is_Character_Created();
@@ -27,6 +31,10 @@ public class Main_Process : MonoBehaviour {
         Menu_UI.GetComponent<Menu_UI_FullControl>().Main_Process = this.gameObject;
         Other_Windows.GetComponent<Other_Windows_FullControl>().Main_Process = this.gameObject;
         Debug.Log(Is_Character_Created());
+        Player_GO = GameObject.Find("Player");
+        Player_Health = Player_GO.GetComponent<Health>();
+        Player_Mana = Player_GO.GetComponent<Mana>();
+        Player_EXP = Player_GO.GetComponent<Experience>();
 	}
 
     // Update is called once per frame
@@ -48,6 +56,24 @@ public class Main_Process : MonoBehaviour {
             Menu_UI.GetComponent<Menu_UI_FullControl>().Menu_id = Menu_id;
             Main_UI.SetActive(true);
             Menu_UI.SetActive(true);
+            if(Menu_Open==false)
+            {
+                if(One_player_per_client==true)
+                {
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp = (int)Player_Health.GetStartingHealth();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().hp = (int)Player_Health.GetCurrentHealth();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp = Player_Mana.MaxMana;
+                    Main_UI.GetComponent<Main_UI_FULLControl>().mp = (int)Player_Mana.GetMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().exp = Player_EXP.GetExperience();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp = Player_EXP.GetNEXP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().lv = Player_EXP.GetCurrentLevel();
+                    //Main_UI.GetComponent<Main_UI_FULLControl>().cid
+                }
+                else
+                {
+
+                }
+            }
         }
         
         
