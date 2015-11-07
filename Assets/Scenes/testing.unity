@@ -333,8 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Min_Area: 2
   Max_Area: 3
-  Min_Enemy: 1
-  Max_Enemy: 2
+  Min_Enemy: 0
+  Max_Enemy: 0
   Total_Objects: 6
   Boss: {fileID: 0}
   ActiveBiomeName: 0

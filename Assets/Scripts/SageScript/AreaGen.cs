@@ -31,10 +31,12 @@ public class AreaGen : MonoBehaviour
         GameObject temp;
 
         GameObject background = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName, 0], typeof(GameObject));
+
+
+
         
 
-
-        //        GameObject test = Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Enemies/BasicEnemy.prefab", typeof(GameObject))) as GameObject;
+        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Left Limit.prefab", typeof(GameObject)), new Vector3(-19,0,0), transform.rotation);
 
         for (int i = 0; i < AreaNumber; i++)
         {
@@ -122,7 +124,7 @@ public class AreaGen : MonoBehaviour
 
         temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Barrel.prefab", typeof(GameObject)));
 
-        for (int i=0; i< Total_Objects+1; i++)
+        for (int i=0; i< Total_Objects; i++)
             {
             int[] arrayX = new int[Total_Objects];
             int[] arrayZ = new int[Total_Objects];
@@ -130,7 +132,7 @@ public class AreaGen : MonoBehaviour
             int testtemp;
             for (int m = 0; m < Total_Objects; m++) //This loop gets us our X coordinates
             {
-                testtemp = rnd.Next(10, t_length); //our X value
+                testtemp = rnd.Next(10, t_length-20); //our X value
                 for (int n = 0; n < Total_Objects; n++)//dummy test
                 {
                     if (arrayX[n] == testtemp)
@@ -162,9 +164,11 @@ public class AreaGen : MonoBehaviour
             }
 
             if (temp!=null)
-            Instantiate(temp, new Vector3((arrayX[i] + (40 * i)), 2.5f, arrayZ[i]), transform.rotation);
+            Instantiate(temp, new Vector3((arrayX[i]), 2.5f, arrayZ[i]), transform.rotation);
         }
 
+        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((t_length)-13, AreaYCoord, AreaZCoord), transform.rotation);
+        Debug.Log(t_length);
     }
 
     // Update is called once per frame
