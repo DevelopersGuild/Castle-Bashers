@@ -226,9 +226,20 @@ public class Player : MonoBehaviour
         }
     }
 
+
     public int GetStrength()
     {
         return Strength;
+    }
+
+    public void SetStamina(int value)
+    {
+        Stamina = value;
+    }
+
+    public int GetStamina()
+    {
+        return Stamina;
     }
 
     public void SetAgility(int agility)

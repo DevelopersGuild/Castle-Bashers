@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System;
 
 public class Experience : MonoBehaviour
 {
@@ -20,6 +21,12 @@ public class Experience : MonoBehaviour
         return currentExperince;
     }
 
+    public void SetExperience(int EXP)
+    {
+        currentExperince = EXP;
+        LevelUp();
+    }
+
     public int GetNEXP()
     {
         return experinceUntilNextLevel;
@@ -28,6 +35,12 @@ public class Experience : MonoBehaviour
     public int GetCurrentLevel()
     {
         return currentLevel;
+    }
+
+    public void SetLevel(int lv)
+    {
+        currentLevel = lv;
+        experinceUntilNextLevel = (int)(Math.Pow(10, (int)(lv / 10) + 1) * Math.Pow(1.2 + 0.001 * (lv % 10), lv % 10));
     }
 
     public void AddExperince(int amountToAdd)
@@ -40,9 +53,10 @@ public class Experience : MonoBehaviour
     {
         if(currentExperince >= experinceUntilNextLevel)
         {
-            experinceUntilNextLevel = currentExperince * 2;
-            currentLevel++;
-            ExperincePoints = currentLevel * ExperincePointsPerLevel;
+            //experinceUntilNextLevel = currentExperince * 2;
+            ++currentLevel;
+            experinceUntilNextLevel = (int)(Math.Pow(10, (int)(currentLevel / 10) + 1) * Math.Pow(1.2 + 0.001 * (currentLevel % 10), currentLevel % 10));
+            //ExperincePoints = currentLevel * ExperincePointsPerLevel;
         }
     }
     

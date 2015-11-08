@@ -3,7 +3,7 @@ using System.Collections;
 
 public class DealDamageToEnemy : MonoBehaviour
 {
-
+    public int atk;
     public float dmgAmount = 1;
     public float invTime = 0.1f;
     //If we make colliders appear on attacks, create OnCollisionEnter and OnTriggerEnter collisions
