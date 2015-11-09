@@ -363,7 +363,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
             {
                 BossMode.SetActive(true);
                 Boss_HP.fillAmount = (float)(boss.hp * 1.00 / boss.maxhp);
-                Boss_Icon.sprite = Boss_HeadIcon_Script.icon[boss.headiconid];
+                //Boss_Icon.sprite = Boss_HeadIcon_Script.icon[boss.headiconid];
             }
             else
             {
@@ -399,6 +399,12 @@ public class Main_UI_FULLControl : MonoBehaviour {
 
         }
 
+    }
+
+
+    public void Update_Boss_Info()
+    {
+        Boss_Icon.sprite=Main_Process.GetComponentInChildren<Boss_HeadIcon>().icon[boss.id];
     }
 
 }
