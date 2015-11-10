@@ -8,6 +8,12 @@ public class Boss : Enemy
     private float blinkTime;
     private Color origColor, blinkColor;
 
+    [HideInInspector]
+    public Player[] players;
+    [HideInInspector]
+    public float[] threatLevel, damageDealt;
+
+
     // Use this for initialization
     public void Start()
     {
@@ -82,6 +88,11 @@ public class Boss : Enemy
     public void TurnOnBlink()
     {
         blink = true;
+    }
+
+    public void addDamage(int id, float damage)
+    {
+        damageDealt[id] += damage;
     }
 
 }

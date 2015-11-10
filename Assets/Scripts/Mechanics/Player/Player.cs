@@ -50,6 +50,9 @@ public class Player : MonoBehaviour
     private bool initialized;
     private Rewired.Player playerRewired;
 
+    private Skill[] skill = new Skill[4];
+    private float managerID;
+
     /*
     void Awake()
     {
@@ -85,6 +88,11 @@ public class Player : MonoBehaviour
         flinchCounter = 0;
         flinchReset = 0;
         DontDestroyOnLoad(gameObject);
+
+        skill[0] = null;
+        skill[1] = null;
+        skill[2] = null;
+        skill[3] = null;
     }
 
     void Update()
@@ -188,6 +196,8 @@ public class Player : MonoBehaviour
         crowdControllable.addSlow(val, time);
         polyTime = time;
         //do not let state attack for polyTime time, ask joseph how to do that while still keeping it neat
+        //can attack, but attack does 0 damage and no knockback or flinch.
+        //Animations changed
     }
 
     //Reset hitReset when hit
@@ -389,6 +399,52 @@ public class Player : MonoBehaviour
         // Get the Rewired Player object for this player.
         playerRewired = ReInput.players.GetPlayer(playerId);
         initialized = true;
+    }
+
+    public void addSkill(Skill s, int pos)
+    {
+        skill[pos] = s;
+    }
+
+    public void Reset()
+    {
+        for(int i = 0; i < skill.Length; i++)
+        {
+            skill[i] = null;
+        }
+        skillManager.Reset();
+    }
+
+    public float getThreatLevel()
+    {
+        //example - 50 str 10 int 15 agility
+        //physTotal = 24, magTotal = 3;
+        //threat level = 16.4
+
+        //example - 100 str 05 int 05 agility (cause of base stats)
+        //physTotal = 50, magTotal = 0;
+        //threat level = 45.45
+
+        float statTotal = Strength + Intelligence + Agility;
+        //float physTotal = 0;
+        //float magTotal = 0;
+        //foreach(Skill sk in skill) {
+        //magTotal += sk.getMagThreatLevel();
+        //physTotal += sk.getPhysThreatLevel();
+        //}
+        //
+        //(physTotal * Strength + Intelligence * magTotal) / statTotal
+        return 0;
+    }
+
+    public void setManagerID(float f)
+    {
+        managerID = f;
+    }
+
+    public float getManagerID()
+    {
+        return managerID;
     }
 
 }

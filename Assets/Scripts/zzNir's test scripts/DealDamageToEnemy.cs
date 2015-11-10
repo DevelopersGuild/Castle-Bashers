@@ -27,6 +27,11 @@ public class DealDamageToEnemy : MonoBehaviour
                 //hp.findKnockback(other, transform.position, 1, 1, knockOverride);
                 hp.takeDamage(dmgAmount);
                 enem.setInvTime(invTime);
+                if(enemObj.GetComponent<Boss>())
+                {
+                    Boss b = enemObj.GetComponent<Boss>();
+                    b.addDamage((int)GetComponent<ID>().getID(), dmgAmount);
+                }
             }
 
             if (GetComponent<Projectile>())

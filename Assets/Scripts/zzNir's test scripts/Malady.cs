@@ -36,6 +36,8 @@ public class Malady : Boss
     public GameObject ClawSkill, SwarmObj, SummonSkill, PolySkill;
     private ISkill sClaw;
 
+  
+
     // Use this for initialization
     void Start()
     {
@@ -64,6 +66,15 @@ public class Malady : Boss
         center = CenterObj.transform.position;
 
         moveController.canKnockBack(false, false);
+
+        players = FindObjectOfType<PlayerManager>().getPlayers();
+        threatLevel = new float[players.Length];
+        damageDealt = new float[players.Length];
+        for(int i = 0; i < players.Length; i++)
+        {
+            players[i].Reset();
+            threatLevel[i] = players[i].getThreatLevel();
+        }
     }
 
     // Update is called once per frame
@@ -126,11 +137,14 @@ public class Malady : Boss
         if (hands_CD > 2.5f)
         {
             hands_CD = 0;
-            Summon();
         }
 
         if (animationDelay > 2f)
         {
+            for (int i = 0; i < players.Length; i++)
+            {
+                threatLevel[i] = players[i].getThreatLevel();
+            }
             animationDelay = 0;
             if (claw_CD >= clawLim)
             {

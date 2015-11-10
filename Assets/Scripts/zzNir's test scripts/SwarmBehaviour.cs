@@ -26,18 +26,18 @@ public class SwarmBehaviour : MonoBehaviour {
 	void Update () {
         if(transform.position.y <= 2f)
         {
-            transform.position = new Vector3(transform.position.x, 2f, transform.position.z);
+            //transform.position = new Vector3(transform.position.x, 2f, transform.position.z);
         }
 	    if(Duration > 0)
         {
             direction = player.transform.position - transform.position;
             rigBod.velocity += direction.normalized * 0.4f;
             if (Mathf.Abs(rigBod.velocity.x) > Mathf.Abs(max.x))
-                rigBod.velocity = new Vector3(max.x, rigBod.velocity.y, rigBod.velocity.z);
+                rigBod.velocity = new Vector3(max.x * Mathf.Sign(rigBod.velocity.x), rigBod.velocity.y, rigBod.velocity.z);
             if (Mathf.Abs(rigBod.velocity.y) > Mathf.Abs(max.y))
-                rigBod.velocity = new Vector3(rigBod.velocity.x, max.y, rigBod.velocity.z);
+                rigBod.velocity = new Vector3(rigBod.velocity.x, max.y * Mathf.Sign(rigBod.velocity.y), rigBod.velocity.z);
             if (Mathf.Abs(rigBod.velocity.z) > Mathf.Abs(max.z))
-                rigBod.velocity = new Vector3(rigBod.velocity.x, rigBod.velocity.y, max.z);
+                rigBod.velocity = new Vector3(rigBod.velocity.x, rigBod.velocity.y, max.z * Mathf.Sign(rigBod.velocity.z));
 
             currentPos = transform.position;
         }
