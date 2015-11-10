@@ -16,6 +16,8 @@ public class Defense : MonoBehaviour
 
     public void CheckPhysicalDefense(float damage, float knockback = 4, float flinch = 5)
     {
+        if (Check_Block_Success())
+            damage = damage * 0.35f;
         damage = damage - PhysicalDefense;
         if (damage > 0)
         {
@@ -25,6 +27,8 @@ public class Defense : MonoBehaviour
 
     public void CheckMagicalDefense(float damage, float knockback = 4, float flinch = 5)
     {
+        if (Check_Block_Success())
+            damage = damage * 0.5f;
         damage = damage - MagicalDefense;
         if(damage > 0)
         {
@@ -69,5 +73,21 @@ public class Defense : MonoBehaviour
     {
         SetPhysicalDefense(5*defense+player.GetStrength()+2*player.GetStamina()+player.GetAgility());
         SetMagicalDefense(2 * defense + 6 * player.GetIntelligence());
+    }
+
+    bool Check_Block_Success()
+    {
+        float BlockChance = player.GetBlockChance();
+        //No Critical Chance
+        if (BlockChance == 0)
+            return false;
+        if (BlockChance >= 1)
+            return true;
+        //Has Critical Chance
+        float check = Random.Range(1.0f, 1.0f / BlockChance);
+        if (Mathf.Abs(check - 0.5f * (1.0f / BlockChance))<=0.1f)
+            return true;
+        else
+            return false;
     }
 }

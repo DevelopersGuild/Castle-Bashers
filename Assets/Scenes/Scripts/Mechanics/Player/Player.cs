@@ -21,6 +21,7 @@ public class Player : MonoBehaviour
     private int weapon_level=0;
     private int armor_level = 0;
     private int accessories_level = 0;
+    private float blockchance = 0;
 
     private bool isGrounded = true;
     private bool isMoving = false;
@@ -327,6 +328,7 @@ public class Player : MonoBehaviour
         attack.UpdateDamage(5 * Strength + Agility, 2 * Strength + 5 * Intelligence);
         attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
         attack.SetCriticalChance(Agility * 0.001f);
+        blockchance = Agility * 0.001f;
         defense.Update_Defense();
 
     }
@@ -498,4 +500,8 @@ public class Player : MonoBehaviour
         return accessories_level;
     }
 
+    public float GetBlockChance()
+    {
+        return blockchance;
+    }
 }

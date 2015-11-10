@@ -123,6 +123,11 @@ public class DealDamageToEnemy : MonoBehaviour
         CriticalChance = value;
     }
 
+    public float GetCriticalChance()
+    {
+        return CriticalChance;
+    }
+
     public float GetPhysicalAttackLeftRange()
     {
         return PhysicalDamage;
@@ -148,9 +153,12 @@ public class DealDamageToEnemy : MonoBehaviour
         //No Critical Chance
         if (CriticalChance == 0)
             return false;
+        //Must Critical
+        if (CriticalChance >= 1)
+            return true;
         //Has Critical Chance
-        float check = Random.Range(0, 1.0f / CriticalChance);
-        if (check == 0.5f * (1.0f / CriticalChance))
+        float check = Random.Range(1.0f, 1.0f / CriticalChance);
+        if (Mathf.Abs(check - 0.5f * (1.0f / CriticalChance))<=0.1f)
             return true;
         else
             return false;

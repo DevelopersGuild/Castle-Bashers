@@ -4,6 +4,7 @@ using System.Collections;
 public class DealDamageToPlayer : MonoBehaviour
 {
     public float dmgAmount = 1;
+    public float dmgChange = 0;
     public float knockback = 4;
     public float flinch = 5;
     public bool IsPhysicalDamage = true;
@@ -42,11 +43,11 @@ public class DealDamageToPlayer : MonoBehaviour
                 //get amt (1), dmgAmount(1) from Enemy/Hazard
                 if(IsPhysicalDamage == true)
                 {
-                    defense.CheckPhysicalDefense(dmgAmount, knockback, flinch);
+                    defense.CheckPhysicalDefense(Random.Range(dmgAmount,dmgAmount+dmgChange), knockback, flinch);
                 }
                 else
                 {
-                    defense.CheckMagicalDefense(dmgAmount, knockback, flinch);
+                    defense.CheckMagicalDefense(Random.Range(dmgAmount, dmgAmount + dmgChange), knockback, flinch);
                 }
                 
                 player.SetInvTime(1.5f);
@@ -76,11 +77,11 @@ public class DealDamageToPlayer : MonoBehaviour
                 //get amt (1), dmgAmount(1) from Enemy/Hazard
                 if (IsPhysicalDamage == true)
                 {
-                    defense.CheckPhysicalDefense(dmgAmount, knockback, flinch);
+                    defense.CheckPhysicalDefense(Random.Range(dmgAmount, dmgAmount + dmgChange), knockback, flinch);
                 }
                 else
                 {
-                    defense.CheckMagicalDefense(dmgAmount, knockback, flinch);
+                    defense.CheckMagicalDefense(Random.Range(dmgAmount, dmgAmount + dmgChange), knockback, flinch);
                 }
                 player.SetInvTime(1.5f);
                 if (CompareTag("One Time"))
