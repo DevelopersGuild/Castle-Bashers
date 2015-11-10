@@ -333,8 +333,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Min_Area: 2
   Max_Area: 3
-  Min_Enemy: 0
-  Max_Enemy: 0
+  Min_Enemy: 2
+  Max_Enemy: 4
   Total_Objects: 6
   Boss: {fileID: 0}
   ActiveBiomeName: 0
@@ -362,7 +362,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 9.89999962
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
       propertyPath: m_LocalPosition.z
