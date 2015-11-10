@@ -7,39 +7,57 @@ public class Health : MonoBehaviour
     public float startingHealth;
     public float RegenAmount;
     private float currentHealth;
+    private float maxhp;
     private Player player;
+    private DealDamageToEnemy attack;
     private bool canKnock = true;
     private MoveController moveController;
     public Vector3 damageTextOffset;
-    
-    //Create hp bars for players and bosses
 
 
     // Use this for initialization
     void Start()
     {
         player = GetComponent<Player>();
+        attack = GetComponentInChildren<DealDamageToEnemy>();
         moveController = GetComponent<MoveController>();
         currentHealth = startingHealth;
         damageTextOffset = new Vector3(0, 2, 0);
 
-        if (player)
-            currentHealth = startingHealth + player.GetStrength();
-        else
-            currentHealth = startingHealth;
+        
     }
 
     void Update()
     {
- 
+        
+    }
+
+    public void Update_Maxhp()
+    {
+        if (player)
+            maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30;
+        else
+            maxhp = startingHealth;
+        
+    }
+
+    public void Updata_Maxhp_withFullRegen()
+    {
+        Update_Maxhp();
+        Full_Regen();
+    }
+
+    public void Full_Regen()
+    {
+        currentHealth = maxhp;
     }
 
     public void Regen()
     {
-        currentHealth += (RegenAmount + player.GetStrength());
-        if (currentHealth > startingHealth + player.GetStrength())
+        currentHealth += (RegenAmount + player.GetStamina()*3);
+        if (currentHealth > maxhp)
         {
-            currentHealth = (startingHealth + player.GetStrength());
+            currentHealth = maxhp;
         }
     }
 
@@ -129,10 +147,15 @@ public class Health : MonoBehaviour
     public void AddHealth(float healthAmount)
     {
         currentHealth = currentHealth + healthAmount;
-        if(currentHealth > startingHealth + player.GetStrength())
+        if(currentHealth > maxhp)
         {
-            currentHealth = startingHealth + player.GetStrength();
+            currentHealth = maxhp;
         }
+    }
+
+    public float GetMaxHP()
+    {
+        return maxhp;
     }
 
 }

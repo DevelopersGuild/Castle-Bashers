@@ -36,7 +36,7 @@ public class SaveManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	string createCode () {
-        strength = player.GetStrength();
+        //strength = player.GetStrength();
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
         return (strength + " " + agility + " " + intelligence);
@@ -75,7 +75,7 @@ public class SaveManager : MonoBehaviour {
      
 
         }
-        player.SetStrength(strength);
+        //player.SetStrength(strength);
         player.SetAgility(agility);
         player.SetIntelligence(intelligence);
     }
@@ -90,7 +90,7 @@ public class SaveManager : MonoBehaviour {
             saveCode = createCode();
             outputFile.WriteLine(saveCode);
         }
-        strength = player.GetStrength();
+        //strength = player.GetStrength();
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
     }

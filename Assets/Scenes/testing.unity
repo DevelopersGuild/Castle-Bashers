@@ -125,34 +125,47 @@ Prefab:
       value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: enemyMinimum
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: MIN_AREAS
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: MAX_AREAS
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: enemy1
       value: 
-      objectReference: {fileID: 11491550, guid: 7cb59361ee703174aae99004af75a288,
+      objectReference: {fileID: 11437056, guid: 02ea76d47d60375449ee7fbb6ac01490,
         type: 2}
     - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: enemy2
       value: 
-      objectReference: {fileID: 11423058, guid: 703797650752ce343b6b3a57b8929da6,
-        type: 2}
+      objectReference: {fileID: 0}
     - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: enemy3
       value: 
-      objectReference: {fileID: 11432314, guid: baba7dd324786e5478555655dc1ff3d0,
+      objectReference: {fileID: 0}
+    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: area3
+      value: 
+      objectReference: {fileID: 11417902, guid: 977c4bf2fd19a7740845f7cd36de1332,
         type: 2}
     - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
-      propertyPath: enemyMinimum
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
-      propertyPath: MIN_AREAS
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
-      propertyPath: MAX_AREAS
-      value: 3
-      objectReference: {fileID: 0}
+      propertyPath: area2
+      value: 
+      objectReference: {fileID: 11492820, guid: 40321c95f8df01949b57178d7fd548fd,
+        type: 2}
     m_RemovedComponents:
     - {fileID: 11494242, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+    - {fileID: 11493478, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1610029069
@@ -303,6 +316,39 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
+--- !u!1 &1925635602 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 151902, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+  m_PrefabInternal: {fileID: 517105051}
+--- !u!114 &1925635603
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1925635602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 497beeecf84060748845423824726379, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Min_Area: 2
+  Max_Area: 3
+  Min_Enemy: 0
+  Max_Enemy: 0
+  Total_Objects: 6
+  Boss: {fileID: 0}
+  ActiveBiomeName: 0
+--- !u!114 &1925635605
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1925635602}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7cc1c1d739ce2a943b7472c6e29477bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &2122580228
 Prefab:
   m_ObjectHideFlags: 0
@@ -312,11 +358,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: .400000006
       objectReference: {fileID: 0}
     - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 5
+      value: 9.89999962
       objectReference: {fileID: 0}
     - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
       propertyPath: m_LocalPosition.z

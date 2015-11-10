@@ -12,9 +12,15 @@ public class Player : MonoBehaviour
     public Skill[] Skills = new Skill[4];
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
-    public int Strength;
-    public int Agility;
-    public int Intelligence;
+    public string Player_Name;
+    private int Stamina;
+    private int Strength;
+    private int Agility;
+    private int Intelligence;
+    private int class_id = 0;
+    private int weapon_level=0;
+    private int armor_level = 0;
+    private int accessories_level = 0;
 
     private bool isGrounded = true;
     private bool isMoving = false;
@@ -45,6 +51,9 @@ public class Player : MonoBehaviour
     private MoveController controller;
     private CrowdControllable crowdControllable;
     private Health health;
+    private Mana mana;
+    private DealDamageToEnemy attack;
+    private Defense defense;
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
@@ -74,6 +83,9 @@ public class Player : MonoBehaviour
         health = GetComponent<Health>();
         controller = GetComponent<MoveController>();
         crowdControllable = GetComponent<CrowdControllable>();
+        mana = GetComponent<Mana>();
+        attack = GetComponentInChildren<DealDamageToEnemy>();
+        defense = GetComponent<Defense>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 
@@ -224,7 +236,7 @@ public class Player : MonoBehaviour
 
     public void SetStrength(int strength)
     {
-        if(strength > 0)
+        if (strength > 0)
         {
             Strength = strength;
         }
@@ -234,9 +246,38 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddStrength(int value)
+    {
+        Strength = Strength + value;
+    }
+
+
     public int GetStrength()
     {
         return Strength;
+    }
+
+    public void SetStamina(int value)
+    {
+        if(value>0)
+        {
+            Stamina = value;
+        }
+        else
+        {
+            Stamina = 1;
+        }
+        
+    }
+
+    public void AddStamina(int value)
+    {
+        Stamina = Stamina + value;
+    }
+
+    public int GetStamina()
+    {
+        return Stamina;
     }
 
     public void SetAgility(int agility)
@@ -249,6 +290,11 @@ public class Player : MonoBehaviour
         {
             Agility = 1;
         }
+    }
+
+    public void AddAgility(int value)
+    {
+        Agility = Agility + value;
     }
 
     public int GetAgility()
@@ -268,9 +314,30 @@ public class Player : MonoBehaviour
         }
     }
 
+    public void AddIntelligence(int value)
+    {
+        Intelligence = Intelligence + value;
+    }
+
     public int GetIntelligence()
     {
         return Intelligence;
+
+    }
+
+    public void AddDefense(int value)
+    {
+        defense.AddDefense(value);
+    }
+
+    public void Fully_Update()
+    {
+        health.Updata_Maxhp_withFullRegen();
+        mana.UpdateMaxMP_And_Regen();
+        attack.UpdateDamage(5 * Strength + Agility, 2 * Strength + 5 * Intelligence);
+        attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
+        attack.SetCriticalChance(Agility * 0.001f);
+        defense.Update_Defense();
 
     }
 
@@ -445,6 +512,46 @@ public class Player : MonoBehaviour
     public float getManagerID()
     {
         return managerID;
+	}
+	
+    public void SetClassID(int id)
+    {
+        class_id = id;
+    }
+
+    public int GetClassID()
+    {
+        return class_id;
+    }
+
+    public void SetWeaponLV(int value)
+    {
+        weapon_level = value;
+    }
+
+    public int GetWeaponLV()
+    {
+        return weapon_level;
+    }
+
+    public void SetArmorLV(int level)
+    {
+        armor_level = level;
+    }
+
+    public int GetAmrorLV()
+    {
+        return armor_level;
+    }
+
+    public void SetAccessoriesLV(int level)
+    {
+        accessories_level = level;
+    }
+
+    public int GetAccessoriesLV()
+    {
+        return accessories_level;
     }
 
 }
