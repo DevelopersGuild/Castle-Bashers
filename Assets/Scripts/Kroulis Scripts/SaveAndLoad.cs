@@ -2,7 +2,7 @@
 using System.Collections;
 using System.IO;
 using System.Xml;
-using GetMD5;
+using Kroulis.Verify;
 
 public class SaveAndLoad : MonoBehaviour {
     GameObject Player_PF;
@@ -17,22 +17,8 @@ public class SaveAndLoad : MonoBehaviour {
     string path = "";
 	// Use this for initialization
 	void Start () {
-        
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            path = Application.persistentDataPath;
-        }
-        else if (Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            path = Application.dataPath;
-        }
-        else if (Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            path = Application.dataPath;
-            Globe.Character_id = "GM000001";
-            Globe.Character_Data_File = "GM000001.xml";
 
-        }
+        path = FileVerify.GetPath();
 
         Player_PF = GameObject.Find("Player");
         Player_Script = Player_PF.GetComponent<Player>();
@@ -66,7 +52,7 @@ public class SaveAndLoad : MonoBehaviour {
             XmlElement c_name = character_data.CreateElement("name");
             c_name.InnerText = Player_Script.Player_Name;
             XmlElement cid = character_data.CreateElement("cid");
-            //cid.InnerText = Globe.Character_id;
+            cid.InnerText = Player_Script.GetClassID().ToString();
             XmlElement lv = character_data.CreateElement("lv");
             lv.InnerText = Player_EXP.GetCurrentLevel().ToString();
             XmlElement exp = character_data.CreateElement("exp");
@@ -74,23 +60,23 @@ public class SaveAndLoad : MonoBehaviour {
             XmlElement gold = character_data.CreateElement("gold");
             gold.InnerText = Player_gold.getCoins().ToString();
             XmlElement weapon_level = character_data.CreateElement("weapon_level");
-            weapon_level.InnerText = "1";
+            weapon_level.InnerText = Player_Script.GetWeaponLV().ToString();
             XmlElement armor_level = character_data.CreateElement("armor_level");
-            armor_level.InnerText = "1";
+            armor_level.InnerText = Player_Script.GetAmrorLV().ToString();
             XmlElement accessories_level = character_data.CreateElement("accessories_level");
-            accessories_level.InnerText = "1";
+            accessories_level.InnerText = Player_Script.GetAccessoriesLV().ToString();
             XmlElement atk = character_data.CreateElement("atk");
-            atk.InnerText = Player_ATK.atk.ToString();
+            atk.InnerText = Player_Script.GetStrength().ToString();
             XmlElement def = character_data.CreateElement("def");
-            def.InnerText = Player_Defense.defense.ToString();
+            def.InnerText = Player_Defense.GetDefense().ToString();
             XmlElement sta = character_data.CreateElement("sta");
-            sta.InnerText = Player_Script.Stamina.ToString();
+            sta.InnerText = Player_Script.GetStamina().ToString();
             XmlElement spi = character_data.CreateElement("spi");
             spi.InnerText = Player_Script.GetIntelligence().ToString();
             XmlElement agi = character_data.CreateElement("agi");
             agi.InnerText = Player_Script.GetAgility().ToString();
-            XmlElement cri = character_data.CreateElement("cri");
-            cri.InnerText = "0";
+            XmlElement map = character_data.CreateElement("map");
+            map.InnerText = Globe.Map_Load_id.ToString();
             data.AppendChild(pid);
             data.AppendChild(c_name);
             data.AppendChild(cid);
@@ -104,7 +90,7 @@ public class SaveAndLoad : MonoBehaviour {
             data.AppendChild(sta);
             data.AppendChild(spi);
             data.AppendChild(agi);
-            data.AppendChild(cri);
+            data.AppendChild(map);
         //player2 (ignore)
 
         //save file to a temporary place
@@ -182,7 +168,7 @@ public class SaveAndLoad : MonoBehaviour {
                 }
                 else if(xl2.Name=="cid")
                 {
-
+                    Player_Script.SetClassID(int.Parse(xl2.InnerText));
                 }
                 else if(xl2.Name=="lv")
                 {
@@ -198,23 +184,23 @@ public class SaveAndLoad : MonoBehaviour {
                 }
                 else if(xl2.Name=="weapon_level")
                 {
-
+                    Player_Script.SetWeaponLV(int.Parse(xl2.InnerText));
                 }
                 else if(xl2.Name=="armor_level")
                 {
-
+                    Player_Script.SetArmorLV(int.Parse(xl2.InnerText));
                 }
                 else if(xl2.Name=="accessories_level")
                 {
-
+                    Player_Script.SetAccessoriesLV(int.Parse(xl2.InnerText));
                 }
                 else if(xl2.Name=="atk")
                 {
-                    Player_ATK.atk = int.Parse(xl2.InnerText);
+                    Player_Script.SetStrength(int.Parse(xl2.InnerText));
                 }
                 else if(xl2.Name=="def")
                 {
-                    Player_Defense.defense = int.Parse(xl2.InnerText);
+                    Player_Defense.SetDefense(int.Parse(xl2.InnerText));
                 }
                 else if(xl2.Name=="sta")
                 {
@@ -228,11 +214,13 @@ public class SaveAndLoad : MonoBehaviour {
                 {
                     Player_Script.SetAgility(int.Parse(xl2.InnerText));
                 }
-                else if(xl2.Name=="cri")
+                else if(xl2.Name=="map")
                 {
-
+                    Globe.Map_Load_id = int.Parse(xl2.InnerText);
                 }
             }
+            Player_EXP.LevelUp();
+            Player_Script.Fully_Update();
         }
 
     }

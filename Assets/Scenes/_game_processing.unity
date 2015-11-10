@@ -2512,6 +2512,12 @@ MonoBehaviour:
   - name: Player
     icon: {fileID: 0}
     skillid: 0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000
+    ClassAddStats:
+      atk: 2
+      def: 2
+      sta: 2
+      spi: 2
+      agi: 2
     weapon: []
     armor: []
     accessory: []

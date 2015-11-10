@@ -10,10 +10,14 @@ public class Experience : MonoBehaviour
     private int ExperincePointUsed = 0;
     private int currentExperince;
     private int experinceUntilNextLevel = 1000;
+    private Character_Class_Info class_info;
+    private Player player;
     
     void Start()
     {
         ExperincePoints = currentLevel * ExperincePointsPerLevel;
+        class_info = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        player = GetComponent<Player>();
     }
 
     public int GetExperience()
@@ -24,7 +28,7 @@ public class Experience : MonoBehaviour
     public void SetExperience(int EXP)
     {
         currentExperince = EXP;
-        LevelUp();
+        //LevelUp();
     }
 
     public int GetNEXP()
@@ -51,12 +55,26 @@ public class Experience : MonoBehaviour
 
     public void LevelUp()
     {
-        if(currentExperince >= experinceUntilNextLevel)
+        bool upgrade_flag = false;
+        while(currentExperince >= experinceUntilNextLevel)
         {
+            upgrade_flag = true;
             //experinceUntilNextLevel = currentExperince * 2;
             ++currentLevel;
             experinceUntilNextLevel = (int)(Math.Pow(10, (int)(currentLevel / 10) + 1) * Math.Pow(1.2 + 0.001 * (currentLevel % 10), currentLevel % 10));
             //ExperincePoints = currentLevel * ExperincePointsPerLevel;
+            if(class_info && player)
+            {
+                player.AddStrength(class_info.Class_info[player.GetClassID()].ClassAddStats.atk);
+                player.AddDefense(class_info.Class_info[player.GetClassID()].ClassAddStats.def);
+                player.AddStamina(class_info.Class_info[player.GetClassID()].ClassAddStats.sta);
+                player.AddIntelligence(class_info.Class_info[player.GetClassID()].ClassAddStats.spi);
+                player.AddAgility(class_info.Class_info[player.GetClassID()].ClassAddStats.agi);
+            }
+        }
+        if(upgrade_flag && player)
+        {
+            player.Fully_Update();
         }
     }
     

@@ -138,13 +138,13 @@ public class Character_Menu_FullControl : MonoBehaviour {
 	// Update is called once per frame
 	public void Change()
     {
-        ATK.text = Player_Script.Strength.ToString();
+        ATK.text = Player_Script.GetStrength().ToString();
         DEF.text = Player_Defense.defense.ToString();
-        STA.text = Player_Script.Stamina.ToString();
-        SPI.text = Player_Script.Intelligence.ToString();
-        AGI.text = Player_Script.Agility.ToString();
-        BATK.text = "<color=#ffffffff>" + Player_ATK.dmgAmount.ToString() + "</color>";
-        MATK.text = "<color=#ffffffff>" + Player_ATK.dmgAmount.ToString() + "</color>";
+        STA.text = Player_Script.GetStamina().ToString();
+        SPI.text = Player_Script.GetIntelligence().ToString();
+        AGI.text = Player_Script.GetAgility().ToString();
+        BATK.text = "<color=#ffffffff>" + Player_ATK.GetPhysicalAttackLeftRange().ToString()+"-"+Player_ATK.GetPhysicalAttackRightRange().ToString() + "</color>";
+        MATK.text = "<color=#ffffffff>" + Player_ATK.GetMagicalAttackLeftRange().ToString()+"-"+Player_ATK.GetMagicalAttackRightRange().ToString() + "</color>";
         PDEF.text = Player_Defense.PhysicalDefense.ToString();
         MDEF.text = Player_Defense.MagicalDefense.ToString();
         CRIR.text = "0.0%";
