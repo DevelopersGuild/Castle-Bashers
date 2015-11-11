@@ -11,6 +11,7 @@ public class SkillManager : MonoBehaviour {
 	void Start () {
         unlockedSkills = new List<Skill>();
         unlockedSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
+        unlockedSkills.Add(gameObject.AddComponent<SmashSkill>());
 	}
 
 

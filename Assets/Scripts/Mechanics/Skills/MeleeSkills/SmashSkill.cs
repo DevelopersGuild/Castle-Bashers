@@ -1,26 +1,32 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SmashSkill : MonoBehaviour, ISkill
+public class SmashSkill : Skill
 {
-    public void UseSkill(GameObject caller, GameObject target, float coolDownTimer = 0)
+    protected override void Start()
     {
-
+        base.Start();
+        base.SetBaseValues(20, 1000, 10, "Health Regen");
     }
 
-    public float GetCoolDownTimer()
+    public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
     {
-        //TODO Temporary value change 
-        return 0;
+        base.UseSkill(caller, target, optionalParameters);
+        Smash();
     }
-    public int GetPrice()
+
+    protected override void Update()
     {
-        //TODO Temporary value change 
-        return 200;
+        base.Update();
+        if (gameObject.GetComponent<SphereCollider>() != null)
+        {
+            gameObject.GetComponent<SphereCollider>().radius += 10 * Time.deltaTime;
+        }
     }
-    public SkillLevel GetSkillLevel()
+
+    private void Smash()
     {
-        //TODO Temporary value change 
-        return SkillLevel.EnemyOnly;
+        gameObject.AddComponent<SphereCollider>();
+        
     }
 }
