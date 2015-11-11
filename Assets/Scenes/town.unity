@@ -939,6 +939,22 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1652454210 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 161334, guid: cfb7561c0c0aacd4381930d2b31d6aa1, type: 2}
+  m_PrefabInternal: {fileID: 1746904214}
+--- !u!114 &1652454211
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1652454210}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47266181c8325ff4e8b317980676266b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  levelToOpen: 0
 --- !u!1001 &1673212557
 Prefab:
   m_ObjectHideFlags: 0
@@ -1082,7 +1098,8 @@ Prefab:
       propertyPath: m_Name
       value: NPC Shop Test (1)
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11456070, guid: cfb7561c0c0aacd4381930d2b31d6aa1, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: cfb7561c0c0aacd4381930d2b31d6aa1, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1761329854
@@ -1142,7 +1159,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: cdb88bde23a527f4281849b40b30e8e5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  levelToLoad: 0
 --- !u!1001 &1966281164
 Prefab:
   m_ObjectHideFlags: 0

@@ -3,7 +3,6 @@ using System.Collections;
 
 public class EndOfLevelTrigger : MonoBehaviour {
 
-    public int levelToLoad;
     private Main_Process mainprocess;
 
     void Start()
