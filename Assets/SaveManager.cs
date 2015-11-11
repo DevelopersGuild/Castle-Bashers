@@ -28,6 +28,7 @@ public class SaveManager : MonoBehaviour {
         }
         if (Input.GetKeyDown("f"))
         {
+            Debug.Log("f down");
             readFile();
             processCode(loadCode);
         }
@@ -35,7 +36,7 @@ public class SaveManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	string createCode () {
-        strength = player.GetStrength();
+        //strength = player.GetStrength();
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
         return (strength + " " + agility + " " + intelligence);
@@ -43,6 +44,10 @@ public class SaveManager : MonoBehaviour {
 
     void processCode(string code)
     {
+        strength = -1;
+        intelligence = -1;
+        agility = -1;
+        Debug.Log(code);
         //Reset values in case of previous load
         string temp = "";
 
@@ -70,7 +75,7 @@ public class SaveManager : MonoBehaviour {
      
 
         }
-        player.SetStrength(strength);
+        //player.SetStrength(strength);
         player.SetAgility(agility);
         player.SetIntelligence(intelligence);
     }
@@ -85,7 +90,7 @@ public class SaveManager : MonoBehaviour {
             saveCode = createCode();
             outputFile.WriteLine(saveCode);
         }
-        strength = player.GetStrength();
+        //strength = player.GetStrength();
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
     }

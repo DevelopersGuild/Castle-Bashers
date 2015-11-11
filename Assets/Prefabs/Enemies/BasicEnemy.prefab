@@ -115,8 +115,9 @@ MonoBehaviour:
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
+  sprRend: {fileID: 0}
   classification: 0
+  attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
 --- !u!114 &11461634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,8 +129,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingHealth: 3
+  startingHealth: 3
   RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!212 &21231798
 SpriteRenderer:
   m_ObjectHideFlags: 1

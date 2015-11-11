@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11408426}
   - 114: {fileID: 11416204}
   - 114: {fileID: 11423122}
+  - 114: {fileID: 11469034}
   m_Layer: 0
   m_Name: Chosen Archer
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.59699988, y: 2.18000007, z: 0}
+  m_LocalPosition: {x: -1.22432232, y: 2.33999991, z: 4.24054718}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,8 +59,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1, y: 1, z: 1}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Size: {x: 2.79999995, y: 3.75999999, z: 1.26999998}
+  m_Center: {x: 0, y: -.25999999, z: 0}
 --- !u!114 &11408426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,7 +95,7 @@ MonoBehaviour:
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
+  shotObj: {fileID: 11461502, guid: c3043b82b5d87df4fa52fcf7f1d658c5, type: 2}
   classification: 1
 --- !u!114 &11416204
 MonoBehaviour:
@@ -130,7 +131,19 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   RegenAmount: 0
+  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &11469034
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46bca7c48062e984685a3f8a4d6ea800, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21211258
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -168,6 +181,15 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: .939999998
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: shotObj
+      value: 
+      objectReference: {fileID: 11461502, guid: c3043b82b5d87df4fa52fcf7f1d658c5,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 132428}

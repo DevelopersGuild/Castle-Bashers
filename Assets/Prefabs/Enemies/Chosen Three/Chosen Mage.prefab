@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11422100}
   - 114: {fileID: 11456922}
   - 114: {fileID: 11421732}
+  - 114: {fileID: 11463702}
   m_Layer: 0
   m_Name: Chosen Mage
   m_TagString: Untagged
@@ -28,7 +29,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 13.3000002, y: 2.48000002, z: 0}
+  m_LocalPosition: {x: -4.34000015, y: 1.95000005, z: -.0199999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -94,6 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   startingHealth: 10
   RegenAmount: 0
+  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &11456922
 MonoBehaviour:
@@ -131,6 +133,17 @@ MonoBehaviour:
   right: {x: 0, y: 0, z: 0}
   shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
   classification: 1
+--- !u!114 &11463702
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8d24a892c767a6458dbd422eebd0d67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21266550
 SpriteRenderer:
   m_ObjectHideFlags: 1

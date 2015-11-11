@@ -1,5 +1,22 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &137506
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 475184}
+  - 65: {fileID: 6575360}
+  - 114: {fileID: 11492874}
+  m_Layer: 0
+  m_Name: CW_AtkCollider
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
 --- !u!1 &143098
 GameObject:
   m_ObjectHideFlags: 0
@@ -12,8 +29,9 @@ GameObject:
   - 54: {fileID: 5444294}
   - 65: {fileID: 6561482}
   - 114: {fileID: 11480732}
-  - 114: {fileID: 11494216}
   - 114: {fileID: 11496394}
+  - 114: {fileID: 11478330}
+  - 114: {fileID: 11444648}
   m_Layer: 0
   m_Name: Chosen Warrior
   m_TagString: Untagged
@@ -28,10 +46,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 143098}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.97000003, y: 2.43000007, z: -3.42000008}
+  m_LocalPosition: {x: -3.25897789, y: 1.47000003, z: 2.93557835}
   m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
+  m_Children:
+  - {fileID: 475184}
   m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &475184
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137506}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -.980000019, y: 0, z: 0}
+  m_LocalScale: {x: 2.21000004, y: 2.26999998, z: 1}
+  m_Children: []
+  m_Father: {fileID: 453060}
   m_RootOrder: 0
 --- !u!54 &5444294
 Rigidbody:
@@ -60,6 +91,66 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.54999995, y: 2.6400001, z: .99000001}
   m_Center: {x: 0, y: -.200000003, z: 0}
+--- !u!65 &6575360
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 137506}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11444648
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 87d70ad1ec6513d43a2e25996db73cb5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  whirlwindCooldown: 5
+--- !u!114 &11478330
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 143098}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9f8e38db5d1ebd241a1d1b09ca8356fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agroRange: 10
+  attackRange: 1
+  attack_CD: 1
+  target: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
+  moveController: {fileID: 11480732}
+  isInvincible: 0
+  isStunned: 0
+  freeFall: 0
+  invTime: 0
+  stunTimer: 0
+  distance: 0
+  speed: 0
+  zDiff: 0
+  distL: 0
+  distR: 0
+  toLeft: 0
+  left: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
+  attackCollider: {fileID: 137506}
+  classification: 0
 --- !u!114 &11480732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -81,40 +172,21 @@ MonoBehaviour:
   flinchTime: .400000006
   isStunned: 0
   playerInput: {x: 0, y: 0}
---- !u!114 &11494216
+--- !u!114 &11492874
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 143098}
+  m_GameObject: {fileID: 137506}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9fecaceea67774e46a8f171d5d674a67, type: 3}
+  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agroRange: 7
-  attackRange: 1
-  attack_CD: 2
-  target: {fileID: 0}
-  targetPos: {x: 0, y: 0, z: 0}
-  dir: {x: 0, y: 0, z: 0}
-  gravity: {x: 0, y: 0, z: 0}
-  xhalf: {x: 0, y: 0, z: 0}
-  half: {x: 0, y: 0, z: 0}
-  moveController: {fileID: 11480732}
-  isInvincible: 0
-  isStunned: 0
-  freeFall: 0
-  invTime: 0
-  stunTimer: 0
-  distance: 0
-  speed: 0
-  zDiff: 0
-  distL: 0
-  distR: 0
-  toLeft: 0
-  left: {x: 0, y: 0, z: 0}
-  right: {x: 0, y: 0, z: 0}
+  dmgAmount: 3
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!114 &11496394
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -126,8 +198,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 5
+  startingHealth: 15
   RegenAmount: 0
+  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!212 &21213336
 SpriteRenderer:
@@ -166,6 +239,14 @@ Prefab:
       propertyPath: m_IsKinematic
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackRange
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: moveController
+      value: 
+      objectReference: {fileID: 11480732}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 143098}

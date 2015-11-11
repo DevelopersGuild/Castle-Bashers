@@ -6,7 +6,6 @@ public class MeleeEnemy : Enemy
 {
     public GameObject attackCollider;
     private GameObject attCol;
-    public Type classification;
 
     // Use this for initialization
     void Start()
@@ -57,10 +56,9 @@ public class MeleeEnemy : Enemy
             else
                 isStunned = false;
 
-            if (invTime <= 0)
-                isInvincible = false;
+
         }
-        invTime -= Time.deltaTime;
+
         attack_CD += Time.deltaTime;
     }
 
