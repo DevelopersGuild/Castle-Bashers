@@ -155,7 +155,7 @@ public class Main_Process : MonoBehaviour {
         Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
         GameObject MS= Other_Windows.GetComponent<Other_Windows_FullControl>().Mission_Success;
         GetComponentInChildren<Mission_Timer>().Stop_Timer();
-        MS.GetComponent<M_S_CalculateRank>().Calculate();
+        //MS.GetComponent<M_S_CalculateRank>().Calculate();
         MS.SetActive(true);
 
     }
