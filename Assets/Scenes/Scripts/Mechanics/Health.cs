@@ -6,8 +6,8 @@ public class Health : MonoBehaviour
     public int ExperinceAmount = 0;
     public float startingHealth;
     public float RegenAmount;
-    private float currentHealth;
-    private float maxhp;
+    private float currentHealth=0;
+    private float maxhp=0;
     private Player player;
     private DealDamageToEnemy attack;
     private bool canKnock = true;
@@ -23,6 +23,7 @@ public class Health : MonoBehaviour
         attack = GetComponentInChildren<DealDamageToEnemy>();
         moveController = GetComponent<MoveController>();
         currentHealth = startingHealth;
+        maxhp = startingHealth;
         damageTextOffset = new Vector3(0, 2, 0);
 
         

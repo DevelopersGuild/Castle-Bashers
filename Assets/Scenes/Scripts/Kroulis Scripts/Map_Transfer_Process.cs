@@ -11,7 +11,7 @@ public class Map_Transfer_Process : MonoBehaviour {
 
     void Start()
     {
-        Globe.Map_Load_id = 1;
+        //Globe.Map_Load_id = 1;
         //link the UI
         GameObject GOResult;
         GOResult = GameObject.Find("TransferUI");
@@ -23,7 +23,7 @@ public class Map_Transfer_Process : MonoBehaviour {
     IEnumerator loadScene()
     {
         async = Application.LoadLevelAsync(Globe.Map_Load_id);
-
+        Debug.Log(Globe.Map_Load_id);
         yield return async;
 
     }

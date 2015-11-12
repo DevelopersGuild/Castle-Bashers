@@ -23,9 +23,6 @@ public class Main_Process : MonoBehaviour {
     Mana Player_Mana;
     Experience Player_EXP;
     Player Player_Script;
-    //dlls
-    [DllImport("Char_Proc")]
-    private static extern bool Is_Character_Created();
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
@@ -33,7 +30,6 @@ public class Main_Process : MonoBehaviour {
         Menu_UI.GetComponent<Menu_UI_FullControl>().Main_Process = this.gameObject;
         Other_Windows.GetComponent<Other_Windows_FullControl>().Main_Process = this.gameObject;
         BGM_Player = GetComponent<AudioSource>();
-        Debug.Log(Is_Character_Created());
         Player_GO = GameObject.Find("Player");
         Player_Health = Player_GO.GetComponent<Health>();
         Player_Mana = Player_GO.GetComponent<Mana>();
