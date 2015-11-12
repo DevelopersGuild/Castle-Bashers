@@ -11,7 +11,7 @@ public class Map_Transfer_Process : MonoBehaviour {
 
     void Start()
     {
-        Globe.Map_Load_id = 3;
+        Globe.Map_Load_id = 5;
         //link the UI
         GameObject GOResult;
         GOResult = GameObject.Find("TransferUI");
