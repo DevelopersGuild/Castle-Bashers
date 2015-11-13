@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<errorcatch>
+  <eid>E10004</eid>
+  <log>InvalidCastException: Cannot cast from source type to destination type.</log>
+  <detail>Menu_BGMovie_Control.Start () (at Assets/Scripts/Kroulis Scripts/Menu_BGMovie_Control.cs:13)
+</detail>
+  <info>Platform: WindowsEditor
+System: Windows 8.1  (6.3.0) 64bit
+CPU RATE: 4%
+Mem: 6067MB
+GPUName: Intel(R) HD Graphics 5500
+</info>
+</errorcatch>

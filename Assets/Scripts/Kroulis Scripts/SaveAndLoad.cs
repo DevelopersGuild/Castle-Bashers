@@ -3,6 +3,7 @@ using System.Collections;
 using System.IO;
 using System.Xml;
 using Kroulis.Verify;
+using Kroulis.Error;
 
 public class SaveAndLoad : MonoBehaviour {
     GameObject Player_PF;
@@ -125,6 +126,11 @@ public class SaveAndLoad : MonoBehaviour {
 
     public void LoadData()
     {
+        if (File.Exists(path + "/" + Globe.Character_Data_File) == false || Globe.Character_Data_File=="null")
+        {
+            ErrorCatching.WriteCharacterDataXML();
+            Application.Quit();
+        }
         string md5;
         md5 = "CB" + FileVerify.getFileHash(path + "/" + Globe.Character_Data_File) + "D";
         Debug.Log(md5);
@@ -133,6 +139,7 @@ public class SaveAndLoad : MonoBehaviour {
         {
             if(md5+".xml"!=Globe.Character_Data_File)
             {
+                ErrorCatching.WriteVerifyXML();
                 //Application.OpenURL("www.kroulisworld.com/");
                 Application.Quit();
             }

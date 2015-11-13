@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defense: 0
   PhysicalDefense: 0
   MagicalDefense: 0
 --- !u!114 &11476382
@@ -183,6 +184,8 @@ MonoBehaviour:
   silenceEffect: {fileID: 0}
   canSnare: 1
   snareEffect: {fileID: 0}
+  canPoly: 1
+  PolyEffect: {fileID: 0}
 --- !u!114 &11478880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -194,7 +197,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a11d076f2c821644380153d328222929, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAmount: 1
+  PhysicalDamage: 1
+  MagicalDamage: 1
   invTime: .100000001
 --- !u!114 &11481426
 MonoBehaviour:
@@ -217,6 +221,8 @@ MonoBehaviour:
   silenceEffect: {fileID: 0}
   canSnare: 1
   snareEffect: {fileID: 0}
+  canPoly: 1
+  PolyEffect: {fileID: 0}
 --- !u!114 &11487910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,9 +237,12 @@ MonoBehaviour:
   animator: {fileID: 0}
   AttackCollider: {fileID: 180060}
   skillManager: {fileID: 0}
-  Strength: 1
-  Agility: 1
-  Intelligence: 1
+  Skills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Player_Name: 
   jumpHeight: 4
   timeToJumpApex: .600000024
   horizontalMoveSpeed: 6
@@ -247,9 +256,11 @@ MonoBehaviour:
   m_GameObject: {fileID: 192152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2574487eb01986e468143c9b4907c150, type: 3}
+  m_Script: {fileID: 11500000, guid: 264041d4c35af654a972eea5e726a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 1
+  ExperincePointsPerLevel: 2
 --- !u!114 &11492828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,9 +272,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 20
   RegenAmount: 1
-  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &11493054
 MonoBehaviour:
