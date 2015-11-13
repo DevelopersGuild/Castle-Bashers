@@ -22,6 +22,8 @@ public class AreaGen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        FindObjectOfType<Main_Process>().GetComponent<Main_Process>().Main_UI_Init(false);
+
         rnd = new System.Random(System.Guid.NewGuid().GetHashCode());
         int AreaNumber = rnd.Next(Min_Area, Max_Area);
         int AreaXCoord = 0;
