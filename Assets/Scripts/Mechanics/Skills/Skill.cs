@@ -8,6 +8,11 @@ public class Skill : MonoBehaviour
     private int price = 0;
     private int manaCost;
     private string skillName;
+    public float value;
+    [HideInInspector]
+    public enum Type { Ranged, Melee, Support, Other };
+
+    public Type skillType;
 
     //This is the level of the skill or if the skill is only useable by enemys, 
     //check out SkillLevel enum for all possible vaules.

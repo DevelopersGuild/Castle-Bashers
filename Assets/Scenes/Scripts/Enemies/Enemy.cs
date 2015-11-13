@@ -32,6 +32,8 @@ public class Enemy : MonoBehaviour
     public Vector3 left, right;
     [HideInInspector]
     public SpriteRenderer sprRend;
+    [HideInInspector]
+    public Health hp;
 
     public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
@@ -45,6 +47,7 @@ public class Enemy : MonoBehaviour
         targetPos = target.transform.position;
         moveController = GetComponent<MoveController>();
         sprRend = GetComponent<SpriteRenderer>();
+        hp = GetComponent<Health>();
         isInvincible = false;
         invTime = 0;
         stunTimer = 0;

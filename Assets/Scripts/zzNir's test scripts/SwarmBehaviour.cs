@@ -4,7 +4,7 @@ using System.Collections;
 public class SwarmBehaviour : MonoBehaviour {
 
     public float Duration = 8;
-    private Player player;
+    private GameObject player;
     private Rigidbody rigBod;
     //private MoveController moveCon;
     private Malady mal;
@@ -14,7 +14,7 @@ public class SwarmBehaviour : MonoBehaviour {
 	void Start () {
         Duration -= 1;
         max = new Vector3(20, 5, 10);
-        player = FindObjectOfType<Player>();
+        player = FindObjectOfType<Player>().gameObject;
         rigBod = GetComponent<Rigidbody>();
        // moveCon = GetComponent<MoveController>();
         mal = FindObjectOfType<Malady>();
@@ -64,7 +64,7 @@ public class SwarmBehaviour : MonoBehaviour {
         }
 	}
 
-    public void setTarget(Player p)
+    public void setTarget(GameObject p)
     {
         player = p;
     }

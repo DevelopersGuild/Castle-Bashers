@@ -41,7 +41,13 @@ public class DealDamageToEnemy : MonoBehaviour
                 }
                 
                 enem.setInvTime(invTime);
+                if (enemObj.GetComponent<Boss>())
+                {
+                    Boss b = enemObj.GetComponent<Boss>();
+                    b.addDamage((int)GetComponent<ID>().getID(), Random.Range(PhysicalDamage, PhysicalDamage + PhysicalChange));
+                }
             }
+
 
             if (GetComponent<Projectile>())
             {
@@ -89,6 +95,11 @@ public class DealDamageToEnemy : MonoBehaviour
                         hp.takeDamage(Random.Range(PhysicalDamage, PhysicalDamage + PhysicalChange));
                     }
                     enem.setInvTime(invTime);
+                    if (enemObj.GetComponent<Boss>())
+                    {
+                        Boss b = enemObj.GetComponent<Boss>();
+                        b.addDamage((int)GetComponent<ID>().getID(), Random.Range(PhysicalDamage, PhysicalDamage + PhysicalChange));
+                    }
                 }
 
                 if (GetComponent<Projectile>())

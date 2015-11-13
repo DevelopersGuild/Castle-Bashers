@@ -23,13 +23,15 @@ public class Health : MonoBehaviour
         moveController = GetComponent<MoveController>();
         currentHealth = startingHealth;
         damageTextOffset = new Vector3(0, 2, 0);
-
+        maxhp = startingHealth;
+        if(player)
+            maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30;
         
     }
 
     void Update()
     {
-        
+
     }
 
     public void Update_Maxhp()
@@ -123,6 +125,7 @@ public class Health : MonoBehaviour
 
     public void PlayerDown()
     {
+        GetComponent<Player>().setDown(true);
         //use other object to check if all players down, if so then Death() + lose level
         Death();
     }
@@ -139,9 +142,9 @@ public class Health : MonoBehaviour
         return startingHealth;
     }
 
-    public float GetCurrentHealth()
+    public virtual float GetCurrentHealth()
     {
-        return currentHealth;
+        return gameObject.GetComponent<Health>().currentHealth;
     }
 
     public void AddHealth(float healthAmount)

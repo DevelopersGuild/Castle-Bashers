@@ -9,9 +9,8 @@ public class Boss : Enemy
     private Color origColor, blinkColor;
 
     [HideInInspector]
-    public Player[] players;
+    public Player[] players, threatLevel, damageDealt;
     [HideInInspector]
-    public float[] threatLevel, damageDealt;
 
 
     // Use this for initialization
@@ -92,7 +91,7 @@ public class Boss : Enemy
 
     public void addDamage(int id, float damage)
     {
-        damageDealt[id] += damage;
+        damageDealt[id].damageDealt += damage;
     }
 
 }

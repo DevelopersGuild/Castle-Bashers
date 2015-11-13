@@ -14,7 +14,7 @@ public class Player : MonoBehaviour
     //with starting values of the ares they are used in.
     public string Player_Name;
     private int Stamina;
-    private int Strength;
+    private int Strength = 1;
     private int Agility;
     private int Intelligence;
     private int class_id = 0;
@@ -35,6 +35,7 @@ public class Player : MonoBehaviour
     private bool isNotStunned = true;
     private bool isInvincible = false;
     private bool isPoly = false;
+    private bool isDown = false;
     private float polyTime = 0;
     private IPlayerState state;
     private IAttack attackState;
@@ -60,7 +61,9 @@ public class Player : MonoBehaviour
     private Rewired.Player playerRewired;
 
     private Skill[] skill = new Skill[4];
-    private float managerID;
+    private float managerID, priorityID;
+    //[HideInInspector]
+    private float threatLevel, damageDealt;
 
     /*
     void Awake()
@@ -105,6 +108,7 @@ public class Player : MonoBehaviour
         skill[1] = null;
         skill[2] = null;
         skill[3] = null;
+        threatLevel = damageDealt = 0;
     }
 
     void Update()
@@ -480,6 +484,91 @@ public class Player : MonoBehaviour
             skill[i] = null;
         }
         skillManager.Reset();
+        setDamage(0);
+        //not actual algorithm
+        threatLevel = (Strength + Intelligence) / (Strength + Intelligence + Agility);
+    }
+
+    public void setPriorityID(float f)
+    {
+        priorityID = f;
+    }
+
+    public float getPriorityID()
+    {
+        return priorityID;
+    }
+
+    public float GetRanged()
+    {
+        float ret = 0;
+
+        foreach(Skill sk in skill)
+        {
+            Skill.Type f = sk.skillType;
+            if (f == Skill.Type.Ranged)
+                ret += sk.value;
+        }
+
+        return ret;
+    }
+
+    public float GetMelee()
+    {
+        float ret = 0;
+
+        foreach (Skill sk in skill)
+        {
+            Skill.Type f = sk.skillType;
+            if (f == Skill.Type.Melee)
+                ret += sk.value;
+        }
+
+        return ret;
+    }
+
+    public float GetSupport()
+    {
+        float ret = 0;
+
+        foreach (Skill sk in skill)
+        {
+            Skill.Type f = sk.skillType;
+            if (f == Skill.Type.Support)
+                ret += sk.value;
+        }
+
+        return ret;
+    }
+
+    public float GetOther()
+    {
+        float ret = 0;
+
+        foreach (Skill sk in skill)
+        {
+            Skill.Type f = sk.skillType;
+            if (f == Skill.Type.Other)
+                ret += sk.value;
+        }
+
+        return ret;
+    }
+
+
+    public void setDamage(float f)
+    {
+        damageDealt = f;
+    }
+
+    public void setDown(bool t)
+    {
+        isDown = t;
+    }
+
+    public bool getDown()
+    {
+        return isDown;
     }
 
     public float getThreatLevel()
