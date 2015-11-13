@@ -1,13 +1,13 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <errorcatch>
   <eid>E10004</eid>
-  <log>NullReferenceException: Object reference not set to an instance of an object</log>
-  <detail>Main_UI_FULLControl.Update () (at Assets/Scenes/Scripts/Kroulis Scripts/Main_UI_FULLControl.cs:359)
+  <log>InvalidCastException: Cannot cast from source type to destination type.</log>
+  <detail>Menu_BGMovie_Control.Start () (at Assets/Scripts/Kroulis Scripts/Menu_BGMovie_Control.cs:13)
 </detail>
   <info>Platform: WindowsEditor
-System: Windows 10  (10.0.0) 64bit
+System: Windows 8.1  (6.3.0) 64bit
 CPU RATE: 8%
-Mem: 8105MB
+Mem: 16303MB
 GPUName: Intel(R) HD Graphics 4600
 </info>
 </errorcatch>
