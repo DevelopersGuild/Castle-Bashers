@@ -19,6 +19,7 @@ public class SkillManager : MonoBehaviour {
         //Nir stuff
         player = GetComponent<Player>();
         checkSkill1 = checkSkill2 = checkSkill3 = checkSkill4 = false;
+        /*
         if(player)
         {
             foreach(Skill sk in currentSkillLoadout)
@@ -26,6 +27,7 @@ public class SkillManager : MonoBehaviour {
                sk.GetComponent<ID>().SetID(player.getManagerID());
             }
         }
+        */
 	}
     //blah
 
