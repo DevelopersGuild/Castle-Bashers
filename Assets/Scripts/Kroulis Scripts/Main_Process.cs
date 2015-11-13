@@ -38,7 +38,8 @@ public class Main_Process : MonoBehaviour {
         Player_Mana = Player_GO.GetComponent<Mana>();
         Player_EXP = Player_GO.GetComponent<Experience>();
         Player_Script = Player_GO.GetComponent<Player>();
-        error.OnEnable();
+        if(Application.platform!=RuntimePlatform.WindowsEditor)
+            error.OnEnable();
 	}
 
     // Update is called once per frame
