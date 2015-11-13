@@ -8,6 +8,8 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/Scenes/_Title.unity
   - enabled: 1
+    path: Assets/Scenes/levelgenerate.unity
+  - enabled: 1
     path: Assets/Scenes/level1.unity
   - enabled: 1
     path: Assets/Scenes/_loading.unity
