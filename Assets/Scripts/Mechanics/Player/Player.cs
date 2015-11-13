@@ -65,8 +65,8 @@ public class Player : MonoBehaviour
 
     private Skill[] skill = new Skill[4];
     private float managerID, priorityID;
-    //[HideInInspector]
-    private float threatLevel, damageDealt;
+    [HideInInspector]
+    public float threatLevel, damageDealt;
 
     /*
     void Awake()
