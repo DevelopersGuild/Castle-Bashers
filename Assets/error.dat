@@ -1,8 +1,8 @@
 ﻿<?xml version="1.0" encoding="UTF-8"?>
 <errorcatch>
   <eid>E10004</eid>
-  <log>The same field name is serialized multiple times in the class or its parent class. This is not supported: Base(MonoBehaviour) classification</log>
-  <detail>UnityEditor.DockArea:OnGUI()
+  <log>NullReferenceException: Object reference not set to an instance of an object</log>
+  <detail>SkillManager.Start () (at Assets/Scripts/Mechanics/SkillManager.cs:24)
 </detail>
   <info>Platform: WindowsEditor
 System: Windows 8.1  (6.3.0) 64bit
