@@ -150,7 +150,11 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_Upgrade_Window_Open(int equipment_type)
     {
-
+        Other_Windows.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Upgrade.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Upgrade.GetComponent<Equipment_Upgrade_FullControl>().Change(equipment_type);
+        
     }
 
     public void UI_Mission_Success_Open()
