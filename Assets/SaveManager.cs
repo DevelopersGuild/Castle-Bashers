@@ -25,6 +25,7 @@ public class SaveManager : MonoBehaviour {
         if (Input.GetKeyDown("g"))
         {
             writeFile();
+            deAlphatizeString("iaf");
         }
         if (Input.GetKeyDown("f"))
         {
@@ -36,9 +37,13 @@ public class SaveManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	string createCode () {
-        //strength = player.GetStrength();
+        string code = "";
+        strength = player.GetStrength();
+
+        alphatizeInt(strength);
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
+        
         return (strength + " " + agility + " " + intelligence);
 	}
 
@@ -101,5 +106,29 @@ public class SaveManager : MonoBehaviour {
         {
             loadCode = inputFile.ReadLine();
         }
+    }
+
+    string alphatizeInt(int i)
+    {
+        
+        char first;
+        char second;
+        char third;
+        first = (char)('a' + UnityEngine.Random.Range(1, 26));
+        second = (char)('a' + (i / 26));
+        third = (char)('a' + (i % 26));
+        string temp = first.ToString() + second.ToString() + third.ToString();
+        Debug.Log(first);
+        return temp;
+    }
+    int deAlphatizeString(string s)
+    {
+        int num = 0;
+        for(int i = s.Length - 1; i > 0 ; i--)
+        {
+            num += (s[i] - 'a') * (s.Length - i) * 26 ;
+        }
+        Debug.Log("num is " + num);
+        return num;
     }
 }

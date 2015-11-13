@@ -11,47 +11,48 @@ public class ChosenThree : MonoBehaviour {
     private GameObject mage;
     private GameObject archer;
 
-    private bool tankBuffActive;
-    private bool speedBuffActive;
-    private bool castBuffActive;
+    private bool beenNotifiedWarrior = false;
+    private bool beenNotifiedArcher = false;
+    private bool beenNotifiedMage = false;
 
 	// Use this for initialization
 	void Start () {
         warrior = Instantiate(warriorObj, gameObject.transform.position, Quaternion.identity) as GameObject;
-        tankBuffActive = true;
         mage = Instantiate(mageObj, gameObject.transform.position, Quaternion.identity) as GameObject;
-        castBuffActive = true;
         archer = Instantiate(archerObj, gameObject.transform.position, Quaternion.identity) as GameObject;
-        speedBuffActive = true;
 	}
 	
 	// Update is called once per frame
 	void Update () {
-        if (!warrior)
+        if (!warrior && !beenNotifiedWarrior)
         {
-            tankBuffActive = false;
+            if(mage)
+                mage.GetComponent<ChosenMage>().NotifyWarriorDeath();
+            if(archer)
+                archer.GetComponent<ChosenArcher>().NotifyWarriorDeath();
+            beenNotifiedWarrior = true;
+            
         }
-        if (!mage)
+        if (!mage && !beenNotifiedMage)
         {
-            Debug.Log("Mage has died");
-            castBuffActive = false;
+            if(warrior)
+                warrior.GetComponent<ChosenWarrior>().NotifyMageDeath();
+            if(archer)
+                archer.GetComponent<ChosenArcher>().NotifyMageDeath();
+            beenNotifiedMage = true;
         }
-        if (!archer)
+        if (!archer && !beenNotifiedArcher)
         {
-            speedBuffActive = false;
+            if(warrior)
+                warrior.GetComponent<ChosenWarrior>().NotifyArcherDeath();
+            if(mage)
+                mage.GetComponent<ChosenMage>().NotifyArcherDeath();
+            beenNotifiedArcher = true;
+        }
+        if(!archer && !mage && !warrior)
+        {
+            Destroy(gameObject);
         }
 	}
 
-    public bool isTankBuffActive()
-    {
-        return tankBuffActive;
-    }
-    public bool isCastBuffActive()
-    {
-        return castBuffActive;
-    }
-    public bool isSpeedBuffActive()
-    {
-        return speedBuffActive;
-    }
 }

@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11456922}
   - 114: {fileID: 11421732}
   - 114: {fileID: 11463702}
+  - 114: {fileID: 11413432}
   m_Layer: 0
   m_Name: Chosen Mage
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 191986}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -4.34000015, y: 1.95000005, z: -.0199999996}
+  m_LocalPosition: {x: -4.11000013, y: 1.90250015, z: -.0199999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -61,6 +62,19 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.33000004, y: 3.00999999, z: .930000007}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11413432
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 191986}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PhysicalDefense: 0
+  MagicalDefense: 0
 --- !u!114 &11421732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -93,9 +107,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 10
+  ExperinceAmount: 0
+  startingHealth: 2
   RegenAmount: 0
-  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &11456922
 MonoBehaviour:
@@ -195,7 +209,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: startingHealth
-      value: 10
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Constraints

@@ -8,6 +8,7 @@ public class MeteorMover : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         moveIncrement = new Vector3(-1, -2, 0);
+        Destroy(gameObject, 5);
 	}
 	
 	// Update is called once per frame
@@ -20,7 +21,6 @@ public class MeteorMover : MonoBehaviour {
     {
         if(col.gameObject.layer == LayerMask.NameToLayer("Platforms"))
         {
-            Debug.Log("Hit platform!");
             Destroy(gameObject);
         }
     }
