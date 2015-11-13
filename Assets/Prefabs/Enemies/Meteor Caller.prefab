@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 2.78999996, y: 2.78999996, z: .500274658}
+  m_LocalPosition: {x: -5.84186792, y: 2.16000009, z: -1.72000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -55,7 +55,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124154}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.79999995, y: 3, z: .200000003}
@@ -73,7 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 4294967295
   horizontalRayCount: 4
   verticalRayCount: 4
   knockbackVelocity: 0
@@ -127,7 +127,7 @@ MonoBehaviour:
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  shotObj: {fileID: 0}
+  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
   classification: 1
 --- !u!212 &21279812
 SpriteRenderer:

@@ -32,6 +32,7 @@ GameObject:
   - 114: {fileID: 11483142}
   - 114: {fileID: 11446964}
   - 114: {fileID: 11464752}
+  - 114: {fileID: 11448768}
   m_Layer: 0
   m_Name: Stalker
   m_TagString: Untagged
@@ -46,7 +47,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 128424}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -3.25897789, y: 1.47000003, z: 2.93557835}
+  m_LocalPosition: {x: -7.93266296, y: 2.56750298, z: 2.93557835}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 498474}
@@ -160,6 +161,19 @@ MonoBehaviour:
   right: {x: 0, y: 0, z: 0}
   attackCollider: {fileID: 104988}
   classification: 0
+--- !u!114 &11448768
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 128424}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PhysicalDefense: 0
+  MagicalDefense: 0
 --- !u!114 &11464752
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -202,9 +216,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 20
   RegenAmount: 0
-  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!212 &21243314
 SpriteRenderer:

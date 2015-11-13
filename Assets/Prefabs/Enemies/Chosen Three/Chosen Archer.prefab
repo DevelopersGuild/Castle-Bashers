@@ -15,6 +15,7 @@ GameObject:
   - 114: {fileID: 11416204}
   - 114: {fileID: 11423122}
   - 114: {fileID: 11469034}
+  - 114: {fileID: 11449472}
   m_Layer: 0
   m_Name: Chosen Archer
   m_TagString: Untagged
@@ -29,7 +30,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 132428}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -1.22432232, y: 2.33999991, z: 4.24054718}
+  m_LocalPosition: {x: -3.21000004, y: 2.13000011, z: 4.24054718}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -95,7 +96,7 @@ MonoBehaviour:
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  shotObj: {fileID: 11461502, guid: c3043b82b5d87df4fa52fcf7f1d658c5, type: 2}
+  shotObj: {fileID: 11431288, guid: 71eb4e2086abff0468ea6f232d36ccba, type: 2}
   classification: 1
 --- !u!114 &11416204
 MonoBehaviour:
@@ -129,10 +130,23 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 10
   RegenAmount: 0
-  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
+--- !u!114 &11449472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 132428}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  PhysicalDefense: 0
+  MagicalDefense: 0
 --- !u!114 &11469034
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -9,7 +9,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 450512}
   - 65: {fileID: 6599848}
-  - 114: {fileID: 11478880}
+  - 114: {fileID: 11480988}
   m_Layer: 0
   m_Name: AttackCollider
   m_TagString: Untagged
@@ -53,7 +53,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 192152}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -10.7200003, y: 2.32999992, z: 1.87}
+  m_LocalPosition: {x: -9.72000027, y: 2.32999992, z: 1.91999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 450512}
@@ -183,7 +183,7 @@ MonoBehaviour:
   silenceEffect: {fileID: 0}
   canSnare: 1
   snareEffect: {fileID: 0}
---- !u!114 &11478880
+--- !u!114 &11480988
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -191,11 +191,13 @@ MonoBehaviour:
   m_GameObject: {fileID: 180060}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11d076f2c821644380153d328222929, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dmgAmount: 1
-  invTime: .100000001
+  isMagic: 0
+  damagePlayers: 0
+  damageEnemies: 1
 --- !u!114 &11481426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -231,7 +233,12 @@ MonoBehaviour:
   animator: {fileID: 0}
   AttackCollider: {fileID: 180060}
   skillManager: {fileID: 0}
-  Strength: 1
+  Skills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Strength: 5
   Agility: 1
   Intelligence: 1
   jumpHeight: 4
@@ -250,6 +257,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2574487eb01986e468143c9b4907c150, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  currentLevel: 1
+  ExperincePointsPerLevel: 2
 --- !u!114 &11492828
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -261,9 +270,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 20
   RegenAmount: 1
-  showHealthBar: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &11493054
 MonoBehaviour:

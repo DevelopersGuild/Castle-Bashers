@@ -39,9 +39,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad69f1acb32c39e4b98f2ba5310d183b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  warriorObj: {fileID: 0}
-  mageObj: {fileID: 0}
-  archerObj: {fileID: 0}
+  warriorObj: {fileID: 143098, guid: 9cea5d1864ea7d9448d31f4536d6bbcd, type: 2}
+  mageObj: {fileID: 191986, guid: f493fec76c677234497586bc32f18aea, type: 2}
+  archerObj: {fileID: 132428, guid: 6e2138cf9ae3e03449d64fb319c54c7f, type: 2}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

@@ -10,7 +10,8 @@ public class MeteorCaller : MonoBehaviour {
     public ISkill meteor;
 	// Use this for initialization
 	void Start () {
-        meteor = new sMeteor();
+        meteor = gameObject.AddComponent<sMeteor>();
+       
         lastCast = Time.time;
 	}
 	
