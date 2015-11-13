@@ -65,7 +65,6 @@ public class ClawBehaviour : MonoBehaviour {
                     float l = other.size.x * part2.transform.localScale.x;
                     Vector3 thisVec = new Vector3(maxPos.x * Mathf.Sin(degAngle), maxPos.x * Mathf.Sin(degAngle),0) * maxSize.x;
                     Vector3 otherVec = new Vector3(l * Mathf.Sin(degAngle2), 0, 0) * part2.transform.localScale.x;
-                    Debug.Log(thisVec + " vs " + otherVec);
                     GameObject p2 = Instantiate(part2, transform.position + direction * (thisVec + otherVec), part2.transform.rotation) as GameObject;
                     //new Vector3(boxCol.size.x * Mathf.Sin(degAngle2) * 1/2, boxCol.size.y * Mathf.Cos(degAngle2) * 1/2, boxCol.size.z * Mathf.Sin(degAngle2) * 1/2)
                     //p2.transform.rotation *= Quaternion.Euler(0 - transform.rotation.x, 0 - transform.rotation.y,transform.rotation.z- 10);

@@ -18,8 +18,18 @@ public class BossHealth : Health
         enemy = GetComponent<Boss>();
         moveController = GetComponent<MoveController>();
         damageTextOffset = new Vector3(0, 2, 0);
-
         currentHealth = startingHealth; //+ player.getLevel()/3
+        Update_Maxhp();
+    }
+
+    void Update()
+    {
+
+    }
+
+    public override float GetCurrentHealth()
+    {
+        return currentHealth;
     }
 
     public override void takeDamage(float dmg, float knockback = 0, float flinch = 0)
