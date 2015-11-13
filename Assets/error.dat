@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<errorcatch>
+  <eid>E10004</eid>
+  <log>NullReferenceException: Object reference not set to an instance of an object</log>
+  <detail>Main_UI_FULLControl.Update () (at Assets/Scenes/Scripts/Kroulis Scripts/Main_UI_FULLControl.cs:359)
+</detail>
+  <info>Platform: WindowsEditor
+System: Windows 10  (10.0.0) 64bit
+CPU RATE: 8%
+Mem: 8105MB
+GPUName: Intel(R) HD Graphics 4600
+</info>
+</errorcatch>
