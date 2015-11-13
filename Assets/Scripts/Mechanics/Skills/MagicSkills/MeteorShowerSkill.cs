@@ -17,7 +17,7 @@ public class MeteorShowerSkill : Skill {
     // Use this for initialization
     protected override void Start () {
         base.Start();
-        base.SetBaseValues(15, 16000, 85, "Meteor Shower");
+        base.SetBaseValues(15, 16000, 85, "Meteor Shower", SkillLevel.EnemyOnly);
         meteor = gameObject.AddComponent<sMeteor>();
 
 	}

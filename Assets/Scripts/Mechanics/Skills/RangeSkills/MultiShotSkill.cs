@@ -14,7 +14,7 @@ public class MultiShot : Skill {
 	// Use this for initialization
 	protected override void Start () {
         base.Start();
-        SetBaseValues(7, 3500, 35, "Multi Shot");
+        SetBaseValues(7, 3500, 35, "Multi Shot", SkillLevel.EnemyOnly);
 	}
 	
 	// Update is called once per frame
