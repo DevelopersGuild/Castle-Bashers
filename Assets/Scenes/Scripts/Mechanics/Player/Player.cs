@@ -13,10 +13,12 @@ public class Player : MonoBehaviour
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
     public string Player_Name;
-    private int Stamina;
-    private int Strength;
-    private int Agility;
-    private int Intelligence;
+    //The stats should remain public to allow them to be set in the editor.
+    public int Stamina;
+    public int Strength;
+    public int Agility;
+    public int Intelligence;
+
     private int class_id = 0;
     private int weapon_level=0;
     private int armor_level = 0;
