@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8e38db5d1ebd241a1d1b09ca8356fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agroRange: 20
+  agroRange: 0
   attackRange: 1
   attack_CD: 5
   target: {fileID: 0}
@@ -94,6 +94,9 @@ MonoBehaviour:
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
+  sprRend: {fileID: 0}
+  hp: {fileID: 0}
+  classification: 0
   attackCollider: {fileID: 130992, guid: 08e3a8e95a01cdb4fa2a9d488c5e35cd, type: 2}
   classification: 0
 --- !u!114 &11472708
@@ -128,8 +131,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingHealth: 5
+  ExperinceAmount: 0
+  startingHealth: 0
   RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!212 &21278490
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -166,6 +171,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: StartingHealth
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: agroRange
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

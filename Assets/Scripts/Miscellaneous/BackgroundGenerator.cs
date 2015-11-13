@@ -37,7 +37,7 @@ public class BackgroundGenerator : MonoBehaviour
 
         float roomCenter = farthestRoomEndX + roomWidth * 0.5f;
 
-        room.transform.position = new Vector3(roomCenter, -1, 11.7f);
+        room.transform.position = new Vector3(roomCenter, 0.5f, 11.7f);
         room.transform.parent = transform;
         currentRooms.Add(room);
     }

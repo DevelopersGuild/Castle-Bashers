@@ -32,21 +32,23 @@ public class AreaGen : MonoBehaviour
 
         GameObject temp;
 
-        GameObject background = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName, 0], typeof(GameObject));
+        GameObject background = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Maps/BackgroundContainer.prefab", typeof(GameObject));
+
+        // old holder for backgrounds = Biome.Backgrounds[(int)ActiveBiomeName, 0]
 
 
 
-        
 
-        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Left Limit.prefab", typeof(GameObject)), new Vector3(-19,0,0), transform.rotation);
+
+        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Left Limit.prefab", typeof(GameObject)), new Vector3(-5,0,0), transform.rotation);
 
         for (int i = 0; i < AreaNumber; i++)
         {
 
 
             Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/3DFloorB.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, AreaZCoord), transform.rotation);
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Front Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 13), transform.rotation); //set front limits
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Back Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -10), transform.rotation); //set back limits
+            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Front Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 11), transform.rotation); //set front limits
+            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Back Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -8), transform.rotation); //set back limits
             t_length += 40;
 
             if(background!=null)
@@ -151,7 +153,7 @@ public class AreaGen : MonoBehaviour
             ////////////////////
             for (int m = 0; m < Total_Objects; m++) //This loop gets us our Z coordinates
             {
-                testtemp = rnd.Next(-10, 9); //our Z value
+                testtemp = rnd.Next(-5, 5); //our Z value
                 for (int n = 0; n < Total_Objects; n++) //dummy test
                 {
                     if (arrayZ[n] == testtemp)
@@ -170,7 +172,7 @@ public class AreaGen : MonoBehaviour
         }
 
         Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((t_length)-13, AreaYCoord, AreaZCoord), transform.rotation);
-        Debug.Log(t_length);
+        //Debug.Log(t_length);
     }
 
     // Update is called once per frame
