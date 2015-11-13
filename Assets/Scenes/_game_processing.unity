@@ -440,6 +440,7 @@ GameObject:
   - 224: {fileID: 124329471}
   - 222: {fileID: 124329472}
   - 114: {fileID: 124329473}
+  - 114: {fileID: 124329474}
   m_Layer: 5
   m_Name: Upgrade
   m_TagString: Untagged
@@ -464,6 +465,8 @@ RectTransform:
   - {fileID: 552564891}
   - {fileID: 240543860}
   - {fileID: 1726432584}
+  - {fileID: 650984006}
+  - {fileID: 1076939551}
   m_Father: {fileID: 1091903627}
   m_RootOrder: 2
   m_AnchorMin: {x: .5, y: .5}
@@ -504,6 +507,38 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
+--- !u!114 &124329474
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 124329470}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7ba6d7b352c1c8d4ab1f09f35fe4e202, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Weapon: {fileID: 272335496}
+  Amror: {fileID: 1937591914}
+  Accessories: {fileID: 2075131882}
+  Old: {fileID: 650984004}
+  New: {fileID: 1076939552}
+  LV: {fileID: 2068629060}
+  GO: {fileID: 552564892}
+  HGO: {fileID: 240543858}
+  Tips: {fileID: 1726432585}
+  weapons:
+  - {fileID: 513611634}
+  - {fileID: 976044460}
+  - {fileID: 481282150}
+  amrors:
+  - {fileID: 1914787972}
+  - {fileID: 930923640}
+  - {fileID: 1060530183}
+  accessories:
+  - {fileID: 2128310558}
+  - {fileID: 756418258}
+  - {fileID: 590314950}
 --- !u!1 &126348771
 GameObject:
   m_ObjectHideFlags: 0
@@ -1665,7 +1700,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &257600368
 RectTransform:
   m_ObjectHideFlags: 0
@@ -2561,9 +2596,144 @@ MonoBehaviour:
       sta: 2
       spi: 2
       agi: 2
-    weapon: []
-    armor: []
-    accessory: []
+    weapon:
+    - name: No Weapon
+      icon: {fileID: 21300000, guid: 4c922c0ec52b6ef43a0b46fbd4b9fad3, type: 3}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: Wood Sword
+      icon: {fileID: 21300000, guid: 4c922c0ec52b6ef43a0b46fbd4b9fad3, type: 3}
+      lim_lv: 1
+      up_gold: 50
+      atk: 1
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    armor:
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    accessory:
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
+    - name: 
+      icon: {fileID: 0}
+      lim_lv: 0
+      up_gold: 0
+      atk: 0
+      def: 0
+      maxhp: 0
+      maxmp: 0
+      cri: 0
 --- !u!114 &379823603
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2921,7 +3091,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &423309820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -5128,6 +5298,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 650492702}
+--- !u!1 &650984003
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 650984006}
+  - 222: {fileID: 650984005}
+  - 114: {fileID: 650984004}
+  m_Layer: 5
+  m_Name: UP_Old
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &650984004
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650984003}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &650984005
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650984003}
+--- !u!224 &650984006
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 650984003}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 124329471}
+  m_RootOrder: 7
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: -171, y: 86.0999985}
+  m_SizeDelta: {x: 48, y: 48}
+  m_Pivot: {x: .5, y: .5}
 --- !u!1 &657514712
 GameObject:
   m_ObjectHideFlags: 0
@@ -5630,7 +5867,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &733907344
 RectTransform:
   m_ObjectHideFlags: 0
@@ -6501,7 +6738,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &900195970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -7841,6 +8078,73 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1063681331}
+--- !u!1 &1076939550
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 224: {fileID: 1076939551}
+  - 222: {fileID: 1076939553}
+  - 114: {fileID: 1076939552}
+  m_Layer: 5
+  m_Name: UP_New
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &1076939551
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076939550}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 124329471}
+  m_RootOrder: 8
+  m_AnchorMin: {x: .5, y: .5}
+  m_AnchorMax: {x: .5, y: .5}
+  m_AnchoredPosition: {x: 180.300003, y: 86.1000061}
+  m_SizeDelta: {x: 48, y: 48}
+  m_Pivot: {x: .5, y: .5}
+--- !u!114 &1076939552
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076939550}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+    m_TypeName: UnityEngine.UI.MaskableGraphic+CullStateChangedEvent, UnityEngine.UI,
+      Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
+  m_Sprite: {fileID: 0}
+  m_Type: 0
+  m_PreserveAspect: 0
+  m_FillCenter: 1
+  m_FillMethod: 4
+  m_FillAmount: 1
+  m_FillClockwise: 1
+  m_FillOrigin: 0
+--- !u!222 &1076939553
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1076939550}
 --- !u!1 &1091903623
 GameObject:
   m_ObjectHideFlags: 0
@@ -10696,7 +11000,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &1551960949
 RectTransform:
   m_ObjectHideFlags: 0
