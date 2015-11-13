@@ -12,6 +12,7 @@ public class Health : MonoBehaviour
     private DealDamageToEnemy attack;
     private bool canKnock = true;
     private MoveController moveController;
+    private bool isPlayerDown = false;
     public Vector3 damageTextOffset;
 
 
@@ -127,7 +128,8 @@ public class Health : MonoBehaviour
     public void PlayerDown()
     {
         //use other object to check if all players down, if so then Death() + lose level
-        Death();
+        isPlayerDown = true;
+        //Death();
     }
 
     public virtual void Death()
@@ -159,6 +161,11 @@ public class Health : MonoBehaviour
     public float GetMaxHP()
     {
         return maxhp;
+    }
+
+    public bool GetIsPlayerDown()
+    {
+        return isPlayerDown;
     }
 
 }
