@@ -10543,6 +10543,7 @@ GameObject:
   - 224: {fileID: 1514012122}
   - 222: {fileID: 1514012124}
   - 114: {fileID: 1514012123}
+  - 114: {fileID: 1514012125}
   m_Layer: 5
   m_Name: Setting_Menu
   m_TagString: Untagged
@@ -10600,6 +10601,17 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1514012121}
+--- !u!114 &1514012125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1514012121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d7c68b9ae52b6654c9c4e9e003a71d06, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1550157687
 GameObject:
   m_ObjectHideFlags: 0

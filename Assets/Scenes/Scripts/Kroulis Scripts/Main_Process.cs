@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
+using Kroulis.Error;
 
 public class Main_Process : MonoBehaviour {
 
@@ -23,6 +24,8 @@ public class Main_Process : MonoBehaviour {
     Mana Player_Mana;
     Experience Player_EXP;
     Player Player_Script;
+    //ErrorCatch
+    private ErrorCatching error = new ErrorCatching();
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
@@ -35,6 +38,7 @@ public class Main_Process : MonoBehaviour {
         Player_Mana = Player_GO.GetComponent<Mana>();
         Player_EXP = Player_GO.GetComponent<Experience>();
         Player_Script = Player_GO.GetComponent<Player>();
+        error.OnEnable();
 	}
 
     // Update is called once per frame
@@ -155,7 +159,7 @@ public class Main_Process : MonoBehaviour {
         Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
         GameObject MS= Other_Windows.GetComponent<Other_Windows_FullControl>().Mission_Success;
         GetComponentInChildren<Mission_Timer>().Stop_Timer();
-        //MS.GetComponent<M_S_CalculateRank>().Calculate();
+        MS.GetComponent<M_S_CalculateRank>().Calculate();
         MS.SetActive(true);
 
     }
@@ -256,5 +260,12 @@ public class Main_Process : MonoBehaviour {
             BGM_Player.volume = 1;
         }
         
+    }
+
+    public void CancelLevel()
+    {
+        GetComponentInChildren<Mission_Timer>().Clear_Timer();
+        GetComponentInChildren<Mission_Database>().clear_db();
+        End_Battle();
     }
 }
