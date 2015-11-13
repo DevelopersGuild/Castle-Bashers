@@ -39,7 +39,9 @@ public class MoveController : MonoBehaviour
         coll = GetComponent<BoxCollider>();
         CalculateRaySpacing();
         currentKnockbacktime = knockbackTime;
+        currentFlinchTime = flinchTime;
         canKB = true;
+        canFlinch = true;
     }
 
 
@@ -56,6 +58,8 @@ public class MoveController : MonoBehaviour
         canKB = canKnock;
         canFlinch = canFl;
     }
+
+
 
     // true for right, false for left
     public void OrientFacingLeft(bool set, float lookDir)
@@ -146,6 +150,7 @@ public class MoveController : MonoBehaviour
     {
         if (canFlinch)
         {
+
             if (!isKnockedBack)
             {
                 if (isFlinched)
