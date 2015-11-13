@@ -332,7 +332,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Min_Area: 2
-  Max_Area: 3
+  Max_Area: 7
   Min_Enemy: 2
   Max_Enemy: 4
   Total_Objects: 6
