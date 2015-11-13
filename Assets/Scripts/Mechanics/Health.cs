@@ -129,6 +129,7 @@ public class Health : MonoBehaviour
     {
         //use other object to check if all players down, if so then Death() + lose level
         isPlayerDown = true;
+        GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
         //Death();
     }
 
