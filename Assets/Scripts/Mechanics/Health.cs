@@ -88,13 +88,11 @@ public class Health : MonoBehaviour
                 {
                     if (player.GetKnockable())
                     {
-                        Debug.Log("Hey");
                         moveController.SetKnockback(true);
                         player.ModifyKBCount(0, 0);
                     }
                     else if (player.GetFlinchable())
                     {
-                        Debug.Log("Ho");
                         moveController.SetFlinch(true);
                         player.ModifyFlinchCount(0, 0);
                     }
