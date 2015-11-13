@@ -9,7 +9,13 @@ public class Character_Class_Info : MonoBehaviour {
         public Sprite icon;
         public int lim_lv, up_gold;
         public int atk, def;
-        public int batk,matk,pdef,mdef,maxhp,maxmp,cri;
+        public int maxhp,maxmp,cri;
+    }
+
+    [System.Serializable]
+    public struct LevelUpAddStats
+    {
+        public int atk, def, sta, spi, agi;
     }
 
     [System.Serializable]
@@ -18,6 +24,7 @@ public class Character_Class_Info : MonoBehaviour {
         public string name;
         public Sprite icon;
         public int[] skillid;
+        public LevelUpAddStats ClassAddStats;
         public Equipment_info[] weapon;
         public Equipment_info[] armor;
         public Equipment_info[] accessory;

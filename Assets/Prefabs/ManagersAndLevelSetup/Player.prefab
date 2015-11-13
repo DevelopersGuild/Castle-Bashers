@@ -160,6 +160,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  defense: 0
   PhysicalDefense: 0
   MagicalDefense: 0
 --- !u!114 &11476382
@@ -183,7 +184,13 @@ MonoBehaviour:
   silenceEffect: {fileID: 0}
   canSnare: 1
   snareEffect: {fileID: 0}
+<<<<<<< HEAD
 --- !u!114 &11480988
+=======
+  canPoly: 1
+  PolyEffect: {fileID: 0}
+--- !u!114 &11478880
+>>>>>>> 7e611b850068e5aef60a088f663a0718d9569422
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -194,10 +201,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+<<<<<<< HEAD
   dmgAmount: 1
   isMagic: 0
   damagePlayers: 0
   damageEnemies: 1
+=======
+  PhysicalDamage: 1
+  MagicalDamage: 1
+  invTime: .100000001
+>>>>>>> 7e611b850068e5aef60a088f663a0718d9569422
 --- !u!114 &11481426
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -219,6 +232,8 @@ MonoBehaviour:
   silenceEffect: {fileID: 0}
   canSnare: 1
   snareEffect: {fileID: 0}
+  canPoly: 1
+  PolyEffect: {fileID: 0}
 --- !u!114 &11487910
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -238,9 +253,13 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+<<<<<<< HEAD
   Strength: 5
   Agility: 1
   Intelligence: 1
+=======
+  Player_Name: 
+>>>>>>> 7e611b850068e5aef60a088f663a0718d9569422
   jumpHeight: 4
   timeToJumpApex: .600000024
   horizontalMoveSpeed: 6
@@ -254,7 +273,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 192152}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2574487eb01986e468143c9b4907c150, type: 3}
+  m_Script: {fileID: 11500000, guid: 264041d4c35af654a972eea5e726a313, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   currentLevel: 1

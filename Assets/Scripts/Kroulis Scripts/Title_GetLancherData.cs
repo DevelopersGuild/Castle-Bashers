@@ -3,6 +3,8 @@ using System.Collections;
 using System.Xml;
 using System.IO;
 using System;
+using Kroulis.Verify;
+using Kroulis.Error;
 
 public class Title_GetLancherData : MonoBehaviour {
     XmlDocument config=new XmlDocument();
@@ -14,18 +16,7 @@ public class Title_GetLancherData : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         string path = "";
-        if (Application.platform == RuntimePlatform.Android)
-        {
-            path = Application.persistentDataPath;
-        }
-        else if (Application.platform == RuntimePlatform.WindowsPlayer)
-        {
-            path = Application.dataPath;
-        }
-        else if (Application.platform == RuntimePlatform.WindowsEditor)
-        {
-            path = Application.dataPath;
-        }
+        path = FileVerify.GetPath();
         Debug.Log(path + "/config.xml");
         if (File.Exists(path + "/config.xml"))
         {
@@ -91,6 +82,7 @@ public class Title_GetLancherData : MonoBehaviour {
             Debug.LogWarning("Xml File Not Exist");
             if (Application.isEditor == false)
             {
+                ErrorCatching.WriteConfigErrorXML();
                 //Application.OpenURL("www.kroulisworld.com/");
                 Application.Quit();
             }

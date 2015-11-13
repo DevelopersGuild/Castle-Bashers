@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using System.Runtime.InteropServices;
+using Kroulis.Error;
 
 public class Main_Process : MonoBehaviour {
 
@@ -17,16 +18,27 @@ public class Main_Process : MonoBehaviour {
     public bool Killing_boss;
     public bool Team_Mode;
     public bool esckey_up; // Avoid key conflict
-    //dlls
-    [DllImport("Char_Proc")]
-    private static extern bool Is_Character_Created();
+    AudioSource BGM_Player;
+    GameObject Player_GO;
+    Health Player_Health;
+    Mana Player_Mana;
+    Experience Player_EXP;
+    Player Player_Script;
+    //ErrorCatch
+    private ErrorCatching error = new ErrorCatching();
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_Process = this.gameObject;
         Menu_UI.GetComponent<Menu_UI_FullControl>().Main_Process = this.gameObject;
         Other_Windows.GetComponent<Other_Windows_FullControl>().Main_Process = this.gameObject;
-        Debug.Log(Is_Character_Created());
+        BGM_Player = GetComponent<AudioSource>();
+        Player_GO = GameObject.Find("Player");
+        Player_Health = Player_GO.GetComponent<Health>();
+        Player_Mana = Player_GO.GetComponent<Mana>();
+        Player_EXP = Player_GO.GetComponent<Experience>();
+        Player_Script = Player_GO.GetComponent<Player>();
+        error.OnEnable();
 	}
 
     // Update is called once per frame
@@ -48,6 +60,24 @@ public class Main_Process : MonoBehaviour {
             Menu_UI.GetComponent<Menu_UI_FullControl>().Menu_id = Menu_id;
             Main_UI.SetActive(true);
             Menu_UI.SetActive(true);
+            if(Menu_Open==false)
+            {
+                if(One_player_per_client==true)
+                {
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp = (int)Player_Health.GetMaxHP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().hp = (int)Player_Health.GetCurrentHealth();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp = (int)Player_Mana.GetMaxMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().mp = (int)Player_Mana.GetMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().exp = Player_EXP.GetExperience();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp = Player_EXP.GetNEXP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().lv = Player_EXP.GetCurrentLevel();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().cid = Player_Script.GetClassID();
+                }
+                else
+                {
+
+                }
+            }
         }
         
         
@@ -78,7 +108,8 @@ public class Main_Process : MonoBehaviour {
     //when the mission start, use this to start the timer and ban the menu
     public void mission_start()
     {
-        In_Battle = true;
+        //In_Battle = true;
+        Start_Battle();
         GetComponentInChildren<Mission_Database>().clear_db();
         GetComponentInChildren<Mission_Timer>().Clear_Timer();
         GetComponentInChildren<Mission_Timer>().Start_Timer();
@@ -119,7 +150,11 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_Upgrade_Window_Open(int equipment_type)
     {
-
+        Other_Windows.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Upgrade.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Upgrade.GetComponent<Equipment_Upgrade_FullControl>().Change(equipment_type);
+        
     }
 
     public void UI_Mission_Success_Open()
@@ -138,5 +173,103 @@ public class Main_Process : MonoBehaviour {
         Other_Windows.SetActive(false);
         Hide_UI = false;
     }
+
+    //Battle Control
+
+    public void Start_Battle()
+    {
+        In_Battle = true;
+        BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[Random.Range(1, 2)].aud;
+        BGM_Player.Play();
+    }
+
+    public void Srart_Battle_Boss(int boss_id,int boss_headicon_id)
+    {
+        Killing_boss = true;
+        Main_UI.GetComponent<Main_UI_FULLControl>().boss.id = boss_id;
+        Main_UI.GetComponent<Main_UI_FULLControl>().boss.headiconid = boss_headicon_id;
+        Main_UI.GetComponent<Main_UI_FULLControl>().Update_Boss_Info();
+        
+        while(BGM_Player.volume>0)
+        {
+            BGM_Player.volume = BGM_Player.volume - 0.05F * Time.deltaTime;
+        }
+        BGM_Player.volume = 0;
+        BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[0].aud;
+        BGM_Player.Play();
+        BGM_Player.volume = 1;
+    }
 	
+    public void SwitchBackToNormalBattle()
+    {
+        Killing_boss = false;
+        while (BGM_Player.volume > 0)
+        {
+            BGM_Player.volume = BGM_Player.volume - 0.05F * Time.deltaTime;
+        }
+        BGM_Player.volume = 0;
+        BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[Random.Range(1,2)].aud;
+        BGM_Player.Play();
+        while (BGM_Player.volume < 1)
+        {
+            BGM_Player.volume = BGM_Player.volume + 0.05F * Time.deltaTime;
+        }
+        BGM_Player.volume = 1;
+    }
+
+    public void End_Battle()
+    {
+        In_Battle = false;
+        while (BGM_Player.volume > 0)
+        {
+            BGM_Player.volume = BGM_Player.volume - 0.05F * Time.deltaTime;
+        }
+        BGM_Player.Stop();
+        BGM_Player.clip = null;
+        BGM_Player.volume = 1;
+    }
+
+    //Start Play a new Background music. Let BGM_id be -1 will just stop play the music.
+    public void Start_new_BGM(int BGM_id,bool SmoothlyDown,bool SmoothlyUp)  
+    {
+        if(BGM_id==-1)
+        {
+            BGM_Player.clip = null;
+        }
+        else if (BGM_id > GetComponentInChildren<BGM_Manage>().BGM.Length)
+        {
+            Debug.LogWarning("The BGM_id You Input is not correct. Please checkout what happened.");
+            BGM_Player.clip = null;
+        }
+        else
+        {
+            if(SmoothlyDown==true)
+            {
+                while (BGM_Player.volume > 0)
+                {
+                    BGM_Player.volume = BGM_Player.volume - 0.05F * Time.deltaTime;
+                }
+                BGM_Player.volume = 0;
+            }
+
+            BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[BGM_id].aud;
+            BGM_Player.Play();
+            if(SmoothlyUp==true)
+            {
+                while (BGM_Player.volume < 1)
+                {
+                    BGM_Player.volume = BGM_Player.volume + 0.05F * Time.deltaTime;
+                }
+            }
+            BGM_Player.volume = 1;
+        }
+        
+    }
+
+    public void CancelLevel()
+    {
+        GetComponentInChildren<Mission_Timer>().Clear_Timer();
+        GetComponentInChildren<Mission_Database>().clear_db();
+        End_Battle();
+    }
 }

@@ -53,9 +53,14 @@ public class CrowdControllable : MonoBehaviour {
     List<Effect> snares = new List<Effect>();
     public GameObject snareEffect;
 
-    
-	// Use this for initialization
-	void Start () {
+    public bool canPoly = true;
+    private bool isPoly = false;
+    List<Effect> polymorphs = new List<Effect>();
+    public GameObject PolyEffect;
+
+
+    // Use this for initialization
+    void Start () {
 	}
 	
 	// Update is called once per frame

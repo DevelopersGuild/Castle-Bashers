@@ -18,7 +18,11 @@ public class StandingState : IPlayerState
         {
             return new WalkingState();
         }
-        return null;
+        if (player.GetComponent<Health>().GetIsPlayerDown() == true)
+        {
+            return new DeathState();
+        }
+            return null;
     }
 
     public void UpdateState(Player player)

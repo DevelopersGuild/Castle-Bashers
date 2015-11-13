@@ -100,9 +100,13 @@ public class M_S_CalculateRank : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Return))
         {
             Globe.Map_Load_id = 3;
+            Main_Process mps;
+            mps = GetComponentInParent<Other_Windows_FullControl>().Main_Process.GetComponent<Main_Process>();
             this.gameObject.SetActive(false);
-            GetComponentInParent<Other_Windows_FullControl>().Main_Process.GetComponent<Main_Process>().OtherWindows_Close();
+            mps.OtherWindows_Close();
+            mps.End_Battle();
             Application.LoadLevel(2);
+            mps.Start_new_BGM(3,false,true);
         }
     }
 }

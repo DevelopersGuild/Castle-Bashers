@@ -1,5 +1,5 @@
 ﻿public enum MessageTypes
 {
-    TEST_MESSAGE,
+    TEST_MESSAGE, PLAYER_DEATH
 }
 
