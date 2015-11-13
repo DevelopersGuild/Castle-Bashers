@@ -7,7 +7,7 @@ public class HealthRegenSkill : Skill
     protected override void Start()
     {
         base.Start();
-        base.SetBaseValues(20, 1000, 10, "Health Regen");
+        base.SetBaseValues(20, 1000, 10, "Health Regen", SkillLevel.Level1);
     }
 
     public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)

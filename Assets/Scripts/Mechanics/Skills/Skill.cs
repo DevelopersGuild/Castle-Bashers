@@ -13,12 +13,13 @@ public class Skill : MonoBehaviour
     //check out SkillLevel enum for all possible vaules.
     private SkillLevel skillLevel;
 
-    public void SetBaseValues(float coolDown, int price, int manaCost, string skillName)
+    public void SetBaseValues(float coolDown, int price, int manaCost, string skillName, SkillLevel skillLevel)
     {
         this.coolDown = coolDown;
         this.price = price;
         this.manaCost = manaCost;
         this.skillName = skillName;
+        this.skillLevel = skillLevel;
     }
 
     // Use this for initialization
