@@ -16,7 +16,6 @@ public class Health : MonoBehaviour
     public Vector3 damageTextOffset;
 
 
-
     // Use this for initialization
     void Start()
     {
@@ -26,13 +25,15 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
         maxhp = startingHealth;
         damageTextOffset = new Vector3(0, 2, 0);
-
+        maxhp = startingHealth;
+        if(player)
+            maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30;
         
     }
 
     void Update()
     {
-        
+
     }
 
     public void Update_Maxhp()
@@ -66,7 +67,6 @@ public class Health : MonoBehaviour
 
     public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
-        Debug.Log(currentHealth);
         if (player)
         {
             if (!player.GetInvincible())
@@ -127,6 +127,7 @@ public class Health : MonoBehaviour
 
     public void PlayerDown()
     {
+        GetComponent<Player>().setDown(true);
         //use other object to check if all players down, if so then Death() + lose level
         isPlayerDown = true;
         GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
@@ -145,9 +146,9 @@ public class Health : MonoBehaviour
         return startingHealth;
     }
 
-    public float GetCurrentHealth()
+    public virtual float GetCurrentHealth()
     {
-        return currentHealth;
+        return gameObject.GetComponent<Health>().currentHealth;
     }
 
     public void AddHealth(float healthAmount)
