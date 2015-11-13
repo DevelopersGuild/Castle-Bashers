@@ -37,14 +37,10 @@ public class SaveManager : MonoBehaviour {
 	
 	// Update is called once per frame
 	string createCode () {
-<<<<<<< HEAD
         string code = "";
         strength = player.GetStrength();
 
         alphatizeInt(strength);
-=======
-        //strength = player.GetStrength();
->>>>>>> 7e611b850068e5aef60a088f663a0718d9569422
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
         
