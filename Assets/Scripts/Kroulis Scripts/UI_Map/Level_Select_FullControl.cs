@@ -62,6 +62,7 @@ public class Level_Select_FullControl : MonoBehaviour {
         Mainprocess = GameObject.Find("Main Process");
         Level_Select_mapinfo_script = Mainprocess.GetComponentInChildren<Level_Select_mapinfo>();
         Map_Transfer_DB_Script = Mainprocess.GetComponentInChildren<Map_Transfer_DB>();
+        gameObject.SetActive(false);
 	
 	}
 	

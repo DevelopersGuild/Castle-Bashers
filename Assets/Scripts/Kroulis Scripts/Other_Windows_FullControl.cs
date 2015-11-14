@@ -18,47 +18,6 @@ public class Other_Windows_FullControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
-        Image[] Result;
-        Result = GetComponentsInChildren<Image>();
-        foreach(Image i in Result)
-        {
-            if(i.name=="Out_Black")
-            {
-                Black = i.gameObject;
-                Black.SetActive(false);
-                continue;
-            }
-            if(i.name=="Death")
-            {
-                Death = i.gameObject;
-                Death.SetActive(false);
-                continue;
-            }
-            if (i.name == "Upgrade")
-            {
-                Upgrade = i.gameObject;
-                Upgrade.SetActive(false);
-                continue;
-            }
-            if(i.name=="Mission_Success")
-            {
-                Mission_Success = i.gameObject;
-                Mission_Success.SetActive(false);
-                continue;
-            }
-            if(i.name=="Level_Select")
-            {
-                Level_Select = i.gameObject;
-                Level_Select.SetActive(false);
-                continue;
-            }
-            if(i.name=="Skill_Shop")
-            {
-                Skill_Shop = i.gameObject;
-                Skill_Shop.SetActive(false);
-                continue;
-            }
-        }
 	}
 	
 	// Update is called once per frame
@@ -67,6 +26,10 @@ public class Other_Windows_FullControl : MonoBehaviour {
         //Adjust
         full_scale = (float)(Screen.width / 1920.00);
         this.GetComponent<CanvasScaler>().scaleFactor = full_scale;
-
+        if(Input.GetKeyDown(KeyCode.F9))
+        {
+            Globe.Map_Load_id = 1;
+            Main_Process.GetComponent<Main_Process>().UI_Mission_Success_Open();
+        }
 	}
 }

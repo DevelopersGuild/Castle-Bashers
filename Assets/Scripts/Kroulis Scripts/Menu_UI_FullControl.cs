@@ -8,10 +8,10 @@ public class Menu_UI_FullControl : MonoBehaviour {
     float full_scale;
     //Control
     GameObject ON_OFF;
-    GameObject Character_Menu;
-    GameObject Bag_Menu;
-    GameObject Ability_Menu;
-    GameObject Setting_Menu;
+    public GameObject Character_Menu;
+    public GameObject Bag_Menu;
+    public GameObject Ability_Menu;
+    public GameObject Setting_Menu;
     //Control API
     public bool Menu_open;
     public int Menu_id;
@@ -36,21 +36,6 @@ public class Menu_UI_FullControl : MonoBehaviour {
             }
         }
         ON_OFF = GOResult;
-        //Link Menu->Character
-        GOResult = GameObject.Find("Character_Menu");
-        Character_Menu = GOResult;
-        //Link Menu->Bag
-        GOResult = GameObject.Find("Bag_Menu");
-        Bag_Menu = GOResult;
-            //todo
-        //Link Menu->Ability
-        GOResult = GameObject.Find("Ability_Menu");
-        Ability_Menu = GOResult;
-            //todo
-        //Link Menu->Setting
-        GOResult = GameObject.Find("Setting_Menu");
-        Setting_Menu = GOResult;
-            //todo
 
 	}
 	

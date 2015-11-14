@@ -26,6 +26,7 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
         player = GameObject.Find("Player").GetComponent<Player>();
         ci = main_process.gameObject.GetComponentInChildren<Character_Class_Info>();
+        gameObject.SetActive(false);
 	}
 
     public void Change(int id)

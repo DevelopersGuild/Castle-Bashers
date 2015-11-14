@@ -1223,7 +1223,7 @@ Transform:
   - {fileID: 904521097}
   - {fileID: 1815238477}
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 2
 --- !u!114 &211478220
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1714,7 +1714,7 @@ RectTransform:
   - {fileID: 167830767}
   - {fileID: 2022575234}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 3
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -1807,49 +1807,6 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingLayerID: 0
   m_SortingOrder: 0
---- !u!1001 &259582437
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -20.4799995
-      objectReference: {fileID: 0}
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 3.46000004
-      objectReference: {fileID: 0}
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 421056, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents:
-    - {fileID: 11481426, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-  m_ParentPrefab: {fileID: 100100000, guid: 2e5eac9933f4fa842af476ee62739301, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1 &261569598
 GameObject:
   m_ObjectHideFlags: 0
@@ -3091,7 +3048,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &423309820
 RectTransform:
   m_ObjectHideFlags: 0
@@ -3506,7 +3463,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 1
 --- !u!1 &479136184
 GameObject:
   m_ObjectHideFlags: 0
@@ -3731,7 +3688,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &508033664
 GameObject:
   m_ObjectHideFlags: 0
@@ -5880,7 +5837,7 @@ RectTransform:
   m_Children:
   - {fileID: 1777437076}
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 4
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -5951,6 +5908,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b3daaba16c23b7e47bc68e9eddcca3a1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Character_Menu: {fileID: 1895521166}
+  Bag_Menu: {fileID: 182709599}
+  Ability_Menu: {fileID: 1206876836}
+  Setting_Menu: {fileID: 1514012121}
   Menu_open: 0
   Menu_id: 1
   Main_Process: {fileID: 0}
@@ -6738,7 +6699,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &900195970
 RectTransform:
   m_ObjectHideFlags: 0
@@ -8235,7 +8196,7 @@ RectTransform:
   - {fileID: 423309820}
   - {fileID: 900195970}
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 5
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
@@ -8253,12 +8214,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Main_Process: {fileID: 0}
-  Black: {fileID: 0}
-  Death: {fileID: 0}
-  Upgrade: {fileID: 0}
-  Mission_Success: {fileID: 0}
-  Level_Select: {fileID: 0}
-  Skill_Shop: {fileID: 0}
+  Black: {fileID: 1933379497}
+  Death: {fileID: 2029990904}
+  Upgrade: {fileID: 124329470}
+  Mission_Success: {fileID: 1551960948}
+  Level_Select: {fileID: 423309819}
+  Skill_Shop: {fileID: 900195969}
 --- !u!1 &1095220517
 GameObject:
   m_ObjectHideFlags: 0
@@ -11000,7 +10961,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!224 &1551960949
 RectTransform:
   m_ObjectHideFlags: 0
@@ -12255,8 +12216,8 @@ MonoBehaviour:
     limit_time: 0
     limit_death: 0
     limit_gold: 0
-    Reward_EXP: 
-    Reward_Gold: 
+    Reward_EXP: 00000000000000000000000000000000
+    Reward_Gold: 00000000000000000000000000000000
   - name: _Loading
     bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
     mini_bg_texture: {fileID: 0}
@@ -12734,6 +12695,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0806033975f8a24db06b2d4d1582862, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  CI: {fileID: 379823602}
 --- !u!1 &1908707867
 GameObject:
   m_ObjectHideFlags: 0
