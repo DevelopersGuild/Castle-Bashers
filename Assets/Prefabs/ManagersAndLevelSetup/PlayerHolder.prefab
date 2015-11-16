@@ -25,7 +25,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 437286}
   - 65: {fileID: 6567414}
-  - 114: {fileID: 11494530}
+  - 114: {fileID: 11481936}
   m_Layer: 0
   m_Name: AttackCollider
   m_TagString: Untagged
@@ -51,7 +51,6 @@ GameObject:
   - 95: {fileID: 9548978}
   - 114: {fileID: 11412536}
   - 114: {fileID: 11416162}
-  - 114: {fileID: 11475554}
   - 114: {fileID: 11409118}
   - 114: {fileID: 11451698}
   - 114: {fileID: 11415806}
@@ -302,17 +301,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eb1634bf0aed21b44b6cbc7bdf31a7dd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!114 &11475554
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 183402}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &11479010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -327,6 +315,21 @@ MonoBehaviour:
   defense: 1
   PhysicalDefense: 0
   MagicalDefense: 0
+--- !u!114 &11481936
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 125000}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dmgAmount: 1
+  isMagic: 0
+  damagePlayers: 0
+  damageEnemies: 1
 --- !u!114 &11486968
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -355,20 +358,6 @@ MonoBehaviour:
   startingHealth: 20
   RegenAmount: 1
   damageTextOffset: {x: 0, y: 0, z: 0}
---- !u!114 &11494530
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 125000}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a11d076f2c821644380153d328222929, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PhysicalDamage: 1
-  MagicalDamage: 1
-  invTime: .100000001
 --- !u!212 &21215678
 SpriteRenderer:
   m_ObjectHideFlags: 1
