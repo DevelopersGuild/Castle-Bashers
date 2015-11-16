@@ -429,11 +429,14 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
             }
             if(change_slot==true)
             {
-                Quick_slot[change_slot_id].sprite = ability[current_id].skillicon.sprite;
-                //change the data in the player
-                Tips.text = "";
-                change_slot_id = 0;
-                change_slot = false;
+                if(Input.GetKeyDown(KeyCode.Return))
+                {
+                    Quick_slot[change_slot_id].sprite = ability[current_id].skillicon.sprite;
+                    //change the data in the player
+                    Tips.text = "";
+                    change_slot_id = 0;
+                    change_slot = false;
+                } 
             }
         }
 

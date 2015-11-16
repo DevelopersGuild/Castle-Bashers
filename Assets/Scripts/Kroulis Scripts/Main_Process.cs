@@ -19,11 +19,12 @@ public class Main_Process : MonoBehaviour {
     public bool Team_Mode;
     public bool esckey_up; // Avoid key conflict
     AudioSource BGM_Player;
-    GameObject Player_GO;
-    Health Player_Health;
-    Mana Player_Mana;
-    Experience Player_EXP;
-    Player Player_Script;
+    GameObject[] Player_GO=new GameObject[2];
+    Health[] Player_Health=new Health[2];
+    Mana[] Player_Mana=new Mana[2];
+    Experience[] Player_EXP=new Experience[2];
+    Player[] Player_Script=new Player[2];
+    CoinManager[] Player_Gold = new CoinManager[2];
     //ErrorCatch
     private ErrorCatching error = new ErrorCatching();
 	// Use this for initialization
@@ -33,11 +34,24 @@ public class Main_Process : MonoBehaviour {
         Menu_UI.GetComponent<Menu_UI_FullControl>().Main_Process = this.gameObject;
         Other_Windows.GetComponent<Other_Windows_FullControl>().Main_Process = this.gameObject;
         BGM_Player = GetComponent<AudioSource>();
-        Player_GO = GameObject.Find("Player");
-        Player_Health = Player_GO.GetComponent<Health>();
-        Player_Mana = Player_GO.GetComponent<Mana>();
-        Player_EXP = Player_GO.GetComponent<Experience>();
-        Player_Script = Player_GO.GetComponent<Player>();
+        GameObject Result=GameObject.Find("PlayerHolder");
+        Player[] playerlist=Result.GetComponentsInChildren<Player>();
+        int id=0;
+        foreach(Player pl in playerlist)
+        {
+            Player_GO[id] = pl.gameObject;
+            Player_Health[id] = pl.gameObject.GetComponent<Health>();
+            Player_Mana[id] = pl.gameObject.GetComponent<Mana>();
+            Player_EXP[id] = pl.gameObject.GetComponent<Experience>();
+            Player_Gold[id] = pl.gameObject.GetComponent<CoinManager>();
+            Player_Script[id] = pl;
+            id++;
+        }
+        if (id == 2)
+            One_player_per_client = false;
+        else
+            One_player_per_client = true;
+        
         if(Application.platform!=RuntimePlatform.WindowsEditor)
             error.OnEnable();
 	}
@@ -65,14 +79,14 @@ public class Main_Process : MonoBehaviour {
             {
                 if(One_player_per_client==true)
                 {
-                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp = (int)Player_Health.GetMaxHP();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().hp = (int)Player_Health.GetCurrentHealth();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp = (int)Player_Mana.GetMaxMana();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().mp = (int)Player_Mana.GetMana();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().exp = Player_EXP.GetExperience();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp = Player_EXP.GetNEXP();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().lv = Player_EXP.GetCurrentLevel();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().cid = Player_Script.GetClassID();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp = (int)Player_Health[0].GetMaxHP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().hp = (int)Player_Health[0].GetCurrentHealth();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp = (int)Player_Mana[0].GetMaxMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().mp = (int)Player_Mana[0].GetMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().exp = Player_EXP[0].GetExperience();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp = Player_EXP[0].GetNEXP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().lv = Player_EXP[0].GetCurrentLevel();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().cid = Player_Script[0].GetClassID();
                 }
                 else
                 {
@@ -102,9 +116,15 @@ public class Main_Process : MonoBehaviour {
     public void Menu_Force_Open(int menu_id)
     {
         Menu_id = menu_id;
+        Menu_UI.GetComponent<Menu_UI_FullControl>().UpdateGold();
         Menu_Open = true;
+        if(menu_id==1)
+            Menu_UI.GetComponent<Menu_UI_FullControl>().Character_Menu.GetComponent<Character_Menu_FullControl>().Change();
+        if(menu_id==3)
+            Menu_UI.GetComponent<Menu_UI_FullControl>().Ability_Menu.GetComponent<Menu_Ability_Fullcontrol>().Change();
         Hide_UI = false;
     }
+
 
     //when the mission start, use this to start the timer and ban the menu
     public void mission_start()
@@ -164,7 +184,7 @@ public class Main_Process : MonoBehaviour {
         Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
         GameObject MS= Other_Windows.GetComponent<Other_Windows_FullControl>().Mission_Success;
         GetComponentInChildren<Mission_Timer>().Stop_Timer();
-        MS.GetComponent<M_S_CalculateRank>().Calculate();
+        MS.GetComponent<M_S_CalculateRank>().Calculate(One_player_per_client?1:2);
         MS.SetActive(true);
 
     }
@@ -273,4 +293,68 @@ public class Main_Process : MonoBehaviour {
         GetComponentInChildren<Mission_Database>().clear_db();
         End_Battle();
     }
+
+    public GameObject GetPlayerObject(int ? id=null)
+    {
+        if (id == null)
+            return Player_GO[0];
+        else
+        {
+            if(id<2 && id>=0)
+                return Player_GO[(int)id];
+            else
+            {
+                Debug.LogWarning("GetPlayerObject: id is out of range.");
+                return Player_GO[0];
+            }
+        }
+    }
+
+    public Player GetPlayerScript(int ? id=null)
+    {
+        if (id == null)
+            return Player_Script[0];
+        else
+        {
+            if (id < 2 && id >= 0)
+                return Player_Script[(int)id];
+            else
+            {
+                Debug.LogWarning("GetPlayerScript: id is out of range.");
+                return Player_Script[0];
+            }
+        }
+    }
+    public Experience GetPlayerExperience(int ? id=null)
+    {
+        if (id == null)
+            return Player_EXP[0];
+        else
+        {
+            if (id < 2 && id >= 0)
+                return Player_EXP[(int)id];
+            else
+            {
+                Debug.LogWarning("GetPlayerExperience: id is out of range.");
+                return Player_EXP[0];
+            }
+        }
+    }
+
+    public CoinManager GetPlayerCoinManager(int ? id=null)
+    {
+        if (id == null)
+            return Player_Gold[0];
+        else
+        {
+            if (id < 2 && id >= 0)
+                return Player_Gold[(int)id];
+            else
+            {
+                Debug.LogWarning("GetPlayerCoinManager: id is out of range.");
+                return Player_Gold[0];
+            }
+        }
+    }
+
 }

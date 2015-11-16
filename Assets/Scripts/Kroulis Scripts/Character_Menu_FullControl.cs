@@ -22,7 +22,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
         Player_Mana = Player_PF.GetComponent<Mana>();
         Player_Defense = Player_PF.GetComponent<Defense>();
         Player_EXP = Player_PF.GetComponent<Experience>();
-        Player_ATK = Player_PF.GetComponentInChildren<DealDamageToEnemy>();
+        Player_ATK = Player_Script.AttackCollider.GetComponent<DealDamageToEnemy>();
         Text[] finds1;
         Image[] finds2;
         finds1 = GetComponentsInChildren<Text>();

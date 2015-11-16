@@ -38,6 +38,21 @@ public class Menu_UI_FullControl : MonoBehaviour {
         ON_OFF = GOResult;
 
 	}
+
+    public void UpdateGold()
+    {
+        if(Main_Process.GetComponent<Main_Process>().One_player_per_client==true)
+        {
+            GoldAmount.text = Main_Process.GetComponent<Main_Process>().GetPlayerCoinManager().getCoins().ToString();
+        }
+        else
+        {
+            int coinA = Main_Process.GetComponent<Main_Process>().GetPlayerCoinManager(0).getCoins();
+            int coinB = Main_Process.GetComponent<Main_Process>().GetPlayerCoinManager(1).getCoins();
+            int totalCoin = coinA + coinB;
+            GoldAmount.text = totalCoin.ToString() + " <color=#c0c0c0ff>("+coinA.ToString()+"+"+coinB.ToString()+")</color>";
+        }
+    }
 	
 	// Update is called once per frame
 	void Update () {

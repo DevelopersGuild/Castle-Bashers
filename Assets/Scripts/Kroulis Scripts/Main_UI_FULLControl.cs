@@ -373,26 +373,21 @@ public class Main_UI_FULLControl : MonoBehaviour {
             {
                 if (Input.GetKeyDown(KeyCode.Escape)) //Open Settings
                 {
-                    Main_Process.GetComponent<Main_Process>().Menu_id = 4;
-                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                    Main_Process.GetComponent<Main_Process>().Menu_Force_Open(4);
                     Main_Process.GetComponent<Main_Process>().esckey_up = true;
                 }
                 if (Input.GetKeyDown(KeyCode.P))//Open Character
                 {
-                    Main_Process.GetComponent<Main_Process>().Menu_UI.GetComponentInChildren<Character_Menu_FullControl>().Change();
-                    Main_Process.GetComponent<Main_Process>().Menu_id = 1;
-                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                    Main_Process.GetComponent<Main_Process>().Menu_Force_Open(1); 
                 }
                 if (Input.GetKeyDown(KeyCode.K))//Open Skill
                 {
-                    Main_Process.GetComponent<Main_Process>().Menu_UI.GetComponentInChildren<Menu_Ability_Fullcontrol>().Change();
-                    Main_Process.GetComponent<Main_Process>().Menu_id = 3;
-                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                    Main_Process.GetComponent<Main_Process>().Menu_Force_Open(3);
+                    
                 }
                 if (Input.GetKeyDown(KeyCode.B))//Open Bag
                 {
-                    Main_Process.GetComponent<Main_Process>().Menu_id = 2;
-                    Main_Process.GetComponent<Main_Process>().Menu_Open = true;
+                    Main_Process.GetComponent<Main_Process>().Menu_Force_Open(2);
                 }
             }
 

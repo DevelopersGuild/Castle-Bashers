@@ -18,6 +18,7 @@ public class Other_Windows_FullControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
+        Black.SetActive(false);
 	}
 	
 	// Update is called once per frame
