@@ -14,7 +14,7 @@ public class WalkingState : IPlayerState
         {
             return new KnockedBackState();
         }
-        if (Input.GetButtonDown("Jump") && player.GetMoveController().collisions.below)
+        if (player.playerRewired.GetButtonDown("Jump") && player.GetMoveController().collisions.below)
         {
             return new JumpState();
         }

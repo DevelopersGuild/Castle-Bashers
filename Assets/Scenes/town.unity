@@ -85,6 +85,52 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &91204169
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 1888806476}
+    m_Modifications:
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -9.10999966
+      objectReference: {fileID: 0}
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 426348, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11491518, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: playerId
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &98522982
 Prefab:
   m_ObjectHideFlags: 0
@@ -430,6 +476,15 @@ Prefab:
       propertyPath: m_RootOrder
       value: 6
       objectReference: {fileID: 0}
+    - target: {fileID: 9548978, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 21215678, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300000, guid: 98cebe1569348d4428cebf8cb1fef22c,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
   m_IsPrefabParent: 0
@@ -1370,6 +1425,38 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.size
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardLayouts.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[3]._defaultJoystickMaps.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.size
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.size
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[1]._startingCustomControllers.Array.size
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 415654, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -1402,9 +1489,357 @@ Prefab:
       propertyPath: m_RootOrder
       value: 15
       objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[0]._actionId
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[3]._id
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[3]._name
+      value: Fire1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[3]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[3]._descriptiveName
+      value: Fire1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[3]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[2]
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[3]
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionIdCounter
+      value: 11
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[1]
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[0]
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[4]._id
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[4]._name
+      value: UseSkill1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[4]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[4]._descriptiveName
+      value: UseSkill1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[4]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[4]
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[5]._id
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[5]._name
+      value: UseSkill3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[5]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[5]._descriptiveName
+      value: UseSkill3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[5]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[5]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[6]._id
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[6]._name
+      value: UseSkill4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[6]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[6]._descriptiveName
+      value: UseSkill4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[6]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[6]
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[7]._id
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[7]._name
+      value: UseSkill2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[7]._type
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[7]._descriptiveName
+      value: UseSkill2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actions.Array.data[7]._userAssignable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.actionCategoryMap.list.Array.data[0].actionIds.Array.data[7]
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[2]._id
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[2]._name
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[2]._descriptiveName
+      value: Player1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[2]._startPlaying
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.playerIdCounter
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[3]._id
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[3]._name
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[3]._descriptiveName
+      value: Player2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[3]._startPlaying
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[4]._id
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[4]._name
+      value: Player3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[4]._descriptiveName
+      value: Player3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[4]._startPlaying
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardLayouts.Array.data[1]._name
+      value: Layout0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardLayouts.Array.data[1]._descriptiveName
+      value: Layout0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardLayouts.Array.data[1]._id
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardLayoutIdCounter
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._actionId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[0]._keyboardKeyCode
+      value: 273
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[1]._keyboardKeyCode
+      value: 274
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[2]._keyboardKeyCode
+      value: 276
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[3]._keyboardKeyCode
+      value: 275
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[4]._keyboardKeyCode
+      value: 97
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[5]._keyboardKeyCode
+      value: 115
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._actionId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._actionId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[8]._actionId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[8]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[8]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[9]._actionId
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[9]._elementType
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[9]._elementIdentifierId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[6]._keyboardKeyCode
+      value: 49
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[7]._keyboardKeyCode
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[8]._keyboardKeyCode
+      value: 51
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[9]._keyboardKeyCode
+      value: 52
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[3]._defaultJoystickMaps.Array.data[0]._enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[6]._actionId
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[5]._actionId
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[7]._actionId
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[8]._actionId
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[9]._actionId
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.joystickMaps.Array.data[0].actionElementMaps.Array.data[16]._actionId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[1]._startingCustomControllers.Array.data[0]._sourceId
+      value: -1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11401304, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
+      propertyPath: _userData.players.Array.data[1]._defaultJoystickMaps.Array.data[0]._enabled
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e7180a85a208d7244bf38b62bba7522a, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &1888806476 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 478876, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+  m_PrefabInternal: {fileID: 549168952}
 --- !u!1 &1946066456 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 161334, guid: cfb7561c0c0aacd4381930d2b31d6aa1, type: 2}

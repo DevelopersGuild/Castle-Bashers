@@ -61,7 +61,7 @@ public class Player : MonoBehaviour
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
-    private Rewired.Player playerRewired;
+    public Rewired.Player playerRewired;
 
     private Skill[] skill = new Skill[4];
     private float managerID, priorityID;
@@ -188,23 +188,23 @@ public class Player : MonoBehaviour
         initialRegenTime += Time.deltaTime;
         regenTick += Time.deltaTime;
         UpdateState();
-        
-        if(Input.GetButtonDown("UseSkill1"))
+
+        if (playerRewired.GetButtonDown("UseSkill1"))
         {
             skillManager.UseSkill1();
         }
 
-        if (Input.GetButtonDown("UseSkill2"))
+        if (playerRewired.GetButtonDown("UseSkill1"))
         {
             skillManager.UseSkill2();
         }
 
-        if (Input.GetButtonDown("UseSkill3"))
+        if (playerRewired.GetButtonDown("UseSkill1"))
         {
             skillManager.UseSkill3();
         }
 
-        if (Input.GetButtonDown("UseSkill4"))
+        if (playerRewired.GetButtonDown("UseSkill1"))
         {
             skillManager.UseSkill4();
         }

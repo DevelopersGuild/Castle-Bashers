@@ -24,14 +24,22 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        gobjCameraTarget = GameObject.Find("Player");
+        gobjCameraTarget = GameObject.Find("PlayerHolder");
         flCameraYBaseLine = gobjCameraTarget.transform.position.y;
-
     }
 
     void LateUpdate()
     {
-        Vector3 v3CameraTargetPosition = gobjCameraTarget.transform.position;
+        Vector3 totalAveragePosition = new Vector3();
+        int size = 0;
+        foreach(Transform child in gobjCameraTarget.transform)
+        {
+            totalAveragePosition += child.position;
+            size++;
+        }
+        totalAveragePosition /= size;
+
+        Vector3 v3CameraTargetPosition = totalAveragePosition;
 
 
 

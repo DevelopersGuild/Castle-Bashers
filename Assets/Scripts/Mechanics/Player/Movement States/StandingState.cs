@@ -10,7 +10,7 @@ public class StandingState : IPlayerState
 
     public IPlayerState HandleInput(Player player)
     {
-        if(Input.GetButtonDown("Jump") && player.GetMoveController().collisions.below)
+        if(player.playerRewired.GetButtonDown("Jump") && player.GetMoveController().collisions.below)
         {
             return new JumpState();
         }
