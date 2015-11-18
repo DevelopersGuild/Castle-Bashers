@@ -168,4 +168,13 @@ public class Health : MonoBehaviour
         return isPlayerDown;
     }
 
+    public void SetMaxHP(float f)
+    {
+        maxhp = f;
+    }
+
+    public void SetCurrentHP(float f)
+    {
+        currentHealth = f;
+    }
 }

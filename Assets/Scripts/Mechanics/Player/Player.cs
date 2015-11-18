@@ -13,10 +13,10 @@ public class Player : MonoBehaviour
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
     public string Player_Name;
-    public int Stamina;
-    public int Strength = 1;
-    public int Agility;
-    public int Intelligence;
+    public float Stamina;
+    public float Strength = 1;
+    public float Agility;
+    public float Intelligence;
     //The stats should remain public to allow them to be set in the editor.
  
     private int class_id = 0;
@@ -241,7 +241,7 @@ public class Player : MonoBehaviour
         isInvincible = x;
     }
 
-    public void SetStrength(int strength)
+    public void SetStrength(float strength)
     {
         if (strength > 0)
         {
@@ -253,18 +253,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddStrength(int value)
+    public void AddStrength(float value)
     {
         Strength = Strength + value;
     }
 
 
-    public int GetStrength()
+    public float GetStrength()
     {
         return Strength;
     }
 
-    public void SetStamina(int value)
+    public void SetStamina(float value)
     {
         if(value>0)
         {
@@ -277,17 +277,17 @@ public class Player : MonoBehaviour
         
     }
 
-    public void AddStamina(int value)
+    public void AddStamina(float value)
     {
         Stamina = Stamina + value;
     }
 
-    public int GetStamina()
+    public float GetStamina()
     {
         return Stamina;
     }
 
-    public void SetAgility(int agility)
+    public void SetAgility(float agility)
     {
         if(agility > 0)
         {
@@ -299,17 +299,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddAgility(int value)
+    public void AddAgility(float value)
     {
         Agility = Agility + value;
     }
 
-    public int GetAgility()
+    public float GetAgility()
     {
         return Agility;
     }
 
-    public void SetIntelligence(int intelligence)
+    public void SetIntelligence(float intelligence)
     {
         if(intelligence > 0)
         {
@@ -321,18 +321,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddIntelligence(int value)
+    public void AddIntelligence(float value)
     {
         Intelligence = Intelligence + value;
     }
 
-    public int GetIntelligence()
+    public float GetIntelligence()
     {
         return Intelligence;
 
     }
 
-    public void AddDefense(int value)
+    public void AddDefense(float value)
     {
         defense.AddDefense(value);
     }
@@ -434,6 +434,7 @@ public class Player : MonoBehaviour
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
         controller.Move(velocity * Time.deltaTime, input);
     }
+
     public void SetIsGrounded(bool isPlayerOnGround)
     {
         isGrounded = isPlayerOnGround;
@@ -476,6 +477,9 @@ public class Player : MonoBehaviour
         initialized = true;
     }
 
+    /// <summary>
+    /// For malady stuff, not for setting skills, sorry
+    /// </summary>
     public void addSkill(Skill s, int pos)
     {
         skill[pos] = s;
@@ -558,7 +562,6 @@ public class Player : MonoBehaviour
 
         return ret;
     }
-
 
     public void setDamage(float f)
     {

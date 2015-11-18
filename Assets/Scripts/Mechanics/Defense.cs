@@ -4,9 +4,9 @@ using System.Collections;
 public class Defense : MonoBehaviour
 {
     private Player player;
-    public int defense = 0;
-    public int PhysicalDefense = 0;
-    public int MagicalDefense = 0;
+    public float defense = 0;
+    public float PhysicalDefense = 0;
+    public float MagicalDefense = 0;
     private Health health;
     void Start()
     {
@@ -36,35 +36,35 @@ public class Defense : MonoBehaviour
         } 
     }
 
-    public void SetPhysicalDefense(int value)
+    public void SetPhysicalDefense(float value)
     {
         PhysicalDefense = value;
     }
-    public int GetPhysicalDefense()
+    public float GetPhysicalDefense()
     {
         return PhysicalDefense;
     }
 
-    public void SetMagicalDefense(int value)
+    public void SetMagicalDefense(float value)
     {
         MagicalDefense = value;
     }
-    public int GetMagicalDefense()
+    public float GetMagicalDefense()
     {
         return MagicalDefense;
     }
 
-    public int GetDefense()
+    public float GetDefense()
     {
         return defense;
     }
 
-    public void SetDefense(int Defense)
+    public void SetDefense(float Defense)
     {
         defense = Defense;
     }
 
-    public void AddDefense(int value)
+    public void AddDefense(float value)
     {
         defense = defense + value;
     }
