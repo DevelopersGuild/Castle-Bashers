@@ -18,6 +18,7 @@ public class Main_Process : MonoBehaviour {
     public bool Killing_boss;
     public bool Team_Mode;
     public bool esckey_up; // Avoid key conflict
+    bool had_init = false;
     AudioSource BGM_Player;
     GameObject[] Player_GO=new GameObject[2];
     Health[] Player_Health=new Health[2];
@@ -51,6 +52,9 @@ public class Main_Process : MonoBehaviour {
             One_player_per_client = false;
         else
             One_player_per_client = true;
+
+        //Start to setup and init Main_UI and Menu_UI
+        Invoke("Main_UI_Init",1.00f);
         
         if(Application.platform!=RuntimePlatform.WindowsEditor)
             error.OnEnable();
@@ -59,6 +63,7 @@ public class Main_Process : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
+        if (had_init)
         if (Hide_UI == true)
         {
             Main_UI.SetActive(false);
@@ -79,18 +84,33 @@ public class Main_Process : MonoBehaviour {
             {
                 if(One_player_per_client==true)
                 {
-                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp = (int)Player_Health[0].GetMaxHP();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().hp = (int)Player_Health[0].GetCurrentHealth();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp = (int)Player_Mana[0].GetMaxMana();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().mp = (int)Player_Mana[0].GetMana();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().exp = Player_EXP[0].GetExperience();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp = Player_EXP[0].GetNEXP();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().lv = Player_EXP[0].GetCurrentLevel();
-                    Main_UI.GetComponent<Main_UI_FULLControl>().cid = Player_Script[0].GetClassID();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp[0] = (int)Player_Health[0].GetMaxHP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().hp[0] = (int)Player_Health[0].GetCurrentHealth();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp[0] = (int)Player_Mana[0].GetMaxMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().mp[0] = (int)Player_Mana[0].GetMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().exp[0] = Player_EXP[0].GetExperience();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp[0] = Player_EXP[0].GetNEXP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().lv[0] = Player_EXP[0].GetCurrentLevel();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().cid[0] = Player_Script[0].GetClassID();
                 }
                 else
                 {
-
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp[0] = (int)Player_Health[0].GetMaxHP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().hp[0] = (int)Player_Health[0].GetCurrentHealth();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp[0] = (int)Player_Mana[0].GetMaxMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().mp[0] = (int)Player_Mana[0].GetMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().exp[0] = Player_EXP[0].GetExperience();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp[0] = Player_EXP[0].GetNEXP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().lv[0] = Player_EXP[0].GetCurrentLevel();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().cid[0] = Player_Script[0].GetClassID();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxhp[1] = (int)Player_Health[1].GetMaxHP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().hp[1] = (int)Player_Health[1].GetCurrentHealth();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().maxmp[1] = (int)Player_Mana[1].GetMaxMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().mp[1] = (int)Player_Mana[1].GetMana();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().exp[1] = Player_EXP[1].GetExperience();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().nexp[1] = Player_EXP[1].GetNEXP();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().lv[1] = Player_EXP[1].GetCurrentLevel();
+                    Main_UI.GetComponent<Main_UI_FULLControl>().cid[1] = Player_Script[1].GetClassID();
                 }
             }
         }
@@ -99,17 +119,38 @@ public class Main_Process : MonoBehaviour {
     }
 
     //for Init the main UI (only use one time at the begining of the game)
-    public void Main_UI_Init(bool two_player)
+    void Main_UI_Init()
     {
         Team_Mode=false;
         Menu_Open = false;
         Killing_boss = false;
         In_Battle = false;
         Hide_UI = false;
-        if(two_player == false)
-        {
-            One_player_per_client = true;
-        }
+        Main_UI.GetComponent<Main_UI_FULLControl>().One_player_per_client = One_player_per_client;
+        Main_UI.SetActive(true);
+        Menu_UI.SetActive(false);
+        Main_UI.GetComponent<Main_UI_FULLControl>().init();
+        CancelInvoke();
+        Invoke("Menu_UI_Init", 1.00f);
+
+    }
+
+    void Menu_UI_Init()
+    {
+        Menu_id = 0;
+        Menu_Open = true;
+        Main_UI.SetActive(false);
+        Menu_UI.SetActive(true);
+        CancelInvoke();
+        Invoke("finish_init", 1.00f);
+    }
+
+    void finish_init()
+    {
+        Menu_Open = false;
+        Hide_UI = true;
+        had_init = true;
+        CancelInvoke();
     }
 
     //for forcing open Menu (Do not use it when other windows UI is opening)

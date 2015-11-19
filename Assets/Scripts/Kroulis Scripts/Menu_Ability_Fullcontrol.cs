@@ -227,7 +227,10 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
     public void Change(int? id = null)
     {
         class_id = MainProcess.GetComponent<Main_Process>().GetPlayerScript(id).GetClassID();
-        player_id = id == null ? (int)id : 0;
+        if (id == null)
+            player_id = 0;
+        else
+            player_id = (int)id;
         max_skill_id = CCIS.Class_info[class_id].skillid.Length;
         if (max_skill_id == 0)
         {
