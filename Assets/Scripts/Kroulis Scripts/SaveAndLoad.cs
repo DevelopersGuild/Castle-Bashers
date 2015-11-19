@@ -29,7 +29,7 @@ public class SaveAndLoad : MonoBehaviour {
         Player_EXP = Player_PF.GetComponent<Experience>();
         Player_ATK = Player_PF.GetComponentInChildren<DealDamageToEnemy>();
         Player_gold = Player_PF.GetComponent<CoinManager>();
-
+        LoadData();
         //character_data.Load(path + "/" + Globe.Character_Data_File);
         //character_data.Save();
 	}

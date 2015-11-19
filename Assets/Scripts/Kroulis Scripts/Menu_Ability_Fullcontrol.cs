@@ -24,10 +24,12 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
     Image Current;
     Image[] Quick_slot=new Image[5];
     RawImage Skill_video;
-    int current_id;
+    int current_id=0;
     int max_skill_id;
     Character_Class_Info CCIS;
     bool key_up;
+    GameObject MainProcess;
+    int player_id;
     // Use this for initialization
     void Start()
     {
@@ -217,13 +219,18 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
             }
         }
         Skill_video = GetComponentInChildren<RawImage>();
-        GameObject MainProcess = GameObject.Find("Main Process");
+        MainProcess = GameObject.Find("Main Process");
         CCIS = MainProcess.GetComponentInChildren<Character_Class_Info>();
-        Change();
+        //Change();
     }
 
-    public void Change()
+    public void Change(int? id = null)
     {
+        class_id = MainProcess.GetComponent<Main_Process>().GetPlayerScript(id).GetClassID();
+        if (id == null)
+            player_id = 0;
+        else
+            player_id = (int)id;
         max_skill_id = CCIS.Class_info[class_id].skillid.Length;
         if (max_skill_id == 0)
         {
@@ -264,7 +271,8 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
     {
         //Skill_info.text=
         //Skill_video.texture=
-        Current.GetComponent<RectTransform>().position = ability[current_id].skillicon.GetComponent<RectTransform>().position;
+        if (current_id != 0)
+            Current.GetComponent<RectTransform>().position = ability[current_id].skillicon.GetComponent<RectTransform>().position;
 
 
         if (Input.GetKeyDown(KeyCode.UpArrow))
@@ -429,11 +437,15 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
             }
             if(change_slot==true)
             {
-                Quick_slot[change_slot_id].sprite = ability[current_id].skillicon.sprite;
-                //change the data in the player
-                Tips.text = "";
-                change_slot_id = 0;
-                change_slot = false;
+                if(Input.GetKeyDown(KeyCode.Return))
+                {
+                    Quick_slot[change_slot_id].sprite = ability[current_id].skillicon.sprite;
+                    //change the data in the player
+                    //MainProcess.GetComponent<Main_Process>().GetPlayerScript(player_id).skillManager.
+                    Tips.text = "";
+                    change_slot_id = 0;
+                    change_slot = false;
+                } 
             }
         }
 
