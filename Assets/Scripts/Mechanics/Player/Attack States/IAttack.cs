@@ -1,4 +1,5 @@
-﻿
+﻿using Rewired;
+
 public interface IAttack
 {
     IAttack HandleInput(Player player);

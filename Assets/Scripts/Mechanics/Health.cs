@@ -136,6 +136,11 @@ public class Health : MonoBehaviour
     {
         //death animation
         //end level
+        if (GetComponent<DropLoot>())
+        {
+            GetComponent<DropLoot>().DropItem();
+        }
+
         Destroy(gameObject);
     }
 
