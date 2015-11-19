@@ -89,10 +89,9 @@ public class CameraFollow : MonoBehaviour
 
         }
 
-        if(v3FinalCameraPosition.x > transform.position.x && canMoveLeft == false)
+        if(v3FinalCameraPosition.x > transform.position.x || canMoveLeft == true)
         {
-            transform.position = v3FinalCameraPosition;
-           
+            transform.position = v3FinalCameraPosition;    
         }
 
     }
