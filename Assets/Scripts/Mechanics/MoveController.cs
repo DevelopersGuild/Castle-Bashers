@@ -22,6 +22,9 @@ public class MoveController : MonoBehaviour
     private float currentKnockbacktime, currentFlinchTime;
     public bool isStunned;
 
+    private float height;
+    private float screenWidthInPoints;
+
     private Player player;
 
     [HideInInspector]
@@ -42,6 +45,8 @@ public class MoveController : MonoBehaviour
         currentFlinchTime = flinchTime;
         canKB = true;
         canFlinch = true;
+        height = 2.0f * Camera.main.orthographicSize;
+        screenWidthInPoints = height * Camera.main.aspect;
     }
 
 
@@ -58,8 +63,6 @@ public class MoveController : MonoBehaviour
         canKB = canKnock;
         canFlinch = canFl;
     }
-
-
 
     // true for right, false for left
     public void OrientFacingLeft(bool set, float lookDir)
@@ -112,9 +115,22 @@ public class MoveController : MonoBehaviour
             DepthCollisions(ref velocity);
         }
 
+
         if(!isFlinched)
         transform.Translate(velocity);
 
+        clampPosition(ref velocity);
+    }
+
+    private void clampPosition(ref Vector3 veloctity)
+    {
+        if(GetComponent<Player>())
+        {
+            if(transform.position.x > Camera.main.transform.position.x + screenWidthInPoints/2 || transform.position.x < Camera.main.transform.position.x - screenWidthInPoints/2)
+            {
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, Camera.main.transform.position.x - screenWidthInPoints / 2, Camera.main.transform.position.x +(screenWidthInPoints / 2)), transform.position.y, transform.position.z);
+            }
+        }
     }
 
     private void HandleKnockback(ref Vector3 velocity)
