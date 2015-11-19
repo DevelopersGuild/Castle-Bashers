@@ -12,11 +12,16 @@ public class Menu_BGMovie_Control : MonoBehaviour {
         //Debug.Log(BGMOV.mainTexture.GetType());
         MOV = (MovieTexture)BGMOV.mainTexture;
         MOV.loop = true;
+        //MOV.Play();
+	}
+	
+	public void resume()
+    {
         MOV.Play();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    }
+
+    public void pause()
+    {
+        MOV.Pause();
+    }
 }
