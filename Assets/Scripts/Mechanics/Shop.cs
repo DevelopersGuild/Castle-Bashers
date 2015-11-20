@@ -19,7 +19,7 @@ public class Shop : MonoBehaviour {
 
     void buySkill(int skillIndex)
     {
-        int price = skills[skillIndex].GetComponent<ISkill>().GetPrice();
+        int price = skills[skillIndex].GetComponent<Skill>().GetPrice();
 
         //TODO: Also check if that skill has already been unlocked once this systems been implemented
         if(price < playerCoins.getCoins())
@@ -37,7 +37,7 @@ public class Shop : MonoBehaviour {
     {
         for(int i = 0; i < skills.Length; i++)
         {
-            if (skills[i].GetComponent<ISkill>() == null)
+            if (skills[i].GetComponent<Skill>() == null)
             {
                 skills[i] = null;
             }

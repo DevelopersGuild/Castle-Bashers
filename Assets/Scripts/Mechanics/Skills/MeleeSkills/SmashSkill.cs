@@ -1,26 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class SmashSkill : MonoBehaviour, ISkill
+public class SmashSkill : Skill
 {
-    public void UseSkill(GameObject caller, GameObject target, float coolDownTimer = 0)
+    protected override void Start()
     {
-
+        base.Start();
+        base.SetBaseValues(20, 1000, 10, "Smash", SkillLevel.Level1);
     }
 
-    public float GetCoolDownTimer()
+    public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
     {
-        //TODO Temporary value change 
-        return 0;
+        base.UseSkill(caller, target, optionalParameters);
     }
-    public int GetPrice()
-    {
-        //TODO Temporary value change 
-        return 200;
-    }
-    public SkillLevel GetSkillLevel()
-    {
-        //TODO Temporary value change 
-        return SkillLevel.EnemyOnly;
-    }
+
 }

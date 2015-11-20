@@ -2,9 +2,15 @@
 using System.Collections;
 using System;
 
-public class ClawAttack : MonoBehaviour, ISkill
+public class ClawAttack : Skill
 {
     public ExtendBehaviour claw1, claw2, claw3, claw4;
+
+    protected override void Start()
+    {
+        base.Start();
+        base.SetBaseValues(20, 1000, 10, "ClawAttack", SkillLevel.Level1);
+    }
 
     public ClawAttack()
     {
@@ -19,8 +25,9 @@ public class ClawAttack : MonoBehaviour, ISkill
         claw4 = c4;
     }
 
-    public void UseSkill(GameObject caller, GameObject target = null, float coolDownTimer = 0)
+    public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
     {
+        base.UseSkill(caller, target, optionalParameters);
         float dir = caller.GetComponent<Malady>().getDirection();
         ExtendBehaviour c1 = Instantiate(claw1, caller.transform.position + new Vector3(0, 0, -1.62f), claw1.transform.rotation) as ExtendBehaviour;
         c1.direction = dir;
@@ -31,24 +38,6 @@ public class ClawAttack : MonoBehaviour, ISkill
         ExtendBehaviour c4 = Instantiate(claw4, caller.transform.position + new Vector3(0, 0, 1.42f), claw4.transform.rotation) as ExtendBehaviour;
         c4.direction = dir;
     }
-    public float GetCoolDownTimer()
-    {
-        //TODO Temporary value change 
-        return 0;
-    }
-    public int GetPrice()
-    {
-        //TODO Temporary value change 
-        return 0;
-    }
-    public SkillLevel GetSkillLevel()
-    {
-        //TODO Temporary value change 
-        return SkillLevel.EnemyOnly;
-    }
-
-
-
 }
 
 

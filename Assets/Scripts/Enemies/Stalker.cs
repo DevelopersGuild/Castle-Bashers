@@ -1,30 +1,17 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Vanish : MonoBehaviour, ISkill
+public class Vanish : Skill
 {
-    private int price = 0;
-    private float cooldown = 0;
-    //public GameObject projectile;
-    public void UseSkill(GameObject caller, GameObject target, float coolDownTimer = 0)
+
+    protected override void Start()
     {
-       
+        base.Start();
+        base.SetBaseValues(0, 0, 0, "Vanish", SkillLevel.EnemyOnly);
     }
-    public float GetCoolDownTimer()
-    {
-        //TODO Temporary value change 
-        return 0;
-    }
-    public int GetPrice()
-    {
-        //TODO Temporary value change 
-        return price;
-    }
-    public SkillLevel GetSkillLevel()
-    {
-        //TODO Temporary value change 
-        return SkillLevel.EnemyOnly;
-    }
+
+
+
 }
 
 public class Stalker : MonoBehaviour {
