@@ -8,7 +8,7 @@ public class Enchant : Skill
     bool active;
     Player player;
 
-    private float bonusStrength;
+    private int bonusStrength;
     protected override void Start()
     {
         base.Start();
