@@ -5,10 +5,10 @@ using System;
 
 public class SaveManager : MonoBehaviour {
     Player player;
-    float level;
-    float strength;
-    float agility;
-    float intelligence;
+    int level;
+    int strength;
+    int agility;
+    int intelligence;
     string savePath;
     //Turn into array once allowing multiple saves
     string saveCode;

@@ -13,10 +13,10 @@ public class Player : MonoBehaviour
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
     public string Player_Name;
-    public float Stamina;
-    public float Strength = 1;
-    public float Agility;
-    public float Intelligence;
+    public int Stamina;
+    public int Strength = 1;
+    public int Agility;
+    public int Intelligence;
     //The stats should remain public to allow them to be set in the editor.
     [HideInInspector]
     public Character_Class_Info CCI;
@@ -247,7 +247,7 @@ public class Player : MonoBehaviour
         isInvincible = x;
     }
 
-    public void SetStrength(float strength)
+    public void SetStrength(int strength)
     {
         if (strength > 0)
         {
@@ -259,18 +259,18 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddStrength(float value)
+    public void AddStrength(int value)
     {
         Strength = Strength + value;
     }
 
 
-    public float GetStrength()
+    public int GetStrength()
     {
         return Strength;
     }
 
-    public void SetStamina(float value)
+    public void SetStamina(int value)
     {
         if (value > 0)
         {
@@ -283,17 +283,17 @@ public class Player : MonoBehaviour
 
     }
 
-    public void AddStamina(float value)
+    public void AddStamina(int value)
     {
         Stamina = Stamina + value;
     }
 
-    public float GetStamina()
+    public int GetStamina()
     {
         return Stamina;
     }
 
-    public void SetAgility(float agility)
+    public void SetAgility(int agility)
     {
         if (agility > 0)
         {
@@ -305,17 +305,17 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddAgility(float value)
+    public void AddAgility(int value)
     {
         Agility = Agility + value;
     }
 
-    public float GetAgility()
+    public int GetAgility()
     {
         return Agility;
     }
 
-    public void SetIntelligence(float intelligence)
+    public void SetIntelligence(int intelligence)
     {
         if (intelligence > 0)
         {
@@ -327,12 +327,12 @@ public class Player : MonoBehaviour
         }
     }
 
-    public void AddIntelligence(float value)
+    public void AddIntelligence(int value)
     {
         Intelligence = Intelligence + value;
     }
 
-    public float GetIntelligence()
+    public int GetIntelligence()
     {
         return Intelligence;
 
