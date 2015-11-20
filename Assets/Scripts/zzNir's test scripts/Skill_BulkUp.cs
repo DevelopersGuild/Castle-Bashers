@@ -108,8 +108,9 @@ public class Skill_BulkUp : Skill
             f = 1.3f;
         else
             f = (1.0f / 1.3f);
-
-        caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
+        
+        //Change It Please
+        //caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
     }
 
 
