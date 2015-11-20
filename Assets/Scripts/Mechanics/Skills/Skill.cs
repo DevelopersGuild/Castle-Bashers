@@ -8,6 +8,7 @@ public class Skill : MonoBehaviour
     private int price = 0;
     private int manaCost;
     private string skillName;
+    private string skillDiscription;
     public float value;
     [HideInInspector]
     public enum Type { Ranged, Melee, Support, Other };
@@ -18,13 +19,14 @@ public class Skill : MonoBehaviour
     //check out SkillLevel enum for all possible vaules.
     private SkillLevel skillLevel;
 
-    public void SetBaseValues(float coolDown, int price, int manaCost, string skillName, SkillLevel skillLevel)
+    public void SetBaseValues(float coolDown, int price, int manaCost, string skillName, SkillLevel skillLevel, string discription = null)
     {
         this.coolDown = coolDown;
         this.price = price;
         this.manaCost = manaCost;
         this.skillName = skillName;
         this.skillLevel = skillLevel;
+        this.skillDiscription = discription;
     }
 
     // Use this for initialization
@@ -93,6 +95,11 @@ public class Skill : MonoBehaviour
     public SkillLevel GetSkillLevel()
     {
         return skillLevel;
+    }
+
+    public string GetDiscription()
+    {
+        return skillDiscription;
     }
 
 

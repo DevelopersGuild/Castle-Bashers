@@ -14,6 +14,7 @@ public class SkillManager : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         unlockedSkills = new List<Skill>();
+        currentSkillLoadout = new Skill[4];
         unlockedSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
 
         //Nir stuff
@@ -31,12 +32,12 @@ public class SkillManager : MonoBehaviour {
 	}
     //blah
 
-    public void unlockSkill(Skill newSkill)
+    public void UnlockSkill(Skill newSkill)
     {
         unlockedSkills.Add(newSkill);
     }
 
-    public void changeSkill(int skillID, int replaceIndex)
+    public void ChangeSkill(int skillID, int replaceIndex)
     {
         currentSkillLoadout[replaceIndex] = unlockedSkills[skillID];
         currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
@@ -44,9 +45,9 @@ public class SkillManager : MonoBehaviour {
 
     public void UseSkill1()
     {
-        if (unlockedSkills[0].GetCoolDownTimer() <= 0)
+        if (currentSkillLoadout[0].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[0].UseSkill(gameObject, null);
+            currentSkillLoadout[0].UseSkill(gameObject, null);
             Debug.Log("Use Skill 1");
 
             if (player)
@@ -63,9 +64,9 @@ public class SkillManager : MonoBehaviour {
 
     public void UseSkill2()
     {
-        if (unlockedSkills[1].GetCoolDownTimer() <= 0)
+        if (currentSkillLoadout[1].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[1].UseSkill(gameObject, null);
+            currentSkillLoadout[1].UseSkill(gameObject, null);
             Debug.Log("Use Skill 2");
 
             if (player)
@@ -82,9 +83,9 @@ public class SkillManager : MonoBehaviour {
 
     public void UseSkill3()
     {
-        if (unlockedSkills[2].GetCoolDownTimer() <= 0)
+        if (currentSkillLoadout[2].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[2].UseSkill(gameObject, null);
+            currentSkillLoadout[2].UseSkill(gameObject, null);
             Debug.Log("Use Skill 3");
 
             if (player)
@@ -100,9 +101,9 @@ public class SkillManager : MonoBehaviour {
 
     public void UseSkill4()
     {
-        if (unlockedSkills[3].GetCoolDownTimer() <= 0)
+        if (currentSkillLoadout[3].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[3].UseSkill(gameObject, null);
+            currentSkillLoadout[3].UseSkill(gameObject, null);
             Debug.Log("Use Skill 4");
 
             if (player)
