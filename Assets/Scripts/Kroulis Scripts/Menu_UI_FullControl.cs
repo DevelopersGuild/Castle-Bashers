@@ -13,6 +13,7 @@ public class Menu_UI_FullControl : MonoBehaviour {
     public GameObject Ability_Menu;
     public GameObject Setting_Menu;
     public Text Player_Tips;
+    public Menu_BGMovie_Control movie;
     //Control API
     public bool Menu_open;
     public int Menu_id;
@@ -29,6 +30,7 @@ public class Menu_UI_FullControl : MonoBehaviour {
         GameObject GOResult;
         //Link UI
         GOResult = GameObject.Find("Menu_Background");
+        movie = GOResult.GetComponent<Menu_BGMovie_Control>();
         finds1=GOResult.GetComponentsInChildren<Text>();
         foreach(Text t in finds1)
         {
@@ -61,6 +63,7 @@ public class Menu_UI_FullControl : MonoBehaviour {
             int totalCoin = coinA + coinB;
             GoldAmount.text = totalCoin.ToString() + " <color=#c0c0c0ff>("+coinA.ToString()+"+"+coinB.ToString()+")</color>";
         }
+        movie.resume();
     }
 	
 	// Update is called once per frame
@@ -105,6 +108,7 @@ public class Menu_UI_FullControl : MonoBehaviour {
         }
         if(Input.GetKeyDown(KeyCode.Escape) && Main_Process.GetComponent<Main_Process>().esckey_up==false)
         {
+            movie.pause();
             Main_Process.GetComponent<Main_Process>().Menu_Open = false;
         }
         if(Main_Process.GetComponent<Main_Process>().esckey_up==true && Input.GetKeyUp(KeyCode.Escape))
