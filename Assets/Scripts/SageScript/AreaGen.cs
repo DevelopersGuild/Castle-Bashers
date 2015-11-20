@@ -16,6 +16,7 @@ public class AreaGen : MonoBehaviour
                        /// </summary>
     public Biome.BiomeName ActiveBiomeName;
 
+
     private System.Random rnd;
 
 
@@ -29,6 +30,7 @@ public class AreaGen : MonoBehaviour
         int AreaXCoord = 0;
         int AreaYCoord = 1;
         int AreaZCoord = 1;
+        Quaternion weather = Quaternion.AngleAxis(90, Vector3.right);
 
         GameObject temp;
 
@@ -49,9 +51,13 @@ public class AreaGen : MonoBehaviour
             Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/3DFloorB.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, AreaZCoord), transform.rotation);
             Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Front Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 11), transform.rotation); //set front limits
             Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Back Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -8), transform.rotation); //set back limits
+            // Barrier Limit Code if (i!= AreaNumber-1)
+                //Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Barrier Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord+ i)*40 +10, AreaYCoord, AreaZCoord), transform.rotation);
             t_length += 40;
 
-            if(background!=null)
+            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Particles/Snow.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, 15, -8), weather);
+
+            if (background!=null)
             Instantiate(background, new Vector3((AreaXCoord + i) * 40, 5, 13), transform.rotation);
 
             // Debug.Log("Recurrssion: " + i);

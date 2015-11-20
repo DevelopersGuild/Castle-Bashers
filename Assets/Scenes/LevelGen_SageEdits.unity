@@ -872,6 +872,8 @@ MonoBehaviour:
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
   playerId: 0
+  threatLevel: 0
+  damageDealt: 0
 --- !u!54 &1574227778
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1096,9 +1098,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Min_Area: 2
-  Max_Area: 3
-  Min_Enemy: 0
-  Max_Enemy: 0
+  Max_Area: 2
+  Min_Enemy: 1
+  Max_Enemy: 2
   Total_Objects: 6
   Boss: {fileID: 0}
   ActiveBiomeName: 0
