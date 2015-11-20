@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class test : Skill
+public class Enchant : Skill
 {
     private float duration = 10f;
     private float expiration;
@@ -12,7 +12,7 @@ public class test : Skill
     protected override void Start()
     {
         base.Start();
-   
+
         base.SetBaseValues(15, 16000, 150, "Ignite", SkillLevel.Level1);
         player = GetComponent<Player>();
 
@@ -20,7 +20,7 @@ public class test : Skill
     protected override void Update()
     {
         base.Update();
-        if(active && Time.time >= expiration)
+        if (active && Time.time >= expiration)
         {
             active = false;
             player.transform.GetChild(0).GetComponent<DealDamage>().isMagic = false;
@@ -41,27 +41,4 @@ public class test : Skill
 
 
     }
-}
-
-public class skilltesting : MonoBehaviour {
-
-    float castInterval;
-    
-    private Skill testSkill;
-    
-
-	// Use this for initialization
-	void Start () {
-        gameObject.AddComponent<Fireball>();
-        testSkill = GetComponent<Skill>();
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	    if(testSkill.GetCoolDownTimer() <= 0)
-        {
-            testSkill.UseSkill(gameObject);
-
-        }
-	}
 }

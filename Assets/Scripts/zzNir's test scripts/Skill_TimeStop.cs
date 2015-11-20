@@ -47,7 +47,6 @@ public class Skill_TimeStop : Skill
     {
         base.UseSkill(caller, target, optionalParameters);
         test = false;
-
         lay = Instantiate(layer, transform.position, layer.transform.rotation) as GameObject;
         timer = 3f;
         if (augment == Augment.Orange)
@@ -84,7 +83,7 @@ public class Skill_TimeStop : Skill
         else
             f = (1.0f / 1.3f);
 
-        caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
+        //caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
     }
 
 

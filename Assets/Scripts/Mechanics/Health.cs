@@ -73,9 +73,7 @@ public class Health : MonoBehaviour
             if (!player.GetInvincible())
             {
                 currentHealth -= dmg;
-                GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
-                floatText.GetComponent<TextMesh>().text = "" + dmg;
-                floatText.transform.position = gameObject.transform.position + damageTextOffset;
+                createFloatingText(dmg);
 
                 player.ModifyKBCount(knockback);
                 if (knockback > 0)
@@ -108,9 +106,7 @@ public class Health : MonoBehaviour
         else
         {
             currentHealth -= dmg;
-            GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
-            floatText.GetComponent<TextMesh>().text = "" + dmg;
-            floatText.transform.position = gameObject.transform.position + damageTextOffset;
+            createFloatingText(dmg);
 
             if (currentHealth <= 0)
             {
@@ -143,6 +139,14 @@ public class Health : MonoBehaviour
         }
 
         Destroy(gameObject);
+    }
+
+    void createFloatingText(float f)
+    {
+
+        GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
+        floatText.GetComponent<TextMesh>().text = "" + f;
+        floatText.transform.position = gameObject.transform.position + damageTextOffset;
     }
 
     public float GetStartingHealth()
