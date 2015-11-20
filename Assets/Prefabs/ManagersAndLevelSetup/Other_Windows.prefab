@@ -682,7 +682,7 @@ GameObject:
   - 114: {fileID: 11465562}
   - 114: {fileID: 11404282}
   m_Layer: 5
-  m_Name: Other_Windows 1
+  m_Name: Other_Windows
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -251,7 +251,7 @@ GameObject:
   - 114: {fileID: 11475546}
   - 114: {fileID: 11489210}
   m_Layer: 5
-  m_Name: Menu UI 1
+  m_Name: Menu UI
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -12,7 +12,7 @@ GameObject:
   - 114: {fileID: 11401966}
   - 82: {fileID: 8200642}
   m_Layer: 0
-  m_Name: Main Process 1
+  m_Name: Main Process
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -237,11 +237,8 @@ MonoBehaviour:
   skill:
   - skillid: 1
     skillname: Fire ball
-    price: 1000
-    mana_use: 15
-    cooldown: 3
-    now_cooldown: 0
-    phy_damage: 500
+    skillicon: {fileID: 0}
+    skill_script: {fileID: 0}
 --- !u!114 &11421022
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -383,6 +380,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -392,6 +393,10 @@ MonoBehaviour:
       up_gold: 50
       atk: 1
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -401,6 +406,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -410,6 +419,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -419,6 +432,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -429,6 +446,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -438,6 +459,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -447,6 +472,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -456,6 +485,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -465,6 +498,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -475,6 +512,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -484,6 +525,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -493,6 +538,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -502,6 +551,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
@@ -511,6 +564,10 @@ MonoBehaviour:
       up_gold: 0
       atk: 0
       def: 0
+      patk: 0
+      matk: 0
+      pdef: 0
+      mdef: 0
       maxhp: 0
       maxmp: 0
       cri: 0
