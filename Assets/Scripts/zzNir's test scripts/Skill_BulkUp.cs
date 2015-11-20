@@ -120,6 +120,7 @@ public class Skill_BulkUp : Skill
 
 
         caller.GetComponent<Defense>().SetPhysicalDefense(caller.GetComponent<Defense>().GetPhysicalDefense() + defDelta);
+
     }
 
 
