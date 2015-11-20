@@ -18,9 +18,9 @@ public class SkillManager : MonoBehaviour
         unlockedSkills = new List<Skill>();
         currentSkillLoadout = new Skill[4];
         unlockedSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
+        currentSkillLoadout[0] = unlockedSkills[0];
         player = GetComponent<Player>();
         checkSkill1 = checkSkill2 = checkSkill3 = checkSkill4 = false;
-
         /*if (player)
         {
             foreach (Skill sk in currentSkillLoadout)
