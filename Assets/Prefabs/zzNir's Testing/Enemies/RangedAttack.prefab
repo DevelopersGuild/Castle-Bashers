@@ -71,8 +71,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dmgAmount: 1
-  knockback: 3
+  dmgChange: 0
+  knockback: 10
   flinch: 5
+  IsPhysicalDamage: 1
 --- !u!114 &11418366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -148,7 +150,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: knockback
-      value: 3
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: flinch

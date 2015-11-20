@@ -3,8 +3,8 @@ using System.Collections;
 
 public class Phalanx : Skill
 {
-    private int addedPhysicalDefense;
-    private int addedMagicDefense;
+    private float addedPhysicalDefense;
+    private float addedMagicDefense;
     private Player player;
     private Defense defense;
 
