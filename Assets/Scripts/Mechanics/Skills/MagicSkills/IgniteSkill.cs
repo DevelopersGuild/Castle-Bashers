@@ -2,7 +2,7 @@
 using System.Collections;
 
 
-public class Ignite : Skill
+public class IgniteSkill : Skill
 {
     public float aoeRadius = 10;
     float damage = 15;

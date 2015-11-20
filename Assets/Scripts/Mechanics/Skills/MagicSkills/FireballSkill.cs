@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Fireball : Skill
+public class FireballSkill : Skill
 {
     private GameObject fireBall;
     protected override void Start()

@@ -1,7 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Whirlwind : Skill
+public class WhirlwindSkill : Skill
 {
     private int price;
     private float cooldown;
