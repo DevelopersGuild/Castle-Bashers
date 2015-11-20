@@ -17,7 +17,8 @@ public class Map_Transfer_Process : MonoBehaviour {
         GOResult = GameObject.Find("TransferUI");
         Map_Transfer_UI_Control_Script = GOResult.GetComponent<Map_Transfer_UI_Control>();
         GOResult = GameObject.Find("Main Process");
-        GOResult.GetComponent<SaveAndLoad>().SaveData();
+        if(GOResult)
+            GOResult.GetComponent<SaveAndLoad>().SaveData();
         //start to load scene
         StartCoroutine(loadScene());
     }

@@ -49,6 +49,7 @@ public class Defense : MonoBehaviour
         Debug.Log("USING OUTDATED FUNCTION, PLEASE UPDATE CALL TO SetPhysicalDefense");
         PhysicalDefense = value;
     }
+
     //Use a negative value to subtract
     public void AddBonusPhysicalDefense(int value)
     {
@@ -108,7 +109,7 @@ public class Defense : MonoBehaviour
         return baseMagicalDefense;
     }
 
-    public int GetDefense()
+    public float GetDefense()
     {
         return defense;
     }

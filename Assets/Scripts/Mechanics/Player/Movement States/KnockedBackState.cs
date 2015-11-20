@@ -20,7 +20,7 @@ public class KnockedBackState : IPlayerState
 
     public void UpdateState(Player player)
     {
-        timer = timer - Time.deltaTime;
+        timer = timer - Time.unscaledDeltaTime;
     }
 
     public void ExitState(Player player)

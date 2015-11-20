@@ -22,7 +22,8 @@ public class Skill_info : MonoBehaviour {
         for(int i=0;i<length;i++)
         {
             skill[i].skillid = i;
-            skill[i].skillname = skill[i].skill_script.GetSkillName();
+            if (skill[i].skill_script)
+                skill[i].skillname = skill[i].skill_script.GetSkillName();
         }
     }
 
