@@ -30,12 +30,11 @@ public class Burn : MonoBehaviour {
             defense.CheckMagicalDefense(damagePerTick);
 
         }
-        /*
         if(Time.time >= duration)
         {
             Destroy(this);
         }
-        */
+        
 	}
 
     public void setDuration(float i)

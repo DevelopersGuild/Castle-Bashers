@@ -4,9 +4,14 @@ using System.Collections;
 public class Defense : MonoBehaviour
 {
     private Player player;
-    public float defense = 0;
-    public float PhysicalDefense = 0;
-    public float MagicalDefense = 0;
+    public int defense = 0;
+    public int basePhysicalDefense = 0;
+    public int baseMagicalDefense = 0;
+    private int bonusPhysicalDefense = 0;
+    private int bonusMagicalDefense = 0;
+    
+    public int PhysicalDefense = 0;
+    public int MagicalDefense = 0;
     private Health health;
     void Start()
     {
@@ -16,9 +21,10 @@ public class Defense : MonoBehaviour
 
     public void CheckPhysicalDefense(float damage, float knockback = 4, float flinch = 5)
     {
-        if (Check_Block_Success())
-            damage = damage * 0.35f;
-        damage = damage - PhysicalDefense;
+        if(player)
+            if (Check_Block_Success())
+                damage = damage * 0.35f;
+        damage = damage - GetPhysicalDefense();
         if (damage > 0)
         {
             health.takeDamage(damage, knockback, flinch);
@@ -27,31 +33,80 @@ public class Defense : MonoBehaviour
 
     public void CheckMagicalDefense(float damage, float knockback = 4, float flinch = 5)
     {
-        if (Check_Block_Success())
-            damage = damage * 0.5f;
-        damage = damage - MagicalDefense;
+        if(player)
+            if (Check_Block_Success())
+                damage = damage * 0.5f;
+        damage = damage - GetMagicalDefense();
         if(damage > 0)
         {
+            Debug.Log("took " + damage);
             health.takeDamage(damage, knockback, flinch);
         } 
     }
 
-    public void SetPhysicalDefense(float value)
+    public void SetPhysicalDefense(int value)
     {
+        Debug.Log("USING OUTDATED FUNCTION, PLEASE UPDATE CALL TO SetPhysicalDefense");
         PhysicalDefense = value;
     }
-    public float GetPhysicalDefense()
+
+    //Use a negative value to subtract
+    public void AddBonusPhysicalDefense(int value)
     {
-        return PhysicalDefense;
+        bonusPhysicalDefense += value;
+    }
+    
+    public void SetBasePhysicalDefense(int value)
+    {
+        basePhysicalDefense = value;
     }
 
-    public void SetMagicalDefense(float value)
+    public int GetPhysicalDefense()
     {
+        return basePhysicalDefense + bonusPhysicalDefense;
+    }
+
+    public int GetBasePhysicalDefense()
+    {
+        return basePhysicalDefense;
+    }
+
+    public int GetBonusPhysicalDefense()
+    {
+        return bonusPhysicalDefense;
+    }
+
+    public void SetMagicalDefense(int value)
+    {
+
+        Debug.Log("USING OUTDATED FUNCTION, PLEASE UPDATE CALL TO SetPhysicalDefense");
         MagicalDefense = value;
     }
-    public float GetMagicalDefense()
+
+    public void SetBaseMagicalDefense(int value)
     {
-        return MagicalDefense;
+        baseMagicalDefense = value;
+    }
+
+    //Use negative value to subtract
+    public void AddBonusMagicalDefense(int value)
+    {
+        bonusMagicalDefense += value;
+    }
+
+    public int GetMagicalDefense()
+    {
+        return baseMagicalDefense + bonusMagicalDefense;
+    }
+
+    public int GetBonusMagicalDefense()
+    {
+        return bonusMagicalDefense;
+    }
+
+    public int GetBaseMagicalDefense()
+    {
+        return baseMagicalDefense;
     }
 
     public float GetDefense()
@@ -59,12 +114,12 @@ public class Defense : MonoBehaviour
         return defense;
     }
 
-    public void SetDefense(float Defense)
+    public void SetDefense(int Defense)
     {
         defense = Defense;
     }
 
-    public void AddDefense(float value)
+    public void AddDefense(int value)
     {
         defense = defense + value;
     }
