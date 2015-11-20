@@ -10,18 +10,14 @@ public class Character_Menu_FullControl : MonoBehaviour {
     Defense Player_Defense;
     Experience Player_EXP;
     DealDamageToEnemy Player_ATK;
+    public Character_Class_Info CI;
+    public Main_Process main_process;
     //Character Infos
     Text ATK, DEF, STA, SPI, AGI, BATK, MATK, PDEF, MDEF, CRIR, C_HP, C_MP, C_EXP, C_NEXP, C_Name, C_LV;
     Image C_ICON,weapon,amror,accer;
+
 	// Use this for initialization
 	void Start () {
-        Player_PF = GameObject.Find("Player");
-        Player_Script = Player_PF.GetComponent<Player>();
-        Player_Health = Player_PF.GetComponent<Health>();
-        Player_Mana = Player_PF.GetComponent<Mana>();
-        Player_Defense = Player_PF.GetComponent<Defense>();
-        Player_EXP = Player_PF.GetComponent<Experience>();
-        Player_ATK = Player_PF.GetComponentInChildren<DealDamageToEnemy>();
         Text[] finds1;
         Image[] finds2;
         finds1 = GetComponentsInChildren<Text>();
@@ -133,11 +129,19 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 continue;
             }
         }
+        main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
 	}
 	
 	// Update is called once per frame
-	public void Change()
+	public void Change(int ? id = null)
     {
+        Player_PF = main_process.GetPlayerObject(id);
+        Player_Script = main_process.GetPlayerScript(id);
+        Player_EXP = main_process.GetPlayerExperience(id);
+        Player_Health = Player_PF.GetComponent<Health>();
+        Player_Mana = Player_PF.GetComponent<Mana>();
+        Player_Defense = Player_PF.GetComponent<Defense>();
+        Player_ATK = Player_Script.AttackCollider.GetComponent<DealDamageToEnemy>();
         ATK.text = Player_Script.GetStrength().ToString();
         DEF.text = Player_Defense.defense.ToString();
         STA.text = Player_Script.GetStamina().ToString();
@@ -154,8 +158,9 @@ public class Character_Menu_FullControl : MonoBehaviour {
         C_EXP.text = Player_EXP.GetExperience().ToString();
         C_NEXP.text = (Player_EXP.GetNEXP()-Player_EXP.GetExperience()).ToString();
         C_Name.text = Player_Script.Player_Name;
-
-        //xxx~yyy
+        weapon.sprite = CI.Class_info[Player_Script.GetClassID()].weapon[Player_Script.GetWeaponLV()].icon;
+        amror.sprite = CI.Class_info[Player_Script.GetClassID()].armor[Player_Script.GetWeaponLV()].icon;
+        accer.sprite = CI.Class_info[Player_Script.GetClassID()].accessory[Player_Script.GetWeaponLV()].icon;
 
     }
 }

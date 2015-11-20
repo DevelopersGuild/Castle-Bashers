@@ -209,6 +209,7 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
         GameObject MainProcess = GameObject.Find("Main Process");
         CCIS= MainProcess.GetComponentInChildren<Character_Class_Info>();
         Change();
+        gameObject.SetActive(false);
 	}
 	
     public void Change()

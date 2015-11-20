@@ -7,6 +7,7 @@ public class UI_Death_MusicControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         audio = GetComponent<AudioSource>();
+        gameObject.SetActive(false);
 	}
 	
 	// Update is called once per frame
