@@ -84,7 +84,7 @@ public class Skill_TimeStop : Skill
         else
             f = (1.0f / 1.3f);
 
-        caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
+        //caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
     }
 
 
