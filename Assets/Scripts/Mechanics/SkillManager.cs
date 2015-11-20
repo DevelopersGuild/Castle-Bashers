@@ -2,7 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 
-public class SkillManager : MonoBehaviour {
+public class SkillManager : MonoBehaviour
+{
 
     public List<Skill> unlockedSkills;
     public Skill[] currentSkillLoadout;
@@ -11,24 +12,27 @@ public class SkillManager : MonoBehaviour {
     private bool checkSkill1, checkSkill2, checkSkill3, checkSkill4;
     private Player player;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start()
+    {
         unlockedSkills = new List<Skill>();
-        unlockedSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
+        //unlockedSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
+       // unlockedSkills.Add(gameObject.AddComponent<Skill_BoostV2>());
+
 
         //Nir stuff
         player = GetComponent<Player>();
         checkSkill1 = checkSkill2 = checkSkill3 = checkSkill4 = false;
-        /*
-        if(player)
+
+        /*if (player)
         {
-            foreach(Skill sk in currentSkillLoadout)
+            foreach (Skill sk in currentSkillLoadout)
             {
-               sk.GetComponent<ID>().SetID(player.getManagerID());
+                sk.GetComponent<ID>().SetID(player.getManagerID());
             }
         }
         */
-	}
+    }
     //blah
 
     public void unlockSkill(Skill newSkill)
@@ -46,13 +50,15 @@ public class SkillManager : MonoBehaviour {
     {
         if (unlockedSkills[0].GetCoolDownTimer() <= 0)
         {
-            unlockedSkills[0].UseSkill(gameObject, null);
+            
             Debug.Log("Use Skill 1");
 
-            if (player)
+            if (player || true)
             {
+
                 if (!checkSkill1)
                 {
+                    unlockedSkills[0].UseSkill(gameObject, null);
                     player.addSkill(unlockedSkills[0], 0);
                     checkSkill1 = true;
                 }

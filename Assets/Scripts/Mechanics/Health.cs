@@ -65,6 +65,7 @@ public class Health : MonoBehaviour
         }
     }
 
+
     public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
         if (player)

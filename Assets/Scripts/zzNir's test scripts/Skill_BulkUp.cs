@@ -5,6 +5,17 @@ public class Skill_BulkUp : Skill
 {
     private Player[] players = new Player[4];
     private float partyVal = 1.2f;
+    private bool on = false;
+    private bool regen = false;
+    private float regenTicker, regenAmount;
+
+    /*
+        Bulk Up skill (buff) - Raises max hp of the player
+        Augments:
+        Orange - Regens a portion of your hp over the duration
+        Purple - Defense increases as well
+        Teal - Max hp increase is reduced, but affects every player instead of just the caller (party buff)
+    */
 
     protected override void Start()
     {
@@ -15,17 +26,32 @@ public class Skill_BulkUp : Skill
     protected override void Update()
     {
         base.Update();
-        if(GetCoolDownTimer() == 0)
+        if (on)
         {
-            float f = 1.4f;
-            if (augment == Augment.Teal)
-                f = partyVal;
-
-            foreach(Player player in players)
+            if (regen)
             {
-                modHealth(player.gameObject, false, f);
-                if (augment == Augment.Purple)
-                    modDefense(player.gameObject, false);
+                if (regenTicker <= 0)
+                {
+                    regenTicker = 0.25f;
+                    players[0].GetComponent<Health>().AddHealth(regenAmount);
+                }
+                regenTicker -= Time.deltaTime;
+            }
+            if (GetCoolDownTimer() == 0)
+            {
+                on = false;
+                float f = 1.4f;
+                if (augment == Augment.Teal)
+                    f = partyVal;
+
+                foreach (Player player in players)
+                {
+                    modHealth(player.gameObject, false, f);
+                    //to reduce hp back to max if it's overflowing
+                    player.GetComponent<Health>().AddHealth(0);
+                    if (augment == Augment.Purple)
+                        modDefense(player.gameObject, false);
+                }
             }
         }
     }
@@ -33,6 +59,7 @@ public class Skill_BulkUp : Skill
     public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
     {
         base.UseSkill(caller, target, optionalParameters);
+        on = true;
         players = new Player[4];
         if (augment == Augment.Neutral)
         {
@@ -42,12 +69,16 @@ public class Skill_BulkUp : Skill
         else if (augment == Augment.Orange)
         {
             modHealth(caller);
+            regenTicker = 0.25f;
+            regen = true;
+            regenAmount = regenTicker * caller.GetComponent<Health>().GetMaxHP() / (GetCoolDown() * 3) ;
             players[0] = caller.GetComponent<Player>();
         }
         else if(augment == Augment.Purple)
         {
             modHealth(caller);
             modDefense(caller);
+            players[0] = caller.GetComponent<Player>();
         }
         else if(augment == Augment.Teal)
         {
