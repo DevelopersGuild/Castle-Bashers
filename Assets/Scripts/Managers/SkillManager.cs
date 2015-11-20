@@ -33,7 +33,6 @@ public class SkillManager : MonoBehaviour
         }
         */
     }
-    //blah
 
     public void unlockSkill(Skill newSkill)
     {
