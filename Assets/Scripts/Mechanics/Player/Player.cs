@@ -338,7 +338,7 @@ public class Player : MonoBehaviour
 
     }
 
-    public void AddDefense(float value)
+    public void AddDefense(int value)
     {
         defense.AddDefense(value);
     }
