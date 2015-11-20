@@ -24,18 +24,19 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
-        player = GameObject.Find("Player").GetComponent<Player>();
         ci = main_process.gameObject.GetComponentInChildren<Character_Class_Info>();
         gameObject.SetActive(false);
 	}
 
-    public void Change(int id)
+    public void Change(int id,int? player_id=null)
     {
+        player = main_process.GetPlayerScript(player_id);
+        classid = player.GetClassID();
+        havegold = main_process.GetPlayerCoinManager(player_id).getCoins();
+        playerlv = main_process.GetPlayerExperience(player_id).GetCurrentLevel();
         current_id = id;
         upg = true;
-        classid = player.GetClassID();
-        havegold = player.gameObject.GetComponent<CoinManager>().getCoins();
-        playerlv = player.gameObject.GetComponent<Experience>().GetCurrentLevel();
+
         GO.text = havegold.ToString();
 
         if(id==1)
