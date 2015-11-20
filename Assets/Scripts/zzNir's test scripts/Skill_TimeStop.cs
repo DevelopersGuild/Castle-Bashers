@@ -47,7 +47,6 @@ public class Skill_TimeStop : Skill
     {
         base.UseSkill(caller, target, optionalParameters);
         test = false;
-
         lay = Instantiate(layer, transform.position, layer.transform.rotation) as GameObject;
         timer = 3f;
         if (augment == Augment.Orange)

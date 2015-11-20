@@ -4,8 +4,11 @@ using System.Collections.Generic;
 
 public class Skill_BoostV2 : Skill
 {
+    public bool test = false;
+    private bool run = false;
     private GameObject call;
     private Animator anim;
+    private int spdDelta;
     List<UnityEditor.Animations.AnimatorControllerLayer> layers = new List<UnityEditor.Animations.AnimatorControllerLayer>();
     List<UnityEditor.Animations.AnimatorState> animationsStates_Base = new List<UnityEditor.Animations.AnimatorState>();
     List<UnityEditor.Animations.AnimatorState> animationsStates_Attack = new List<UnityEditor.Animations.AnimatorState>();
@@ -23,11 +26,15 @@ public class Skill_BoostV2 : Skill
     {
         base.Start();
         base.SetBaseValues(15, 1000, 15, "Boost", SkillLevel.Level1);
+        //remove when actually complete
+
     }
 
     void Awake()
     {
-        anim = GetComponent<Animator>();
+        call = FindObjectOfType<Player>().gameObject;
+
+        anim = call.GetComponent<Animator>();
         if (anim != null)
         {
             UnityEditor.Animations.AnimatorController ac = (UnityEditor.Animations.AnimatorController)anim.runtimeAnimatorController;
@@ -40,18 +47,30 @@ public class Skill_BoostV2 : Skill
             foreach (UnityEditor.Animations.ChildAnimatorState s in layers[0].stateMachine.states)
             {
                 animationsStates_Base.Add(s.state);
-                Debug.Log(s.state.speed);
             }
 
 
+        }
+
+
+        foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
+        {
+            if (state.name == "Walk" || state.name == "Jump")
+            {
+            }
         }
     }
 
     protected override void Update()
     {
         base.Update();
-        if (GetCoolDownTimer() == 0)
+
+        if (test)
+            UseSkill(this.gameObject);
+
+        if (GetCoolDownTimer() == 0 && run)
         {
+            run = false;
             float f = 0.75f;
             if (augment == Augment.Purple)
                 f = 0.5f;
@@ -72,6 +91,8 @@ public class Skill_BoostV2 : Skill
     {
         base.UseSkill(caller, target, optionalParameters);
         call = caller;
+        test = false;
+        run = true;
         if (augment == Augment.Neutral)
         {
             modAtkSpd(caller);
@@ -88,7 +109,7 @@ public class Skill_BoostV2 : Skill
         }
         else if (augment == Augment.Teal)
         {
-           // modAtkSpd(caller);
+            modAtkSpd(caller);
             modAnimSpd(caller);
             skillType = Type.Ranged;
         }
@@ -105,10 +126,11 @@ public class Skill_BoostV2 : Skill
         {
             if (state.name == "BasicAttack" || state.name == "PowerAttack")
             {
-              //  state.speed *= val;
+                state.speed *= val;
             }
         }
 
+        
         //caller.GetComponent<Animation>().GetClip("BasicAttack").frameRate = (caller.GetComponent<Animation>().GetClip("BasicAttack").frameRate * val);
         //caller.GetComponent<Animation>().GetClip("PowerAttack").frameRate = (caller.GetComponent<Animation>().GetClip("PowerAttack").frameRate * val);
     }
@@ -126,13 +148,20 @@ public class Skill_BoostV2 : Skill
         if (add)
             val = 1 / val;
 
-        //caller.GetComponent<Player>().SetAgility(caller.GetComponent<Player>().GetAgility() * val);
+        int f = (int)(caller.GetComponent<Player>().GetAgility() * val);
+        if (add)
+            spdDelta = f;
+        else
+            spdDelta *= -1;
+
+        caller.GetComponent<Player>().SetAgility(caller.GetComponent<Player>().GetAgility() + spdDelta);
 
         foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
         {
             if (state.name == "Walk" || state.name == "Jump")
             {
-              //  state.speed = 1;
+                Debug.Log(state.speed);
+                state.speed *= val;
             }
         }
     }
