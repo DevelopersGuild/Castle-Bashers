@@ -5,7 +5,7 @@ public class Mana : MonoBehaviour
 {
     public int StartingMana = 0;
     public int ManaRegenRate = 1;
-    public int MaxMana = 0;
+    public float MaxMana = 0;
     private float mana;
     private float regenModifier = 12;
     private Player player;
