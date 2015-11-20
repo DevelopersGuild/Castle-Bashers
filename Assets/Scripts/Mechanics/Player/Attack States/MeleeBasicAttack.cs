@@ -27,7 +27,7 @@ public class MeleeBasicAttack : IAttack
 
     public void UpdateState(Player player)
     {
-        timer += Time.deltaTime;
+        timer += Time.unscaledDeltaTime;
     }
 
     public void ExitState(Player player)

@@ -102,7 +102,8 @@ public class Malady : Boss
 
         grouping = false;
         getPlayerType();
-        
+        GetComponent<ID>().setTime(false);
+
     }
 
     // Update is called once per frame
@@ -117,7 +118,7 @@ public class Malady : Boss
         if (isTeleporting)
         {
             transform.position = Vector3.Lerp(startPos, teleTarget, teleDuration * 2);
-            teleDuration += Time.deltaTime;
+            teleDuration += Time.unscaledDeltaTime;
             if (teleDuration >= 0.5f)
             {
                 teleDuration = 0;
@@ -143,10 +144,10 @@ public class Malady : Boss
 
   
 
-        refreshPriority += Time.deltaTime;
-        hands_CD += Time.deltaTime;
-        animationDelay += Time.deltaTime;
-        invTime -= Time.deltaTime;
+        refreshPriority += Time.unscaledDeltaTime;
+        hands_CD += Time.unscaledDeltaTime;
+        animationDelay += Time.unscaledDeltaTime;
+        invTime -= Time.unscaledDeltaTime;
     }
 
     public override void Act(Type t)
@@ -237,7 +238,7 @@ public class Malady : Boss
 
         if (swarm_Duration > 0)
         {
-            swarm_Duration -= Time.deltaTime;
+            swarm_Duration -= Time.unscaledDeltaTime;
         }
 
 

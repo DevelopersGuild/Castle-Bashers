@@ -52,6 +52,7 @@ public class Skill_BoostV2 : Skill
         {
             modAtkSpd(caller);
             modAnimSpd(caller);
+            skillType = Type.Ranged;
         }
 
     }

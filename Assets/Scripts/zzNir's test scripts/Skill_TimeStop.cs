@@ -1,10 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class Skill_BulkUp : Skill
+public class Skill_TimeStop : Skill
 {
-    private Player[] players = new Player[4];
-    private float partyVal = 1.2f;
+    public bool test = false;
+    public GameObject layer, player, lay;
+    private float timer = 0;
+    private float mult = 0.2f;
+
 
     protected override void Start()
     {
@@ -12,52 +15,55 @@ public class Skill_BulkUp : Skill
         base.SetBaseValues(30, 1000, 25, "Bulk Up", SkillLevel.Level1);
     }
 
+    void Awake()
+    {
+        //player = FindObjectOfType<Camera>().gameObject;
+    }
+
     protected override void Update()
     {
         base.Update();
-        if(GetCoolDownTimer() == 0)
-        {
-            float f = 1.4f;
-            if (augment == Augment.Teal)
-                f = partyVal;
+        if (test)
+            UseSkill(this.gameObject);
 
-            foreach(Player player in players)
+        if (timer > 0)
+        {
+            timer -= Time.unscaledDeltaTime;
+            if (timer <= 0)
             {
-                modHealth(player.gameObject, false, f);
-                if (augment == Augment.Purple)
-                    modDefense(player.gameObject, false);
+                Destroy(lay);
+                timer = 0;
+                if (augment == Augment.Orange)
+                    Time.timeScale = 1;
+                else
+                    Time.timeScale = 1;
             }
         }
     }
 
+
+    //Add ripples later
     public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
     {
         base.UseSkill(caller, target, optionalParameters);
-        players = new Player[4];
-        if (augment == Augment.Neutral)
+        test = false;
+
+        lay = Instantiate(layer, transform.position, layer.transform.rotation) as GameObject;
+        timer = 3f;
+        if (augment == Augment.Orange)
         {
-            modHealth(caller);
-            players[0] = caller.GetComponent<Player>();
+            mult = 0.0f;
         }
-        else if (augment == Augment.Orange)
+        else if (augment == Augment.Teal)
         {
-            modHealth(caller);
-            players[0] = caller.GetComponent<Player>();
+            AddHealth(caller);
         }
-        else if(augment == Augment.Purple)
+        else if (augment == Augment.Purple)
         {
-            modHealth(caller);
-            modDefense(caller);
+            timer = 8f;
         }
-        else if(augment == Augment.Teal)
-        {
-            players = FindObjectOfType<PlayerManager>().getPlayers();
-            skillType = Type.Support;
-            foreach(Player player in players)
-            {
-                modHealth(player.gameObject, true, partyVal);
-            }
-        }
+        Time.timeScale = Time.timeScale * mult;
+
 
     }
 
@@ -89,3 +95,4 @@ public class Skill_BulkUp : Skill
         caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetStartingHealth() / 3);
     }
 }
+
