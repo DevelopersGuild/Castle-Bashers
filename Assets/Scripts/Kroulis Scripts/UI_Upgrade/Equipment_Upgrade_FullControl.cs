@@ -176,25 +176,25 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
                     case 1:
                         {
                             player.AddStrength(diff[0]);
-                            player.Fully_Update();
                             player.SetWeaponLV(nextlevel);
+                            player.Fully_Update();
                             break;
                         }
                     case 2:
                         {
                             player.AddDefense(diff[0]);
-                            player.Fully_Update();
                             player.SetArmorLV(nextlevel);
+                            player.Fully_Update();
                             break;
                         }
                     case 3:
                         {
-                            int sta=diff[0] / 30;
-                            player.AddStamina(sta);
-                            player.AddIntelligence((diff[1] - sta * 10) / 20);
-                            player.AddAgility(diff[2]);
-                            player.Fully_Update();
+                            //int sta=diff[0] / 30;
+                            //player.AddStamina(sta);
+                            //player.AddIntelligence((diff[1] - sta * 10) / 20);
+                            //player.AddAgility(diff[2]);
                             player.SetAccessoriesLV(nextlevel);
+                            player.Fully_Update();
                             break;
                         }
                 }

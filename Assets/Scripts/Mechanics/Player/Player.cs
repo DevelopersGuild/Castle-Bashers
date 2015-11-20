@@ -18,7 +18,8 @@ public class Player : MonoBehaviour
     public int Agility;
     public int Intelligence;
     //The stats should remain public to allow them to be set in the editor.
- 
+    [HideInInspector]
+    public Character_Class_Info CCI;
     private int class_id = 0;
     private int weapon_level=0;
     private int armor_level = 0;
@@ -112,6 +113,7 @@ public class Player : MonoBehaviour
         skill[2] = null;
         skill[3] = null;
         threatLevel = damageDealt = 0;
+        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
     }
 
     void Update()
@@ -341,9 +343,9 @@ public class Player : MonoBehaviour
     {
         health.Updata_Maxhp_withFullRegen();
         mana.UpdateMaxMP_And_Regen();
-        attack.UpdateDamage(5 * Strength + Agility, 2 * Strength + 5 * Intelligence);
+        attack.UpdateDamage(5 * Strength + Agility + CCI.Class_info[class_id].weapon[weapon_level].patk, 2 * Strength + 5 * Intelligence+CCI.Class_info[class_id].weapon[weapon_level].matk);
         attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
-        attack.SetCriticalChance(Agility * 0.001f);
+        attack.SetCriticalChance(Agility * 0.001f + CCI.Class_info[class_id].accessory[accessories_level].cri);
         blockchance = Agility * 0.001f;
         defense.Update_Defense();
 

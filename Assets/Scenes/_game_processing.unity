@@ -2944,11 +2944,8 @@ MonoBehaviour:
   skill:
   - skillid: 1
     skillname: Fire ball
-    price: 1000
-    mana_use: 15
-    cooldown: 3
-    now_cooldown: 0
-    phy_damage: 500
+    skillicon: {fileID: 0}
+    skill_script: {fileID: 0}
 --- !u!1 &397481044
 GameObject:
   m_ObjectHideFlags: 0
@@ -5765,6 +5762,7 @@ MonoBehaviour:
   Ability_Menu: {fileID: 1206876836}
   Setting_Menu: {fileID: 1514012121}
   Player_Tips: {fileID: 1413627258}
+  movie: {fileID: 0}
   Menu_open: 0
   Menu_id: 1
   Main_Process: {fileID: 0}
