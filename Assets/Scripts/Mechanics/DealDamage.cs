@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class DealDamage : MonoBehaviour {
-
+    public AudioClip hitAudio;
     public float dmgAmount = 1;
     public bool isMagic = false;
     public bool damagePlayers = false;

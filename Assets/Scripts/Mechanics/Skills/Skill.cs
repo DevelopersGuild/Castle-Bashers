@@ -3,6 +3,7 @@ using System.Collections;
 
 public class Skill : MonoBehaviour
 {
+    public AudioClip useSkillAudio;
     private float coolDown = 0;
     private float coolDownTimer = 0;
     private int price = 0;

@@ -33,6 +33,9 @@ public class Player : MonoBehaviour
     public float verticalMoveSpeed = 10;
     public int playerId; // The Rewired player id of this character
 
+    public AudioClip jumpAudio;
+    public AudioClip walkAudio;
+
     private float accelerationTimeAirborne = .2f;
     private float accelerationTimeGrounded = .1f;
     private bool isNotStunned = true;
