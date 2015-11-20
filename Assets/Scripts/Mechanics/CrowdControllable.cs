@@ -29,7 +29,7 @@ public class Effect
 
 public class CrowdControllable : MonoBehaviour {
 
-    public floatingText floatText;
+    public GameObject floatText;
     public Vector3 effectOffset = new Vector3(0, 2, 0);
     private Vector3 effectPosition;
 
@@ -61,6 +61,7 @@ public class CrowdControllable : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
+        floatText = Resources.Load("FloatingText") as GameObject;
 	}
 	
 	// Update is called once per frame
