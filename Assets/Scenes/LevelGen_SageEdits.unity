@@ -89,92 +89,6 @@ NavMeshSettings:
 GameObject:
   m_PrefabParentObject: {fileID: 100384, guid: 8605954fa331b2a43b7c03bd38d83fe8, type: 2}
   m_PrefabInternal: {fileID: 495548229}
---- !u!1 &351494361 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 177178, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-  m_PrefabInternal: {fileID: 382721980}
---- !u!1001 &382721980
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_RootOrder
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_AnchoredPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_AnchoredPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_SizeDelta.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_SizeDelta.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_AnchorMin.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_AnchorMin.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_AnchorMax.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_AnchorMax.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_Pivot.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 22499542, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-      propertyPath: m_Pivot.y
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: a81a2a14a9e7bfa49a598e7e7bf01845, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &422116177
 Prefab:
   m_ObjectHideFlags: 0
@@ -225,7 +139,7 @@ Prefab:
     - target: {fileID: 11438422, guid: 03b29aa7495e9ca42be7897ecd276d70, type: 2}
       propertyPath: Other_Windows
       value: 
-      objectReference: {fileID: 351494361}
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 03b29aa7495e9ca42be7897ecd276d70, type: 2}
   m_IsPrefabParent: 0
@@ -1102,6 +1016,7 @@ MonoBehaviour:
   Min_Enemy: 1
   Max_Enemy: 2
   Total_Objects: 6
+  Event: {fileID: 0}
   Boss: {fileID: 0}
   ActiveBiomeName: 0
 --- !u!114 &1925635605

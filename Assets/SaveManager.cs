@@ -5,10 +5,10 @@ using System;
 
 public class SaveManager : MonoBehaviour {
     Player player;
-    int level;
-    int strength;
-    int agility;
-    int intelligence;
+    float level;
+    float strength;
+    float agility;
+    float intelligence;
     string savePath;
     //Turn into array once allowing multiple saves
     string saveCode;
@@ -40,7 +40,7 @@ public class SaveManager : MonoBehaviour {
         string code = "";
         strength = player.GetStrength();
 
-        alphatizeInt(strength);
+        alphatizeInt((int)strength);
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
         

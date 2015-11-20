@@ -11,8 +11,11 @@ public class Skill : MonoBehaviour
     private string skillDiscription;
     public float value;
     [HideInInspector]
+    public enum Augment { Neutral, Purple, Orange, Teal}
+    [HideInInspector]
     public enum Type { Ranged, Melee, Support, Other };
 
+    public Augment augment;
     public Type skillType;
 
     //This is the level of the skill or if the skill is only useable by enemys, 
