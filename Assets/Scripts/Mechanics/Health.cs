@@ -7,7 +7,7 @@ public class Health : MonoBehaviour
     public float startingHealth;
     public float RegenAmount;
     private float currentHealth=0;
-    private float maxhp=0;
+    private float maxhp;
     private Player player;
     private DealDamageToEnemy attack;
     private bool canKnock = true;
