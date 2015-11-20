@@ -126,8 +126,8 @@ public class Defense : MonoBehaviour
 
     public void Update_Defense()
     {
-        SetPhysicalDefense(5*defense+player.GetStrength()+2*player.GetStamina()+player.GetAgility());
-        SetMagicalDefense(2 * defense + 6 * player.GetIntelligence());
+        SetBasePhysicalDefense(5 * defense + player.GetStrength() + 2 * player.GetStamina() + player.GetAgility());
+        SetBaseMagicalDefense(2 * defense + 6 * player.GetIntelligence());
     }
 
     bool Check_Block_Success()

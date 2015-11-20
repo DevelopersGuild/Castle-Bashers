@@ -57,6 +57,7 @@ public class AreaGen : MonoBehaviour
                 //Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Barrier Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord+ i)*40 +10, AreaYCoord, AreaZCoord), transform.rotation);
             t_length += 40;
 
+            if (Weather!=null)
             Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), weather);
 
             if (background!=null)
@@ -179,7 +180,7 @@ public class AreaGen : MonoBehaviour
             Instantiate(temp, new Vector3((arrayX[i]), 2.5f, arrayZ[i]), transform.rotation);
         }
 
-        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((t_length)-13, AreaYCoord, AreaZCoord), transform.rotation);
+        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((t_length)-20, AreaYCoord, AreaZCoord), transform.rotation);
         //Debug.Log(t_length);
     }
 
