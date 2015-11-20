@@ -9,6 +9,7 @@ public class Character_Class_Info : MonoBehaviour {
         public Sprite icon;
         public int lim_lv, up_gold;
         public int atk, def;
+        public int patk, matk, pdef, mdef;
         public int maxhp,maxmp,cri;
     }
 

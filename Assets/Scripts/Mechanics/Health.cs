@@ -26,8 +26,8 @@ public class Health : MonoBehaviour
         maxhp = startingHealth;
         damageTextOffset = new Vector3(0, 2, 0);
         maxhp = startingHealth;
-        if(player)
-            maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30;
+        if (player)
+            maxhp = startingHealth + player.GetStrength() * 10;
         
     }
 
@@ -39,7 +39,7 @@ public class Health : MonoBehaviour
     public void Update_Maxhp()
     {
         if (player)
-            maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30;
+            maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30 + player.CCI.Class_info[player.GetClassID()].accessory[player.GetAccessoriesLV()].maxhp;
         else
             maxhp = startingHealth;
         
@@ -137,6 +137,11 @@ public class Health : MonoBehaviour
     {
         //death animation
         //end level
+        if (GetComponent<DropLoot>())
+        {
+            GetComponent<DropLoot>().DropItem();
+        }
+
         Destroy(gameObject);
     }
 

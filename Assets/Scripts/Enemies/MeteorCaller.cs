@@ -7,7 +7,7 @@ using System;
 public class MeteorCaller : MonoBehaviour {
     public float castCooldown = 2;
     private float lastCast;
-    public ISkill meteor;
+    public Skill meteor;
 	// Use this for initialization
 	void Start () {
         meteor = gameObject.AddComponent<sMeteor>();

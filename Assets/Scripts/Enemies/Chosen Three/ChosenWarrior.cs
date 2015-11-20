@@ -4,7 +4,7 @@ using System.Collections;
 public class ChosenWarrior : MonoBehaviour {
     public float whirlwindCooldown = 5;
     private float lastCast = 0;
-    private ISkill whirlwind;
+    private Skill whirlwind;
 
 
 

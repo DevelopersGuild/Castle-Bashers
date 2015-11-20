@@ -22,6 +22,12 @@ public class Main_UI_FULLControl : MonoBehaviour {
     //Full Scale
     float full_scale;
     //Mode Control
+    public GameObject Main_Process;
+    public GameObject OPM;
+    public GameObject TPM;
+    public GameObject BossMode;
+    public GameObject TeamMode;
+    public bool had_init = false;
     public bool One_player_per_client;
     public bool Team_mode;
     public bool Killing_boss;
@@ -33,30 +39,34 @@ public class Main_UI_FULLControl : MonoBehaviour {
     public int[] itemid = new int[3]; //to set the item id of 3 item space
     public Playerinfo[] partner;
     public Bossinfo boss;
-    public GameObject Main_Process;
 
     //Temp Control
-    public int hp, maxhp, mp, maxmp, exp, nexp,lv,cid;
+    public int[] hp=new int[2];
+    public int[] maxhp=new int[2];
+    public int[] mp=new int[2];
+    public int[] maxmp=new int[2];
+    public int[] exp=new int[2];
+    public int[] nexp=new int[2];
+    public int[] lv=new int[2];
+    public int[] cid=new int[2];
 
     //UI Updata
-    Text HP;
-    Text MP;
-    Text LV;
-    Text Class;
-    Image HP_Bar;
-    Image MP_Bar;
-    Image EXP_Bar;
+    Text[] HP=new Text[2];
+    Text[] MP = new Text[2];
+    Text[] LV=new Text[2];
+    Text[] Class = new Text[2];
+    Image[] HP_Bar = new Image[2];
+    Image[] MP_Bar = new Image[2];
+    Image[] EXP_Bar = new Image[2];
+    Image[,] skillid_icon = new Image[2,4];
+    Image[,] itemid_icon = new Image[2,3];
+
     Image Boss_HP;
     Image Boss_Icon;
     Image[] partner_hp = new Image[6];
     Image[] partner_mp = new Image[6];
-    Image[] skillid_icon = new Image[4];
-    Image[] itemid_icon = new Image[3];
     Text[] partner_name = new Text[6];
     Image[] partner_icon = new Image[6];
-    GameObject BossMode;
-    GameObject TeamMode;
-    GameObject OPM;
     Boss_HeadIcon Boss_HeadIcon_Script;
     Character_Class_Info Character_Class_Info_Script;
     int teamsize=0;
@@ -73,9 +83,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
         Boss_HeadIcon_Script = GOResult.GetComponent<Boss_HeadIcon>();
         Character_Class_Info_Script = GOResult.GetComponent<Character_Class_Info>();
         //Link BOSS INFO
-        GOResult = GameObject.Find("Boss Bar");
-        BossMode = GOResult;
-        finds2=GOResult.GetComponentsInChildren<Image>();
+        finds2 = BossMode.GetComponentsInChildren<Image>();
         foreach (Image i in finds2)
         {
             if(i.name=="HP")
@@ -90,40 +98,11 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 continue;
             }
         }
-        //Make Sure the typpe of UI
-        if(One_player_per_client==true)
+        finds1 = TeamMode.GetComponentsInChildren<Text>();
+        finds2 = TeamMode.GetComponentsInChildren<Image>();
+        foreach(Text t in finds1)
         {
-            //Link important Objects
-            GOResult = GameObject.Find("One Player Panel");
-            OPM = GOResult;
-            finds1 = GOResult.GetComponentsInChildren<Text>();
-            foreach(Text t in finds1)
-            {
-                if(t.name == "HP Value" )
-                {
-                    //Debug .Log("HP Value Found!");
-                    HP = t;
-                    continue;
-                }
-                if(t.name == "MP Value" )
-                {
-                    //Debug .Log("MP Value Found!");
-                    MP = t;
-                    continue;
-                }
-                if(t.name == "Level")
-                {
-                    //Debug .Log("Level Found!");
-                    LV = t;
-                    continue;
-                }
-                if (t.name == "Class")
-                {
-                    //Debug .Log("Class Found!");
-                    Class = t;
-                    continue;
-                }
-                if (t.name == "T1N")
+            if (t.name == "T1N")
                 {
                     //Debug .Log("T1N Found!");
                     partner_name[0] = t;
@@ -159,192 +138,424 @@ public class Main_UI_FULLControl : MonoBehaviour {
                     partner_name[5] = t;
                     continue;
                 }
-                
-            }
-            finds2 = GOResult.GetComponentsInChildren<Image>();
-            foreach(Image i in finds2)
+        }
+        foreach(Image i in finds2)
+        {
+            if (i.name == "T1H")
             {
-                if (i.name == "Team Mode")
+                //Debug .Log("HP Value Found!");
+                partner_hp[0] = i;
+                continue;
+            }
+            if (i.name == "T1M")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_mp[0] = i;
+                continue;
+            }
+            if (i.name == "T2H")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_hp[1] = i;
+                continue;
+            }
+            if (i.name == "T2M")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_mp[1] = i;
+                continue;
+            }
+            if (i.name == "T3H")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_hp[2] = i;
+                continue;
+            }
+            if (i.name == "T3M")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_mp[2] = i;
+                continue;
+            }
+            if (i.name == "T4H")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_hp[3] = i;
+                continue;
+            }
+            if (i.name == "T4M")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_mp[3] = i;
+                continue;
+            }
+            if (i.name == "T5H")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_hp[4] = i;
+                continue;
+            }
+            if (i.name == "T5M")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_mp[4] = i;
+                continue;
+            }
+            if (i.name == "T6H")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_hp[5] = i;
+                continue;
+            }
+            if (i.name == "T6M")
+            {
+                //Debug .Log("HP Value Found!");
+                partner_mp[5] = i;
+                continue;
+            }
+        }
+	}
+
+    public bool init()
+    {
+        Text[] finds1;
+        Image[] finds2;
+        if(One_player_per_client==true)
+        {
+            TPM.SetActive(false);
+            OPM.SetActive(true);
+            finds1 = OPM.GetComponentsInChildren<Text>();
+            foreach (Text t in finds1)
+            {
+                //Debug.Log(t.name);
+                if (t.name == "HP Value")
                 {
-                    //Debug .Log("TeamMode Found!");
-                    TeamMode = i.gameObject;
+                    //Debug .Log("HP Value Found!");
+                    HP[0] = t;
                     continue;
                 }
+                if (t.name == "MP Value")
+                {
+                    //Debug .Log("MP Value Found!");
+                    MP[0] = t;
+                    continue;
+                }
+                if (t.name == "Level")
+                {
+                    //Debug .Log("Level Found!");
+                    LV[0] = t;
+                    continue;
+                }
+                if (t.name == "Class")
+                {
+                    //Debug .Log("Class Found!");
+                    Class[0] = t;
+                    continue;
+                }
+
+            }
+            finds2 = OPM.GetComponentsInChildren<Image>();
+            foreach (Image i in finds2)
+            {
                 if (i.name == "HP")
                 {
                     //Debug .Log("HP Value Found!");
-                    HP_Bar = i;
+                    HP_Bar[0] = i;
                     continue;
                 }
                 if (i.name == "MP")
                 {
                     //Debug .Log("HP Value Found!");
-                    MP_Bar = i;
+                    MP_Bar[0] = i;
                     continue;
                 }
                 if (i.name == "EXP")
                 {
                     //Debug .Log("HP Value Found!");
-                    EXP_Bar = i;
-                    continue;
-                }
-                if (i.name == "T1H")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_hp[0] = i;
-                    continue;
-                }
-                if (i.name == "T1M")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_mp[0] = i;
-                    continue;
-                }
-                if (i.name == "T2H")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_hp[1] = i;
-                    continue;
-                }
-                if (i.name == "T2M")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_mp[1] = i;
-                    continue;
-                }
-                if (i.name == "T3H")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_hp[2] = i;
-                    continue;
-                }
-                if (i.name == "T3M")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_mp[2] = i;
-                    continue;
-                }
-                if (i.name == "T4H")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_hp[3] = i;
-                    continue;
-                }
-                if (i.name == "T4M")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_mp[3] = i;
-                    continue;
-                }
-                if (i.name == "T5H")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_hp[4] = i;
-                    continue;
-                }
-                if (i.name == "T5M")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_mp[4] = i;
-                    continue;
-                }
-                if (i.name == "T6H")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_hp[5] = i;
-                    continue;
-                }
-                if (i.name == "T6M")
-                {
-                    //Debug .Log("HP Value Found!");
-                    partner_mp[5] = i;
+                    EXP_Bar[0] = i;
                     continue;
                 }
                 if (i.name == "SK1")
                 {
                     //Debug .Log("HP Value Found!");
-                    skillid_icon[0] = i;
+                    skillid_icon[0,0] = i;
                     continue;
                 }
                 if (i.name == "SK2")
                 {
                     //Debug .Log("HP Value Found!");
-                    skillid_icon[1] = i;
+                    skillid_icon[0,1] = i;
                     continue;
                 }
                 if (i.name == "SK3")
                 {
                     //Debug .Log("HP Value Found!");
-                    skillid_icon[2] = i;
+                    skillid_icon[0,2] = i;
                     continue;
                 }
                 if (i.name == "SK4")
                 {
                     //Debug .Log("HP Value Found!");
-                    skillid_icon[3] = i;
+                    skillid_icon[0,3] = i;
                     continue;
                 }
                 if (i.name == "IT1")
                 {
                     //Debug .Log("HP Value Found!");
-                    itemid_icon[0] = i;
+                    itemid_icon[0,0] = i;
                     continue;
                 }
                 if (i.name == "IT2")
                 {
                     //Debug .Log("HP Value Found!");
-                    itemid_icon[1] = i;
+                    itemid_icon[0,1] = i;
                     continue;
                 }
                 if (i.name == "IT3")
                 {
                     //Debug .Log("HP Value Found!");
-                    itemid_icon[2] = i;
+                    itemid_icon[0,2] = i;
                     continue;
                 }
             }
-            
-
         }
         else
         {
+            OPM.SetActive(false);
+            TPM.SetActive(true);
+            finds1 = TPM.GetComponentsInChildren<Text>();
+            foreach (Text t in finds1)
+            {
+                if (t.name == "P1HP Value")
+                {
+                    //Debug .Log("HP Value Found!");
+                    HP[0] = t;
+                    continue;
+                }
+                if (t.name == "P2HP Value")
+                {
+                    //Debug .Log("HP Value Found!");
+                    HP[1] = t;
+                    continue;
+                }
+                if (t.name == "P1MP Value")
+                {
+                    //Debug .Log("MP Value Found!");
+                    MP[0] = t;
+                    continue;
+                }
+                if (t.name == "P2MP Value")
+                {
+                    //Debug .Log("MP Value Found!");
+                    MP[1] = t;
+                    continue;
+                }
+                if (t.name == "P1Level")
+                {
+                    //Debug .Log("Level Found!");
+                    LV[0] = t;
+                    continue;
+                }
+                if (t.name == "P2Level")
+                {
+                    //Debug .Log("Level Found!");
+                    LV[1] = t;
+                    continue;
+                }
+                if (t.name == "P1Class")
+                {
+                    //Debug .Log("Class Found!");
+                    Class[0] = t;
+                    continue;
+                }
+                if (t.name == "P2Class")
+                {
+                    //Debug .Log("Class Found!");
+                    Class[0] = t;
+                    continue;
+                }
 
+            }
+            finds2 = TPM.GetComponentsInChildren<Image>();
+            foreach (Image i in finds2)
+            {
+                if (i.name == "P1HP")
+                {
+                    //Debug .Log("HP Value Found!");
+                    HP_Bar[0] = i;
+                    continue;
+                }
+                if (i.name == "P2HP")
+                {
+                    //Debug .Log("HP Value Found!");
+                    HP_Bar[1] = i;
+                    continue;
+                }
+                if (i.name == "P1MP")
+                {
+                    //Debug .Log("HP Value Found!");
+                    MP_Bar[0] = i;
+                    continue;
+                }
+                if (i.name == "P2MP")
+                {
+                    //Debug .Log("HP Value Found!");
+                    MP_Bar[1] = i;
+                    continue;
+                }
+                if (i.name == "P1EXP")
+                {
+                    //Debug .Log("HP Value Found!");
+                    EXP_Bar[0] = i;
+                    continue;
+                }
+                if (i.name == "P2EXP")
+                {
+                    //Debug .Log("HP Value Found!");
+                    EXP_Bar[1] = i;
+                    continue;
+                }
+                if (i.name == "P1SK1")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[0, 0] = i;
+                    continue;
+                }
+                if (i.name == "P1SK2")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[0, 1] = i;
+                    continue;
+                }
+                if (i.name == "P1SK3")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[0, 2] = i;
+                    continue;
+                }
+                if (i.name == "P1SK4")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[0, 3] = i;
+                    continue;
+                }
+                if (i.name == "P1IT1")
+                {
+                    //Debug .Log("HP Value Found!");
+                    itemid_icon[0, 0] = i;
+                    continue;
+                }
+                if (i.name == "P1IT2")
+                {
+                    //Debug .Log("HP Value Found!");
+                    itemid_icon[0, 1] = i;
+                    continue;
+                }
+                if (i.name == "P1IT3")
+                {
+                    //Debug .Log("HP Value Found!");
+                    itemid_icon[0, 2] = i;
+                    continue;
+                }
+                if (i.name == "P2SK1")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[1, 0] = i;
+                    continue;
+                }
+                if (i.name == "P2SK2")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[1, 1] = i;
+                    continue;
+                }
+                if (i.name == "P2SK3")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[1, 2] = i;
+                    continue;
+                }
+                if (i.name == "P2SK4")
+                {
+                    //Debug .Log("HP Value Found!");
+                    skillid_icon[1, 3] = i;
+                    continue;
+                }
+                if (i.name == "P2IT1")
+                {
+                    //Debug .Log("HP Value Found!");
+                    itemid_icon[1, 0] = i;
+                    continue;
+                }
+                if (i.name == "P2IT2")
+                {
+                    //Debug .Log("HP Value Found!");
+                    itemid_icon[1, 1] = i;
+                    continue;
+                }
+                if (i.name == "P2IT3")
+                {
+                    //Debug .Log("HP Value Found!");
+                    itemid_icon[1, 2] = i;
+                    continue;
+                }
+            }
         }
-	}
+        had_init = true;
+        return true;
+    }
 	
 	// Update is called once per frame
     void Update()
     {
-        if (Menu_open == true)
-        {
-            OPM.SetActive(false);
-            TeamMode.SetActive(false);
-            BossMode.SetActive(false);
-        }
-        else
-        {
-            //Adjust
-            full_scale = (float)(Screen.width / 1920.00);
-            this.GetComponent<CanvasScaler>().scaleFactor = full_scale;
-            //Cilent Control
-            if (One_player_per_client == true)
+        if(had_init)
+            if (Menu_open == true)
             {
-                OPM.SetActive(true);
-                // Important infomation
-                HP.text = hp.ToString() + "/" + maxhp.ToString();
-                MP.text = mp.ToString() + "/" + maxmp.ToString();
-                HP_Bar.fillAmount = (float)(hp * 1.00 / maxhp);
-                MP_Bar.fillAmount = (float)(mp * 1.00 / maxmp);
-                EXP_Bar.fillAmount = (float)(exp * 1.00 / nexp);
-                //Level and Class
-                LV.text = "LV" + lv.ToString();
-                Class.text = Character_Class_Info_Script.Class_info[cid].name;
-
+                OPM.SetActive(false);
+                TeamMode.SetActive(false);
+                BossMode.SetActive(false);
             }
             else
             {
-                OPM.SetActive(false);
-            }
+                //Adjust
+                full_scale = (float)(Screen.width / 1920.00);
+                this.GetComponent<CanvasScaler>().scaleFactor = full_scale;
+                //Cilent Control
+                if (One_player_per_client == true)
+                {
+                    TPM.SetActive(false);
+                    OPM.SetActive(true);
+                    // Important infomation
+                    HP[0].text = hp[0].ToString() + "/" + maxhp[0].ToString();
+                    MP[0].text = mp[0].ToString() + "/" + maxmp[0].ToString();
+                    HP_Bar[0].fillAmount = (float)(hp[0] * 1.00 / maxhp[0]);
+                    MP_Bar[0].fillAmount = (float)(mp[0] * 1.00 / maxmp[0]);
+                    EXP_Bar[0].fillAmount = (float)(exp[0] * 1.00 / nexp[0]);
+                    //Level and Class
+                    LV[0].text = "LV" + lv[0].ToString();
+                    Class[0].text = Character_Class_Info_Script.Class_info[cid[0]].name;
+
+                }
+                else
+                {
+                    OPM.SetActive(false);
+                    TPM.SetActive(true);
+                    HP[0].text = hp[0].ToString() + "/" + maxhp[0].ToString();
+                    HP[1].text = hp[1].ToString() + "/" + maxhp[1].ToString();
+                    MP[0].text = mp[0].ToString() + "/" + maxmp[0].ToString();
+                    MP[1].text = mp[1].ToString() + "/" + maxmp[1].ToString();
+                    HP_Bar[0].fillAmount = (float)(hp[0] * 1.00 / maxhp[0]);
+                    MP_Bar[0].fillAmount = (float)(mp[0] * 1.00 / maxmp[0]);
+                    EXP_Bar[0].fillAmount = (float)(exp[0] * 1.00 / nexp[0]);
+                    HP_Bar[1].fillAmount = (float)(hp[1] * 1.00 / maxhp[1]);
+                    MP_Bar[1].fillAmount = (float)(mp[1] * 1.00 / maxmp[1]);
+                    EXP_Bar[1].fillAmount = (float)(exp[1] * 1.00 / nexp[1]);
+                    //Level and Class
+                    LV[0].text = "LV" + lv[0].ToString();
+                    LV[1].text = "LV" + lv[1].ToString();
+                    Class[0].text = Character_Class_Info_Script.Class_info[cid[0]].name;
+                    Class[1].text = Character_Class_Info_Script.Class_info[cid[1]].name;
+                }
             //Team Mode Control
             if (Team_mode == true)
             {

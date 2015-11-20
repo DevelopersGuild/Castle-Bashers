@@ -8,7 +8,7 @@ public class MeleeComboStart : IAttack
     private float timer = 0;
     public IAttack HandleInput(Player player)
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (player.playerRewired.GetButtonDown("Fire1"))
         {
             return new MeleeComboFinish();
         }

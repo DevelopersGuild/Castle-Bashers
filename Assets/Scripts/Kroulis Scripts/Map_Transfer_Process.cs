@@ -16,6 +16,9 @@ public class Map_Transfer_Process : MonoBehaviour {
         GameObject GOResult;
         GOResult = GameObject.Find("TransferUI");
         Map_Transfer_UI_Control_Script = GOResult.GetComponent<Map_Transfer_UI_Control>();
+        GOResult = GameObject.Find("Main Process");
+        if(GOResult)
+            GOResult.GetComponent<SaveAndLoad>().SaveData();
         //start to load scene
         StartCoroutine(loadScene());
     }
@@ -23,7 +26,7 @@ public class Map_Transfer_Process : MonoBehaviour {
     IEnumerator loadScene()
     {
         async = Application.LoadLevelAsync(Globe.Map_Load_id);
-        Debug.Log(Globe.Map_Load_id);
+        //Debug.Log(Globe.Map_Load_id);
         yield return async;
 
     }

@@ -1,46 +1,16 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class ManaRegenSkill :MonoBehaviour, ISkill
+public class ManaRegenSkill : Skill
 {
-    private float coolDown = 0;
-    private float timeSinceSkilledUsed = 0;
-    private int price = 0;
-    private SkillLevel skillLevel = SkillLevel.Level1;
-    public void UseSkill(GameObject caller, GameObject target = null, float coolDownTimer = 0)
+    protected override void Start()
     {
-        coolDown = coolDownTimer;
-        if(caller.tag == "Player")
-        {
-            
-        }
+        base.Start();
+        base.SetBaseValues(20, 1000, 10, "Mana Regen", SkillLevel.Level1);
     }
 
-    public float GetCoolDownTimer()
+    public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
     {
-        //TODO Temporary value change 
-        return coolDown;
-    }
-    public int GetPrice()
-    {
-        //TODO Temporary value change 
-        return price;
-    }
-    public SkillLevel GetSkillLevel()
-    {
-        //TODO Temporary value change 
-        return skillLevel;
-    }
-
-    void Update()
-    {
-        if (coolDown <= 0)
-        {
-            coolDown = 0;
-        }
-        else
-        {
-            coolDown = coolDown - 1 * Time.deltaTime;
-        }
+        base.UseSkill(caller, target, optionalParameters);
     }
 }

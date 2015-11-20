@@ -13,6 +13,7 @@ public class CameraFollow : MonoBehaviour
     public float flXAxisTolerance;
     public float flYAxisTolerance;
     public float flYChangeSpeed;
+    public bool canMoveLeft;
 
     public bool camerShakeIsOn = false;
 
@@ -24,14 +25,49 @@ public class CameraFollow : MonoBehaviour
 
     void Start()
     {
-        gobjCameraTarget = GameObject.Find("Player");
+        //canMoveLeft = false;
+        gobjCameraTarget = GameObject.Find("PlayerHolder");
         flCameraYBaseLine = gobjCameraTarget.transform.position.y;
+
+        initalizePosition();
+    }
+
+    void initalizePosition()
+    {
+        Vector3 totalAveragePosition = new Vector3();
+        int size = 0;
+        foreach (Transform child in gobjCameraTarget.transform)
+        {
+            totalAveragePosition += child.position;
+            size++;
+        }
+        totalAveragePosition /= size;
+
+        Vector3 v3CameraTargetPosition = totalAveragePosition;
+        Vector3 v3FinalCameraPosition;
+
+        v3FinalCameraPosition.x = GetXCameraPosition(v3CameraTargetPosition.x);
+        v3FinalCameraPosition.z = flDepthOffset;
+        v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
+
+
+            transform.position = v3FinalCameraPosition;
 
     }
 
     void LateUpdate()
     {
-        Vector3 v3CameraTargetPosition = gobjCameraTarget.transform.position;
+        Vector3 totalAveragePosition = new Vector3();
+        int size = 0;
+        foreach(Transform child in gobjCameraTarget.transform)
+        {
+            totalAveragePosition += child.position;
+            size++;
+        }
+        totalAveragePosition /= size;
+
+        // Camera cant move left
+        Vector3 v3CameraTargetPosition =  totalAveragePosition;
 
 
 
@@ -53,8 +89,11 @@ public class CameraFollow : MonoBehaviour
 
         }
 
+        if(v3FinalCameraPosition.x > transform.position.x || canMoveLeft == true)
+        {
+            transform.position = v3FinalCameraPosition;    
+        }
 
-        transform.position = v3FinalCameraPosition;
     }
 
     float GetXCameraPosition(float flCameraTargetXPosition)

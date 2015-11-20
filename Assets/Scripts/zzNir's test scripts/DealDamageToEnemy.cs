@@ -59,7 +59,6 @@ public class DealDamageToEnemy : MonoBehaviour
         if (other.gameObject.CompareTag("Destructible"))
         {
             enemObj.GetComponent<EnemyHealth>().takeDamage(PhysicalDamage);
-            Debug.Log(enemObj.GetComponent<EnemyHealth>().getCurrentHp());
         }
 
     }

@@ -2,7 +2,7 @@
 using System.Collections;
 
 public class MeteorTrap : MonoBehaviour {
-    private ISkill meteor;
+    private Skill meteor;
 	// Use this for initialization
 	void Start () {
         meteor = new sMeteor();

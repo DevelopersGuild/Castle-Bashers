@@ -18,7 +18,8 @@ public class Player : MonoBehaviour
     public float Agility;
     public float Intelligence;
     //The stats should remain public to allow them to be set in the editor.
-
+    [HideInInspector]
+    public Character_Class_Info CCI;
     private int class_id = 0;
     private int weapon_level = 0;
     private int armor_level = 0;
@@ -61,7 +62,7 @@ public class Player : MonoBehaviour
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
-    private Rewired.Player playerRewired;
+    public Rewired.Player playerRewired;
 
     private Skill[] skill = new Skill[4];
     private float managerID, priorityID;
@@ -114,6 +115,7 @@ public class Player : MonoBehaviour
         threatLevel = damageDealt = 0;
 
         GetComponent<ID>().setTime(false);
+        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
     }
 
     void Update()
@@ -191,22 +193,24 @@ public class Player : MonoBehaviour
         regenTick += Time.unscaledDeltaTime;
         UpdateState();
 
-        if (Input.GetButtonDown("UseSkill1"))
+
+      //  if (Input.GetButtonDown("UseSkill1"))
+        if (playerRewired.GetButtonDown("UseSkill1"))
         {
             skillManager.UseSkill1();
         }
 
-        if (Input.GetButtonDown("UseSkill2"))
+        if (playerRewired.GetButtonDown("UseSkill2"))
         {
             skillManager.UseSkill2();
         }
 
-        if (Input.GetButtonDown("UseSkill3"))
+        if (playerRewired.GetButtonDown("UseSkill3"))
         {
             skillManager.UseSkill3();
         }
 
-        if (Input.GetButtonDown("UseSkill4"))
+        if (playerRewired.GetButtonDown("UseSkill4"))
         {
             skillManager.UseSkill4();
         }
@@ -343,9 +347,9 @@ public class Player : MonoBehaviour
     {
         health.Updata_Maxhp_withFullRegen();
         mana.UpdateMaxMP_And_Regen();
-        attack.UpdateDamage(5 * Strength + Agility, 2 * Strength + 5 * Intelligence);
+        attack.UpdateDamage(5 * Strength + Agility + CCI.Class_info[class_id].weapon[weapon_level].patk, 2 * Strength + 5 * Intelligence+CCI.Class_info[class_id].weapon[weapon_level].matk);
         attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
-        attack.SetCriticalChance(Agility * 0.001f);
+        attack.SetCriticalChance(Agility * 0.001f + CCI.Class_info[class_id].accessory[accessories_level].cri);
         blockchance = Agility * 0.001f;
         defense.Update_Defense();
 
