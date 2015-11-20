@@ -1,29 +1,20 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class sMeteor : MonoBehaviour, ISkill
+public class sMeteor : Skill
 {
-    private int price = 1500;
-    //public GameObject projectile;
-    public void UseSkill(GameObject caller, GameObject target, float coolDownTimer = 0)
+
+    protected override void Start()
     {
+        base.Start();
+        base.SetBaseValues(20, 1500, 10, "Meteor", SkillLevel.Level1);
+    }
+
+    public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
+    {
+        base.UseSkill(caller, target, optionalParameters);
         GameObject projectile = Instantiate(Resources.Load("Meteor")) as GameObject;
         projectile.transform.position = target.transform.position + new Vector3(3, 6, 0);
 
-    }
-    public float GetCoolDownTimer()
-    {
-        //TODO Temporary value change 
-        return 0;
-    }
-    public int GetPrice()
-    {
-        //TODO Temporary value change 
-        return price;
-    }
-    public SkillLevel GetSkillLevel()
-    {
-        //TODO Temporary value change 
-        return SkillLevel.EnemyOnly;
     }
 }

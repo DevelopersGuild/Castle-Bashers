@@ -140,7 +140,7 @@ public class Enemy : MonoBehaviour
 
                 if (distance > agroRange)
                 {
-                    Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
+                    //Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
                 }
                 else
                 {
@@ -159,7 +159,7 @@ public class Enemy : MonoBehaviour
                 distance = targetPos.x - transform.position.x;
                 if (Math.Abs(distance) > attackRange)
                 {
-                    Move(new Vector3(distance, 0, 0), 1);
+                    //Move(new Vector3(distance, 0, 0), 1);
                 }
                 else
                 {

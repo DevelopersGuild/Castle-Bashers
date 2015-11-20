@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 
 [RequireComponent(typeof(Collider))]
@@ -68,7 +68,7 @@ public class MoveController : MonoBehaviour
     public void OrientFacingLeft(bool set, float lookDir)
     {
         float temp = 1;
-        if(!set)
+        if (!set)
             temp = -1;
 
         if (lookDir != temp)
@@ -115,9 +115,8 @@ public class MoveController : MonoBehaviour
             DepthCollisions(ref velocity);
         }
 
-
-        if(!isFlinched)
-        transform.Translate(velocity);
+        if (!isFlinched)
+            transform.Translate(velocity);
 
         clampPosition(ref velocity);
     }
@@ -149,7 +148,10 @@ public class MoveController : MonoBehaviour
                     velocity.x = -knockbackVelocity;
                 }
 
-                currentKnockbacktime -= Time.deltaTime;
+                if (GetComponent<ID>().getTime())
+                    currentKnockbacktime -= Time.unscaledDeltaTime;
+                else
+                    currentKnockbacktime -= Time.unscaledDeltaTime;
             }
 
             // Stop pushing the player after knockbacktime and after hes hit the floor
@@ -172,7 +174,10 @@ public class MoveController : MonoBehaviour
                 if (isFlinched)
                 {
                     isStunned = true;
-                    currentFlinchTime -= Time.deltaTime;
+                    if (GetComponent<ID>().getTime())
+                        currentFlinchTime -= Time.unscaledDeltaTime;
+                    else
+                        currentFlinchTime -= Time.deltaTime;
                 }
 
                 // Stop pushing the player after knockbacktime and after hes hit the floor

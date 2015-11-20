@@ -40,7 +40,7 @@ public class SaveManager : MonoBehaviour {
         string code = "";
         strength = player.GetStrength();
 
-        alphatizeInt(strength);
+        alphatizeInt((int)strength);
         agility = player.GetAgility();
         intelligence = player.GetIntelligence();
         

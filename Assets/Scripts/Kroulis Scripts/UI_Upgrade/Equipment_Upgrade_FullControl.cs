@@ -24,18 +24,19 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
 	// Use this for initialization
 	void Start () {
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
-        player = GameObject.Find("Player").GetComponent<Player>();
         ci = main_process.gameObject.GetComponentInChildren<Character_Class_Info>();
         gameObject.SetActive(false);
 	}
 
-    public void Change(int id)
+    public void Change(int id,int? player_id=null)
     {
+        player = main_process.GetPlayerScript(player_id);
+        classid = player.GetClassID();
+        havegold = main_process.GetPlayerCoinManager(player_id).getCoins();
+        playerlv = main_process.GetPlayerExperience(player_id).GetCurrentLevel();
         current_id = id;
         upg = true;
-        classid = player.GetClassID();
-        havegold = player.gameObject.GetComponent<CoinManager>().getCoins();
-        playerlv = player.gameObject.GetComponent<Experience>().GetCurrentLevel();
+
         GO.text = havegold.ToString();
 
         if(id==1)
@@ -175,25 +176,25 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
                     case 1:
                         {
                             player.AddStrength(diff[0]);
-                            player.Fully_Update();
                             player.SetWeaponLV(nextlevel);
+                            player.Fully_Update();
                             break;
                         }
                     case 2:
                         {
                             player.AddDefense(diff[0]);
-                            player.Fully_Update();
                             player.SetArmorLV(nextlevel);
+                            player.Fully_Update();
                             break;
                         }
                     case 3:
                         {
-                            int sta=diff[0] / 30;
-                            player.AddStamina(sta);
-                            player.AddIntelligence((diff[1] - sta * 10) / 20);
-                            player.AddAgility(diff[2]);
-                            player.Fully_Update();
+                            //int sta=diff[0] / 30;
+                            //player.AddStamina(sta);
+                            //player.AddIntelligence((diff[1] - sta * 10) / 20);
+                            //player.AddAgility(diff[2]);
                             player.SetAccessoriesLV(nextlevel);
+                            player.Fully_Update();
                             break;
                         }
                 }

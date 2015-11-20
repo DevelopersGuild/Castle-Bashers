@@ -8,8 +8,8 @@ GameObject:
   serializedVersion: 4
   m_Component:
   - 4: {fileID: 466982}
-  - 114: {fileID: 11494242}
-  - 114: {fileID: 11493478}
+  - 114: {fileID: 11432890}
+  - 114: {fileID: 11471608}
   m_Layer: 0
   m_Name: AreaGenerator
   m_TagString: Untagged
@@ -29,7 +29,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11493478
+--- !u!114 &11432890
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -37,13 +37,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 151902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 949264cdc21cb1e449d7106aac2d8b43, type: 3}
+  m_Script: {fileID: 11500000, guid: 497beeecf84060748845423824726379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  area1: {fileID: 11485162, guid: cf867f7279752834aac8528d14f86e51, type: 2}
-  area2: {fileID: 11492820, guid: 40321c95f8df01949b57178d7fd548fd, type: 2}
-  area3: {fileID: 11417902, guid: 977c4bf2fd19a7740845f7cd36de1332, type: 2}
---- !u!114 &11494242
+  Min_Area: 1
+  Max_Area: 3
+  Min_Enemy: 0
+  Max_Enemy: 0
+  Total_Objects: 0
+  Event: {fileID: 0}
+  Weather: {fileID: 0}
+  Boss: {fileID: 0}
+  ActiveBiomeName: 0
+--- !u!114 &11471608
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -51,7 +57,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 151902}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 0}
+  m_Script: {fileID: 11500000, guid: 7cc1c1d739ce2a943b7472c6e29477bd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1001 &100100000

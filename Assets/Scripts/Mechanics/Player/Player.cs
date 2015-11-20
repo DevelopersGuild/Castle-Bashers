@@ -18,9 +18,10 @@ public class Player : MonoBehaviour
     public int Agility;
     public int Intelligence;
     //The stats should remain public to allow them to be set in the editor.
- 
+    [HideInInspector]
+    public Character_Class_Info CCI;
     private int class_id = 0;
-    private int weapon_level=0;
+    private int weapon_level = 0;
     private int armor_level = 0;
     private int accessories_level = 0;
     private float blockchance = 0;
@@ -115,6 +116,9 @@ public class Player : MonoBehaviour
         skill[2] = null;
         skill[3] = null;
         threatLevel = damageDealt = 0;
+
+        GetComponent<ID>().setTime(false);
+        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
     }
 
     void Update()
@@ -142,7 +146,7 @@ public class Player : MonoBehaviour
             if (invTime != 0)
             {
                 isInvincible = true;
-                invTime -= Time.deltaTime;
+                invTime -= Time.unscaledDeltaTime;
             }
         }
         else
@@ -164,13 +168,13 @@ public class Player : MonoBehaviour
         }
         if (!crowdControllable.getStun())
         {
- 
+
             ReadyMove(input);
         }
 
         if (knockBackCounter > 0)
         {
-            knockBackReset += Time.deltaTime;
+            knockBackReset += Time.unscaledDeltaTime;
             if (knockBackReset >= 5)
             {
                 knockBackReset = 0;
@@ -180,34 +184,36 @@ public class Player : MonoBehaviour
 
         if (flinchCounter > 0)
         {
-            flinchReset += Time.deltaTime;
+            flinchReset += Time.unscaledDeltaTime;
             if (flinchReset >= 2)
             {
-               // flinchReset = 0;
-               // flinchCounter = 0;
+                // flinchReset = 0;
+                // flinchCounter = 0;
             }
         }
 
-        initialRegenTime += Time.deltaTime;
-        regenTick += Time.deltaTime;
+        initialRegenTime += Time.unscaledDeltaTime;
+        regenTick += Time.unscaledDeltaTime;
         UpdateState();
 
+
+      //  if (Input.GetButtonDown("UseSkill1"))
         if (playerRewired.GetButtonDown("UseSkill1"))
         {
             skillManager.UseSkill1();
         }
 
-        if (playerRewired.GetButtonDown("UseSkill1"))
+        if (playerRewired.GetButtonDown("UseSkill2"))
         {
             skillManager.UseSkill2();
         }
 
-        if (playerRewired.GetButtonDown("UseSkill1"))
+        if (playerRewired.GetButtonDown("UseSkill3"))
         {
             skillManager.UseSkill3();
         }
 
-        if (playerRewired.GetButtonDown("UseSkill1"))
+        if (playerRewired.GetButtonDown("UseSkill4"))
         {
             skillManager.UseSkill4();
         }
@@ -269,7 +275,7 @@ public class Player : MonoBehaviour
 
     public void SetStamina(int value)
     {
-        if(value>0)
+        if (value > 0)
         {
             Stamina = value;
         }
@@ -277,7 +283,7 @@ public class Player : MonoBehaviour
         {
             Stamina = 1;
         }
-        
+
     }
 
     public void AddStamina(int value)
@@ -292,7 +298,7 @@ public class Player : MonoBehaviour
 
     public void SetAgility(int agility)
     {
-        if(agility > 0)
+        if (agility > 0)
         {
             Agility = agility;
         }
@@ -314,7 +320,7 @@ public class Player : MonoBehaviour
 
     public void SetIntelligence(int intelligence)
     {
-        if(intelligence > 0)
+        if (intelligence > 0)
         {
             Intelligence = intelligence;
         }
@@ -344,9 +350,9 @@ public class Player : MonoBehaviour
     {
         health.Updata_Maxhp_withFullRegen();
         mana.UpdateMaxMP_And_Regen();
-        attack.UpdateDamage(5 * Strength + Agility, 2 * Strength + 5 * Intelligence);
+        attack.UpdateDamage(5 * Strength + Agility + CCI.Class_info[class_id].weapon[weapon_level].patk, 2 * Strength + 5 * Intelligence+CCI.Class_info[class_id].weapon[weapon_level].matk);
         attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
-        attack.SetCriticalChance(Agility * 0.001f);
+        attack.SetCriticalChance(Agility * 0.001f + CCI.Class_info[class_id].accessory[accessories_level].cri);
         blockchance = Agility * 0.001f;
         defense.Update_Defense();
 
@@ -429,14 +435,15 @@ public class Player : MonoBehaviour
 
     private void ReadyMove(Vector2 input)
     {
-        velocity.y += gravity * Time.deltaTime;
+        velocity.y += gravity * Time.unscaledDeltaTime;
 
         float targetVelocityX = input.x * (horizontalMoveSpeed + Agility) * crowdControllable.getSlow();
         float targetVelocityZ = input.y * (verticalMoveSpeed + Agility) * crowdControllable.getSlow();
-        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-        velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, (controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne);
-        controller.Move(velocity * Time.deltaTime, input);
+        velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
+        velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
+        controller.Move(velocity * Time.unscaledDeltaTime, input);
     }
+
     public void SetIsGrounded(bool isPlayerOnGround)
     {
         isGrounded = isPlayerOnGround;
@@ -479,6 +486,9 @@ public class Player : MonoBehaviour
         initialized = true;
     }
 
+    /// <summary>
+    /// For malady stuff, not for setting skills, sorry
+    /// </summary>
     public void addSkill(Skill s, int pos)
     {
         skill[pos] = s;
@@ -486,7 +496,7 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
-        for(int i = 0; i < skill.Length; i++)
+        for (int i = 0; i < skill.Length; i++)
         {
             skill[i] = null;
         }
@@ -510,7 +520,7 @@ public class Player : MonoBehaviour
     {
         float ret = 0;
 
-        foreach(Skill sk in skill)
+        foreach (Skill sk in skill)
         {
             Skill.Type f = sk.skillType;
             if (f == Skill.Type.Ranged)
@@ -562,7 +572,6 @@ public class Player : MonoBehaviour
         return ret;
     }
 
-
     public void setDamage(float f)
     {
         damageDealt = f;
@@ -608,8 +617,8 @@ public class Player : MonoBehaviour
     public float getManagerID()
     {
         return managerID;
-	}
-	
+    }
+
     public void SetClassID(int id)
     {
         class_id = id;

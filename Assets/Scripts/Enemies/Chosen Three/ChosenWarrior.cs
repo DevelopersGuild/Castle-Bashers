@@ -4,13 +4,13 @@ using System.Collections;
 public class ChosenWarrior : MonoBehaviour {
     public float whirlwindCooldown = 5;
     private float lastCast = 0;
-    private ISkill whirlwind;
+    private Skill whirlwind;
 
 
 
 	// Use this for initialization
 	void Start () {
-        whirlwind = new Whirlwind();
+        whirlwind = new WhirlwindSkill();
 	}
 	
 	// Update is called once per frame
