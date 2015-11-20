@@ -6,7 +6,7 @@ public class MeteorShowerSkill : Skill {
 
     private float nextMeteorTime;
     private float meteorInterval = 0.5f;
-    private ISkill meteor;
+    private Skill meteor;
     GameObject target;
     private float xRange = 7;   //distance from target to end of meteor shower zone
     private float zRange = 7;

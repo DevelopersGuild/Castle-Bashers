@@ -36,7 +36,7 @@ public class Malady : Boss
 
     public GameObject ClawSkill, SwarmObj, SummonSkill, PolySkill;
     public GroupingManager Grouper;
-    private ISkill sClaw;
+    private Skill sClaw;
 
     private float offset1, offset2, offset3, one, two, three, four, tempThreat, tempDamage, temp1, temp2;
     private int size;
