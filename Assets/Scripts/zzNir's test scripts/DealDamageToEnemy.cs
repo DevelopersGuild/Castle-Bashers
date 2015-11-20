@@ -10,6 +10,7 @@ public class DealDamageToEnemy : MonoBehaviour
     private float MagicalChange = 0;
     private float CriticalChance = 0;
     public float invTime = 0.1f;
+    public float knockback = 10f;
     //If we make colliders appear on attacks, create OnCollisionEnter and OnTriggerEnter collisions
     //destroy collider after they hit something
 
@@ -39,7 +40,6 @@ public class DealDamageToEnemy : MonoBehaviour
                 {
                     hp.takeDamage(Random.Range(PhysicalDamage, PhysicalDamage + PhysicalChange));
                 }
-                
                 enem.setInvTime(invTime);
                 if (enemObj.GetComponent<Boss>())
                 {
@@ -93,6 +93,7 @@ public class DealDamageToEnemy : MonoBehaviour
                     {
                         hp.takeDamage(Random.Range(PhysicalDamage, PhysicalDamage + PhysicalChange));
                     }
+
                     enem.setInvTime(invTime);
                     if (enemObj.GetComponent<Boss>())
                     {

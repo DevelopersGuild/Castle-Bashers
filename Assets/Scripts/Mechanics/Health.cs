@@ -65,6 +65,7 @@ public class Health : MonoBehaviour
         }
     }
 
+
     public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
         if (player)
@@ -173,4 +174,13 @@ public class Health : MonoBehaviour
         return isPlayerDown;
     }
 
+    public void SetMaxHP(float f)
+    {
+        maxhp = f;
+    }
+
+    public void SetCurrentHP(float f)
+    {
+        currentHealth = f;
+    }
 }
