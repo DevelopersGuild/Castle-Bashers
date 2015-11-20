@@ -194,17 +194,17 @@ public class Player : MonoBehaviour
             skillManager.UseSkill1();
         }
 
-        if (playerRewired.GetButtonDown("UseSkill1"))
+        if (playerRewired.GetButtonDown("UseSkill2"))
         {
             skillManager.UseSkill2();
         }
 
-        if (playerRewired.GetButtonDown("UseSkill1"))
+        if (playerRewired.GetButtonDown("UseSkill3"))
         {
             skillManager.UseSkill3();
         }
 
-        if (playerRewired.GetButtonDown("UseSkill1"))
+        if (playerRewired.GetButtonDown("UseSkill4"))
         {
             skillManager.UseSkill4();
         }
