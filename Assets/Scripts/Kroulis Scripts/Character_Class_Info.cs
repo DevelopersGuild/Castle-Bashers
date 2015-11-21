@@ -32,4 +32,10 @@ public class Character_Class_Info : MonoBehaviour {
     };
 
     public Class_INFO[] Class_info;
+
+    //Only use this one time per class when init the skill_init.
+    public void SkillUpdate(int cid,int amount)
+    {
+        Class_info[cid].skillid = new int[amount];
+    }
 }

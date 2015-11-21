@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 public class Skill_info : MonoBehaviour {
 
@@ -18,12 +19,29 @@ public class Skill_info : MonoBehaviour {
 
     void Start()
     {
-        int length=skill.Length;
-        for(int i=0;i<length;i++)
+        //int length=skill.Length;
+        //for(int i=0;i<length;i++)
+        //{
+        //    skill[i].skillid = i;
+        //    if (skill[i].skill_script)
+        //        skill[i].skillname = skill[i].skill_script.GetSkillName();
+        //}
+    }
+
+    //Warning: this script can only run once, or big trouble will comes.
+    public void init(int amount,List<Skill> skills)
+    {
+        Sprite tempType = new Sprite();
+        tempType = Resources.Load("null", tempType.GetType()) as Sprite;
+        if (!tempType)
+            Debug.Log("Load null Failed.");
+        skill = new skill_info[amount];
+        for (int i = 0; i < amount-1; i++)
         {
             skill[i].skillid = i;
-            if (skill[i].skill_script)
-                skill[i].skillname = skill[i].skill_script.GetSkillName();
+            skill[i].skill_script = skills[i];
+            skill[i].skillname = skill[i].skill_script.GetSkillName();
+            skill[i].skillicon = tempType;
         }
     }
 
