@@ -12,7 +12,7 @@ public class EndOfLevelTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player")
+        if(other.gameObject.tag == "Player" && AreaGen.BossID==null)
         {
             mainprocess.UI_Mission_Success_Open();
         }
