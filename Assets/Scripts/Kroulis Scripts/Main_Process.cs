@@ -407,21 +407,22 @@ public class Main_Process : MonoBehaviour {
     }
     void OnGUI()
     {
-        if(movTexture.isPlaying)
-        {
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
-        }
-        else if(start_to_play==true)
-        {
-            Time.timeScale=1.0f;
-            if(Application.platform!=RuntimePlatform.WindowsEditor)
+        if(movTexture)
+            if(movTexture.isPlaying)
             {
-                if (Globe.Map_Load_id != 3)
-                    Start_Battle();
-                Application.LoadLevel(2);
+                GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
             }
+            else if(start_to_play==true)
+            {
+                Time.timeScale=1.0f;
+                if(Application.platform!=RuntimePlatform.WindowsEditor)
+                {
+                    if (Globe.Map_Load_id != 3)
+                        Start_Battle();
+                    Application.LoadLevel(2);
+                }
             
-        }
+            }
         
     }
 }
