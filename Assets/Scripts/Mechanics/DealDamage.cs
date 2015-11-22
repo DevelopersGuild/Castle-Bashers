@@ -27,6 +27,7 @@ public class DealDamage : MonoBehaviour {
                     {
                         targetDefense.CheckPhysicalDefense(dmgAmount);
                     }
+                    target.GetComponent<Player>().SetInvTime(1.5f);
                 }
             }
             if (damageEnemies)
@@ -43,8 +44,10 @@ public class DealDamage : MonoBehaviour {
                         Debug.Log("Enemy took physical");
                         targetDefense.CheckPhysicalDefense(dmgAmount);
                     }
-                    
+                target.GetComponent<Enemy>().setInvTime(0.1f);
+
                 }
+
             }
             if (target.CompareTag("Destructible"))
             {
@@ -75,7 +78,11 @@ public class DealDamage : MonoBehaviour {
                     {
                         targetDefense.CheckPhysicalDefense(dmgAmount);
                     }
+                    target.GetComponent<Player>().SetInvTime(1.5f);
+                    Debug.Log("asdasda");
+
                 }
+
             }
             if (damageEnemies)
             {
@@ -91,6 +98,8 @@ public class DealDamage : MonoBehaviour {
                         Debug.Log("Enemy took physical");
                         targetDefense.CheckPhysicalDefense(dmgAmount);
                     }
+                    target.GetComponent<Enemy>().setInvTime(0.1f);
+
 
                 }
             }
