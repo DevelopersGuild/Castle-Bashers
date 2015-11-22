@@ -55,6 +55,7 @@ GameObject:
   - 114: {fileID: 11451698}
   - 114: {fileID: 11415806}
   - 114: {fileID: 11486968}
+  - 114: {fileID: 11482764}
   m_Layer: 0
   m_Name: Player
   m_TagString: Player
@@ -94,7 +95,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 113994}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 10, z: 0}
+  m_LocalPosition: {x: -12.3999996, y: 10, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 424180}
@@ -192,7 +193,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6112a187eae3e804a97f95b5540e0dc4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  floatText: {fileID: 11418386, guid: a782bd70ba51ef1448df6b6c05a70427, type: 2}
+  floatText: {fileID: 0}
   effectOffset: {x: 0, y: 2, z: 0}
   canStun: 1
   stunEffect: {fileID: 0}
@@ -283,11 +284,12 @@ MonoBehaviour:
   Strength: 1
   Agility: 0
   Intelligence: 0
+  CCI: {fileID: 0}
   jumpHeight: 4
   timeToJumpApex: .600000024
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
-  playerId: 0
+  playerId: 1
   threatLevel: 0
   damageDealt: 0
 --- !u!114 &11470544
@@ -312,7 +314,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defense: 1
+  defense: 0
+  basePhysicalDefense: 0
+  baseMagicalDefense: 0
   PhysicalDefense: 0
   MagicalDefense: 0
 --- !u!114 &11481936
@@ -330,6 +334,17 @@ MonoBehaviour:
   isMagic: 0
   damagePlayers: 0
   damageEnemies: 1
+--- !u!114 &11482764
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 183402}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c3e728408806ca4b9997a0ed41c781b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11486968
 MonoBehaviour:
   m_ObjectHideFlags: 1
