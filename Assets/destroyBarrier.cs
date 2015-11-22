@@ -19,6 +19,9 @@ public class destroyBarrier : MonoBehaviour {
             if (gameObject.GetInstanceID() == AreaGen.AreaID[i])
                InstanceID = i;
         }
+
+        if (AreaGen.EnemyNumber[InstanceID] == 0)
+            E_Dead = true;
     }
 
     // Update is called once per frame
