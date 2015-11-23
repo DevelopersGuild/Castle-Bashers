@@ -71,7 +71,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f8e38db5d1ebd241a1d1b09ca8356fd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agroRange: 0
+  agroRange: 10
   attackRange: 1
   attack_CD: 5
   target: {fileID: 0}
