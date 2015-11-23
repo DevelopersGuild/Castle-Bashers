@@ -269,7 +269,7 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        Skill_info.text = "Skill Name: " + SI.skill[ability[current_id].id].skillname;
+        Skill_info.text = "Skill Name: " + SI.skill[ability[current_id].id].skillname + "\nDescrible" + SI.skill[ability[current_id].id].skill_script.GetDiscription();
         //Skill_video.texture=
         if (current_id != 0)
             Current.GetComponent<RectTransform>().position = ability[current_id].skillicon.GetComponent<RectTransform>().position;
