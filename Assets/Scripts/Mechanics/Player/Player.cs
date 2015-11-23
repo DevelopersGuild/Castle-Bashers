@@ -20,6 +20,8 @@ public class Player : MonoBehaviour
     //The stats should remain public to allow them to be set in the editor.
     [HideInInspector]
     public Character_Class_Info CCI;
+    [HideInInspector]
+    public Skill_info si;
     private int class_id = 0;
     private int weapon_level = 0;
     private int armor_level = 0;
@@ -68,6 +70,9 @@ public class Player : MonoBehaviour
     private float managerID, priorityID;
     [HideInInspector]
     public float threatLevel, damageDealt;
+    private bool[] skill_unlock;
+    private int[] skillslot = {-1,-1,-1,-1};
+    private int[] itemslot = {-1,-1,-1};
 
     /*
     void Awake()
@@ -116,6 +121,7 @@ public class Player : MonoBehaviour
 
         GetComponent<ID>().setTime(false);
         CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
     }
 
     void Update()
@@ -660,4 +666,40 @@ public class Player : MonoBehaviour
     {
         return blockchance;
     }
+
+    public void SetUnlockSkillList(bool[] list)
+    {
+        skill_unlock = new bool[list.Length];
+        skill_unlock = list;
+    }
+
+    public bool[] GetUnlockSkillList()
+    {
+        return skill_unlock;
+    }
+
+    public void SetSkillSlotInit(int id,int skill_index)
+    {
+        skillslot[id] = skill_index;
+        skillManager.ChangeSkill(si.skill[CCI.Class_info[class_id].skillid[skill_index]].skill_script, id);
+    }
+
+    public Skill GetSkillSlotScript(int id)
+    {
+        return skillManager.currentSkillLoadout[id-1];
+    }
+
+    public int GetSkillSlotSkillID(int id)
+    {
+        return skillslot[id - 1];
+    }
+
+    public void UpdateSkillSlot()
+    {
+        for (int i = 0; i <= 3; i++)
+            if (skillslot[i] != -1)
+                SetSkillSlotInit(i, skillslot[i]);
+    }
+
+    
 }

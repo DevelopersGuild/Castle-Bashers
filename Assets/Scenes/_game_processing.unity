@@ -1130,6 +1130,7 @@ Transform:
   - {fileID: 379823601}
   - {fileID: 904521097}
   - {fileID: 1815238477}
+  - {fileID: 1219014193}
   m_Father: {fileID: 0}
   m_RootOrder: 3
 --- !u!114 &211478220
@@ -2703,7 +2704,6 @@ GameObject:
   - 114: {fileID: 379823602}
   - 114: {fileID: 379823604}
   - 114: {fileID: 379823605}
-  - 114: {fileID: 379823606}
   m_Layer: 5
   m_Name: DataBase
   m_TagString: Untagged
@@ -2990,22 +2990,6 @@ MonoBehaviour:
   - mapinfo:
     - mapid: 1
       Position: {x: 0, y: 0, z: 0}
---- !u!114 &379823606
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 379823600}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6072c6609e8933740bcd9401ec069b64, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skill:
-  - skillid: 1
-    skillname: Fire ball
-    skillicon: {fileID: 0}
-    skill_script: {fileID: 0}
 --- !u!1 &397481044
 GameObject:
   m_ObjectHideFlags: 0
@@ -9865,6 +9849,63 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1211079069}
+--- !u!1 &1219014192
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1219014193}
+  - 114: {fileID: 1219014195}
+  - 114: {fileID: 1219014194}
+  m_Layer: 0
+  m_Name: SkillDataBase
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1219014193
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219014192}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 211478219}
+  m_RootOrder: 3
+--- !u!114 &1219014194
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219014192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bada1f7f3fdaad40b6791434a1e7e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillArray: 
+--- !u!114 &1219014195
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1219014192}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6072c6609e8933740bcd9401ec069b64, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skill:
+  - skillid: 1
+    skillname: Fire ball
+    skillicon: {fileID: 0}
+    skill_script: {fileID: 0}
 --- !u!1 &1226739800
 GameObject:
   m_ObjectHideFlags: 0

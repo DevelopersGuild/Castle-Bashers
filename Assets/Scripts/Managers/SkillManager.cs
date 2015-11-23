@@ -41,6 +41,28 @@ public class SkillManager : MonoBehaviour
         currentSkillLoadout[replaceIndex] = unlockedSkills[skillID];
         currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
     }
+    public void ChangeSkill(Skill skill, int replaceIndex)
+    {
+        unlockedSkills.Add(skill);
+        ChangeSkill(unlockedSkills.Count - 1, replaceIndex);
+    }
+
+    public void FindAndChangeSkill(Skill skill, int replaceIndex)
+    {
+        bool flag = false;
+        System.Type type = skill.GetType();
+        foreach(Skill ski in unlockedSkills)
+        {
+            if(ski.GetType()==type)
+            {
+                flag = true;
+                currentSkillLoadout[replaceIndex] = ski;
+                break;
+            }
+        }
+        if(flag)
+            currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
+    }
 
     public void UseSkill1()
     {
