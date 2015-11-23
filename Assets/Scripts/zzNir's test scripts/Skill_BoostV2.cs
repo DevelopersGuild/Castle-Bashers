@@ -27,7 +27,7 @@ public class Skill_BoostV2 : Skill
         base.Start();
         base.SetBaseValues(15, 1000, 15, "Boost", SkillLevel.Level1);
         //remove when actually complete
-
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/boost"));
     }
 
     void Awake()

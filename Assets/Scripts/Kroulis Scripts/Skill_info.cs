@@ -61,6 +61,7 @@ public class Skill_info : MonoBehaviour {
         for(int i=0;i<skill.Length;i++)
         {
             skill[i].skillname = skill[i].skill_script.GetSkillName();
+            skill[i].skillicon = skill[i].skill_script.GetSkillIcon();
             Debug.Log(skill[i].skillname);
         }
         CancelInvoke();

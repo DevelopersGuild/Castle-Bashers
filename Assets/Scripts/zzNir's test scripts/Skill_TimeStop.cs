@@ -12,7 +12,8 @@ public class Skill_TimeStop : Skill
     protected override void Start()
     {
         base.Start();
-        base.SetBaseValues(30, 1000, 25, "Bulk Up", SkillLevel.Level1);
+        base.SetBaseValues(30, 1000, 25, "Time Acceleration", SkillLevel.Level1);
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/timeacceleration"));
     }
 
     void Awake()

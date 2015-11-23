@@ -44,7 +44,7 @@ public class SkillManager : MonoBehaviour
     public void ChangeSkill(int skillID, int replaceIndex)
     {
         currentSkillLoadout[replaceIndex] = unlockedSkills[skillID];
-        currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
+        //currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
     }
     public void ChangeSkill(Skill skill, int replaceIndex)
     {
@@ -66,7 +66,9 @@ public class SkillManager : MonoBehaviour
             }
         }
         if(flag)
-            currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
+        {
+            //currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
+        }
         else
         {
             ChangeSkill(skill, replaceIndex);

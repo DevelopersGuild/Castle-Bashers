@@ -144,7 +144,7 @@ public class SaveAndLoad : MonoBehaviour {
     public void LoadData()
     {
         CancelInvoke();
-        bool[] test={true,true,true,true,true,true,true,false};
+        bool[] test={false,true,true,true,true,true,true,true};
         Player_Script[0].SetUnlockSkillList(test);
         if (File.Exists(path + "/" + Globe.Character_Data_File) == false || Globe.Character_Data_File=="null")
         {
