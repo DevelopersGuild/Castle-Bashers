@@ -209,11 +209,22 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_SkillShop_Open(int class_id, int[] skill_id)
     {
+        Debug.LogWarning("This Function is out of date. Please use UI_SkillShop_Open(int class_id) as new method.");
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
         Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = class_id;
-        Shop.GetComponent<Skill_Shop_Fullcontrol>().store_skill_id = skill_id;
+        //Shop.GetComponent<Skill_Shop_Fullcontrol>().store_skill_id = skill_id;
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().Change();
+        Shop.SetActive(true);
+    }
+
+    public void UI_SkillShop_Open(int class_id)
+    {
+        Hide_UI = true;
+        Other_Windows.SetActive(true);
+        GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = class_id;
         Shop.GetComponent<Skill_Shop_Fullcontrol>().Change();
         Shop.SetActive(true);
     }

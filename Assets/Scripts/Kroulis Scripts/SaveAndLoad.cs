@@ -36,7 +36,7 @@ public class SaveAndLoad : MonoBehaviour {
             Player_gold[i] = Player_PF[i].GetComponent<CoinManager>();
         }
             
-        LoadData();
+        Invoke("LoadData",1.00f);
         //character_data.Load(path + "/" + Globe.Character_Data_File);
         //character_data.Save();
 	}
@@ -143,126 +143,133 @@ public class SaveAndLoad : MonoBehaviour {
 
     public void LoadData()
     {
+        CancelInvoke();
+        bool[] test={true,true,true,true,true,true,true,false};
+        Player_Script[0].SetUnlockSkillList(test);
         if (File.Exists(path + "/" + Globe.Character_Data_File) == false || Globe.Character_Data_File=="null")
         {
             ErrorCatching.WriteCharacterDataXML();
             Application.Quit();
         }
-        string md5;
-        md5 = "CB" + FileVerify.getFileHash(path + "/" + Globe.Character_Data_File) + "D";
-        Debug.Log(md5);
-        //File Verify
-        if(Application.platform != RuntimePlatform.WindowsEditor)
+        else
         {
-            if(md5+".xml"!=Globe.Character_Data_File)
+            string md5;
+            md5 = "CB" + FileVerify.getFileHash(path + "/" + Globe.Character_Data_File) + "D";
+            Debug.Log(md5);
+            //File Verify
+            if (Application.platform != RuntimePlatform.WindowsEditor)
             {
-                ErrorCatching.WriteVerifyXML();
-                //Application.OpenURL("www.kroulisworld.com/");
-                Application.Quit();
+                if (md5 + ".xml" != Globe.Character_Data_File)
+                {
+                    ErrorCatching.WriteVerifyXML();
+                    //Application.OpenURL("www.kroulisworld.com/");
+                    Application.Quit();
+                }
             }
-        }
-        character_data.Load(path + "/" + Globe.Character_Data_File);
-        XmlNode root=character_data.SelectSingleNode("datacounter");
-        XmlNodeList character_info = root.ChildNodes;
-        int player_id_load;
-        foreach(XmlElement xl in character_info)
-        {
-            bool flag = false;
-            if(xl.GetAttribute("id")=="1")
+            character_data.Load(path + "/" + Globe.Character_Data_File);
+            XmlNode root = character_data.SelectSingleNode("datacounter");
+            XmlNodeList character_info = root.ChildNodes;
+            int player_id_load;
+            foreach (XmlElement xl in character_info)
             {
-                player_id_load = 1;
-            }
-            else
-            {
-                player_id_load = 2;
-                twoplayer = true;
-            }
+                bool flag = false;
+                if (xl.GetAttribute("id") == "1")
+                {
+                    player_id_load = 1;
+                }
+                else
+                {
+                    player_id_load = 2;
+                    twoplayer = true;
+                }
 
-            XmlNodeList char_info_detail = xl.ChildNodes;
-            foreach (XmlElement xl2 in char_info_detail)
-            {
-                if(xl2.Name=="pid")
+                XmlNodeList char_info_detail = xl.ChildNodes;
+                foreach (XmlElement xl2 in char_info_detail)
                 {
-                    if (xl2.InnerText!=Globe.Character_id)
+                    if (xl2.Name == "pid")
                     {
-                        Debug.LogWarning("PID Verify failed.");
+                        if (xl2.InnerText != Globe.Character_id)
+                        {
+                            Debug.LogWarning("PID Verify failed.");
+                        }
+                    }
+                    else if (xl2.Name == "name")
+                    {
+                        Player_Script[player_id_load].Player_Name = xl2.InnerText;
+                    }
+                    else if (xl2.Name == "cid")
+                    {
+                        Player_Script[player_id_load].SetClassID(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "lv")
+                    {
+                        Player_EXP[player_id_load].SetLevel(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "exp")
+                    {
+                        Player_EXP[player_id_load].SetExperience(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "gold")
+                    {
+                        Player_gold[player_id_load].setCoins(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "weapon_level")
+                    {
+                        Player_Script[player_id_load].SetWeaponLV(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "armor_level")
+                    {
+                        Player_Script[player_id_load].SetArmorLV(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "accessories_level")
+                    {
+                        Player_Script[player_id_load].SetAccessoriesLV(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "atk")
+                    {
+                        Player_Script[player_id_load].SetStrength(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "def")
+                    {
+                        Player_Defense[player_id_load].SetDefense(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "sta")
+                    {
+                        Player_Script[player_id_load].SetStamina(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "spi")
+                    {
+                        Player_Script[player_id_load].SetIntelligence(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "agi")
+                    {
+                        Player_Script[player_id_load].SetAgility(int.Parse(xl2.InnerText));
+                    }
+                    else if (xl2.Name == "map")
+                    {
+                        Globe.Map_Load_id = int.Parse(xl2.InnerText);
+                    }
+                    else if (xl2.Name == "skill")
+                    {
+                        bool[] skillinfo = new bool[xl2.InnerText.Length];
+                        for (int i = 0; i < xl2.InnerText.Length; i++)
+                        {
+                            if (xl2.InnerText[i] == '1')
+                                skillinfo[i] = true;
+                            else
+                                skillinfo[i] = false;
+                        }
+                        Player_Script[player_id_load].SetUnlockSkillList(skillinfo);
                     }
                 }
-                else if(xl2.Name=="name")
-                {
-                    Player_Script[player_id_load].Player_Name = xl2.InnerText;
-                }
-                else if(xl2.Name=="cid")
-                {
-                    Player_Script[player_id_load].SetClassID(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="lv")
-                {
-                    Player_EXP[player_id_load].SetLevel(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="exp")
-                {
-                    Player_EXP[player_id_load].SetExperience(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="gold")
-                {
-                    Player_gold[player_id_load].setCoins(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="weapon_level")
-                {
-                    Player_Script[player_id_load].SetWeaponLV(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="armor_level")
-                {
-                    Player_Script[player_id_load].SetArmorLV(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="accessories_level")
-                {
-                    Player_Script[player_id_load].SetAccessoriesLV(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="atk")
-                {
-                    Player_Script[player_id_load].SetStrength(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="def")
-                {
-                    Player_Defense[player_id_load].SetDefense(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="sta")
-                {
-                    Player_Script[player_id_load].SetStamina(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="spi")
-                {
-                    Player_Script[player_id_load].SetIntelligence(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="agi")
-                {
-                    Player_Script[player_id_load].SetAgility(int.Parse(xl2.InnerText));
-                }
-                else if(xl2.Name=="map")
-                {
-                    Globe.Map_Load_id = int.Parse(xl2.InnerText);
-                }
-                else if(xl2.Name=="skill")
-                {
-                    bool[] skillinfo = new bool[xl2.InnerText.Length];
-                    for (int i = 0; i < xl2.InnerText.Length; i++)
-                    {
-                        if (xl2.InnerText[i] == '1')
-                            skillinfo[i] = true;
-                        else
-                            skillinfo[i] = false;
-                    }
-                    Player_Script[player_id_load].SetUnlockSkillList(skillinfo);                        
-                }
+                Player_EXP[player_id_load].LevelUp();
+                Player_Script[player_id_load].Fully_Update();
             }
-            Player_EXP[player_id_load].LevelUp();
-            Player_Script[player_id_load].Fully_Update();
+            if (!twoplayer)
+                Player_PF[1].SetActive(false);
+            Invoke("UpdateSkill", 3.0f);
         }
-        if (!twoplayer)
-            Player_PF[1].SetActive(false);
-        Invoke("UpdateSkill", 3.0f);
+   
     }
 
     void UpdateSkill()

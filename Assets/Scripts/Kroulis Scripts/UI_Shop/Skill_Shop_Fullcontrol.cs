@@ -6,7 +6,7 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
 
     //APIs
     public int shop_class_id = 0;
-    public int[] store_skill_id;
+    private int[] store_skill_id;
     public Sprite null_image;
     //only Inscript
     struct shop_skill_control
@@ -27,7 +27,11 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
     int current_id;
     int max_skill_id;
     int need_gold, gold;
-    Character_Class_Info CCIS;
+    private Character_Class_Info CCIS;
+    private int player_id=0;
+    private Skill_info si;
+    private Main_Process MainProcess;
+
 	// Use this for initialization
 	void Start () {
         Text[] Result1;
@@ -206,25 +210,36 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
             }
         }
         Skill_video = GetComponentInChildren<RawImage>();
-        GameObject MainProcess = GameObject.Find("Main Process");
+        MainProcess = GameObject.Find("Main Process").GetComponent<Main_Process>();
         CCIS= MainProcess.GetComponentInChildren<Character_Class_Info>();
-        Change();
+        si = MainProcess.GetComponentInChildren<Skill_info>();
+        //Change();
         gameObject.SetActive(false);
 	}
 	
-    public void Change()
+    public void Change(int ? pid=null)
     {
+        if(pid==null)
+        {
+            player_id = 0;
+        }
+        else
+        {
+            player_id = (int)pid;
+        }
         Classname.text = CCIS.Class_info[shop_class_id].name;
+        store_skill_id = new int[CCIS.Class_info[shop_class_id].skillid.Length];
+        store_skill_id = CCIS.Class_info[shop_class_id].skillid;
         max_skill_id = store_skill_id.Length;
-        if(max_skill_id==0)
+        if (max_skill_id == 0 || MainProcess.GetPlayerScript(player_id).GetClassID()!=shop_class_id)
         {
             this.gameObject.SetActive(false);
         }
         for(int i=1;i<=max_skill_id;i++)
         {
-            //shop_skill[i].skillicon.sprite=
-            //shop_skill[i].skillname.text=
-            //shop_skill[i].have=
+            shop_skill[i].skillicon.sprite = si.skill[store_skill_id[i - 1]].skillicon;
+            shop_skill[i].skillname.text = si.skill[store_skill_id[i - 1]].skillname;
+            shop_skill[i].have = MainProcess.GetPlayerScript(player_id).GetSkillUnlock(i - 1);
             shop_skill[i].id = store_skill_id[i - 1];
         }
         if(max_skill_id+1<=14)
@@ -241,10 +256,10 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
-        //gold=
+        gold = MainProcess.GetPlayerCoinManager(player_id).getCoins();
         Gold.text = gold.ToString();
-        //need_gold=
-        //Skill_info.text=
+        need_gold = si.skill[store_skill_id[current_id - 1]].skill_script.GetPrice();
+        Skill_info.text = "Skill Name: " + si.skill[store_skill_id[current_id - 1]].skillname;
         //Skill_video.texture=
         Current.GetComponent<RectTransform>().position = shop_skill[current_id].skillicon.GetComponent<RectTransform>().position;
         if(shop_skill[current_id].have==true)
@@ -303,5 +318,14 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
             }
         }
 
+        if(gold>need_gold && shop_skill[current_id].have==false)
+        {
+            if(Input.GetKeyDown(KeyCode.Return))
+            {
+                MainProcess.GetPlayerCoinManager(player_id).addCoins(-need_gold);
+                MainProcess.GetPlayerScript().SetSkillUnlock(current_id - 1, true);
+                MainProcess.GetPlayerScript().skillManager.UnlockSkillI(si.skill[store_skill_id[current_id-1]].skill_script);
+            }
+        }
 	}
 }

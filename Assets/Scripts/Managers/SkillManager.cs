@@ -36,6 +36,11 @@ public class SkillManager : MonoBehaviour
         unlockedSkills.Add(newSkill);
     }
 
+    public void UnlockSkillI(Skill newSkill)
+    {
+        unlockedSkills.Add(Instantiate(newSkill));
+    }
+
     public void ChangeSkill(int skillID, int replaceIndex)
     {
         currentSkillLoadout[replaceIndex] = unlockedSkills[skillID];
@@ -43,7 +48,7 @@ public class SkillManager : MonoBehaviour
     }
     public void ChangeSkill(Skill skill, int replaceIndex)
     {
-        unlockedSkills.Add(skill);
+        unlockedSkills.Add(Instantiate(skill));
         ChangeSkill(unlockedSkills.Count - 1, replaceIndex);
     }
 
@@ -62,6 +67,10 @@ public class SkillManager : MonoBehaviour
         }
         if(flag)
             currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
+        else
+        {
+            ChangeSkill(skill, replaceIndex);
+        }
     }
 
     public void UseSkill1()

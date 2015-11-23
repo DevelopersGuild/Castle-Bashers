@@ -41,14 +41,14 @@ public class Main_UI_FULLControl : MonoBehaviour {
     public Bossinfo boss;
 
     //Temp Control
-    public int[] hp=new int[2];
-    public int[] maxhp=new int[2];
-    public int[] mp=new int[2];
-    public int[] maxmp=new int[2];
-    public int[] exp=new int[2];
-    public int[] nexp=new int[2];
-    public int[] lv=new int[2];
-    public int[] cid=new int[2];
+    public int[] hp = { 0, 0 };
+    public int[] maxhp = { 0, 0 };
+    public int[] mp = { 0, 0 };
+    public int[] maxmp = { 0, 0 };
+    public int[] exp = { 0, 0 };
+    public int[] nexp = { 0, 0 };
+    public int[] lv = { 0, 0 };
+    public int[] cid = { 0, 0 };
 
     //UI Updata
     Text[] HP=new Text[2];
@@ -371,7 +371,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 if (t.name == "P2Class")
                 {
                     //Debug .Log("Class Found!");
-                    Class[0] = t;
+                    Class[1] = t;
                     continue;
                 }
 

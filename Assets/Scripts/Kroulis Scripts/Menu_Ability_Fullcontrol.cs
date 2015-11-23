@@ -27,8 +27,9 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
     int current_id=0;
     int max_skill_id;
     Character_Class_Info CCIS;
+    Skill_info SI;
     bool key_up;
-    GameObject MainProcess;
+    Main_Process MainProcess;
     int player_id;
     // Use this for initialization
     void Start()
@@ -219,14 +220,15 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
             }
         }
         Skill_video = GetComponentInChildren<RawImage>();
-        MainProcess = GameObject.Find("Main Process");
+        MainProcess = GameObject.Find("Main Process").GetComponent<Main_Process>();
         CCIS = MainProcess.GetComponentInChildren<Character_Class_Info>();
+        SI = MainProcess.GetComponentInChildren<Skill_info>();
         //Change();
     }
 
     public void Change(int? id = null)
     {
-        class_id = MainProcess.GetComponent<Main_Process>().GetPlayerScript(id).GetClassID();
+        class_id = MainProcess.GetPlayerScript(id).GetClassID();
         if (id == null)
             player_id = 0;
         else
@@ -238,15 +240,13 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
         }
         for (int i = 1; i <= max_skill_id; i++)
         {
-            //ability[i].skillicon.sprite=
-            //ability[i].skillname.text=
-            /*if(have==false)
-             * ability[i].skillicon.color = Color.gray;
-             * else
-             * ability[i].skillicon.color = Color.white;
-             */
-
-            //ability[i].have=
+            ability[i].skillicon.sprite = SI.skill[CCIS.Class_info[class_id].skillid[i - 1]].skillicon;
+            ability[i].skillname.text = SI.skill[CCIS.Class_info[class_id].skillid[i - 1]].skillname;
+            ability[i].have = MainProcess.GetPlayerScript(player_id).GetSkillUnlock(i - 1);
+            if (!ability[i].have)
+                ability[i].skillicon.color = Color.gray;
+            else
+                ability[i].skillicon.color = Color.white;
             ability[i].id = CCIS.Class_info[class_id].skillid[i - 1];
         }
         if (max_skill_id + 1 <= 14)
@@ -269,7 +269,7 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
     // Update is called once per frame
     void Update()
     {
-        //Skill_info.text=
+        Skill_info.text = "Skill Name: " + SI.skill[ability[current_id].id].skillname;
         //Skill_video.texture=
         if (current_id != 0)
             Current.GetComponent<RectTransform>().position = ability[current_id].skillicon.GetComponent<RectTransform>().position;
@@ -439,12 +439,16 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
             {
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
-                    Quick_slot[change_slot_id].sprite = ability[current_id].skillicon.sprite;
-                    //change the data in the player
-                    //MainProcess.GetComponent<Main_Process>().GetPlayerScript(player_id).skillManager.
-                    Tips.text = "";
-                    change_slot_id = 0;
-                    change_slot = false;
+                    if(ability[current_id].have)
+                    {
+                        Quick_slot[change_slot_id].sprite = ability[current_id].skillicon.sprite;
+                        //change the data in the player
+                        MainProcess.GetComponent<Main_Process>().GetPlayerScript(player_id).SetSkillSlot(change_slot_id - 1, ability[current_id].id);
+                        Tips.text = "";
+                        change_slot_id = 0;
+                        change_slot = false;
+                    }
+                    
                 } 
             }
         }

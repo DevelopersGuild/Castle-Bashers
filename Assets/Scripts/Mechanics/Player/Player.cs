@@ -73,7 +73,7 @@ public class Player : MonoBehaviour
     private float managerID, priorityID;
     [HideInInspector]
     public float threatLevel, damageDealt;
-    private bool[] skill_unlock;
+    private bool[] skill_unlock=new bool[14];
     private int[] skillslot = {-1,-1,-1,-1};
     private int[] itemslot = {-1,-1,-1};
 
@@ -687,6 +687,12 @@ public class Player : MonoBehaviour
         skillManager.ChangeSkill(si.skill[CCI.Class_info[class_id].skillid[skill_index]].skill_script, id);
     }
 
+    public void SetSkillSlot(int id, int skill_index)
+    {
+        skillslot[id] = skill_index;
+        skillManager.FindAndChangeSkill(si.skill[CCI.Class_info[class_id].skillid[skill_index]].skill_script, id);
+    }
+
     public Skill GetSkillSlotScript(int id)
     {
         return skillManager.currentSkillLoadout[id-1];
@@ -704,5 +710,13 @@ public class Player : MonoBehaviour
                 SetSkillSlotInit(i, skillslot[i]);
     }
 
-    
+    public bool GetSkillUnlock(int id)
+    {
+        return skill_unlock[id];
+    }
+
+    public void SetSkillUnlock(int id,bool value)
+    {
+        skill_unlock[id] = value;
+    }
 }
