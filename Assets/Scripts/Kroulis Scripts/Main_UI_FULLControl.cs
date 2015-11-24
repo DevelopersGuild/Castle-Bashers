@@ -23,6 +23,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
     float full_scale;
     //Mode Control
     public GameObject Main_Process;
+    private Main_Process mps;
     public GameObject OPM;
     public GameObject TPM;
     public GameObject BossMode;
@@ -35,8 +36,8 @@ public class Main_UI_FULLControl : MonoBehaviour {
     public bool In_Battle;
     
     //Control
-    public int[] skillid = new int[4];  //to set the skill id of 4 skill space
-    public int[] itemid = new int[3]; //to set the item id of 3 item space
+    public int[,] skillid = new int[2,4];  //to set the skill id of 4 skill space
+    public int[,] itemid = new int[2,3]; //to set the item id of 3 item space
     public Playerinfo[] partner;
     public Bossinfo boss;
 
@@ -69,6 +70,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
     Image[] partner_icon = new Image[6];
     Boss_HeadIcon Boss_HeadIcon_Script;
     Character_Class_Info Character_Class_Info_Script;
+    Skill_info SI;
     int teamsize=0;
 
 	// Use this for initialization
@@ -82,6 +84,8 @@ public class Main_UI_FULLControl : MonoBehaviour {
         GOResult = GameObject.Find("DataBase");
         Boss_HeadIcon_Script = GOResult.GetComponent<Boss_HeadIcon>();
         Character_Class_Info_Script = GOResult.GetComponent<Character_Class_Info>();
+        GOResult = GameObject.Find("SkillDataBase");
+        SI = GOResult.GetComponent<Skill_info>();
         //Link BOSS INFO
         finds2 = BossMode.GetComponentsInChildren<Image>();
         foreach (Image i in finds2)
@@ -275,25 +279,25 @@ public class Main_UI_FULLControl : MonoBehaviour {
                     EXP_Bar[0] = i;
                     continue;
                 }
-                if (i.name == "SK1")
+                if (i.name == "SK1_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0,0] = i;
                     continue;
                 }
-                if (i.name == "SK2")
+                if (i.name == "SK2_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0,1] = i;
                     continue;
                 }
-                if (i.name == "SK3")
+                if (i.name == "SK3_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0,2] = i;
                     continue;
                 }
-                if (i.name == "SK4")
+                if (i.name == "SK4_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0,3] = i;
@@ -415,25 +419,25 @@ public class Main_UI_FULLControl : MonoBehaviour {
                     EXP_Bar[1] = i;
                     continue;
                 }
-                if (i.name == "P1SK1")
+                if (i.name == "P1SK1_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0, 0] = i;
                     continue;
                 }
-                if (i.name == "P1SK2")
+                if (i.name == "P1SK2_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0, 1] = i;
                     continue;
                 }
-                if (i.name == "P1SK3")
+                if (i.name == "P1SK3_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0, 2] = i;
                     continue;
                 }
-                if (i.name == "P1SK4")
+                if (i.name == "P1SK4_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[0, 3] = i;
@@ -457,25 +461,25 @@ public class Main_UI_FULLControl : MonoBehaviour {
                     itemid_icon[0, 2] = i;
                     continue;
                 }
-                if (i.name == "P2SK1")
+                if (i.name == "P2SK1_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[1, 0] = i;
                     continue;
                 }
-                if (i.name == "P2SK2")
+                if (i.name == "P2SK2_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[1, 1] = i;
                     continue;
                 }
-                if (i.name == "P2SK3")
+                if (i.name == "P2SK3_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[1, 2] = i;
                     continue;
                 }
-                if (i.name == "P2SK4")
+                if (i.name == "P2SK4_BAR")
                 {
                     //Debug .Log("HP Value Found!");
                     skillid_icon[1, 3] = i;
@@ -501,10 +505,89 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 }
             }
         }
+        mps = Main_Process.GetComponent<Main_Process>();
         had_init = true;
         return true;
     }
 	
+    public void Main_UI_StartChangingIcon()
+    {
+        Invoke("ChangeIcon", 2.0f);
+    }
+
+    public void Main_UI_StopChangingIcon()
+    {
+        CancelInvoke();
+    }
+
+    void ChangeIcon()
+    {
+        CancelInvoke("SkillCoolDownUpdate");
+        if(had_init)
+        {
+            int changeicon = -1;
+            for (int i = 0; i <= 3;i++)
+            {
+                skillid[0, i] = changeicon;
+                changeicon = mps.GetPlayerScript(0).GetSkillSlotSkillID(i+1);
+                if(changeicon!=-1)
+                {
+                    skillid_icon[0, i].sprite = SI.skill[changeicon].skillicon;
+                }
+                else
+                {
+                    skillid_icon[0, i].sprite = Resources.Load<Sprite>("null");
+                }
+            }
+            if (!One_player_per_client)
+            {
+                for (int i = 0; i <= 3; i++)
+                {
+                    skillid[1, i] = changeicon;
+                    changeicon = mps.GetPlayerScript(1).GetSkillSlotSkillID(i + 1);
+                    if (changeicon != -1)
+                    {
+                        skillid_icon[1, i].sprite = SI.skill[changeicon].skillicon;
+                    }
+                    else
+                    {
+                        skillid_icon[1, i].sprite = Resources.Load<Sprite>("null");
+                    }
+                }
+            }
+        }
+        Invoke("SkillCoolDownUpdate", 0.5f);
+    }
+
+    void SkillCoolDownUpdate()
+    {
+        if(had_init)
+        {
+            float timercal,timerrest;
+            for(int i=0;i<=3;i++)
+            {
+                if(skillid[0,i]!=-1)
+                {
+                    timercal=mps.GetPlayerScript(0).GetSkillSlotScript(i+1).GetCoolDown();
+                    timerrest=timercal-mps.GetPlayerScript(0).GetSkillSlotScript(i+1).GetCoolDownTimer();
+                    skillid_icon[0, i].fillAmount = timerrest / timercal;
+                }
+            }
+            if(!One_player_per_client)
+            {
+                for (int i = 0; i <= 3; i++)
+                {
+                    if (skillid[1, i] != -1)
+                    {
+                        timercal = mps.GetPlayerScript(1).GetSkillSlotScript(i + 1).GetCoolDown();
+                        timerrest = timercal - mps.GetPlayerScript(1).GetSkillSlotScript(i + 1).GetCoolDownTimer();
+                        skillid_icon[1, i].fillAmount = timerrest / timercal;
+                    }
+                }
+            }
+        }
+    }
+
 	// Update is called once per frame
     void Update()
     {

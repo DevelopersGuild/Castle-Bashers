@@ -164,6 +164,7 @@ public class Main_Process : MonoBehaviour {
     //for forcing open Menu (Do not use it when other windows UI is opening)
     public void Menu_Force_Open(int menu_id)
     {
+        Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StopChangingIcon();
         Menu_id = menu_id;
         Menu_UI.GetComponent<Menu_UI_FullControl>().UpdateGold();
         Menu_Open = true;
@@ -174,6 +175,10 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = false;
     }
 
+    public void Menu_Normal_Close()
+    {
+        Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StartChangingIcon();
+    }
 
     //when the mission start, use this to start the timer and ban the menu
     public void mission_start()
