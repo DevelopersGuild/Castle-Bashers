@@ -528,8 +528,8 @@ public class Main_UI_FULLControl : MonoBehaviour {
             int changeicon = -1;
             for (int i = 0; i <= 3;i++)
             {
-                skillid[0, i] = changeicon;
                 changeicon = mps.GetPlayerScript(0).GetSkillSlotSkillID(i+1);
+                skillid[0, i] = changeicon;
                 if(changeicon!=-1)
                 {
                     skillid_icon[0, i].sprite = SI.skill[changeicon].skillicon;
@@ -543,8 +543,8 @@ public class Main_UI_FULLControl : MonoBehaviour {
             {
                 for (int i = 0; i <= 3; i++)
                 {
-                    skillid[1, i] = changeicon;
                     changeicon = mps.GetPlayerScript(1).GetSkillSlotSkillID(i + 1);
+                    skillid[1, i] = changeicon;
                     if (changeicon != -1)
                     {
                         skillid_icon[1, i].sprite = SI.skill[changeicon].skillicon;
@@ -568,8 +568,8 @@ public class Main_UI_FULLControl : MonoBehaviour {
             {
                 if(skillid[0,i]!=-1)
                 {
-                    timercal=mps.GetPlayerScript(0).GetSkillSlotScript(i+1).GetCoolDown();
-                    timerrest=timercal-mps.GetPlayerScript(0).GetSkillSlotScript(i+1).GetCoolDownTimer();
+                    timercal=mps.GetPlayerScript(0).GetSkillSlotScript(i).GetCoolDown();
+                    timerrest=timercal-mps.GetPlayerScript(0).GetSkillSlotScript(i).GetCoolDownTimer();
                     skillid_icon[0, i].fillAmount = timerrest / timercal;
                 }
             }
@@ -579,7 +579,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 {
                     if (skillid[1, i] != -1)
                     {
-                        timercal = mps.GetPlayerScript(1).GetSkillSlotScript(i + 1).GetCoolDown();
+                        timercal = mps.GetPlayerScript(1).GetSkillSlotScript(i).GetCoolDown();
                         timerrest = timercal - mps.GetPlayerScript(1).GetSkillSlotScript(i + 1).GetCoolDownTimer();
                         skillid_icon[1, i].fillAmount = timerrest / timercal;
                     }

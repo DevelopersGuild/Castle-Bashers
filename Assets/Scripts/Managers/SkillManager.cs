@@ -38,7 +38,12 @@ public class SkillManager : MonoBehaviour
 
     public void UnlockSkillI(Skill newSkill)
     {
-        unlockedSkills.Add(Instantiate(newSkill));
+        unlockedSkills.Add(newSkill);
+    }
+
+    public Skill UnlockSkillC(Skill newSkill)
+    {
+        return (Skill)gameObject.AddComponent(newSkill.GetType());
     }
 
     public void ChangeSkill(int skillID, int replaceIndex)
@@ -48,7 +53,7 @@ public class SkillManager : MonoBehaviour
     }
     public void ChangeSkill(Skill skill, int replaceIndex)
     {
-        unlockedSkills.Add(Instantiate(skill));
+        unlockedSkills.Add(UnlockSkillC(skill));
         ChangeSkill(unlockedSkills.Count - 1, replaceIndex);
     }
 
@@ -73,6 +78,11 @@ public class SkillManager : MonoBehaviour
         {
             ChangeSkill(skill, replaceIndex);
         }
+    }
+
+    public Skill GetSlotSkill(int id)
+    {
+        return currentSkillLoadout[id];
     }
 
     public void UseSkill1()

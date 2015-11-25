@@ -259,7 +259,7 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
         gold = MainProcess.GetPlayerCoinManager(player_id).getCoins();
         Gold.text = gold.ToString();
         need_gold = si.GetSkillPrice(store_skill_id[current_id - 1]);
-        Skill_info.text = "Skill Name: " + si.skill[store_skill_id[current_id - 1]].skillname + "\nDescrible" + si.skill[store_skill_id[current_id - 1]].skill_script.GetDiscription();
+        Skill_info.text = "Skill Name: " + si.skill[store_skill_id[current_id - 1]].skillname + "\nDescrible:\n" + si.skill[store_skill_id[current_id - 1]].skill_script.GetDiscription();
         //Skill_video.texture=
         Current.GetComponent<RectTransform>().position = shop_skill[current_id].skillicon.GetComponent<RectTransform>().position;
         if(shop_skill[current_id].have==true)

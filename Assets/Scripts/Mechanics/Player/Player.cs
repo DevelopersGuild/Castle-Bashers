@@ -695,7 +695,7 @@ public class Player : MonoBehaviour
 
     public Skill GetSkillSlotScript(int id)
     {
-        return skillManager.currentSkillLoadout[id-1];
+        return skillManager.GetSlotSkill(id);
     }
 
     public int GetSkillSlotSkillID(int id)
