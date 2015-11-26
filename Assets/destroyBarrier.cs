@@ -8,11 +8,14 @@ public class destroyBarrier : MonoBehaviour {
     private bool E_Dead = false;
     private float left = 40f;
     private int InstanceID;
+    private CameraFollow cameraFollow;
     GameObject last;
 
     // Use this for initialization
     void Start()
     {
+        Camera camera = Camera.main;
+        cameraFollow = camera.GetComponent<CameraFollow>();
         mainprocess = FindObjectOfType<Main_Process>();
         for (int i=0; i<AreaGen.AreaNumber; i++) //possibly unstable
         {
@@ -28,8 +31,19 @@ public class destroyBarrier : MonoBehaviour {
     void Update ()
     {
         int count=0;
+
+        if(!E_Dead)
+        {
+            cameraFollow.setLock(true);
+        }
+        else
+        {
+            cameraFollow.setLock(false);
+        }
+
         for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
-        { if (AreaGen.AreaLog[InstanceID, i] != null)
+        {
+            if (AreaGen.AreaLog[InstanceID, i] != null)
                 count++;
             if (count == 0)
                 E_Dead = true;

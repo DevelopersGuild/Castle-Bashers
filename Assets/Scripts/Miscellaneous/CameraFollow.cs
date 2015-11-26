@@ -14,6 +14,7 @@ public class CameraFollow : MonoBehaviour
     public float flYAxisTolerance;
     public float flYChangeSpeed;
     public bool canMoveLeft;
+    private bool isLocked;
 
     public bool camerShakeIsOn = false;
 
@@ -51,47 +52,50 @@ public class CameraFollow : MonoBehaviour
         v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
 
 
-            transform.position = v3FinalCameraPosition;
+        transform.position = v3FinalCameraPosition;
 
     }
 
     void LateUpdate()
     {
-        Vector3 totalAveragePosition = new Vector3();
-        int size = 0;
-        foreach(Transform child in gobjCameraTarget.transform)
+        if (!isLocked)
         {
-            totalAveragePosition += child.position;
-            size++;
-        }
-        totalAveragePosition /= size;
+            Vector3 totalAveragePosition = new Vector3();
+            int size = 0;
+            foreach (Transform child in gobjCameraTarget.transform)
+            {
+                totalAveragePosition += child.position;
+                size++;
+            }
+            totalAveragePosition /= size;
 
-        // Camera cant move left
-        Vector3 v3CameraTargetPosition =  totalAveragePosition;
-
-
-
-        Vector3 v3FinalCameraPosition;
-
-        v3FinalCameraPosition.x = GetXCameraPosition(v3CameraTargetPosition.x);
-        v3FinalCameraPosition.z = flDepthOffset;
-        v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
+            // Camera cant move left
+            Vector3 v3CameraTargetPosition = totalAveragePosition;
 
 
 
+            Vector3 v3FinalCameraPosition;
 
-        v3PreviousFrameCameraPosition = v3FinalCameraPosition;
-        if (camerShakeIsOn == true)
-        {
-            Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
-            v3FinalCameraPosition.x += v2ScreenShakeVector.x;
-            v3FinalCameraPosition.y += v2ScreenShakeVector.y;
+            v3FinalCameraPosition.x = GetXCameraPosition(v3CameraTargetPosition.x);
+            v3FinalCameraPosition.z = flDepthOffset;
+            v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
 
-        }
 
-        if(v3FinalCameraPosition.x > transform.position.x || canMoveLeft == true)
-        {
-            transform.position = v3FinalCameraPosition;    
+
+
+            v3PreviousFrameCameraPosition = v3FinalCameraPosition;
+            if (camerShakeIsOn == true)
+            {
+                Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
+                v3FinalCameraPosition.x += v2ScreenShakeVector.x;
+                v3FinalCameraPosition.y += v2ScreenShakeVector.y;
+
+            }
+
+            if (v3FinalCameraPosition.x > transform.position.x || canMoveLeft == true)
+            {
+                transform.position = v3FinalCameraPosition;
+            }
         }
 
     }
@@ -124,12 +128,17 @@ public class CameraFollow : MonoBehaviour
 
         return flCameraYBaseLine + flVerticalOffset;
     }
+
+    public void setLock(bool set)
+    {
+        isLocked = set;
+    }
 }
+
+
 
 public class ScreenShake : MonoBehaviour
 {
-
-
     public static Vector2 ScreenShakeTest()
     {
         float Magnitude = 0.1f;
