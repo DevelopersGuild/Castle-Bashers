@@ -164,6 +164,7 @@ public class Main_Process : MonoBehaviour {
     //for forcing open Menu (Do not use it when other windows UI is opening)
     public void Menu_Force_Open(int menu_id)
     {
+        Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StopChangingIcon();
         Menu_id = menu_id;
         Menu_UI.GetComponent<Menu_UI_FullControl>().UpdateGold();
         Menu_Open = true;
@@ -174,6 +175,10 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = false;
     }
 
+    public void Menu_Normal_Close()
+    {
+        Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StartChangingIcon();
+    }
 
     //when the mission start, use this to start the timer and ban the menu
     public void mission_start()
@@ -209,11 +214,22 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_SkillShop_Open(int class_id, int[] skill_id)
     {
+        Debug.LogWarning("This Function is out of date. Please use UI_SkillShop_Open(int class_id) as new method.");
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
         Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = class_id;
-        Shop.GetComponent<Skill_Shop_Fullcontrol>().store_skill_id = skill_id;
+        //Shop.GetComponent<Skill_Shop_Fullcontrol>().store_skill_id = skill_id;
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().Change();
+        Shop.SetActive(true);
+    }
+
+    public void UI_SkillShop_Open(int class_id)
+    {
+        Hide_UI = true;
+        Other_Windows.SetActive(true);
+        GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = class_id;
         Shop.GetComponent<Skill_Shop_Fullcontrol>().Change();
         Shop.SetActive(true);
     }
@@ -407,21 +423,22 @@ public class Main_Process : MonoBehaviour {
     }
     void OnGUI()
     {
-        if(movTexture.isPlaying)
-        {
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
-        }
-        else if(start_to_play==true)
-        {
-            Time.timeScale=1.0f;
-            if(Application.platform!=RuntimePlatform.WindowsEditor)
+        if(movTexture)
+            if(movTexture.isPlaying)
             {
-                if (Globe.Map_Load_id != 3)
-                    Start_Battle();
-                Application.LoadLevel(2);
+                GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
             }
+            else if(start_to_play==true)
+            {
+                Time.timeScale=1.0f;
+                if(Application.platform!=RuntimePlatform.WindowsEditor)
+                {
+                    if (Globe.Map_Load_id != 3)
+                        Start_Battle();
+                    Application.LoadLevel(2);
+                }
             
-        }
+            }
         
     }
 }

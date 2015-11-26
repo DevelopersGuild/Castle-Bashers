@@ -10,7 +10,7 @@ public class ChosenWarrior : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        whirlwind = new Whirlwind();
+        whirlwind = new WhirlwindSkill();
 	}
 	
 	// Update is called once per frame

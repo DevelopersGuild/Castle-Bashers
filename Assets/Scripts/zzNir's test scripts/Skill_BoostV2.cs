@@ -1,4 +1,4 @@
-﻿using UnityEngine;
+using UnityEngine;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -27,8 +27,8 @@ public class Skill_BoostV2 : Skill
     {
         base.Start();
         base.SetBaseValues(15, 1000, 15, "Boost", SkillLevel.Level1);
-        //remove call and test when actually complete
-
+        //remove when actually complete
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/boost"));
     }
 
     void Awake()

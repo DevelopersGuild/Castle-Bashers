@@ -22,6 +22,7 @@ public class Skill_BulkUp : Skill
     {
         base.Start();
         base.SetBaseValues(30, 1000, 25, "Bulk Up", SkillLevel.Level1);
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/bulkup"));
     }
 
     protected override void Update()

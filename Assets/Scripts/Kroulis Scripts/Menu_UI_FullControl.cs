@@ -110,6 +110,7 @@ public class Menu_UI_FullControl : MonoBehaviour {
         {
             movie.pause();
             Main_Process.GetComponent<Main_Process>().Menu_Open = false;
+            Main_Process.GetComponent<Main_Process>().Menu_Normal_Close();
         }
         if(Main_Process.GetComponent<Main_Process>().esckey_up==true && Input.GetKeyUp(KeyCode.Escape))
         {

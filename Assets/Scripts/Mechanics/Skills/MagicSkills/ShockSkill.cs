@@ -8,8 +8,8 @@ public class ShockSkill : Skill
     protected override void Start()
     {
         base.Start();
-
         base.SetBaseValues(5, 16000, 85, "Shock", SkillLevel.EnemyOnly);
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/shock"));
     }
     protected override void Update()
     {
