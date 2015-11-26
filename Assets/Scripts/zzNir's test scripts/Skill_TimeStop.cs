@@ -75,20 +75,7 @@ public class Skill_TimeStop : Skill
 
     }
 
-    private void modDefense(GameObject caller, bool add = true)
-    {
-        float f;
-        if (add)
-            f = 1.3f;
-        else
-            f = (1.0f / 1.3f);
-
-        //caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
-    }
-
-
-
-    private void AddHealth(GameObject caller)
+       private void AddHealth(GameObject caller)
     {
         //heals 1/3 of starting health, which is ~1/4 of temp max hp
         caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetStartingHealth() / 3);

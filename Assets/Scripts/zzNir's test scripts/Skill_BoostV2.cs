@@ -20,20 +20,20 @@ public class Skill_BoostV2 : Skill
        Purple - Increases attack speed bonus even further
        Teal - Increases your cast speed too
 
+       //Does not fully work rn because agility does not affect a player's speed
     */
 
     protected override void Start()
     {
         base.Start();
         base.SetBaseValues(15, 1000, 15, "Boost", SkillLevel.Level1);
-        //remove when actually complete
+        //remove call and test when actually complete
 
     }
 
     void Awake()
     {
         call = FindObjectOfType<Player>().gameObject;
-
         anim = call.GetComponent<Animator>();
         if (anim != null)
         {
@@ -142,13 +142,22 @@ public class Skill_BoostV2 : Skill
 
     private void modAnimSpd(GameObject caller, bool add = true, float val = 0.75f)
     {
-        if (!add)
+        if (add)
             val = 1 / val;
 
-        caller.GetComponent<Animator>().speed = caller.GetComponent<Animator>().speed * val;
+        int f = (int)(caller.GetComponent<Player>().GetAgility() * val);
+        if (add)
+            spdDelta = f;
+        else
+            spdDelta *= -1;
+
+        //caller.GetComponent<Animator>().speed = caller.GetComponent<Animator>().speed * val;
+        anim.speed = anim.speed * val;
+        call.GetComponent<Player>().SetAgility(call.GetComponent<Player>().GetAgility() + spdDelta);
+
     }
 
-    private void modSpd(GameObject caller, bool add = true, float val = 0.75f)
+    private void modSpd(GameObject caller, bool add = true, float val = 0.5f)
     {
         if (add)
             val = 1 / val;
@@ -159,7 +168,8 @@ public class Skill_BoostV2 : Skill
         else
             spdDelta *= -1;
 
-        caller.GetComponent<Player>().SetAgility(caller.GetComponent<Player>().GetAgility() + spdDelta);
+        //caller.GetComponent<Player>().SetAgility(caller.GetComponent<Player>().GetAgility() + spdDelta);
+        call.GetComponent<Player>().SetAgility(call.GetComponent<Player>().GetAgility() + spdDelta);
 
         foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
         {
