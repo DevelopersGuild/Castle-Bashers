@@ -27,6 +27,7 @@ public class CameraFollow : MonoBehaviour
     void Start()
     {
         //canMoveLeft = false;
+        isLocked = false;
         gobjCameraTarget = GameObject.Find("PlayerHolder");
         flCameraYBaseLine = gobjCameraTarget.transform.position.y;
 

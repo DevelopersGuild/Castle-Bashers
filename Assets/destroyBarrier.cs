@@ -32,14 +32,11 @@ public class destroyBarrier : MonoBehaviour {
     {
         int count=0;
 
-        if(!E_Dead)
-        {
-            cameraFollow.setLock(true);
-        }
-        else
-        {
-            cameraFollow.setLock(false);
-        }
+        //if (!E_Dead)
+        //{
+        //    cameraFollow.setLock(true);
+        //}
+
 
         for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
         {
@@ -55,6 +52,7 @@ public class destroyBarrier : MonoBehaviour {
         if (other.gameObject.tag == "Player" && E_Dead==true)
         {
             Destroy(gameObject);
+            cameraFollow.setLock(false);
         }
     }
 }
