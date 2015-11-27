@@ -137,8 +137,11 @@ public class AreaGen : MonoBehaviour
 
                 if (i == AreaNumber-1)
                 {
-                if(Boss!=null)
-                BossID= (GameObject)Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation);
+                if (Boss != null)
+                {
+                    BossID.name =  Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation).GetInstanceID().ToString();
+                    //BossID;
+                }
                 }
 
 

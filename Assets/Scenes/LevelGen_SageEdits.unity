@@ -176,11 +176,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Min_Enemy
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Enemy
-      value: 3
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Area
@@ -192,12 +192,17 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Total_Objects
-      value: 3
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Weather
       value: 
       objectReference: {fileID: 118792, guid: 9250f6db7a10acf47a0b530dac035b84, type: 2}
+    - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: Boss
+      value: 
+      objectReference: {fileID: 11444124, guid: b1381ffe8e0d63542a36ea49bc6144d0,
+        type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_IsPrefabParent: 0
@@ -680,6 +685,8 @@ MonoBehaviour:
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
   playerId: 1
+  jumpAudio: {fileID: 0}
+  walkAudio: {fileID: 0}
   threatLevel: 0
   damageDealt: 0
 --- !u!54 &1574227778
