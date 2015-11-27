@@ -12,6 +12,7 @@ public class Other_Windows_FullControl : MonoBehaviour {
     public GameObject Mission_Success;
     public GameObject Level_Select;
     public GameObject Skill_Shop;
+    public GameObject Dialog;
     //Full Scale
     float full_scale;
 

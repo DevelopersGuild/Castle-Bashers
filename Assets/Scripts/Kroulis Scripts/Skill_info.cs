@@ -36,13 +36,13 @@ public class Skill_info : MonoBehaviour {
         if (!tempType)
             Debug.Log("Load null Failed.");
         skill = new skill_info[amount];
-        for (int i = 0; i < amount-1; i++)
+        for (int i = 0; i < amount; i++)
         {
             skill[i].skillid = i;
             skill[i].skill_script = skills[i];
-            skill[i].skillname = skill[i].skill_script.GetSkillName();
             skill[i].skillicon = tempType;
         }
+        Invoke("NameUpdate", 1.0f);
     }
 
     public int GetSkillPrice(int skill_id)
@@ -56,4 +56,14 @@ public class Skill_info : MonoBehaviour {
             return skill[skill_id].skill_script.GetPrice();
     }
 
+    public void NameUpdate()
+    {
+        for(int i=0;i<skill.Length;i++)
+        {
+            skill[i].skillname = skill[i].skill_script.GetSkillName();
+            skill[i].skillicon = skill[i].skill_script.GetSkillIcon();
+            //Debug.Log(skill[i].skillname);
+        }
+        CancelInvoke();
+    }
 }

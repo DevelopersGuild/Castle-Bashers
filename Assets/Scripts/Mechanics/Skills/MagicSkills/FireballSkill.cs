@@ -7,8 +7,8 @@ public class FireballSkill : Skill
     protected override void Start()
     {
         base.Start();
-
         base.SetBaseValues(5, 16000, 85, "fireBall", SkillLevel.EnemyOnly);
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/fireball"));
     }
     protected override void Update()
     {

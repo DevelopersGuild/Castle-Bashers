@@ -142,6 +142,8 @@ public class Character_Menu_FullControl : MonoBehaviour {
         Player_Mana = Player_PF.GetComponent<Mana>();
         Player_Defense = Player_PF.GetComponent<Defense>();
         Player_ATK = Player_Script.AttackCollider.GetComponent<DealDamageToEnemy>();
+        //if (!Player_ATK)
+        //    Debug.Log("Cannot Get Player_ATK");
         ATK.text = Player_Script.GetStrength().ToString();
         DEF.text = Player_Defense.defense.ToString();
         STA.text = Player_Script.GetStamina().ToString();

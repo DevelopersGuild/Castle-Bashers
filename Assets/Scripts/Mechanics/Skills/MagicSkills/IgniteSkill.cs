@@ -9,8 +9,8 @@ public class IgniteSkill : Skill
     protected override void Start()
     {
         base.Start();
-
         base.SetBaseValues(4, 16000, 150, "Ignite", SkillLevel.Level1);
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/Ignite"));
 
     }
     protected override void Update()
