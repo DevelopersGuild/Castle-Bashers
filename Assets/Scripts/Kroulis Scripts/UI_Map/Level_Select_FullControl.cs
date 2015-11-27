@@ -18,6 +18,7 @@ public class Level_Select_FullControl : MonoBehaviour {
     Image Bar;
     Image Diff;
     GameObject Mainprocess;
+    GameObject Windows;
 
 
 	// Use this for initialization
@@ -43,6 +44,11 @@ public class Level_Select_FullControl : MonoBehaviour {
                 Diff_ImageLab = Diff.GetComponent<Level_Select_Diff_ImageLib>();
                 continue;
             }
+            if(i.name=="Level_Select_Window")
+            {
+                Windows = i.gameObject;
+                continue;
+            }
         }
         Text[] Result2;
         Result2 = GetComponentsInChildren<Text>();
@@ -65,10 +71,25 @@ public class Level_Select_FullControl : MonoBehaviour {
         gameObject.SetActive(false);
 	
 	}
+
+    public void ShowMap(int chapterid)
+    {
+        if (chapterid > Level_Select_mapinfo_script.Chapter.Length)
+        {
+            gameObject.SetActive(false);
+            Mainprocess.GetComponent<Main_Process>().OtherWindows_Close();
+        }
+        chapid = chapterid;
+        currentmap = 0;
+        currentdiff = 0;
+        Map_BG.sprite=Level_Select_mapinfo_script.Chapter[chapid].Map_Background;
+        Chapter_name.text = chapid.ToString();
+        gameObject.SetActive(true);
+    }
 	
 	// Update is called once per frame
 	void Update () {
-        Chapter_name.text = chapid.ToString();
+        Windows.GetComponent<RectTransform>().localPosition=Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].Position;
         Map_name.text = Map_Transfer_DB_Script.mapinfo[Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid].name;
         Windows_BG.sprite= Map_Transfer_DB_Script.mapinfo[Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid].mini_bg_texture;
         Diff.sprite = Diff_ImageLab.diff[currentdiff];
