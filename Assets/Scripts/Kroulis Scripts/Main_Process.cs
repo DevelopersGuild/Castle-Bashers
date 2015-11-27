@@ -421,6 +421,13 @@ public class Main_Process : MonoBehaviour {
             }
         }
     }
+
+    public void OpenDialog(string id,string npcname)
+    {
+        Other_Windows.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Dialog.GetComponent<Dialog_FullControl>().OpenDialog(id,npcname);
+    }
+
     void OnGUI()
     {
         if(movTexture)
