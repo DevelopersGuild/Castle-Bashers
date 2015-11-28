@@ -76,6 +76,30 @@ namespace Kroulis.Dialog
                 return "";
         }
 
+        public string GetCurrentAudio()
+        {
+            if (current_dialog.GetAttribute("id") != null)
+            {
+                foreach (XmlElement xe in dialog_list)
+                {
+                    if (xe.GetAttribute("order") == current_index.ToString())
+                    {
+                        if(xe.GetAttribute("aduio")!=null)
+                        {
+                            return xe.GetAttribute("audio");
+                        }
+                        else
+                        {
+                            return "";
+                        }
+                    }
+                }
+                return "";
+            }
+            else
+                return "";
+        }
+
         public bool CouldNext()
         {
             if (current_dialog.GetAttribute("id") != null)

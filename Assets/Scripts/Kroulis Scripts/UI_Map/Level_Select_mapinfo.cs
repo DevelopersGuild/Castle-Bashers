@@ -12,6 +12,7 @@ public class Level_Select_mapinfo : MonoBehaviour {
     [System.Serializable]
     public struct Chapter_Map
     {
+        public Sprite Map_Background;
         public Map_info[] mapinfo;
     };
     public Chapter_Map[] Chapter;

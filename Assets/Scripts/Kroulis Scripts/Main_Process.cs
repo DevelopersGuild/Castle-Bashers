@@ -158,7 +158,14 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = true;
         had_init = true;
         CancelInvoke();
-        Time.timeScale = 2.0f;
+        if(Application.platform==RuntimePlatform.WindowsEditor)
+        {
+            Invoke("TEST", 2.00f);
+        }
+        else
+        {
+            Time.timeScale = 2.0f;
+        }
     }
 
     //for forcing open Menu (Do not use it when other windows UI is opening)
@@ -196,10 +203,7 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject LS = Other_Windows.GetComponent<Other_Windows_FullControl>().Level_Select;
-        LS.GetComponent<Level_Select_FullControl>().chapid = chapter_id;
-        LS.GetComponent<Level_Select_FullControl>().currentmap = 0;
-        LS.GetComponent<Level_Select_FullControl>().currentdiff = 0;
-        LS.SetActive(true);
+        LS.GetComponent<Level_Select_FullControl>().ShowMap(chapter_id);
     }
 
     public void UI_Death_Window_Open_Withmusic()
@@ -421,6 +425,19 @@ public class Main_Process : MonoBehaviour {
             }
         }
     }
+
+    public void OpenDialog(string id,string npcname)
+    {
+        Other_Windows.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Dialog.GetComponent<Dialog_FullControl>().OpenDialog(id,npcname);
+    }
+
+    private void TEST()
+    {
+        CancelInvoke("TEST");
+        UI_Level_Selector_Open(0);
+    }
+
     void OnGUI()
     {
         if(movTexture)
@@ -439,6 +456,5 @@ public class Main_Process : MonoBehaviour {
                 }
             
             }
-        
     }
 }

@@ -12,10 +12,12 @@ public class Dialog_FullControl : MonoBehaviour {
     private Main_Process mainprocess;
     private bool couldnext = false;
     private string npcname="";
+    private AudioSource audios;
     // Use this for initialization
     void Start()
     {
         mainprocess = GameObject.Find("Main Process").GetComponent<Main_Process>();
+        audios = GetComponent<AudioSource>();
         dialog.Init();
         gameObject.SetActive(false);
     }
@@ -26,6 +28,7 @@ public class Dialog_FullControl : MonoBehaviour {
         {
             npcname=name;
             string spk=dialog.GetCurrentSpeaker();
+            string aud = dialog.GetCurrentAudio();
             if (spk == "#player1")
                 speaker.text = mainprocess.GetPlayerScript(0).Player_Name + ":";
             else if (spk == "#player2")
@@ -44,6 +47,8 @@ public class Dialog_FullControl : MonoBehaviour {
             {
                 tips.text = " Press [Space] to finish.";
             }
+            if (aud != "")
+                audios.clip = Resources.Load("dialogaudio/" + aud) as AudioClip;
             gameObject.SetActive(true);
         }
         else
@@ -60,6 +65,7 @@ public class Dialog_FullControl : MonoBehaviour {
             {
                 dialog.SetNext();
                 string spk = dialog.GetCurrentSpeaker();
+                string aud = dialog.GetCurrentAudio();
                 if (spk == "#player1")
                     speaker.text = mainprocess.GetPlayerScript(0).Player_Name + ":";
                 else if (spk == "#player2")
@@ -78,6 +84,8 @@ public class Dialog_FullControl : MonoBehaviour {
                 {
                     tips.text = " Press [Space] to finish.";
                 }
+                if (aud != "")
+                    audios.clip = Resources.Load("dialogaudio/" + aud) as AudioClip;
             }
             else
             {
