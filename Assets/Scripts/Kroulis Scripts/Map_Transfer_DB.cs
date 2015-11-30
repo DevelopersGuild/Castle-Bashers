@@ -10,6 +10,8 @@ public class Map_Transfer_DB : MonoBehaviour {
        public Texture bg_texture;
        public Sprite mini_bg_texture;
        public bool System_Map;
+       public bool have_bgm;
+       public AudioClip bgm;
        public int limit_time;
        public int limit_death;
        public int limit_gold;

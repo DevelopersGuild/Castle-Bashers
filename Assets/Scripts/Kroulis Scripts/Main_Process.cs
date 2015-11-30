@@ -55,13 +55,13 @@ public class Main_Process : MonoBehaviour {
             Player_Script[id] = pl;
             id++;
         }
-        if (id == 2)
-            One_player_per_client = false;
-        else
-            One_player_per_client = true;
+        //if (id == 2)
+        //    One_player_per_client = false;
+        //else
+        //    One_player_per_client = true;
 
         //Start to setup and init Main_UI and Menu_UI
-        Invoke("Main_UI_Init",1.00f);
+        Invoke("Main_UI_Init",2.00f);
         
         if(Application.platform!=RuntimePlatform.WindowsEditor)
             error.OnEnable();
