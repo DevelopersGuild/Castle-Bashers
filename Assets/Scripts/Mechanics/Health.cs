@@ -14,11 +14,13 @@ public class Health : MonoBehaviour
     private MoveController moveController;
     private bool isPlayerDown = false;
     public Vector3 damageTextOffset;
+    public AudioClip hitSound;
 
 
     // Use this for initialization
     void Start()
     {
+        hitSound = Resources.Load("hurt2") as AudioClip;
         player = GetComponent<Player>();
         attack = GetComponentInChildren<DealDamageToEnemy>();
         moveController = GetComponent<MoveController>();
@@ -68,6 +70,7 @@ public class Health : MonoBehaviour
 
     public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
+        AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
         if (player)
         {
             if (!player.GetInvincible())

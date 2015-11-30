@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject AttackCollider;
     public SkillManager skillManager;
     public Skill[] Skills = new Skill[4];
+
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
     public string Player_Name;
@@ -37,7 +38,7 @@ public class Player : MonoBehaviour
     public int playerId; // The Rewired player id of this character
 
     public AudioClip jumpAudio;
-    public AudioClip walkAudio;
+    public AudioClip attackAudio;
 
     private float accelerationTimeAirborne = .2f;
     private float accelerationTimeGrounded = .1f;

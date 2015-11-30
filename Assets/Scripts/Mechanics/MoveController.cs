@@ -5,6 +5,8 @@ using System.Collections;
 public class MoveController : MonoBehaviour
 {
     public LayerMask collisionMask;
+    public AudioClip walkSound;
+    private AudioSource source;
 
     private bool facingRight = true;
 
@@ -47,6 +49,8 @@ public class MoveController : MonoBehaviour
         canFlinch = true;
         height = 2.0f * Camera.main.orthographicSize;
         screenWidthInPoints = height * Camera.main.aspect;
+        source = new AudioSource();
+        source = GetComponent<AudioSource>();
     }
 
 
@@ -314,6 +318,16 @@ public class MoveController : MonoBehaviour
     {
         facingRight = !facingRight;
         transform.localScale = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+    }
+
+    public void playWalkSound()
+    {
+        if (walkSound)
+        {
+            source.pitch= Random.Range(0.4f, .6f);
+            source.clip = walkSound;
+            source.Play();
+        }
     }
 
     struct RaycastOrigins
