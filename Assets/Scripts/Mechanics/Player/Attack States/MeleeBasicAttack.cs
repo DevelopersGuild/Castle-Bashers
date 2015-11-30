@@ -22,7 +22,7 @@ public class MeleeBasicAttack : IAttack
     {
         player.animator.SetBool("IsUsingBasicAttack", true);
         player.GetAttackCollider().SetActive(true);
-
+        AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
     }
 
     public void UpdateState(Player player)

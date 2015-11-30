@@ -9,10 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 451764}
   - 212: {fileID: 21229386}
-  - 114: {fileID: 11406426}
   - 54: {fileID: 5443496}
   - 65: {fileID: 6572026}
   - 114: {fileID: 11418366}
+  - 114: {fileID: 11470008}
+  - 82: {fileID: 8267556}
   m_Layer: 0
   m_Name: RangedAttack
   m_TagString: DProj
@@ -59,22 +60,76 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 1.60000002, y: 1.10000002, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11406426
-MonoBehaviour:
+--- !u!82 &8267556
+AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138262}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgAmount: 1
-  dmgChange: 0
-  knockback: 10
-  flinch: 5
-  IsPhysicalDamage: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 1
+  m_Pitch: 1
+  Loop: 0
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
 --- !u!114 &11418366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -91,6 +146,22 @@ MonoBehaviour:
   damageAmount: 1
   TimeToLive: 2
   destroyOnCollision: 0
+--- !u!114 &11470008
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 138262}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitAudio: {fileID: 0}
+  dmgAmount: 1
+  isMagic: 0
+  damagePlayers: 1
+  damageEnemies: 0
 --- !u!212 &21229386
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -155,6 +226,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: flinch
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: destroyOnCollision
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagePlayers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
