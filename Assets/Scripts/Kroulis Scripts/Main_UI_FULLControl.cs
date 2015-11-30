@@ -665,11 +665,6 @@ public class Main_UI_FULLControl : MonoBehaviour {
             }
             if (In_Battle == false)
             {
-                if (Input.GetKeyDown(KeyCode.Escape)) //Open Settings
-                {
-                    Main_Process.GetComponent<Main_Process>().Menu_Force_Open(4);
-                    Main_Process.GetComponent<Main_Process>().esckey_up = true;
-                }
                 if (Input.GetKeyDown(KeyCode.P))//Open Character
                 {
                     Main_Process.GetComponent<Main_Process>().Menu_Force_Open(1); 
@@ -684,7 +679,11 @@ public class Main_UI_FULLControl : MonoBehaviour {
                     Main_Process.GetComponent<Main_Process>().Menu_Force_Open(2);
                 }
             }
-
+            if (Input.GetKeyDown(KeyCode.Escape)) //Open Settings
+            {
+                Main_Process.GetComponent<Main_Process>().Menu_Force_Open(4);
+                Main_Process.GetComponent<Main_Process>().esckey_up = true;
+            }
 
         }
 
