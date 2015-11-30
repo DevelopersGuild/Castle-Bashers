@@ -3129,7 +3129,7 @@ MonoBehaviour:
       Position: {x: -560, y: -200, z: 0}
     - mapid: 1
       Position: {x: -21, y: -43, z: 0}
-    - mapid: 1
+    - mapid: 3
       Position: {x: 583, y: 200, z: 0}
 --- !u!1 &386386375 stripped
 GameObject:
@@ -15183,6 +15183,8 @@ MonoBehaviour:
     bg_texture: {fileID: 0}
     mini_bg_texture: {fileID: 0}
     System_Map: 1
+    have_bgm: 0
+    bgm: {fileID: 0}
     limit_time: 0
     limit_death: 0
     limit_gold: 0
@@ -15192,6 +15194,8 @@ MonoBehaviour:
     bg_texture: {fileID: 2800000, guid: 172780adccbd00646b313e834100bc18, type: 3}
     mini_bg_texture: {fileID: 21300000, guid: 554de277ef5aa8443b2fc911e849a5d7, type: 3}
     System_Map: 0
+    have_bgm: 0
+    bgm: {fileID: 0}
     limit_time: 0
     limit_death: 0
     limit_gold: 0
@@ -15201,6 +15205,8 @@ MonoBehaviour:
     bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
     mini_bg_texture: {fileID: 0}
     System_Map: 1
+    have_bgm: 0
+    bgm: {fileID: 0}
     limit_time: 0
     limit_death: 0
     limit_gold: 0
@@ -15210,6 +15216,8 @@ MonoBehaviour:
     bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
     mini_bg_texture: {fileID: 0}
     System_Map: 0
+    have_bgm: 1
+    bgm: {fileID: 8300000, guid: 19c59e348e460ad45b2a90f4d9179785, type: 3}
     limit_time: 0
     limit_death: 0
     limit_gold: 0
@@ -15219,6 +15227,8 @@ MonoBehaviour:
     bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
     mini_bg_texture: {fileID: 0}
     System_Map: 1
+    have_bgm: 0
+    bgm: {fileID: 0}
     limit_time: 0
     limit_death: 0
     limit_gold: 0

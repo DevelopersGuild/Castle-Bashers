@@ -25,7 +25,7 @@ public class SaveAndLoad : MonoBehaviour {
 
         PlayerHolder = GameObject.Find("PlayerHolder");
         Player_Script = PlayerHolder.GetComponentsInChildren<Player>();
-        Debug.Log("Player Object Found: " + Player_Script.Length.ToString());
+        //Debug.Log("Player Object Found: " + Player_Script.Length.ToString());
         for (int i = 0; i <= 1;i++ )
         {
             Player_PF[i] = Player_Script[i].gameObject;
@@ -268,15 +268,15 @@ public class SaveAndLoad : MonoBehaviour {
                 Player_EXP[player_id_load - 1].LevelUp();
                 Player_Script[player_id_load - 1].Fully_Update();
             }
-            if (!twoplayer)
-            {
-                GetComponent<Main_Process>().One_player_per_client = false;
-                Player_PF[1].SetActive(false);
-                //Destroy(Player_PF[1]);
-            }  
-            Invoke("UpdateSkill", 3.0f);
         }
-   
+        if (twoplayer == false)
+        {
+            GetComponent<Main_Process>().One_player_per_client = false;
+            Player_PF[1].SetActive(false);
+            //Destroy(Player_PF[1]);
+            //Debug.Log("1 player setuped.");
+        }
+        Invoke("UpdateSkill", 3.0f);
     }
 
     void UpdateSkill()
