@@ -3,12 +3,14 @@ using System.Collections;
 
 public class Skill : MonoBehaviour
 {
+    public AudioClip useSkillAudio;
     private float coolDown = 0;
     private float coolDownTimer = 0;
     private int price = 0;
     private int manaCost;
     private string skillName;
     private string skillDiscription;
+    private Sprite skillicon;
     public float value;
     [HideInInspector]
     public enum Augment { Neutral, Purple, Orange, Teal}
@@ -30,6 +32,21 @@ public class Skill : MonoBehaviour
         this.skillName = skillName;
         this.skillLevel = skillLevel;
         this.skillDiscription = discription;
+    }
+
+    public void SetSkillIcon(Sprite icon)
+    {
+        this.skillicon = icon;
+    }
+
+    public void SetSkillAudioClip(AudioClip audio)
+    {
+        this.useSkillAudio = audio;
+    }
+
+    public Sprite GetSkillIcon()
+    {
+        return skillicon;
     }
 
     // Use this for initialization

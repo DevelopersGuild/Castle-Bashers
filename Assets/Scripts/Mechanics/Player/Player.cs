@@ -10,6 +10,7 @@ public class Player : MonoBehaviour
     public GameObject AttackCollider;
     public SkillManager skillManager;
     public Skill[] Skills = new Skill[4];
+
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
     public string Player_Name;
@@ -20,6 +21,8 @@ public class Player : MonoBehaviour
     //The stats should remain public to allow them to be set in the editor.
     [HideInInspector]
     public Character_Class_Info CCI;
+    [HideInInspector]
+    public Skill_info si;
     private int class_id = 0;
     private int weapon_level = 0;
     private int armor_level = 0;
@@ -33,6 +36,9 @@ public class Player : MonoBehaviour
     public float horizontalMoveSpeed = 6;
     public float verticalMoveSpeed = 10;
     public int playerId; // The Rewired player id of this character
+
+    public AudioClip jumpAudio;
+    public AudioClip attackAudio;
 
     private float accelerationTimeAirborne = .2f;
     private float accelerationTimeGrounded = .1f;
@@ -68,6 +74,9 @@ public class Player : MonoBehaviour
     private float managerID, priorityID;
     [HideInInspector]
     public float threatLevel, damageDealt;
+    private bool[] skill_unlock=new bool[14];
+    private int[] skillslot = {-1,-1,-1,-1};
+    private int[] itemslot = {-1,-1,-1};
 
     /*
     void Awake()
@@ -116,6 +125,7 @@ public class Player : MonoBehaviour
 
         GetComponent<ID>().setTime(false);
         CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
     }
 
     void Update()
@@ -659,5 +669,55 @@ public class Player : MonoBehaviour
     public float GetBlockChance()
     {
         return blockchance;
+    }
+
+    public void SetUnlockSkillList(bool[] list)
+    {
+        skill_unlock = new bool[list.Length];
+        skill_unlock = list;
+    }
+
+    public bool[] GetUnlockSkillList()
+    {
+        return skill_unlock;
+    }
+
+    public void SetSkillSlotInit(int id,int skill_index)
+    {
+        skillslot[id] = skill_index;
+        skillManager.ChangeSkill(si.skill[CCI.Class_info[class_id].skillid[skill_index]].skill_script, id);
+    }
+
+    public void SetSkillSlot(int id, int skill_index)
+    {
+        skillslot[id] = skill_index;
+        skillManager.FindAndChangeSkill(si.skill[CCI.Class_info[class_id].skillid[skill_index]].skill_script, id);
+    }
+
+    public Skill GetSkillSlotScript(int id)
+    {
+        return skillManager.GetSlotSkill(id);
+    }
+
+    public int GetSkillSlotSkillID(int id)
+    {
+        return skillslot[id - 1];
+    }
+
+    public void UpdateSkillSlot()
+    {
+        for (int i = 0; i <= 3; i++)
+            if (skillslot[i] != -1)
+                SetSkillSlotInit(i, skillslot[i]);
+    }
+
+    public bool GetSkillUnlock(int id)
+    {
+        return skill_unlock[id];
+    }
+
+    public void SetSkillUnlock(int id,bool value)
+    {
+        skill_unlock[id] = value;
     }
 }

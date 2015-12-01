@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21225354}
   - 65: {fileID: 6546276}
   - 114: {fileID: 11475472}
+  - 114: {fileID: 11407954}
   m_Layer: 0
   m_Name: MeleeAttack
   m_TagString: Untagged
@@ -42,7 +43,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .540000021, y: .639999986, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11475472
+--- !u!114 &11407954
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50,12 +51,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 167148}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitAudio: {fileID: 0}
+  dmgAmount: 1
+  isMagic: 0
+  damagePlayers: 1
+  damageEnemies: 0
+--- !u!114 &11475472
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 167148}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   dmgAmount: 1
+  dmgChange: 0
   knockback: 4
   flinch: 5
+  IsPhysicalDamage: 1
 --- !u!212 &21225354
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -104,6 +123,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: knockback
       value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagePlayers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

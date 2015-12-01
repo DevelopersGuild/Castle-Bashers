@@ -52,7 +52,11 @@ public class skilltesting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
+<<<<<<< HEAD
         gameObject.AddComponent<FireBlast>();
+=======
+        gameObject.AddComponent<FireballSkill>();
+>>>>>>> c574f937d0867388a4cf76c2ff37f058b895a52d
         testSkill = GetComponent<Skill>();
 	}
 	

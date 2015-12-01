@@ -506,7 +506,7 @@ AnimatorState:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: PowerAttack
-  m_Speed: .800000012
+  m_Speed: .899999976
   m_CycleOffset: 0
   m_Transitions:
   - {fileID: 110156648}

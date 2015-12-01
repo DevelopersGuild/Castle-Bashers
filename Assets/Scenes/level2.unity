@@ -248,6 +248,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &266171600
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -302,7 +307,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1001 &302575186
 Prefab:
   m_ObjectHideFlags: 0
@@ -375,6 +380,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &354746043
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -429,7 +439,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
+  m_RootOrder: 7
 --- !u!1 &453434773
 GameObject:
   m_ObjectHideFlags: 0
@@ -533,6 +543,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &636908841
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -587,7 +602,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 10
+  m_RootOrder: 11
 --- !u!1001 &708656828
 Prefab:
   m_ObjectHideFlags: 0
@@ -741,6 +756,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &871025055
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -795,7 +815,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
 --- !u!1 &931413080
 GameObject:
   m_ObjectHideFlags: 0
@@ -826,6 +846,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &931413082
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -880,7 +905,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 5.5046258, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 10
 --- !u!1001 &1131832565
 Prefab:
   m_ObjectHideFlags: 0
@@ -979,8 +1004,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 4
-  regenAmount: 0
+  RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &1152021530
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -1013,19 +1040,27 @@ MonoBehaviour:
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
+  moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
+  freeFall: 0
   invTime: 0
   stunTimer: 0
   distance: 0
   speed: 0
+  zDiff: 0
   distL: 0
   distR: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
+  sprRend: {fileID: 0}
+  hp: {fileID: 0}
   classification: 1
+  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
 --- !u!114 &1152021532
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1044,6 +1079,7 @@ MonoBehaviour:
   verticalRayCount: 4
   knockbackVelocity: 0
   knockbackTime: 0
+  flinchTime: .400000006
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!65 &1152021533
@@ -1158,6 +1194,33 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b15fca5e064c366488af20ef7ccb351b, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1239172556
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1761329854}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 1239172557}
+  m_Layer: 0
+  m_Name: Missing Prefab
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1239172557
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 1761329854}
+  m_GameObject: {fileID: 1239172556}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 3
 --- !u!1 &1247646075
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,6 +1306,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!1 &1284230508
 GameObject:
   m_ObjectHideFlags: 0
@@ -1273,6 +1341,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &1284230510
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1327,7 +1400,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 13
 --- !u!1 &1304235950
 GameObject:
   m_ObjectHideFlags: 0
@@ -1358,6 +1431,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &1304235952
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1412,7 +1490,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 8
 --- !u!1 &1388817684
 GameObject:
   m_ObjectHideFlags: 0
@@ -1443,6 +1521,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &1388817686
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1497,7 +1580,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 9
 --- !u!1 &1436707727
 GameObject:
   m_ObjectHideFlags: 0
@@ -1560,6 +1643,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &1612569302
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1614,7 +1702,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 3
+  m_RootOrder: 4
 --- !u!1 &1612988611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1645,6 +1733,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &1612988613
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1699,7 +1792,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 5
 --- !u!1001 &1761329854
 Prefab:
   m_ObjectHideFlags: 0
@@ -1772,6 +1865,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1
 --- !u!23 &1995267759
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -1826,7 +1924,7 @@ Transform:
   m_LocalScale: {x: 2.82632279, y: 2.0710175, z: 3.29356527}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 13
+  m_RootOrder: 15
 --- !u!1 &2000219004
 GameObject:
   m_ObjectHideFlags: 0
@@ -1934,8 +2032,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 10
-  regenAmount: .200000003
+  RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2020331430
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1964,8 +2064,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 10
-  regenAmount: .200000003
+  RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!114 &2020331432
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1985,6 +2087,7 @@ MonoBehaviour:
   verticalRayCount: 4
   knockbackVelocity: .150000006
   knockbackTime: .449999988
+  flinchTime: .400000006
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &2020331433
@@ -1999,16 +2102,30 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4bfe0451ac1b7cd439c80b7f9c963883, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  BasicAttackPrefab: {fileID: 0}
   animator: {fileID: 0}
+  AttackCollider: {fileID: 0}
+  skillManager: {fileID: 0}
+  Skills:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
+  Player_Name: 
+  Stamina: 0
+  Strength: 1
+  Agility: 0
+  Intelligence: 0
+  CCI: {fileID: 0}
+  si: {fileID: 0}
   jumpHeight: 4
   timeToJumpApex: .600000024
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
-  kbLimit: 3
-  kbCounter: 0
-  kbForce: 1
   playerId: 0
+  jumpAudio: {fileID: 0}
+  walkAudio: {fileID: 0}
+  threatLevel: 0
+  damageDealt: 0
 --- !u!54 &2020331434
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2076,7 +2193,7 @@ Transform:
   m_LocalScale: {x: 2.54750299, y: 3.87353134, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 16
 --- !u!1 &2099801932
 GameObject:
   m_ObjectHideFlags: 0
@@ -2116,19 +2233,27 @@ MonoBehaviour:
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
+  moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
+  freeFall: 0
   invTime: 0
   stunTimer: 0
   distance: 0
   speed: 0
+  zDiff: 0
   distL: 0
   distR: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
+  sprRend: {fileID: 0}
+  hp: {fileID: 0}
   classification: 2
+  attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
 --- !u!114 &2099801934
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2140,8 +2265,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  ExperinceAmount: 0
   startingHealth: 4
-  regenAmount: 0
+  RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
 --- !u!54 &2099801935
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -2175,6 +2302,7 @@ MonoBehaviour:
   verticalRayCount: 4
   knockbackVelocity: 0
   knockbackTime: 0
+  flinchTime: .400000006
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!65 &2099801937
@@ -2238,3 +2366,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  dmgAmount: 1
+  dmgChange: 0
+  knockback: 4
+  flinch: 5
+  IsPhysicalDamage: 1

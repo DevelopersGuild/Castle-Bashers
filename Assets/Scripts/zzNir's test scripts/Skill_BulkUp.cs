@@ -8,6 +8,7 @@ public class Skill_BulkUp : Skill
     private bool on = false;
     private bool regen = false;
     private float regenTicker, regenAmount;
+    private int defDelta;
 
     /*
         Bulk Up skill (buff) - Raises max hp of the player
@@ -21,6 +22,7 @@ public class Skill_BulkUp : Skill
     {
         base.Start();
         base.SetBaseValues(30, 1000, 25, "Bulk Up", SkillLevel.Level1);
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/bulkup"));
     }
 
     protected override void Update()
@@ -103,14 +105,22 @@ public class Skill_BulkUp : Skill
 
     private void modDefense(GameObject caller, bool add = true)
     {
+        int val;
         float f;
         if (add)
             f = 1.3f;
         else
             f = (1.0f / 1.3f);
 
-        
-        //caller.GetComponent<Defense>().SetDefense(caller.GetComponent<Defense>().GetDefense() * f);
+        val = (int)(caller.GetComponent<Defense>().GetBasePhysicalDefense() * f);
+        if (add)
+            defDelta = val;
+        else
+            defDelta *= -1;
+
+
+
+        caller.GetComponent<Defense>().SetPhysicalDefense(caller.GetComponent<Defense>().GetPhysicalDefense() + defDelta);
 
     }
 

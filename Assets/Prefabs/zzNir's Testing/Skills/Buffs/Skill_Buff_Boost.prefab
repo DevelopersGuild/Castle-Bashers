@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 437904}
   - 114: {fileID: 11493980}
   m_Layer: 0
-  m_Name: Skill_Buff_BulkUp
+  m_Name: Skill_Buff_Boost
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -27,7 +27,7 @@ public class Skill_BoostV2 : Skill
         base.Start();
         base.SetBaseValues(15, 1000, 15, "Boost", SkillLevel.Level1);
         //remove when actually complete
-
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/boost"));
     }
 
     void Awake()
@@ -57,6 +57,11 @@ public class Skill_BoostV2 : Skill
         {
             if (state.name == "Walk" || state.name == "Jump")
             {
+                state.speed = 1;
+            }
+            if(state.name == "BasicAttack" || state.name == "PowerAttack")
+            {
+                state.speed = 0.9f;
             }
         }
     }

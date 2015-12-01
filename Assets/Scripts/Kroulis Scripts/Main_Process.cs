@@ -55,13 +55,13 @@ public class Main_Process : MonoBehaviour {
             Player_Script[id] = pl;
             id++;
         }
-        if (id == 2)
-            One_player_per_client = false;
-        else
-            One_player_per_client = true;
+        //if (id == 2)
+        //    One_player_per_client = false;
+        //else
+        //    One_player_per_client = true;
 
         //Start to setup and init Main_UI and Menu_UI
-        Invoke("Main_UI_Init",1.00f);
+        Invoke("Main_UI_Init",2.00f);
         
         if(Application.platform!=RuntimePlatform.WindowsEditor)
             error.OnEnable();
@@ -158,12 +158,20 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = true;
         had_init = true;
         CancelInvoke();
-        Time.timeScale = 2.0f;
+        if(Application.platform==RuntimePlatform.WindowsEditor)
+        {
+            Invoke("TEST", 2.00f);
+        }
+        else
+        {
+            Time.timeScale = 2.0f;
+        }
     }
 
     //for forcing open Menu (Do not use it when other windows UI is opening)
     public void Menu_Force_Open(int menu_id)
     {
+        Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StopChangingIcon();
         Menu_id = menu_id;
         Menu_UI.GetComponent<Menu_UI_FullControl>().UpdateGold();
         Menu_Open = true;
@@ -174,6 +182,10 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = false;
     }
 
+    public void Menu_Normal_Close()
+    {
+        Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StartChangingIcon();
+    }
 
     //when the mission start, use this to start the timer and ban the menu
     public void mission_start()
@@ -191,10 +203,7 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject LS = Other_Windows.GetComponent<Other_Windows_FullControl>().Level_Select;
-        LS.GetComponent<Level_Select_FullControl>().chapid = chapter_id;
-        LS.GetComponent<Level_Select_FullControl>().currentmap = 0;
-        LS.GetComponent<Level_Select_FullControl>().currentdiff = 0;
-        LS.SetActive(true);
+        LS.GetComponent<Level_Select_FullControl>().ShowMap(chapter_id);
     }
 
     public void UI_Death_Window_Open_Withmusic()
@@ -209,11 +218,22 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_SkillShop_Open(int class_id, int[] skill_id)
     {
+        Debug.LogWarning("This Function is out of date. Please use UI_SkillShop_Open(int class_id) as new method.");
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
         Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = class_id;
-        Shop.GetComponent<Skill_Shop_Fullcontrol>().store_skill_id = skill_id;
+        //Shop.GetComponent<Skill_Shop_Fullcontrol>().store_skill_id = skill_id;
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().Change();
+        Shop.SetActive(true);
+    }
+
+    public void UI_SkillShop_Open(int class_id)
+    {
+        Hide_UI = true;
+        Other_Windows.SetActive(true);
+        GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = class_id;
         Shop.GetComponent<Skill_Shop_Fullcontrol>().Change();
         Shop.SetActive(true);
     }
@@ -405,23 +425,36 @@ public class Main_Process : MonoBehaviour {
             }
         }
     }
+
+    public void OpenDialog(string id,string npcname)
+    {
+        Other_Windows.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Dialog.GetComponent<Dialog_FullControl>().OpenDialog(id,npcname);
+    }
+
+    private void TEST()
+    {
+        CancelInvoke("TEST");
+        UI_Level_Selector_Open(0);
+    }
+
     void OnGUI()
     {
-        if(movTexture.isPlaying)
-        {
-            GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
-        }
-        else if(start_to_play==true)
-        {
-            Time.timeScale=1.0f;
-            if(Application.platform!=RuntimePlatform.WindowsEditor)
+        if(movTexture)
+            if(movTexture.isPlaying)
             {
-                if (Globe.Map_Load_id != 3)
-                    Start_Battle();
-                Application.LoadLevel(2);
+                GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
             }
+            else if(start_to_play==true)
+            {
+                Time.timeScale=1.0f;
+                if(Application.platform!=RuntimePlatform.WindowsEditor)
+                {
+                    if (Globe.Map_Load_id != 3)
+                        Start_Battle();
+                    Application.LoadLevel(2);
+                }
             
-        }
-        
+            }
     }
 }

@@ -8,6 +8,9 @@ public class Map_Transfer_Process : MonoBehaviour {
     private int nowFram;
     AsyncOperation async;
     Map_Transfer_UI_Control Map_Transfer_UI_Control_Script;
+    private Map_Transfer_DB mapdb;
+    private AudioSource audio;
+    private Main_Process mp;
 
     void Start()
     {
@@ -17,8 +20,26 @@ public class Map_Transfer_Process : MonoBehaviour {
         GOResult = GameObject.Find("TransferUI");
         Map_Transfer_UI_Control_Script = GOResult.GetComponent<Map_Transfer_UI_Control>();
         GOResult = GameObject.Find("Main Process");
+        audio = GOResult.GetComponent<AudioSource>();
+        mapdb=GOResult.GetComponentInChildren<Map_Transfer_DB>();
+        mp = GOResult.GetComponent<Main_Process>();
         if(GOResult)
+        {
             GOResult.GetComponent<SaveAndLoad>().SaveData();
+            //play the bgm
+            if (mapdb.mapinfo[Globe.Map_Load_id].have_bgm)
+            {
+                audio.clip = mapdb.mapinfo[Globe.Map_Load_id].bgm;
+                audio.Play();
+                audio.volume = 1;
+            }
+            else
+            {
+                mp.Start_Battle();
+            }
+                
+        }
+            
         //start to load scene
         StartCoroutine(loadScene());
     }
