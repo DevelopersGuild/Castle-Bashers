@@ -41,7 +41,10 @@ public class Health : MonoBehaviour
     public void Update_Maxhp()
     {
         if (player)
+        {
             maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30 + player.CCI.Class_info[player.GetClassID()].accessory[player.GetAccessoriesLV()].maxhp;
+            Debug.Log("UPDATE_MAXHP SET HP TO " + maxhp);
+        }
         else
             maxhp = startingHealth;
         

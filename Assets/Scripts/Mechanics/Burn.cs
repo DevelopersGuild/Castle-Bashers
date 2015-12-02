@@ -7,7 +7,7 @@ public class Burn : MonoBehaviour {
     private float maxHealth;
     private float nextTick;
     private float tickInterval = 0.5f;
-    private float duration = 5;
+    public float duration = 5;
     private float expiration;
     
     private Defense defense;
