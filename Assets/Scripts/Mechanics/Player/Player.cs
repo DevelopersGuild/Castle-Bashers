@@ -60,6 +60,7 @@ public class Player : MonoBehaviour
     private float velocityXSmoothing;
     private float velocityZSmoothing;
     private MoveController controller;
+    private AttackController attackController;
     private CrowdControllable crowdControllable;
     private Health health;
     private Mana mana;
@@ -102,6 +103,7 @@ public class Player : MonoBehaviour
         mana = GetComponent<Mana>();
         attack = GetComponentInChildren<DealDamageToEnemy>();
         defense = GetComponent<Defense>();
+        attackController = GetComponent<AttackController>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
 
@@ -165,7 +167,11 @@ public class Player : MonoBehaviour
         HandleInput();
         Vector2 input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
 
-        if (input.x == 0 && input.y == 0)
+        if ((input.x == 0 && input.y == 0))
+        {
+            isMoving = false;
+        }
+        else if (attackController.getIsAttack())
         {
             isMoving = false;
         }
@@ -173,6 +179,12 @@ public class Player : MonoBehaviour
         {
             isMoving = true;
         }
+
+        if(attackController.getIsAttack())
+        {
+            input = new Vector2(0, 0);
+        }
+
         if (!crowdControllable.getStun())
         {
 
@@ -460,6 +472,12 @@ public class Player : MonoBehaviour
     {
         return isGrounded;
     }
+
+    public void setIsMoving(bool move)
+    {
+        isMoving = move;
+    }
+
 
     public bool GetIsMoving()
     {
