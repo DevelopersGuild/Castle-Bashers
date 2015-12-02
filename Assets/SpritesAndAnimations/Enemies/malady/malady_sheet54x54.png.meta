@@ -1,0 +1,958 @@
+fileFormatVersion: 2
+guid: 3b766afbda23832408d87f289f9e6c9e
+timeCreated: 1449042580
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: malady_sheet54x54_0
+    21300002: malady_sheet54x54_1
+    21300004: malady_sheet54x54_2
+    21300006: malady_sheet54x54_3
+    21300008: malady_sheet54x54_4
+    21300010: malady_sheet54x54_5
+    21300012: malady_sheet54x54_6
+    21300014: malady_sheet54x54_7
+    21300016: malady_sheet54x54_8
+    21300018: malady_sheet54x54_9
+    21300020: malady_sheet54x54_10
+    21300022: malady_sheet54x54_11
+    21300024: malady_sheet54x54_12
+    21300026: malady_sheet54x54_13
+    21300028: malady_sheet54x54_14
+    21300030: malady_sheet54x54_15
+    21300032: malady_sheet54x54_16
+    21300034: malady_sheet54x54_17
+    21300036: malady_sheet54x54_18
+    21300038: malady_sheet54x54_19
+    21300040: malady_sheet54x54_20
+    21300042: malady_sheet54x54_21
+    21300044: malady_sheet54x54_22
+    21300046: malady_sheet54x54_23
+    21300048: malady_sheet54x54_24
+    21300050: malady_sheet54x54_25
+    21300052: malady_sheet54x54_26
+    21300054: malady_sheet54x54_27
+    21300056: malady_sheet54x54_28
+    21300058: malady_sheet54x54_29
+    21300060: malady_sheet54x54_30
+    21300062: malady_sheet54x54_31
+    21300064: malady_sheet54x54_32
+    21300066: malady_sheet54x54_33
+    21300068: malady_sheet54x54_34
+    21300070: malady_sheet54x54_35
+    21300072: malady_sheet54x54_36
+    21300074: malady_sheet54x54_37
+    21300076: malady_sheet54x54_38
+    21300078: malady_sheet54x54_39
+    21300080: malady_sheet54x54_40
+    21300082: malady_sheet54x54_41
+    21300084: malady_sheet54x54_42
+    21300086: malady_sheet54x54_43
+    21300088: malady_sheet54x54_44
+    21300090: malady_sheet54x54_45
+    21300092: malady_sheet54x54_46
+    21300094: malady_sheet54x54_47
+    21300096: malady_sheet54x54_48
+    21300098: malady_sheet54x54_49
+    21300100: malady_sheet54x54_50
+    21300102: malady_sheet54x54_51
+    21300104: malady_sheet54x54_52
+    21300106: malady_sheet54x54_53
+    21300108: malady_sheet54x54_54
+    21300110: malady_sheet54x54_55
+    21300112: malady_sheet54x54_56
+    21300114: malady_sheet54x54_57
+    21300116: malady_sheet54x54_58
+    21300118: malady_sheet54x54_59
+    21300120: malady_sheet54x54_60
+    21300122: malady_sheet54x54_61
+    21300124: malady_sheet54x54_62
+    21300126: malady_sheet54x54_63
+    21300128: malady_sheet54x54_64
+    21300130: malady_sheet54x54_65
+    21300132: malady_sheet54x54_66
+    21300134: malady_sheet54x54_67
+    21300136: malady_sheet54x54_68
+    21300138: malady_sheet54x54_69
+    21300140: malady_sheet54x54_70
+    21300142: malady_sheet54x54_71
+    21300144: malady_sheet54x54_72
+    21300146: malady_sheet54x54_73
+    21300148: malady_sheet54x54_74
+    21300150: malady_sheet54x54_75
+    21300152: malady_sheet54x54_76
+    21300154: malady_sheet54x54_77
+    21300156: malady_sheet54x54_78
+    21300158: malady_sheet54x54_79
+    21300160: malady_sheet54x54_80
+    21300162: malady_sheet54x54_81
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 12
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: malady_sheet54x54_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 648
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_1
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 648
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_2
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 648
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_3
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 648
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_4
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 648
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_5
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 648
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_6
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 648
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_7
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_8
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_9
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_10
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_11
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_12
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_13
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_14
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_15
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_16
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_17
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_18
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_19
+      rect:
+        serializedVersion: 2
+        x: 648
+        y: 594
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_20
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 540
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_21
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 540
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_22
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 540
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_23
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 540
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_24
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 540
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_25
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 540
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 486
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_27
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 486
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_28
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 486
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_29
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 486
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_30
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 486
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_31
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 486
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_32
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 486
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_33
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_34
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_35
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_36
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_37
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_38
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_39
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_40
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_41
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_42
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_43
+      rect:
+        serializedVersion: 2
+        x: 540
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_44
+      rect:
+        serializedVersion: 2
+        x: 594
+        y: 432
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_45
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 378
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_46
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 378
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_47
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 378
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_48
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 378
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_49
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 378
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_50
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_51
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_52
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_53
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_54
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_55
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_56
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_57
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 324
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_58
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_59
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_60
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_61
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_62
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_63
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_64
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_65
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_66
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 270
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_67
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 216
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_68
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 216
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_69
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 216
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_70
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 216
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_71
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 216
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_72
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 216
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_73
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_74
+      rect:
+        serializedVersion: 2
+        x: 54
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_75
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_76
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_77
+      rect:
+        serializedVersion: 2
+        x: 216
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_78
+      rect:
+        serializedVersion: 2
+        x: 270
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_79
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_80
+      rect:
+        serializedVersion: 2
+        x: 378
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: malady_sheet54x54_81
+      rect:
+        serializedVersion: 2
+        x: 432
+        y: 162
+        width: 54
+        height: 54
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

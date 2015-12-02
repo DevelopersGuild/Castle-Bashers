@@ -14,6 +14,7 @@ GameObject:
   - 114: {fileID: 11444124}
   - 54: {fileID: 5401372}
   - 114: {fileID: 11478724}
+  - 114: {fileID: 11432526}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -74,6 +75,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+  walkSound: {fileID: 0}
   horizontalRayCount: 4
   verticalRayCount: 4
   knockbackVelocity: 0
@@ -81,6 +83,22 @@ MonoBehaviour:
   flinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
+--- !u!114 &11432526
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defense: 0
+  basePhysicalDefense: 0
+  baseMagicalDefense: 0
+  PhysicalDefense: 0
+  MagicalDefense: 0
 --- !u!114 &11444124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -115,8 +133,10 @@ MonoBehaviour:
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
+  sprRend: {fileID: 0}
+  hp: {fileID: 0}
   classification: 1
+  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
 --- !u!114 &11478724
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -128,8 +148,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingHealth: 2
+  ExperinceAmount: 0
+  startingHealth: 0
   RegenAmount: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 0}
 --- !u!212 &21225504
 SpriteRenderer:
   m_ObjectHideFlags: 1
