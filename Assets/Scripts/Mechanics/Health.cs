@@ -79,6 +79,7 @@ public class Health : MonoBehaviour
             if (!player.GetInvincible())
             {
                 currentHealth -= dmg;
+                Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Quaternion.identity);
                 createFloatingText(dmg);
 
                 player.ModifyKBCount(knockback);
@@ -112,6 +113,8 @@ public class Health : MonoBehaviour
         else
         {
             currentHealth -= dmg;
+            Destroy(Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Random.rotation), 1);
+            
             createFloatingText(dmg);
 
             if (currentHealth <= 0)
