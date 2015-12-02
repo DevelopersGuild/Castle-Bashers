@@ -1,47 +1,48 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class test : Skill
+public class testSkill : Skill
 {
-    private float duration = 10f;
-    private float expiration;
-    bool active;
-    Player player;
+    public float aoeRadius = 10;
+    float damage = 15;
+    private float amountToHeal = 0;
+    public float healPercentPerTarget = 0.05f;
 
-    private int bonusStrength;
     protected override void Start()
     {
         base.Start();
-   
-        base.SetBaseValues(15, 16000, 150, "Ignite", SkillLevel.Level1);
-        player = GetComponent<Player>();
+        base.SetBaseValues(4, 16000, 150, "Spirit of the Flame", SkillLevel.Level1);
+        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/Ignite"));
 
     }
     protected override void Update()
     {
         base.Update();
-        if(active && Time.time >= expiration)
-        {
-            active = false;
-            player.transform.GetChild(0).GetComponent<DealDamage>().isMagic = false;
-            player.SetStrength(player.GetStrength() - bonusStrength);
 
-        }
 
     }
 
     public override void UseSkill(GameObject caller, GameObject target = null, object optionalParameters = null)
     {
         base.UseSkill(gameObject);
-        expiration = Time.time + duration;
-        active = true;
-        player.transform.GetChild(0).GetComponent<DealDamage>().isMagic = true;
-        bonusStrength = player.GetIntelligence() / 2;
-        player.SetStrength(player.GetStrength() + bonusStrength);
 
-
+        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, aoeRadius);
+        foreach (Collider col in hitColliders)
+        {
+            Debug.Log(col.gameObject.name);
+            if (col.gameObject.GetComponent<Burn>())
+            {
+                Debug.Log("Adding % to heal");
+                amountToHeal += healPercentPerTarget;
+            }
+        }
+        float healAmount = gameObject.GetComponent<Health>().GetMaxHP() * amountToHeal;
+        Debug.Log("Heal amount: " + healAmount);
+        gameObject.GetComponent<Health>().AddHealth(healAmount);
     }
 }
+
+
 
 public class skilltesting : MonoBehaviour {
 
@@ -52,16 +53,14 @@ public class skilltesting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-<<<<<<< HEAD
-        gameObject.AddComponent<FireBlast>();
-=======
-        gameObject.AddComponent<FireballSkill>();
->>>>>>> c574f937d0867388a4cf76c2ff37f058b895a52d
+        gameObject.AddComponent<SotFSkill>();
+
         testSkill = GetComponent<Skill>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if(Time.time >= 1) 
 	    if(testSkill.GetCoolDownTimer() <= 0)
         {
             testSkill.UseSkill(gameObject);
