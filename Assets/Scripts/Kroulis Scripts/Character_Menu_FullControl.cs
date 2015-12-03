@@ -9,7 +9,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
     Mana Player_Mana;
     Defense Player_Defense;
     Experience Player_EXP;
-    DealDamageToEnemy Player_ATK;
+    DealDamage Player_ATK;
     public Character_Class_Info CI;
     public Main_Process main_process;
     //Character Infos
@@ -141,7 +141,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
         Player_Health = Player_PF.GetComponent<Health>();
         Player_Mana = Player_PF.GetComponent<Mana>();
         Player_Defense = Player_PF.GetComponent<Defense>();
-        Player_ATK = Player_Script.AttackCollider.GetComponent<DealDamageToEnemy>();
+        Player_ATK = Player_Script.AttackCollider.GetComponent<DealDamage>();
         //if (!Player_ATK)
         //    Debug.Log("Cannot Get Player_ATK");
         ATK.text = Player_Script.GetStrength().ToString();
@@ -149,11 +149,12 @@ public class Character_Menu_FullControl : MonoBehaviour {
         STA.text = Player_Script.GetStamina().ToString();
         SPI.text = Player_Script.GetIntelligence().ToString();
         AGI.text = Player_Script.GetAgility().ToString();
-        BATK.text = "<color=#ffffffff>" + Player_ATK.GetPhysicalAttackLeftRange().ToString()+"-"+Player_ATK.GetPhysicalAttackRightRange().ToString() + "</color>";
-        MATK.text = "<color=#ffffffff>" + Player_ATK.GetMagicalAttackLeftRange().ToString()+"-"+Player_ATK.GetMagicalAttackRightRange().ToString() + "</color>";
+        BATK.text = "<color=#ffffffff>" + Player_ATK.GetDamageI().ToString() + "-" + Player_ATK.GetDamageI().ToString() + "</color>";
+        MATK.text = "<color=#ffffffff>" + Player_ATK.GetDamageI().ToString() + "-" + Player_ATK.GetDamageI().ToString() + "</color>";
         PDEF.text = Player_Defense.PhysicalDefense.ToString();
         MDEF.text = Player_Defense.MagicalDefense.ToString();
-        CRIR.text = (Player_ATK.GetCriticalChance()*100).ToString()+"%";
+        CRIR.text = "0.00%";
+        //CRIR.text = (Player_ATK.GetCriticalChance()*100).ToString()+"%";
         C_HP.text = Player_Health.GetCurrentHealth().ToString() + "/" + Player_Health.GetStartingHealth().ToString();
         C_MP.text = Player_Mana.GetMana().ToString() + "/" + Player_Mana.MaxMana.ToString();
         C_LV.text = Player_EXP.GetCurrentLevel().ToString();
