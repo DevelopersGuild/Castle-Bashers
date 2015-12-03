@@ -26,7 +26,7 @@ public class Immolate : Skill
         gameObject.AddComponent<Burn>();
         GetComponent<Burn>().setDuration(duration);
         player.GetComponent<SpriteRenderer>().color += tintColor;
-        player.GetComponent<Player>().AddStuff
+        //player.GetComponent<Player>().AddStuf
         expiration = Time.time + duration;
     }
 }
@@ -43,7 +43,7 @@ public class skilltesting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gameObject.AddComponent<PuritySkill>();
+        gameObject.AddComponent<MeteorShowerSkill>();
 
         testSkill = GetComponent<Skill>();
 	}

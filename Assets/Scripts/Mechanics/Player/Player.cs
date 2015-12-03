@@ -14,10 +14,10 @@ public class Player : MonoBehaviour
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
     public string Player_Name;
-    public int Stamina;
-    public int Strength = 1;
-    public int Agility;
-    public int Intelligence;
+    public int Stamina = 10;
+    public int Strength = 10;
+    public int Agility = 10;
+    public int Intelligence = 10;
     //The stats should remain public to allow them to be set in the editor.
     [HideInInspector]
     public Character_Class_Info CCI;
@@ -66,6 +66,12 @@ public class Player : MonoBehaviour
     private Mana mana;
     private DealDamageToEnemy attack;
     private Defense defense;
+    private DealDamage dealDamage;
+    //These are for primarily calculating damages and to queu the stats for buffs
+    private float basePhysicalDamage;
+    private float baseMagicalDamage;
+    private float bonusPhysicalDamage;
+    private float bonusMagicalDamage;
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
@@ -128,10 +134,15 @@ public class Player : MonoBehaviour
         GetComponent<ID>().setTime(false);
         CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
         si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
+        Fully_Update();
     }
 
     void Update()
     {
+        if (Input.GetKeyDown("g"))
+        {
+            Fully_Update();
+        }
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
 
@@ -367,13 +378,24 @@ public class Player : MonoBehaviour
 
     public void Fully_Update()
     {
-        health.Updata_Maxhp_withFullRegen();
+        //health.Updata_Maxhp_withFullRegen();
+        health.SetMaxHP(Stamina * 5 + Strength + Agility + Intelligence);
+        health.Full_Regen();
         mana.UpdateMaxMP_And_Regen();
-        attack.UpdateDamage(5 * Strength + Agility + CCI.Class_info[class_id].weapon[weapon_level].patk, 2 * Strength + 5 * Intelligence+CCI.Class_info[class_id].weapon[weapon_level].matk);
-        attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
-        attack.SetCriticalChance(Agility * 0.001f + CCI.Class_info[class_id].accessory[accessories_level].cri);
+        /*These are using the old DealDamageToEnemy script*/
+        //In addition, the functions are ambiguous. The player should not be dealing magic damage with the physical attack collider?
+        //
+        //attack.UpdateDamage(5 * Strength + Agility + CCI.Class_info[class_id].weapon[weapon_level].patk, 2 * Strength + 5 * Intelligence+CCI.Class_info[class_id].weapon[weapon_level].matk);
+        //attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
+        //attack.SetCriticalChance(Agility * 0.001f + CCI.Class_info[class_id].accessory[accessories_level].cri);
         blockchance = Agility * 0.001f;
-        defense.Update_Defense();
+        //Moved formulas from Update_Defense() to this function for simplicity and to avoid passing extra references
+        //defense.Update_Defense();
+        defense.SetBasePhysicalDefense((int)(0.3f * Strength + 1.5f * Stamina));
+        defense.SetBaseMagicalDefense((int)(1.5f * Stamina));
+        AttackCollider.GetComponent<DealDamage>().setDamage(0.75f * Strength + CCI.Class_info[class_id].weapon[weapon_level].patk);
+        Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
+        
 
     }
 
@@ -737,5 +759,22 @@ public class Player : MonoBehaviour
     public void SetSkillUnlock(int id,bool value)
     {
         skill_unlock[id] = value;
+    }
+
+    public float getPhysicalDamage()
+    {
+        return basePhysicalDamage + bonusPhysicalDamage;
+    }
+    public float getMagicalDamage()
+    {
+        return baseMagicalDamage + bonusMagicalDamage;
+    }
+    public void addBonusPhysicalDamage(float i)
+    {
+        bonusPhysicalDamage += i;
+    }
+    public void addBonusMagicalDamage(float i)
+    {
+        bonusMagicalDamage += i;
     }
 }

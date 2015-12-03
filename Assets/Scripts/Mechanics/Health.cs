@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
     public int ExperinceAmount = 0;
     public float startingHealth;
     public float RegenAmount;
-    private float currentHealth=0;
+    public float currentHealth=0;
     private float maxhp;
     private Player player;
     private DealDamageToEnemy attack;
@@ -27,17 +27,15 @@ public class Health : MonoBehaviour
         currentHealth = startingHealth;
         maxhp = startingHealth;
         damageTextOffset = new Vector3(0, 2, 0);
-        maxhp = startingHealth;
         if (player)
+        {
+    
             maxhp = startingHealth + player.GetStrength() * 10;
+        }
         
     }
 
-    void Update()
-    {
-
-    }
-
+    
     public void Update_Maxhp()
     {
         if (player)
@@ -52,7 +50,7 @@ public class Health : MonoBehaviour
 
     public void Updata_Maxhp_withFullRegen()
     {
-        Update_Maxhp();
+        //Update_Maxhp();
         Full_Regen();
     }
 
@@ -78,6 +76,9 @@ public class Health : MonoBehaviour
         {
             if (!player.GetInvincible())
             {
+                //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+                //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+                dmg = Mathf.CeilToInt(dmg);
                 currentHealth -= dmg;
                 Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Quaternion.identity);
                 createFloatingText(dmg);
@@ -112,9 +113,11 @@ public class Health : MonoBehaviour
         }
         else
         {
-            currentHealth -= dmg;
             Destroy(Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Random.rotation), 1);
-            
+            //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+            //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+            dmg = Mathf.CeilToInt(dmg);
+            currentHealth -= dmg;
             createFloatingText(dmg);
 
             if (currentHealth <= 0)

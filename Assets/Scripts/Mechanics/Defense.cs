@@ -17,6 +17,7 @@ public class Defense : MonoBehaviour
     {
         health = gameObject.GetComponent<Health>();
         player = gameObject.GetComponent<Player>();
+
     }
 
     public void CheckPhysicalDefense(float damage, float knockback = 4, float flinch = 5)
