@@ -6,7 +6,7 @@ public class Health : MonoBehaviour
     public int ExperinceAmount = 0;
     public float startingHealth;
     public float RegenAmount;
-    private float currentHealth=0;
+    public float currentHealth;
     private float maxhp;
     private Player player;
     private DealDamageToEnemy attack;
