@@ -30,6 +30,7 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
 
     public void Change(int id,int? player_id=null)
     {
+        main_process.Hide_UI = true;
         player = main_process.GetPlayerScript(player_id);
         classid = player.GetClassID();
         havegold = main_process.GetPlayerCoinManager(player_id).getCoins();
@@ -199,17 +200,19 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
                         }
                 }
                 current_id = 0;
+                main_process.Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(false);
                 gameObject.SetActive(false);
-                main_process.Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
                 main_process.OtherWindows_Close();
+                main_process.Hide_UI = false;
             }
         }
         if(Input.GetKeyDown(KeyCode.Escape))
         {
             current_id = 0;
+            main_process.Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(false);
             gameObject.SetActive(false);
-            main_process.Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
             main_process.OtherWindows_Close();
+            main_process.Hide_UI = false;
         }
     }
 }
