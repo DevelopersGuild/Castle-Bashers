@@ -244,9 +244,15 @@ public class Menu_Ability_Fullcontrol : MonoBehaviour {
             ability[i].skillname.text = SI.skill[CCIS.Class_info[class_id].skillid[i - 1]].skillname;
             ability[i].have = MainProcess.GetPlayerScript(player_id).GetSkillUnlock(i - 1);
             if (!ability[i].have)
-                ability[i].skillicon.color = Color.gray;
+            {
+                ability[i].skillicon.color = new Vector4(0.24f, 0.24f, 0.24f, 1);
+                ability[i].skillname.color = new Vector4(0.24f, 0.24f, 0.24f, 1);
+            }
             else
+            {
+                ability[i].skillname.color = Color.white;
                 ability[i].skillicon.color = Color.white;
+            }
             ability[i].id = CCIS.Class_info[class_id].skillid[i - 1];
         }
         if (max_skill_id + 1 <= 14)

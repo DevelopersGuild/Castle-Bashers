@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<datacounter>
+  <data id="1">
+    <pid>GM000001</pid>
+    <name>
+    </name>
+    <cid>0</cid>
+    <lv>1</lv>
+    <gold>10000</gold>
+    <weapon_level>0</weapon_level>
+    <armor_level>0</armor_level>
+    <accessories_level>0</accessories_level>
+    <atk>1</atk>
+    <def>0</def>
+    <sta>0</sta>
+    <spi>0</spi>
+    <agi>0</agi>
+    <map>3</map>
+    <skill>01111111</skill>
+  </data>
+</datacounter>
