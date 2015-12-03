@@ -432,6 +432,17 @@ public class Main_Process : MonoBehaviour {
         Other_Windows.GetComponent<Other_Windows_FullControl>().Dialog.GetComponent<Dialog_FullControl>().OpenDialog(id,npcname);
     }
 
+    //Boss Data Update
+    public void SetBossMaxHP(int maxhp)
+    {
+        Main_UI.GetComponent<Main_UI_FULLControl>().boss.maxhp = maxhp;
+    }
+
+    public void SetBossCurrentHP(int hp)
+    {
+        Main_UI.GetComponent<Main_UI_FULLControl>().boss.hp = hp;
+    }
+
     private void TEST()
     {
         CancelInvoke("TEST");
