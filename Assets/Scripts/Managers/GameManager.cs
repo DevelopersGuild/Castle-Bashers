@@ -2,7 +2,7 @@
 using System.Collections;
 
 [RequireComponent(typeof (NotificationManager))]
-public class GameManager : MonoBehaviour
+public class GameManager : MonoBehaviour, IListener
 {
 
     public static GameManager Instance
@@ -32,6 +32,8 @@ public class GameManager : MonoBehaviour
 
     private static GameManager m_instance = null;
     private static NotificationManager m_notifications = null;
+    private int numberOfPlayersDead = 0;
+    private bool allPlayersDead = false;
 
     void Awake()
     {
@@ -44,7 +46,25 @@ public class GameManager : MonoBehaviour
             m_instance = this;
             DontDestroyOnLoad(gameObject);
         }
+        GameManager.Notifications.AddListener(this, MessageTypes.PLAYER_DEATH);
     }
 
     //TODO add the rest of the game manager as development progresses.
+
+    public void CheckIfAllPlayersAreDead()
+    {
+
+    }
+
+    public void OnReceived(Message message)
+    {
+        if(message.GetMessageType() == MessageTypes.PLAYER_DEATH)
+        {
+            numberOfPlayersDead++;
+            if(numberOfPlayersDead == 1)
+            {
+                allPlayersDead = true;
+            }
+        }
+    }
 }
