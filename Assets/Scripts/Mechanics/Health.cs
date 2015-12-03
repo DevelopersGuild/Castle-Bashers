@@ -12,7 +12,7 @@ public class Health : MonoBehaviour
     private DealDamageToEnemy attack;
     private bool canKnock = true;
     private MoveController moveController;
-    private bool isPlayerDown = false;
+    
     public Vector3 damageTextOffset;
     public AudioClip hitSound;
 
@@ -130,8 +130,8 @@ public class Health : MonoBehaviour
     {
         GetComponent<Player>().setDown(true);
         //use other object to check if all players down, if so then Death() + lose level
-        isPlayerDown = true;
         GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
+
         //Death();
     }
 
@@ -177,11 +177,6 @@ public class Health : MonoBehaviour
     public float GetMaxHP()
     {
         return maxhp;
-    }
-
-    public bool GetIsPlayerDown()
-    {
-        return isPlayerDown;
     }
 
     public void SetMaxHP(float f)
