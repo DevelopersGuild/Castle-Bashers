@@ -14,18 +14,6 @@ AnimatorController:
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 9100000}
-  - m_Name: IsUsingBasicAttack
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
-  - m_Name: IsComboTriggered
-    m_Type: 4
-    m_DefaultFloat: 0
-    m_DefaultInt: 0
-    m_DefaultBool: 0
-    m_Controller: {fileID: 9100000}
   - m_Name: IsJumping
     m_Type: 4
     m_DefaultFloat: 0
@@ -615,7 +603,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 6911432e4e172574ba0bd312a52bc1f9, type: 2}
+  m_Motion: {fileID: 7400000, guid: d4968464a3c1de84782753bbce1e049c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -785,7 +773,7 @@ AnimatorState:
   m_SpeedParameterActive: 0
   m_MirrorParameterActive: 0
   m_CycleOffsetParameterActive: 0
-  m_Motion: {fileID: 7400000, guid: 171a32bf5e4f0bf40a1db6b02f847ba5, type: 2}
+  m_Motion: {fileID: 7400000, guid: 37ee8fb2b39a4ac408db7c2f94a1d93c, type: 2}
   m_Tag: 
   m_SpeedParameter: 
   m_MirrorParameter: 
@@ -818,7 +806,7 @@ AnimatorStateMachine:
     m_Position: {x: 324, y: 288, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110293458}
-    m_Position: {x: 60, y: 288, z: 0}
+    m_Position: {x: 0, y: 312, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110291940}
     m_Position: {x: 228, y: 0, z: 0}
@@ -830,7 +818,7 @@ AnimatorStateMachine:
     m_Position: {x: 732, y: 96, z: 0}
   - serializedVersion: 1
     m_State: {fileID: 110291596}
-    m_Position: {x: 767, y: 161, z: 0}
+    m_Position: {x: 624, y: 168, z: 0}
   m_ChildStateMachines: []
   m_AnyStateTransitions:
   - {fileID: 110104004}
@@ -842,7 +830,7 @@ AnimatorStateMachine:
   m_StateMachineBehaviours: []
   m_AnyStatePosition: {x: 24, y: 240, z: 0}
   m_EntryPosition: {x: 0, y: 132, z: 0}
-  m_ExitPosition: {x: 672, y: 204, z: 0}
+  m_ExitPosition: {x: 600, y: 240, z: 0}
   m_ParentStateMachinePosition: {x: 800, y: 20, z: 0}
   m_DefaultState: {fileID: 110291902}
 --- !u!1109 &110983968

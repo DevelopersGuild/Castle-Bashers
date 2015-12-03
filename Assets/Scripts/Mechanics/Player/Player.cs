@@ -28,13 +28,14 @@ public class Player : MonoBehaviour
     private int armor_level = 0;
     private int accessories_level = 0;
     private float blockchance = 0;
-
+    private bool isPlayerDown = false;
     private bool isGrounded = true;
     private bool isMoving = false;
     public float jumpHeight = 4;
     public float timeToJumpApex = .4f;
     public float horizontalMoveSpeed = 6;
     public float verticalMoveSpeed = 10;
+
     public int playerId; // The Rewired player id of this character
 
     public AudioClip jumpAudio;
@@ -81,9 +82,9 @@ public class Player : MonoBehaviour
     private float managerID, priorityID;
     [HideInInspector]
     public float threatLevel, damageDealt;
-    private bool[] skill_unlock=new bool[14];
-    private int[] skillslot = {-1,-1,-1,-1};
-    private int[] itemslot = {-1,-1,-1};
+    private bool[] skill_unlock = new bool[14];
+    private int[] skillslot = { -1, -1, -1, -1 };
+    private int[] itemslot = { -1, -1, -1 };
 
     /*
     void Awake()
@@ -139,12 +140,10 @@ public class Player : MonoBehaviour
 
     void Update()
     {
-        if (Input.GetKeyDown("g"))
-        {
-            Fully_Update();
-        }
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
+
+
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -191,17 +190,19 @@ public class Player : MonoBehaviour
             isMoving = true;
         }
 
-        if(attackController.getIsAttack())
+        if (attackController.getIsAttack())
         {
             input = new Vector2(0, 0);
         }
 
-        if (!crowdControllable.getStun())
+        if (isDown == false)
         {
+            if (!crowdControllable.getStun())
+            {
 
-            ReadyMove(input);
+                ReadyMove(input);
+            }
         }
-
         if (knockBackCounter > 0)
         {
             knockBackReset += Time.unscaledDeltaTime;
@@ -224,10 +225,12 @@ public class Player : MonoBehaviour
 
         initialRegenTime += Time.unscaledDeltaTime;
         regenTick += Time.unscaledDeltaTime;
+
+
         UpdateState();
 
 
-      //  if (Input.GetButtonDown("UseSkill1"))
+        //  if (Input.GetButtonDown("UseSkill1"))
         if (playerRewired.GetButtonDown("UseSkill1"))
         {
             skillManager.UseSkill1();
@@ -388,12 +391,14 @@ public class Player : MonoBehaviour
         //attack.UpdateDamage(5 * Strength + Agility + CCI.Class_info[class_id].weapon[weapon_level].patk, 2 * Strength + 5 * Intelligence+CCI.Class_info[class_id].weapon[weapon_level].matk);
         //attack.UpdateChange(Strength * 0.1f + Agility, Intelligence * 0.15f + Agility);
         //attack.SetCriticalChance(Agility * 0.001f + CCI.Class_info[class_id].accessory[accessories_level].cri);
+
         blockchance = Agility * 0.001f;
         //Moved formulas from Update_Defense() to this function for simplicity and to avoid passing extra references
         //defense.Update_Defense();
         defense.SetBasePhysicalDefense((int)(0.3f * Strength + 1.5f * Stamina));
         defense.SetBaseMagicalDefense((int)(1.5f * Stamina));
-        AttackCollider.GetComponent<DealDamage>().setDamage(0.75f * Strength + CCI.Class_info[class_id].weapon[weapon_level].patk);
+        basePhysicalDamage = 0.75f * Strength + CCI.Class_info[class_id].weapon[weapon_level].patk;
+        baseMagicalDamage = 1 * Intelligence + CCI.Class_info[class_id].weapon[weapon_level].matk;
         Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
         
 
@@ -722,7 +727,7 @@ public class Player : MonoBehaviour
         return skill_unlock;
     }
 
-    public void SetSkillSlotInit(int id,int skill_index)
+    public void SetSkillSlotInit(int id, int skill_index)
     {
         skillslot[id] = skill_index;
         skillManager.ChangeSkill(si.skill[CCI.Class_info[class_id].skillid[skill_index]].skill_script, id);
@@ -756,7 +761,7 @@ public class Player : MonoBehaviour
         return skill_unlock[id];
     }
 
-    public void SetSkillUnlock(int id,bool value)
+    public void SetSkillUnlock(int id, bool value)
     {
         skill_unlock[id] = value;
     }
@@ -768,6 +773,22 @@ public class Player : MonoBehaviour
     public float getMagicalDamage()
     {
         return baseMagicalDamage + bonusMagicalDamage;
+    }
+    public float getBasePhysicalDamage()
+    {
+        return basePhysicalDamage;
+    }
+    public float getBaseMagicalDamage()
+    {
+        return baseMagicalDamage;
+    }
+    public float getBonusPhysicalDamage()
+    {
+        return bonusPhysicalDamage;
+    }
+    public float getBonusMagicalDamage()
+    {
+        return bonusMagicalDamage;
     }
     public void addBonusPhysicalDamage(float i)
     {

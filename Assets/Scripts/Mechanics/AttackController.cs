@@ -12,7 +12,7 @@ public class AttackController : MonoBehaviour
 
     void Start()
     {
-        player = GetComponent<Player>();
+        player = GetComponentInParent<Player>();
         anim = GetComponent<Animator>();
         attack = false;
         tap = 0;
@@ -92,6 +92,7 @@ public class AttackController : MonoBehaviour
         AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
         attack = true;
         player.setIsMoving(false);
+        player.GetAttackCollider().GetComponent<DealDamage>().setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
         player.GetAttackCollider().SetActive(true);
         anim.SetBool("Finished", false);
     }

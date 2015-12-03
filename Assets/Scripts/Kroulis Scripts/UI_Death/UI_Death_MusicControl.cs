@@ -3,7 +3,7 @@ using System.Collections;
 
 public class UI_Death_MusicControl : MonoBehaviour {
     public bool BGM_Start;
-    AudioSource audio;
+    private AudioSource audio;
 	// Use this for initialization
 	void Start () {
         audio = GetComponent<AudioSource>();

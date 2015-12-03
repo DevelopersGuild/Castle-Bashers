@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 406396}
   - 212: {fileID: 21276866}
   - 65: {fileID: 6571896}
-  - 114: {fileID: 11449908}
+  - 114: {fileID: 11448278}
   m_Layer: 0
   m_Name: Big Attack
   m_TagString: Untagged
@@ -42,7 +42,7 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 3, y: 4.69999981, z: .800000012}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11449908
+--- !u!114 &11448278
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -50,12 +50,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 130992}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAmount: 2
-  knockback: 10
-  flinch: 0
+  hitAudio: {fileID: 0}
+  dmgAmount: 1
+  isMagic: 0
+  damagePlayers: 1
+  damageEnemies: 0
 --- !u!212 &21276866
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -92,6 +94,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: knockback
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagePlayers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

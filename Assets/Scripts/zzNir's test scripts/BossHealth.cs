@@ -3,7 +3,6 @@ using System.Collections;
 
 public class BossHealth : Health
 {
-    private float currentHealth;
     private Player player;
     private Boss enemy;
     private bool canKnock = false;
@@ -18,7 +17,7 @@ public class BossHealth : Health
         enemy = GetComponent<Boss>();
         moveController = GetComponent<MoveController>();
         damageTextOffset = new Vector3(0, 2, 0);
-        currentHealth = startingHealth; //+ player.getLevel()/3
+        currentHealth = maxhp; //+ player.getLevel()/3
         Update_Maxhp();
     }
 

@@ -4,7 +4,6 @@ using System.Text;
 using System.Security.Cryptography;
 using System.IO;
 using UnityEngine;
-using System.Text;
 using System.Xml;
 using System.Xml.Serialization;
 

@@ -424,7 +424,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495316, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
       propertyPath: m_RootOrder
-      value: 5
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11413180, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
       propertyPath: gobjCameraTarget
@@ -526,6 +526,10 @@ Prefab:
       propertyPath: startingHealth
       value: 3
       objectReference: {fileID: 0}
+    - target: {fileID: 11467722, guid: 8a416a0e3a3e6f844aa847e3f31c3f0b, type: 2}
+      propertyPath: maxhp
+      value: 35
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8a416a0e3a3e6f844aa847e3f31c3f0b, type: 2}
   m_IsPrefabParent: 0
@@ -624,52 +628,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: cfb7561c0c0aacd4381930d2b31d6aa1, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &922884146
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -12.75
-      objectReference: {fileID: 0}
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 9.56999969
-      objectReference: {fileID: 0}
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 49.2700005
-      objectReference: {fileID: 0}
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 461346, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 187202, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
-      propertyPath: m_Name
-      value: Blood Splat (1)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: b9012a724b39f334ea2323cdef5b9e06, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &950934322
 Prefab:
@@ -920,23 +878,7 @@ Transform:
   - {fileID: 502119373}
   - {fileID: 1025915310}
   m_Father: {fileID: 0}
-  m_RootOrder: 4
---- !u!1 &1203280277 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 150102, guid: 8a416a0e3a3e6f844aa847e3f31c3f0b, type: 2}
-  m_PrefabInternal: {fileID: 867470060}
---- !u!114 &1203280286
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1203280277}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b013cc73c3fed0f4abf99e066917cbad, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  duration: 5
+  m_RootOrder: 3
 --- !u!1001 &1216665492
 Prefab:
   m_ObjectHideFlags: 0
@@ -1481,7 +1423,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11464168, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
       propertyPath: Strength
-      value: 15
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11464168, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: Stamina
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11464168, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: Agility
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11464168, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: Intelligence
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 11451698, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}

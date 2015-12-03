@@ -18,14 +18,15 @@ public class Biome : MonoBehaviour {
 
     // Use this for initialization
     void Start () {
-        EnemyList[SnowyForest, 0] = "Assets/Prefabs/Enemies/BasicEnemy.prefab";
-        EnemyList[SnowyForest, 1] = "Assets/Prefabs/Enemies/Big Guy.prefab";
+        EnemyList[SnowyForest, 0] = "Assets/Prefabs/Enemies/GoonEnemy.prefab";
+        EnemyList[SnowyForest, 1] = "Assets/Prefabs/Enemies/Bear.prefab";
         EnemyList[Desert, 0] = "Assets/Prefabs/Enemies/SpecialEnemyV1.prefab";
         EnemyList[Desert, 1] = "Assets/Prefabs/Enemies/RangedEnemy.prefab";
-        EnemyList[Fort, 0] = "Assets/Prefabs/Enemies/BasicEnemy.prefab";
+        EnemyList[Fort, 0] = "Assets/Prefabs/Enemies/GoonEnemy.prefab";
         EnemyList[Fort, 1] = "Assets/Prefabs/Enemies/RangedEnemy.prefab";
 
-        Backgrounds[SnowyForest, 0] = "Assets/Prefabs/Maps/SnowBackground.prefab";
+        Backgrounds[SnowyForest, 0] = "Assets/Prefabs/Maps/BackgroundContainer.prefab";
+        Backgrounds[SnowyForest, 1] = "Assets/SpritesAndAnimations/Objects/object_torch.png";
 
     }
 	

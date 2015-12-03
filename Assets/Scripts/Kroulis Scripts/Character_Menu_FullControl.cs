@@ -154,7 +154,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
         PDEF.text = Player_Defense.PhysicalDefense.ToString();
         MDEF.text = Player_Defense.MagicalDefense.ToString();
         CRIR.text = (Player_ATK.GetCriticalChance()*100).ToString()+"%";
-        C_HP.text = Player_Health.GetCurrentHealth().ToString() + "/" + Player_Health.GetStartingHealth().ToString();
+        C_HP.text = Player_Health.GetCurrentHealth().ToString() + "/" + Player_Health.GetMaxHP().ToString();
         C_MP.text = Player_Mana.GetMana().ToString() + "/" + Player_Mana.MaxMana.ToString();
         C_LV.text = Player_EXP.GetCurrentLevel().ToString();
         C_EXP.text = Player_EXP.GetExperience().ToString();
