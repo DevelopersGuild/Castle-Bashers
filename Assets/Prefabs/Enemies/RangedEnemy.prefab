@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11478724}
   - 114: {fileID: 11432526}
   - 95: {fileID: 9523190}
+  - 114: {fileID: 11483876}
   m_Layer: 0
   m_Name: RangedEnemy
   m_TagString: Untagged
@@ -71,7 +72,7 @@ Animator:
   m_GameObject: {fileID: 107678}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 60e95afdd4f31964b8083409cf1dc267, type: 2}
+  m_Controller: {fileID: 9100000, guid: 13def35b5831f6546a4f6df19e311abd, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -171,6 +172,21 @@ MonoBehaviour:
   RegenAmount: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
+--- !u!114 &11483876
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 107678}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a94afc4892a9e4ba09048cbb63d5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 100
+  items:
+  - {fileID: 135736, guid: 6cce3f7174544db4085550faa4c0da9d, type: 2}
+  itemDropRates: 0a000000
 --- !u!212 &21225504
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -205,6 +221,14 @@ Prefab:
     m_TransformParent: {fileID: 0}
     m_Modifications:
     - target: {fileID: 0}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemDropRates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 1
       objectReference: {fileID: 0}
@@ -235,12 +259,20 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Controller
       value: 
-      objectReference: {fileID: 9100000, guid: 60e95afdd4f31964b8083409cf1dc267, type: 2}
+      objectReference: {fileID: 9100000, guid: 13def35b5831f6546a4f6df19e311abd, type: 2}
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: d4a5d2e2e0126244fa028d3b1dbece43,
         type: 3}
+    - target: {fileID: 0}
+      propertyPath: dropChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemDropRates.Array.data[0]
+      value: 10
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107678}

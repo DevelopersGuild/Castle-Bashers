@@ -16,8 +16,9 @@ GameObject:
   - 114: {fileID: 11461634}
   - 114: {fileID: 11463478}
   - 95: {fileID: 9534238}
+  - 114: {fileID: 11477108}
   m_Layer: 0
-  m_Name: BasicEnemy
+  m_Name: GoonEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -172,6 +173,21 @@ MonoBehaviour:
   baseMagicalDefense: 0
   PhysicalDefense: 0
   MagicalDefense: 0
+--- !u!114 &11477108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a94afc4892a9e4ba09048cbb63d5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 100
+  items:
+  - {fileID: 135736, guid: 6cce3f7174544db4085550faa4c0da9d, type: 2}
+  itemDropRates: 0a000000
 --- !u!212 &21231798
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -205,6 +221,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemDropRates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 1
@@ -244,6 +268,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: agroRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dropChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemDropRates.Array.data[0]
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
