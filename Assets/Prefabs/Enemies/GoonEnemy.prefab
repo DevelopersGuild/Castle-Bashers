@@ -14,8 +14,11 @@ GameObject:
   - 114: {fileID: 11437056}
   - 54: {fileID: 5481220}
   - 114: {fileID: 11461634}
+  - 114: {fileID: 11463478}
+  - 95: {fileID: 9534238}
+  - 114: {fileID: 11477108}
   m_Layer: 0
-  m_Name: BasicEnemy
+  m_Name: GoonEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -59,7 +62,24 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 3, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -.400000006, y: -.50999999, z: 0}
+--- !u!95 &9534238
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6d02a623a005a54faac1a1b5e50ff10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11416722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,6 +94,7 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+  walkSound: {fileID: 0}
   horizontalRayCount: 4
   verticalRayCount: 4
   knockbackVelocity: 0
@@ -135,6 +156,38 @@ MonoBehaviour:
   startingHealth: 3
   RegenAmount: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 0}
+--- !u!114 &11463478
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defense: 0
+  basePhysicalDefense: 0
+  baseMagicalDefense: 0
+  PhysicalDefense: 0
+  MagicalDefense: 0
+--- !u!114 &11477108
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a94afc4892a9e4ba09048cbb63d5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 100
+  items:
+  - {fileID: 135736, guid: 6cce3f7174544db4085550faa4c0da9d, type: 2}
+  itemDropRates: 0a000000
 --- !u!212 &21231798
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -159,7 +212,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 81a133fb0efe7364abe17059004c8907, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -168,6 +221,14 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: items.Array.size
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemDropRates.Array.size
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 1
@@ -179,7 +240,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6,
+      objectReference: {fileID: 21300008, guid: 81a133fb0efe7364abe17059004c8907,
         type: 3}
     - target: {fileID: 0}
       propertyPath: startingHealth
@@ -207,6 +268,14 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: agroRange
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dropChance
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: itemDropRates.Array.data[0]
       value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
