@@ -16,6 +16,7 @@ GameObject:
   - 114: {fileID: 11488884}
   - 114: {fileID: 11485732}
   - 95: {fileID: 9541958}
+  - 114: {fileID: 11411294}
   m_Layer: 0
   m_Name: Bear
   m_TagString: Untagged
@@ -79,6 +80,20 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11411294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a94afc4892a9e4ba09048cbb63d5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 100
+  items: []
+  itemDropRates: 
 --- !u!114 &11469100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -221,6 +236,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 363477e5cddcbbb41855fe937e4ad82e, type: 2}
+    - target: {fileID: 0}
+      propertyPath: dropChance
+      value: 100
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 155938}

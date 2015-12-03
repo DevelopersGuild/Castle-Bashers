@@ -7,14 +7,14 @@ public class Coin : MonoBehaviour {
     public AudioClip pickupSound;
 
     // Use this for initialization
-    public void OnTriggerEnter(Collider other)
+    public void OnCollisionEnter(Collision other)
     {
         // Incremount coin count, play sound, and destroy object on pickup
         if (other.gameObject.CompareTag("Player"))
         {
-            if(other.GetComponent<CoinManager>())
+            if(other.gameObject.GetComponent<CoinManager>())
             {
-                CoinManager coinManager = other.GetComponent<CoinManager>();
+                CoinManager coinManager = other.gameObject.GetComponent<CoinManager>();
                 coinManager.addCoins(coinValue);
             }
 
