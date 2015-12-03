@@ -15,6 +15,7 @@ GameObject:
   - 54: {fileID: 5481220}
   - 114: {fileID: 11461634}
   - 114: {fileID: 11463478}
+  - 95: {fileID: 9534238}
   m_Layer: 0
   m_Name: BasicEnemy
   m_TagString: Untagged
@@ -60,7 +61,24 @@ BoxCollider:
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.5, y: 3, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
+  m_Center: {x: -.400000006, y: -.50999999, z: 0}
+--- !u!95 &9534238
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110718}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e6d02a623a005a54faac1a1b5e50ff10, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11416722
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -178,7 +196,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300008, guid: 81a133fb0efe7364abe17059004c8907, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -198,7 +216,7 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Sprite
       value: 
-      objectReference: {fileID: 21300022, guid: 97e4e29e536724a48832d0557cdbd7a6,
+      objectReference: {fileID: 21300008, guid: 81a133fb0efe7364abe17059004c8907,
         type: 3}
     - target: {fileID: 0}
       propertyPath: startingHealth

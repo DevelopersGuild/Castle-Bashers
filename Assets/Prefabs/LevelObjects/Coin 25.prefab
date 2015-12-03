@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21281992}
   - 65: {fileID: 6572062}
   - 114: {fileID: 11473880}
+  - 95: {fileID: 9551352}
   m_Layer: 0
   m_Name: Coin 25
   m_TagString: Untagged
@@ -42,6 +43,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: .239999995, y: .319999993, z: .200000003}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9551352
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135736}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ab78d80288e9d214c8ff40f5e7453a77, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11473880
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -79,7 +97,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300090, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300022, guid: 7c71aab8808fff7429e39d86f36df32b, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -87,7 +105,16 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 21300022, guid: 7c71aab8808fff7429e39d86f36df32b,
+        type: 3}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: ab78d80288e9d214c8ff40f5e7453a77, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 135736}
