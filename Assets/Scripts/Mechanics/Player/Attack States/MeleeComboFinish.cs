@@ -22,7 +22,7 @@ public class MeleeComboFinish : IAttack
     public void EnterState(Player player)
     {
         player.animator.SetBool("IsComboTriggered", true);
-        player.GetAttackCollider().SetActive(true);
+      //  player.GetAttackCollider().SetActive(true);
 
     }
 
@@ -34,6 +34,6 @@ public class MeleeComboFinish : IAttack
     public void ExitState(Player player)
     {
         player.animator.SetBool("IsComboTriggered", false);
-        player.GetAttackCollider().SetActive(false);
+     //   player.GetAttackCollider().SetActive(false);
     }
 }

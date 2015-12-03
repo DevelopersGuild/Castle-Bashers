@@ -14,11 +14,13 @@ public class Health : MonoBehaviour
     private MoveController moveController;
     private bool isPlayerDown = false;
     public Vector3 damageTextOffset;
+    public AudioClip hitSound;
 
 
     // Use this for initialization
     void Start()
     {
+        hitSound = Resources.Load("hurt2") as AudioClip;
         player = GetComponent<Player>();
         attack = GetComponentInChildren<DealDamageToEnemy>();
         moveController = GetComponent<MoveController>();
@@ -39,7 +41,10 @@ public class Health : MonoBehaviour
     public void Update_Maxhp()
     {
         if (player)
+        {
             maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30 + player.CCI.Class_info[player.GetClassID()].accessory[player.GetAccessoriesLV()].maxhp;
+            Debug.Log("UPDATE_MAXHP SET HP TO " + maxhp);
+        }
         else
             maxhp = startingHealth;
         
@@ -68,6 +73,7 @@ public class Health : MonoBehaviour
 
     public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
+        AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
         if (player)
         {
             if (!player.GetInvincible())

@@ -14,6 +14,7 @@ public class AreaGen : MonoBehaviour
     public int Total_Objects;
     public Enemy Event;
     public GameObject Weather;
+    private GameObject weatherObject;
     private int t_length = 0; //Stage length, used for Traps
     public Enemy Boss; /// <summary>
                        /// Need to create a Boss script which inherits from our enemy script. Boss will be of Class 'Boss' 
@@ -62,7 +63,8 @@ public class AreaGen : MonoBehaviour
             t_length += 40;
 
             if (Weather!=null)
-            Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), weather);
+            weatherObject = Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), Quaternion.identity) as GameObject;
+            weatherObject.transform.eulerAngles = new Vector3(77, 180, 180);
 
             if (background!=null)
             Instantiate(background, new Vector3((AreaXCoord + i) * 40, 5, 13), transform.rotation);

@@ -40,14 +40,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 497beeecf84060748845423824726379, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Min_Area: 1
-  Max_Area: 3
+  Min_Area: 2
+  Max_Area: 2
   Min_Enemy: 0
   Max_Enemy: 0
-  Total_Objects: 0
+  Total_Objects: 6
   Event: {fileID: 0}
-  Weather: {fileID: 0}
-  Boss: {fileID: 0}
+  Weather: {fileID: 198574, guid: 9250f6db7a10acf47a0b530dac035b84, type: 2}
+  Boss: {fileID: 11444124, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
   ActiveBiomeName: 0
 --- !u!114 &11471608
 MonoBehaviour:
