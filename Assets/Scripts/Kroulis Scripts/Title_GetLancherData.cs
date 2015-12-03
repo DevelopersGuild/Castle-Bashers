@@ -43,7 +43,13 @@ public class Title_GetLancherData : MonoBehaviour {
                 }
                 if(xl.Name=="RefreshRate")
                 {
-                    full_screen = int.Parse(xl.InnerText);
+                    //Debug.Log(xl.InnerText);
+                    if(xl.InnerText!=null && xl.InnerText!="")
+                        refresh_rate = int.Parse(xl.InnerText);
+                    else
+                    {
+                        refresh_rate = 0;
+                    }
                     continue;
                 }
                 if(xl.Name=="playerid")
