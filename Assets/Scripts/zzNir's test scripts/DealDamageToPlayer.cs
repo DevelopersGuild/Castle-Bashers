@@ -12,7 +12,7 @@ public class DealDamageToPlayer : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        Debug.Log(gameObject.name + " is using an outdated script: DealDamageToPlayer\n Use DealDamage, if a bug prevents you from doing so please post in the chat");
         //GetComponent Enemy or Hazard
         //get damage amount from Enemy or Hazard
         //Enemy can change his damage amount

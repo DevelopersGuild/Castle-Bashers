@@ -4,10 +4,9 @@ using System.Collections;
 public class Health : MonoBehaviour
 {
     public int ExperinceAmount = 0;
-    public float startingHealth;
     public float RegenAmount;
-    private float currentHealth=0;
-    private float maxhp;
+    public float currentHealth=0;
+    public float maxhp;
     private Player player;
     private DealDamageToEnemy attack;
     private bool canKnock = true;
@@ -24,22 +23,17 @@ public class Health : MonoBehaviour
         player = GetComponent<Player>();
         attack = GetComponentInChildren<DealDamageToEnemy>();
         moveController = GetComponent<MoveController>();
-        currentHealth = startingHealth;
-        maxhp = startingHealth;
+        currentHealth = maxhp; 
         damageTextOffset = new Vector3(0, 2, 0);
-        maxhp = startingHealth;
-        if (player)
-            maxhp = startingHealth + player.GetStrength() * 10;
+
         
     }
 
-    void Update()
-    {
-
-    }
-
+    
     public void Update_Maxhp()
     {
+        Debug.Log("You are using Update_Maxhp() which is an outdated function");
+        /*
         if (player)
         {
             maxhp = startingHealth + player.GetStrength() * 10 + player.GetStamina() * 30 + player.CCI.Class_info[player.GetClassID()].accessory[player.GetAccessoriesLV()].maxhp;
@@ -47,12 +41,12 @@ public class Health : MonoBehaviour
         }
         else
             maxhp = startingHealth;
-        
+        */
     }
 
     public void Updata_Maxhp_withFullRegen()
     {
-        Update_Maxhp();
+        //Update_Maxhp();
         Full_Regen();
     }
 
@@ -78,7 +72,11 @@ public class Health : MonoBehaviour
         {
             if (!player.GetInvincible())
             {
+                //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+                //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+                dmg = Mathf.CeilToInt(dmg);
                 currentHealth -= dmg;
+                Destroy(Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Quaternion.identity), 0.2f);
                 createFloatingText(dmg);
 
                 player.ModifyKBCount(knockback);
@@ -111,6 +109,10 @@ public class Health : MonoBehaviour
         }
         else
         {
+            Destroy(Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Random.rotation), 1);
+            //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+            //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+            dmg = Mathf.CeilToInt(dmg);
             currentHealth -= dmg;
             createFloatingText(dmg);
 
@@ -154,12 +156,12 @@ public class Health : MonoBehaviour
         floatText.GetComponent<TextMesh>().text = "" + f;
         floatText.transform.position = gameObject.transform.position + damageTextOffset;
     }
-
+/*
     public float GetStartingHealth()
     {
         return startingHealth;
     }
-
+    */
     public virtual float GetCurrentHealth()
     {
         return gameObject.GetComponent<Health>().currentHealth;
