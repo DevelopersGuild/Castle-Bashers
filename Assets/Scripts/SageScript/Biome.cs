@@ -25,7 +25,8 @@ public class Biome : MonoBehaviour {
         EnemyList[Fort, 0] = "Assets/Prefabs/Enemies/BasicEnemy.prefab";
         EnemyList[Fort, 1] = "Assets/Prefabs/Enemies/RangedEnemy.prefab";
 
-        Backgrounds[SnowyForest, 0] = "Assets/Prefabs/Maps/SnowBackground.prefab";
+        Backgrounds[SnowyForest, 0] = "Assets/Prefabs/Maps/BackgroundContainer.prefab";
+        Backgrounds[SnowyForest, 1] = "Assets/SpritesAndAnimations/Objects/object_torch.png";
 
     }
 	

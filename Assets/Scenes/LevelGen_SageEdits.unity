@@ -176,11 +176,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Min_Enemy
-      value: 0
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Enemy
-      value: 0
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Area
@@ -203,6 +203,10 @@ Prefab:
       value: 
       objectReference: {fileID: 11444124, guid: b1381ffe8e0d63542a36ea49bc6144d0,
         type: 2}
+    - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+      propertyPath: ActiveBiomeName
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_IsPrefabParent: 0
@@ -680,6 +684,7 @@ MonoBehaviour:
   Agility: 0
   Intelligence: 0
   CCI: {fileID: 0}
+  si: {fileID: 0}
   jumpHeight: 4
   timeToJumpApex: .400000006
   horizontalMoveSpeed: 6
