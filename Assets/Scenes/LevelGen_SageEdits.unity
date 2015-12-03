@@ -339,6 +339,10 @@ Prefab:
       propertyPath: Main_Process
       value: 
       objectReference: {fileID: 263701513}
+    - target: {fileID: 119418, guid: db35aaf6d0c533e48a1e5cc53cd74588, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: db35aaf6d0c533e48a1e5cc53cd74588, type: 2}
   m_IsPrefabParent: 0
@@ -487,19 +491,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 495316, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 137518, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
       propertyPath: m_Name
       value: Main Camera (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 11413180, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
-      propertyPath: canMoveLeft
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 2051814, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
-      propertyPath: m_HDR
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
@@ -647,6 +643,10 @@ Prefab:
       propertyPath: m_Name
       value: Main UI
       objectReference: {fileID: 0}
+    - target: {fileID: 141392, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
   m_IsPrefabParent: 0
@@ -733,6 +733,10 @@ Prefab:
       propertyPath: Main_Process
       value: 
       objectReference: {fileID: 263701513}
+    - target: {fileID: 159154, guid: 8c46c641a3f3a6d4180453671011b7b4, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c46c641a3f3a6d4180453671011b7b4, type: 2}
   m_IsPrefabParent: 0
