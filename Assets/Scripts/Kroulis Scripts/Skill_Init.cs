@@ -16,7 +16,7 @@ public class Skill_Init : MonoBehaviour {
         //Init all skills
         allSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
         allSkills.Add(gameObject.AddComponent<Skill_TimeStop>());
-        allSkills.Add(gameObject.AddComponent<Skill_BoostV2>());
+        //allSkills.Add(gameObject.AddComponent<Skill_BoostV2>());
         allSkills.Add(gameObject.AddComponent<Skill_BulkUp>());
         allSkills.Add(gameObject.AddComponent<IgniteSkill>());
         allSkills.Add(gameObject.AddComponent<FireballSkill>());

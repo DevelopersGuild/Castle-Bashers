@@ -227,6 +227,7 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
         {
             player_id = (int)pid;
         }
+        shop_class_id = MainProcess.GetPlayerScript(player_id).GetClassID();
         Classname.text = CCIS.Class_info[shop_class_id].name;
         store_skill_id = new int[CCIS.Class_info[shop_class_id].skillid.Length];
         store_skill_id = CCIS.Class_info[shop_class_id].skillid;
@@ -324,8 +325,17 @@ public class Skill_Shop_Fullcontrol : MonoBehaviour {
             {
                 MainProcess.GetPlayerCoinManager(player_id).addCoins(-need_gold);
                 MainProcess.GetPlayerScript().SetSkillUnlock(current_id - 1, true);
+                //Debug.Log("Unlock Skill: "+(current_id-1).ToString());
+                //Debug.Log("Now the skill unlock: " + MainProcess.GetPlayerScript().GetSkillUnlock(current_id - 1).ToString());
                 MainProcess.GetPlayerScript().skillManager.UnlockSkillI(si.skill[store_skill_id[current_id-1]].skill_script);
+                shop_skill[current_id].have = true;
             }
+        }
+
+        if(Input.GetKeyDown(KeyCode.Escape))
+        {
+            gameObject.SetActive(false);
+            MainProcess.OtherWindows_Close();
         }
 	}
 }

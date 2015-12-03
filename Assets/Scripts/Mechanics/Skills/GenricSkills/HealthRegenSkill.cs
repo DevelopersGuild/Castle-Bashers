@@ -19,6 +19,6 @@ public class HealthRegenSkill : Skill
 
     private void AddHealth(GameObject caller)
     {
-        caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetStartingHealth() / 4);
+        caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetMaxHP() / 4);
     }
 }

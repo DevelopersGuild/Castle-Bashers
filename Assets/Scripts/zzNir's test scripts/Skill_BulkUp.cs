@@ -99,7 +99,7 @@ public class Skill_BulkUp : Skill
         if (!add)
             val = 1 / val;
 
-        caller.GetComponent<Health>().SetMaxHP(caller.GetComponent<Health>().GetStartingHealth() * val);
+        caller.GetComponent<Health>().SetMaxHP(caller.GetComponent<Health>().GetMaxHP() * val);
 
     }
 
@@ -129,6 +129,6 @@ public class Skill_BulkUp : Skill
     private void AddHealth(GameObject caller)
     {
         //heals 1/3 of starting health, which is ~1/4 of temp max hp
-        caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetStartingHealth() / 3);
+        caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetMaxHP() / 3);
     }
 }
