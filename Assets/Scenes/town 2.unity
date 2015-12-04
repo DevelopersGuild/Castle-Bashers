@@ -144,7 +144,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 12
 --- !u!1001 &208155215
 Prefab:
   m_ObjectHideFlags: 0
@@ -554,6 +554,10 @@ Prefab:
     - target: {fileID: 11464168, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
       propertyPath: timeToJumpApex
       value: .600000024
+      objectReference: {fileID: 0}
+    - target: {fileID: 8250920, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_Volume
+      value: .100000001
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
@@ -1021,7 +1025,7 @@ Transform:
   - {fileID: 1367530805}
   - {fileID: 1195741746}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 13
 --- !u!1001 &1688057699
 Prefab:
   m_ObjectHideFlags: 0
@@ -1540,7 +1544,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: 1
+  m_Volume: .100000001
   m_Pitch: 1
   Loop: 0
   Mute: 0
