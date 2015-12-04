@@ -46,12 +46,10 @@ public class DealDamage : MonoBehaviour {
                 {
                     if(isMagic)
                     {
-                        Debug.Log("enemy took magic");
                         targetDefense.CheckMagicalDefense(dmgAmount);
                     }
                     else
                     {
-                        Debug.Log("Enemy took physical");
                         targetDefense.CheckPhysicalDefense(dmgAmount);
                     }
                 target.GetComponent<Enemy>().setInvTime(0.1f);

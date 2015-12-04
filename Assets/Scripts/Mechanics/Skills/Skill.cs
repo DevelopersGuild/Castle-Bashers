@@ -4,6 +4,7 @@ using System.Collections;
 public class Skill : MonoBehaviour
 {
     public AudioClip useSkillAudio;
+    private Mana mana;
     private float coolDown = 0;
     private float coolDownTimer = 0;
     private int price = 0;
@@ -52,7 +53,7 @@ public class Skill : MonoBehaviour
     // Use this for initialization
     protected virtual void Start()
     {
-
+        mana = GetComponent<Mana>();
     }
 
     //Use Update to handle the cool down for the skill.
@@ -77,6 +78,10 @@ public class Skill : MonoBehaviour
     {
         //Assign the value of coolDownTimer to the coolDown varible so we can check the cooldown.
         coolDownTimer = coolDown;
+        if (mana)
+        {
+            mana.addMana(-manaCost);
+        }
     }
 
     public float GetCoolDown()

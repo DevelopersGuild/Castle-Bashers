@@ -10,8 +10,8 @@ public class Defense : MonoBehaviour
     private int bonusPhysicalDefense = 0;
     private int bonusMagicalDefense = 0;
     
-    public int PhysicalDefense = 0;
-    public int MagicalDefense = 0;
+    //public int PhysicalDefense = 0;
+    //public int MagicalDefense = 0;
     private Health health;
     void Start()
     {
@@ -26,6 +26,8 @@ public class Defense : MonoBehaviour
             if (Check_Block_Success())
                 damage = damage * 0.35f;
         damage = damage - GetPhysicalDefense();
+        if (!player)
+            Debug.Log(damage);
         if (damage > 0)
         {
             health.takeDamage(damage, knockback, flinch);
@@ -48,7 +50,7 @@ public class Defense : MonoBehaviour
     public void SetPhysicalDefense(int value)
     {
         Debug.Log("USING OUTDATED FUNCTION, PLEASE UPDATE CALL TO SetPhysicalDefense");
-        PhysicalDefense = value;
+        //PhysicalDefense = value;
     }
 
     //Use a negative value to subtract
@@ -81,7 +83,7 @@ public class Defense : MonoBehaviour
     {
 
         Debug.Log("USING OUTDATED FUNCTION, PLEASE UPDATE CALL TO SetPhysicalDefense");
-        MagicalDefense = value;
+        //MagicalDefense = value;
     }
 
     public void SetBaseMagicalDefense(int value)

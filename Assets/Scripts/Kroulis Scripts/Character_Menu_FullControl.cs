@@ -151,8 +151,8 @@ public class Character_Menu_FullControl : MonoBehaviour {
         AGI.text = Player_Script.GetAgility().ToString();
         BATK.text = "<color=#ffffffff>" + Player_ATK.GetDamageI().ToString() + "-" + Player_ATK.GetDamageI().ToString() + "</color>";
         MATK.text = "<color=#ffffffff>" + Player_ATK.GetDamageI().ToString() + "-" + Player_ATK.GetDamageI().ToString() + "</color>";
-        PDEF.text = Player_Defense.PhysicalDefense.ToString();
-        MDEF.text = Player_Defense.MagicalDefense.ToString();
+        PDEF.text = Player_Defense.GetPhysicalDefense().ToString();
+        MDEF.text = Player_Defense.GetMagicalDefense().ToString();
         //CRIR.text = (Player_ATK.GetCriticalChance()*100).ToString()+"%";
         C_HP.text = Player_Health.GetCurrentHealth().ToString() + "/" + Player_Health.GetMaxHP().ToString();
         CRIR.text = "0.00%";

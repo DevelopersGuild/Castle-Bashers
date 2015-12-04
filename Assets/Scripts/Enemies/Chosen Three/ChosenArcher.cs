@@ -4,9 +4,11 @@ using System.Collections;
 public class ChosenArcher : MonoBehaviour {
 
     private Skill multiShot;
+    private Defense defense;
 
 	// Use this for initialization
 	void Start () {
+        defense = GetComponent<Defense>();
         multiShot = gameObject.AddComponent<MultiShot>();
         Debug.Log("MultiShot starting cooldown!" + multiShot.GetCoolDown());
 	}
@@ -27,7 +29,7 @@ public class ChosenArcher : MonoBehaviour {
     }
     public void NotifyWarriorDeath()
     {
-        GetComponent<Defense>().PhysicalDefense /= 2;
-        GetComponent<Defense>().MagicalDefense /= 2;
+        defense.AddBonusPhysicalDefense(-(defense.GetPhysicalDefense() / 2));
+        defense.AddBonusMagicalDefense(-(defense.GetPhysicalDefense() / 2));
     }
 }

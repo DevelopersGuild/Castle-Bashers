@@ -7,9 +7,13 @@ public class ChosenMage : MonoBehaviour {
     private float nextCast;
     private float castInterval = 1;
     private float meteorShowerCooldown;
+
+    private Defense defense;
+
     private MeteorShowerSkill meteorShower;
 	// Use this for initialization
 	void Start () {
+        defense = GetComponent<Defense>();
         meteorShower = gameObject.AddComponent<MeteorShowerSkill>();
         nextCast = Time.time + castInterval;
 	}
@@ -24,8 +28,8 @@ public class ChosenMage : MonoBehaviour {
 
     public void NotifyWarriorDeath()
     {
-        GetComponent<Defense>().PhysicalDefense /= 2;
-        GetComponent<Defense>().MagicalDefense /= 2;
+        defense.AddBonusPhysicalDefense(-(defense.GetPhysicalDefense() / 2));
+        defense.AddBonusMagicalDefense(-(defense.GetPhysicalDefense() / 2));
     }
     public void NotifyArcherDeath()
     {
