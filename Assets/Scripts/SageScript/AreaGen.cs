@@ -141,7 +141,7 @@ public class AreaGen : MonoBehaviour
                 Debug.Log("Created enemy number: " + EnemySize + " succesffuly!");
                     temp = (GameObject)(Resources.Load((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
                     if (temp!=null)
-                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((float)(arrayX[m]*rnd.Next(1,5)+15+ (40 * i)), 5, (float)arrayZ[m]*rnd.Next(0,4)), transform.rotation);
+                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((float)(arrayX[m]*rnd.Next(1,5)+15+ (40 * i)), 5, (float)arrayZ[m]*rnd.Next(-7,10)), transform.rotation);
 
             }
 
