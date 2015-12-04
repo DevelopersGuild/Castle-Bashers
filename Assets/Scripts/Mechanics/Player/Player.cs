@@ -6,6 +6,7 @@ using Rewired;
 public class Player : MonoBehaviour
 {
     //private static Player player;
+    [HideInInspector]
     public Animator animator;
     public GameObject AttackCollider;
     public SkillManager skillManager;
@@ -397,8 +398,8 @@ public class Player : MonoBehaviour
         //defense.Update_Defense();
         defense.SetBasePhysicalDefense((int)(0.3f * Strength + 1.5f * Stamina));
         defense.SetBaseMagicalDefense((int)(1.5f * Stamina));
-        basePhysicalDamage = 0.75f * Strength + CCI.Class_info[class_id].weapon[weapon_level].patk;
-        baseMagicalDamage = 1 * Intelligence + CCI.Class_info[class_id].weapon[weapon_level].matk;
+        basePhysicalDamage = 0.75f * Strength;
+        baseMagicalDamage = 1 * Intelligence;
         Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
         
 
@@ -769,11 +770,11 @@ public class Player : MonoBehaviour
 
     public float getPhysicalDamage()
     {
-        return basePhysicalDamage + bonusPhysicalDamage;
+        return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk; ;
     }
     public float getMagicalDamage()
     {
-        return baseMagicalDamage + bonusMagicalDamage;
+        return baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk;
     }
     public float getBasePhysicalDamage()
     {
@@ -789,7 +790,7 @@ public class Player : MonoBehaviour
     }
     public float getBonusMagicalDamage()
     {
-        return bonusMagicalDamage;
+        return bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk; ;
     }
     public void addBonusPhysicalDamage(float i)
     {
