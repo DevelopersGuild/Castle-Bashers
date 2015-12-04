@@ -284,6 +284,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   walkSound: {fileID: 8300000, guid: fb47bf2f47869c746b9331af617dcc4f, type: 3}
+  isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
   knockbackVelocity: 0
@@ -302,9 +303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2fcf3bff68a7540989077a25f97e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingMana: 0
   ManaRegenRate: 1
   MaxMana: 0
+  manaRegenPerSecond: 0
 --- !u!114 &11426444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -379,8 +380,6 @@ MonoBehaviour:
   defense: 0
   basePhysicalDefense: 0
   baseMagicalDefense: 0
-  PhysicalDefense: 0
-  MagicalDefense: 0
 --- !u!114 &11456710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -418,8 +417,8 @@ MonoBehaviour:
   Intelligence: 10
   CCI: {fileID: 0}
   si: {fileID: 0}
-  jumpHeight: 10
-  timeToJumpApex: .400000006
+  jumpHeight: 4
+  timeToJumpApex: .600000024
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
   playerId: 1
