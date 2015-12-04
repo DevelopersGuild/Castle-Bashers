@@ -192,6 +192,11 @@ Prefab:
       propertyPath: Other_Windows
       value: 
       objectReference: {fileID: 1091903623}
+    - target: {fileID: 11478450, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: movTexture
+      value: 
+      objectReference: {fileID: 15200000, guid: 758b7ca3ca16ff0488a9f567cda1dc1c,
+        type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
   m_IsPrefabParent: 0
@@ -374,6 +379,19 @@ Prefab:
       propertyPath: CI
       value: 
       objectReference: {fileID: 379823602}
+    - target: {fileID: 11438168, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: m_Texture
+      value: 
+      objectReference: {fileID: 15200000, guid: a67fd63161405f0439dd1a612977b6c4,
+        type: 3}
+    - target: {fileID: 11439136, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: m_IgnoreReversedGraphics
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11469838, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: temp_close
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
   m_IsPrefabParent: 0
@@ -460,9 +478,17 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11426852, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
+      propertyPath: Main_Process
+      value: 
+      objectReference: {fileID: 1829866592}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1829866592 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 172766, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+  m_PrefabInternal: {fileID: 734744217}
 --- !u!1 &1905351621 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 101436, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
