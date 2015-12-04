@@ -823,6 +823,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e05416626295f794585cdddf856425d3, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &1624865777
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: 29.6546974
+      objectReference: {fileID: 0}
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 12.4682693
+      objectReference: {fileID: 0}
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -9
+      objectReference: {fileID: 0}
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408872, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+      propertyPath: m_RootOrder
+      value: 9
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: b1381ffe8e0d63542a36ea49bc6144d0, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &1712623535
 Prefab:
   m_ObjectHideFlags: 0
@@ -894,7 +936,7 @@ Transform:
   - {fileID: 470061063}
   - {fileID: 895112364}
   m_Father: {fileID: 0}
-  m_RootOrder: 11
+  m_RootOrder: 12
 --- !u!1 &1759959265 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 141392, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
