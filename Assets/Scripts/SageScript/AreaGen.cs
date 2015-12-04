@@ -82,8 +82,8 @@ public class AreaGen : MonoBehaviour
 
            // Debug.Log("EnemySize: " + EnemySize);
             int[] EnemyTypeArray = new int[EnemySize];
-            int[] arrayX = new int[EnemySize];
-            int[] arrayZ = new int[EnemySize];
+            double[] arrayX = new double[EnemySize];
+            double[] arrayZ = new double[EnemySize];
 
 
                 for (int m = 0; m < EnemySize; m++) //creates enemy types
@@ -96,10 +96,10 @@ public class AreaGen : MonoBehaviour
 
 
                 //////////////////////////
-                int testtemp;
+                double testtemp;
                 for (int m = 0; m < EnemySize; m++) //This loop gets us our X coordinates
                 {
-                    testtemp = rnd.Next(10, 20); //our X value
+                    testtemp = rnd.NextDouble(); //our X value
                     for (int n = 0; n < EnemySize; n++)//dummy test
                     {
                         if (arrayX[n] == testtemp)
@@ -116,7 +116,7 @@ public class AreaGen : MonoBehaviour
                 ////////////////////
                 for (int m = 0; m < EnemySize; m++) //This loop gets us our Z coordinates
                 {
-                    testtemp = rnd.Next(-8, 8); //our Z value
+                    testtemp = rnd.NextDouble(); //our Z value
                     for (int n = 0; n < EnemySize; n++) //dummy test
                     {
                         if (arrayZ[n] == testtemp)
@@ -137,7 +137,7 @@ public class AreaGen : MonoBehaviour
                 {
                     temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
                     if (temp!=null)
-                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((arrayX[m] + (40 * i)), 5, arrayZ[m]), transform.rotation);
+                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((float)(arrayX[m]*rnd.Next(1,5)+20+ (40 * i)), 5, (float)arrayZ[m]*rnd.Next(-7,7)), transform.rotation);
 
            
                 }
@@ -162,10 +162,10 @@ public class AreaGen : MonoBehaviour
         
         for (int i=0; i< Total_Objects; i++)
             {
-            int[] arrayX = new int[Total_Objects];
-            int[] arrayZ = new int[Total_Objects];
+            double[] arrayX = new double[Total_Objects];
+            double[] arrayZ = new double[Total_Objects];
             //////////////////////////
-            int testtemp;
+            double testtemp;
             for (int m = 0; m < Total_Objects; m++) //This loop gets us our X coordinates
             {
                 testtemp = rnd.Next(10, t_length-20); //our X value
@@ -200,7 +200,7 @@ public class AreaGen : MonoBehaviour
             }
             
             if (temp!=null)
-            Instantiate(temp, new Vector3((arrayX[i]), 2.5f, arrayZ[i]), transform.rotation);
+            Instantiate(temp, new Vector3(((float)arrayX[i])*rnd.Next(10,20)+5, 2.5f, (float)arrayZ[i]*rnd.Next(-7,7)), transform.rotation);
             
         }
         
