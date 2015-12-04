@@ -14,6 +14,7 @@ public class destroyBarrier : MonoBehaviour {
     // Use this for initialization
     void Start()
     {
+        
         Camera camera = Camera.main;
         cameraFollow = camera.GetComponent<CameraFollow>();
         mainprocess = FindObjectOfType<Main_Process>();
@@ -30,26 +31,12 @@ public class destroyBarrier : MonoBehaviour {
     // Update is called once per frame
     void Update ()
     {
-        int count=0;
-
-        //if (!E_Dead)
-        //{
-        //    cameraFollow.setLock(true);
-        //}
-
-
-        for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
-        {
-            if (AreaGen.AreaLog[InstanceID, i] != null)
-                count++;
-            if (count == 0)
-                E_Dead = true;
-        }   
-	}
+        Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
+    }
 
     void OnTriggerEnter(Collider other)
     {
-        if (other.gameObject.tag == "Player" && E_Dead==true)
+        if (E_Dead==true)
         {
             Destroy(gameObject);
             cameraFollow.setLock(false);

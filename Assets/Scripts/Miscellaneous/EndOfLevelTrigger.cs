@@ -12,7 +12,7 @@ public class EndOfLevelTrigger : MonoBehaviour {
 
 	void OnTriggerEnter(Collider other)
     {
-        if(other.gameObject.tag == "Player" && AreaGen.BossID==null)
+        if(other.gameObject.tag == "Player" && GameObject.Find(AreaGen.BossID.ToString())== null)
         {
             mainprocess.UI_Mission_Success_Open();
         }
@@ -20,8 +20,6 @@ public class EndOfLevelTrigger : MonoBehaviour {
 
     void Update()
     {
-        var alive = GameObject.Find(AreaGen.BossID.name);
-        Debug.Log(AreaGen.BossID);
-        Debug.Log(alive);
+ 
     }
 }

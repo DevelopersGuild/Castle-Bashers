@@ -19,7 +19,7 @@ public class AreaGen : MonoBehaviour
     public Enemy Boss; /// <summary>
                        /// Need to create a Boss script which inherits from our enemy script. Boss will be of Class 'Boss' 
                        /// </summary>
-    static public GameObject BossID;
+    static public int BossID;
     public Biome.BiomeName ActiveBiomeName;
 
     static public GameObject[,] AreaLog;
@@ -144,10 +144,12 @@ public class AreaGen : MonoBehaviour
 
                 if (i == AreaNumber-1)
                 {
+                
                 if (Boss != null)
                 {
-                    BossID.name =  Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation).GetInstanceID().ToString();
-                    //BossID;
+                    
+                    BossID = Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation).GetInstanceID();
+                    
                 }
                 }
 
@@ -155,9 +157,9 @@ public class AreaGen : MonoBehaviour
 
 
             } //END OF PART GENERATION
-
+        
         temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Barrel.prefab", typeof(GameObject)));
-
+        
         for (int i=0; i< Total_Objects; i++)
             {
             int[] arrayX = new int[Total_Objects];
@@ -196,13 +198,15 @@ public class AreaGen : MonoBehaviour
                         arrayZ[m] = testtemp;
                 }
             }
-
+            
             if (temp!=null)
             Instantiate(temp, new Vector3((arrayX[i]), 2.5f, arrayZ[i]), transform.rotation);
-
+            
         }
+        
 
         Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/End Limit.prefab", typeof(GameObject)), new Vector3((t_length)-20, AreaYCoord, AreaZCoord), transform.rotation);
+        
     }
 
     // Update is called once per frame
