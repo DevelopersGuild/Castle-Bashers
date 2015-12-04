@@ -176,11 +176,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Min_Enemy
-      value: 10
+      value: 7
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Enemy
-      value: 12
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Area
