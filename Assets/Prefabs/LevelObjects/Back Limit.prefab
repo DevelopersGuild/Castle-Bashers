@@ -11,7 +11,7 @@ GameObject:
   - 33: {fileID: 3330016}
   - 65: {fileID: 6599620}
   - 23: {fileID: 2358348}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Back Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -99,6 +99,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
       value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

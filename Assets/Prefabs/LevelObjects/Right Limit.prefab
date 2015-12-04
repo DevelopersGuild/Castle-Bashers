@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6586676}
   - 23: {fileID: 2319880}
   - 114: {fileID: 11418112}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Right Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -119,6 +119,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
