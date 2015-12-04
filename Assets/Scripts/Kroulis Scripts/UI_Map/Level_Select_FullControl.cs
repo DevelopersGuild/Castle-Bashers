@@ -1,6 +1,7 @@
 ﻿using UnityEngine;
 using System.Collections;
 using UnityEngine.UI;
+using Rewired;
 
 public class Level_Select_FullControl : MonoBehaviour {
 

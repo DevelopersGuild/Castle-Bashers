@@ -63,9 +63,11 @@ public class AreaGen : MonoBehaviour
             
             t_length += 40;
 
-            if (Weather!=null)
-            weatherObject = Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), Quaternion.identity) as GameObject;
-            weatherObject.transform.eulerAngles = new Vector3(77, 180, 180);
+            if (Weather != null)
+            {
+                weatherObject = Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), Quaternion.identity) as GameObject;
+                weatherObject.transform.eulerAngles = new Vector3(77, 180, 180);
+            }
 
             if (background!=null)
             Instantiate(background, new Vector3((AreaXCoord + i) * 40, 5, 13), transform.rotation);

@@ -80,7 +80,16 @@ public class Skill : MonoBehaviour
         coolDownTimer = coolDown;
         if (mana)
         {
-            mana.addMana(-manaCost);
+            if (mana.GetMana() >= manaCost)
+            {
+                mana.addMana(-manaCost);
+            }
+            else
+            {
+                return;
+                //Display insufficient mana message
+            }
+
         }
     }
 
