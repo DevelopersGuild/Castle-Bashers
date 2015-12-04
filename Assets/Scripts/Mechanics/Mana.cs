@@ -74,7 +74,7 @@ public class Mana : MonoBehaviour
         return MaxMana;
     }
 
-    public float addMana(int i)
+    public void addMana(int i)
     {
         mana += i;
     }
