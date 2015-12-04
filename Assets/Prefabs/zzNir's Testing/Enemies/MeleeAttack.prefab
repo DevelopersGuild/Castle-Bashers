@@ -10,7 +10,6 @@ GameObject:
   - 4: {fileID: 498106}
   - 212: {fileID: 21225354}
   - 65: {fileID: 6546276}
-  - 114: {fileID: 11475472}
   - 114: {fileID: 11407954}
   m_Layer: 0
   m_Name: MeleeAttack
@@ -59,22 +58,6 @@ MonoBehaviour:
   isMagic: 0
   damagePlayers: 1
   damageEnemies: 0
---- !u!114 &11475472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 167148}
-  m_Enabled: 0
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgAmount: 1
-  dmgChange: 0
-  knockback: 4
-  flinch: 5
-  IsPhysicalDamage: 1
 --- !u!212 &21225354
 SpriteRenderer:
   m_ObjectHideFlags: 1

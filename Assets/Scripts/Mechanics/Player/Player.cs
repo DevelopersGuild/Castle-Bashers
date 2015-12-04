@@ -6,6 +6,7 @@ using Rewired;
 public class Player : MonoBehaviour
 {
     //private static Player player;
+    [HideInInspector]
     public Animator animator;
     public GameObject AttackCollider;
     public SkillManager skillManager;
@@ -534,7 +535,7 @@ public class Player : MonoBehaviour
     private void Initialize()
     {
         // Get the Rewired Player object for this player.
-        Debug.Log("Initialized...");
+        //Debug.Log("Initialized...");
         playerRewired = ReInput.players.GetPlayer(playerId);
         initialized = true;
     }

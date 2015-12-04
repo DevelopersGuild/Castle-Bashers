@@ -19,3 +19,5 @@ EditorBuildSettings:
     path: Assets/Scenes/JosephTesting.unity
   - enabled: 1
     path: Assets/Scenes/levelgenerate.unity
+  - enabled: 1
+    path: Assets/Scenes/LevelGen_SageEdits.unity

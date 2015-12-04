@@ -69,11 +69,20 @@ public class RangedEnemy : Enemy
 
          
         }
+        animationController.isAttacking = isAttacking;
         attack_CD += Time.deltaTime;
        
     }
 
     private void Attack()
+    {
+        isAttacking = true;
+        isStunned = true;
+        stunTimer = 1f;
+        attack_CD = 0;
+    }
+
+    private void spawnProjectile()
     {
         dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
         distL = (transform.position - targetPos - left).magnitude;
@@ -86,12 +95,15 @@ public class RangedEnemy : Enemy
         else
             faceDir = 1;
 
-            attack_CD = 0;
-
-        isStunned = true;
-        stunTimer = 1f;
+ 
         shot = Instantiate(shotObj, transform.position + faceDir * xhalf, transform.rotation) as Projectile;
         shot.Shoot(dir.normalized);
     }
 
+    private void FinishedAttack()
+    {
+        isAttacking = false;
+    }
+
 }
+
