@@ -92,10 +92,10 @@ public class AttackController : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
         attack = true;
+        anim.SetBool("Finished", false);
         player.setIsMoving(false);
         player.GetAttackCollider().GetComponent<DealDamage>().setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
         player.GetAttackCollider().SetActive(true);
-        anim.SetBool("Finished", false);
     }
 
     public bool getIsAttack()

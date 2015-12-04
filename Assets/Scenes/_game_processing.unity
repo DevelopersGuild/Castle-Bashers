@@ -1848,7 +1848,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c157c22f7631ad419e7f95af045377b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Main_Process: {fileID: 0}
+  Main_Process: {fileID: 211478218}
   OPM: {fileID: 167830766}
   TPM: {fileID: 988330273}
   BossMode: {fileID: 2022575233}
@@ -6022,7 +6022,7 @@ MonoBehaviour:
   movie: {fileID: 0}
   Menu_open: 0
   Menu_id: 1
-  Main_Process: {fileID: 0}
+  Main_Process: {fileID: 211478218}
   one_player: 0
   player_id: 0
 --- !u!1 &739344894
@@ -9163,7 +9163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3cbd296079c58f445b73819cd109242d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Main_Process: {fileID: 0}
+  Main_Process: {fileID: 211478218}
   Black: {fileID: 1933379497}
   Death: {fileID: 2029990904}
   Upgrade: {fileID: 124329470}
