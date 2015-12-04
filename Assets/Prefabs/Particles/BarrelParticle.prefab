@@ -1,16 +1,16 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &195554
+--- !u!1 &137956
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 454682}
-  - 198: {fileID: 19877302}
-  - 199: {fileID: 19934040}
-  - 114: {fileID: 11449860}
+  - 4: {fileID: 479014}
+  - 198: {fileID: 19866566}
+  - 199: {fileID: 19983686}
+  - 114: {fileID: 11414012}
   m_Layer: 0
   m_Name: BarrelParticle
   m_TagString: Untagged
@@ -18,35 +18,35 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &454682
+--- !u!4 &479014
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195554}
+  m_GameObject: {fileID: 137956}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 29.2800007, y: -23.8600006, z: 1}
+  m_LocalPosition: {x: -15.4910774, y: -1.82427382, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11449860
+--- !u!114 &11414012
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195554}
+  m_GameObject: {fileID: 137956}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d18dd2b945e8f1468ade10147b4c8bd, type: 3}
+  m_Script: {fileID: 0}
   m_Name: 
   m_EditorClassIdentifier: 
---- !u!198 &19877302
+--- !u!198 &19866566
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195554}
+  m_GameObject: {fileID: 137956}
   lengthInSec: .100000001
   startDelay: 0
   speed: 1
@@ -1089,12 +1089,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19934040
+--- !u!199 &19983686
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 195554}
+  m_GameObject: {fileID: 137956}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -1134,5 +1134,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 195554}
+  m_RootGameObject: {fileID: 137956}
   m_IsPrefabParent: 1

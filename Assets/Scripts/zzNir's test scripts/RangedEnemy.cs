@@ -84,6 +84,12 @@ public class RangedEnemy : Enemy
 
     private void spawnProjectile()
     {
+
+        if (attackSound)
+        {
+            AudioSource.PlayClipAtPoint(attackSound, transform.position);
+        }
+
         dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
         distL = (transform.position - targetPos - left).magnitude;
         distR = (transform.position - targetPos - right).magnitude;

@@ -1,15 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &131342
+--- !u!1 &154658
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 464044}
-  - 198: {fileID: 19868080}
-  - 199: {fileID: 19970332}
+  - 4: {fileID: 481568}
+  - 198: {fileID: 19875702}
+  - 199: {fileID: 19908774}
   m_Layer: 0
   m_Name: Particle System
   m_TagString: Untagged
@@ -17,17 +17,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &189614
+--- !u!1 &199776
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 437552}
-  - 198: {fileID: 19834444}
-  - 199: {fileID: 19917848}
-  - 114: {fileID: 11496472}
+  - 4: {fileID: 479720}
+  - 198: {fileID: 19833508}
+  - 199: {fileID: 19902970}
   m_Layer: 0
   m_Name: ChestParticle
   m_TagString: Untagged
@@ -35,48 +34,37 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &437552
+--- !u!4 &479720
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189614}
+  m_GameObject: {fileID: 199776}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 14, y: -25.3659992, z: 1}
+  m_LocalPosition: {x: -21.1255169, y: -3.98966622, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 464044}
+  - {fileID: 481568}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!4 &464044
+--- !u!4 &481568
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131342}
+  m_GameObject: {fileID: 154658}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 437552}
+  m_Father: {fileID: 479720}
   m_RootOrder: 0
---- !u!114 &11496472
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189614}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9d18dd2b945e8f1468ade10147b4c8bd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!198 &19834444
+--- !u!198 &19833508
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189614}
+  m_GameObject: {fileID: 199776}
   lengthInSec: .100000001
   startDelay: 0
   speed: 1
@@ -1119,12 +1107,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!198 &19868080
+--- !u!198 &19875702
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131342}
+  m_GameObject: {fileID: 154658}
   lengthInSec: .100000001
   startDelay: 0
   speed: 1
@@ -2167,12 +2155,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19917848
+--- !u!199 &19902970
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 189614}
+  m_GameObject: {fileID: 199776}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -2203,12 +2191,12 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
---- !u!199 &19970332
+--- !u!199 &19908774
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 131342}
+  m_GameObject: {fileID: 154658}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
@@ -2248,5 +2236,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 189614}
+  m_RootGameObject: {fileID: 199776}
   m_IsPrefabParent: 1

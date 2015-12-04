@@ -6,12 +6,18 @@ public class Menu_BGMovie_Control : MonoBehaviour {
 
     RawImage BGMOV;
     MovieTexture MOV;
+    public bool temp_close = false;
 	// Use this for initialization
 	void Start () {
         BGMOV = GetComponent<RawImage>();
         //Debug.Log(BGMOV.mainTexture.GetType());
-        MOV = (MovieTexture)BGMOV.mainTexture;
-        MOV.loop = true;
+        if (!temp_close)
+        {
+            MOV = (MovieTexture)BGMOV.mainTexture;
+            MOV.loop = true;
+        }
+        else
+            MOV = null;
         //MOV.Play();
 	}
 	

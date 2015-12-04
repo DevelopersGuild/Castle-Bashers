@@ -118,6 +118,7 @@ MonoBehaviour:
   agroRange: 10
   attackRange: 1
   attack_CD: 2
+  attackSound: {fileID: 8300000, guid: a3aa248220f4ee2479caa09bcdb3f5af, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
@@ -294,6 +295,10 @@ Prefab:
       propertyPath: itemDropRates.Array.data[0]
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: attackSound
+      value: 
+      objectReference: {fileID: 8300000, guid: a3aa248220f4ee2479caa09bcdb3f5af, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 110718}

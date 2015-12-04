@@ -78,6 +78,10 @@ public class TestEnemy : Enemy
 
     private void spawnAttackCollider()
     {
+        if(attackSound)
+        {
+            AudioSource.PlayClipAtPoint(attackSound, transform.position);
+        }
         bool facing = distL <= distR;
         if (facing)
         {

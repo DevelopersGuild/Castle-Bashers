@@ -1,32 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &101686
+--- !u!1 &153586
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 496098}
-  - 198: {fileID: 19847624}
-  - 199: {fileID: 19969044}
-  m_Layer: 0
-  m_Name: GroundhogParticle
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &199850
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 447328}
-  - 198: {fileID: 19890408}
-  - 199: {fileID: 19943242}
+  - 4: {fileID: 427958}
+  - 198: {fileID: 19870522}
+  - 199: {fileID: 19986026}
   m_Layer: 0
   m_Name: Particle System 1
   m_TagString: Untagged
@@ -34,37 +17,54 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &447328
+--- !u!1 &193848
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 431626}
+  - 198: {fileID: 19812368}
+  - 199: {fileID: 19923958}
+  m_Layer: 0
+  m_Name: GroundhogParticle
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &427958
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199850}
+  m_GameObject: {fileID: 153586}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 496098}
+  m_Father: {fileID: 431626}
   m_RootOrder: 0
---- !u!4 &496098
+--- !u!4 &431626
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101686}
+  m_GameObject: {fileID: 193848}
   m_LocalRotation: {x: -.707106829, y: 0, z: 0, w: .707106829}
-  m_LocalPosition: {x: 30.7479992, y: -23.8799992, z: 1}
+  m_LocalPosition: {x: -12.1917706, y: -3.8318038, z: 1}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
-  - {fileID: 447328}
+  - {fileID: 427958}
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!198 &19847624
+--- !u!198 &19812368
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101686}
+  m_GameObject: {fileID: 193848}
   lengthInSec: 1.12
   startDelay: 0
   speed: 1
@@ -1107,12 +1107,12 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!198 &19890408
+--- !u!198 &19870522
 ParticleSystem:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199850}
+  m_GameObject: {fileID: 153586}
   lengthInSec: 1
   startDelay: 0
   speed: 1
@@ -2160,17 +2160,17 @@ ParticleSystem:
     subEmitterCollision1: {fileID: 0}
     subEmitterDeath: {fileID: 0}
     subEmitterDeath1: {fileID: 0}
---- !u!199 &19943242
+--- !u!199 &19923958
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 199850}
+  m_GameObject: {fileID: 193848}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: 1d46a17a95a444c08830612bc1146d1d, type: 2}
+  - {fileID: 2100000, guid: ece03f51ba1e7b3499158d82689d6f12, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2196,17 +2196,17 @@ ParticleSystemRenderer:
   m_Mesh1: {fileID: 0}
   m_Mesh2: {fileID: 0}
   m_Mesh3: {fileID: 0}
---- !u!199 &19969044
+--- !u!199 &19986026
 ParticleSystemRenderer:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 101686}
+  m_GameObject: {fileID: 153586}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_Materials:
-  - {fileID: 2100000, guid: ece03f51ba1e7b3499158d82689d6f12, type: 2}
+  - {fileID: 2100000, guid: 1d46a17a95a444c08830612bc1146d1d, type: 2}
   m_SubsetIndices: 
   m_StaticBatchRoot: {fileID: 0}
   m_UseLightProbes: 1
@@ -2241,5 +2241,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 101686}
+  m_RootGameObject: {fileID: 193848}
   m_IsPrefabParent: 1

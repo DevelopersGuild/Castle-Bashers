@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float agroRange;
     public float attackRange;
     public float attack_CD;
+    public AudioClip attackSound;
     
     [HideInInspector]
     public GameObject target;
