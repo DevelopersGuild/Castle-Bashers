@@ -60,19 +60,29 @@ public class TestEnemy : Enemy
             if (invTime <= 0)
                 isInvincible = false;
         }
+
+
+        animationController.isAttacking = isAttacking;
+
         invTime -= Time.deltaTime;
         attack_CD += Time.deltaTime;
     }
 
     private void Attack()
     {
-        
-        bool facing = distL <= distR;
-        attack_CD = 0;
+        isAttacking = true;
         distL = (transform.position - targetPos - left).magnitude;
         distR = (transform.position - targetPos - right).magnitude;
         toLeft = (attackRange + distL) <= distR;
+    }
 
+    private void spawnAttackCollider()
+    {
+        if(attackSound)
+        {
+            AudioSource.PlayClipAtPoint(attackSound, transform.position);
+        }
+        bool facing = distL <= distR;
         if (facing)
         {
             attCol = Instantiate(attackCollider, transform.position + xhalf + right, transform.rotation) as GameObject;
@@ -81,8 +91,14 @@ public class TestEnemy : Enemy
         {
             attCol = Instantiate(attackCollider, transform.position + (-1 * xhalf) + left, transform.rotation) as GameObject;
         }
+        attack_CD = 0;
         Destroy(attCol, 0.5f);
-
     }
+
+    private void FinishedAttacking()
+    {
+        isAttacking = false;
+    }
+
 
 }

@@ -121,7 +121,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ad29ce2f0e9a3854796a5a50763562da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movTexture: {fileID: 15200000, guid: 5bfb48d6f101f6c4981b187e76e98db2, type: 3}
+  movTexture: {fileID: 15200000, guid: 733efe18f41b9644fb9fad2a437f7ae9, type: 3}
 --- !u!81 &1916857161
 AudioListener:
   m_ObjectHideFlags: 0

@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float agroRange;
     public float attackRange;
     public float attack_CD;
+    public AudioClip attackSound;
     
     [HideInInspector]
     public GameObject target;
@@ -23,6 +24,8 @@ public class Enemy : MonoBehaviour
     public enum Type { Melee, Ranged, Other };
     [HideInInspector]
     public float distance, speed, zDiff;
+    protected bool isAttacking;
+    protected float attackTimer;
 
     //for melee
     [HideInInspector]
@@ -35,6 +38,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer sprRend;
     [HideInInspector]
     public Health hp;
+    public AnimationController animationController;
 
     public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
@@ -49,6 +53,7 @@ public class Enemy : MonoBehaviour
         moveController = GetComponent<MoveController>();
         sprRend = GetComponent<SpriteRenderer>();
         hp = GetComponent<Health>();
+        animationController = GetComponent<AnimationController>();
         isInvincible = false;
         invTime = 0;
         stunTimer = 0;

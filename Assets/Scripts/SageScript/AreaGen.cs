@@ -19,7 +19,7 @@ public class AreaGen : MonoBehaviour
     public Enemy Boss; /// <summary>
                        /// Need to create a Boss script which inherits from our enemy script. Boss will be of Class 'Boss' 
                        /// </summary>
-    static public GameObject BossID;
+    static public int BossID;
     public Biome.BiomeName ActiveBiomeName;
 
     static public GameObject[,] AreaLog;
@@ -31,6 +31,7 @@ public class AreaGen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+
         //FindObjectOfType<Main_Process>().GetComponent<Main_Process>().Main_UI_Init(false);
 
         rnd = new System.Random(System.Guid.NewGuid().GetHashCode());
@@ -42,38 +43,40 @@ public class AreaGen : MonoBehaviour
 
         GameObject temp;
 
-        GameObject background = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName,0], typeof(GameObject));
+        GameObject background = (GameObject)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName,0], typeof(GameObject));
 
         AreaLog = new GameObject[AreaNumber, Max_Enemy];
         AreaID = new int[AreaNumber];
         EnemyNumber = new int[AreaNumber];
         
-
-        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Left Limit.prefab", typeof(GameObject)), new Vector3(-5,0,0), transform.rotation);
+        
+        Instantiate(Resources.Load("LevelObjects/Left Limit", typeof(GameObject)), new Vector3(-5,0,0), transform.rotation);
 
         for (int i = 0; i < AreaNumber; i++)
         {
 
 
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/3DFloorB.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, AreaZCoord), transform.rotation);
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Front Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 11), transform.rotation); //set front limits
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Back Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -8), transform.rotation); //set back limits
-            AreaID[i] = Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40 + 20, 0, 0), transform.rotation).GetInstanceID();
+            Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, AreaZCoord), transform.rotation);
+            Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 11), transform.rotation); //set front limits
+            Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -8), transform.rotation); //set back limits
+            AreaID[i] = Instantiate(Resources.Load("LevelObjects/Right Limit", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40 + 20, 0, 0), transform.rotation).GetInstanceID();
             
             t_length += 40;
 
-            if (Weather!=null)
-            weatherObject = Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), Quaternion.identity) as GameObject;
-            weatherObject.transform.eulerAngles = new Vector3(77, 180, 180);
+            if (Weather != null)
+            {
+                weatherObject = Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), Quaternion.identity) as GameObject;
+                weatherObject.transform.eulerAngles = new Vector3(77, 180, 180);
+            }
 
             if (background!=null)
             Instantiate(background, new Vector3((AreaXCoord + i) * 40, 5, 13), transform.rotation);
                if((int)ActiveBiomeName== 0)
                     {
-                    objects[0] = (Texture)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName, 1], typeof(Texture));
+                    objects[0] = (Texture)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName, 1], typeof(Texture));
                     if(objects[0]!=null)
                     Instantiate(objects[0], new Vector3((AreaXCoord + i) * 40, AreaYCoord, 2), transform.rotation);
-                    Debug.Log(objects[0].name);
+                    //Debug.Log(objects[0].name);
             }
 
             // Debug.Log("Recurrssion: " + i);
@@ -82,8 +85,8 @@ public class AreaGen : MonoBehaviour
 
            // Debug.Log("EnemySize: " + EnemySize);
             int[] EnemyTypeArray = new int[EnemySize];
-            int[] arrayX = new int[EnemySize];
-            int[] arrayZ = new int[EnemySize];
+            double[] arrayX = new double[EnemySize];
+            double[] arrayZ = new double[EnemySize];
 
 
                 for (int m = 0; m < EnemySize; m++) //creates enemy types
@@ -96,10 +99,10 @@ public class AreaGen : MonoBehaviour
 
 
                 //////////////////////////
-                int testtemp;
+                double testtemp;
                 for (int m = 0; m < EnemySize; m++) //This loop gets us our X coordinates
                 {
-                    testtemp = rnd.Next(10, 20); //our X value
+                    testtemp = rnd.NextDouble(); //our X value
                     for (int n = 0; n < EnemySize; n++)//dummy test
                     {
                         if (arrayX[n] == testtemp)
@@ -116,7 +119,7 @@ public class AreaGen : MonoBehaviour
                 ////////////////////
                 for (int m = 0; m < EnemySize; m++) //This loop gets us our Z coordinates
                 {
-                    testtemp = rnd.Next(-8, 8); //our Z value
+                    testtemp = rnd.NextDouble(); //our Z value
                     for (int n = 0; n < EnemySize; n++) //dummy test
                     {
                         if (arrayZ[n] == testtemp)
@@ -135,19 +138,21 @@ public class AreaGen : MonoBehaviour
 
                 for (int m = 0; m < EnemySize; m++)
                 {
-                    temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
+                Debug.Log("Created enemy number: " + EnemySize + " succesffuly!");
+                    temp = (GameObject)(Resources.Load((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
                     if (temp!=null)
-                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((arrayX[m] + (40 * i)), 5, arrayZ[m]), transform.rotation);
+                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((float)(arrayX[m]*rnd.Next(1,5)+15+ (40 * i)), 5, (float)arrayZ[m]*rnd.Next(0,4)), transform.rotation);
 
-           
-                }
+            }
 
                 if (i == AreaNumber-1)
                 {
+                
                 if (Boss != null)
                 {
-                    BossID.name =  Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation).GetInstanceID().ToString();
-                    //BossID;
+                    
+                    BossID = Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation).GetInstanceID();
+                    
                 }
                 }
 
@@ -155,15 +160,15 @@ public class AreaGen : MonoBehaviour
 
 
             } //END OF PART GENERATION
-
-        temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Barrel.prefab", typeof(GameObject)));
-
+        
+        temp = (GameObject)(Resources.Load("LevelObjects/Barrel", typeof(GameObject)));
+        
         for (int i=0; i< Total_Objects; i++)
             {
-            int[] arrayX = new int[Total_Objects];
-            int[] arrayZ = new int[Total_Objects];
+            double[] arrayX = new double[Total_Objects];
+            double[] arrayZ = new double[Total_Objects];
             //////////////////////////
-            int testtemp;
+            double testtemp;
             for (int m = 0; m < Total_Objects; m++) //This loop gets us our X coordinates
             {
                 testtemp = rnd.Next(10, t_length-20); //our X value
@@ -196,13 +201,15 @@ public class AreaGen : MonoBehaviour
                         arrayZ[m] = testtemp;
                 }
             }
-
+            
             if (temp!=null)
-            Instantiate(temp, new Vector3((arrayX[i]), 2.5f, arrayZ[i]), transform.rotation);
-
+            Instantiate(temp, new Vector3(((float)arrayX[i])*rnd.Next(10,20)+5, 2.5f, (float)arrayZ[i]*rnd.Next(-7,7)), transform.rotation);
+            
         }
+        
 
-        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/End Limit.prefab", typeof(GameObject)), new Vector3((t_length)-20, AreaYCoord, AreaZCoord), transform.rotation);
+        Instantiate(Resources.Load("LevelObjects/End Limit", typeof(GameObject)), new Vector3((t_length)-20, AreaYCoord, AreaZCoord), transform.rotation);
+        
     }
 
     // Update is called once per frame

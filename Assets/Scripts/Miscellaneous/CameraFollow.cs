@@ -40,8 +40,11 @@ public class CameraFollow : MonoBehaviour
         int size = 0;
         foreach (Transform child in gobjCameraTarget.transform)
         {
-            totalAveragePosition += child.position;
-            size++;
+            if (child.gameObject.active)
+            {
+                totalAveragePosition += child.position;
+                size++;
+            }
         }
         totalAveragePosition /= size;
 
@@ -65,8 +68,11 @@ public class CameraFollow : MonoBehaviour
             int size = 0;
             foreach (Transform child in gobjCameraTarget.transform)
             {
-                totalAveragePosition += child.position;
-                size++;
+                if (child.gameObject.active)
+                {
+                    totalAveragePosition += child.position;
+                    size++;
+                }
             }
             totalAveragePosition /= size;
 

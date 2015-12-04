@@ -35,7 +35,7 @@ public class Main_Process : MonoBehaviour {
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         movTexture.loop = false;
-        if(Application.platform!=RuntimePlatform.WindowsEditor)
+        //if(Application.platform!=RuntimePlatform.WindowsEditor)
             movTexture.Play();
         start_to_play = true;
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_Process = this.gameObject;
@@ -446,7 +446,7 @@ public class Main_Process : MonoBehaviour {
     private void TEST()
     {
         CancelInvoke();
-        UI_Level_Selector_Open(0);
+        //UI_Level_Selector_Open(0);
     }
 
     void OnGUI()
@@ -459,12 +459,12 @@ public class Main_Process : MonoBehaviour {
             else if(start_to_play==true)
             {
                 Time.timeScale=1.0f;
-                if(Application.platform!=RuntimePlatform.WindowsEditor)
-                {
+                //if(Application.platform!=RuntimePlatform.WindowsEditor)
+                //{
                     if (Globe.Map_Load_id != 3)
                         Start_Battle();
                     Application.LoadLevel(2);
-                }
+                //}
             
             }
     }

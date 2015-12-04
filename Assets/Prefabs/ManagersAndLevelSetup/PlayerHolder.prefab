@@ -55,7 +55,6 @@ GameObject:
   - 114: {fileID: 11466136}
   - 114: {fileID: 11401110}
   - 114: {fileID: 11456710}
-  - 114: {fileID: 11413874}
   - 114: {fileID: 11484612}
   - 82: {fileID: 8250920}
   - 114: {fileID: 11482922}
@@ -285,6 +284,7 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 256
   walkSound: {fileID: 8300000, guid: fb47bf2f47869c746b9331af617dcc4f, type: 3}
+  isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
   knockbackVelocity: 0
@@ -292,29 +292,6 @@ MonoBehaviour:
   flinchTime: .400000006
   isStunned: 0
   playerInput: {x: 0, y: 0}
---- !u!114 &11413874
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 118170}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6112a187eae3e804a97f95b5540e0dc4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  floatText: {fileID: 0}
-  effectOffset: {x: 0, y: 2, z: 0}
-  canStun: 1
-  stunEffect: {fileID: 0}
-  canSlow: 1
-  slowEffect: {fileID: 0}
-  canSilence: 1
-  silenceEffect: {fileID: 0}
-  canSnare: 1
-  snareEffect: {fileID: 0}
-  canPoly: 1
-  PolyEffect: {fileID: 0}
 --- !u!114 &11423010
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -326,9 +303,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: af2fcf3bff68a7540989077a25f97e78, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  StartingMana: 0
   ManaRegenRate: 1
   MaxMana: 0
+  manaRegenPerSecond: 0
 --- !u!114 &11426444
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -341,8 +318,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   ExperinceAmount: 0
-  startingHealth: 10
   RegenAmount: 0
+  currentHealth: 0
+  maxhp: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: b45ac828d2c7a3741b9064f4cbd056bb, type: 3}
 --- !u!114 &11427052
@@ -402,8 +380,6 @@ MonoBehaviour:
   defense: 0
   basePhysicalDefense: 0
   baseMagicalDefense: 0
-  PhysicalDefense: 0
-  MagicalDefense: 0
 --- !u!114 &11456710
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -435,14 +411,14 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   Player_Name: 
-  Stamina: 0
-  Strength: 1
-  Agility: 0
-  Intelligence: 0
+  Stamina: 10
+  Strength: 10
+  Agility: 10
+  Intelligence: 10
   CCI: {fileID: 0}
   si: {fileID: 0}
   jumpHeight: 4
-  timeToJumpApex: .400000006
+  timeToJumpApex: .600000024
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
   playerId: 1

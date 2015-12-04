@@ -76,7 +76,7 @@ public class Health : MonoBehaviour
                 //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
                 dmg = Mathf.CeilToInt(dmg);
                 currentHealth -= dmg;
-                Destroy(Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Quaternion.identity), 0.2f);
+                Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
                 createFloatingText(dmg);
 
                 player.ModifyKBCount(knockback);
@@ -109,7 +109,7 @@ public class Health : MonoBehaviour
         }
         else
         {
-            Destroy(Instantiate(Resources.Load("Blood Splat"), gameObject.transform.position, Random.rotation), 1);
+            Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
             //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
             //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
             dmg = Mathf.CeilToInt(dmg);

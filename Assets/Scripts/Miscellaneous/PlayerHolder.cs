@@ -38,13 +38,12 @@ public class PlayerHolder : MonoBehaviour
     {
         foreach (Transform child in transform)
         {
-            child.position = new Vector3(0, 10, 0);
+            child.position = new Vector3(20, 10, 0);
         }
     }
 
     public void OnLevelWasLoaded(int level)
     {
-        Debug.Log("test");
         resetPositions();
     }
 

@@ -3,20 +3,23 @@ using System.Collections;
 
 public class Mana : MonoBehaviour
 {
-    public int StartingMana = 0;
+    //public float StartingMana = 0;
     public int ManaRegenRate = 1;
     public float MaxMana = 0;
     private float mana;
-    private float regenModifier = 12;
+    public float manaRegenPerSecond;
     private Player player;
 
     // Use this for initialization
     void Start()
     {
-        player = GetComponent<Player>();
+
+        mana = MaxMana;
+
+
     }
 
-
+    /*
     public void UpdateMaxMP_And_Regen()
     {
         if (player)
@@ -30,28 +33,33 @@ public class Mana : MonoBehaviour
             regenModifier = 1;
         }
         mana = MaxMana;
-    }
+    }*/
 
     // Update is called once per frame
     void Update()
     {
         if(mana < MaxMana)
         {
-            RegenMana(regenModifier);
+            RegenMana(manaRegenPerSecond);
         }
+    }
+
+    public void Full_Regen()
+    {
+        mana = MaxMana;
     }
 
     public void SetRegenModifier(float modifier)
     {
         if(modifier > 0)
         {
-            regenModifier = modifier;
+            manaRegenPerSecond = modifier;
         }
     }
 
     public void RegenMana(float modifier = 1f)
     {
-        mana += (ManaRegenRate + modifier) * Time.deltaTime;
+        mana += (manaRegenPerSecond) * Time.deltaTime;
         if (mana > MaxMana)
             mana = MaxMana;
     }
@@ -64,5 +72,14 @@ public class Mana : MonoBehaviour
     public float GetMaxMana()
     {
         return MaxMana;
+    }
+
+    public void addMana(int i)
+    {
+        mana += i;
+    }
+    public void SetMaxMana(int i)
+    {
+        MaxMana = i;
     }
 }

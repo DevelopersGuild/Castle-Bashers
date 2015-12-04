@@ -6,6 +6,7 @@ using Rewired;
 public class Player : MonoBehaviour
 {
     //private static Player player;
+    [HideInInspector]
     public Animator animator;
     public GameObject AttackCollider;
     public SkillManager skillManager;
@@ -384,7 +385,9 @@ public class Player : MonoBehaviour
         //health.Updata_Maxhp_withFullRegen();
         health.SetMaxHP(Stamina * 5 + Strength + Agility + Intelligence);
         health.Full_Regen();
-        mana.UpdateMaxMP_And_Regen();
+        mana.SetMaxMana(Stamina * 2 + Intelligence * 3);
+        mana.Full_Regen();
+
         /*These are using the old DealDamageToEnemy script*/
         //In addition, the functions are ambiguous. The player should not be dealing magic damage with the physical attack collider?
         //
@@ -399,6 +402,7 @@ public class Player : MonoBehaviour
         defense.SetBaseMagicalDefense((int)(1.5f * Stamina));
         basePhysicalDamage = 0.75f * Strength;
         baseMagicalDamage = 1 * Intelligence;
+        AttackCollider.GetComponent<DealDamage>().setDamage(basePhysicalDamage);
         Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
         
 
@@ -483,8 +487,8 @@ public class Player : MonoBehaviour
     {
         velocity.y += gravity * Time.unscaledDeltaTime;
 
-        float targetVelocityX = input.x * (horizontalMoveSpeed + Agility) * crowdControllable.getSlow();
-        float targetVelocityZ = input.y * (verticalMoveSpeed + Agility) * crowdControllable.getSlow();
+        float targetVelocityX = input.x * (horizontalMoveSpeed + (Agility/15)) * crowdControllable.getSlow();
+        float targetVelocityZ = input.y * (verticalMoveSpeed + (Agility/15)) * crowdControllable.getSlow();
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         controller.Move(velocity * Time.unscaledDeltaTime, input);
@@ -534,7 +538,7 @@ public class Player : MonoBehaviour
     private void Initialize()
     {
         // Get the Rewired Player object for this player.
-        Debug.Log("Initialized...");
+        //Debug.Log("Initialized...");
         playerRewired = ReInput.players.GetPlayer(playerId);
         initialized = true;
     }

@@ -9,6 +9,7 @@ public class MoveController : MonoBehaviour
     private AudioSource source;
 
     private bool facingRight = true;
+    public bool isMoving;
 
     const float skinWidth = .015f;
     public int horizontalRayCount = 4;
@@ -123,6 +124,15 @@ public class MoveController : MonoBehaviour
             transform.Translate(velocity);
 
         clampPosition(ref velocity);
+
+        if(velocity.x == 0 && velocity.z == 0)
+        {
+            isMoving = false;
+        }
+        else
+        {
+            isMoving = true;
+        }
     }
 
     private void clampPosition(ref Vector3 veloctity)
