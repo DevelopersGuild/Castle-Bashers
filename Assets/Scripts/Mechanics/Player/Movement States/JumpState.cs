@@ -11,6 +11,7 @@ public class JumpState : IPlayerState
         {
             player.Jump();
             player.SetIsGrounded(false);
+            AudioSource.PlayClipAtPoint(player.jumpAudio, player.transform.position);
             player.animator.SetBool("IsJumping", true);
             player.animator.SetBool("IsGrounded", false);
        }

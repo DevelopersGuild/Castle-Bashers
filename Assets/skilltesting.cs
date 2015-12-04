@@ -1,47 +1,38 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class test : Skill
+public class Immolate : Skill
 {
-    private float duration = 10f;
+    private Player player;
+    private Color tintColor;
     private float expiration;
-    bool active;
-    Player player;
-
-    private int bonusStrength;
+    private float duration = 10;
     protected override void Start()
     {
         base.Start();
-   
-        base.SetBaseValues(15, 16000, 150, "Ignite", SkillLevel.Level1);
+        base.SetBaseValues(60, 16000, 150, "Immolate", SkillLevel.Level1);
         player = GetComponent<Player>();
-
+        tintColor = new Color(75, 0, 0);
     }
     protected override void Update()
     {
         base.Update();
-        if(active && Time.time >= expiration)
-        {
-            active = false;
-            player.transform.GetChild(0).GetComponent<DealDamage>().isMagic = false;
-            player.SetStrength(player.GetStrength() - bonusStrength);
-
-        }
 
     }
 
     public override void UseSkill(GameObject caller, GameObject target = null, object optionalParameters = null)
     {
         base.UseSkill(gameObject);
+        gameObject.AddComponent<Burn>();
+        GetComponent<Burn>().setDuration(duration);
+        player.GetComponent<SpriteRenderer>().color += tintColor;
+        //player.GetComponent<Player>().AddStuf
         expiration = Time.time + duration;
-        active = true;
-        player.transform.GetChild(0).GetComponent<DealDamage>().isMagic = true;
-        bonusStrength = player.GetIntelligence() / 2;
-        player.SetStrength(player.GetStrength() + bonusStrength);
-
-
     }
 }
+
+
+
 
 public class skilltesting : MonoBehaviour {
 
@@ -52,12 +43,14 @@ public class skilltesting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gameObject.AddComponent<FireballSkill>();
+        gameObject.AddComponent<MeteorShowerSkill>();
+
         testSkill = GetComponent<Skill>();
 	}
 	
 	// Update is called once per frame
 	void Update () {
+        if(Time.time >= 1) 
 	    if(testSkill.GetCoolDownTimer() <= 0)
         {
             testSkill.UseSkill(gameObject);

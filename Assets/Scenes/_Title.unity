@@ -271,7 +271,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   guiDepth: 0
-  levelToLoad: level1
+  levelToLoad: _game_processing
   splashLogo: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
   waitForInput: 0
   startAutomatically: 0

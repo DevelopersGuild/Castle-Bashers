@@ -8,6 +8,16 @@ public class DealDamage : MonoBehaviour {
     public bool damagePlayers = false;
     public bool damageEnemies = false;
 
+    public float GetDamageF()
+    {
+        return dmgAmount;
+    }
+
+    public int GetDamageI()
+    {
+        return (int)dmgAmount;
+    }
+
     void OnTriggerEnter(Collider col)
     {
         GameObject target = col.gameObject;
@@ -109,5 +119,14 @@ public class DealDamage : MonoBehaviour {
                 //Debug.Log(target.GetComponent<Health>().getCurrentHp());
             }
         }
+    }
+
+    public void setDamage(float i)
+    {
+        dmgAmount = i;
+    }
+    public float getDamage()
+    {
+        return dmgAmount;
     }
 }

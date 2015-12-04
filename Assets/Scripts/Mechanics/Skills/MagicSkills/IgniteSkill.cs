@@ -26,10 +26,8 @@ public class IgniteSkill : Skill
         Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, aoeRadius);
         foreach (Collider col in hitColliders)
         {
-            Debug.Log("Found " + col.gameObject.name);
             if (col.gameObject.GetComponent<Burn>())
             {
-                Debug.Log("Dealt " + damage + " to " + col.gameObject.name);
                 col.gameObject.GetComponent<Defense>().CheckMagicalDefense(damage);
             }
         }

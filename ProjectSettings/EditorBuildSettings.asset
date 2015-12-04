@@ -15,7 +15,7 @@ EditorBuildSettings:
     path: Assets/Scenes/town.unity
   - enabled: 1
     path: Assets/Scenes/_game_processing.unity
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/JosephTesting.unity
   - enabled: 1
     path: Assets/Scenes/levelgenerate.unity

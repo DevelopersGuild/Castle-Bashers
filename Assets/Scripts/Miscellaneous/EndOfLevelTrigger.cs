@@ -17,4 +17,11 @@ public class EndOfLevelTrigger : MonoBehaviour {
             mainprocess.UI_Mission_Success_Open();
         }
     }
+
+    void Update()
+    {
+        var alive = GameObject.Find(AreaGen.BossID.name);
+        Debug.Log(AreaGen.BossID);
+        Debug.Log(alive);
+    }
 }

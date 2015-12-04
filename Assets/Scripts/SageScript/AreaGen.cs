@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using System.Collections;
 using System;
 
@@ -14,6 +14,7 @@ public class AreaGen : MonoBehaviour
     public int Total_Objects;
     public Enemy Event;
     public GameObject Weather;
+    private GameObject weatherObject;
     private int t_length = 0; //Stage length, used for Traps
     public Enemy Boss; /// <summary>
                        /// Need to create a Boss script which inherits from our enemy script. Boss will be of Class 'Boss' 
@@ -21,12 +22,11 @@ public class AreaGen : MonoBehaviour
     static public GameObject BossID;
     public Biome.BiomeName ActiveBiomeName;
 
-
-    private System.Random rnd;
-
     static public GameObject[,] AreaLog;
     static public int[] AreaID;
+    public Texture[] objects = new Texture[5];
 
+    private System.Random rnd;
 
     // Use this for initialization
     void Start()
@@ -42,7 +42,7 @@ public class AreaGen : MonoBehaviour
 
         GameObject temp;
 
-        GameObject background = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/Maps/BackgroundContainer.prefab", typeof(GameObject));
+        GameObject background = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName,0], typeof(GameObject));
 
         AreaLog = new GameObject[AreaNumber, Max_Enemy];
         AreaID = new int[AreaNumber];
@@ -58,16 +58,23 @@ public class AreaGen : MonoBehaviour
             Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/3DFloorB.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, AreaZCoord), transform.rotation);
             Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Front Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 11), transform.rotation); //set front limits
             Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Back Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -8), transform.rotation); //set back limits
-Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, 0, 0), transform.rotation);
-            // Barrier Limit Code if (i!= AreaNumber-1)
-            //Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Barrier Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord+ i)*40 +10, AreaYCoord, AreaZCoord), transform.rotation);
+            AreaID[i] = Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40 + 20, 0, 0), transform.rotation).GetInstanceID();
+            
             t_length += 40;
 
             if (Weather!=null)
-            Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), weather);
+            weatherObject = Instantiate(Weather, new Vector3((AreaXCoord + i) * 40, 50, -8), Quaternion.identity) as GameObject;
+            weatherObject.transform.eulerAngles = new Vector3(77, 180, 180);
 
             if (background!=null)
             Instantiate(background, new Vector3((AreaXCoord + i) * 40, 5, 13), transform.rotation);
+               if((int)ActiveBiomeName== 0)
+                    {
+                    objects[0] = (Texture)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName, 1], typeof(Texture));
+                    if(objects[0]!=null)
+                    Instantiate(objects[0], new Vector3((AreaXCoord + i) * 40, AreaYCoord, 2), transform.rotation);
+                    Debug.Log(objects[0].name);
+            }
 
             // Debug.Log("Recurrssion: " + i);
             int EnemySize = rnd.Next(Min_Enemy, Max_Enemy);
@@ -137,8 +144,11 @@ Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjec
 
                 if (i == AreaNumber-1)
                 {
-                if(Boss!=null)
-                BossID= (GameObject)Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation);
+                if (Boss != null)
+                {
+                    BossID.name =  Instantiate(Boss, new Vector3((15 + (40 * i)), 5, AreaZCoord), transform.rotation).GetInstanceID().ToString();
+                    //BossID;
+                }
                 }
 
 

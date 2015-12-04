@@ -25,6 +25,7 @@ public class SaveAndLoad : MonoBehaviour {
 
         PlayerHolder = GameObject.Find("PlayerHolder");
         Player_Script = PlayerHolder.GetComponentsInChildren<Player>();
+        //Debug.Log("Player Object Found: " + Player_Script.Length.ToString());
         for (int i = 0; i <= 1;i++ )
         {
             Player_PF[i] = Player_Script[i].gameObject;
@@ -116,6 +117,8 @@ public class SaveAndLoad : MonoBehaviour {
         //encrypt
         string md5;
         md5 = FileVerify.getFileHash(path + "/saving.xml");
+        if (File.Exists(path + "/CB" + md5 + "D.xml"))
+            File.Delete(path + "/CB" + md5 + "D.xml");
         File.Move(path + "/saving.xml", path + "/CB" + md5 + "D.xml");
         if (File.Exists(path + "/saving.xml"))
         {
@@ -144,8 +147,11 @@ public class SaveAndLoad : MonoBehaviour {
     public void LoadData()
     {
         CancelInvoke();
-        bool[] test={false,true,true,true,true,true,true,true};
-        Player_Script[0].SetUnlockSkillList(test);
+        if(Application.platform==RuntimePlatform.WindowsEditor)
+        {
+            bool[] test = { false, true, true, true, true, true, true, true };
+            Player_Script[0].SetUnlockSkillList(test);
+        }
         if (File.Exists(path + "/" + Globe.Character_Data_File) == false || Globe.Character_Data_File=="null")
         {
             ErrorCatching.WriteCharacterDataXML();
@@ -195,55 +201,55 @@ public class SaveAndLoad : MonoBehaviour {
                     }
                     else if (xl2.Name == "name")
                     {
-                        Player_Script[player_id_load].Player_Name = xl2.InnerText;
+                        Player_Script[player_id_load-1].Player_Name = xl2.InnerText;
                     }
                     else if (xl2.Name == "cid")
                     {
-                        Player_Script[player_id_load].SetClassID(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetClassID(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "lv")
                     {
-                        Player_EXP[player_id_load].SetLevel(int.Parse(xl2.InnerText));
+                        Player_EXP[player_id_load - 1].SetLevel(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "exp")
                     {
-                        Player_EXP[player_id_load].SetExperience(int.Parse(xl2.InnerText));
+                        Player_EXP[player_id_load - 1].SetExperience(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "gold")
                     {
-                        Player_gold[player_id_load].setCoins(int.Parse(xl2.InnerText));
+                        Player_gold[player_id_load - 1].setCoins(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "weapon_level")
                     {
-                        Player_Script[player_id_load].SetWeaponLV(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetWeaponLV(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "armor_level")
                     {
-                        Player_Script[player_id_load].SetArmorLV(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetArmorLV(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "accessories_level")
                     {
-                        Player_Script[player_id_load].SetAccessoriesLV(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetAccessoriesLV(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "atk")
                     {
-                        Player_Script[player_id_load].SetStrength(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetStrength(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "def")
                     {
-                        Player_Defense[player_id_load].SetDefense(int.Parse(xl2.InnerText));
+                        Player_Defense[player_id_load - 1].SetDefense(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "sta")
                     {
-                        Player_Script[player_id_load].SetStamina(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetStamina(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "spi")
                     {
-                        Player_Script[player_id_load].SetIntelligence(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetIntelligence(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "agi")
                     {
-                        Player_Script[player_id_load].SetAgility(int.Parse(xl2.InnerText));
+                        Player_Script[player_id_load - 1].SetAgility(int.Parse(xl2.InnerText));
                     }
                     else if (xl2.Name == "map")
                     {
@@ -259,17 +265,23 @@ public class SaveAndLoad : MonoBehaviour {
                             else
                                 skillinfo[i] = false;
                         }
-                        Player_Script[player_id_load].SetUnlockSkillList(skillinfo);
+                        Player_Script[player_id_load - 1].SetUnlockSkillList(skillinfo);
                     }
                 }
-                Player_EXP[player_id_load].LevelUp();
-                Player_Script[player_id_load].Fully_Update();
+                Player_EXP[player_id_load - 1].LevelUp();
+                Player_Script[player_id_load - 1].Fully_Update();
             }
-            if (!twoplayer)
-                Player_PF[1].SetActive(false);
-            Invoke("UpdateSkill", 3.0f);
         }
-   
+        if (twoplayer == false)
+        {
+            GetComponent<Main_Process>().One_player_per_client = true;
+            Player_PF[1].SetActive(false);
+            //Destroy(Player_PF[1]);
+            //Debug.Log("1 player setuped.");
+        }
+        else
+            GetComponent<Main_Process>().One_player_per_client = false;
+        Invoke("UpdateSkill", 3.0f);
     }
 
     void UpdateSkill()

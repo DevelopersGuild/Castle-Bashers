@@ -14,7 +14,7 @@ public class SkillshopTrigger : MonoBehaviour {
         mainprocess = FindObjectOfType<Main_Process>();
         allSkills.Add(gameObject.AddComponent<HealthRegenSkill>());
         allSkills.Add(gameObject.AddComponent<Skill_TimeStop>());
-        allSkills.Add(gameObject.AddComponent<Skill_BoostV2>());
+        //allSkills.Add(gameObject.AddComponent<Skill_BoostV2>());
         allSkills.Add(gameObject.AddComponent<Skill_BulkUp>());
         allSkills.Add(gameObject.AddComponent<IgniteSkill>());
         allSkills.Add(gameObject.AddComponent<FireballSkill>());
@@ -28,7 +28,7 @@ public class SkillshopTrigger : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            mainprocess.UI_SkillShop_Open(skillClassID, skillArray);
+            mainprocess.UI_SkillShop_Open(skillClassID);
         }
     }
 

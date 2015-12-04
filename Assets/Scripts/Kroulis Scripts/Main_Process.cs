@@ -55,13 +55,13 @@ public class Main_Process : MonoBehaviour {
             Player_Script[id] = pl;
             id++;
         }
-        if (id == 2)
-            One_player_per_client = false;
-        else
-            One_player_per_client = true;
+        //if (id == 2)
+        //    One_player_per_client = false;
+        //else
+        //    One_player_per_client = true;
 
         //Start to setup and init Main_UI and Menu_UI
-        Invoke("Main_UI_Init",1.00f);
+        Invoke("Main_UI_Init",2.00f);
         
         if(Application.platform!=RuntimePlatform.WindowsEditor)
             error.OnEnable();
@@ -158,7 +158,14 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = true;
         had_init = true;
         CancelInvoke();
-        Time.timeScale = 2.0f;
+        if(Application.platform==RuntimePlatform.WindowsEditor)
+        {
+            Invoke("TEST", 2.00f);
+        }
+        else
+        {
+            Time.timeScale = 2.0f;
+        }
     }
 
     //for forcing open Menu (Do not use it when other windows UI is opening)
@@ -196,10 +203,7 @@ public class Main_Process : MonoBehaviour {
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject LS = Other_Windows.GetComponent<Other_Windows_FullControl>().Level_Select;
-        LS.GetComponent<Level_Select_FullControl>().chapid = chapter_id;
-        LS.GetComponent<Level_Select_FullControl>().currentmap = 0;
-        LS.GetComponent<Level_Select_FullControl>().currentdiff = 0;
-        LS.SetActive(true);
+        LS.GetComponent<Level_Select_FullControl>().ShowMap(chapter_id);
     }
 
     public void UI_Death_Window_Open_Withmusic()
@@ -421,6 +425,30 @@ public class Main_Process : MonoBehaviour {
             }
         }
     }
+
+    public void OpenDialog(string id,string npcname)
+    {
+        Other_Windows.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().Dialog.GetComponent<Dialog_FullControl>().OpenDialog(id,npcname);
+    }
+
+    //Boss Data Update
+    public void SetBossMaxHP(int maxhp)
+    {
+        Main_UI.GetComponent<Main_UI_FULLControl>().boss.maxhp = maxhp;
+    }
+
+    public void SetBossCurrentHP(int hp)
+    {
+        Main_UI.GetComponent<Main_UI_FULLControl>().boss.hp = hp;
+    }
+
+    private void TEST()
+    {
+        CancelInvoke();
+        UI_Level_Selector_Open(0);
+    }
+
     void OnGUI()
     {
         if(movTexture)
@@ -439,6 +467,5 @@ public class Main_Process : MonoBehaviour {
                 }
             
             }
-        
     }
 }
