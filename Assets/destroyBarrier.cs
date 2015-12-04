@@ -38,13 +38,13 @@ public class destroyBarrier : MonoBehaviour {
         //}
 
 
-        for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
-        {
-            if (AreaGen.AreaLog[InstanceID, i] != null)
-                count++;
-            if (count == 0)
-                E_Dead = true;
-        }   
+        //for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
+        //{
+        //    if (AreaGen.AreaLog[InstanceID, i] != null)
+        //        count++;
+        //    if (count == 0)
+        //        E_Dead = true;
+        //}   
 	}
 
     void OnTriggerEnter(Collider other)
