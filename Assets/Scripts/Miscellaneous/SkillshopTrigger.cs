@@ -28,7 +28,7 @@ public class SkillshopTrigger : MonoBehaviour {
     {
         if (other.gameObject.tag == "Player")
         {
-            mainprocess.UI_SkillShop_Open(skillClassID);
+            mainprocess.UI_SkillShop_Open(0);
         }
     }
 
