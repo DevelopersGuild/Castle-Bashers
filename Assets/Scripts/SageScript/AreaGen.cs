@@ -5,12 +5,12 @@ using System;
 public class AreaGen : MonoBehaviour
 {
 
-    public int Min_Area; //minmum areas for level
-    public int Max_Area; //maximum areas for level
+    private int Min_Area; //minmum areas for level
+    private int Max_Area; //maximum areas for level
     public static int AreaNumber;
     public static int[] EnemyNumber;
-    public int Min_Enemy;//minimum enemies for area
-    public int Max_Enemy; //max enemies for area
+    private int Min_Enemy;//minimum enemies for area
+    private int Max_Enemy; //max enemies for area
     public int Total_Objects;
     public Enemy Event;
     public GameObject Weather;
@@ -31,6 +31,10 @@ public class AreaGen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Min_Area = 2;
+        Max_Area = 3;
+        Min_Enemy = 10;
+        Max_Enemy = 12;
         //FindObjectOfType<Main_Process>().GetComponent<Main_Process>().Main_UI_Init(false);
 
         rnd = new System.Random(System.Guid.NewGuid().GetHashCode());
@@ -48,7 +52,7 @@ public class AreaGen : MonoBehaviour
         AreaID = new int[AreaNumber];
         EnemyNumber = new int[AreaNumber];
         
-
+        
         Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Left Limit.prefab", typeof(GameObject)), new Vector3(-5,0,0), transform.rotation);
 
         for (int i = 0; i < AreaNumber; i++)
@@ -135,12 +139,13 @@ public class AreaGen : MonoBehaviour
 
                 for (int m = 0; m < EnemySize; m++)
                 {
+                Debug.Log("Created enemy number: " + EnemySize + " succesffuly!");
                     temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
                     if (temp!=null)
-                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((arrayX[m] + (40 * i)), 5, arrayZ[m]), transform.rotation);
+                    //AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((arrayX[m] + (40 * i)), 5, arrayZ[m]), transform.rotation);
+                    Instantiate(temp, new Vector3((arrayX[m] + (40 * i)), 5, arrayZ[m]), transform.rotation);
 
-           
-                }
+            }
 
                 if (i == AreaNumber-1)
                 {
