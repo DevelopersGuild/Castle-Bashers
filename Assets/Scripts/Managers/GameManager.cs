@@ -34,6 +34,7 @@ public class GameManager : MonoBehaviour, IListener
     private static NotificationManager m_notifications = null;
     private int numberOfPlayersDead = 0;
     private bool allPlayersDead = false;
+    private Player[] players;
 
     void Awake()
     {
@@ -47,13 +48,14 @@ public class GameManager : MonoBehaviour, IListener
             DontDestroyOnLoad(gameObject);
         }
         GameManager.Notifications.AddListener(this, MessageTypes.PLAYER_DEATH);
+        players = GameObject.FindObjectOfType<PlayerHolder>().GetComponentsInChildren<Player>();
     }
 
     //TODO add the rest of the game manager as development progresses.
 
-    public void CheckIfAllPlayersAreDead()
+    public bool CheckIfAllPlayersAreDead()
     {
-
+        return allPlayersDead;
     }
 
     public void OnReceived(Message message)
@@ -61,7 +63,7 @@ public class GameManager : MonoBehaviour, IListener
         if(message.GetMessageType() == MessageTypes.PLAYER_DEATH)
         {
             numberOfPlayersDead++;
-            if(numberOfPlayersDead == 1)
+            if(numberOfPlayersDead == players.Length)
             {
                 allPlayersDead = true;
             }
