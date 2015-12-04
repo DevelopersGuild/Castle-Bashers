@@ -1,46 +1,36 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class testSkill : Skill
+public class Immolate : Skill
 {
-    public float aoeRadius = 10;
-    float damage = 15;
-    private float amountToHeal = 0;
-    public float healPercentPerTarget = 0.05f;
-
+    private Player player;
+    private Color tintColor;
+    private float expiration;
+    private float duration = 10;
     protected override void Start()
     {
         base.Start();
-        base.SetBaseValues(4, 16000, 150, "Spirit of the Flame", SkillLevel.Level1);
-        base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/Ignite"));
-
+        base.SetBaseValues(60, 16000, 150, "Immolate", SkillLevel.Level1);
+        player = GetComponent<Player>();
+        tintColor = new Color(75, 0, 0);
     }
     protected override void Update()
     {
         base.Update();
-
 
     }
 
     public override void UseSkill(GameObject caller, GameObject target = null, object optionalParameters = null)
     {
         base.UseSkill(gameObject);
-
-        Collider[] hitColliders = Physics.OverlapSphere(gameObject.transform.position, aoeRadius);
-        foreach (Collider col in hitColliders)
-        {
-            Debug.Log(col.gameObject.name);
-            if (col.gameObject.GetComponent<Burn>())
-            {
-                Debug.Log("Adding % to heal");
-                amountToHeal += healPercentPerTarget;
-            }
-        }
-        float healAmount = gameObject.GetComponent<Health>().GetMaxHP() * amountToHeal;
-        Debug.Log("Heal amount: " + healAmount);
-        gameObject.GetComponent<Health>().AddHealth(healAmount);
+        gameObject.AddComponent<Burn>();
+        GetComponent<Burn>().setDuration(duration);
+        player.GetComponent<SpriteRenderer>().color += tintColor;
+        //player.GetComponent<Player>().AddStuf
+        expiration = Time.time + duration;
     }
 }
+
 
 
 
@@ -53,7 +43,7 @@ public class skilltesting : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        gameObject.AddComponent<SotFSkill>();
+        gameObject.AddComponent<MeteorShowerSkill>();
 
         testSkill = GetComponent<Skill>();
 	}

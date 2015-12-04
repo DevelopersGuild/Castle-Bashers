@@ -22,6 +22,7 @@ public class Inferno : Skill
         base.Start();
         base.SetBaseValues(15, 16000, 150, "Inferno", SkillLevel.Level1);
         projectile = Resources.Load("Fireball") as GameObject;
+        Destroy(projectile.GetComponent<SimpleObjectMover>());
         projectiles = new GameObject[numProjectiles];
 
 

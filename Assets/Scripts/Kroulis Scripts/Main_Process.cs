@@ -445,7 +445,7 @@ public class Main_Process : MonoBehaviour {
 
     private void TEST()
     {
-        CancelInvoke("TEST");
+        CancelInvoke();
         UI_Level_Selector_Open(0);
     }
 

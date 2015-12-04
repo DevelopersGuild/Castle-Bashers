@@ -14,6 +14,11 @@ public class DealDamageToEnemy : MonoBehaviour
     //If we make colliders appear on attacks, create OnCollisionEnter and OnTriggerEnter collisions
     //destroy collider after they hit something
 
+    void Start()
+    {
+        Debug.Log(gameObject.name + " is using an outdated script: DealDamageToEnemy\n Use DealDamage, if a bug prevents you from doing so please post in the chat");
+    }
+
     public void OnCollisionStay(Collision other)
     {
         GameObject enemObj = other.gameObject;

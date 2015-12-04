@@ -274,11 +274,13 @@ public class SaveAndLoad : MonoBehaviour {
         }
         if (twoplayer == false)
         {
-            GetComponent<Main_Process>().One_player_per_client = false;
+            GetComponent<Main_Process>().One_player_per_client = true;
             Player_PF[1].SetActive(false);
             //Destroy(Player_PF[1]);
             //Debug.Log("1 player setuped.");
         }
+        else
+            GetComponent<Main_Process>().One_player_per_client = false;
         Invoke("UpdateSkill", 3.0f);
     }
 

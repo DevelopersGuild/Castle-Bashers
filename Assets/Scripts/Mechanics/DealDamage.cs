@@ -120,4 +120,13 @@ public class DealDamage : MonoBehaviour {
             }
         }
     }
+
+    public void setDamage(float i)
+    {
+        dmgAmount = i;
+    }
+    public float getDamage()
+    {
+        return dmgAmount;
+    }
 }
