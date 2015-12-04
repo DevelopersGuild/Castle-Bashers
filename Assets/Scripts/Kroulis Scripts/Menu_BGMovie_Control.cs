@@ -17,11 +17,13 @@ public class Menu_BGMovie_Control : MonoBehaviour {
 	
 	public void resume()
     {
-        MOV.Play();
+        if(MOV!=null)
+            MOV.Play();
     }
 
     public void pause()
     {
-        MOV.Pause();
+        if (MOV != null)
+            MOV.Pause();
     }
 }
