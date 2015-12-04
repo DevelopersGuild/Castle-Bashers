@@ -5,12 +5,12 @@ using System;
 public class AreaGen : MonoBehaviour
 {
 
-    private int Min_Area; //minmum areas for level
-    private int Max_Area; //maximum areas for level
+    public int Min_Area; //minmum areas for level
+    public int Max_Area; //maximum areas for level
     public static int AreaNumber;
     public static int[] EnemyNumber;
-    private int Min_Enemy;//minimum enemies for area
-    private int Max_Enemy; //max enemies for area
+    public int Min_Enemy;//minimum enemies for area
+    public int Max_Enemy; //max enemies for area
     public int Total_Objects;
     public Enemy Event;
     public GameObject Weather;
@@ -31,10 +31,7 @@ public class AreaGen : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-        Min_Area = 2;
-        Max_Area = 3;
-        Min_Enemy = 10;
-        Max_Enemy = 12;
+
         //FindObjectOfType<Main_Process>().GetComponent<Main_Process>().Main_UI_Init(false);
 
         rnd = new System.Random(System.Guid.NewGuid().GetHashCode());
