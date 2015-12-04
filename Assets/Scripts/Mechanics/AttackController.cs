@@ -23,19 +23,20 @@ public class AttackController : MonoBehaviour
     {
 
         timer = Time.timeSinceLevelLoad;
-        if (player.playerRewired.GetButtonDown("Fire1"))
-        {
-            lastPress = Time.timeSinceLevelLoad;
-            if (tap > 2)
+        if (player.playerRewired!=null)
+            if (player.playerRewired.GetButtonDown("Fire1"))
             {
-                tap = 3;
+                lastPress = Time.timeSinceLevelLoad;
+                if (tap > 2)
+                {
+                    tap = 3;
+                }
+                else
+                {
+                    tap++;
+                }
+                Combo();
             }
-            else
-            {
-                tap++;
-            }
-            Combo();
-        }
 
         if (timer - lastPress > 0.25f)
         {

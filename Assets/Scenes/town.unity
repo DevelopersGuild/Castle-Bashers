@@ -1205,7 +1205,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11400352, guid: a4145fbb57ebf5745b371c2fb904555d, type: 2}
       propertyPath: skillClassID
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a4145fbb57ebf5745b371c2fb904555d, type: 2}
