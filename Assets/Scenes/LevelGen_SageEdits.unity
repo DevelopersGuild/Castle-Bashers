@@ -450,7 +450,7 @@ Prefab:
     - target: {fileID: 11441374, guid: f2260f86752cf7f4986ef82a173445e6, type: 2}
       propertyPath: Other_Windows
       value: 
-      objectReference: {fileID: 0}
+      objectReference: {fileID: 2064697084}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2260f86752cf7f4986ef82a173445e6, type: 2}
   m_IsPrefabParent: 0
@@ -647,6 +647,10 @@ Prefab:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11468758, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
+      propertyPath: Main_Process
+      value: 
+      objectReference: {fileID: 263701513}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
   m_IsPrefabParent: 0
@@ -740,6 +744,10 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c46c641a3f3a6d4180453671011b7b4, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &2064697084 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 159154, guid: 8c46c641a3f3a6d4180453671011b7b4, type: 2}
+  m_PrefabInternal: {fileID: 2064697083}
 --- !u!1 &2067219047 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 119418, guid: db35aaf6d0c533e48a1e5cc53cd74588, type: 2}
