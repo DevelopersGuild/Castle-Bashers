@@ -55,4 +55,14 @@ public class QuestList : MonoBehaviour {
         return true;
     }
 
+    public List<int> GetProcessingList()
+    {
+        return Quest_Processing_List;
+    }
+
+    public List<int> GetFinishedList()
+    {
+        return Quest_Finished_List;
+    }
+
 }
