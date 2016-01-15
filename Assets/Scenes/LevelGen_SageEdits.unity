@@ -176,19 +176,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Min_Enemy
-      value: 7
+      value: 3
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Enemy
-      value: 9
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Max_Area
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Min_Area
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
       propertyPath: Total_Objects
@@ -207,9 +207,57 @@ Prefab:
       propertyPath: ActiveBiomeName
       value: 0
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &619721797
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 619721799}
+  - 114: {fileID: 619721798}
+  m_Layer: 0
+  m_Name: Room
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &619721798
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619721797}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847be65416c86e14bbadd4d5908e7142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Min_Room: 0
+  Max_Room: 0
+  Min_enemy: 0
+  Max_enemy: 0
+  Min_Objects: 0
+  Max_Objects: 0
+  Min_Paths: 0
+  Max_Paths: 0
+--- !u!4 &619721799
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 619721797}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -5, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 10
 --- !u!1001 &813759985
 Prefab:
   m_ObjectHideFlags: 0
@@ -392,6 +440,29 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1649917875 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 151902, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
+  m_PrefabInternal: {fileID: 517105051}
+--- !u!114 &1649917876
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1649917875}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 847be65416c86e14bbadd4d5908e7142, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Min_Room: 2
+  Max_Room: 2
+  Min_enemy: 0
+  Max_enemy: 0
+  Min_Objects: 0
+  Max_Objects: 0
+  Min_Paths: 0
+  Max_Paths: 0
 --- !u!1 &1744063762 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 141392, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}

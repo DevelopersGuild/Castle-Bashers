@@ -5,11 +5,11 @@ public class destroyBarrier : MonoBehaviour {
 
     private Biome.BiomeName ActiveBiomeName;
     private Main_Process mainprocess;
-    private bool E_Dead = false;
+    private bool E_Dead = true; //change back!
     private float left = 40f;
     private int InstanceID;
     private CameraFollow cameraFollow;
-    GameObject last;
+    public CreateStart room;
 
     // Use this for initialization
     void Start()
@@ -24,8 +24,10 @@ public class destroyBarrier : MonoBehaviour {
                InstanceID = i;
         }
 
-        if (AreaGen.EnemyNumber[InstanceID] == 0)
+       // if (AreaGen.EnemyNumber[InstanceID] == 0)
             E_Dead = true;
+
+        room = FindObjectOfType<CreateStart>().GetComponent<CreateStart>();
     }
 
     // Update is called once per frame
@@ -39,23 +41,29 @@ public class destroyBarrier : MonoBehaviour {
         //}
 
 
-        for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
-        {
-            if (AreaGen.AreaLog[InstanceID, i] != null)
-                count++;
-           if (count == 0)
-                E_Dead = true;
-        }   
-        Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
+       // for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
+       // {
+       //     if (AreaGen.AreaLog[InstanceID, i] != null)
+        //        count++;
+       //    if (count == 0)
+       //         E_Dead = true;
+      //  }   
+     //   Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
     }
 
     void OnTriggerEnter(Collider other)
     {
         if (E_Dead==true)
         {
+            if (CreateStart.roomCount != CreateStart.numRoom)
+            {
+                GameObject background = (GameObject)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName, 0], typeof(GameObject));
+                room.MakeRoom(CreateStart.roomCount, background);
+            }
             Destroy(gameObject);
             cameraFollow.setLock(false);
         }
+        CreateStart.roomCount++;
     }
 }
 
