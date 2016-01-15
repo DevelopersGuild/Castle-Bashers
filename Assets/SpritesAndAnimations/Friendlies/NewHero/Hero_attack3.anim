@@ -25,8 +25,8 @@ AnimationClip:
       value: {fileID: 21300110, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
     - time: .25
       value: {fileID: 21300112, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
-    - time: .333333343
-      value: {fileID: 21300114, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
+    - time: .416666657
+      value: {fileID: 21300112, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
     attribute: m_Sprite
     path: 
     classID: 212
@@ -49,11 +49,11 @@ AnimationClip:
     - {fileID: 21300108, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
     - {fileID: 21300110, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
     - {fileID: 21300112, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
-    - {fileID: 21300114, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
+    - {fileID: 21300112, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
     m_StartTime: 0
-    m_StopTime: .416666687
+    m_StopTime: .5
     m_OrientationOffsetY: 0
     m_Level: 0
     m_CycleOffset: 0
@@ -72,4 +72,18 @@ AnimationClip:
   m_HasGenericRootTransform: 0
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
-  m_Events: []
+  m_Events:
+  - time: 0
+    functionName: 
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: .416666657
+    functionName: resetTap
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
