@@ -446,7 +446,12 @@ public class Main_Process : MonoBehaviour {
     private void TEST()
     {
         CancelInvoke();
-        //UI_Level_Selector_Open(0);
+        UI_Level_Selector_Open(0);
+    }
+
+    public QuestList GetQuestList()
+    {
+        return GetComponentInChildren<QuestList>();
     }
 
     void OnGUI()
@@ -459,12 +464,12 @@ public class Main_Process : MonoBehaviour {
             else if(start_to_play==true)
             {
                 Time.timeScale=1.0f;
-                //if(Application.platform!=RuntimePlatform.WindowsEditor)
-                //{
+                if(Application.platform!=RuntimePlatform.WindowsEditor)
+                {
                     if (Globe.Map_Load_id != 3)
                         Start_Battle();
                     Application.LoadLevel(2);
-                //}
+                }
             
             }
     }

@@ -178,7 +178,6 @@ public class SaveAndLoad : MonoBehaviour {
             int player_id_load;
             foreach (XmlElement xl in character_info)
             {
-                bool flag = false;
                 if (xl.GetAttribute("id") == "1")
                 {
                     player_id_load = 1;
@@ -282,6 +281,7 @@ public class SaveAndLoad : MonoBehaviour {
         else
             GetComponent<Main_Process>().One_player_per_client = false;
         Invoke("UpdateSkill", 3.0f);
+        //twoplayer = true;
     }
 
     void UpdateSkill()

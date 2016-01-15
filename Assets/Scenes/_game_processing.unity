@@ -85,6 +85,57 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &89841184
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 89841185}
+  - 114: {fileID: 89841187}
+  - 114: {fileID: 89841186}
+  m_Layer: 0
+  m_Name: Quest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &89841185
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89841184}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 734744218}
+  m_RootOrder: 4
+--- !u!114 &89841186
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89841184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e3bceb24bcf3e40afb0ab935ae1b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &89841187
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 89841184}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba895a305a239904397a0a86073e65ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &158095996
 Prefab:
   m_ObjectHideFlags: 0
@@ -197,9 +248,21 @@ Prefab:
       value: 
       objectReference: {fileID: 15200000, guid: 758b7ca3ca16ff0488a9f567cda1dc1c,
         type: 3}
+    - target: {fileID: 11483092, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: BGM.Array.data[1].aud
+      value: 
+      objectReference: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
+    - target: {fileID: 11483092, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: BGM.Array.data[2].aud
+      value: 
+      objectReference: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
   m_IsPrefabParent: 0
+--- !u!4 &734744218 stripped
+Transform:
+  m_PrefabParentObject: {fileID: 462344, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+  m_PrefabInternal: {fileID: 734744217}
 --- !u!1 &1091903623 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 141562, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
@@ -250,6 +313,10 @@ Prefab:
     - target: {fileID: 11423010, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
       propertyPath: StartingMana
       value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 406970, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
@@ -682,6 +749,10 @@ Prefab:
       propertyPath: playerId
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 9577378, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: 910b975581f4d534499a4681ca275c40, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
   m_IsPrefabParent: 0
