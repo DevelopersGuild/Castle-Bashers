@@ -35,7 +35,7 @@ public class Main_Process : MonoBehaviour {
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         movTexture.loop = false;
-        if(Application.platform!=RuntimePlatform.WindowsEditor)
+        //if(Application.platform!=RuntimePlatform.WindowsEditor)
             movTexture.Play();
         start_to_play = true;
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_Process = this.gameObject;
@@ -447,6 +447,11 @@ public class Main_Process : MonoBehaviour {
     {
         CancelInvoke();
         UI_Level_Selector_Open(0);
+    }
+
+    public QuestList GetQuestList()
+    {
+        return GetComponentInChildren<QuestList>();
     }
 
     void OnGUI()

@@ -318,7 +318,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 if (i.name == "IT3")
                 {
                     //Debug .Log("HP Value Found!");
-                    itemid_icon[0,2] = i;
+                    //itemid_icon[0,2] = i;
                     continue;
                 }
             }
@@ -458,7 +458,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 if (i.name == "P1IT3")
                 {
                     //Debug .Log("HP Value Found!");
-                    itemid_icon[0, 2] = i;
+                    //itemid_icon[0, 2] = i;
                     continue;
                 }
                 if (i.name == "P2SK1_BAR")
@@ -500,7 +500,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 if (i.name == "P2IT3")
                 {
                     //Debug .Log("HP Value Found!");
-                    itemid_icon[1, 2] = i;
+                    //itemid_icon[1, 2] = i;
                     continue;
                 }
             }
