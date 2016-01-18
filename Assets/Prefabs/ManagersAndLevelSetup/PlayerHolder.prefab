@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!1 &176612
 GameObject:
   m_ObjectHideFlags: 0
@@ -413,8 +413,8 @@ MonoBehaviour:
   hitAudio: {fileID: 0}
   dmgAmount: 1
   isMagic: 0
-  damagePlayers: 0
-  damageEnemies: 1
+  damagesPlayers: 0
+  damagesEnemies: 0
 --- !u!114 &11409178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -447,9 +447,12 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 0
+  isFlinchable: 0
   knockbackVelocity: 0
-  knockbackTime: 1
-  flinchTime: .400000006
+  flinchCount: 0
+  currentKnockbacktime: 0
+  currentFlinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11423010
@@ -477,10 +480,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
   RegenAmount: 0
   currentHealth: 0
-  maxhp: 0
+  maxhp: 100
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: b45ac828d2c7a3741b9064f4cbd056bb, type: 3}
 --- !u!114 &11427052
@@ -570,10 +572,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 8300000, guid: b45ac828d2c7a3741b9064f4cbd056bb, type: 3}
-  dmgAmount: 1
+  dmgAmount: 5
   isMagic: 0
-  damagePlayers: 0
-  damageEnemies: 1
+  damagesPlayers: 0
+  damagesEnemies: 1
 --- !u!114 &11437350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -592,9 +594,12 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 0
+  isFlinchable: 0
   knockbackVelocity: .400000006
-  knockbackTime: .200000003
-  flinchTime: .400000006
+  flinchCount: 0
+  currentKnockbacktime: 0
+  currentFlinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11445130
@@ -608,7 +613,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
   RegenAmount: 1
   currentHealth: 0
   maxhp: 0

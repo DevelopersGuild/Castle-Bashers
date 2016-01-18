@@ -38,7 +38,10 @@ public class TestEnemy : Enemy
                     else if (distL <= attackRange || distR <= attackRange)
                     {
                         if (attack_CD >= 2)
+                        {
                             Attack();
+                            Move(new Vector3(0, 0, 0), 0);
+                        }
                     }
                 }
             }

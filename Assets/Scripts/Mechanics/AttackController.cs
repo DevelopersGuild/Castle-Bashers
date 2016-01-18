@@ -93,7 +93,7 @@ public class AttackController : MonoBehaviour
         AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
         attack = true;
         anim.SetBool("Finished", false);
-        player.setIsMoving(false);
+        player.setIsMoving(false); // TODO: Change this so the player can sitll move doing an air attack
         player.GetAttackCollider().GetComponent<DealDamage>().setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
         player.GetAttackCollider().SetActive(true);
     }

@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -8.57074165, y: 5.31021309, z: 6.46999979}
+  m_LocalPosition: {x: 2.49502873, y: 10.3498554, z: 3.97000003}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -99,9 +99,12 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 1
+  isFlinchable: 1
   knockbackVelocity: 0
-  knockbackTime: 0
-  flinchTime: 0
+  flinchCount: 0
+  currentKnockbacktime: 0
+  currentFlinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11437056
@@ -118,6 +121,7 @@ MonoBehaviour:
   agroRange: 10
   attackRange: 1
   attack_CD: 2
+  experienceAmount: 0
   attackSound: {fileID: 8300000, guid: a3aa248220f4ee2479caa09bcdb3f5af, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -156,7 +160,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
   RegenAmount: 0
   currentHealth: 15
   maxhp: 15

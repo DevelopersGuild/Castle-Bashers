@@ -18,12 +18,13 @@ public class MoveController : MonoBehaviour
     float horizontalRaySpacing;
     float verticalRaySpacing;
 
-    public bool isKnockbackable;
-    public bool isFlinchable;
-    private bool isKnockedBack, isFlinched;
+    // TODO: Make these things private after testing
+    public bool isKnockbackable, isFlinchable;
+    public bool isKnockedBack, isFlinched;
     public float knockbackVelocity;
-    public float knockbackTime = 1, flinchTime = 0.4f;
-    private float currentKnockbacktime, currentFlinchTime;
+    public int flinchCount;
+    private float knockbackTime = .075f, flinchTime = 0.75f;
+    public float currentKnockbacktime, currentFlinchTime;
     public bool isStunned;
 
     private float height;
@@ -41,6 +42,7 @@ public class MoveController : MonoBehaviour
 
     void Start()
     {
+        flinchCount = 0;
         isStunned = false;
         player = GetComponent<Player>();
         coll = GetComponent<BoxCollider>();
@@ -53,7 +55,6 @@ public class MoveController : MonoBehaviour
         source = GetComponent<AudioSource>();
     }
 
-
     public float GetFacing()
     {
         if (facingRight)
@@ -61,8 +62,6 @@ public class MoveController : MonoBehaviour
 
         return 1;
     }
-
-
 
     // true for right, false for left
     public void OrientFacingLeft(bool set, float lookDir)
@@ -102,8 +101,8 @@ public class MoveController : MonoBehaviour
             VerticalCollisions(ref velocity);
         }
 
-        HandleKnockback(ref velocity);
-        HandleFlinch();
+        updateKnockback(ref velocity);
+        updateFlinch();
 
         if (velocity.x != 0)
         {
@@ -141,7 +140,7 @@ public class MoveController : MonoBehaviour
         }
     }
 
-    private void HandleKnockback(ref Vector3 velocity)
+    private void updateKnockback(ref Vector3 velocity)
     {
         if (isKnockbackable)
         {
@@ -157,46 +156,71 @@ public class MoveController : MonoBehaviour
                     velocity.x = -knockbackVelocity;
                 }
 
-                if (GetComponent<ID>().getTime())
-                    currentKnockbacktime -= Time.unscaledDeltaTime;
-                else
-                    currentKnockbacktime -= Time.unscaledDeltaTime;
-            }
-
-            // Stop pushing the player after knockbacktime and after hes hit the floor
-            if (currentKnockbacktime <= 0 && collisions.below == true)
-            {
-                isStunned = false;
-                isKnockedBack = false;
-                currentKnockbacktime = knockbackTime;
+                if (GetComponent<ID>())
+                {
+                    if (GetComponent<ID>().getTime())
+                        currentKnockbacktime -= Time.unscaledDeltaTime;
+                }
+                else { 
+                    currentKnockbacktime -= Time.deltaTime;
+                }
+    
+                // Stop pushing the player after knockbacktime and after hes hit the floor
+                if (currentKnockbacktime <= 0 && collisions.below == true)
+                {
+                    isStunned = false;
+                    isKnockedBack = false;
+                    currentKnockbacktime = knockbackTime;
+                }
             }
         }
     }
 
-    private void HandleFlinch()
+    private void updateFlinch()
     {
-        if (isFlinchable)
+        if (isFlinched)
         {
-            if (!isKnockedBack)
-            {
-                if (isFlinched)
-                {
-                    isStunned = true;
-                    if (GetComponent<ID>().getTime())
-                        currentFlinchTime -= Time.unscaledDeltaTime;
-                    else
-                        currentFlinchTime -= Time.deltaTime;
-                }
+            isStunned = true;
+            if (GetComponent<ID>())
+                if(GetComponent<ID>().getTime())
+                    currentFlinchTime -= Time.unscaledDeltaTime;
+            else
+                currentFlinchTime -= Time.deltaTime;
 
-                // Stop pushing the player after knockbacktime and after hes hit the floor
-                if (currentFlinchTime <= 0 && collisions.below == true)
-                {
-                    isStunned = false;
-                    isFlinched = false;
-                    currentFlinchTime = flinchTime;
-                }
+            // Stop flinching after timer has passed
+            if (currentFlinchTime <= 0 && collisions.below == true)
+            {
+                resetFlinchCount();
+            }
+
+            if (flinchCount >= 2) // CHANGE TO 10
+            {
+                resetFlinchCount();
+                isKnockedBack = true;
             }
         }
+    }
+
+    public void handleFlinch(int flinchPower)
+    {
+        if(isFlinchable)
+        {
+            isFlinched = true;
+            flinchCount += flinchPower;
+            resetToFlinchTime();
+        }
+    }
+
+    private void resetToFlinchTime()
+    {
+        currentFlinchTime = flinchTime;
+    }
+
+    private void resetFlinchCount()
+    {
+        flinchCount = 0;
+        isFlinched = false;
+        isStunned = false;
     }
 
     public void SetKnockback(bool knockback)

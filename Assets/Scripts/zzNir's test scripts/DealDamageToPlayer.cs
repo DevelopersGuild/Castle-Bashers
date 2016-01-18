@@ -6,7 +6,7 @@ public class DealDamageToPlayer : MonoBehaviour
     public float dmgAmount = 1;
     public float dmgChange = 0;
     public float knockback = 4;
-    public float flinch = 5;
+    public int flinch = 5;
     public bool IsPhysicalDamage = true;
 
     // Use this for initialization

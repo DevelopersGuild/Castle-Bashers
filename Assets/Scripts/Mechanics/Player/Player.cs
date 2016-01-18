@@ -53,8 +53,6 @@ public class Player : MonoBehaviour
     private IAttack attackState;
 
     private float invTime, initialRegenTime, regenTick;
-    private float knockBackResistance, knockBackReset, knockBackCounter;
-    private float flinchResistance, flinchReset, flinchCounter;
 
     private float gravity;
     private float jumpVelocity;
@@ -118,13 +116,6 @@ public class Player : MonoBehaviour
         initialRegenTime = 6;
         regenTick = 2;
 
-        knockBackResistance = 10;
-        knockBackCounter = 0;
-        knockBackReset = 0;
-
-        flinchResistance = 10;
-        flinchCounter = 0;
-        flinchReset = 0;
         DontDestroyOnLoad(gameObject);
 
         skill[0] = null;
@@ -143,7 +134,6 @@ public class Player : MonoBehaviour
     {
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
-
 
 
         if (controller.collisions.above || controller.collisions.below)
@@ -202,25 +192,6 @@ public class Player : MonoBehaviour
             {
 
                 ReadyMove(input);
-            }
-        }
-        if (knockBackCounter > 0)
-        {
-            knockBackReset += Time.unscaledDeltaTime;
-            if (knockBackReset >= 5)
-            {
-                knockBackReset = 0;
-                knockBackCounter = 0;
-            }
-        }
-
-        if (flinchCounter > 0)
-        {
-            flinchReset += Time.unscaledDeltaTime;
-            if (flinchReset >= 2)
-            {
-                // flinchReset = 0;
-                // flinchCounter = 0;
             }
         }
 
@@ -406,56 +377,6 @@ public class Player : MonoBehaviour
         Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
         
 
-    }
-
-    public float GetKBResist()
-    {
-        return knockBackResistance;
-    }
-
-    public void ModifyKBCount(float set, float multiplier = 1)
-    {
-        knockBackCounter += set;
-        knockBackCounter *= multiplier;
-    }
-
-    public bool GetKnockable()
-    {
-        if (knockBackCounter >= knockBackResistance)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void ResetKB()
-    {
-        knockBackReset = 0;
-    }
-
-    public float GetFlinchResist()
-    {
-        return flinchResistance;
-    }
-
-    public void ModifyFlinchCount(float set, float multiplier = 1)
-    {
-        flinchCounter += set;
-        flinchCounter *= multiplier;
-    }
-
-    public bool GetFlinchable()
-    {
-        if (flinchCounter >= flinchResistance)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void ResetFlinch()
-    {
-        flinchReset = 0;
     }
 
     private void HandleInput()

@@ -60,10 +60,9 @@ public class Health : MonoBehaviour
     }
 
 
-    public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
+    public virtual void takeDamage(float dmg, float knockback = 4, int flinch = 4)
     {
         AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
-        Debug.Log("takingDamage");
 
         //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
         //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
@@ -71,28 +70,8 @@ public class Health : MonoBehaviour
         currentHealth -= dmg;
         createFloatingText(dmg);
         Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
+        moveController.handleFlinch(flinch); 
 
-        //    player.ModifyKBCount(knockback);
-        //    if (knockback > 0)
-        //        player.ResetKB();
-
-        //    player.ModifyFlinchCount(flinch);
-        //    if (flinch > 0)
-        //        player.ResetFlinch();
-
-        //    if (moveController)
-        //    {
-        //        if (player.GetKnockable())
-        //        {
-        //            moveController.SetKnockback(true);
-        //            player.ModifyKBCount(0, 0);
-        //        }
-        //        else if (player.GetFlinchable())
-        //        {
-        //            moveController.SetFlinch(true);
-        //            player.ModifyFlinchCount(0, 0);
-        //        }
-        //    }
         if (currentHealth <= 0)
         {
             Death();
