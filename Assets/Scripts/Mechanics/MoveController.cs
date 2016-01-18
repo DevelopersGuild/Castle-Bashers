@@ -18,7 +18,8 @@ public class MoveController : MonoBehaviour
     float horizontalRaySpacing;
     float verticalRaySpacing;
 
-    private bool canKB, canFlinch;
+    public bool isKnockbackable;
+    public bool isFlinchable;
     private bool isKnockedBack, isFlinched;
     public float knockbackVelocity;
     public float knockbackTime = 1, flinchTime = 0.4f;
@@ -46,8 +47,6 @@ public class MoveController : MonoBehaviour
         CalculateRaySpacing();
         currentKnockbacktime = knockbackTime;
         currentFlinchTime = flinchTime;
-        canKB = true;
-        canFlinch = true;
         height = 2.0f * Camera.main.orthographicSize;
         screenWidthInPoints = height * Camera.main.aspect;
         source = new AudioSource();
@@ -63,11 +62,7 @@ public class MoveController : MonoBehaviour
         return 1;
     }
 
-    public void canKnockBack(bool canKnock, bool canFl)
-    {
-        canKB = canKnock;
-        canFlinch = canFl;
-    }
+
 
     // true for right, false for left
     public void OrientFacingLeft(bool set, float lookDir)
@@ -148,7 +143,7 @@ public class MoveController : MonoBehaviour
 
     private void HandleKnockback(ref Vector3 velocity)
     {
-        if (canKB)
+        if (isKnockbackable)
         {
             if (isKnockedBack)
             {
@@ -180,9 +175,8 @@ public class MoveController : MonoBehaviour
 
     private void HandleFlinch()
     {
-        if (canFlinch)
+        if (isFlinchable)
         {
-
             if (!isKnockedBack)
             {
                 if (isFlinched)

@@ -5,8 +5,8 @@ public class DealDamage : MonoBehaviour {
     public AudioClip hitAudio;
     public float dmgAmount = 1;
     public bool isMagic = false;
-    public bool damagePlayers = false;
-    public bool damageEnemies = false;
+    public bool damagesPlayers = false;
+    public bool damagesEnemies = false;
 
     public float GetDamageF()
     {
@@ -26,7 +26,8 @@ public class DealDamage : MonoBehaviour {
 
         if (targetHealth)
         {
-            if (damagePlayers)
+            // Check for whether the target is an enemy or a player
+            if (damagesPlayers)
             {
                 if (target.GetComponent<Player>()){
                     if (isMagic)
@@ -40,7 +41,7 @@ public class DealDamage : MonoBehaviour {
                     target.GetComponent<Player>().SetInvTime(1.5f);
                 }
             }
-            if (damageEnemies)
+            if (damagesEnemies)
             {
                 if (target.GetComponent<Enemy>())
                 {
@@ -74,7 +75,7 @@ public class DealDamage : MonoBehaviour {
 
         if (targetHealth)
         {
-            if (damagePlayers)
+            if (damagesPlayers)
             {
                 if (target.GetComponent<Player>())
                 {
@@ -92,7 +93,7 @@ public class DealDamage : MonoBehaviour {
                 }
 
             }
-            if (damageEnemies)
+            if (damagesEnemies)
             {
                 if (target.GetComponent<Enemy>())
                 {

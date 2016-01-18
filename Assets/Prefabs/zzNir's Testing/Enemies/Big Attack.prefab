@@ -56,8 +56,8 @@ MonoBehaviour:
   hitAudio: {fileID: 0}
   dmgAmount: 22
   isMagic: 0
-  damagePlayers: 1
-  damageEnemies: 0
+  damagesPlayers: 1
+  damagesEnemies: 0
 --- !u!212 &21276866
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,6 +106,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: dmgAmount
       value: 22
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagesPlayers
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

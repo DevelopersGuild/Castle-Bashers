@@ -5,7 +5,7 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour
 {
     //public variables
-    public GameObject gobjCameraTarget;
+    private GameObject gobjCameraTarget;
     public Vector3 v3DefaultCameraRotationVector;
     public Vector3 v3DefaultCameraPositionVector;
     public float flVerticalOffset;

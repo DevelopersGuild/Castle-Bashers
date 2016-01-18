@@ -112,11 +112,11 @@ public class M_S_CalculateRank : MonoBehaviour {
         mps = GetComponentInParent<Other_Windows_FullControl>().Main_Process.GetComponent<Main_Process>();
         //Add Exp
         if (player_mode == 1)
-            mps.GetPlayerExperience().AddExperince(M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit]);
+            mps.GetPlayerExperience().AddExperience(M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit]);
         else
         {
-            mps.GetPlayerExperience(0).AddExperince(M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit]);
-            mps.GetPlayerExperience(1).AddExperince(M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit]);
+            mps.GetPlayerExperience(0).AddExperience(M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit]);
+            mps.GetPlayerExperience(1).AddExperience(M_T_DB.mapinfo[Globe.Map_Load_id].Reward_EXP[onlimit]);
         }
         M_S_RDGold.text = M_T_DB.mapinfo[Globe.Map_Load_id].Reward_Gold[onlimit].ToString();
         //Add Gold

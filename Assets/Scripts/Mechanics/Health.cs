@@ -3,13 +3,11 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-    public int ExperinceAmount = 0;
     public float RegenAmount;
     public float currentHealth=0;
     public float maxhp;
+    private bool isInvincible;
     private Player player;
-    private DealDamageToEnemy attack;
-    private bool canKnock = true;
     private MoveController moveController;
     
     public Vector3 damageTextOffset;
@@ -21,12 +19,9 @@ public class Health : MonoBehaviour
     {
         hitSound = Resources.Load("hurt2") as AudioClip;
         player = GetComponent<Player>();
-        attack = GetComponentInChildren<DealDamageToEnemy>();
         moveController = GetComponent<MoveController>();
         currentHealth = maxhp; 
         damageTextOffset = new Vector3(0, 2, 0);
-
-        
     }
 
     
@@ -68,64 +63,42 @@ public class Health : MonoBehaviour
     public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
     {
         AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
-        if (player)
+        Debug.Log("takingDamage");
+
+        //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+        //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+        dmg = Mathf.CeilToInt(dmg);
+        currentHealth -= dmg;
+        createFloatingText(dmg);
+        Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
+
+        //    player.ModifyKBCount(knockback);
+        //    if (knockback > 0)
+        //        player.ResetKB();
+
+        //    player.ModifyFlinchCount(flinch);
+        //    if (flinch > 0)
+        //        player.ResetFlinch();
+
+        //    if (moveController)
+        //    {
+        //        if (player.GetKnockable())
+        //        {
+        //            moveController.SetKnockback(true);
+        //            player.ModifyKBCount(0, 0);
+        //        }
+        //        else if (player.GetFlinchable())
+        //        {
+        //            moveController.SetFlinch(true);
+        //            player.ModifyFlinchCount(0, 0);
+        //        }
+        //    }
+        if (currentHealth <= 0)
         {
-            if (!player.GetInvincible())
-            {
-                //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
-                //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
-                dmg = Mathf.CeilToInt(dmg);
-                currentHealth -= dmg;
-                Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
-                createFloatingText(dmg);
-
-                player.ModifyKBCount(knockback);
-                if (knockback > 0)
-                    player.ResetKB();
-
-                player.ModifyFlinchCount(flinch);
-                if (flinch > 0)
-                    player.ResetFlinch();
-
-                if (moveController)
-                {
-                    if (player.GetKnockable())
-                    {
-                        moveController.SetKnockback(true);
-                        player.ModifyKBCount(0, 0);
-                    }
-                    else if (player.GetFlinchable())
-                    {
-                        moveController.SetFlinch(true);
-                        player.ModifyFlinchCount(0, 0);
-                    }
-                }
-                if (currentHealth <= 0)
-                {
-                    //Player can be revived by teammates
-                    PlayerDown();
-                }
-            }
+            Death();
         }
-        else
-        {
-            Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
-            //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
-            //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
-            dmg = Mathf.CeilToInt(dmg);
-            currentHealth -= dmg;
-            createFloatingText(dmg);
-
-            if (currentHealth <= 0)
-            {
-                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-                foreach(GameObject character in players)
-                {
-                    character.GetComponent<Experience>().AddExperince(ExperinceAmount);
-                }
-                Death();
-            }
-        }
+        
+    
     }
 
     public void PlayerDown()
@@ -141,6 +114,28 @@ public class Health : MonoBehaviour
     {
         //death animation
         //end level
+
+        // Down the player if it was a player that died
+        if(GetComponent<Player>())
+        {
+            PlayerDown();
+        }
+
+        // Reward all players with experience if an enemy died
+        if (GetComponent<Enemy>())
+        {
+            Enemy enemy = GetComponent<Enemy>();
+            if (currentHealth <= 0)
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject character in players)
+                {
+                    character.GetComponent<Experience>().AddExperience(enemy.experienceAmount);
+                }
+            }
+        }
+
+        // Drop loot
         if (GetComponent<DropLoot>())
         {
             GetComponent<DropLoot>().DropItem();
