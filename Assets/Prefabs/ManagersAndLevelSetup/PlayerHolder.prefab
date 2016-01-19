@@ -95,7 +95,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!1 &176612
 GameObject:
   m_ObjectHideFlags: 0
@@ -363,7 +363,7 @@ Animator:
   m_GameObject: {fileID: 165636}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 910b975581f4d534499a4681ca275c40, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -415,6 +415,7 @@ MonoBehaviour:
   isMagic: 0
   damagesPlayers: 0
   damagesEnemies: 0
+  flinchPower: 0
 --- !u!114 &11409178
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -450,9 +451,6 @@ MonoBehaviour:
   isKnockbackable: 0
   isFlinchable: 0
   knockbackVelocity: 0
-  flinchCount: 0
-  currentKnockbacktime: 0
-  currentFlinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11423010
@@ -576,6 +574,7 @@ MonoBehaviour:
   isMagic: 0
   damagesPlayers: 0
   damagesEnemies: 1
+  flinchPower: 4
 --- !u!114 &11437350
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -597,9 +596,6 @@ MonoBehaviour:
   isKnockbackable: 0
   isFlinchable: 0
   knockbackVelocity: .400000006
-  flinchCount: 0
-  currentKnockbacktime: 0
-  currentFlinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11445130

@@ -17,6 +17,7 @@ public class Health : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        isInvincible = false;
         hitSound = Resources.Load("hurt2") as AudioClip;
         player = GetComponent<Player>();
         moveController = GetComponent<MoveController>();
@@ -60,7 +61,7 @@ public class Health : MonoBehaviour
     }
 
 
-    public virtual void takeDamage(float dmg, float knockback = 4, int flinch = 4)
+    public virtual void takeDamage(float dmg, int flinch = 4)
     {
         AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
 
@@ -76,8 +77,26 @@ public class Health : MonoBehaviour
         {
             Death();
         }
-        
-    
+    }
+
+    public bool getInvincibility()
+    {
+        return isInvincible;
+    }
+
+    public void setInvincility(bool invincibility)
+    {
+        isInvincible = invincibility;
+    }
+
+    public void setToInvincible()
+    {
+        isInvincible = true;
+    }
+
+    public void setToNotInvincible()
+    {
+        isInvincible = false;
     }
 
     public void PlayerDown()

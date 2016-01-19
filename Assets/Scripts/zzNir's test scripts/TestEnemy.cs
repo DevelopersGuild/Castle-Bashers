@@ -44,6 +44,10 @@ public class TestEnemy : Enemy
                         }
                     }
                 }
+                else
+                {
+                    Move(new Vector3(0, 0, 0), 0);
+                }
             }
             else
             {

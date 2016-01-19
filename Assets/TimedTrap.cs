@@ -35,7 +35,7 @@ public class TimedTrap : MonoBehaviour
         time = Interval;
 
         GetComponent<SpriteRenderer>().enabled = choice;
-        if (GetComponent<DealDamageToPlayer>())
-            GetComponent<DealDamageToPlayer>().enabled = choice;
+        if (GetComponent<DealDamage>())
+            GetComponent<DealDamage>().enabled = choice;
     }
 }

@@ -31,7 +31,7 @@ public class BossHealth : Health
         return currentHealth;
     }
 
-    public override void takeDamage(float dmg, float knockback = 0, int flinch = 0)
+    public override void takeDamage(float dmg, int flinch = 0)
     {
         if (!enemy.GetInvincible())
         {

@@ -64,7 +64,7 @@ public class Player : MonoBehaviour
     private CrowdControllable crowdControllable;
     private Health health;
     private Mana mana;
-    private DealDamageToEnemy attack;
+    private DealDamage attack;
     private Defense defense;
     private DealDamage dealDamage;
     //These are for primarily calculating damages and to queu the stats for buffs
@@ -107,7 +107,7 @@ public class Player : MonoBehaviour
         controller = GetComponent<MoveController>();
         crowdControllable = GetComponent<CrowdControllable>();
         mana = GetComponent<Mana>();
-        attack = GetComponentInChildren<DealDamageToEnemy>();
+        attack = GetComponentInChildren<DealDamage>();
         defense = GetComponent<Defense>();
         attackController = GetComponent<AttackController>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);

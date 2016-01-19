@@ -20,11 +20,11 @@ public class MoveController : MonoBehaviour
 
     // TODO: Make these things private after testing
     public bool isKnockbackable, isFlinchable;
-    public bool isKnockedBack, isFlinched;
+    private bool isKnockedBack, isFlinched;
     public float knockbackVelocity;
-    public int flinchCount;
+    private int flinchCount;
     private float knockbackTime = .075f, flinchTime = 0.75f;
-    public float currentKnockbacktime, currentFlinchTime;
+    private float currentKnockbacktime, currentFlinchTime;
     public bool isStunned;
 
     private float height;
@@ -181,9 +181,19 @@ public class MoveController : MonoBehaviour
         if (isFlinched)
         {
             isStunned = true;
+
+            // Knockback
+            if (flinchCount >= 10) 
+            {
+                resetFlinchCount();
+                isKnockedBack = true;
+            }
+
             if (GetComponent<ID>())
-                if(GetComponent<ID>().getTime())
+            {
+                if (GetComponent<ID>().getTime())
                     currentFlinchTime -= Time.unscaledDeltaTime;
+            }
             else
                 currentFlinchTime -= Time.deltaTime;
 
@@ -193,11 +203,6 @@ public class MoveController : MonoBehaviour
                 resetFlinchCount();
             }
 
-            if (flinchCount >= 2) // CHANGE TO 10
-            {
-                resetFlinchCount();
-                isKnockedBack = true;
-            }
         }
     }
 
