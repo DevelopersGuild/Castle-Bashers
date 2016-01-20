@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     private int armor_level = 0;
     private int accessories_level = 0;
     private float blockchance = 0;
-    private bool isPlayerDown = false;
     private bool isGrounded = true;
     private bool isMoving = false;
     public float jumpHeight = 4;
@@ -560,7 +559,7 @@ public class Player : MonoBehaviour
         isDown = t;
     }
 
-    public bool getDown()
+    public bool getDown() // to business, to defeat the hun
     {
         return isDown;
     }

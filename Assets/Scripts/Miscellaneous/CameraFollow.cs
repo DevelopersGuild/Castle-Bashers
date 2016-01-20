@@ -66,12 +66,16 @@ public class CameraFollow : MonoBehaviour
         {
             Vector3 totalAveragePosition = new Vector3();
             int size = 0;
+
             foreach (Transform child in gobjCameraTarget.transform)
             {
                 if (child.gameObject.active)
                 {
-                    totalAveragePosition += child.position;
-                    size++;
+                    if (!child.gameObject.GetComponent<Player>().getDown())
+                    {
+                        totalAveragePosition += child.position;
+                        size++;
+                    }
                 }
             }
             totalAveragePosition /= size;
