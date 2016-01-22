@@ -4,5 +4,9 @@
   <full_screen>0</full_screen>
   <RefreshRate />
   <playerid>OP00003</playerid>
+<<<<<<< HEAD
   <savefile>CB7b96abc7ff801ad4c37be78d3464d4D.xml</savefile>
+=======
+  <savefile>CBfe6a73c96eb127919c6948fdc61c5eddD.xml</savefile>
+>>>>>>> 85a286f611c46ab069da938a7f9de10ce2b9e1a6
 </config>

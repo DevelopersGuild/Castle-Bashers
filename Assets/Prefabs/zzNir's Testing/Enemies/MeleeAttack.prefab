@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 0}
-  dmgAmount: 1
+  dmgAmount: 20
   isMagic: 0
   damagePlayers: 1
   damageEnemies: 0
@@ -114,6 +114,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: damagePlayers
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dmgAmount
+      value: 20
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

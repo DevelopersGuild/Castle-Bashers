@@ -43,23 +43,23 @@ public class AreaGen : MonoBehaviour
 
         GameObject temp;
 
-        GameObject background = (GameObject)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName,0], typeof(GameObject));
+        GameObject background = (GameObject)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName,0], typeof(GameObject));
 
         AreaLog = new GameObject[AreaNumber, Max_Enemy];
         AreaID = new int[AreaNumber];
         EnemyNumber = new int[AreaNumber];
         
         
-        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Left Limit.prefab", typeof(GameObject)), new Vector3(-5,0,0), transform.rotation);
+        Instantiate(Resources.Load("LevelObjects/Left Limit", typeof(GameObject)), new Vector3(-5,0,0), transform.rotation);
 
         for (int i = 0; i < AreaNumber; i++)
         {
 
 
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/3DFloorB.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, AreaZCoord), transform.rotation);
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Front Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 11), transform.rotation); //set front limits
-            Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Back Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -8), transform.rotation); //set back limits
-            AreaID[i] = Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Right Limit.prefab", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40 + 20, 0, 0), transform.rotation).GetInstanceID();
+            Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, AreaZCoord), transform.rotation);
+            Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, 11), transform.rotation); //set front limits
+            Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40, AreaYCoord, -8), transform.rotation); //set back limits
+            AreaID[i] = Instantiate(Resources.Load("LevelObjects/Right Limit", typeof(GameObject)), new Vector3((AreaXCoord + i) * 40 + 20, 0, 0), transform.rotation).GetInstanceID();
             
             t_length += 40;
 
@@ -73,10 +73,10 @@ public class AreaGen : MonoBehaviour
             Instantiate(background, new Vector3((AreaXCoord + i) * 40, 5, 13), transform.rotation);
                if((int)ActiveBiomeName== 0)
                     {
-                    objects[0] = (Texture)UnityEditor.AssetDatabase.LoadAssetAtPath(Biome.Backgrounds[(int)ActiveBiomeName, 1], typeof(Texture));
+                    objects[0] = (Texture)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName, 1], typeof(Texture));
                     if(objects[0]!=null)
                     Instantiate(objects[0], new Vector3((AreaXCoord + i) * 40, AreaYCoord, 2), transform.rotation);
-                    Debug.Log(objects[0].name);
+                    //Debug.Log(objects[0].name);
             }
 
             // Debug.Log("Recurrssion: " + i);
@@ -139,9 +139,9 @@ public class AreaGen : MonoBehaviour
                 for (int m = 0; m < EnemySize; m++)
                 {
                 Debug.Log("Created enemy number: " + EnemySize + " succesffuly!");
-                    temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
+                    temp = (GameObject)(Resources.Load((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
                     if (temp!=null)
-                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((float)(arrayX[m]*rnd.Next(1,5)+20+ (40 * i)), 5, (float)arrayZ[m]*rnd.Next(-7,7)), transform.rotation);
+                    AreaLog[i, m] = (GameObject)Instantiate(temp, new Vector3((float)(arrayX[m]*rnd.Next(1,5)+15+ (40 * i)), 5, (float)arrayZ[m]*rnd.Next(-7,10)), transform.rotation);
 
             }
 
@@ -161,7 +161,7 @@ public class AreaGen : MonoBehaviour
 
             } //END OF PART GENERATION
         
-        temp = (GameObject)(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/Barrel.prefab", typeof(GameObject)));
+        temp = (GameObject)(Resources.Load("LevelObjects/Barrel", typeof(GameObject)));
         
         for (int i=0; i< Total_Objects; i++)
             {
@@ -208,7 +208,7 @@ public class AreaGen : MonoBehaviour
         }
         
 
-        Instantiate(UnityEditor.AssetDatabase.LoadAssetAtPath("Assets/Prefabs/LevelObjects/End Limit.prefab", typeof(GameObject)), new Vector3((t_length)-20, AreaYCoord, AreaZCoord), transform.rotation);
+        Instantiate(Resources.Load("LevelObjects/End Limit", typeof(GameObject)), new Vector3((t_length)-20, AreaYCoord, AreaZCoord), transform.rotation);
         
     }
 

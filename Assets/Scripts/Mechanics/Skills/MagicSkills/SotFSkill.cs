@@ -1,6 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
+
+//Spirit of the Flame
 public class SotFSkill : Skill
 {
     public float aoeRadius = 10;

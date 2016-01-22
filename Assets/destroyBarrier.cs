@@ -39,14 +39,14 @@ public class destroyBarrier : MonoBehaviour {
         //}
 
 
-        //for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
-        //{
-        //    if (AreaGen.AreaLog[InstanceID, i] != null)
-        //        count++;
-        //    if (count == 0)
-        //        E_Dead = true;
-        //}   
-        //Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
+        for (int i = 0; i < AreaGen.EnemyNumber[InstanceID]; i++)
+        {
+            if (AreaGen.AreaLog[InstanceID, i] != null)
+                count++;
+           if (count == 0)
+                E_Dead = true;
+        }   
+        Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
     }
 
     void OnTriggerEnter(Collider other)
