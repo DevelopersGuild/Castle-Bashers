@@ -48,7 +48,7 @@ public class SpecialEnemyV1 : Enemy
                         }
                         else
                         {
-                            GetComponent<DealDamageToPlayer>().enabled = false;
+                            GetComponent<DealDamage>().enabled = false;
                             isDashing = false;
                         }
                     }
@@ -102,7 +102,7 @@ public class SpecialEnemyV1 : Enemy
         dashTime = 0.4f;
         dash_CD = 0;
         dir = new Vector3(targetPos.x - transform.position.x, 0, 0);
-        GetComponent<DealDamageToPlayer>().enabled = true;
+        GetComponent<DealDamage>().enabled = true;
     }
 
     public override void Act(Type t)

@@ -56,6 +56,7 @@ public class destroyBarrier : MonoBehaviour {
         //Debug.Log(CreateStart.EnemyNumber[CreateStart.squadSize]);
         if (E_Dead == false)
         {
+
             //Debug.Log(CreateStart.squadSize);
             //Debug.Log((CreateStart.AreaLog[CreateStart.squadSize, 1]));
             for (int i = 0; i < CreateStart.squadSize; i++)
@@ -68,16 +69,19 @@ public class destroyBarrier : MonoBehaviour {
                 {
                     Debug.Log("Still here");
                     i = count = CreateStart.squadSize;
-                   // for (int j = 0; j < CreateStart.squadSize; j++) ;
-                        //enemies[j]=GameObject.Find(room.AreaLog[j]).GetInstanceID().ToString();
+                    // for (int j = 0; j < CreateStart.squadSize; j++) ;
+                    //enemies[j]=GameObject.Find(room.AreaLog[j]).GetInstanceID().ToString();
                 }
             }
-                if (count == 0)
-                    E_Dead = true;
-            
+            if (count == 0)
+                E_Dead = true;
+
         }
-     //   Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
-    }
+
+        }   
+        // Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
+
+   
 
     void OnTriggerEnter(Collider other)
     {

@@ -18,7 +18,7 @@ public class TrapChecker : MonoBehaviour {
         GameObject enemObj = other.gameObject;
         if (enemObj.CompareTag("Player"))
         {
-            parent.GetComponent <DealDamageToPlayer>().enabled = true;
+            parent.GetComponent <DealDamage>().enabled = true;
             //instead of animation
             parent.GetComponent<SpriteRenderer>().sprite = GetComponent<SpriteRenderer>().sprite;
             Destroy(parent, timeToLive);

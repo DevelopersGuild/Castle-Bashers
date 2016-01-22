@@ -5,7 +5,7 @@ using System.Collections;
 public class CameraFollow : MonoBehaviour
 {
     //public variables
-    public GameObject gobjCameraTarget;
+    private GameObject gobjCameraTarget;
     public Vector3 v3DefaultCameraRotationVector;
     public Vector3 v3DefaultCameraPositionVector;
     public float flVerticalOffset;
@@ -66,12 +66,16 @@ public class CameraFollow : MonoBehaviour
         {
             Vector3 totalAveragePosition = new Vector3();
             int size = 0;
+
             foreach (Transform child in gobjCameraTarget.transform)
             {
                 if (child.gameObject.active)
                 {
-                    totalAveragePosition += child.position;
-                    size++;
+                    if (!child.gameObject.GetComponent<Player>().getDown())
+                    {
+                        totalAveragePosition += child.position;
+                        size++;
+                    }
                 }
             }
             totalAveragePosition /= size;

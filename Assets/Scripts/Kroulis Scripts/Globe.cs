@@ -8,4 +8,7 @@ public class Globe {
     public static int Map_difficulty=0;
     public static string Character_Data_File="";
     public static string Character_id = "";
+    public static float music_volume = 1;
+    public static float sound_volume = 1;
+    public static float dialogue_volume = 1;
 }

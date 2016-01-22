@@ -13,7 +13,7 @@ public class SaveAndLoad : MonoBehaviour {
     Mana[] Player_Mana=new Mana[2];
     Defense[] Player_Defense=new Defense[2];
     Experience[] Player_EXP=new Experience[2];
-    DealDamageToEnemy[] Player_ATK=new DealDamageToEnemy[2];
+    DealDamage[] Player_ATK=new DealDamage[2];
     CoinManager[] Player_gold=new CoinManager[2];
     XmlDocument character_data=new XmlDocument();
     bool twoplayer = false;
@@ -33,7 +33,7 @@ public class SaveAndLoad : MonoBehaviour {
             Player_Mana[i] = Player_PF[i].GetComponent<Mana>();
             Player_Defense[i] = Player_PF[i].GetComponent<Defense>();
             Player_EXP[i] = Player_PF[i].GetComponent<Experience>();
-            Player_ATK[i] = Player_PF[i].GetComponentInChildren<DealDamageToEnemy>();
+            Player_ATK[i] = Player_PF[i].GetComponentInChildren<DealDamage>();
             Player_gold[i] = Player_PF[i].GetComponent<CoinManager>();
         }
             
@@ -178,7 +178,6 @@ public class SaveAndLoad : MonoBehaviour {
             int player_id_load;
             foreach (XmlElement xl in character_info)
             {
-                bool flag = false;
                 if (xl.GetAttribute("id") == "1")
                 {
                     player_id_load = 1;
@@ -282,6 +281,7 @@ public class SaveAndLoad : MonoBehaviour {
         else
             GetComponent<Main_Process>().One_player_per_client = false;
         Invoke("UpdateSkill", 3.0f);
+        //twoplayer = true;
     }
 
     void UpdateSkill()

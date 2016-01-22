@@ -132,6 +132,10 @@ Prefab:
       propertyPath: m_Name
       value: EventSystem
       objectReference: {fileID: 0}
+    - target: {fileID: 194918, guid: 5f0e591e416ccd643a8abddf88de2615, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f0e591e416ccd643a8abddf88de2615, type: 2}
   m_IsPrefabParent: 0
@@ -249,6 +253,10 @@ Prefab:
     - target: {fileID: 406970, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
       propertyPath: m_RootOrder
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 176612, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
@@ -390,6 +398,10 @@ Prefab:
       propertyPath: _userData.keyboardMaps.Array.data[0].actionElementMaps.Array.data[0]._actionId
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 168500, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
   m_IsPrefabParent: 0
@@ -516,7 +528,11 @@ Prefab:
     - target: {fileID: 11441374, guid: f2260f86752cf7f4986ef82a173445e6, type: 2}
       propertyPath: Other_Windows
       value: 
-      objectReference: {fileID: 2064697084}
+      objectReference: {fileID: 0}
+    - target: {fileID: 104170, guid: f2260f86752cf7f4986ef82a173445e6, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2260f86752cf7f4986ef82a173445e6, type: 2}
   m_IsPrefabParent: 0
@@ -713,10 +729,6 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11468758, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
-      propertyPath: Main_Process
-      value: 
-      objectReference: {fileID: 263701513}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
   m_IsPrefabParent: 0
@@ -810,10 +822,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 8c46c641a3f3a6d4180453671011b7b4, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &2064697084 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 159154, guid: 8c46c641a3f3a6d4180453671011b7b4, type: 2}
-  m_PrefabInternal: {fileID: 2064697083}
 --- !u!1 &2067219047 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 119418, guid: db35aaf6d0c533e48a1e5cc53cd74588, type: 2}

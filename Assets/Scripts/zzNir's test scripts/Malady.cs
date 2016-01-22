@@ -80,7 +80,8 @@ public class Malady : Boss
         startPos = teleTarget;
         center = CenterObj.transform.position;
 
-        moveController.canKnockBack(false, false);
+        moveController.isFlinchable = false;
+        moveController.isKnockbackable = false;
 
         playerM = FindObjectOfType<PlayerManager>();
         players = playerM.getPlayers();
