@@ -35,7 +35,6 @@ public class destroyBarrier : MonoBehaviour {
             E_Dead = true;
 
         
-        enemies = new GameObject[room.Max_enemy];
         for (int j = 0; j < CreateStart.squadSize; j++)
         {
             Debug.Log(room.AreaLog[j]);
@@ -67,7 +66,6 @@ public class destroyBarrier : MonoBehaviour {
                 }
                 else
                 {
-                    Debug.Log("Still here");
                     i = count = CreateStart.squadSize;
                     // for (int j = 0; j < CreateStart.squadSize; j++) ;
                     //enemies[j]=GameObject.Find(room.AreaLog[j]).GetInstanceID().ToString();
@@ -91,7 +89,7 @@ public class destroyBarrier : MonoBehaviour {
             {
                 GameObject background = (GameObject)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName, 0], typeof(GameObject));
                 room.MakeRoom(CreateStart.roomCount, background);
-
+                CreateStart.roomCount++;
             }
             else
                 end.UI_Mission_Success_Open();
@@ -100,7 +98,7 @@ public class destroyBarrier : MonoBehaviour {
 
             
         }
-        CreateStart.roomCount++;
+      
     }
 }
 

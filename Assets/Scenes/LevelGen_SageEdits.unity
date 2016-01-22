@@ -134,7 +134,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 194918, guid: 5f0e591e416ccd643a8abddf88de2615, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f0e591e416ccd643a8abddf88de2615, type: 2}
@@ -256,7 +256,19 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 176612, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
       propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5469764, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_UseGravity
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 165636, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 456812, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: fb115514b55d8e647a59bc6d1f5b7c29, type: 2}
@@ -400,7 +412,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 168500, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
@@ -463,13 +475,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Min_Room: 4
-  Max_Room: 4
-  Min_enemy: 2
-  Max_enemy: 5
+  Max_Room: 9
+  Min_enemy: 7
+  Max_enemy: 12
   Min_Objects: 0
   Max_Objects: 0
   Min_Paths: 0
   Max_Paths: 0
+  AreaLog: []
+  ActiveBiomeName: 0
 --- !u!1 &1744063762 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 141392, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
@@ -531,7 +545,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 104170, guid: f2260f86752cf7f4986ef82a173445e6, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: f2260f86752cf7f4986ef82a173445e6, type: 2}

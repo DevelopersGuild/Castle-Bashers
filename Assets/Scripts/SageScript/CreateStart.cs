@@ -23,7 +23,7 @@ public class CreateStart : MonoBehaviour {
     static public int[] EnemyNumber; //unique ID for each enemy. Used for E_dead check
     public GameObject[] AreaLog;
 
-    public static Biome.BiomeName ActiveBiomeName;
+    public Biome.BiomeName ActiveBiomeName;
 
     private System.Random rnd;
 
@@ -31,16 +31,17 @@ public class CreateStart : MonoBehaviour {
     //makes a room
 
     {
-        int AreaXCoord = 0;
+        int AreaXCoord = -20;
         int AreaYCoord = 1;
         int AreaZCoord = 1;
-        Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord + roomC) * 40, AreaYCoord, AreaZCoord), transform.rotation);
-        Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord + roomC) * 40, AreaYCoord, 11), transform.rotation); //set front limits
-        Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord + roomC) * 40, AreaYCoord, -8), transform.rotation); //set back limits
-        if (bg!=null)
-            Instantiate(bg, new Vector3((AreaXCoord + roomC) * 40, 5, 13), transform.rotation);
+        Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord) + (40* roomC), AreaYCoord, AreaZCoord), transform.rotation);
+        Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, 11), transform.rotation); //set front limits
+        Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, -8), transform.rotation); //set back limits
 
-        AreaID[roomC]= Instantiate(Resources.Load("LevelObjects/Right Limit", typeof(GameObject)), new Vector3((AreaXCoord + roomC) * 40 + 20, 0, 0), transform.rotation).GetInstanceID();
+        if(bg!=null)
+        Instantiate(bg, new Vector3((AreaXCoord + roomC) * 40, 5, 13), transform.rotation);
+
+        AreaID[roomC]= Instantiate(Resources.Load("LevelObjects/Right Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC)+20, 0, 0), transform.rotation).GetInstanceID();
     }
 
     public void MakeMob(int room)
@@ -103,7 +104,7 @@ public class CreateStart : MonoBehaviour {
                 temp = (GameObject)(Resources.Load((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
                 if (temp != null)
                 {
-                    AreaLog[m] = (GameObject)Instantiate(temp, new Vector3((float)(X_coord[m] * rnd.Next(1, 2) + (20 * roomCount)), 20, (float)Z_coord[m] * rnd.Next(-7, 10)), transform.rotation);
+                    AreaLog[m] = (GameObject)Instantiate(temp, new Vector3((float)((40 * (roomCount-1)) - (X_coord[m] * 40)), 20, (float)Z_coord[m] * rnd.Next(-7, 10)), transform.rotation);
                     Debug.Log(AreaLog[m]);
                 }
             }
@@ -114,7 +115,7 @@ public class CreateStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-
+        Debug.Log("Running");
         ///Preconditions///
         /// 
         //Debug.Log(Min_enemy + ", " + Max_enemy);
@@ -146,7 +147,8 @@ public class CreateStart : MonoBehaviour {
         AreaID = new int[numRoom];
 
         //create first room
-        Instantiate(Resources.Load("LevelObjects/Left Limit", typeof(GameObject)), new Vector3(-5, 0, 0), transform.rotation);
+        Instantiate(Resources.Load("LevelObjects/Left Limit", typeof(GameObject)), new Vector3(-39, 0, 0), transform.rotation);
+        Debug.Log(background);
         MakeRoom(roomCount, background);
         AreaLog = new GameObject[Max_enemy];
         roomCount++;

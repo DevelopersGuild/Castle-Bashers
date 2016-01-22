@@ -85,7 +85,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
         Boss_HeadIcon_Script = GOResult.GetComponent<Boss_HeadIcon>();
         Character_Class_Info_Script = GOResult.GetComponent<Character_Class_Info>();
         GOResult = GameObject.Find("SkillDataBase");
-        SI = GOResult.GetComponent<Skill_info>();
+        //SI = GOResult.GetComponent<Skill_info>();
         //Link BOSS INFO
         finds2 = BossMode.GetComponentsInChildren<Image>();
         foreach (Image i in finds2)
