@@ -81,7 +81,7 @@ public class destroyBarrier : MonoBehaviour {
 
    
 
-    void OnTriggerEnter(Collider other)
+    void OnTriggerStay(Collider other)
     {
         if (E_Dead==true)
         {
