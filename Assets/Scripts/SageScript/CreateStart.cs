@@ -21,7 +21,7 @@ public class CreateStart : MonoBehaviour {
     static public int squadSize;
     static public int[] AreaID;
     static public int[] EnemyNumber; //unique ID for each enemy. Used for E_dead check
-    public int[] AreaLog;
+    public GameObject[] AreaLog;
 
     public static Biome.BiomeName ActiveBiomeName;
 
@@ -99,11 +99,11 @@ public class CreateStart : MonoBehaviour {
 
             for (int m = 0; m < squadSize; m++)
             {
-                Debug.Log("Created enemy number: " + squadSize + " succesffuly!");
+                //Debug.Log("Created enemy number: " + squadSize + " succesffuly!");
                 temp = (GameObject)(Resources.Load((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
                 if (temp != null)
                 {
-                    AreaLog[m] = (int)Instantiate(temp, new Vector3((float)(X_coord[m] * rnd.Next(1, 2) + (40 * roomCount)), 20, (float)Z_coord[m] * rnd.Next(-7, 10)), transform.rotation).GetHashCode();
+                    AreaLog[m] = (GameObject)Instantiate(temp, new Vector3((float)(X_coord[m] * rnd.Next(1, 2) + (20 * roomCount)), 20, (float)Z_coord[m] * rnd.Next(-7, 10)), transform.rotation);
                     Debug.Log(AreaLog[m]);
                 }
             }
@@ -117,7 +117,7 @@ public class CreateStart : MonoBehaviour {
 
         ///Preconditions///
         /// 
-        Debug.Log(Min_enemy + ", " + Max_enemy);
+        //Debug.Log(Min_enemy + ", " + Max_enemy);
         if (Min_Room<1 || Max_Room<1)
         {
             Debug.Log("Error at Min/max area! Out of range");
@@ -148,7 +148,7 @@ public class CreateStart : MonoBehaviour {
         //create first room
         Instantiate(Resources.Load("LevelObjects/Left Limit", typeof(GameObject)), new Vector3(-5, 0, 0), transform.rotation);
         MakeRoom(roomCount, background);
-        AreaLog = new int[Max_enemy];
+        AreaLog = new GameObject[Max_enemy];
         roomCount++;
     }
 	

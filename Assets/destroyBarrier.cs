@@ -12,6 +12,8 @@ public class destroyBarrier : MonoBehaviour {
     public CreateStart room;
     public Main_Process end;
 
+    GameObject[] enemies;
+
     // Use this for initialization
     void Start()
     {
@@ -22,13 +24,22 @@ public class destroyBarrier : MonoBehaviour {
 
         
         InstanceID = CreateStart.AreaID[CreateStart.roomCount-1];
-        Debug.Log("InstanceID: " + InstanceID + ", " + (CreateStart.roomCount-1));
-        
-
-       if (CreateStart.squadSize == 0)
-            E_Dead = true;
+        //Debug.Log("InstanceID: " + InstanceID + ", " + (CreateStart.roomCount-1));
 
         room = FindObjectOfType<CreateStart>().GetComponent<CreateStart>();
+
+        if(CreateStart.roomCount!=1)
+        room.MakeMob(CreateStart.roomCount);
+
+        if (CreateStart.squadSize == 0)
+            E_Dead = true;
+
+        
+        enemies = new GameObject[room.Max_enemy];
+        for (int j = 0; j < CreateStart.squadSize; j++)
+        {
+            Debug.Log(room.AreaLog[j]);
+        }
         end = GameObject.Find("Main Process").GetComponent<Main_Process>();
     }
 
@@ -49,14 +60,17 @@ public class destroyBarrier : MonoBehaviour {
             //Debug.Log((CreateStart.AreaLog[CreateStart.squadSize, 1]));
             for (int i = 0; i < CreateStart.squadSize; i++)
             {
-                if (room.AreaLog[i] == 0)
+                if (room.AreaLog[i] == null)
                 {
                     count--;
                 }
                 else
                 {
-                    Debug.Log("I: " + i + " SquadSize: " + room.AreaLog[i]);
-                    count = CreateStart.squadSize; }
+                    Debug.Log("Still here");
+                    i = count = CreateStart.squadSize;
+                   // for (int j = 0; j < CreateStart.squadSize; j++) ;
+                        //enemies[j]=GameObject.Find(room.AreaLog[j]).GetInstanceID().ToString();
+                }
             }
                 if (count == 0)
                     E_Dead = true;
@@ -73,7 +87,7 @@ public class destroyBarrier : MonoBehaviour {
             {
                 GameObject background = (GameObject)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName, 0], typeof(GameObject));
                 room.MakeRoom(CreateStart.roomCount, background);
-                room.MakeMob(CreateStart.roomCount);
+
             }
             else
                 end.UI_Mission_Success_Open();
