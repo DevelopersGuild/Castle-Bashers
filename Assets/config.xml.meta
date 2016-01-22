@@ -4,10 +4,16 @@ guid: 4a223e9f6e49bd242823d92ca5d478d1
 timeCreated: 1448859076
 licenseType: Pro
 =======
+<<<<<<< HEAD
+guid: 4a223e9f6e49bd242823d92ca5d478d1
+timeCreated: 1448859076
+licenseType: Pro
+=======
 guid: 969795dab5bdd02419b72e3e980e5035
 timeCreated: 1449262316
 licenseType: Free
 >>>>>>> 00d2f28e3d6abd6e2786f65e612ffe45b36fb606
+>>>>>>> 85a286f611c46ab069da938a7f9de10ce2b9e1a6
 TextScriptImporter:
   userData: 
   assetBundleName: 

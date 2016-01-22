@@ -375,8 +375,6 @@ public class Player : MonoBehaviour
         basePhysicalDamage = 0.75f * Strength;
         baseMagicalDamage = 1 * Intelligence;
         AttackCollider.GetComponent<DealDamage>().setDamage(basePhysicalDamage);
-        Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
-        
 
     }
 
