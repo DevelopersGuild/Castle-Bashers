@@ -15,7 +15,8 @@ namespace Kroulis.Dialog
         public void Init()
         {
             file=new XmlDocument();
-            Object obj=Resources.Load("dialog.xml");
+            Object obj=Resources.Load("dialog");
+            Debug.Log(obj.ToString());
             if(obj)
                 file.LoadXml(obj.ToString());
         }

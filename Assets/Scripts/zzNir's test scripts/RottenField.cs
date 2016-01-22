@@ -24,7 +24,7 @@ public class RottenField : MonoBehaviour {
             Health hp = enemObj.GetComponent<Health>();
             if (!player.GetInvincible())
             {
-                hp.takeDamage(dmgAmount, 0, 2);
+                hp.takeDamage(dmgAmount, 2);
                 player.SetInvTime(invTime);
             }
             player.GetComponent<CrowdControllable>().addSlow(slowPercent, 0.5f);
@@ -41,7 +41,7 @@ public class RottenField : MonoBehaviour {
             Health hp = enemObj.GetComponent<Health>();
             if (!player.GetInvincible())
             {
-                hp.takeDamage(dmgAmount, 0, 2);
+                hp.takeDamage(dmgAmount, 2);
                 player.SetInvTime(invTime);
             }
             player.GetComponent<CrowdControllable>().addSlow(slowPercent, 0.5f);

@@ -1,4 +1,5 @@
 fileFormatVersion: 2
+<<<<<<< HEAD:Assets/CB7b96abc7ff801ad4c37be78d3464d4D.xml.meta
 <<<<<<< HEAD
 guid: db3e47f67ef03f64eb33768629c1bb7f
 timeCreated: 1449263954
@@ -7,6 +8,11 @@ guid: 632ae3fd1eda518458a4c5be6900396f
 timeCreated: 1449250383
 >>>>>>> 85a286f611c46ab069da938a7f9de10ce2b9e1a6
 licenseType: Free
+=======
+guid: b076bb977a8a3454bbd1f11265b4fdce
+timeCreated: 1453490852
+licenseType: Pro
+>>>>>>> edb74568edcea39c13f6b6a25c461bed965b413b:Assets/Resources/dialog.xml.meta
 TextScriptImporter:
   userData: 
   assetBundleName: 

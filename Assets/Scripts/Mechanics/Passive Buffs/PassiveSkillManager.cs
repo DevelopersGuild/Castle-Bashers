@@ -119,7 +119,7 @@ public class PassiveSkillManager : MonoBehaviour {
 
     void update()
     {
-        if (Input.GetKeyDown("U")){
+        if (Input.GetKeyDown(KeyCode.U)){
             Debug.Log("U PRESSED");
             addPointToSkill(Passives.StrengthBonus);
         }

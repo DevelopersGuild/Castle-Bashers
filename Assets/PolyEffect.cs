@@ -5,15 +5,11 @@ public class PolyEffect : MonoBehaviour {
 
     public float PolyTime;
 
-	// Use this for initialization
-	void Start () {
+    // Use this for initialization
+    void Start () {}
 	
-	}
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
+    // Update is called once per frame
+    void Update () {}
 
 
     public void OnCollisionStay(Collision other)
@@ -33,7 +29,6 @@ public class PolyEffect : MonoBehaviour {
     //Same code just make sure it happens
     public void OnTriggerStay(Collider other)
     {
-
         //Check for player collision
         if (other.gameObject.GetComponent<Player>())
         {
