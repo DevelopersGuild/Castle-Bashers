@@ -106,7 +106,7 @@ public class RandomAreas : MonoBehaviour
                 //after area created, create enemies
                 rndGroup = rnd.Next(enemyMinimum, enemyMax);
 
-                int[] arrayX = new int[rndGroup];
+                int[] X_coord = new int[rndGroup];
                 int[] arrayZ = new int[rndGroup];
                 int testtemp;
                 for (int j = 0; j < rndGroup; j++) //This loop gets us our X coordinates
@@ -114,14 +114,14 @@ public class RandomAreas : MonoBehaviour
                     testtemp = rnd.Next(10, 20); //our X value
                     for (int k = 0; k < rndGroup; k++)//dummy test
                     {
-                        if (arrayX[k] == testtemp)
+                        if (X_coord[k] == testtemp)
                         {
                             --j;
                             testtemp = 0;
                             k = rndGroup;
                         }
                         if (k == rndGroup - 1)
-                            arrayX[j] = testtemp;
+                            X_coord[j] = testtemp;
                     }
                 }
 
@@ -143,7 +143,7 @@ public class RandomAreas : MonoBehaviour
 
                 for (int j = 0; j < rndGroup; j++)
                 {
-                    vShift.x = arrayX[j];
+                    vShift.x = X_coord[j];
                     vShift.z = arrayZ[j];
                     vShift.y = 5.00f;
 
