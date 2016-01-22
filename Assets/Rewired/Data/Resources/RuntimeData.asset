@@ -11,8 +11,7 @@ MonoBehaviour:
   m_Script: {fileID: -755518199, guid: 09c9b883b79ef864a99683bb36c5776d, type: 3}
   m_Name: RuntimeData
   m_EditorClassIdentifier: 
-  platform: 1
+  platform: 0
   webplayerPlatform: 0
-  editorPlatform: 2
-  libraries:
-  - {fileID: 4900000, guid: 04ed3724cbafab943b6b307107f5b900, type: 3}
+  editorPlatform: 0
+  libraries: []
