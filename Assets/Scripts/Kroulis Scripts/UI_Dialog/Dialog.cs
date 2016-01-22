@@ -12,6 +12,17 @@ namespace Kroulis.Dialog
         XmlNodeList dialog_list=null;
         int current_index=0;
 
+        public NormalDialog()
+        {
+
+        }
+
+        public NormalDialog(bool autoinit)
+        {
+            if (autoinit)
+                Init();
+        }
+
         public void Init()
         {
             file=new XmlDocument();

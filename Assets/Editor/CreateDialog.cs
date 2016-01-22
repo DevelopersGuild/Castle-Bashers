@@ -1,10 +1,12 @@
 ﻿using UnityEngine;
 using UnityEditor;
 using System.Collections;
-//using Kroulis.Dialog;
+using Kroulis.Dialog;
+using System.Threading;
 
 public class CreateDialog : EditorWindow
 {
+    NormalDialog dial = new NormalDialog(true);
     [MenuItem("Tools/Manage Dialog")]
     static void ManageDialog () 
     {
@@ -15,7 +17,6 @@ public class CreateDialog : EditorWindow
 
     Object NPC;
     string dialog_id;
-    //NormalDialog dial = new NormalDialog();
 
     void OnGUI()
     {
@@ -26,15 +27,23 @@ public class CreateDialog : EditorWindow
 
         if(GUILayout.Button("Check ID"))
         {
-            //if(dial.CheckIDAvailable(dialog_id))
-            //{
-            //    //this.ShowNotification(new GUIContent("Dialog ID "+dialog_id+" is available."));
-                
-            //}
-            //else
-            //{
-            //    //this.ShowNotification(new GUIContent("Dialog ID " + dialog_id + " is not available."));
-            //}
+            if(dial.CheckIDAvailable(dialog_id))
+            {
+                ShowNotification(new GUIContent("Dialog ID "+dialog_id+" is available."));
+                Thread.Sleep(1000);
+                RmNotification();
+            }
+            else
+            {
+                ShowNotification(new GUIContent("Dialog ID " + dialog_id + " is not available."));
+                Thread.Sleep(1000);
+                RmNotification();
+            }
         }
+    }
+
+    void RmNotification()
+    {
+        this.RemoveNotification();
     }
 }
