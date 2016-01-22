@@ -16,7 +16,7 @@ namespace Kroulis.Dialog
         {
             file=new XmlDocument();
             Object obj=Resources.Load("dialog");
-            Debug.Log(obj.ToString());
+            //Debug.Log(obj.ToString());
             if(obj)
                 file.LoadXml(obj.ToString());
         }
@@ -42,6 +42,25 @@ namespace Kroulis.Dialog
             Debug.LogError("DialogNotExistException: The Dialog id:" + id + " not exist.");
             return false;
         }
+
+        public bool CheckIDAvailable(string id)
+        {
+            if (file == null)
+            {
+                Debug.LogError("DialogFileNotExistException: The Dialog file not exist!");
+                return false;
+            }
+            XmlNodeList list = file.SelectSingleNode("dialog").ChildNodes;
+            foreach (XmlElement xe in list)
+            {
+                if (xe.GetAttribute("id") == id)
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
+
 
         public string GetCurrentSpeaker()
         {

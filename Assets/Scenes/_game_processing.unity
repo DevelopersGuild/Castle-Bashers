@@ -717,7 +717,7 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
-  Player_Name: 
+  Player_Name: Player1
   Stamina: 10
   Strength: 10
   Agility: 10
@@ -1893,6 +1893,10 @@ Prefab:
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: 910b975581f4d534499a4681ca275c40, type: 2}
+    - target: {fileID: 11491518, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
+      propertyPath: Player_Name
+      value: Player2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 375f8d34a9d7eca418291706e3598d05, type: 2}
   m_IsPrefabParent: 0
