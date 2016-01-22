@@ -17,6 +17,7 @@ public class UI_Death_MusicControl : MonoBehaviour {
         {
             BGM_Start = false;
             audio.mute = false;
+            audio.volume = Globe.music_volume;
             audio.Play();
         }
 	    

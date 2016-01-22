@@ -287,7 +287,7 @@ public class Main_Process : MonoBehaviour {
         BGM_Player.volume = 0;
         BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[0].aud;
         BGM_Player.Play();
-        BGM_Player.volume = 1;
+        BGM_Player.volume = Globe.music_volume;
     }
 	
     public void SwitchBackToNormalBattle()
@@ -300,11 +300,11 @@ public class Main_Process : MonoBehaviour {
         BGM_Player.volume = 0;
         BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[Random.Range(1,2)].aud;
         BGM_Player.Play();
-        while (BGM_Player.volume < 1)
+        while (BGM_Player.volume < Globe.music_volume)
         {
             BGM_Player.volume = BGM_Player.volume + 0.05F * Time.deltaTime;
         }
-        BGM_Player.volume = 1;
+        BGM_Player.volume = Globe.music_volume;
     }
 
     public void End_Battle()
@@ -316,7 +316,7 @@ public class Main_Process : MonoBehaviour {
         }
         BGM_Player.Stop();
         BGM_Player.clip = null;
-        BGM_Player.volume = 1;
+        BGM_Player.volume = Globe.music_volume;
     }
 
     //Start Play a new Background music. Let BGM_id be -1 will just stop play the music.
@@ -346,12 +346,12 @@ public class Main_Process : MonoBehaviour {
             BGM_Player.Play();
             if(SmoothlyUp==true)
             {
-                while (BGM_Player.volume < 1)
+                while (BGM_Player.volume < Globe.music_volume)
                 {
                     BGM_Player.volume = BGM_Player.volume + 0.05F * Time.deltaTime;
                 }
             }
-            BGM_Player.volume = 1;
+            BGM_Player.volume = Globe.music_volume;
         }
         
     }

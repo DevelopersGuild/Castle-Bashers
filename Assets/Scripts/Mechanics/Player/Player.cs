@@ -40,6 +40,7 @@ public class Player : MonoBehaviour
 
     public AudioClip jumpAudio;
     public AudioClip attackAudio;
+    private AudioSource audiosource;
 
     private float accelerationTimeAirborne = .2f;
     private float accelerationTimeGrounded = .1f;
@@ -111,6 +112,7 @@ public class Player : MonoBehaviour
         attackController = GetComponent<AttackController>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+        audiosource = GetComponent<AudioSource>();
 
         initialRegenTime = 6;
         regenTick = 2;
@@ -199,7 +201,7 @@ public class Player : MonoBehaviour
 
 
         UpdateState();
-
+        audiosource.volume = Globe.sound_volume;
 
         //  if (Input.GetButtonDown("UseSkill1"))
         if (playerRewired.GetButtonDown("UseSkill1"))
