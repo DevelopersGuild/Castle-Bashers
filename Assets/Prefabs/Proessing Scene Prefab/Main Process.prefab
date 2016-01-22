@@ -1,15 +1,15 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &123366
+--- !u!1 &129928
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 414592}
-  - 114: {fileID: 11413254}
-  - 114: {fileID: 11442556}
+  - 4: {fileID: 473920}
+  - 114: {fileID: 11403536}
+  - 114: {fileID: 11454142}
   m_Layer: 0
   m_Name: Mission_DataCollect
   m_TagString: Untagged
@@ -17,18 +17,18 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &141176
+--- !u!1 &151498
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 472598}
-  - 114: {fileID: 11498298}
-  - 114: {fileID: 11406038}
-  - 114: {fileID: 11483092}
-  - 114: {fileID: 11462966}
+  - 4: {fileID: 422610}
+  - 114: {fileID: 11480234}
+  - 114: {fileID: 11467792}
+  - 114: {fileID: 11438920}
+  - 114: {fileID: 11435100}
   m_Layer: 5
   m_Name: DataBase
   m_TagString: Untagged
@@ -36,32 +36,16 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &144642
+--- !u!1 &172014
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 403536}
-  - 114: {fileID: 11416226}
-  m_Layer: 0
-  m_Name: Map_Trans_Database
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!1 &157586
-GameObject:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  serializedVersion: 4
-  m_Component:
-  - 4: {fileID: 445900}
-  - 114: {fileID: 11453466}
-  - 114: {fileID: 11417404}
+  - 4: {fileID: 443590}
+  - 114: {fileID: 11468968}
+  - 114: {fileID: 11462542}
   m_Layer: 0
   m_Name: SkillDataBase
   m_TagString: Untagged
@@ -69,17 +53,33 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!1 &172766
+--- !u!1 &172442
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 462344}
-  - 114: {fileID: 11478450}
-  - 114: {fileID: 11492594}
-  - 82: {fileID: 8211508}
+  - 4: {fileID: 449194}
+  - 114: {fileID: 11445072}
+  m_Layer: 0
+  m_Name: Map_Trans_Database
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &194560
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 468296}
+  - 114: {fileID: 11445864}
+  - 114: {fileID: 11449026}
+  - 82: {fileID: 8229248}
   m_Layer: 0
   m_Name: Main Process
   m_TagString: Untagged
@@ -87,76 +87,135 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &403536
+--- !u!1 &197448
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 468086}
+  - 114: {fileID: 11490410}
+  m_Layer: 0
+  m_Name: MusicSettings
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!1 &198324
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 447486}
+  - 114: {fileID: 11454182}
+  - 114: {fileID: 11494448}
+  m_Layer: 0
+  m_Name: Quest
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &422610
 Transform:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144642}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 446.528595, y: 150.937164, z: 10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 462344}
-  m_RootOrder: 2
---- !u!4 &414592
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123366}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 462344}
-  m_RootOrder: 1
---- !u!4 &445900
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157586}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 462344}
-  m_RootOrder: 3
---- !u!4 &462344
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172766}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: -10}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children:
-  - {fileID: 472598}
-  - {fileID: 414592}
-  - {fileID: 403536}
-  - {fileID: 445900}
-  m_Father: {fileID: 0}
-  m_RootOrder: 0
---- !u!4 &472598
-Transform:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141176}
+  m_GameObject: {fileID: 151498}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 377.5, y: 139, z: 10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 462344}
+  m_Father: {fileID: 468296}
   m_RootOrder: 0
---- !u!82 &8211508
+--- !u!4 &443590
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172014}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468296}
+  m_RootOrder: 3
+--- !u!4 &447486
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198324}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468296}
+  m_RootOrder: 4
+--- !u!4 &449194
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172442}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 446.528595, y: 150.937164, z: 10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468296}
+  m_RootOrder: 2
+--- !u!4 &468086
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197448}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468296}
+  m_RootOrder: 5
+--- !u!4 &468296
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194560}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: -10}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 422610}
+  - {fileID: 473920}
+  - {fileID: 449194}
+  - {fileID: 443590}
+  - {fileID: 447486}
+  - {fileID: 468086}
+  m_Father: {fileID: 0}
+  m_RootOrder: 0
+--- !u!4 &473920
+Transform:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129928}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 468296}
+  m_RootOrder: 1
+--- !u!82 &8229248
 AudioSource:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172766}
+  m_GameObject: {fileID: 194560}
   m_Enabled: 1
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
@@ -221,12 +280,209 @@ AudioSource:
       tangentMode: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
---- !u!114 &11406038
+--- !u!114 &11403536
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141176}
+  m_GameObject: {fileID: 129928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a9be8520bdc07f4ca28f462edf4235f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  current_time: 0
+--- !u!114 &11435100
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 391bba22af29636409e5e455347a125f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  Chapter:
+  - Map_Background: {fileID: 21300000, guid: 8127e8af4a1c8f54da2e69b1d2043d96, type: 3}
+    mapinfo:
+    - mapid: 1
+      Position: {x: -560, y: -200, z: 0}
+    - mapid: 1
+      Position: {x: -21, y: -43, z: 0}
+    - mapid: 3
+      Position: {x: 583, y: 200, z: 0}
+--- !u!114 &11438920
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151498}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e9cbe5e92db80d429814c1b2f7efc60, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  BGM:
+  - name: BossFight
+    aud: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
+  - name: BattleMusic1
+    aud: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
+  - name: BattleMusic2
+    aud: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
+  - name: Town
+    aud: {fileID: 8300000, guid: 19c59e348e460ad45b2a90f4d9179785, type: 3}
+--- !u!114 &11445072
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172442}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fda247e94a29a74ab6b77dc620de3df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  mapinfo:
+  - name: _Title
+    bg_texture: {fileID: 0}
+    mini_bg_texture: {fileID: 0}
+    System_Map: 1
+    have_bgm: 0
+    bgm: {fileID: 0}
+    limit_time: 0
+    limit_death: 0
+    limit_gold: 0
+    Reward_EXP: 
+    Reward_Gold: 
+  - name: Level1
+    bg_texture: {fileID: 2800000, guid: 172780adccbd00646b313e834100bc18, type: 3}
+    mini_bg_texture: {fileID: 21300000, guid: 554de277ef5aa8443b2fc911e849a5d7, type: 3}
+    System_Map: 0
+    have_bgm: 0
+    bgm: {fileID: 0}
+    limit_time: 0
+    limit_death: 0
+    limit_gold: 0
+    Reward_EXP: 00000000000000000000000000000000
+    Reward_Gold: 00000000000000000000000000000000
+  - name: _Loading
+    bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
+    mini_bg_texture: {fileID: 0}
+    System_Map: 1
+    have_bgm: 0
+    bgm: {fileID: 0}
+    limit_time: 0
+    limit_death: 0
+    limit_gold: 0
+    Reward_EXP: 
+    Reward_Gold: 
+  - name: town
+    bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
+    mini_bg_texture: {fileID: 0}
+    System_Map: 0
+    have_bgm: 1
+    bgm: {fileID: 8300000, guid: 19c59e348e460ad45b2a90f4d9179785, type: 3}
+    limit_time: 0
+    limit_death: 0
+    limit_gold: 0
+    Reward_EXP: 
+    Reward_Gold: 
+  - name: _processing
+    bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
+    mini_bg_texture: {fileID: 0}
+    System_Map: 1
+    have_bgm: 0
+    bgm: {fileID: 0}
+    limit_time: 0
+    limit_death: 0
+    limit_gold: 0
+    Reward_EXP: 
+    Reward_Gold: 
+  maptag:
+  - text: When you are in battle, you cannot open the menu.
+  - text: Try to make your level high before you go to any high difficulty adventure.
+  - text: You can use not only keyboard but also playstation to control your chracter.
+  - text: Really hard? Try to go on your adventure with your friends.
+  - text: "Your can change the hotkeys of the controler, but we haven't finished yet.\u256E(\u256F_\u2570)\u256D"
+--- !u!114 &11445864
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4a96d5f2e9db2e4793ce3242ac9fc15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  movTexture: {fileID: 15200000, guid: 758b7ca3ca16ff0488a9f567cda1dc1c, type: 3}
+  Main_UI: {fileID: 0}
+  Menu_UI: {fileID: 0}
+  Other_Windows: {fileID: 0}
+  Hide_UI: 1
+  Menu_Open: 0
+  Menu_id: 0
+  One_player_per_client: 1
+  In_Battle: 0
+  Killing_boss: 0
+  Team_Mode: 0
+  esckey_up: 0
+--- !u!114 &11449026
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 194560}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 99c3c2d1c6afb9d4a9807ab65b34a9fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11454142
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 129928}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 98cb05195e7b2b443a52ab17010d0c15, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  death: 0
+  get_gold: 0
+  Aget: 0
+  Bget: 0
+--- !u!114 &11454182
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ba895a305a239904397a0a86073e65ae, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &11462542
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 172014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2bada1f7f3fdaad40b6791434a1e7e44, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  skillArray: 
+--- !u!114 &11467792
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 151498}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f8d45cdc886d7bc47bd1510029d66b77, type: 3}
@@ -440,124 +696,12 @@ MonoBehaviour:
       maxhp: 0
       maxmp: 0
       cri: 0
---- !u!114 &11413254
+--- !u!114 &11468968
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0a9be8520bdc07f4ca28f462edf4235f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  current_time: 0
---- !u!114 &11416226
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 144642}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6fda247e94a29a74ab6b77dc620de3df, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mapinfo:
-  - name: _Title
-    bg_texture: {fileID: 0}
-    mini_bg_texture: {fileID: 0}
-    System_Map: 1
-    have_bgm: 0
-    bgm: {fileID: 0}
-    limit_time: 0
-    limit_death: 0
-    limit_gold: 0
-    Reward_EXP: 
-    Reward_Gold: 
-  - name: Level1
-    bg_texture: {fileID: 2800000, guid: 172780adccbd00646b313e834100bc18, type: 3}
-    mini_bg_texture: {fileID: 21300000, guid: 554de277ef5aa8443b2fc911e849a5d7, type: 3}
-    System_Map: 0
-    have_bgm: 0
-    bgm: {fileID: 0}
-    limit_time: 0
-    limit_death: 0
-    limit_gold: 0
-    Reward_EXP: 00000000000000000000000000000000
-    Reward_Gold: 00000000000000000000000000000000
-  - name: _Loading
-    bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
-    mini_bg_texture: {fileID: 0}
-    System_Map: 1
-    have_bgm: 0
-    bgm: {fileID: 0}
-    limit_time: 0
-    limit_death: 0
-    limit_gold: 0
-    Reward_EXP: 
-    Reward_Gold: 
-  - name: town
-    bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
-    mini_bg_texture: {fileID: 0}
-    System_Map: 0
-    have_bgm: 1
-    bgm: {fileID: 8300000, guid: 19c59e348e460ad45b2a90f4d9179785, type: 3}
-    limit_time: 0
-    limit_death: 0
-    limit_gold: 0
-    Reward_EXP: 
-    Reward_Gold: 
-  - name: _processing
-    bg_texture: {fileID: 2800000, guid: 56d85f8609a607d4ebdeebdac5623676, type: 3}
-    mini_bg_texture: {fileID: 0}
-    System_Map: 1
-    have_bgm: 0
-    bgm: {fileID: 0}
-    limit_time: 0
-    limit_death: 0
-    limit_gold: 0
-    Reward_EXP: 
-    Reward_Gold: 
-  maptag:
-  - text: When you are in battle, you cannot open the menu.
-  - text: Try to make your level high before you go to any high difficulty adventure.
-  - text: You can use not only keyboard but also playstation to control your chracter.
-  - text: Really hard? Try to go on your adventure with your friends.
-  - text: "Your can change the hotkeys of the controler, but we haven't finished yet.\u256E(\u256F_\u2570)\u256D"
---- !u!114 &11417404
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157586}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2bada1f7f3fdaad40b6791434a1e7e44, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  skillArray: 
---- !u!114 &11442556
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 123366}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 98cb05195e7b2b443a52ab17010d0c15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  death: 0
-  get_gold: 0
-  Aget: 0
-  Bget: 0
---- !u!114 &11453466
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 157586}
+  m_GameObject: {fileID: 172014}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 6072c6609e8933740bcd9401ec069b64, type: 3}
@@ -568,86 +712,12 @@ MonoBehaviour:
     skillname: Fire ball
     skillicon: {fileID: 0}
     skill_script: {fileID: 0}
---- !u!114 &11462966
+--- !u!114 &11480234
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 391bba22af29636409e5e455347a125f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  Chapter:
-  - Map_Background: {fileID: 21300000, guid: 8127e8af4a1c8f54da2e69b1d2043d96, type: 3}
-    mapinfo:
-    - mapid: 1
-      Position: {x: -560, y: -200, z: 0}
-    - mapid: 1
-      Position: {x: -21, y: -43, z: 0}
-    - mapid: 3
-      Position: {x: 583, y: 200, z: 0}
---- !u!114 &11478450
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: d4a96d5f2e9db2e4793ce3242ac9fc15, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  movTexture: {fileID: 15200000, guid: 914fabe14d0ff3f40897140dd2507673, type: 3}
-  Main_UI: {fileID: 0}
-  Menu_UI: {fileID: 0}
-  Other_Windows: {fileID: 0}
-  Hide_UI: 1
-  Menu_Open: 0
-  Menu_id: 0
-  One_player_per_client: 1
-  In_Battle: 0
-  Killing_boss: 0
-  Team_Mode: 0
-  esckey_up: 0
---- !u!114 &11483092
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141176}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e9cbe5e92db80d429814c1b2f7efc60, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  BGM:
-  - name: BossFight
-    aud: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
-  - name: BattleMusic1
-    aud: {fileID: 8300000, guid: 9c9d538a58f4e3d4fad7c77b57cc6753, type: 3}
-  - name: BattleMusic2
-    aud: {fileID: 8300000, guid: 3e45023eb5e1d9647a5d1757af0d4ed1, type: 3}
-  - name: Town
-    aud: {fileID: 8300000, guid: 19c59e348e460ad45b2a90f4d9179785, type: 3}
---- !u!114 &11492594
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 172766}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 99c3c2d1c6afb9d4a9807ab65b34a9fd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
---- !u!114 &11498298
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 141176}
+  m_GameObject: {fileID: 151498}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: de672647ea66d824095aa0cca40f76a5, type: 3}
@@ -655,6 +725,31 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   icon:
   - {fileID: 21300000, guid: 883b6dc844107b24586f16fb94249957, type: 3}
+--- !u!114 &11490410
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 197448}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cf8edb3dbfc4ecc41befe7171e244335, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  music: 1
+  sound: 1
+  dialogue: 1
+--- !u!114 &11494448
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 198324}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d6e3bceb24bcf3e40afb0ab935ae1b74, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -664,5 +759,5 @@ Prefab:
     m_Modifications: []
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
-  m_RootGameObject: {fileID: 172766}
+  m_RootGameObject: {fileID: 194560}
   m_IsPrefabParent: 1
