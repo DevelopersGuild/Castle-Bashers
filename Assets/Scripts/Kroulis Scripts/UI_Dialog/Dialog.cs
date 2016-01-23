@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Xml;
 using Kroulis.Verify;
+using System.Collections.Generic;
 
 namespace Kroulis.Dialog
 {
@@ -56,6 +57,7 @@ namespace Kroulis.Dialog
 
         public bool CheckIDAvailable(string id)
         {
+            Debug.Log(id);
             if (file == null)
             {
                 Debug.LogError("DialogFileNotExistException: The Dialog file not exist!");
@@ -64,7 +66,8 @@ namespace Kroulis.Dialog
             XmlNodeList list = file.SelectSingleNode("dialog").ChildNodes;
             foreach (XmlElement xe in list)
             {
-                if (xe.GetAttribute("id") == id)
+                //Debug.Log("Dialog id:" + xe.GetAttribute("id"));
+                if (xe.GetAttribute("id").ToString() == id)
                 {
                     return false;
                 }
@@ -158,6 +161,30 @@ namespace Kroulis.Dialog
     public class ChoosingDialog
     {
 
+    }
+
+    public struct StepDialog
+    {
+        public string order;
+        public string speaker;
+        public string text;
+        public string audio;
+        public void Clear()
+        {
+            speaker = "";
+            text = "";
+            audio = "";
+            order = "";
+        }
+    }
+
+    public struct ADialog
+    {
+        public List<StepDialog> dialog;
+        public static bool WriteToXML(ADialog dia)
+        {
+            return true;
+        }
     }
 }
 
