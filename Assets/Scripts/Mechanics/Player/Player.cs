@@ -375,8 +375,6 @@ public class Player : MonoBehaviour
         basePhysicalDamage = 0.75f * Strength;
         baseMagicalDamage = 1 * Intelligence;
         AttackCollider.GetComponent<DealDamage>().setDamage(basePhysicalDamage);
-        Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
-        
 
     }
 
@@ -695,7 +693,8 @@ public class Player : MonoBehaviour
 
     public float getPhysicalDamage()
     {
-        return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk; ;
+        Debug.Log(CCI.Class_info[class_id].weapon[weapon_level].patk);
+        return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk;
     }
     public float getMagicalDamage()
     {

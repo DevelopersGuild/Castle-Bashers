@@ -35,7 +35,7 @@ public class Main_Process : MonoBehaviour {
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         movTexture.loop = false;
-        //if(Application.platform!=RuntimePlatform.WindowsEditor)
+        if(Application.platform!=RuntimePlatform.WindowsEditor)
             movTexture.Play();
         start_to_play = true;
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_Process = this.gameObject;
