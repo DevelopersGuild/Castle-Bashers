@@ -11,6 +11,7 @@ public class CreateStart : MonoBehaviour {
     public int Max_Objects; //nonnegative
     public int Min_Paths; //nonnegative
     public int Max_Paths; //nonnegative
+    public int position; //between 0 and 3
 
     public static int numRoom;
     int numEnemy;
@@ -22,6 +23,8 @@ public class CreateStart : MonoBehaviour {
     static public int[] AreaID;
     static public int[] EnemyNumber; //unique ID for each enemy. Used for E_dead check
     public GameObject[] AreaLog;
+
+    public enum types { front, back, top, surprise }
 
     public Biome.BiomeName ActiveBiomeName;
 
@@ -97,20 +100,44 @@ public class CreateStart : MonoBehaviour {
             }
 
             GameObject temp;
+            position = rnd.Next(0, 3);
 
             for (int m = 0; m < squadSize; m++)
             {
                 //Debug.Log("Created enemy number: " + squadSize + " succesffuly!");
                 temp = (GameObject)(Resources.Load((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
+
                 if (temp != null)
                 {
-                    AreaLog[m] = (GameObject)Instantiate(temp, new Vector3((float)((40 * (roomCount-1)) - (X_coord[m] * 40)), 20, (float)Z_coord[m] * rnd.Next(-7, 10)), transform.rotation);
-                    Debug.Log(AreaLog[m]);
+                    
+                    AreaLog[m] = spawn(position, temp, X_coord[m], Z_coord[m]);
                 }
             }
 
         }
 
+    }
+
+    public GameObject spawn(int position, GameObject enemy, double x, double z)
+    {
+        if ((int)types.front == position)
+        {
+            return(GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount - 1)) - (x * 5)), 5, (float)z * rnd.Next(-7, 10)), transform.rotation);
+        }
+        else if ((int)types.back == position)
+        {
+            return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount-2)) - (x * 5)-5), 5, (float)z * rnd.Next(-7, 10)), transform.rotation);
+        }
+        else if ((int)types.top == position)
+        {
+            return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount - 2)) + (x*5)+5), 15, (float)z * rnd.Next(-7, 10)), transform.rotation);
+        }
+        else if ((int)types.surprise == position)
+        {
+             return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount-2)) - (x * 5)), 5, (float)z * rnd.Next(9, 10)), transform.rotation);
+        }
+
+        return enemy;
     }
 
 	// Use this for initialization
