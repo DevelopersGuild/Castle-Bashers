@@ -198,7 +198,7 @@ public class MoveController : MonoBehaviour
                 currentFlinchTime -= Time.deltaTime;
 
             // Stop flinching after timer has passed
-            if (currentFlinchTime <= 0 && collisions.below == true)
+            if (currentFlinchTime <= 0) // && collisions.below == true)
             {
                 resetFlinchCount();
             }
@@ -212,6 +212,7 @@ public class MoveController : MonoBehaviour
         {
             isFlinched = true;
             flinchCount += flinchPower;
+            Debug.Log(flinchCount);
             resetToFlinchTime();
         }
     }

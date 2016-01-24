@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: f3a1e2f561e436742abe6b2f499ac4ea
-timeCreated: 1452882669
+timeCreated: 1453607978
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -42,6 +42,39 @@ TextureImporter:
     21300070: player_more_moves_sheet64x64_35
     21300072: player_more_moves_sheet64x64_36
     21300074: player_more_moves_sheet64x64_37
+    21300076: player_more_moves_sheet64x64_38
+    21300078: player_more_moves_sheet64x64_39
+    21300080: player_more_moves_sheet64x64_40
+    21300082: player_more_moves_sheet64x64_41
+    21300084: player_more_moves_sheet64x64_42
+    21300086: player_more_moves_sheet64x64_43
+    21300088: player_more_moves_sheet64x64_44
+    21300090: player_more_moves_sheet64x64_45
+    21300092: player_more_moves_sheet64x64_46
+    21300094: player_more_moves_sheet64x64_47
+    21300096: player_more_moves_sheet64x64_48
+    21300098: player_more_moves_sheet64x64_49
+    21300100: player_more_moves_sheet64x64_50
+    21300102: player_more_moves_sheet64x64_51
+    21300104: player_more_moves_sheet64x64_52
+    21300106: player_more_moves_sheet64x64_53
+    21300108: player_more_moves_sheet64x64_54
+    21300110: player_more_moves_sheet64x64_55
+    21300112: player_more_moves_sheet64x64_56
+    21300114: player_more_moves_sheet64x64_57
+    21300116: player_more_moves_sheet64x64_58
+    21300118: player_more_moves_sheet64x64_59
+    21300120: player_more_moves_sheet64x64_60
+    21300122: player_more_moves_sheet64x64_61
+    21300124: player_more_moves_sheet64x64_62
+    21300126: player_more_moves_sheet64x64_63
+    21300128: player_more_moves_sheet64x64_64
+    21300130: player_more_moves_sheet64x64_65
+    21300132: player_more_moves_sheet64x64_66
+    21300134: player_more_moves_sheet64x64_67
+    21300136: player_more_moves_sheet64x64_68
+    21300138: player_more_moves_sheet64x64_69
+    21300140: player_more_moves_sheet64x64_70
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -92,7 +125,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -102,7 +135,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -112,7 +145,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -122,7 +155,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -132,7 +165,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -142,7 +175,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -152,7 +185,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -162,7 +195,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 448
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -172,7 +205,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -182,7 +215,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 576
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -192,7 +225,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 640
-        y: 320
+        y: 576
         width: 64
         height: 64
       alignment: 0
@@ -202,7 +235,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 256
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -212,7 +245,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 256
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -222,7 +255,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 256
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -232,7 +265,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 256
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -242,7 +275,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 256
+        y: 512
         width: 64
         height: 64
       alignment: 0
@@ -252,7 +285,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 192
+        y: 448
         width: 64
         height: 64
       alignment: 0
@@ -262,7 +295,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 192
+        y: 448
         width: 64
         height: 64
       alignment: 0
@@ -272,7 +305,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 192
+        y: 448
         width: 64
         height: 64
       alignment: 0
@@ -282,7 +315,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 192
+        y: 448
         width: 64
         height: 64
       alignment: 0
@@ -292,7 +325,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 192
+        y: 448
         width: 64
         height: 64
       alignment: 0
@@ -302,7 +335,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -312,7 +345,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -322,7 +355,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -332,7 +365,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -342,7 +375,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -352,7 +385,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -362,7 +395,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 128
+        y: 384
         width: 64
         height: 64
       alignment: 0
@@ -372,7 +405,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 0
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -382,7 +415,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 64
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -392,7 +425,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 128
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -402,7 +435,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 192
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -412,7 +445,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 256
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -422,7 +455,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 320
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -432,7 +465,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 384
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -442,7 +475,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 448
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -452,7 +485,7 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 512
-        y: 64
+        y: 320
         width: 64
         height: 64
       alignment: 0
@@ -462,6 +495,336 @@ TextureImporter:
       rect:
         serializedVersion: 2
         x: 576
+        y: 320
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_38
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_39
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_40
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_41
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_42
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_43
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_44
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_45
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_46
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_47
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_48
+      rect:
+        serializedVersion: 2
+        x: 640
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_49
+      rect:
+        serializedVersion: 2
+        x: 704
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_50
+      rect:
+        serializedVersion: 2
+        x: 768
+        y: 256
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_51
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_52
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_53
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_54
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_55
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_56
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_57
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_58
+      rect:
+        serializedVersion: 2
+        x: 448
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_59
+      rect:
+        serializedVersion: 2
+        x: 512
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_60
+      rect:
+        serializedVersion: 2
+        x: 576
+        y: 192
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_61
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_62
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 128
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_63
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_64
+      rect:
+        serializedVersion: 2
+        x: 64
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_65
+      rect:
+        serializedVersion: 2
+        x: 128
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_66
+      rect:
+        serializedVersion: 2
+        x: 192
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_67
+      rect:
+        serializedVersion: 2
+        x: 256
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_68
+      rect:
+        serializedVersion: 2
+        x: 320
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_69
+      rect:
+        serializedVersion: 2
+        x: 384
+        y: 64
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: player_more_moves_sheet64x64_70
+      rect:
+        serializedVersion: 2
+        x: 448
         y: 64
         width: 64
         height: 64

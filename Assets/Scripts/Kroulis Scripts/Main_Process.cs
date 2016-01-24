@@ -38,6 +38,9 @@ public class Main_Process : MonoBehaviour {
         if(Application.platform!=RuntimePlatform.WindowsEditor)
             movTexture.Play();
         start_to_play = true;
+        Main_UI = FindObjectOfType<Main_UI_FULLControl>().gameObject;
+        Menu_UI = FindObjectOfType<Menu_UI_FullControl>().gameObject;
+        Other_Windows = FindObjectOfType<Other_Windows_FullControl>().gameObject;
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_Process = this.gameObject;
         Menu_UI.GetComponent<Menu_UI_FullControl>().Main_Process = this.gameObject;
         Other_Windows.GetComponent<Other_Windows_FullControl>().Main_Process = this.gameObject;

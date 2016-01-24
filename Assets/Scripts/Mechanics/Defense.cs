@@ -27,7 +27,7 @@ public class Defense : MonoBehaviour
                 damage = damage * 0.35f;
         damage = damage - GetPhysicalDefense();
         if (!player)
-            Debug.Log(damage);
+            // Debug.Log(damage);
         if (damage > 0)
         {
             health.takeDamage(damage, flinch);
