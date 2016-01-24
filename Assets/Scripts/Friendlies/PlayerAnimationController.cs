@@ -1,11 +1,13 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class AnimationController : MonoBehaviour
-{
+public class PlayerAnimationController : MonoBehaviour {
 
     private Animator animator;
+    private Player player;
     private MoveController moveController;
+    private AttackController attackController;
+    private Health health;
     public bool isAttacking;
 
 
@@ -14,6 +16,9 @@ public class AnimationController : MonoBehaviour
     {
         moveController = GetComponent<MoveController>();
         animator = GetComponent<Animator>();
+        attackController = GetComponent<AttackController>();
+        health = GetComponent<Health>();
+        player = GetComponent<Player>();
     }
 
     // Update is called once per frame
@@ -21,11 +26,12 @@ public class AnimationController : MonoBehaviour
     {
         if (animator != null)
         {
-            animator.SetBool("IsAttacking", isAttacking);
             animator.SetBool("IsMoving", moveController.isMoving);
             animator.SetBool("IsFlinched", moveController.GetFlinched());
             animator.SetBool("IsKnockedBack", moveController.GetKnockedBack());
-
+            animator.SetBool("IsJumping", player.getIsJumping());
+            animator.SetBool("IsDead", player.getDown());
+            animator.SetBool("IsGrounded", moveController.getIsGrounded());
         }
     }
 }

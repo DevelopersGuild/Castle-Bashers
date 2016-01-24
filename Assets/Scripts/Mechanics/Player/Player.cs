@@ -59,6 +59,7 @@ public class Player : MonoBehaviour
     private Vector3 velocity;
     private float velocityXSmoothing;
     private float velocityZSmoothing;
+    private bool isJumping;
     private MoveController controller;
     private AttackController attackController;
     private CrowdControllable crowdControllable;
@@ -135,7 +136,7 @@ public class Player : MonoBehaviour
     {
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
-
+       
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -414,16 +415,6 @@ public class Player : MonoBehaviour
         controller.Move(velocity * Time.unscaledDeltaTime, input);
     }
 
-    public void SetIsGrounded(bool isPlayerOnGround)
-    {
-        isGrounded = isPlayerOnGround;
-    }
-
-    public bool GetIsGrounded()
-    {
-        return isGrounded;
-    }
-
     public void setIsMoving(bool move)
     {
         isMoving = move;
@@ -442,12 +433,20 @@ public class Player : MonoBehaviour
 
     public void EndJump()
     {
+        isJumping = false;
         velocity.y = 0;
     }
 
     public void Jump()
     {
+        AudioSource.PlayClipAtPoint(jumpAudio, transform.position);
+        isJumping = true;
         velocity.y = jumpVelocity;
+    }
+
+    public bool getIsJumping()
+    {
+        return isJumping;
     }
 
     public GameObject GetAttackCollider()

@@ -5,7 +5,7 @@ public class DeathState : IPlayerState
 {
     public void EnterState(Player player)
     {
-        player.animator.SetBool("IsDead", true);
+       // player.animator.SetBool("IsDead", true);
     }
 
     public IPlayerState HandleInput(Player player)

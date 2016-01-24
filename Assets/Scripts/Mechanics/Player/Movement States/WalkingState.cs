@@ -5,7 +5,7 @@ public class WalkingState : IPlayerState
 {
     public void EnterState(Player player)
     {
-        player.animator.SetBool("IsMoving", true);
+        //player.animator.SetBool("IsMoving", true);
     }
 
     public IPlayerState HandleInput(Player player)

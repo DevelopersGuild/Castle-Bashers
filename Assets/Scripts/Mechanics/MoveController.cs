@@ -39,6 +39,7 @@ public class MoveController : MonoBehaviour
     BoxCollider coll;
     RaycastOrigins raycastOrigins;
     public CollisionInfo collisions;
+    private bool isGrounded;
 
     void Start()
     {
@@ -101,6 +102,7 @@ public class MoveController : MonoBehaviour
             VerticalCollisions(ref velocity);
         }
 
+        updateGrounded();
         updateKnockback(ref velocity);
         updateFlinch();
 
@@ -127,6 +129,23 @@ public class MoveController : MonoBehaviour
         {
             isMoving = true;
         }
+    }
+
+    private void updateGrounded()
+    {
+        if (collisions.below)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
+
+    public bool getIsGrounded()
+    {
+        return isGrounded;
     }
 
     private void clampPosition(ref Vector3 veloctity)
@@ -156,9 +175,9 @@ public class MoveController : MonoBehaviour
                     velocity.x = -knockbackVelocity;
                 }
 
-                if (GetComponent<ID>())
+                if (GetComponent<ID>() && !GetComponent<Player>())
                 {
-                    if (GetComponent<ID>().getTime())
+                    if (GetComponent<ID>().getTime() )
                         currentKnockbacktime -= Time.unscaledDeltaTime;
                 }
                 else { 
@@ -189,13 +208,15 @@ public class MoveController : MonoBehaviour
                 isKnockedBack = true;
             }
 
-            if (GetComponent<ID>())
+            if (GetComponent<ID>() && !GetComponent<Player>())
             {
                 if (GetComponent<ID>().getTime())
                     currentFlinchTime -= Time.unscaledDeltaTime;
             }
             else
                 currentFlinchTime -= Time.deltaTime;
+
+            Debug.Log(currentFlinchTime);
 
             // Stop flinching after timer has passed
             if (currentFlinchTime <= 0) // && collisions.below == true)

@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 0}
-  dmgAmount: 1
+  dmgAmount: 30
   isMagic: 0
   damagesPlayers: 1
   damagesEnemies: 0
@@ -106,7 +106,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dmgAmount
-      value: 5
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damagesPlayers
