@@ -8,7 +8,8 @@ using System.Collections.Generic;
 
 public class CreateDialog : EditorWindow
 {
-    NormalDialog dial = new NormalDialog(true);
+    private NormalDialog dial = new NormalDialog(true);
+    private DialogWriter dw = new DialogWriter();
     [MenuItem("Tools/Dialog System/Create Dialog")]
     static void ManageDialog () 
     {
@@ -21,11 +22,11 @@ public class CreateDialog : EditorWindow
     Object AUDIO;
     string dialog_id="";
     string comment = "";
-    int count = 1;
-    int selection = -1;
-    List<StepDialog> stepdialogs=new List<StepDialog>();
-    StepDialog stepdialog=new StepDialog();
-    Vector2 scrollposition=new Vector2();
+    private int count = 1;
+    private int selection = -1;
+    private List<StepDialog> stepdialogs = new List<StepDialog>();
+    private StepDialog stepdialog = new StepDialog();
+    private Vector2 scrollposition = new Vector2();
 
     void OnGUI()
     {
@@ -42,21 +43,15 @@ public class CreateDialog : EditorWindow
         {
             if (dialog_id=="")
             {
-                ShowNotification(new GUIContent("Please input dialog ID first."));
-                Thread newThread = new Thread(new ThreadStart(RmNotification));
-                newThread.Start();
+                SwNotification("Please input dialog ID first.");
             }
             else if(dial.CheckIDAvailable(dialog_id)==true)
             {
-                ShowNotification(new GUIContent("Dialog ID "+dialog_id+" is available."));
-                Thread newThread = new Thread(new ThreadStart(RmNotification));
-                newThread.Start();
+                SwNotification("Dialog ID " + dialog_id + " is available.");
             }
             else
             {
-                ShowNotification(new GUIContent("Dialog ID " + dialog_id + " is not available."));
-                Thread newThread = new Thread(new ThreadStart(RmNotification));
-                newThread.Start();
+                SwNotification("Dialog ID " + dialog_id + " is not available.");
             }
         }
         //Step Dialog Create Part
@@ -129,19 +124,16 @@ public class CreateDialog : EditorWindow
             {
                 if(selection==-1)
                 {
-                    ShowNotification(new GUIContent("No step dialog is selected."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("No step dialog is selected.");
                 }
                 else
                 {
-                    stepdialogs.Remove(stepdialogs[selection]);
+                    DeleteProcess();
+                    stepdialogs.Remove(stepdialogs[stepdialogs.Count-1]);
                     selection = -1;
                     count--;
                     ListSort();
-                    ShowNotification(new GUIContent("Successfully deleted."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Successfully deleted.");
                 
                 }
             }
@@ -160,16 +152,12 @@ public class CreateDialog : EditorWindow
                     stepdialogs.Add(source);
                     stepdialogs.Add(upone);
                     ListSort();
-                    ShowNotification(new GUIContent("Move Up Success."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Move Up Success.");
 
                 }
                 else
                 {
-                    ShowNotification(new GUIContent("Cannot Move Up Because is Already At Top."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Cannot Move Up Because is Already At Top.");
                 }
             
             }
@@ -188,16 +176,12 @@ public class CreateDialog : EditorWindow
                     stepdialogs.Add(source);
                     stepdialogs.Add(downone);
                     ListSort();
-                    ShowNotification(new GUIContent("Move Down Success."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Move Down Success.");
 
                 }
                 else
                 {
-                    ShowNotification(new GUIContent("Cannot Move Down Because is Already At Tail."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Cannot Move Down Because is Already At Tail.");
                 }
             }
         EditorGUILayout.EndHorizontal();
@@ -206,21 +190,15 @@ public class CreateDialog : EditorWindow
             {
                 if(dialog_id=="")
                 {
-                    ShowNotification(new GUIContent("Dialog ID Missing."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Dialog ID Missing.");
                 }
                 else if(dial.CheckIDAvailable(dialog_id)==false)
                 {
-                    ShowNotification(new GUIContent("Dialog ID Not Available."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Dialog ID Not Available.");
                 }
                 else if(NPC==null)
                 {
-                    ShowNotification(new GUIContent("NPC GameObject Missing."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("NPC GameObject Missing.");
                 }
                 else
                 {
@@ -232,15 +210,11 @@ public class CreateDialog : EditorWindow
             {
                 if (dialog_id == "")
                 {
-                    ShowNotification(new GUIContent("Dialog ID Missing."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Dialog ID Missing.");
                 }
                 else if (dial.CheckIDAvailable(dialog_id) == false)
                 {
-                    ShowNotification(new GUIContent("Dialog ID Not Available."));
-                    Thread newThread = new Thread(new ThreadStart(RmNotification));
-                    newThread.Start();
+                    SwNotification("Dialog ID Not Available.");
                 }
                 else
                 {
@@ -249,12 +223,12 @@ public class CreateDialog : EditorWindow
             }
             if (GUILayout.Button("Clear All"))
             {
+                dialog_id = "";
+                comment = "";
                 stepdialogs = new List<StepDialog>();
                 count = 1;
                 selection = -1;
-                ShowNotification(new GUIContent("Clear Success."));
-                Thread newThread = new Thread(new ThreadStart(RmNotification));
-                newThread.Start();
+                SwNotification("Clear Success.");
             }
         EditorGUILayout.EndHorizontal();
         //Button Clost the window.
@@ -268,6 +242,13 @@ public class CreateDialog : EditorWindow
     {
         Thread.Sleep(2000);
         this.RemoveNotification();
+    }
+
+    void SwNotification(string content)
+    {
+        ShowNotification(new GUIContent(content));
+        Thread newThread = new Thread(new ThreadStart(RmNotification));
+        newThread.Start();
     }
 
     void OnInspectorUpdate()
@@ -300,9 +281,49 @@ public class CreateDialog : EditorWindow
         });
     }
 
+    void DeleteProcess()
+    {
+        //Move to tail and delete
+        while (stepdialogs[selection].order != stepdialogs.Count.ToString())
+        {
+            if(int.Parse(stepdialogs[selection].order)>stepdialogs.Count)
+            {
+                ShowNotification(new GUIContent("Something wrong in delete process."));
+                Thread newThread = new Thread(new ThreadStart(RmNotification));
+                newThread.Start();
+            }
+            StepDialog source = stepdialogs[selection];
+            StepDialog downone = stepdialogs[selection + 1];
+            selection++;
+            stepdialogs.Remove(source);
+            stepdialogs.Remove(downone);
+            source.order = (int.Parse(source.order) + 1).ToString();
+            downone.order = (int.Parse(downone.order) - 1).ToString();
+            stepdialogs.Add(source);
+            stepdialogs.Add(downone);
+            ListSort();
+        }
+    }
+
     void Apply()
     {
-
+        ADialog ad=new ADialog();
+        ad.id=dialog_id;
+        ad.comment=comment;
+        ad.dialog=stepdialogs;
+        int write = dw.AddToXML(ad);
+        if(write==DialogWriter.IDNOTAVAILBLE)
+        {
+            SwNotification("Dialog ID Not Available.");
+        }
+        else if(write==DialogWriter.WRITEFAILED)
+        {
+            SwNotification("Cannot Find the Dialog File.");
+        }
+        else
+        {
+            SwNotification("Successfully Add the Dialog into the System.");
+        }
     }
 
     void AddToNPC()
