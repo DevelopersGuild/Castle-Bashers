@@ -328,7 +328,15 @@ public class CreateDialog : EditorWindow
 
     void AddToNPC()
     {
-
+        GameObject trans = (GameObject)NPC;
+        NPCDialogControl npc_control = trans.GetComponent<NPCDialogControl>();
+        if(npc_control==null)
+        {
+            npc_control = trans.AddComponent<NPCDialogControl>();
+        }
+        NPCDialog newNPCDialog=new NPCDialog();
+        newNPCDialog.id=dialog_id;
+        npc_control.Dialogs.Add(newNPCDialog);
     }
 
 }

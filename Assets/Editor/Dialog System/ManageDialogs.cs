@@ -102,9 +102,28 @@ public class ManageDialogs : EditorWindow
                     EditDialog.StartEdit();
                 }
             }
-            if(GUILayout.Button("Add to NPC"))
+            if(GUILayout.Button("Add to Current NPC"))
             {
-
+                if(selection==-1)
+                {
+                    SwNotification("Please select a dialog first.");
+                }
+                else if(Selection.activeGameObject==null)
+                {
+                    SwNotification("Please select a GameObject that you want to make it a NPC.");
+                }
+                else
+                {
+                    GameObject trans = Selection.activeGameObject;
+                    NPCDialogControl npc_control = trans.GetComponent<NPCDialogControl>();
+                    if (npc_control == null)
+                    {
+                        npc_control = trans.AddComponent<NPCDialogControl>();
+                    }
+                    NPCDialog newNPCDialog = new NPCDialog();
+                    newNPCDialog.id = dialog_list[selection].id;
+                    npc_control.Dialogs.Add(newNPCDialog);
+                }
             }
         EditorGUILayout.EndHorizontal();
         EditorGUILayout.BeginHorizontal();

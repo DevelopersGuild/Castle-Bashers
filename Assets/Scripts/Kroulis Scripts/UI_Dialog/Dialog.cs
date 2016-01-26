@@ -350,5 +350,34 @@ namespace Kroulis.Dialog
 
 
     }
+
+    [System.Serializable]
+    public struct NPCDialog
+    {
+        public string id;
+        public DialogRequirement requirement;
+        public DialogAction action;
+    }
+
+    public class DialogRequirement : MonoBehaviour
+    {
+        public virtual bool MeetRequirement()
+        {
+            return true;
+        }
+        // Return a int that is the difference of your requirement value with the character's already have value. Negative meens didn't reach the requirement.
+        public virtual int MeetRequirementI() 
+        {
+            return 0;
+        }
+    }
+
+    public class DialogAction : MonoBehaviour
+    {
+        public virtual void Action()
+        {
+
+        }
+    }
 }
 
