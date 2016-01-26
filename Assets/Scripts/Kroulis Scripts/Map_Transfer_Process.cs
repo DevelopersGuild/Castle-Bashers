@@ -25,7 +25,8 @@ public class Map_Transfer_Process : MonoBehaviour {
         mp = GOResult.GetComponent<Main_Process>();
         if(GOResult)
         {
-            GOResult.GetComponent<SaveAndLoad>().SaveData();
+            if (GOResult.GetComponent<SaveAndLoad>()!=null)
+                GOResult.GetComponent<SaveAndLoad>().SaveData();
             //play the bgm
             if (mapdb.mapinfo[Globe.Map_Load_id].have_bgm)
             {
