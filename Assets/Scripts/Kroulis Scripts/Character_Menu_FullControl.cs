@@ -19,8 +19,10 @@ public class Character_Menu_FullControl : MonoBehaviour {
 
     private int select_current;
     private int playerid;
-    private bool gem_selecting;
-    private bool passive_selecting;
+    [HideInInspector]
+    public bool gem_selecting;
+    [HideInInspector]
+    public bool passive_selecting;
 	// Use this for initialization
 	void Start () {
         Text[] finds1;
@@ -161,8 +163,8 @@ public class Character_Menu_FullControl : MonoBehaviour {
 
         }
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
-        gem_system.mainp = main_process;
         gem_system = GetComponentInChildren<UI_GEM_FullControl>();
+        gem_system.mainp = main_process;
         select_current = 0;
         gem_selecting = false;
         passive_selecting = false;
@@ -252,17 +254,19 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 //Start Selecting Gems
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
+                    gem_system.selecting=1;
+                    gem_system.subselecting = false;
                     gem_selecting = true;
                     gem_system.changing = true;
                 }
             }
             //Passive Skills
-            if(select_current>4)
+            else
             {
                 //Start Selecting Passive Skills
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
-
+                    passive_selecting = true;
                 }
             }
         }
