@@ -10,12 +10,17 @@ public class Character_Menu_FullControl : MonoBehaviour {
     Defense Player_Defense;
     Experience Player_EXP;
     DealDamage Player_ATK;
+    UI_GEM_FullControl gem_system;
     public Character_Class_Info CI;
     public Main_Process main_process;
     //Character Infos
-    Text ATK, DEF, STA, SPI, AGI, BATK, MATK, PDEF, MDEF, CRIR, C_HP, C_MP, C_EXP, C_NEXP, C_Name, C_LV;
-    Image C_ICON,weapon,amror,accer;
+    Text ATK, DEF, STA, SPI, AGI, BATK, MATK, PDEF, MDEF, CRIR, C_HP, C_MP, C_EXP, C_NEXP, C_Name, C_LV, C_PASP;
+    Image C_ICON, weapon, amror, accer, cm_current, pas1, pas2, pas3;
 
+    private int select_current;
+    private int playerid;
+    private bool gem_selecting;
+    private bool passive_selecting;
 	// Use this for initialization
 	void Start () {
         Text[] finds1;
@@ -103,6 +108,11 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 C_LV = t;
                 continue;
             }
+            if(t.name=="C_PASPoint")
+            {
+                C_PASP = t;
+                continue;
+            }
 
         }
         finds2 = GetComponentsInChildren<Image>();
@@ -128,13 +138,44 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 accer = i;
                 continue;
             }
+            if(i.name=="CM_Current")
+            {
+                cm_current = i;
+                continue;
+            }
+            if(i.name=="C_PAS1")
+            {
+                pas1 = i;
+                continue;
+            }
+            if (i.name == "C_PAS2")
+            {
+                pas2 = i;
+                continue;
+            }
+            if (i.name == "C_PAS3")
+            {
+                pas3 = i;
+                continue;
+            }
+
         }
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
+        gem_system.mainp = main_process;
+        gem_system = GetComponentInChildren<UI_GEM_FullControl>();
+        select_current = 0;
+        gem_selecting = false;
+        passive_selecting = false;
+        playerid = 0;
 	}
 	
 	// Update is called once per frame
 	public void Change(int ? id = null)
     {
+        if (id == null)
+            playerid = 0;
+        else
+            playerid = (int)id;
         Player_PF = main_process.GetPlayerObject(id);
         Player_Script = main_process.GetPlayerScript(id);
         Player_EXP = main_process.GetPlayerExperience(id);
@@ -164,6 +205,67 @@ public class Character_Menu_FullControl : MonoBehaviour {
         weapon.sprite = CI.Class_info[Player_Script.GetClassID()].weapon[Player_Script.GetWeaponLV()].icon;
         amror.sprite = CI.Class_info[Player_Script.GetClassID()].armor[Player_Script.GetWeaponLV()].icon;
         accer.sprite = CI.Class_info[Player_Script.GetClassID()].accessory[Player_Script.GetWeaponLV()].icon;
+        //C_PASP.text=
+        select_current = 1;
+        gem_selecting = false;
+        passive_selecting = false;
+    }
+
+    void Update()
+    {
+        switch (select_current)
+        {
+            case 1: //weapon
+                cm_current.transform.localPosition = weapon.transform.localPosition;
+                break;
+            case 2: //amr
+                cm_current.transform.localPosition = amror.transform.localPosition;
+                break;
+            case 3: //acy
+                cm_current.transform.localPosition = accer.transform.localPosition;
+                break;
+            case 4: //passive 1
+                cm_current.transform.localPosition = pas1.transform.localPosition;
+                break;
+            case 5: //passive 2
+                cm_current.transform.localPosition = pas2.transform.localPosition;
+                break;
+            case 6: //passive 3
+                cm_current.transform.localPosition = pas3.transform.localPosition;
+                break;
+        }
+        if(!gem_selecting && !passive_selecting)
+        {
+            if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow))
+            {
+                select_current = select_current == 6 ? 1 : select_current + 1;
+            }
+            if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.UpArrow))
+            {
+                select_current = select_current == 1 ? 6 : select_current - 1;
+            }
+            //Gems
+            if(select_current<4)
+            {
+                gem_system.playerid = playerid;
+                gem_system.change = select_current;
+                //Start Selecting Gems
+                if(Input.GetKeyDown(KeyCode.Return))
+                {
+                    gem_selecting = true;
+                    gem_system.changing = true;
+                }
+            }
+            //Passive Skills
+            if(select_current>4)
+            {
+                //Start Selecting Passive Skills
+                if(Input.GetKeyDown(KeyCode.Return))
+                {
+
+                }
+            }
+        }
 
     }
 }
