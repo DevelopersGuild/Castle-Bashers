@@ -7,6 +7,7 @@ public class MoveController : MonoBehaviour
     public LayerMask collisionMask;
     public AudioClip walkSound;
     private AudioSource source;
+    private CrowdControllable crowdControllable;
 
     private bool facingRight = true;
     public bool isMoving;
@@ -47,6 +48,7 @@ public class MoveController : MonoBehaviour
         isStunned = false;
         player = GetComponent<Player>();
         coll = GetComponent<BoxCollider>();
+        crowdControllable = GetComponent<CrowdControllable>();
         CalculateRaySpacing();
         currentKnockbacktime = knockbackTime;
         currentFlinchTime = flinchTime;
@@ -166,6 +168,7 @@ public class MoveController : MonoBehaviour
             if (isKnockedBack)
             {
                 isStunned = true;
+
                 if (!facingRight)
                 {
                     velocity.x = knockbackVelocity;
@@ -216,7 +219,7 @@ public class MoveController : MonoBehaviour
             else
                 currentFlinchTime -= Time.deltaTime;
 
-            Debug.Log(currentFlinchTime);
+            // Debug.Log(currentFlinchTime);
 
             // Stop flinching after timer has passed
             if (currentFlinchTime <= 0) // && collisions.below == true)

@@ -55,6 +55,7 @@ GameObject:
   - 114: {fileID: 11418902}
   - 82: {fileID: 8245448}
   - 114: {fileID: 11497366}
+  - 114: {fileID: 11450440}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -199,7 +200,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 130900}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 12.3999996, y: 0, z: 0}
+  m_LocalPosition: {x: -20, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 408752}
@@ -417,9 +418,9 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
-  isKnockbackable: 0
-  isFlinchable: 0
-  knockbackVelocity: 0
+  isKnockbackable: 1
+  isFlinchable: 1
+  knockbackVelocity: .300000012
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11411676
@@ -581,6 +582,18 @@ MonoBehaviour:
   damagesPlayers: 0
   damagesEnemies: 0
   flinchPower: 0
+--- !u!114 &11450440
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b7f0099e465caca44bbee74844ff4e05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!114 &11455850
 MonoBehaviour:
   m_ObjectHideFlags: 1

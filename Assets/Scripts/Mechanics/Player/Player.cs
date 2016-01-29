@@ -54,6 +54,7 @@ public class Player : MonoBehaviour
 
     private float invTime, initialRegenTime, regenTick;
 
+    private bool disableInput;
     private float gravity;
     private float jumpVelocity;
     private Vector3 velocity;
@@ -381,21 +382,34 @@ public class Player : MonoBehaviour
 
     private void HandleInput()
     {
-        IPlayerState newState = state.HandleInput(this);
-        if (newState != null)
+        if (!disableInput)
         {
-            state.ExitState(this);
-            state = newState;
-            state.EnterState(this);
-        }
-        IAttack newAttackState = attackState.HandleInput(this);
-        if (newAttackState != null)
-        {
-            attackState.ExitState(this);
-            attackState = newAttackState;
-            attackState.EnterState(this);
+            IPlayerState newState = state.HandleInput(this);
+            if (newState != null)
+            {
+                state.ExitState(this);
+                state = newState;
+                state.EnterState(this);
+            }
+            IAttack newAttackState = attackState.HandleInput(this);
+            if (newAttackState != null)
+            {
+                attackState.ExitState(this);
+                attackState = newAttackState;
+                attackState.EnterState(this);
+            }
         }
 
+    }
+
+    public void DisableInput()
+    {
+        disableInput = true;
+    }
+
+    public void enableInput()
+    {
+        disableInput = false;
     }
 
     private void UpdateState()
