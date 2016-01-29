@@ -19,7 +19,7 @@ public class JumpState : IPlayerState
 
     public IPlayerState HandleInput(Player player)
     {
-        if(player.GetMoveController().getIsGrounded() == true)
+        if(player.GetMoveController().GetIsGrounded() == true)
         {
             return new StandingState();
         }

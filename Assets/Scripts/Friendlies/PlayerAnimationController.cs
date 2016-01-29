@@ -31,7 +31,7 @@ public class PlayerAnimationController : MonoBehaviour {
             animator.SetBool("IsKnockedBack", moveController.GetKnockedBack());
             animator.SetBool("IsJumping", player.getIsJumping());
             animator.SetBool("IsDead", player.getDown());
-            animator.SetBool("IsGrounded", moveController.getIsGrounded());
+            animator.SetBool("IsGrounded", moveController.GetIsGrounded());
         }
     }
 }

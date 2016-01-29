@@ -393,7 +393,7 @@ Prefab:
     - target: {fileID: 11446834, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
       propertyPath: hitParticle
       value: 
-      objectReference: {fileID: 178844, guid: 549d59d3580cfc74ca9c08332b889cbd, type: 2}
+      objectReference: {fileID: 128120, guid: 5011a44200ed9ec468b88a1244ce4a94, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
   m_IsPrefabParent: 0
@@ -766,35 +766,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
       propertyPath: m_RootOrder
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
       propertyPath: m_Name
       value: GoonEnemy (1)
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545914, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 11416722, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: collisionMask.m_Bits
-      value: 768
-      objectReference: {fileID: 0}
-    - target: {fileID: 11416722, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: isKnockbackable
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 11416722, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: isFlinchable
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
@@ -836,7 +812,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
       propertyPath: m_Name

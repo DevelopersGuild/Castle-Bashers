@@ -27,7 +27,7 @@ public class AttackController : MonoBehaviour
             if (player.playerRewired.GetButtonDown("Fire1"))
             {
                 lastPress = Time.timeSinceLevelLoad;
-                if (tap > 2)
+                if (tap > 2 && player.GetMoveController().GetIsGrounded())
                 {
                     tap = 3;
                 }
@@ -93,12 +93,15 @@ public class AttackController : MonoBehaviour
         AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
         attack = true;
         anim.SetBool("Finished", false);
-        player.setIsMoving(false); // TODO: Change this so the player can sitll move doing an air attack
+        if(!player.GetMoveController().GetIsGrounded())
+        {
+            player.setIsMoving(false);
+        }
         player.GetAttackCollider().GetComponent<DealDamage>().setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
         player.GetAttackCollider().SetActive(true);
     }
 
-    public bool getIsAttack()
+    public bool GetIsAttack()
     {
         return attack;
     }

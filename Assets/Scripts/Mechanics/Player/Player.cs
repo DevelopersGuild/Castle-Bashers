@@ -175,7 +175,7 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
         }
-        else if (attackController.getIsAttack())
+        else if (attackController.GetIsAttack() && GetMoveController().GetIsGrounded())
         {
             isMoving = false;
         }
@@ -184,7 +184,7 @@ public class Player : MonoBehaviour
             isMoving = true;
         }
 
-        if (attackController.getIsAttack())
+        if (attackController.GetIsAttack() && GetMoveController().GetIsGrounded())
         {
             input = new Vector2(0, 0);
         }

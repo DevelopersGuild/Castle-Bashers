@@ -145,7 +145,7 @@ public class MoveController : MonoBehaviour
         }
     }
 
-    public bool getIsGrounded()
+    public bool GetIsGrounded()
     {
         return isGrounded;
     }
