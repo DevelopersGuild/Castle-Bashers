@@ -54,11 +54,13 @@ public class Player : MonoBehaviour
 
     private float invTime, initialRegenTime, regenTick;
 
+    private bool disableInput;
     private float gravity;
     private float jumpVelocity;
     private Vector3 velocity;
     private float velocityXSmoothing;
     private float velocityZSmoothing;
+    private bool isJumping;
     private MoveController controller;
     private AttackController attackController;
     private CrowdControllable crowdControllable;
@@ -135,7 +137,7 @@ public class Player : MonoBehaviour
     {
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
-
+       
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -147,7 +149,7 @@ public class Player : MonoBehaviour
             if (regenTick > 2)
             {
                 regenTick = 0;
-                health.Regen();
+                //health.Regen();
             }
         }
 
@@ -173,7 +175,7 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
         }
-        else if (attackController.getIsAttack())
+        else if (attackController.GetIsAttack() && GetMoveController().GetIsGrounded())
         {
             isMoving = false;
         }
@@ -182,7 +184,7 @@ public class Player : MonoBehaviour
             isMoving = true;
         }
 
-        if (attackController.getIsAttack())
+        if (attackController.GetIsAttack() && GetMoveController().GetIsGrounded())
         {
             input = new Vector2(0, 0);
         }
@@ -206,6 +208,7 @@ public class Player : MonoBehaviour
         //  if (Input.GetButtonDown("UseSkill1"))
         if (playerRewired.GetButtonDown("UseSkill1"))
         {
+            health.PlayerRevive(100);
             skillManager.UseSkill1();
         }
 
@@ -285,21 +288,34 @@ public class Player : MonoBehaviour
 
     private void HandleInput()
     {
-        IPlayerState newState = state.HandleInput(this);
-        if (newState != null)
+        if (!disableInput)
         {
-            state.ExitState(this);
-            state = newState;
-            state.EnterState(this);
-        }
-        IAttack newAttackState = attackState.HandleInput(this);
-        if (newAttackState != null)
-        {
-            attackState.ExitState(this);
-            attackState = newAttackState;
-            attackState.EnterState(this);
+            IPlayerState newState = state.HandleInput(this);
+            if (newState != null)
+            {
+                state.ExitState(this);
+                state = newState;
+                state.EnterState(this);
+            }
+            IAttack newAttackState = attackState.HandleInput(this);
+            if (newAttackState != null)
+            {
+                attackState.ExitState(this);
+                attackState = newAttackState;
+                attackState.EnterState(this);
+            }
         }
 
+    }
+
+    public void DisableInput()
+    {
+        disableInput = true;
+    }
+
+    public void enableInput()
+    {
+        disableInput = false;
     }
 
     private void UpdateState()
@@ -317,16 +333,6 @@ public class Player : MonoBehaviour
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         controller.Move(velocity * Time.unscaledDeltaTime, input);
-    }
-
-    public void SetIsGrounded(bool isPlayerOnGround)
-    {
-        isGrounded = isPlayerOnGround;
-    }
-
-    public bool GetIsGrounded()
-    {
-        return isGrounded;
     }
 
     public void setIsMoving(bool move)
@@ -347,12 +353,20 @@ public class Player : MonoBehaviour
 
     public void EndJump()
     {
+        isJumping = false;
         velocity.y = 0;
     }
 
     public void Jump()
     {
+        AudioSource.PlayClipAtPoint(jumpAudio, transform.position);
+        isJumping = true;
         velocity.y = jumpVelocity;
+    }
+
+    public bool getIsJumping()
+    {
+        return isJumping;
     }
 
     public GameObject GetAttackCollider()

@@ -6,7 +6,7 @@ public class KnockedBackState : IPlayerState
     float timer = 0;
     public void EnterState(Player player)
     {
-        player.animator.SetBool("IsKnockedBack", true);
+        // player.animator.SetBool("IsKnockedBack", true);
     }
 
     public IPlayerState HandleInput(Player player)
@@ -25,6 +25,6 @@ public class KnockedBackState : IPlayerState
 
     public void ExitState(Player player)
     {
-        player.animator.SetBool("IsKnockedBack", false);
+        // player.animator.SetBool("IsKnockedBack", false);
     }
 }

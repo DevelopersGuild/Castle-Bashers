@@ -7,6 +7,7 @@ public class MoveController : MonoBehaviour
     public LayerMask collisionMask;
     public AudioClip walkSound;
     private AudioSource source;
+    private CrowdControllable crowdControllable;
 
     private bool facingRight = true;
     public bool isMoving;
@@ -39,6 +40,7 @@ public class MoveController : MonoBehaviour
     BoxCollider coll;
     RaycastOrigins raycastOrigins;
     public CollisionInfo collisions;
+    private bool isGrounded;
 
     void Start()
     {
@@ -46,6 +48,7 @@ public class MoveController : MonoBehaviour
         isStunned = false;
         player = GetComponent<Player>();
         coll = GetComponent<BoxCollider>();
+        crowdControllable = GetComponent<CrowdControllable>();
         CalculateRaySpacing();
         currentKnockbacktime = knockbackTime;
         currentFlinchTime = flinchTime;
@@ -101,6 +104,7 @@ public class MoveController : MonoBehaviour
             VerticalCollisions(ref velocity);
         }
 
+        updateGrounded();
         updateKnockback(ref velocity);
         updateFlinch();
 
@@ -129,6 +133,23 @@ public class MoveController : MonoBehaviour
         }
     }
 
+    private void updateGrounded()
+    {
+        if (collisions.below)
+        {
+            isGrounded = true;
+        }
+        else
+        {
+            isGrounded = false;
+        }
+    }
+
+    public bool GetIsGrounded()
+    {
+        return isGrounded;
+    }
+
     private void clampPosition(ref Vector3 veloctity)
     {
         if(GetComponent<Player>())
@@ -147,6 +168,7 @@ public class MoveController : MonoBehaviour
             if (isKnockedBack)
             {
                 isStunned = true;
+
                 if (!facingRight)
                 {
                     velocity.x = knockbackVelocity;
@@ -156,9 +178,9 @@ public class MoveController : MonoBehaviour
                     velocity.x = -knockbackVelocity;
                 }
 
-                if (GetComponent<ID>())
+                if (GetComponent<ID>() && !GetComponent<Player>())
                 {
-                    if (GetComponent<ID>().getTime())
+                    if (GetComponent<ID>().getTime() )
                         currentKnockbacktime -= Time.unscaledDeltaTime;
                 }
                 else { 
@@ -189,7 +211,7 @@ public class MoveController : MonoBehaviour
                 isKnockedBack = true;
             }
 
-            if (GetComponent<ID>())
+            if (GetComponent<ID>() && !GetComponent<Player>())
             {
                 if (GetComponent<ID>().getTime())
                     currentFlinchTime -= Time.unscaledDeltaTime;
@@ -197,8 +219,10 @@ public class MoveController : MonoBehaviour
             else
                 currentFlinchTime -= Time.deltaTime;
 
+            // Debug.Log(currentFlinchTime);
+
             // Stop flinching after timer has passed
-            if (currentFlinchTime <= 0 && collisions.below == true)
+            if (currentFlinchTime <= 0) // && collisions.below == true)
             {
                 resetFlinchCount();
             }
@@ -212,6 +236,7 @@ public class MoveController : MonoBehaviour
         {
             isFlinched = true;
             flinchCount += flinchPower;
+            Debug.Log(flinchCount);
             resetToFlinchTime();
         }
     }

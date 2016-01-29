@@ -9,9 +9,11 @@ public class Health : MonoBehaviour
     private bool isInvincible;
     private Player player;
     private MoveController moveController;
+    private CrowdControllable crowdControllable;
     
     public Vector3 damageTextOffset;
     public AudioClip hitSound;
+    public GameObject hitParticle;
 
 
     // Use this for initialization
@@ -21,6 +23,7 @@ public class Health : MonoBehaviour
         hitSound = Resources.Load("hurt2") as AudioClip;
         player = GetComponent<Player>();
         moveController = GetComponent<MoveController>();
+        crowdControllable = GetComponent<CrowdControllable>();
         currentHealth = maxhp; 
         damageTextOffset = new Vector3(0, 2, 0);
     }
@@ -53,7 +56,7 @@ public class Health : MonoBehaviour
 
     public void Regen()
     {
-        currentHealth += (RegenAmount + player.GetStamina()*3);
+        currentHealth += (player.GetStamina() / RegenAmount);
         if (currentHealth > maxhp)
         {
             currentHealth = maxhp;
@@ -65,12 +68,15 @@ public class Health : MonoBehaviour
     {
         AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
 
+        if(hitParticle)
+        {
+            Destroy(Instantiate(hitParticle, gameObject.transform.position, Quaternion.identity), 2f);
+        }
         //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
         //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
         dmg = Mathf.CeilToInt(dmg);
         currentHealth -= dmg;
         createFloatingText(dmg);
-        Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
         moveController.handleFlinch(flinch); 
 
         if (currentHealth <= 0)
@@ -92,20 +98,38 @@ public class Health : MonoBehaviour
     public void setToInvincible()
     {
         isInvincible = true;
+        player.DisableInput();
     }
 
     public void setToNotInvincible()
     {
         isInvincible = false;
+        player.enableInput();
     }
 
     public void PlayerDown()
     {
         GetComponent<Player>().setDown(true);
         //use other object to check if all players down, if so then Death() + lose level
-        GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
+        //GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
 
         //Death();
+    }
+
+    public bool PlayerRevive(int percentHealth)
+    {
+        if(GetComponent<Player>().getDown() == false)
+        {
+            return false;
+        }
+        if(percentHealth > 100)
+        {
+            percentHealth = 100;
+        }
+        GetComponent<Player>().setDown(false);
+        AddHealth((percentHealth / 100) * maxhp);
+        GetComponent<Animator>().SetBool("IsDead", false);
+        return true;
     }
 
     public virtual void Death()
@@ -117,6 +141,7 @@ public class Health : MonoBehaviour
         if(GetComponent<Player>())
         {
             PlayerDown();
+            return;
         }
 
         // Reward all players with experience if an enemy died

@@ -46,7 +46,7 @@ GameObject:
   - 199: {fileID: 19971824}
   - 114: {fileID: 11490494}
   m_Layer: 0
-  m_Name: DeathExplosionParticle
+  m_Name: Impact2Particle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
