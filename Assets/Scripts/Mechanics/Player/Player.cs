@@ -256,101 +256,6 @@ public class Player : MonoBehaviour
         isInvincible = x;
     }
 
-    public void SetStrength(int strength)
-    {
-        if (strength > 0)
-        {
-            Strength = strength;
-        }
-        else
-        {
-            Strength = 1;
-        }
-    }
-
-    public void AddStrength(int value)
-    {
-        Strength = Strength + value;
-    }
-
-
-    public int GetStrength()
-    {
-        return Strength;
-    }
-
-    public void SetStamina(int value)
-    {
-        if (value > 0)
-        {
-            Stamina = value;
-        }
-        else
-        {
-            Stamina = 1;
-        }
-
-    }
-
-    public void AddStamina(int value)
-    {
-        Stamina = Stamina + value;
-    }
-
-    public int GetStamina()
-    {
-        return Stamina;
-    }
-
-    public void SetAgility(int agility)
-    {
-        if (agility > 0)
-        {
-            Agility = agility;
-        }
-        else
-        {
-            Agility = 1;
-        }
-    }
-
-    public void AddAgility(int value)
-    {
-        Agility = Agility + value;
-    }
-
-    public int GetAgility()
-    {
-        return Agility;
-    }
-
-    public void SetIntelligence(int intelligence)
-    {
-        if (intelligence > 0)
-        {
-            Intelligence = intelligence;
-        }
-        else
-        {
-            Intelligence = 1;
-        }
-    }
-
-    public void AddIntelligence(int value)
-    {
-        Intelligence = Intelligence + value;
-    }
-
-    public int GetIntelligence()
-    {
-        return Intelligence;
-
-    }
-
-    public void AddDefense(int value)
-    {
-        defense.AddDefense(value);
-    }
 
     public void Fully_Update()
     {
@@ -549,10 +454,7 @@ public class Player : MonoBehaviour
         return ret;
     }
 
-    public void setDamage(float f)
-    {
-        damageDealt = f;
-    }
+
 
     public void setDown(bool t)
     {
@@ -691,37 +593,90 @@ public class Player : MonoBehaviour
         skill_unlock[id] = value;
     }
 
-    public float getPhysicalDamage()
+    public float getPhysicalDamage() {return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk;}
+    public float getMagicalDamage(){return baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk;}
+    public float getBasePhysicalDamage(){return basePhysicalDamage;}
+    public float getBaseMagicalDamage() {return baseMagicalDamage;}
+    public float getBonusPhysicalDamage() {return bonusPhysicalDamage;}
+    public float getBonusMagicalDamage() {return bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk;}
+    public void addBonusPhysicalDamage(float i) { bonusPhysicalDamage += i; }
+    public void addBonusMagicalDamage(float i) {bonusMagicalDamage += i;}
+
+    public void setDamage(float f)
     {
-        Debug.Log(CCI.Class_info[class_id].weapon[weapon_level].patk);
-        return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk;
+        damageDealt = f;
     }
-    public float getMagicalDamage()
+
+
+    public void SetStrength(int strength)
     {
-        return baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk;
+        if (strength > 0)
+        {
+            Strength = strength;
+        }
+        else
+        {
+            Strength = 1;
+        }
     }
-    public float getBasePhysicalDamage()
+
+    public void AddStrength(int value) {Strength = Strength + value;}
+
+
+    public int GetStrength() {return Strength;}
+
+    public void SetStamina(int value)
     {
-        return basePhysicalDamage;
+        if (value > 0)
+        {
+            Stamina = value;
+        }
+        else
+        {
+            Stamina = 1;
+        }
+
     }
-    public float getBaseMagicalDamage()
+
+    public void AddStamina(int value) {Stamina = Stamina + value;}
+
+    public int GetStamina() {return Stamina;}
+
+    public void SetAgility(int agility) {
+        if (agility > 0)
+        {
+            Agility = agility;
+        }
+        else
+        {
+            Agility = 1;
+        }
+    }
+
+    public void AddAgility(int value) {Agility = Agility + value;}
+
+    public int GetAgility() { return Agility; }
+
+    public void SetIntelligence(int intelligence)
     {
-        return baseMagicalDamage;
+        if (intelligence > 0)
+        {
+            Intelligence = intelligence;
+        }
+        else
+        {
+            Intelligence = 1;
+        }
     }
-    public float getBonusPhysicalDamage()
-    {
-        return bonusPhysicalDamage;
-    }
-    public float getBonusMagicalDamage()
-    {
-        return bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk; ;
-    }
-    public void addBonusPhysicalDamage(float i)
-    {
-        bonusPhysicalDamage += i;
-    }
-    public void addBonusMagicalDamage(float i)
-    {
-        bonusMagicalDamage += i;
-    }
+
+    public void AddIntelligence(int value) {Intelligence = Intelligence + value;}
+
+    public int GetIntelligence() {return Intelligence;}
+
+    public void AddDefense(int value) {defense.AddDefense(value);}
+
+
+
 }
+
+
