@@ -63,7 +63,7 @@ public class Menu_UI_FullControl : MonoBehaviour {
             int totalCoin = coinA + coinB;
             GoldAmount.text = totalCoin.ToString() + " <color=#c0c0c0ff>("+coinA.ToString()+"+"+coinB.ToString()+")</color>";
         }
-        movie.resume();
+        //movie.resume();
     }
 	
 	// Update is called once per frame
@@ -108,7 +108,7 @@ public class Menu_UI_FullControl : MonoBehaviour {
         }
         if(Input.GetKeyDown(KeyCode.Escape) && Main_Process.GetComponent<Main_Process>().esckey_up==false)
         {
-            movie.pause();
+            //movie.pause();
             Main_Process.GetComponent<Main_Process>().Menu_Open = false;
             Main_Process.GetComponent<Main_Process>().Menu_Normal_Close();
         }

@@ -450,7 +450,7 @@ public class Main_Process : MonoBehaviour {
     {
         CancelInvoke();
         OpenDialog("10000", "test");
-        //UI_Level_Selector_Open(0);
+        UI_Level_Selector_Open(0);
     }
 
     public QuestList GetQuestList()
