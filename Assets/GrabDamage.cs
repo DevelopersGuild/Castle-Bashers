@@ -32,7 +32,7 @@ public class GrabDamage : MonoBehaviour {
                 //dmgAmount = damage * (1 + target.GetComponent<Defense>().GetMagicalDefense());
 
                 //How to deal magic damage? there's only take damage
-                target.GetComponent<Health>().takeDamage(dmgAmount, 0, 0);
+                target.GetComponent<Health>().takeDamage(dmgAmount, 0);
                 tick = 0;
             }
             //is not affected by time slow/stop
