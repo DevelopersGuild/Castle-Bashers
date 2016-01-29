@@ -530,8 +530,10 @@ public class Main_UI_FULLControl : MonoBehaviour {
             {
                 changeicon = mps.GetPlayerScript(0).GetSkillSlotSkillID(i+1);
                 skillid[0, i] = changeicon;
+                Debug.Log(changeicon);
                 if(changeicon!=-1)
                 {
+                    Debug.Log(SI.skill[changeicon].skillname);
                     skillid_icon[0, i].sprite = SI.skill[changeicon].skillicon;
                 }
                 else

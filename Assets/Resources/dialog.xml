@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<dialog>
+	<data id="10000">
+		<text order="1" speaker="#player1" aud="">Hi, this is player 1.</text>
+		<text order="2" speaker="Kroulis" aud="">This is the end of the dialog.</text>
+	</data>
+</dialog>

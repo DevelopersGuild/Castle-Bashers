@@ -35,9 +35,12 @@ public class Main_Process : MonoBehaviour {
 	void Start () {
         DontDestroyOnLoad(this.gameObject);
         movTexture.loop = false;
-        //if(Application.platform!=RuntimePlatform.WindowsEditor)
+        if(Application.platform!=RuntimePlatform.WindowsEditor)
             movTexture.Play();
         start_to_play = true;
+        Main_UI = FindObjectOfType<Main_UI_FULLControl>().gameObject;
+        Menu_UI = FindObjectOfType<Menu_UI_FullControl>().gameObject;
+        Other_Windows = FindObjectOfType<Other_Windows_FullControl>().gameObject;
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_Process = this.gameObject;
         Menu_UI.GetComponent<Menu_UI_FullControl>().Main_Process = this.gameObject;
         Other_Windows.GetComponent<Other_Windows_FullControl>().Main_Process = this.gameObject;
@@ -287,7 +290,7 @@ public class Main_Process : MonoBehaviour {
         BGM_Player.volume = 0;
         BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[0].aud;
         BGM_Player.Play();
-        BGM_Player.volume = 1;
+        BGM_Player.volume = Globe.music_volume;
     }
 	
     public void SwitchBackToNormalBattle()
@@ -300,11 +303,11 @@ public class Main_Process : MonoBehaviour {
         BGM_Player.volume = 0;
         BGM_Player.clip = GetComponentInChildren<BGM_Manage>().BGM[Random.Range(1,2)].aud;
         BGM_Player.Play();
-        while (BGM_Player.volume < 1)
+        while (BGM_Player.volume < Globe.music_volume)
         {
             BGM_Player.volume = BGM_Player.volume + 0.05F * Time.deltaTime;
         }
-        BGM_Player.volume = 1;
+        BGM_Player.volume = Globe.music_volume;
     }
 
     public void End_Battle()
@@ -316,7 +319,7 @@ public class Main_Process : MonoBehaviour {
         }
         BGM_Player.Stop();
         BGM_Player.clip = null;
-        BGM_Player.volume = 1;
+        BGM_Player.volume = Globe.music_volume;
     }
 
     //Start Play a new Background music. Let BGM_id be -1 will just stop play the music.
@@ -346,12 +349,12 @@ public class Main_Process : MonoBehaviour {
             BGM_Player.Play();
             if(SmoothlyUp==true)
             {
-                while (BGM_Player.volume < 1)
+                while (BGM_Player.volume < Globe.music_volume)
                 {
                     BGM_Player.volume = BGM_Player.volume + 0.05F * Time.deltaTime;
                 }
             }
-            BGM_Player.volume = 1;
+            BGM_Player.volume = Globe.music_volume;
         }
         
     }
@@ -446,6 +449,7 @@ public class Main_Process : MonoBehaviour {
     private void TEST()
     {
         CancelInvoke();
+        OpenDialog("10000", "test");
         UI_Level_Selector_Open(0);
     }
 

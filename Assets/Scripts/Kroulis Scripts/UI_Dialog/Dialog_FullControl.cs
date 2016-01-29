@@ -59,6 +59,7 @@ public class Dialog_FullControl : MonoBehaviour {
 
 	// Update is called once per frame
 	void Update () {
+        audios.volume = Globe.dialogue_volume;
 	    if(Input.GetKeyDown(KeyCode.Space))
         {
             if(couldnext)
@@ -86,6 +87,7 @@ public class Dialog_FullControl : MonoBehaviour {
                 }
                 if (aud != "")
                     audios.clip = Resources.Load("dialogaudio/" + aud) as AudioClip;
+                    
             }
             else
             {

@@ -10,16 +10,16 @@ public class JumpState : IPlayerState
         if (player.GetMoveController().isStunned == false)
         {
             player.Jump();
-            player.SetIsGrounded(false);
-            AudioSource.PlayClipAtPoint(player.jumpAudio, player.transform.position);
-            player.animator.SetBool("IsJumping", true);
-            player.animator.SetBool("IsGrounded", false);
+            //player.SetIsGrounded(false);
+            
+            //player.animator.SetBool("IsJumping", true);
+            //player.animator.SetBool("IsGrounded", false);
        }
     }
 
     public IPlayerState HandleInput(Player player)
     {
-        if(player.GetIsGrounded() == true)
+        if(player.GetMoveController().GetIsGrounded() == true)
         {
             return new StandingState();
         }
@@ -30,8 +30,10 @@ public class JumpState : IPlayerState
     {
         if (player.GetMoveController().collisions.above || player.GetMoveController().collisions.below)
         {
-            player.SetIsGrounded(true);
-            player.animator.SetBool("IsJumping", false);
+            player.EndJump();
+            //player.SetIsGrounded(true);
+            //player.animator.SetBool("IsJumping", false);
+            //player.animator.SetBool("IsGrounded", true);
         }
     }
 

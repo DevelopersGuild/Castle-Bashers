@@ -3,30 +3,29 @@ using System.Collections;
 
 public class Health : MonoBehaviour
 {
-    public int ExperinceAmount = 0;
     public float RegenAmount;
     public float currentHealth=0;
     public float maxhp;
+    private bool isInvincible;
     private Player player;
-    private DealDamageToEnemy attack;
-    private bool canKnock = true;
     private MoveController moveController;
+    private CrowdControllable crowdControllable;
     
     public Vector3 damageTextOffset;
     public AudioClip hitSound;
+    public GameObject hitParticle;
 
 
     // Use this for initialization
     void Start()
     {
+        isInvincible = false;
         hitSound = Resources.Load("hurt2") as AudioClip;
         player = GetComponent<Player>();
-        attack = GetComponentInChildren<DealDamageToEnemy>();
         moveController = GetComponent<MoveController>();
+        crowdControllable = GetComponent<CrowdControllable>();
         currentHealth = maxhp; 
         damageTextOffset = new Vector3(0, 2, 0);
-
-        
     }
 
     
@@ -65,127 +64,48 @@ public class Health : MonoBehaviour
     }
 
 
-    public virtual void takeDamage(float dmg, float knockback = 4, float flinch = 5)
+    public virtual void takeDamage(float dmg, int flinch = 4)
     {
         AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
-        if (player)
+
+        if(hitParticle)
         {
-            if (!player.GetInvincible())
-            {
-                //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
-                //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
-                dmg = Mathf.CeilToInt(dmg);
-                currentHealth -= dmg;
-                Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
-                createFloatingText(dmg);
-
-                player.ModifyKBCount(knockback);
-                if (knockback > 0)
-                    player.ResetKB();
-
-                player.ModifyFlinchCount(flinch);
-                if (flinch > 0)
-                    player.ResetFlinch();
-
-                if (moveController)
-                {
-                    if (player.GetKnockable())
-                    {
-                        moveController.SetKnockback(true);
-                        player.ModifyKBCount(0, 0);
-                    }
-                    else if (player.GetFlinchable())
-                    {
-                        moveController.SetFlinch(true);
-                        player.ModifyFlinchCount(0, 0);
-                    }
-                }
-                if (currentHealth <= 0)
-                {
-                    //Player can be revived by teammates
-                    PlayerDown();
-                }
-            }
+            Destroy(Instantiate(hitParticle, gameObject.transform.position, Quaternion.identity), 2f);
         }
-        else
-        {
-            Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
-            //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
-            //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
-            dmg = Mathf.CeilToInt(dmg);
-            currentHealth -= dmg;
-            createFloatingText(dmg);
+        //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+        //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+        dmg = Mathf.CeilToInt(dmg);
+        currentHealth -= dmg;
+        createFloatingText(dmg);
+        moveController.handleFlinch(flinch); 
 
-            if (currentHealth <= 0)
-            {
-                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-                foreach(GameObject character in players)
-                {
-                    character.GetComponent<Experience>().AddExperince(ExperinceAmount);
-                }
-                Death();
-            }
+        if (currentHealth <= 0)
+        {
+            Death();
         }
     }
 
-    public virtual void takeDamageIgnoreInvincible(float dmg, float knockback = 4, float flinch = 5)
+
+    public bool getInvincibility()
     {
-        AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
-        if (player)
-        {
-                //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
-                //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
-                dmg = Mathf.CeilToInt(dmg);
-                currentHealth -= dmg;
-                Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
-                createFloatingText(dmg);
+        return isInvincible;
+    }
 
-                player.ModifyKBCount(knockback);
-                if (knockback > 0)
-                    player.ResetKB();
+    public void setInvincility(bool invincibility)
+    {
+        isInvincible = invincibility;
+    }
 
-                player.ModifyFlinchCount(flinch);
-                if (flinch > 0)
-                    player.ResetFlinch();
+    public void setToInvincible()
+    {
+        isInvincible = true;
+        player.DisableInput();
+    }
 
-                if (moveController)
-                {
-                    if (player.GetKnockable())
-                    {
-                        moveController.SetKnockback(true);
-                        player.ModifyKBCount(0, 0);
-                    }
-                    else if (player.GetFlinchable())
-                    {
-                        moveController.SetFlinch(true);
-                        player.ModifyFlinchCount(0, 0);
-                    }
-                }
-                if (currentHealth <= 0)
-                {
-                    //Player can be revived by teammates
-                    PlayerDown();
-                }
-        }
-        else
-        {
-            Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
-            //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
-            //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
-            dmg = Mathf.CeilToInt(dmg);
-            currentHealth -= dmg;
-            createFloatingText(dmg);
-
-            if (currentHealth <= 0)
-            {
-                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
-                foreach (GameObject character in players)
-                {
-                    character.GetComponent<Experience>().AddExperince(ExperinceAmount);
-                }
-                Death();
-            }
-        }
+    public void setToNotInvincible()
+    {
+        isInvincible = false;
+        player.enableInput();
     }
 
     public void PlayerDown()
@@ -201,6 +121,28 @@ public class Health : MonoBehaviour
     {
         //death animation
         //end level
+
+        // Down the player if it was a player that died
+        if(GetComponent<Player>())
+        {
+            PlayerDown();
+        }
+
+        // Reward all players with experience if an enemy died
+        if (GetComponent<Enemy>())
+        {
+            Enemy enemy = GetComponent<Enemy>();
+            if (currentHealth <= 0)
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject character in players)
+                {
+                    character.GetComponent<Experience>().AddExperience(enemy.experienceAmount);
+                }
+            }
+        }
+
+        // Drop loot
         if (GetComponent<DropLoot>())
         {
             GetComponent<DropLoot>().DropItem();

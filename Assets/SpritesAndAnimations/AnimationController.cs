@@ -23,6 +23,9 @@ public class AnimationController : MonoBehaviour
         {
             animator.SetBool("IsAttacking", isAttacking);
             animator.SetBool("IsMoving", moveController.isMoving);
+            animator.SetBool("IsFlinched", moveController.GetFlinched());
+            animator.SetBool("IsKnockedBack", moveController.GetKnockedBack());
+
         }
     }
 }

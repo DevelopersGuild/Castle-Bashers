@@ -231,7 +231,7 @@ namespace Kroulis.Quest
                     Player[] playerlist = PlayerHolder.GetComponentsInChildren<Player>();
                     foreach(Player player in playerlist)
                     {
-                        player.GetComponent<Experience>().AddExperince(quest_reward_exp.value);
+                        player.GetComponent<Experience>().AddExperience(quest_reward_exp.value);
                         player.GetComponent<CoinManager>().addCoins(quest_reward_gold.value);
                     }
                     //give the player items
@@ -255,7 +255,7 @@ namespace Kroulis.Quest
                 Player[] playerlist = PlayerHolder.GetComponentsInChildren<Player>();
                 foreach (Player player in playerlist)
                 {
-                    player.GetComponent<Experience>().AddExperince(quest_reward_exp.value);
+                    player.GetComponent<Experience>().AddExperience(quest_reward_exp.value);
                     player.GetComponent<CoinManager>().addCoins(quest_reward_gold.value);
                 }
                 //give the player items

@@ -29,7 +29,6 @@ public class Player : MonoBehaviour
     private int armor_level = 0;
     private int accessories_level = 0;
     private float blockchance = 0;
-    private bool isPlayerDown = false;
     private bool isGrounded = true;
     private bool isMoving = false;
     public float jumpHeight = 4;
@@ -41,6 +40,7 @@ public class Player : MonoBehaviour
 
     public AudioClip jumpAudio;
     public AudioClip attackAudio;
+    private AudioSource audiosource;
 
     private float accelerationTimeAirborne = .2f;
     private float accelerationTimeGrounded = .1f;
@@ -53,20 +53,20 @@ public class Player : MonoBehaviour
     private IAttack attackState;
 
     private float invTime, initialRegenTime, regenTick;
-    private float knockBackResistance, knockBackReset, knockBackCounter;
-    private float flinchResistance, flinchReset, flinchCounter;
 
+    private bool disableInput;
     private float gravity;
     private float jumpVelocity;
     private Vector3 velocity;
     private float velocityXSmoothing;
     private float velocityZSmoothing;
+    private bool isJumping;
     private MoveController controller;
     private AttackController attackController;
     private CrowdControllable crowdControllable;
     private Health health;
     private Mana mana;
-    private DealDamageToEnemy attack;
+    private DealDamage attack;
     private Defense defense;
     private DealDamage dealDamage;
     //These are for primarily calculating damages and to queu the stats for buffs
@@ -113,22 +113,16 @@ public class Player : MonoBehaviour
         controller = GetComponent<MoveController>();
         crowdControllable = GetComponent<CrowdControllable>();
         mana = GetComponent<Mana>();
-        attack = GetComponentInChildren<DealDamageToEnemy>();
+        attack = GetComponentInChildren<DealDamage>();
         defense = GetComponent<Defense>();
         attackController = GetComponent<AttackController>();
         gravity = -(2 * jumpHeight) / Mathf.Pow(timeToJumpApex, 2);
         jumpVelocity = Mathf.Abs(gravity) * timeToJumpApex;
+        audiosource = GetComponent<AudioSource>();
 
         initialRegenTime = 6;
         regenTick = 2;
 
-        knockBackResistance = 10;
-        knockBackCounter = 0;
-        knockBackReset = 0;
-
-        flinchResistance = 10;
-        flinchCounter = 0;
-        flinchReset = 0;
         DontDestroyOnLoad(gameObject);
 
         skill[0] = null;
@@ -147,8 +141,7 @@ public class Player : MonoBehaviour
     {
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
-
-
+       
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -186,7 +179,7 @@ public class Player : MonoBehaviour
         {
             isMoving = false;
         }
-        else if (attackController.getIsAttack())
+        else if (attackController.GetIsAttack() && GetMoveController().GetIsGrounded())
         {
             isMoving = false;
         }
@@ -195,7 +188,7 @@ public class Player : MonoBehaviour
             isMoving = true;
         }
 
-        if (attackController.getIsAttack())
+        if (attackController.GetIsAttack() && GetMoveController().GetIsGrounded())
         {
             input = new Vector2(0, 0);
         }
@@ -212,7 +205,8 @@ public class Player : MonoBehaviour
                 //Malady can throw, so while in air the player should be stunned and be falling
                 //didn't know how the gravity worked and if I could just add a velocity to the rigidbody and it would be okay, so I did this
                 //subject to change
-                controller.canKnockBack(false, false);
+                controller.isKnockbackable = false;
+                controller.isFlinchable = false;
                 controller.Move(thrownVelocity);
                 thrownVelocity *= .99f;
                 thrownVelocity.y *= 0.98f;
@@ -226,29 +220,11 @@ public class Player : MonoBehaviour
                         crowdControllable.addStun(0.3f);
                         throwCheck = 0.3f;
                         //maybe after stun?
-                        controller.canKnockBack(true, true);
+                        controller.isKnockbackable = true;
+                        controller.isFlinchable = true;
                     }
                     throwCheck -= Time.unscaledDeltaTime;
                 }
-            }
-        }
-        if (knockBackCounter > 0)
-        {
-            knockBackReset += Time.unscaledDeltaTime;
-            if (knockBackReset >= 5)
-            {
-                knockBackReset = 0;
-                knockBackCounter = 0;
-            }
-        }
-
-        if (flinchCounter > 0)
-        {
-            flinchReset += Time.unscaledDeltaTime;
-            if (flinchReset >= 2)
-            {
-                // flinchReset = 0;
-                // flinchCounter = 0;
             }
         }
 
@@ -257,7 +233,7 @@ public class Player : MonoBehaviour
 
 
         UpdateState();
-
+        audiosource.volume = Globe.sound_volume;
 
         //  if (Input.GetButtonDown("UseSkill1"))
         if (playerRewired.GetButtonDown("UseSkill1"))
@@ -438,78 +414,39 @@ public class Player : MonoBehaviour
         basePhysicalDamage = 0.75f * Strength;
         baseMagicalDamage = 1 * Intelligence;
         AttackCollider.GetComponent<DealDamage>().setDamage(basePhysicalDamage);
-        Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
 
-
-    }
-
-    public float GetKBResist()
-    {
-        return knockBackResistance;
-    }
-
-    public void ModifyKBCount(float set, float multiplier = 1)
-    {
-        knockBackCounter += set;
-        knockBackCounter *= multiplier;
-    }
-
-    public bool GetKnockable()
-    {
-        if (knockBackCounter >= knockBackResistance)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void ResetKB()
-    {
-        knockBackReset = 0;
-    }
-
-    public float GetFlinchResist()
-    {
-        return flinchResistance;
-    }
-
-    public void ModifyFlinchCount(float set, float multiplier = 1)
-    {
-        flinchCounter += set;
-        flinchCounter *= multiplier;
-    }
-
-    public bool GetFlinchable()
-    {
-        if (flinchCounter >= flinchResistance)
-        {
-            return true;
-        }
-        return false;
-    }
-
-    public void ResetFlinch()
-    {
-        flinchReset = 0;
     }
 
     private void HandleInput()
     {
-        IPlayerState newState = state.HandleInput(this);
-        if (newState != null)
+        if (!disableInput)
         {
-            state.ExitState(this);
-            state = newState;
-            state.EnterState(this);
-        }
-        IAttack newAttackState = attackState.HandleInput(this);
-        if (newAttackState != null)
-        {
-            attackState.ExitState(this);
-            attackState = newAttackState;
-            attackState.EnterState(this);
+            IPlayerState newState = state.HandleInput(this);
+            if (newState != null)
+            {
+                state.ExitState(this);
+                state = newState;
+                state.EnterState(this);
+            }
+            IAttack newAttackState = attackState.HandleInput(this);
+            if (newAttackState != null)
+            {
+                attackState.ExitState(this);
+                attackState = newAttackState;
+                attackState.EnterState(this);
+            }
         }
 
+    }
+
+    public void DisableInput()
+    {
+        disableInput = true;
+    }
+
+    public void enableInput()
+    {
+        disableInput = false;
     }
 
     private void UpdateState()
@@ -527,16 +464,6 @@ public class Player : MonoBehaviour
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         controller.Move(velocity * Time.unscaledDeltaTime, input);
-    }
-
-    public void SetIsGrounded(bool isPlayerOnGround)
-    {
-        isGrounded = isPlayerOnGround;
-    }
-
-    public bool GetIsGrounded()
-    {
-        return isGrounded;
     }
 
     public void setIsMoving(bool move)
@@ -557,12 +484,20 @@ public class Player : MonoBehaviour
 
     public void EndJump()
     {
+        isJumping = false;
         velocity.y = 0;
     }
 
     public void Jump()
     {
+        AudioSource.PlayClipAtPoint(jumpAudio, transform.position);
+        isJumping = true;
         velocity.y = jumpVelocity;
+    }
+
+    public bool getIsJumping()
+    {
+        return isJumping;
     }
 
     public GameObject GetAttackCollider()
@@ -679,7 +614,7 @@ public class Player : MonoBehaviour
         isDown = t;
     }
 
-    public bool getDown()
+    public bool getDown() // to business, to defeat the hun
     {
         return isDown;
     }
@@ -813,7 +748,8 @@ public class Player : MonoBehaviour
 
     public float getPhysicalDamage()
     {
-        return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk; ;
+        Debug.Log(CCI.Class_info[class_id].weapon[weapon_level].patk);
+        return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk;
     }
     public float getMagicalDamage()
     {

@@ -47,7 +47,7 @@ public class Experience : MonoBehaviour
         experinceUntilNextLevel = (int)(Math.Pow(10, (int)(lv / 10) + 1) * Math.Pow(1.2 + 0.001 * (lv % 10), lv % 10));
     }
 
-    public void AddExperince(int amountToAdd)
+    public void AddExperience(int amountToAdd)
     {
         currentExperince += amountToAdd;
         LevelUp();

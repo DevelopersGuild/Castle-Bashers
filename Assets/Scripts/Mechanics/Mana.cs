@@ -40,7 +40,7 @@ public class Mana : MonoBehaviour
     {
         if(mana < MaxMana)
         {
-            RegenMana(manaRegenPerSecond);
+            RegenMana();
         }
     }
 
@@ -49,15 +49,16 @@ public class Mana : MonoBehaviour
         mana = MaxMana;
     }
 
+    /*
     public void SetRegenModifier(float modifier)
     {
         if(modifier > 0)
         {
             manaRegenPerSecond = modifier;
         }
-    }
+    }*/
 
-    public void RegenMana(float modifier = 1f)
+    public void RegenMana()
     {
         mana += (manaRegenPerSecond) * Time.deltaTime;
         if (mana > MaxMana)
