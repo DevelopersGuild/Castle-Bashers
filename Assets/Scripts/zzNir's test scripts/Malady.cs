@@ -23,10 +23,12 @@ public class Malady : Boss
     //More? beetles attack, beetles spawn below Malady, run wildly and pop leaving small poisoned areas.
 
     //On death, swarm flies out of mouth if not in existence, Flies at Malady and eats her, flies away leaving bones to fall on the ground
+    //Send signal to existing swarm, otherwise set damage to 0 and create a swarm, then after 1.5s send signal to swarm
+    //to be coded ^^ more important stuff to do
 
     private float clawLim, swarmLim, summonLim, polyLim, teleLim, teleClawLim, hairGLim, hairALim;
     private float claw_CD, swarm_CD, swarm_Duration, hands_CD, summon_CD, polymorph_CD, teleport_CD, teleClaw_CD, hairG_CD, hairA_CD, refreshPriority;
-    private float rnd, animationDelay, teleDuration;
+    private float rnd, animationDelay, teleDuration, lerpDuration;
     //Maybe no hands_CD, could be a gameObject that creates hands every few seconds while Malady exists
     private bool isTeleporting;
     private Vector3 teleTarget, startPos, center;
@@ -34,21 +36,36 @@ public class Malady : Boss
     //Center of room, to know where Malady can teleport;
     public GameObject CenterObj;
 
-    public GameObject ClawSkill, SwarmObj, SummonSkill, PolySkill;
+    //Skills and scales (for facing directions)
+    public GameObject ClawSkill, SwarmObj, SummonSkill, PolySkill, hairExtendSkill, hairGrabSkill, handSkill;
+    private Vector3 tempVec, MaladyLeft, MaladyRight, ClawLeft, ClawRight;
+    private float teleClawStage = 0;
     public GroupingManager Grouper;
     private Skill sClaw;
 
     private float offset1, offset2, offset3, one, two, three, four, tempThreat, tempDamage, temp1, temp2;
-    private int size;
+    private int size, numHairs;
     private PlayerManager playerM;
     private bool ranged, grouping, melee, support, refresh;
     private float range, group, mel, supp;
+
+    private Animator animator;
+    private Animation animation;
+    //if any animations are going on, it shouldn't be doing other stuff
+    private bool animating = false;
+    private bool running = false;
+    //a for animation
+    //[HideInInspector]
+    //public bool aClaw, aTeleport
+
 
     // Use this for initialization
     void Start()
     {
         base.Start();
         sClaw = ClawSkill.GetComponent<ClawAttack>();
+        animator = GetComponent<Animator>();
+        animation = GetComponent<Animation>();
 
         claw_CD = 4 + UnityEngine.Random.Range(0, 3);
         clawLim = claw_CD;
@@ -70,7 +87,8 @@ public class Malady : Boss
         hairG_CD = 4 + UnityEngine.Random.Range(0, 7);
         hairGLim = hairG_CD;
         animationDelay = 2;
-        teleDuration = 1;
+        teleDuration = 1f;
+        //teleDuration = animation.GetClip("Teleport").length;
         refreshPriority = 10;
 
         refresh = false;
@@ -96,13 +114,22 @@ public class Malady : Boss
         tempDamage = 0;
         temp1 = 0;
         temp2 = 0;
+        numHairs = 2;
 
         Grouper.setPlayerGroup(players, size);
 
-
+        lerpDuration = 0;
         grouping = false;
         getPlayerType();
-        GetComponent<ID>().setTime(false);
+
+        ClawLeft = ClawSkill.transform.localScale;
+        ClawRight = new Vector3(ClawLeft.x * -1, transform.localScale.y, transform.localScale.z);
+        MaladyLeft = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
+        MaladyRight = transform.localScale;
+
+        int initialTarget = UnityEngine.Random.Range(0, size);
+        target = players[initialTarget].gameObject;
+
 
     }
 
@@ -110,22 +137,40 @@ public class Malady : Boss
     void Update()
     {
         base.Update();
+        targetPos = target.transform.position;
+        CalcDirection();
+
         if (refresh)
         {
             Debug.Log(ranged + " " + grouping + " " + melee + " " + support);
             refresh = false;
         }
+
+        if (teleClawStage > 0)
+        {
+            teleClawUpdate();
+        }
+
         if (isTeleporting)
         {
-            transform.position = Vector3.Lerp(startPos, teleTarget, teleDuration * 2);
-            teleDuration += Time.unscaledDeltaTime;
-            if (teleDuration >= 0.5f)
+            //isTeleporting set to true at end of transforming into swarm animation
+            //invincible set to true at start of transforming into swarm animation
+            transform.position = Vector3.Lerp(startPos, teleTarget, teleDuration);
+            if (lerpDuration <= 0)
             {
-                teleDuration = 0;
                 isTeleporting = false;
+                isInvincible = false;
+                //stop current animation, start transform back to human animation
+
+                //not needed below
+                //isTeleporting set to false at start of transforming into malady animation
+                //invincible set false at end of anim
             }
+
+
         }
-        else
+
+        else if (!animating)
         {
             Act(classification);
         }
@@ -137,28 +182,29 @@ public class Malady : Boss
         }
 
 
-        if (invTime <= 0)
+        if (isInvincible && invTime <= 0)
         {
             isInvincible = false;
         }
 
-  
+
 
         refreshPriority += Time.unscaledDeltaTime;
         hands_CD += Time.unscaledDeltaTime;
         animationDelay += Time.unscaledDeltaTime;
         invTime -= Time.unscaledDeltaTime;
+        lerpDuration -= Time.unscaledDeltaTime;
     }
 
     public override void Act(Type t)
     {
-        targetPos = target.transform.position;
+
         if (hands_CD > 2.5f)
         {
             hands_CD = 0;
             //Debug.Log("Hands " + Time.time); //HandsAttack();
         }
-        if (animationDelay > 1f + hp.GetCurrentHealth()/hp.GetMaxHP())
+        if (animationDelay > 1f + hp.GetCurrentHealth() / hp.GetMaxHP())
         {
             //getPlayerType();
             float randNum = UnityEngine.Random.Range(1, 100);
@@ -200,7 +246,7 @@ public class Malady : Boss
             {
                 Teleport();
             }
-            else if(hairA_CD >= hairALim)
+            else if (hairA_CD >= hairALim)
             {
                 HairAttack();
             }
@@ -249,30 +295,39 @@ public class Malady : Boss
         claw_CD = 0;
         clawLim = 4 + UnityEngine.Random.Range(0, 3);
         distance = target.transform.position.x - transform.position.x;
+        if (distance < 0)
+            ClawSkill.transform.localScale = ClawLeft;
+        else
+            ClawSkill.transform.localScale = ClawRight;
 
-        if(ranged || support)
+        if (ranged || support)
         {
             clawLim -= 1;
             teleClaw();
         }
-        else if(melee)
+        else if (melee)
         {
-            if (zDiff < 4 && distance < 3)
+            if (zDiff < 4 && Math.Abs(distance) < 3)
             {
                 clawLim -= 1;
-                Debug.Log("Claw " + Time.time); //sClaw.UseSkill(gameObject);
+                //play animation                                        -----------------------
+                //animation sets animating to true using setAnimating()
+                //animating false at end
+                //for all animations
+                Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
             {
                 teleClaw();
             }
         }
-        else if(grouping)
+        else if (grouping)
         {
             if (zDiff < 4 && distance < 3)
             {
                 clawLim -= 2;
-                Debug.Log("Claw " + Time.time); //sClaw.UseSkill(gameObject);
+                //play animation                                        -----------------------
+                Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
             {
@@ -282,7 +337,8 @@ public class Malady : Boss
         else
         {
             if (zDiff < 4 && distance < 3)
-                Debug.Log("Claw " + Time.time); //sClaw.UseSkill(gameObject);
+                //play animation                                        -----------------------
+                Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             else
                 teleClaw();
         }
@@ -291,64 +347,218 @@ public class Malady : Boss
         //if melee, claw
     }
 
+    private void InstantiateClaw()
+    {
+        Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
+
+    }
+
+    //run at end of teleClaw animations (so transform to human animation and claw swipe animation)
+    private void updateTeleClaw()
+    {
+        if (teleClawStage > 0)
+        {
+            teleClawStage++;
+            running = false;
+        }
+    }
+
+    private void setAnimating(bool bl)
+    {
+        //to keep animating on during the teleClaw combo
+        if (teleClawStage == 0 || bl)
+        {
+            animating = bl;
+        }
+    }
+
     private void teleClaw()
     {
-        //tele to same z, close x, orig y
-        //use claw, tele back
+        setAnimating(true);
+        teleClawStage = 1;
+        teleClawUpdate();
+    }
 
+    private void teleClawUpdate()
+    {
+        if (!running)
+        {
+            if (teleClawStage == 1)
+            {
+                tempVec = transform.position;
+                //if player next to wall, tele to other side
+                running = true;
+                float f = (UnityEngine.Random.Range(100, 400) / 100.0f) * ((UnityEngine.Random.Range(0, 2) - 0.5f) * 2);
+                //transform.position = new Vector3(target.transform.position.x + f, transform.position.y, target.transform.position.z);
+                Teleport(new Vector3(target.transform.position.x + f, transform.position.y, target.transform.position.z));
+            }
+            else if (teleClawStage == 2)
+            {
 
-        //animation
-        Vector3 tempVec = transform.position;
-        float f = (UnityEngine.Random.Range(100, 400) /100.0f)* ((UnityEngine.Random.Range(0, 2) - 0.5f)* 2);
-        //transform.position = new Vector3(target.transform.position.x + f, transform.position.y, target.transform.position.z);
-        Debug.Log("TeleClaw " + Time.time); //sClaw.UseSkill(gameObject);
-        //transform.position = tempVec;
+                distance = target.transform.position.x - transform.position.x;
+                if (distance < 0)
+                    ClawSkill.transform.localScale = ClawLeft;
+                else
+                    ClawSkill.transform.localScale = ClawRight;
 
+                running = true;
+                Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
+                //play animation                                        -----------------------
+                Debug.Log("TeleClaw " + Time.time); //sClaw.UseSkill(gameObject);
+            }
+            else if (teleClawStage == 3)
+            {
+                float camp = 0;
+                bool camped = false;
+                running = true;
+                foreach (Player player in players)
+                {
+                    if (Math.Abs((player.transform.position - tempVec).magnitude) < 2.5f)
+                    {
+                        camp++;
+                    }
+                }
+                if (camp >= players.Length / 2.0)
+                    camped = true;
+
+                Teleport(tempVec, camped);
+            }
+            else if (teleClawStage > 3)
+            {
+                teleClawStage = 0;
+                animating = false;
+                running = false;
+
+            }
+            else
+            {
+                Debug.Log("How did I get here?...here -Odesza");
+            }
+        }
     }
 
     private void Swarm()
     {
         swarm_CD = 0;
         swarmLim = 11 + UnityEngine.Random.Range(0, 5);
-        Debug.Log("Swarm " + Time.time); //sClaw.UseSkill(gameObject);//SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position, transform.rotation) as SwarmBehaviour;
-        //swarm_Duration = swarm.Duration;
+        Debug.Log("Swarm " + Time.time); //sClaw.UseSkill(gameObject);
+
         swarm_Duration = 8;
-        //swarm.setTarget(target);
 
         if (ranged && support && !grouping)
             swarmLim += 1;
-        else if(ranged || support || grouping)
+        else if (ranged || support || grouping)
             swarmLim -= 2;
-        if(melee)
+        if (melee)
             swarmLim -= 1;
-        //play animation
+        // play animation                               ---------------------- run spawnSwarm at end
+    }
+
+    private void spawnSwarm()
+    {
+        //spawn with an offset to match animation position
+        //SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position, transform.rotation) as SwarmBehaviour;
+        //swarm_Duration = swarm.Duration;
+        //swarm.setTarget(target);
+
     }
 
     private void Summon()
     {
         summon_CD = 0;
         summonLim = 7 + UnityEngine.Random.Range(0, 6);
-        float dir = Mathf.Sign(center.x - transform.position.x);
 
-        if(grouping)
+        if (grouping)
             summonLim -= 3;
-        if(ranged || support)
+        if (ranged || support)
             summonLim -= 1;
-        if(melee && !grouping)
+        if (melee && !grouping)
             summonLim += 1;
 
         //slightly wierd due to having a scale of 10, would be ok after we have actual stuff
+
+        //play animation                                        ----------------------- run SummonPortal at end
+
+    }
+
+    public void SummonPortal()
+    {
+        float dir = Mathf.Sign(center.x - transform.position.x);
         Vector3 summonPos = transform.position + new Vector3(UnityEngine.Random.Range(5, 9) * dir, SummonSkill.transform.position.y, (UnityEngine.Random.Range(10, 20) / 4.0f) * (target.transform.position.z - transform.position.z));
-        Debug.Log("Summon " + Time.time); //sClaw.UseSkill(gameObject);SummoningPortal sp = Instantiate(SummonSkill, summonPos / 10, SummonSkill.transform.rotation) as SummoningPortal;
+        Debug.Log("Summon " + Time.time); //sClaw.UseSkill(gameObject);
+        //SummoningPortal sp = Instantiate(SummonSkill, summonPos / 10, SummonSkill.transform.rotation) as SummoningPortal;
         //sp.setTarget(target);
+    }
+
+
+    //Maybe not used, we'll see
+    //used for teleClaw. Claws in direction (true for left, false for right)
+    //make hitbox slightly inside malady?
+    private void Claw(bool left)
+    {
+        float f = 1;
+        if (!left)
+            f *= -1;
+
+        //set facing direction
+        //create claw
+        //set claw's x scaling to pos or neg based on bool
+    }
+
+
+    private void Tele()
+    {
+
+    }
+
+    //used for teleClaw
+    private void Teleport(GameObject targ)
+    {
+        isTeleporting = true;
+        lerpDuration = teleDuration;
+        //play animation                                        ----------------------- set isTeleporting = true at end of anim
+        float dir = Mathf.Sign(center.x - targ.transform.position.x);
+        if (dir == 0)
+        {
+            dir = 1;
+        }
+
+        startPos = transform.position;
+        teleTarget = targ.transform.position + new Vector3(dir * UnityEngine.Random.Range(0, 10) / 10f, 0, 0);
+    }
+
+    //for teleClaw. camped is if people around target, if true go to a different location (for return of teleClaw, for now camped always is false)
+    private void Teleport(Vector3 targ, bool camped = false)
+    {
+        isTeleporting = true;
+        lerpDuration = teleDuration;
+        //play animation                                        ----------------------- set isTel true at end of anim
+        if (!camped)
+        {
+            teleTarget = targ;
+        }
+        else
+        {
+            float dir = Mathf.Sign(center.x - target.transform.position.x);
+            if (dir == 0)
+            {
+                dir = 1;
+            }
+
+            startPos = transform.position;
+            teleTarget = target.transform.position + new Vector3(dir * UnityEngine.Random.Range(0, 10) / 10f, 0, 0);
+        }
     }
 
     private void Teleport()
     {
         teleLim = UnityEngine.Random.Range(0, 5) + 6;
-        Debug.Log("Teleport " + Time.time);  //isTeleporting = true;
+        lerpDuration = teleDuration;
+        Debug.Log("Teleport " + Time.time);
+        isTeleporting = true;
+        //play animation                                        ----------------------- set isTel true if end of anim
         float f = 0;
-        foreach(Player p in players)
+        foreach (Player p in players)
         {
             if (center.x - p.transform.position.x > 0)
                 f--;
@@ -381,7 +591,7 @@ public class Malady : Boss
         if (hp.GetCurrentHealth() < hp.GetMaxHP() / 4)
             teleLim -= 3;
         else if (hp.GetCurrentHealth() < hp.GetMaxHP() / 2)
-            teleLim -= 2; 
+            teleLim -= 2;
 
         teleDuration = 0;
     }
@@ -400,13 +610,29 @@ public class Malady : Boss
         else if (melee)
             polyLim += 2;
 
+
+        //play animation                                        ----------------------- run PolyAttack() at end of anim
+
+    }
+
+    public void PolyAttack()
+    {
         Vector3 polyPos = new Vector3(target.transform.position.x, 6, transform.position.z);
         Debug.Log("Poly " + Time.time);  //Instantiate(PolySkill, polyPos, transform.rotation);
+        //poly runs animation, then creates it's stuff
     }
 
     public float getDirection()
     {
         return Mathf.Sign(transform.localScale.x);
+    }
+
+    public void CalcDirection()
+    {
+        if (targetPos.x - transform.position.x > 0)
+            transform.localScale = MaladyRight;
+        else
+            transform.localScale = MaladyLeft;
     }
 
     private void sortPriority()
@@ -415,7 +641,7 @@ public class Malady : Boss
         players = playerM.getPlayers();
         threatLevel = playerM.getSortedPlayers(1);
         damageDealt = playerM.getSortedPlayers(2);
-        
+
         one = two = three = four = 0;
         for (int i = 0; i < size; i++)
         {
@@ -451,6 +677,7 @@ public class Malady : Boss
         Debug.Log("Reverse order of priority players : " + players);
     }
 
+    //can adjust number of hairs attacking through numHairs (1 = middle hair, 2 = middle, above, and below, 3 = middle, above, abover, below, belower, 4 = etc) 
     private void HairAttack()
     {
         Debug.Log("HairAttack " + Time.time);
@@ -463,34 +690,65 @@ public class Malady : Boss
         if (support)
             hairALim += 1;
 
+        //play animation                                        -----------------------
+        //which animation?
+        GameObject hairAttackObj = hairExtendSkill;
+        GameObject hairAttackObj2 = hairExtendSkill;
+        for (int i = 0; i < numHairs; i++)
+        {
+            hairAttackObj.transform.rotation.eulerAngles.Set(transform.rotation.eulerAngles.x, i * 15, transform.rotation.eulerAngles.z);
+
+            if (i == 0)
+            {
+                Instantiate(hairAttackObj, transform.position, hairAttackObj.transform.rotation);
+            }
+            else
+            {
+                //Add offset? will need to match sprite
+                
+                hairAttackObj2.transform.rotation.eulerAngles.Set(transform.rotation.eulerAngles.x, i * 15, transform.rotation.eulerAngles.z);
+
+                Instantiate(hairAttackObj, transform.position, hairAttackObj.transform.rotation);
+                Instantiate(hairAttackObj2, transform.position, hairAttackObj2.transform.rotation);
+            }
+        }
+        //Instantiate Hair Colliders
     }
-    
+
     private void HairGrab()
     {
         hairG_CD = 0;
-        hairGLim = 4 + UnityEngine.Random.Range(0, 7);
+        hairGLim = 8 + UnityEngine.Random.Range(0, 7);
+
+        float dirf = getDirection();
+        hairGrabSkill.GetComponent<GrabAttack>().setDir(dirf);
+        //hgskill.setThrow if throw
+
         //low cooldown (2 attacks)
+        //No, should be high cooldown, not 2 attacks anymore
+
+
         //ranged grab can only target someone ___+ dist away
         //ranged grab has high hp steal (you can hit her and she can't move, so it's ok)
         //ranged grab collider turned on 1/3rd of distance to target so it won't collide with melee guys (closed fist -> open hand?)
         if (grouping)
         {
-            if(ranged && support)
+            if (ranged && support)
             {
                 hairGLim -= 2;
                 Debug.Log("Ranged || Throw grab " + Time.time); //ranged grab || grab closest and throw (rand chance)
             }
-            else if(ranged)
+            else if (ranged)
             {
                 hairGLim -= 1;
                 Debug.Log("Ranged || Throw grab " + Time.time); //ranged grab || grab closest and throw (rand chance)
             }
-            else if(support)
+            else if (support)
             {
                 hairGLim += 1;
                 Debug.Log("tp > Throw grab " + Time.time); //tp grab if someone is far away, either throw or cc, else grab closest and throw
             }
-            else if(melee)
+            else if (melee)
             {
                 hairGLim += 4;
                 Debug.Log("tp > Throw grab " + Time.time); //tp grab if someone is far away, either throw or cc, else grab closest and throw
@@ -498,22 +756,22 @@ public class Malady : Boss
         }
         else
         {
-            if(ranged && support)
+            if (ranged && support)
             {
                 hairGLim -= 2;
                 Debug.Log("Ranged || tp grab " + Time.time); //tp grab || ranged grab
             }
-            else if(melee && !(support || ranged))
+            else if (melee && !(support || ranged))
             {
                 hairGLim += 3;
                 Debug.Log("tp > Throw grab " + Time.time); //tp grab if someone is far away, else grab closest and throw
             }
-            else if(support && !ranged)
+            else if (support && !ranged)
             {
                 hairGLim += 1;
                 Debug.Log("tp > Throw grab " + Time.time); //tp grab if someone is far away, else grab closest and throw
             }
-            else if(ranged)
+            else if (ranged)
             {
                 hairGLim -= 3;
                 Debug.Log("Ranged || tp grab " + Time.time); //ranged grab or tp grab
@@ -533,10 +791,15 @@ public class Malady : Boss
 
     private void HandsAttack()
     {
+        Vector3 offset = new Vector3(UnityEngine.Random.Range(-300,300)/100.0f, 0, UnityEngine.Random.Range(-110,110)/100.0f);
+
         if (ranged || grouping)
             hands_CD -= 0.5f;
         if (melee)
             hands_CD += 0.5f;
+        //play animation                                        ----------------------- 
+        //instantiate collider
+        Instantiate(handSkill, target.transform.position + offset, handSkill.transform.rotation);
     }
 
     private void getPlayerType()
@@ -564,6 +827,26 @@ public class Malady : Boss
     }
 
     /*
+
+
+    **Ignore this
+    **just bouncing off ideas, more in notebooks
+
+    //not sure what these animations are for, so purposing them
+    //Ready spell -> spawn summoning circle or Poly (I think that's it's actual purpose)
+    //Ready spellcast -> spawn summing circle or Poly while in spell aura mode
+    //Spell Aura Idle -> Used for stronger Malady (can use most/all abilities (maybe have a no hair attack version), takes less damage, deals more, subject to change)
+
+
+    //Use for flinch animation (since bosses shouldn't really flinch) (flash when hit?) :
+    //on first meeting, throw rock at malady or something after a bit of dialogue
+    //Malady runs through flinch animation, stays at last frame
+    //Malady: "....." (time for dots takes longer and is spaced out (first dot, wait 0.8s, second dot, wait 1.3s, third, etc)
+    //press enter or whatever to go to next dialogue
+    //flinch animation plays backwards (last to first) and Malady smiling again in normal idle
+    //some more dialogue
+
+
     Dialogue
     encounter = died, came back to fight
     stage = 0;

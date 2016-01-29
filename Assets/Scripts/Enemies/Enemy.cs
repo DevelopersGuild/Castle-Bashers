@@ -13,7 +13,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public GameObject target;
     [HideInInspector]
-    public Vector3 targetPos, dir, gravity, xhalf, half;
+    public Vector3 targetPos, dir, gravity, xhalf, half, vel;
     [HideInInspector]
     public MoveController moveController;
     [HideInInspector]
@@ -48,7 +48,7 @@ public class Enemy : MonoBehaviour
     public void Start()
     {
         //later on make it only target living players, priority on tanks
-        target = FindObjectOfType<Player>().gameObject;
+        target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
         targetPos = target.transform.position;
         moveController = GetComponent<MoveController>();
         sprRend = GetComponent<SpriteRenderer>();
@@ -73,16 +73,17 @@ public class Enemy : MonoBehaviour
 
         attackRange += half.x;
         zDiff = 0;
+
+        vel = gravity;
     }
 
     // Update is called once per frame
     public void Update()
     {
-        if (!moveController.collisions.above && !moveController.collisions.below)
+        if (!moveController.collisions.below)
         {
             gravity.y += -0.1f;
-            Move(gravity, Math.Abs(gravity.y));
-            //Debug.Log(gravity.y);
+            //Move(gravity, Math.Abs(gravity.y));
             freeFall = true;
         }
         else
@@ -122,13 +123,18 @@ public class Enemy : MonoBehaviour
 
     public void Move(Vector3 velocity, float force = 1)
     {
-        //velocity.y = 0f;
+        velocity.y = gravity.y;
+
         velocity = velocity.normalized;
         //velocity.x = Mathf.SmoothDamp(velocity.x, 6, ref velocityXSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         //velocity.z = Mathf.SmoothDamp(velocity.z, 10, ref velocityZSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         moveController.Move(velocity * Time.deltaTime * force);
+        
     }
 
+
+    //Next time I work on a game, it should use units for areas in the game and nice values for movements, too late now though
+    //Everything would work a lot better if the ground was split into small squares that can be moved onto smoothly or something. Would help for pathfinding a lot too
     public virtual void Act(Type t)
     {
         if (!freeFall)
@@ -145,7 +151,7 @@ public class Enemy : MonoBehaviour
 
                 if (distance > agroRange)
                 {
-                    //Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
+                    Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
                 }
                 else
                 {

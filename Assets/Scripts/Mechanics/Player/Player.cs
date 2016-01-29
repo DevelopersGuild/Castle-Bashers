@@ -87,6 +87,10 @@ public class Player : MonoBehaviour
     private int[] skillslot = { -1, -1, -1, -1 };
     private int[] itemslot = { -1, -1, -1 };
 
+    private bool isThrown = false;
+    private Vector3 thrownVelocity;
+    private float throwCheck = 0.3f;
+
     /*
     void Awake()
     {
@@ -134,8 +138,8 @@ public class Player : MonoBehaviour
         threatLevel = damageDealt = 0;
 
         GetComponent<ID>().setTime(false);
-        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
-        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
+        //CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        //si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
         Fully_Update();
     }
 
@@ -198,10 +202,34 @@ public class Player : MonoBehaviour
 
         if (isDown == false)
         {
-            if (!crowdControllable.getStun())
+            if (!crowdControllable.getStun() && !isThrown)
             {
 
                 ReadyMove(input);
+            }
+            else if (isThrown)
+            {
+                //Malady can throw, so while in air the player should be stunned and be falling
+                //didn't know how the gravity worked and if I could just add a velocity to the rigidbody and it would be okay, so I did this
+                //subject to change
+                controller.canKnockBack(false, false);
+                controller.Move(thrownVelocity);
+                thrownVelocity *= .99f;
+                thrownVelocity.y *= 0.98f;
+                //check throw only after 0.3s (so it doesn't do something stupid like check before moving initially and says "Oh, you're already on the ground, throw over"
+                if (throwCheck <= 0)
+                {
+                    //when hitting the ground, thrown stops, small stun added, maybe getting up animation? eh
+                    if (controller.collisions.below)
+                    {
+                        isThrown = false;
+                        crowdControllable.addStun(0.3f);
+                        throwCheck = 0.3f;
+                        //maybe after stun?
+                        controller.canKnockBack(true, true);
+                    }
+                    throwCheck -= Time.unscaledDeltaTime;
+                }
             }
         }
         if (knockBackCounter > 0)
@@ -251,6 +279,13 @@ public class Player : MonoBehaviour
         {
             skillManager.UseSkill4();
         }
+    }
+
+    public void throwPlayer(Vector3 v)
+    {
+        thrownVelocity = v;
+        isThrown = true;
+
     }
 
     public void setPoly(float val, float time)
@@ -404,7 +439,7 @@ public class Player : MonoBehaviour
         baseMagicalDamage = 1 * Intelligence;
         AttackCollider.GetComponent<DealDamage>().setDamage(basePhysicalDamage);
         Debug.Log(AttackCollider.GetComponent<DealDamage>().getDamage());
-        
+
 
     }
 
@@ -487,8 +522,8 @@ public class Player : MonoBehaviour
     {
         velocity.y += gravity * Time.unscaledDeltaTime;
 
-        float targetVelocityX = input.x * (horizontalMoveSpeed + (Agility/15)) * crowdControllable.getSlow();
-        float targetVelocityZ = input.y * (verticalMoveSpeed + (Agility/15)) * crowdControllable.getSlow();
+        float targetVelocityX = input.x * (horizontalMoveSpeed + (Agility / 15)) * crowdControllable.getSlow();
+        float targetVelocityZ = input.y * (verticalMoveSpeed + (Agility / 15)) * crowdControllable.getSlow();
         velocity.x = Mathf.SmoothDamp(velocity.x, targetVelocityX, ref velocityXSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         velocity.z = Mathf.SmoothDamp(velocity.z, targetVelocityZ, ref velocityZSmoothing, ((controller.collisions.below) ? accelerationTimeGrounded : accelerationTimeAirborne) * Time.unscaledDeltaTime);
         controller.Move(velocity * Time.unscaledDeltaTime, input);
@@ -579,9 +614,13 @@ public class Player : MonoBehaviour
 
         foreach (Skill sk in skill)
         {
-            Skill.Type f = sk.skillType;
+            Skill.Type f;
+            //When skills exist
+            //f = sk.skillType;
+            /*
             if (f == Skill.Type.Ranged)
                 ret += sk.value;
+                */
         }
 
         return ret;
@@ -593,9 +632,10 @@ public class Player : MonoBehaviour
 
         foreach (Skill sk in skill)
         {
-            Skill.Type f = sk.skillType;
-            if (f == Skill.Type.Melee)
-                ret += sk.value;
+            /* Skill.Type f = sk.skillType;
+             if (f == Skill.Type.Melee)
+                 ret += sk.value;
+      */
         }
 
         return ret;
@@ -604,28 +644,28 @@ public class Player : MonoBehaviour
     public float GetSupport()
     {
         float ret = 0;
-
+        /*
         foreach (Skill sk in skill)
         {
             Skill.Type f = sk.skillType;
             if (f == Skill.Type.Support)
                 ret += sk.value;
         }
-
+        */
         return ret;
     }
 
     public float GetOther()
     {
         float ret = 0;
-
+        /*
         foreach (Skill sk in skill)
         {
             Skill.Type f = sk.skillType;
             if (f == Skill.Type.Other)
                 ret += sk.value;
         }
-
+        */
         return ret;
     }
 

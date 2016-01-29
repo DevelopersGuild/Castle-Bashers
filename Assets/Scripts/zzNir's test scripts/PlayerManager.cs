@@ -60,6 +60,16 @@ public class PlayerManager : MonoBehaviour
         return players;
     }
 
+    public Player getUpPlayer()
+    {
+        foreach (Player player in players)
+        {
+            if (!player.getDown())
+                return player;
+        }
+        return null;
+    }
+
     /// <summary>
     /// 1 for threat, 2 for damage, 3 for priority
     /// </summary>

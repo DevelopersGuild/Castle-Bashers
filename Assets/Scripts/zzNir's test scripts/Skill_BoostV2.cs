@@ -186,7 +186,7 @@ public class Skill_BoostV2 : Skill
     private void AddHealth(GameObject caller)
     {
         //heals 1/3 of starting health, which is ~1/4 of temp max hp
-        caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetStartingHealth() / 3);
+        caller.GetComponent<Health>().AddHealth(caller.GetComponent<Health>().GetMaxHP() / 3);
     }
 }
 

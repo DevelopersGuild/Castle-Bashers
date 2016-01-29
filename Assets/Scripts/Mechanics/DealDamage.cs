@@ -87,7 +87,6 @@ public class DealDamage : MonoBehaviour {
                         targetDefense.CheckPhysicalDefense(dmgAmount);
                     }
                     target.GetComponent<Player>().SetInvTime(1.5f);
-                    Debug.Log("asdasda");
 
                 }
 

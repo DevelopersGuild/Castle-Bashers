@@ -43,8 +43,8 @@ public class MeleeEnemy : Enemy
             }
             else
             {
-                if (FindObjectOfType<Player>())
-                    target = FindObjectOfType<Player>().gameObject;
+                if (target.GetComponent<Player>().getDown())
+                    target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
                 else
                 {
                     //player lost

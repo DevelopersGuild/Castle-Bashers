@@ -7,7 +7,8 @@ public class PolyEffect : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-	
+	    //Might need to create an empty object to play the animation, as this one moves
+        //We'll see when animations are implemented
 	}
 	
 	// Update is called once per frame

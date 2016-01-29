@@ -128,11 +128,71 @@ public class Health : MonoBehaviour
         }
     }
 
+    public virtual void takeDamageIgnoreInvincible(float dmg, float knockback = 4, float flinch = 5)
+    {
+        AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
+        if (player)
+        {
+                //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+                //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+                dmg = Mathf.CeilToInt(dmg);
+                currentHealth -= dmg;
+                Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
+                createFloatingText(dmg);
+
+                player.ModifyKBCount(knockback);
+                if (knockback > 0)
+                    player.ResetKB();
+
+                player.ModifyFlinchCount(flinch);
+                if (flinch > 0)
+                    player.ResetFlinch();
+
+                if (moveController)
+                {
+                    if (player.GetKnockable())
+                    {
+                        moveController.SetKnockback(true);
+                        player.ModifyKBCount(0, 0);
+                    }
+                    else if (player.GetFlinchable())
+                    {
+                        moveController.SetFlinch(true);
+                        player.ModifyFlinchCount(0, 0);
+                    }
+                }
+                if (currentHealth <= 0)
+                {
+                    //Player can be revived by teammates
+                    PlayerDown();
+                }
+        }
+        else
+        {
+            Destroy(Instantiate(Resources.Load("Particles/ProjectileExplosion"), gameObject.transform.position, Quaternion.identity), 2f);
+            //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+            //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+            dmg = Mathf.CeilToInt(dmg);
+            currentHealth -= dmg;
+            createFloatingText(dmg);
+
+            if (currentHealth <= 0)
+            {
+                GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
+                foreach (GameObject character in players)
+                {
+                    character.GetComponent<Experience>().AddExperince(ExperinceAmount);
+                }
+                Death();
+            }
+        }
+    }
+
     public void PlayerDown()
     {
         GetComponent<Player>().setDown(true);
         //use other object to check if all players down, if so then Death() + lose level
-        GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
+       // GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
 
         //Death();
     }

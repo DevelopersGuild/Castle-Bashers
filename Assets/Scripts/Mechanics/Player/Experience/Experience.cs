@@ -16,7 +16,7 @@ public class Experience : MonoBehaviour
     void Start()
     {
         ExperincePoints = currentLevel * ExperincePointsPerLevel;
-        class_info = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        //class_info = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
         player = GetComponent<Player>();
     }
 

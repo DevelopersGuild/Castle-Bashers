@@ -11,9 +11,10 @@ public class ExtendBehaviour : MonoBehaviour
     private BoxCollider boxCol;
     private Vector3 maxSize, currentSize, currentPos, startPos;
     private float currentX, currentY, currentZ, animDelay, degAngle, radAngle, radAngleZ;
-    private bool run;
+    private bool run, pause;
     private bool comeBack;
-    public bool x;
+    public bool x, isResuming;
+    private float t;
 
     // Use this for initialization
     void Start()
@@ -37,12 +38,23 @@ public class ExtendBehaviour : MonoBehaviour
         degAngle = transform.rotation.z;
         radAngle = Mathf.Deg2Rad * degAngle;
         radAngleZ = transform.rotation.y * Mathf.Deg2Rad;
+
+        t = 0;
+        isResuming = false;
     }
 
     // Update is called once per frame
     void Update()
     {
-        if (run)
+        if(pause)
+        {
+            if(isResuming)
+            {
+                if(t <= 0) 
+                    Return();
+            }
+        }
+        else if (run)
         {
             if (currentX <= maxSize.x && currentY <= maxSize.y)
             {
@@ -104,6 +116,9 @@ public class ExtendBehaviour : MonoBehaviour
 
         }
 
+        t -= Time.unscaledDeltaTime;
+
+
     }
 
     public void Deactivate()
@@ -113,5 +128,23 @@ public class ExtendBehaviour : MonoBehaviour
             Destroy(gameObject);
         else
             comeBack = true;
+    }
+
+    public void SetPause(bool bl)
+    {
+        pause = bl;
+    }
+
+    public void Return()
+    {
+        pause = false;
+        run = false;
+        comeBack = true;
+    }
+
+    public void Resume(float f)
+    {
+        t = f;
+        isResuming = true;
     }
 }
