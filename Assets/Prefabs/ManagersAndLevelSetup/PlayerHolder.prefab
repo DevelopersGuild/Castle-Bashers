@@ -89,6 +89,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 437722}
   - 114: {fileID: 11434702}
+  - 114: {fileID: 11475164}
   m_Layer: 0
   m_Name: PlayerHolder
   m_TagString: Untagged
@@ -565,6 +566,7 @@ MonoBehaviour:
   maxhp: 100
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: b45ac828d2c7a3741b9064f4cbd056bb, type: 3}
+  hitParticle: {fileID: 128120, guid: 5011a44200ed9ec468b88a1244ce4a94, type: 2}
 --- !u!114 &11448066
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -656,6 +658,18 @@ MonoBehaviour:
   maxhp: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
+--- !u!114 &11475164
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 163558}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7d404dad2e4246049ac4af105a842ec2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11475768
 MonoBehaviour:
   m_ObjectHideFlags: 1

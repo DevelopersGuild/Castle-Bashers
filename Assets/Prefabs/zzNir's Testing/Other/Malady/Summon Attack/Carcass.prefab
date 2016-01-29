@@ -14,6 +14,7 @@ GameObject:
   - 54: {fileID: 5468934}
   - 114: {fileID: 11486974}
   - 114: {fileID: 11450068}
+  - 114: {fileID: 11448554}
   m_Layer: 0
   m_Name: Carcass
   m_TagString: Untagged
@@ -60,6 +61,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2.4000001, y: 2.29999995, z: .5}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &11448554
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitAudio: {fileID: 0}
+  dmgAmount: 1
+  isMagic: 1
+  damagesPlayers: 0
+  damagesEnemies: 0
+  flinchPower: 0
 --- !u!114 &11450068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,12 +92,15 @@ MonoBehaviour:
   agroRange: 1000
   attackRange: 1
   attack_CD: 3
+  experienceAmount: 0
+  attackSound: {fileID: 0}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
   gravity: {x: 0, y: 0, z: 0}
   xhalf: {x: 0, y: 0, z: 0}
   half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
   moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
@@ -95,6 +116,8 @@ MonoBehaviour:
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
   sprRend: {fileID: 0}
+  hp: {fileID: 0}
+  animationController: {fileID: 0}
   classification: 0
   attackCollider: {fileID: 167148, guid: c102b43560d112f40b7b1b4d75ead218, type: 2}
   TimeToLive: 5
@@ -110,9 +133,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  startingHealth: 3
   RegenAmount: 0
+  currentHealth: 0
+  maxhp: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11492072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -127,11 +153,13 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+  walkSound: {fileID: 0}
+  isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 0
+  isFlinchable: 0
   knockbackVelocity: 0
-  knockbackTime: 0
-  flinchTime: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!212 &21261418
@@ -203,6 +231,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: TimeToLive
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagePlayers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isMagic
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

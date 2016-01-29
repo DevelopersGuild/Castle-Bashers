@@ -10,6 +10,7 @@ GameObject:
   - 4: {fileID: 471984}
   - 212: {fileID: 21205924}
   - 114: {fileID: 11415080}
+  - 114: {fileID: 11400956}
   m_Layer: 0
   m_Name: SummoningCircle
   m_TagString: Untagged
@@ -29,6 +30,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!114 &11400956
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117642}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2277377dc840a0d4cbf0c71dcdce377c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11415080
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -40,6 +52,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6e1bfbac477cc9a41b51afdf801382cf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSkillAudio: {fileID: 0}
+  value: 0
+  augment: 0
+  skillType: 0
   Summons:
   - {fileID: 11450068, guid: 0d511f3617d9b3b46984c4ad08f98291, type: 2}
 --- !u!212 &21205924
