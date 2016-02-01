@@ -41,7 +41,7 @@ public class AttackController : MonoBehaviour
         if (timer - lastPress > 0.25f)
         {
             tap = 0;
-            anim.SetInteger("Tap", 0);
+            //anim.SetInteger("Tap", 0);
             attack = false;
         }
     }

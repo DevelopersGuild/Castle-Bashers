@@ -4,6 +4,7 @@ using System.Collections;
 public class SwarmBehaviour : MonoBehaviour {
 
     public float Duration = 8;
+    public bool flip = false;
     private GameObject player;
     private Rigidbody rigBod;
     //private MoveController moveCon;
@@ -24,45 +25,67 @@ public class SwarmBehaviour : MonoBehaviour {
 	
 	// Update is called once per frame
 	void Update () {
-        if(transform.position.y <= 2f)
-        {
-            //transform.position = new Vector3(transform.position.x, 2f, transform.position.z);
-        }
-	    if(Duration > 0)
-        {
-            direction = player.transform.position - transform.position;
-            rigBod.velocity += direction.normalized * 0.4f;
-            if (Mathf.Abs(rigBod.velocity.x) > Mathf.Abs(max.x))
-                rigBod.velocity = new Vector3(max.x * Mathf.Sign(rigBod.velocity.x), rigBod.velocity.y, rigBod.velocity.z);
-            if (Mathf.Abs(rigBod.velocity.y) > Mathf.Abs(max.y))
-                rigBod.velocity = new Vector3(rigBod.velocity.x, max.y * Mathf.Sign(rigBod.velocity.y), rigBod.velocity.z);
-            if (Mathf.Abs(rigBod.velocity.z) > Mathf.Abs(max.z))
-                rigBod.velocity = new Vector3(rigBod.velocity.x, rigBod.velocity.y, max.z * Mathf.Sign(rigBod.velocity.z));
+        //animations are based on velocity
+        //either set in mecanim or here, whatever works better
+        //anim set 1 = velocity < 0.7f;
+        //anim set2 = velocity < 1.1f;
+        //anim set 3 = velocity > 1.1f;
+        //anim set 4 = if velocity != direction && velocity < 0.7f;
+        //maybe have no slow down in turns? we'll see
 
-            currentPos = transform.position;
-        }
-        else
+        if(flip)
         {
-            if (mal)
+            Flip();
+            Debug.Log(flip + " heyyyyy " + transform.localScale);
+            flip = false;
+        }
+        if (false)
+        {
+            if (transform.position.y <= 2f)
             {
-                transform.position = Vector3.Lerp(currentPos, mal.transform.position, Mathf.Abs(Duration));
+                //transform.position = new Vector3(transform.position.x, 2f, transform.position.z);
+            }
+            if (Duration > 0)
+            {
+                direction = player.transform.position - transform.position;
+                rigBod.velocity += direction.normalized * 0.4f;
+                if (Mathf.Abs(rigBod.velocity.x) > Mathf.Abs(max.x))
+                    rigBod.velocity = new Vector3(max.x * Mathf.Sign(rigBod.velocity.x), rigBod.velocity.y, rigBod.velocity.z);
+                if (Mathf.Abs(rigBod.velocity.y) > Mathf.Abs(max.y))
+                    rigBod.velocity = new Vector3(rigBod.velocity.x, max.y * Mathf.Sign(rigBod.velocity.y), rigBod.velocity.z);
+                if (Mathf.Abs(rigBod.velocity.z) > Mathf.Abs(max.z))
+                    rigBod.velocity = new Vector3(rigBod.velocity.x, rigBod.velocity.y, max.z * Mathf.Sign(rigBod.velocity.z));
+
+                currentPos = transform.position;
             }
             else
             {
-                Destroy(gameObject);
+                if (mal)
+                {
+                    transform.position = Vector3.Lerp(currentPos, mal.transform.position, Mathf.Abs(Duration));
+                }
+                else
+                {
+                    Destroy(gameObject);
+                }
+                if (direction.magnitude < 0.2f)
+                {
+                    Destroy(gameObject);
+                }
+
             }
-            if(direction.magnitude < 0.2f)
+            Duration -= Time.deltaTime;
+            if (Duration < -1)
             {
                 Destroy(gameObject);
             }
-             
-        }
-        Duration -= Time.deltaTime;
-        if(Duration < -1)
-        {
-            Destroy(gameObject);
         }
 	}
+
+    public void Flip()
+    {
+        transform.localScale = new Vector3(-1 * transform.localScale.x, transform.localScale.y, transform.localScale.z);
+    }
 
     public void setTarget(GameObject p)
     {

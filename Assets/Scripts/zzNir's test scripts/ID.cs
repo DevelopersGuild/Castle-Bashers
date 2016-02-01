@@ -4,6 +4,7 @@ using System.Collections;
 public class ID : MonoBehaviour {
 
     private float identity;
+    //deprecated, doesn't do anything
     private bool affectedByTime = true;
 
 	// Use this for initialization

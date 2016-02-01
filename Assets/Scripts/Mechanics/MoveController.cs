@@ -98,7 +98,6 @@ public class MoveController : MonoBehaviour
                 Flip();
             }
         }
-
         if (velocity.y != 0)
         {
             VerticalCollisions(ref velocity);
@@ -326,6 +325,7 @@ public class MoveController : MonoBehaviour
 
     void VerticalCollisions(ref Vector3 velocity)
     {
+
         float directionY = Mathf.Sign(velocity.y);
         float rayLength = Mathf.Abs(velocity.y) + skinWidth;
 
@@ -341,7 +341,6 @@ public class MoveController : MonoBehaviour
             {
                 velocity.y = (hitInfo.distance - skinWidth) * directionY;
                 rayLength = hitInfo.distance;
-
                 collisions.below = directionY == -1;
                 collisions.above = directionY == 1;
             }

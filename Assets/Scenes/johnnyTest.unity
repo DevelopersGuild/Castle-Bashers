@@ -390,10 +390,6 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 11446834, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
-      propertyPath: hitParticle
-      value: 
-      objectReference: {fileID: 128120, guid: 5011a44200ed9ec468b88a1244ce4a94, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
   m_IsPrefabParent: 0
@@ -591,6 +587,7 @@ MonoBehaviour:
   gravity: {x: 0, y: 0, z: 0}
   xhalf: {x: 0, y: 0, z: 0}
   half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
   moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
@@ -966,6 +963,7 @@ MonoBehaviour:
   Max_Objects: 0
   Min_Paths: 0
   Max_Paths: 0
+  position: 0
   AreaLog: []
   ActiveBiomeName: 0
 --- !u!1001 &1870611807

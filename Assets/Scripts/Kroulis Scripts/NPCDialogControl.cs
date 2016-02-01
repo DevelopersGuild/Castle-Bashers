@@ -94,4 +94,9 @@ public class NPCDialogControl : MonoBehaviour {
             }
         }
     }
+
+    public Main_Process GetMainProcess()
+    {
+        return MainProcess;
+    }
 }

@@ -762,9 +762,48 @@ Prefab:
       propertyPath: skillClassID
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11405544, guid: 48745048a79076b47b995c5e36241223, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 48745048a79076b47b995c5e36241223, type: 2}
   m_IsPrefabParent: 0
+--- !u!1 &1311509568 stripped
+GameObject:
+  m_PrefabParentObject: {fileID: 117638, guid: 48745048a79076b47b995c5e36241223, type: 2}
+  m_PrefabInternal: {fileID: 1311509567}
+--- !u!114 &1311509569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1311509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2fc0c7288bd249543ae2b5993aa2839d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &1311509570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1311509568}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e1a25e53858ebe24487a2aa1aead28cc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  NPC_Name: 
+  by_order: 1
+  by_requirement: 0
+  closest_requirement: 0
+  by_random: 0
+  Dialogs:
+  - id: 10000
+    requirement: {fileID: 0}
+    action: {fileID: 1311509569}
 --- !u!1001 &1322310057
 Prefab:
   m_ObjectHideFlags: 0

@@ -56,7 +56,7 @@ public class Health : MonoBehaviour
 
     public void Regen()
     {
-        currentHealth += (RegenAmount + player.GetStamina()*3);
+        currentHealth += (player.GetStamina() / RegenAmount);
         if (currentHealth > maxhp)
         {
             currentHealth = maxhp;
@@ -85,6 +85,7 @@ public class Health : MonoBehaviour
         }
     }
 
+
     public bool getInvincibility()
     {
         return isInvincible;
@@ -111,9 +112,25 @@ public class Health : MonoBehaviour
     {
         GetComponent<Player>().setDown(true);
         //use other object to check if all players down, if so then Death() + lose level
-        GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
 
+       // GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
         //Death();
+    }
+
+    public bool PlayerRevive(int percentHealth)
+    {
+        if(GetComponent<Player>().getDown() == false)
+        {
+            return false;
+        }
+        if(percentHealth > 100)
+        {
+            percentHealth = 100;
+        }
+        GetComponent<Player>().setDown(false);
+        AddHealth((percentHealth / 100) * maxhp);
+        GetComponent<Animator>().SetBool("IsDead", false);
+        return true;
     }
 
     public virtual void Death()
@@ -125,6 +142,7 @@ public class Health : MonoBehaviour
         if(GetComponent<Player>())
         {
             PlayerDown();
+            return;
         }
 
         // Reward all players with experience if an enemy died

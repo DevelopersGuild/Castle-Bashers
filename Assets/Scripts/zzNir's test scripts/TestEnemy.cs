@@ -8,13 +8,13 @@ public class TestEnemy : Enemy
     private GameObject attCol;
     public Type classification;
 
+
     // Use this for initialization
     void Start()
     {
         base.Start();
         speed = 4;
         attack_CD = 2;
-        
     }
 
     // Update is called once per frame
@@ -25,15 +25,14 @@ public class TestEnemy : Enemy
         {
             if (target != null)
             {
-
-
                 if (!isStunned)
                 {
                     zDiff = targetPos.z - transform.position.z;
                     Act(classification);
                     if (Math.Abs(zDiff) > half.z)
                     {
-                        Move(new Vector3(0, 0, zDiff), speed);
+                        vel = new Vector3(0, 0, zDiff);
+                       // Move(new Vector3(0, 0, zDiff), speed);
                     }
                     else if (distL <= attackRange || distR <= attackRange)
                     {
@@ -51,8 +50,8 @@ public class TestEnemy : Enemy
             }
             else
             {
-                if (FindObjectOfType<Player>())
-                    target = FindObjectOfType<Player>().gameObject;
+                if (target.GetComponent<Player>().getDown())
+                    target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
                 else
                 {
                     //player lost
@@ -68,8 +67,10 @@ public class TestEnemy : Enemy
                 isInvincible = false;
         }
 
-
+        Move(vel, speed);
         animationController.isAttacking = isAttacking;
+
+       // Debug.Log(moveController.isMoving);
 
         invTime -= Time.deltaTime;
         attack_CD += Time.deltaTime;
