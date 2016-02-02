@@ -28,17 +28,12 @@ public class destroyBarrier : MonoBehaviour {
 
         room = FindObjectOfType<CreateStart>().GetComponent<CreateStart>();
 
-        if(CreateStart.roomCount!=1)
+        if(CreateStart.roomCount!=1) //never create a mob in the first room
         room.MakeMob(CreateStart.roomCount);
 
         if (CreateStart.squadSize == 0)
             E_Dead = true;
 
-        
-        for (int j = 0; j < CreateStart.squadSize; j++)
-        {
-            Debug.Log(room.AreaLog[j]);
-        }
         end = GameObject.Find("Main Process").GetComponent<Main_Process>();
     }
 
@@ -47,36 +42,19 @@ public class destroyBarrier : MonoBehaviour {
     {
         int count=CreateStart.squadSize;
 
-        //if (!E_Dead)
-        //{
-        //    cameraFollow.setLock(true);
-        //}
-
-        //Debug.Log(CreateStart.EnemyNumber[CreateStart.squadSize]);
         if (E_Dead == false)
         {
-
-            //Debug.Log(CreateStart.squadSize);
-            //Debug.Log((CreateStart.AreaLog[CreateStart.squadSize, 1]));
             for (int i = 0; i < CreateStart.squadSize; i++)
             {
                 if (room.AreaLog[i] == null)
-                {
                     count--;
-                }
                 else
-                {
                     i = count = CreateStart.squadSize;
-                    // for (int j = 0; j < CreateStart.squadSize; j++) ;
-                    //enemies[j]=GameObject.Find(room.AreaLog[j]).GetInstanceID().ToString();
-                }
             }
             if (count == 0)
                 E_Dead = true;
-
         }
-
-        }   
+    }   
         // Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
 
    
@@ -93,6 +71,7 @@ public class destroyBarrier : MonoBehaviour {
             }
             else
                 end.UI_Mission_Success_Open();
+
             Destroy(gameObject);
             cameraFollow.setLock(false);
 

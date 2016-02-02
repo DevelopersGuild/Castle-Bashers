@@ -3,6 +3,8 @@ using System.Collections;
 
 public class CreateStart : MonoBehaviour {
 
+    const double DOORCHANCE = 0.01;
+
     public int Min_Room; //cannot be less than 1
     public int Max_Room; //cannot be less than 1
     public int Min_enemy; //cannot be negative 
@@ -41,7 +43,16 @@ public class CreateStart : MonoBehaviour {
         Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, 11), transform.rotation); //set front limits
         Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, -8), transform.rotation); //set back limits
 
-        if(bg!=null)
+        double doorRoll = rnd.NextDouble();
+
+        if (doorRoll >= DOORCHANCE)
+        {
+            Debug.Log("hah");
+            Instantiate(Resources.Load("LevelObjects/Door", typeof(GameObject)), new Vector3( AreaXCoord+ (40 * roomC), AreaYCoord, 8), Quaternion.Euler(90,0,0)); 
+        }
+
+
+        if (bg!=null)
         Instantiate(bg, new Vector3((AreaXCoord + roomC) * 40, 5, 13), transform.rotation);
 
         AreaID[roomC]= Instantiate(Resources.Load("LevelObjects/Right Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC)+20, 0, 0), transform.rotation).GetInstanceID();
@@ -108,10 +119,7 @@ public class CreateStart : MonoBehaviour {
                 temp = (GameObject)(Resources.Load((string)Biome.EnemyList[(int)ActiveBiomeName, EnemyTypeArray[m]], typeof(GameObject)));
 
                 if (temp != null)
-                {
-                    
                     AreaLog[m] = spawn(position, temp, X_coord[m], Z_coord[m]);
-                }
             }
 
         }
@@ -121,21 +129,16 @@ public class CreateStart : MonoBehaviour {
     public GameObject spawn(int position, GameObject enemy, double x, double z)
     {
         if ((int)types.front == position)
-        {
             return(GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount - 1)) - (x * 5)), 5, (float)z * rnd.Next(-7, 10)), transform.rotation);
-        }
+        
         else if ((int)types.back == position)
-        {
             return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount-2)) - (x * 5)-5), 5, (float)z * rnd.Next(-7, 10)), transform.rotation);
-        }
+
         else if ((int)types.top == position)
-        {
             return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount - 2)) + (x*5)+5), 15, (float)z * rnd.Next(-7, 10)), transform.rotation);
-        }
+
         else if ((int)types.surprise == position)
-        {
              return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount-2)) - (x * 5)), 5, (float)z * rnd.Next(9, 10)), transform.rotation);
-        }
 
         return enemy;
     }
@@ -175,7 +178,6 @@ public class CreateStart : MonoBehaviour {
 
         //create first room
         Instantiate(Resources.Load("LevelObjects/Left Limit", typeof(GameObject)), new Vector3(-39, 0, 0), transform.rotation);
-        Debug.Log(background);
         MakeRoom(roomCount, background);
         AreaLog = new GameObject[Max_enemy];
         roomCount++;
