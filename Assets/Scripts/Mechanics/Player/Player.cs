@@ -11,6 +11,7 @@ public class Player : MonoBehaviour
     public GameObject AttackCollider;
     public SkillManager skillManager;
     public Skill[] Skills = new Skill[4];
+    public Health health;
 
     //Do not set Strength Agility or Intelligence below 1, it will cause problems when they are multiplied
     //with starting values of the ares they are used in.
@@ -64,7 +65,7 @@ public class Player : MonoBehaviour
     private MoveController controller;
     private AttackController attackController;
     private CrowdControllable crowdControllable;
-    private Health health;
+
     private Mana mana;
     private DealDamage attack;
     private Defense defense;
@@ -284,16 +285,6 @@ public class Player : MonoBehaviour
     public void SetAct(bool x)
     {
         isNotStunned = x;
-    }
-
-    public bool GetInvincible()
-    {
-        return isInvincible;
-    }
-
-    public void SetInvincible(bool x)
-    {
-        isInvincible = x;
     }
 
     public void SetStrength(int strength)

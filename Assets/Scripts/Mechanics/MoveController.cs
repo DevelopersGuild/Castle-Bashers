@@ -8,6 +8,7 @@ public class MoveController : MonoBehaviour
     public AudioClip walkSound;
     private AudioSource source;
     private CrowdControllable crowdControllable;
+    private Animator animator;
 
     private bool facingRight = true;
     public bool isMoving;
@@ -27,6 +28,7 @@ public class MoveController : MonoBehaviour
     private float knockbackTime = .075f, flinchTime = 0.75f;
     private float currentKnockbacktime, currentFlinchTime;
     public bool isStunned;
+    public bool isKnockedDown;
 
     private float height;
     private float screenWidthInPoints;
@@ -36,6 +38,7 @@ public class MoveController : MonoBehaviour
     [HideInInspector]
     public Vector2 playerInput;
     private Vector2 noMovement = new Vector2(0, 0);
+    private bool isMovementDisabled;
 
     BoxCollider coll;
     RaycastOrigins raycastOrigins;
@@ -49,6 +52,8 @@ public class MoveController : MonoBehaviour
         player = GetComponent<Player>();
         coll = GetComponent<BoxCollider>();
         crowdControllable = GetComponent<CrowdControllable>();
+        animator = GetComponent<Animator>();
+
         CalculateRaySpacing();
         currentKnockbacktime = knockbackTime;
         currentFlinchTime = flinchTime;
@@ -56,6 +61,7 @@ public class MoveController : MonoBehaviour
         screenWidthInPoints = height * Camera.main.aspect;
         source = new AudioSource();
         source = GetComponent<AudioSource>();
+        isMovementDisabled = false;
     }
 
     public float GetFacing()
@@ -106,6 +112,7 @@ public class MoveController : MonoBehaviour
         updateGrounded();
         updateKnockback(ref velocity);
         updateFlinch();
+        updateKnockedDown();
 
         if (velocity.x != 0)
         {
@@ -117,7 +124,8 @@ public class MoveController : MonoBehaviour
             DepthCollisions(ref velocity);
         }
 
-        if (!isFlinched)
+        // Only move if the player isnt flinched or knocked down
+        if (!isFlinched && !isKnockedDown)
             transform.Translate(velocity);
 
         clampPosition(ref velocity);
@@ -147,6 +155,16 @@ public class MoveController : MonoBehaviour
     public bool GetIsGrounded()
     {
         return isGrounded;
+    }
+
+    private void disableMovement()
+    {
+        isMovementDisabled = true;
+    }
+
+    private void enableMovement()
+    {
+        isMovementDisabled = false;
     }
 
     private void clampPosition(ref Vector3 veloctity)
@@ -194,6 +212,20 @@ public class MoveController : MonoBehaviour
                     currentKnockbacktime = knockbackTime;
                 }
             }
+        }
+    }
+    
+    private void updateKnockedDown()
+    {
+        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
+        {
+            isKnockedDown = true;
+            isMovementDisabled = true;
+        }
+        else
+        {
+            isKnockedDown = false;
+            isMovementDisabled = false;
         }
     }
 

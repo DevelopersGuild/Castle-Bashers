@@ -129,7 +129,6 @@ public class Health : MonoBehaviour
         }
         GetComponent<Player>().setDown(false);
         AddHealth((percentHealth / 100) * maxhp);
-        GetComponent<Animator>().SetBool("IsDead", false);
         return true;
     }
 
