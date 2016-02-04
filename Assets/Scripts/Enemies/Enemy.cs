@@ -49,8 +49,7 @@ public class Enemy : MonoBehaviour
     public void Start()
     {
         //later on make it only target living players, priority on tanks
-        target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
-        targetPos = target.transform.position;
+        target = null;
         moveController = GetComponent<MoveController>();
         sprRend = GetComponent<SpriteRenderer>();
         hp = GetComponent<Health>();
@@ -81,6 +80,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if(target == null)
+        {
+            target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
+            targetPos = target.transform.position;
+        }
         if (!moveController.collisions.below)
         {
             gravity.y += -0.1f;
