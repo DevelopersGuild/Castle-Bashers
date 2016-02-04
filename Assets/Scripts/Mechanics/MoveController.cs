@@ -23,12 +23,13 @@ public class MoveController : MonoBehaviour
     // TODO: Make these things private after testing
     public bool isKnockbackable, isFlinchable;
     private bool isKnockedBack, isFlinched;
+    private bool isKnockedDown;
     public float knockbackVelocity;
+    public float flinchVelocity;
     private int flinchCount;
     private float knockbackTime = .075f, flinchTime = 0.75f;
     private float currentKnockbacktime, currentFlinchTime;
     public bool isStunned;
-    public bool isKnockedDown;
 
     private float height;
     private float screenWidthInPoints;
@@ -93,7 +94,7 @@ public class MoveController : MonoBehaviour
         playerInput = input;
         collisions.Reset();
 
-        if (!isKnockedBack)
+        if (!isKnockedBack || !isKnockedDown)
         {
             if (velocity.x < 0 && facingRight)
             {
@@ -111,7 +112,7 @@ public class MoveController : MonoBehaviour
 
         updateGrounded();
         updateKnockback(ref velocity);
-        updateFlinch();
+        updateFlinch(ref velocity);
         updateKnockedDown();
 
         if (velocity.x != 0)
@@ -125,7 +126,7 @@ public class MoveController : MonoBehaviour
         }
 
         // Only move if the player isnt flinched or knocked down
-        if (!isFlinched && !isKnockedDown)
+        // if (!isFlinched && !isKnockedDown)
             transform.Translate(velocity);
 
         clampPosition(ref velocity);
@@ -220,20 +221,29 @@ public class MoveController : MonoBehaviour
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
         {
             isKnockedDown = true;
-            isMovementDisabled = true;
+            isStunned = true;
         }
-        else
+        else if(isKnockedDown)
         {
             isKnockedDown = false;
-            isMovementDisabled = false;
+            isStunned = false; 
         }
     }
 
-    private void updateFlinch()
+    private void updateFlinch(ref Vector3 velocity)
     {
         if (isFlinched)
         {
             isStunned = true;
+
+            if (!facingRight)
+            {
+                velocity.x = flinchVelocity;
+            }
+            else
+            {
+                velocity.x = -flinchVelocity;
+            }
 
             // Knockback
             if (flinchCount >= 10) 
@@ -257,7 +267,7 @@ public class MoveController : MonoBehaviour
             {
                 resetFlinchCount();
             }
-
+            Debug.Log(isStunned);
         }
     }
 

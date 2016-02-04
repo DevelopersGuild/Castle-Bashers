@@ -47,7 +47,6 @@ public class CreateStart : MonoBehaviour {
 
         if (doorRoll >= DOORCHANCE)
         {
-            Debug.Log("hah");
             Instantiate(Resources.Load("LevelObjects/Door", typeof(GameObject)), new Vector3( AreaXCoord+ (40 * roomC), AreaYCoord, 8), Quaternion.Euler(90,0,0)); 
         }
 
@@ -145,7 +144,7 @@ public class CreateStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("Running");
+        // Debug.Log("Running");
         ///Preconditions///
         /// 
         //Debug.Log(Min_enemy + ", " + Max_enemy);
