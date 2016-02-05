@@ -7,6 +7,8 @@ public class Health : MonoBehaviour
     public float currentHealth=0;
     public float maxhp;
     public GameObject deathObject;
+    public float bonusHP = 0;
+    public float bonusPercentHP = 0;
     private bool isInvincible;
     private Player player;
     private MoveController moveController;
@@ -53,7 +55,7 @@ public class Health : MonoBehaviour
 
     public void Full_Regen()
     {
-        currentHealth = maxhp;
+        currentHealth = GetMaxHP();
     }
 
     public void Regen()
@@ -61,7 +63,7 @@ public class Health : MonoBehaviour
         currentHealth += (player.GetStamina() / RegenAmount);
         if (currentHealth > maxhp)
         {
-            currentHealth = maxhp;
+            currentHealth = GetMaxHP();
         }
     }
 
@@ -201,7 +203,7 @@ public class Health : MonoBehaviour
     public void AddHealth(float healthAmount)
     {
         currentHealth = currentHealth + healthAmount;
-        if(currentHealth > maxhp)
+        if(currentHealth > GetMaxHP())
         {
             currentHealth = maxhp;
         }
@@ -209,7 +211,16 @@ public class Health : MonoBehaviour
 
     public float GetMaxHP()
     {
-        return maxhp;
+        return maxhp * bonusPercentHP + bonusHP;
+    }
+
+    public float getBonusHP()
+    {
+        return bonusHP;
+    }
+    public float getBonusPercentHP()
+    {
+        return bonusPercentHP;
     }
 
     public void SetMaxHP(float f)
@@ -220,5 +231,14 @@ public class Health : MonoBehaviour
     public void SetCurrentHP(float f)
     {
         currentHealth = f;
+    }
+
+    public void addBonusHP(float f)
+    {
+        bonusHP += f;
+    }
+    public void addBonusPercentHP(float f)
+    {
+        bonusPercentHP += f;
     }
 }

@@ -1,84 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-/*
-class PassiveNode : MonoBehaviour
-{
-    protected Player player;
-    int level;
-    int maxLevel;
-    string description;
-    
-    protected virtual void Start()
-    {
-        player = GetComponent<Player>();
-    }
-    
-
-    public PassiveNode(int maxLvl, string descript)
-    {
-        level = 0;
-        maxLevel = maxLvl;
-        description = descript;
-    }
-    
-    virtual public bool addPoint()
-    {
-        if (level < maxLevel)
-        {
-            level++;
-            return true;
-        }
-        return false;
-    }
-
-    //Use a high number if you wish to clear all points, if the points
-    //go below 0, they will be set to 0.
-    public void removePoint(int i)
-    {
-        level -= i;
-        if(level < 0)
-            level = 0;
-    }
-
-    public int getLevel()
-    {
-        return level;
-    }
-
-    
-}
-*/
-
-    /*
-class strengthBonus : PassiveNode
-{
-    public strengthBonus():base(3, "Adds 10 strength per level")
-    {
-    }
-
-    protected override void Start()
-    {
-        base.Start();
-    }
-
-    public override bool addPoint()
-    {
-        //Check general add point logic
-        if (base.addPoint())
-        {
-            //Logic related to specific skill
-            player.AddStrength(10);
-            return true;
-        }
-
-        return false;
-    }
-
-}
-
-    */
-
 public class PassiveSkillManager : MonoBehaviour {
     public enum Passives : int
     {
@@ -86,19 +8,18 @@ public class PassiveSkillManager : MonoBehaviour {
         HealthBonus
     };
 
+    string Name;
+    string Description;
 
 
     const int MAX_PASSIVE_SKILLS = 50;
     //PassiveNode[] passives;
 
+    string[] passiveName;
+    string[] passiveDescription;
     int[] passiveLevel;
     int[] passiveMaxLevel;
     
-
-
-
-
-
 
 
     
@@ -114,15 +35,27 @@ public class PassiveSkillManager : MonoBehaviour {
         passiveLevel = new int[MAX_PASSIVE_SKILLS];
         passiveMaxLevel = new int[MAX_PASSIVE_SKILLS];
         passiveLevel[1] = 0;
+        passiveLevel[2] = 0;
+        passiveName[1] = "Strength Bonus";
+        passiveDescription[1] = "Adds 10 bonus strength";
         passiveMaxLevel[1] = 3;
+        passiveMaxLevel[2] = 3;
     }
 
-    void update()
+    void Update()
     {
-        if (Input.GetKeyDown(KeyCode.U)){
+        /*
+        if (Input.GetKeyDown("u"))
+        {
             Debug.Log("U PRESSED");
             addPointToSkill(Passives.StrengthBonus);
         }
+        if (Input.GetKeyDown("i"))
+        {
+            Debug.Log("I PRESSED");
+            addPointToSkill(Passives.HealthBonus);
+        }
+        */
     }
 
 
@@ -130,6 +63,7 @@ public class PassiveSkillManager : MonoBehaviour {
     //will return -1 if the user lacks available points and
     //            -2 if the passive is max level
     //             1 upon success
+    //            -3 if prerequisite not met
     public int addPointToSkill(Passives passiveID)
     {
         if(availablePoints <= 0)
@@ -142,9 +76,7 @@ public class PassiveSkillManager : MonoBehaviour {
             Debug.Log("Increasing passive level!");
             passiveLevel[(int)passiveID]++;
             availablePoints--;
-        }
-        else
-        {
+        }else{
             Debug.Log("Passive has reached max level!");
             return -2;
         }
@@ -159,7 +91,11 @@ public class PassiveSkillManager : MonoBehaviour {
         }
         if(passiveID == Passives.HealthBonus)
         {
-            Debug.Log("Running HealthBonus logic!");
+            //Check for preRequisits
+            if (passiveLevel[(int)Passives.StrengthBonus] != 0)
+                Debug.Log("Running HealthBonus logic!");
+            else
+                return -3;
         }
         return 1;
     }
@@ -173,5 +109,26 @@ public class PassiveSkillManager : MonoBehaviour {
     {
         return availablePoints;
     }
+
+    public string getName(int index)
+    {
+        return passiveName[index];
+    }
+
+    public string getDescription(int index)
+    {
+        return passiveDescription[index];
+    }
+
+    public int getLevel(int index)
+    {
+        return passiveLevel[index];
+    }
+
+    public int getMaxLevel(int index)
+    {
+        return passiveMaxLevel[index];
+    }
+
 }
 

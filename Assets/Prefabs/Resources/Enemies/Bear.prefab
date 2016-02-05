@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.6005898, y: 11.7368498, z: -5.25242615}
+  m_LocalPosition: {x: -25.4441643, y: 12.0512905, z: -5.25242615}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -160,7 +160,7 @@ MonoBehaviour:
   isKnockbackable: 0
   isFlinchable: 1
   knockbackVelocity: 0
-  flinchVelocity: 0
+  flinchVelocity: .00999999978
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11485732
@@ -191,6 +191,7 @@ MonoBehaviour:
   RegenAmount: 0
   currentHealth: 20
   maxhp: 30
+  deathObject: {fileID: 112044, guid: 85044cebeacee884b9b1eebb9a6f01ae, type: 2}
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
   hitParticle: {fileID: 0}

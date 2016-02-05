@@ -19,7 +19,7 @@ GameObject:
   - 114: {fileID: 11483876}
   - 114: {fileID: 11411218}
   m_Layer: 0
-  m_Name: RangedEnemy
+  m_Name: Ranger
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 29.6546974, y: 12.4682693, z: -9}
+  m_LocalPosition: {x: -12.0118723, y: 15.5601587, z: -9}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -111,9 +111,10 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
-  knockbackVelocity: 0
-  knockbackTime: 0
-  flinchTime: 0
+  isKnockbackable: 0
+  isFlinchable: 0
+  knockbackVelocity: .150000006
+  flinchVelocity: .00300000003
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11432526
@@ -130,8 +131,6 @@ MonoBehaviour:
   defense: 0
   basePhysicalDefense: 0
   baseMagicalDefense: 0
-  PhysicalDefense: 0
-  MagicalDefense: 0
 --- !u!114 &11444124
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -146,6 +145,7 @@ MonoBehaviour:
   agroRange: 25
   attackRange: 11
   attack_CD: 2
+  experienceAmount: 0
   attackSound: {fileID: 8300000, guid: 1c9a2d44ef4abab41ae0b9b3e11e04f0, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -153,6 +153,7 @@ MonoBehaviour:
   gravity: {x: 0, y: 0, z: 0}
   xhalf: {x: 0, y: 0, z: 0}
   half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
   moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
@@ -183,12 +184,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
   RegenAmount: 0
   currentHealth: 0
   maxhp: 0
+  deathObject: {fileID: 154478, guid: 7b4b056d221328349b3b4546ab4e005e, type: 2}
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11483876
 MonoBehaviour:
   m_ObjectHideFlags: 1
