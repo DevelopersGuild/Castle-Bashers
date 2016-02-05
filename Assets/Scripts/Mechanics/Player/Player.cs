@@ -333,7 +333,7 @@ public class Player : MonoBehaviour
     public void Fully_Update()
     {
         //health.Updata_Maxhp_withFullRegen();
-        health.SetMaxHP((Stamina * 5 + Strength + Agility + Intelligence)*bonusPercentHealth + bonusHealth);
+        health.SetMaxHP((Stamina * 5 + Strength + Agility + Intelligence)*(1+bonusPercentHealth*0.01f) + bonusHealth);
         health.Full_Regen();
         mana.SetMaxMana(Stamina * 2 + Intelligence * 3);
         mana.Full_Regen();
@@ -690,12 +690,12 @@ public class Player : MonoBehaviour
 
 
 
-    public float getPhysicalDamage() { return (basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk) * (1 + bonusPercentPhysicalDamage / 100); }
+    public float getPhysicalDamage() { return (basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk) * (1 + bonusPercentPhysicalDamage*0.01f); }
     public float getBasePhysicalDamage() { return basePhysicalDamage; }
     public float getBonusPhysicalDamage() { return bonusPhysicalDamage; }
     public float getBonusPercentPhysicalDamage() { return bonusPercentPhysicalDamage; }
 
-    public float getMagicalDamage(){ return (baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk) * (1+ bonusPercentMagicalDamage / 100);}
+    public float getMagicalDamage(){ return (baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk) * (1+ bonusPercentMagicalDamage*0.01f);}
     public float getBaseMagicalDamage() { return baseMagicalDamage;}
     public float getBonusMagicalDamage() { return bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk;}
     public float getBonusPercentMagicalDamage() { return bonusPercentMagicalDamage; }
