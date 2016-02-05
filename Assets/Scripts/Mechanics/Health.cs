@@ -6,10 +6,12 @@ public class Health : MonoBehaviour
     public float RegenAmount;
     public float currentHealth=0;
     public float maxhp;
+    public GameObject deathObject;
     private bool isInvincible;
     private Player player;
     private MoveController moveController;
     private CrowdControllable crowdControllable;
+    private bool isDead;
     
     public Vector3 damageTextOffset;
     public AudioClip hitSound;
@@ -164,7 +166,18 @@ public class Health : MonoBehaviour
             GetComponent<DropLoot>().DropItem();
         }
 
+        if(deathObject)
+        {
+            Instantiate(deathObject, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
+
+        // Destroy(gameObject);
+    }
+
+    public bool getIsDead()
+    {
+        return isDead;
     }
 
     void createFloatingText(float f)

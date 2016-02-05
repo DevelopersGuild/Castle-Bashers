@@ -173,7 +173,7 @@ public class Player : MonoBehaviour
             invTime = 0;
         }
 
-        Debug.Log(GetMoveController().isStunned);
+
 
         if(!GetMoveController().isStunned)
         {
