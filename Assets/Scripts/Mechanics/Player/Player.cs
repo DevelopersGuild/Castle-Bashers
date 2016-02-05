@@ -124,12 +124,14 @@ public class Player : MonoBehaviour
     }*/
     void Start()
     {
+
         state = new StandingState();
         attackState = new IdleAttackState();
         animator = GetComponent<Animator>();
         skillManager = gameObject.AddComponent<SkillManager>();
         AttackCollider.SetActive(false);
         health = GetComponent<Health>();
+        Debug.Log(health.currentHealth);
         controller = GetComponent<MoveController>();
         crowdControllable = GetComponent<CrowdControllable>();
         mana = GetComponent<Mana>();
@@ -155,6 +157,7 @@ public class Player : MonoBehaviour
         //CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
         //si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
         Fully_Update();
+
     }
 
     void Update()
@@ -162,6 +165,7 @@ public class Player : MonoBehaviour
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
         Vector2 input;
+        Debug.Log(health.currentHealth);
 
         if (controller.collisions.above || controller.collisions.below)
         {

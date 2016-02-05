@@ -4,7 +4,7 @@ using System.Collections;
 public class Health : MonoBehaviour
 {
     public float RegenAmount;
-    public float currentHealth=0;
+    public float currentHealth;
     public float maxhp;
     public GameObject deathObject;
     public float bonusHP = 0;
@@ -28,7 +28,6 @@ public class Health : MonoBehaviour
         player = GetComponent<Player>();
         moveController = GetComponent<MoveController>();
         crowdControllable = GetComponent<CrowdControllable>();
-        currentHealth = maxhp; 
         damageTextOffset = new Vector3(0, 2, 0);
     }
 
