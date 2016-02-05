@@ -29,6 +29,7 @@ public class Main_Process : MonoBehaviour {
     Experience[] Player_EXP=new Experience[2];
     Player[] Player_Script=new Player[2];
     CoinManager[] Player_Gold = new CoinManager[2];
+    PassiveSkillManager[] Player_PSM = new PassiveSkillManager[2];
     //ErrorCatch
     private ErrorCatching error = new ErrorCatching();
 	// Use this for initialization
@@ -55,6 +56,7 @@ public class Main_Process : MonoBehaviour {
             Player_Mana[id] = pl.gameObject.GetComponent<Mana>();
             Player_EXP[id] = pl.gameObject.GetComponent<Experience>();
             Player_Gold[id] = pl.gameObject.GetComponent<CoinManager>();
+            Player_PSM[id] = pl.gameObject.GetComponent<PassiveSkillManager>();
             Player_Script[id] = pl;
             id++;
         }
@@ -425,6 +427,22 @@ public class Main_Process : MonoBehaviour {
             {
                 Debug.LogWarning("GetPlayerCoinManager: id is out of range.");
                 return Player_Gold[0];
+            }
+        }
+    }
+
+    public PassiveSkillManager GetPlayerPassiveSkillManager(int? id = null)
+    {
+        if (id == null)
+            return Player_PSM[0];
+        else
+        {
+            if (id < 2 && id >= 0)
+                return Player_PSM[(int)id];
+            else
+            {
+                Debug.LogWarning("GetPlayerPassiveSkillManager: id is out of range.");
+                return Player_PSM[0];
             }
         }
     }

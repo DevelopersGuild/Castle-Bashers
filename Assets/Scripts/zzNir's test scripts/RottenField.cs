@@ -22,7 +22,7 @@ public class RottenField : MonoBehaviour {
         {
             Player player = enemObj.GetComponent<Player>();
             Health hp = enemObj.GetComponent<Health>();
-            if (!player.GetInvincible())
+            if (!player.health.getInvincibility())
             {
                 hp.takeDamage(dmgAmount, 2);
                 player.SetInvTime(invTime);
@@ -39,7 +39,7 @@ public class RottenField : MonoBehaviour {
         {
             Player player = enemObj.GetComponent<Player>();
             Health hp = enemObj.GetComponent<Health>();
-            if (!player.GetInvincible())
+            if (!player.health.getInvincibility())
             {
                 hp.takeDamage(dmgAmount, 2);
                 player.SetInvTime(invTime);

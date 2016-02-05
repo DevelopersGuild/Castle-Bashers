@@ -26,7 +26,7 @@ AnimationClip:
     - time: .25
       value: {fileID: 21300014, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
     - time: .333333343
-      value: {fileID: 21300016, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
+      value: {fileID: 21300084, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
     - time: .416666657
       value: {fileID: 21300016, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
     attribute: m_Sprite
@@ -51,7 +51,7 @@ AnimationClip:
     - {fileID: 21300010, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
     - {fileID: 21300012, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
     - {fileID: 21300014, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
-    - {fileID: 21300016, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
+    - {fileID: 21300084, guid: 8264bc7bb64b11c41950a6f3c8d4ddad, type: 3}
     - {fileID: 21300016, guid: f3a1e2f561e436742abe6b2f499ac4ea, type: 3}
   m_AnimationClipSettings:
     serializedVersion: 2
@@ -85,6 +85,13 @@ AnimationClip:
     messageOptions: 0
   - time: .25
     functionName: finishedAnimation
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: .333333343
+    functionName: resetTap
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0

@@ -37,17 +37,12 @@ public class CarcassEnemy : Enemy
                     {
                         Move(new Vector3(0, 0, zDiff), speed);
                     }
-                    else if (distL <= attackRange || distR <= attackRange)
-                    {
-                        if (attack_CD >= 2)
-                            Attack();
-                    }
                 }
             }
             else
             {
-                if (FindObjectOfType<Player>())
-                    target = FindObjectOfType<Player>().gameObject;
+                if (target.GetComponent<Player>().getDown())
+                    target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
                 else
                 {
                     //player lost
@@ -75,22 +70,25 @@ public class CarcassEnemy : Enemy
 
     private void Attack()
     {
+        //Does not attack, only moves
+        //Deals damage on touch though
 
-        bool facing = distL <= distR;
-        attack_CD = 0;
-        distL = (transform.position - targetPos - left).magnitude;
-        distR = (transform.position - targetPos - right).magnitude;
-        toLeft = (attackRange + distL) <= distR;
 
-        if (facing)
-        {
-            attCol = Instantiate(attackCollider, transform.position + xhalf + right, transform.rotation) as GameObject;
-        }
-        else
-        {
-            attCol = Instantiate(attackCollider, transform.position + (-1 * xhalf) + left, transform.rotation) as GameObject;
-        }
-        Destroy(attCol, 0.5f);
+        //bool facing = distL <= distR;
+        //attack_CD = 0;
+        //distL = (transform.position - targetPos - left).magnitude;
+        //distR = (transform.position - targetPos - right).magnitude;
+        //toLeft = (attackRange + distL) <= distR;
+
+        //if (facing)
+        //{
+        //    attCol = Instantiate(attackCollider, transform.position + xhalf + right, transform.rotation) as GameObject;
+        //}
+        //else
+        //{
+        //    attCol = Instantiate(attackCollider, transform.position + (-1 * xhalf) + left, transform.rotation) as GameObject;
+        //}
+        //Destroy(attCol, 0.5f);
 
     }
 

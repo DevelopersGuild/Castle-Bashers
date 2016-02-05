@@ -87,6 +87,7 @@ public class Health : MonoBehaviour
         }
     }
 
+
     public bool getInvincibility()
     {
         return isInvincible;
@@ -113,8 +114,8 @@ public class Health : MonoBehaviour
     {
         GetComponent<Player>().setDown(true);
         //use other object to check if all players down, if so then Death() + lose level
-        //GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
 
+       // GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
         //Death();
     }
 
@@ -130,7 +131,6 @@ public class Health : MonoBehaviour
         }
         GetComponent<Player>().setDown(false);
         AddHealth((percentHealth / 100) * maxhp);
-        GetComponent<Animator>().SetBool("IsDead", false);
         return true;
     }
 

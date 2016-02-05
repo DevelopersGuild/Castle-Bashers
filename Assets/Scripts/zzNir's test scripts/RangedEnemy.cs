@@ -35,14 +35,14 @@ public class RangedEnemy : Enemy
                     else
                     {
                         zDiff = targetPos.z - transform.position.z;
-                        //Debug.Log(targetPos.x - transform.position.x);
                         if (Math.Abs(targetPos.x - transform.position.x) > 0.3)
                         {
                             moveController.OrientFacingLeft((targetPos.x - transform.position.x) < 0, moveController.GetFacing());
                         }
                         if (Math.Abs(zDiff) > 0.25f)
                         {
-                            Move(new Vector3(0, 0, zDiff), speed);
+                            vel = new Vector3(0, 0, zDiff);
+                            //Move(new Vector3(0, 0, zDiff), speed);
                         }
                         else
                         {
@@ -54,8 +54,8 @@ public class RangedEnemy : Enemy
             }
             else
             {
-                if (FindObjectOfType<Player>())
-                    target = FindObjectOfType<Player>().gameObject;
+                if (target.GetComponent<Player>().getDown())
+                    target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
                 else
                 {
                     //player lost
@@ -69,6 +69,8 @@ public class RangedEnemy : Enemy
 
          
         }
+
+        Move(vel, speed);
         animationController.isAttacking = isAttacking;
         attack_CD += Time.deltaTime;
        

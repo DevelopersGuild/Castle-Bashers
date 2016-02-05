@@ -23,7 +23,7 @@ public class GameManager : MonoBehaviour, IListener
         {
             if(m_notifications == null)
             {
-                m_notifications = m_instance.GetComponent<NotificationManager>();
+               // m_notifications = m_instance.GetComponent<NotificationManager>();
             }
             return m_notifications;
         }

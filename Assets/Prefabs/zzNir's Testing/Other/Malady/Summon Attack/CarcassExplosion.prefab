@@ -10,7 +10,7 @@ GameObject:
   - 4: {fileID: 498040}
   - 212: {fileID: 21210814}
   - 114: {fileID: 11482662}
-  - 114: {fileID: 11445742}
+  - 114: {fileID: 11455160}
   m_Layer: 0
   m_Name: CarcassExplosion
   m_TagString: Untagged
@@ -30,7 +30,7 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
---- !u!114 &11445742
+--- !u!114 &11455160
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -38,12 +38,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 186334}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dmgAmount: 1
-  knockback: 10
-  flinch: 0
+  hitAudio: {fileID: 0}
+  dmgAmount: 3
+  isMagic: 1
+  damagesPlayers: 0
+  damagesEnemies: 0
+  flinchPower: 0
 --- !u!114 &11482662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -94,6 +97,18 @@ Prefab:
       propertyPath: rotField
       value: 
       objectReference: {fileID: 182826, guid: e8d5fc5f6f62aaf4884cbbedc8735f22, type: 2}
+    - target: {fileID: 0}
+      propertyPath: dmgAmount
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isMagic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagePlayers
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 186334}
