@@ -59,7 +59,7 @@ public class Health : MonoBehaviour
     public void Regen()
     {
         currentHealth += (player.GetStamina() / RegenAmount);
-        if (currentHealth > maxhp)
+        if (currentHealth > GetMaxHP())
         {
             currentHealth = GetMaxHP();
         }
@@ -184,7 +184,7 @@ public class Health : MonoBehaviour
     */
     public virtual float GetCurrentHealth()
     {
-        return gameObject.GetComponent<Health>().currentHealth;
+        return currentHealth;
     }
 
     public void AddHealth(float healthAmount)
@@ -198,7 +198,7 @@ public class Health : MonoBehaviour
 
     public float GetMaxHP()
     {
-        return maxhp * bonusPercentHP + bonusHP;
+        return maxhp * (1+bonusPercentHP*0.01f) + bonusHP;
     }
 
     public float getBonusHP()
