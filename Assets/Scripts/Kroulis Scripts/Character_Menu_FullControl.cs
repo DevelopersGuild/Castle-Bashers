@@ -256,7 +256,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 //Start Selecting Passive Skills
                 if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    passive_selecting = true;
+                    main_process.UI_Passive_Skill_Panel_Open(playerid);
                 }
             }
         }

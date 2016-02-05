@@ -2283,6 +2283,8 @@ MonoBehaviour:
   RegenAmount: 0
   currentHealth: 0
   maxhp: 100
+  bonusHP: 0
+  bonusPercentHP: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: b45ac828d2c7a3741b9064f4cbd056bb, type: 3}
   hitParticle: {fileID: 0}
@@ -2337,6 +2339,14 @@ MonoBehaviour:
   Strength: 10
   Agility: 10
   Intelligence: 10
+  bonusStamina: 0
+  bonusPercentStamina: 0
+  bonusStrength: 0
+  bonusPercentStrength: 0
+  bonusAgility: 0
+  bonusPercentAgility: 0
+  bonusIntelligence: 0
+  bonusPercentIntelligence: 0
   CCI: {fileID: 0}
   si: {fileID: 0}
   jumpHeight: 4
@@ -4197,7 +4207,7 @@ Prefab:
       objectReference: {fileID: 1829866592}
     - target: {fileID: 120608, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11438168, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
       propertyPath: m_Enabled
@@ -4826,32 +4836,36 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 177208, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 133470, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 193056, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 193552, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 175208, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 131412, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 157954, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 11426852, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
+      propertyPath: PassiveSkill
+      value: 
+      objectReference: {fileID: 724128335}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
   m_IsPrefabParent: 0
@@ -6023,7 +6037,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 130046, guid: dcd067534813c7a4285ac582e722120b, type: 2}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcd067534813c7a4285ac582e722120b, type: 2}

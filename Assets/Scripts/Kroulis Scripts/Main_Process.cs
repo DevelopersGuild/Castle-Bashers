@@ -263,6 +263,14 @@ public class Main_Process : MonoBehaviour {
 
     }
 
+    public void UI_Passive_Skill_Panel_Open(int ? playerid)
+    {
+        Hide_UI = true;
+        Other_Windows.SetActive(true);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().PassiveSkill.GetComponent<Passive_Skill_Updater_Fullcontrol>().Change(playerid);
+        Other_Windows.GetComponent<Other_Windows_FullControl>().PassiveSkill.SetActive(true);
+    }
+
     public void OtherWindows_Close()
     {
         Other_Windows.SetActive(false);
