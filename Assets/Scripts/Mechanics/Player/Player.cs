@@ -84,8 +84,6 @@ public class Player : MonoBehaviour
     private Defense defense;
     private DealDamage dealDamage;
 
-    private float bonusHealth = 0;
-    private float bonusPercentHealth = 0;
     //These are for primarily calculating damages and to queu the stats for buffs
     private float basePhysicalDamage;
     private float bonusPhysicalDamage;
@@ -333,7 +331,7 @@ public class Player : MonoBehaviour
     public void Fully_Update()
     {
         //health.Updata_Maxhp_withFullRegen();
-        health.SetMaxHP((Stamina * 5 + Strength + Agility + Intelligence)*(1+bonusPercentHealth*0.01f) + bonusHealth);
+        health.SetMaxHP((Stamina * 5 + Strength + Agility + Intelligence));
         health.Full_Regen();
         mana.SetMaxMana(Stamina * 2 + Intelligence * 3);
         mana.Full_Regen();
