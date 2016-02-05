@@ -4,7 +4,7 @@ using System.Collections;
 public class PassiveSkillManager : MonoBehaviour {
     public enum Passives : int
     {
-        StrengthBonus = 1,
+        StrengthBonus = 0,
         HealthBonus
     };
 
@@ -34,12 +34,14 @@ public class PassiveSkillManager : MonoBehaviour {
         */
         passiveLevel = new int[MAX_PASSIVE_SKILLS];
         passiveMaxLevel = new int[MAX_PASSIVE_SKILLS];
+        passiveName = new string[MAX_PASSIVE_SKILLS];
+        passiveDescription = new string[MAX_PASSIVE_SKILLS];
+        passiveLevel[0] = 0;
         passiveLevel[1] = 0;
-        passiveLevel[2] = 0;
-        passiveName[1] = "Strength Bonus";
-        passiveDescription[1] = "Adds 10 bonus strength";
+        passiveName[0] = "Strength Bonus";
+        passiveDescription[0] = "Adds 10 bonus strength";
+        passiveMaxLevel[0] = 3;
         passiveMaxLevel[1] = 3;
-        passiveMaxLevel[2] = 3;
     }
 
     void Update()
