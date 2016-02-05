@@ -9,15 +9,14 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
     private int[] store_skill_id;
     public Sprite null_image;
     //only Inscript
-    struct shop_skill_control
+    struct passive_skill_control
     {
-        public int id;
         public int level; 
         public Text skillname;
         public Image skillicon;
     };
 
-    shop_skill_control[] shop_skill = new shop_skill_control[15];
+    passive_skill_control[] shop_skill = new passive_skill_control[15];
     Text Skill_info,Skill_effect;
     Text Tips;
     Image Current;
@@ -25,9 +24,7 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
     int current_id;
     int max_skill_id;
     int points;
-    private Character_Class_Info CCIS;
     private int player_id=0;
-    private Skill_info si;
     private Main_Process MainProcess;
 
 	// Use this for initialization
@@ -106,7 +103,7 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
                 shop_skill[14].skillname = t;
                 continue;
             }
-            if (t.name == "P_S_G")
+            if (t.name == "P_S_P")
             {
                 Point = t;
                 continue;
@@ -208,9 +205,9 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
             }
         }
         MainProcess = GameObject.Find("Main Process").GetComponent<Main_Process>();
-        CCIS= MainProcess.GetComponentInChildren<Character_Class_Info>();
-        si = MainProcess.GetComponentInChildren<Skill_info>();
         //Change();
+        current_id = 1;
+        player_id = 0;
         gameObject.SetActive(false);
 	}
 	
@@ -228,17 +225,16 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
         //Classname.text = CCIS.Class_info[shop_class_id].name;
         //store_skill_id = new int[CCIS.Class_info[shop_class_id].skillid.Length];
         //store_skill_id = CCIS.Class_info[shop_class_id].skillid;
-        max_skill_id = store_skill_id.Length;
+        max_skill_id = 1;
         if (max_skill_id == 0)
         {
             this.gameObject.SetActive(false);
         }
         for(int i=1;i<=max_skill_id;i++)
         {
-            shop_skill[i].skillicon.sprite = si.skill[store_skill_id[i - 1]].skillicon;
-            shop_skill[i].skillname.text = si.skill[store_skill_id[i - 1]].skillname;
-            //shop_skill[i].level = MainProcess.GetPlayerPassiveSkillManager(player_id).;
-            shop_skill[i].id = store_skill_id[i - 1];
+            //shop_skill[i].skillicon.sprite = ;
+            shop_skill[i].skillname.text = MainProcess.GetPlayerPassiveSkillManager(player_id).getName(current_id-1);
+            shop_skill[i].level = MainProcess.GetPlayerPassiveSkillManager(player_id).getLevel(current_id-1);
         }
         if(max_skill_id+1<=14)
             for (int i = max_skill_id + 1; i <= 14;i++)
@@ -246,7 +242,6 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
                 shop_skill[i].skillicon.sprite = null_image;
                 shop_skill[i].skillname.text = "";
                 shop_skill[i].level = 0;
-                shop_skill[i].id = 0;
             }
          current_id = 1;
         //Debug.Log(max_skill_id);
@@ -256,16 +251,17 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
 	void Update () {
         points = MainProcess.GetPlayerPassiveSkillManager(player_id).getAvailablePoints();
         Point.text = points.ToString();
-        Skill_info.text = "Skill Name: " + si.skill[store_skill_id[current_id - 1]].skillname + "\nDescrible:\n" + si.skill[store_skill_id[current_id - 1]].skill_script.GetDiscription();
+        Skill_info.text = "Skill Name: " + MainProcess.GetPlayerPassiveSkillManager(player_id).getName(current_id-1) + "\nDescrible:\n" + MainProcess.GetPlayerPassiveSkillManager(player_id).getDescription(current_id-1);
+        Skill_effect.text = "Current Level: " + MainProcess.GetPlayerPassiveSkillManager(player_id).getLevel(current_id - 1) + "\nMax Level:" + MainProcess.GetPlayerPassiveSkillManager(player_id).getMaxLevel(current_id - 1);
         //Skill_video.texture=
         Current.GetComponent<RectTransform>().position = shop_skill[current_id].skillicon.GetComponent<RectTransform>().position;
-        if(shop_skill[current_id].level>5)
+        if(shop_skill[current_id].level>MainProcess.GetPlayerPassiveSkillManager(player_id).getMaxLevel(current_id-1))
         {
             Tips.text = "<color=#00ff00ff>The skill had been updated to the max level, press [ESC] to quit.</color>";
         }
         else if(points>0)
         {
-            Tips.text ="<color=#00ff00ff>Press [Enter] to buy this skill, press [ESC] to quit.</color>";
+            Tips.text = "<color=#00ff00ff>Press [Enter] to update this skill, press [ESC] to quit.</color>";
         }
         else
         {
@@ -315,11 +311,11 @@ public class Passive_Skill_Updater_Fullcontrol : MonoBehaviour {
             }
         }
 
-        if(points>0 && shop_skill[current_id].level<5)
+        if(points>0 && shop_skill[current_id].level<MainProcess.GetPlayerPassiveSkillManager(player_id).getMaxLevel(current_id-1))
         {
             if(Input.GetKeyDown(KeyCode.Return))
             {
-                //MainProcess.GetPlayerPassiveSkillManager().addPointToSkill(current_id);
+                MainProcess.GetPlayerPassiveSkillManager().addPointToSkill(PassiveSkillManager.Passives.StrengthBonus);
                 shop_skill[current_id].level++;
             }
         }
