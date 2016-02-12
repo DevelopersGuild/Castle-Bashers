@@ -90,7 +90,10 @@ public class MoveController : MonoBehaviour
 
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
-        if (!isMovementDisabled)
+        // Debug.Log(isMovementDisabled + " " + isKnockedDown + " " + gameObject.name);
+
+
+        if (!isMovementDisabled && !isKnockedDown)
         {
             UpdateRaycastOrigins();
             playerInput = input;
@@ -115,7 +118,7 @@ public class MoveController : MonoBehaviour
             updateGrounded();
             updateKnockback(ref velocity);
             updateFlinch(ref velocity);
-            updateKnockedDown();
+            // updateKnockedDown();
 
             if (velocity.x != 0)
             {
@@ -142,6 +145,7 @@ public class MoveController : MonoBehaviour
                 isMoving = true;
             }
         }
+        updateKnockedDown();
     }
 
     private void updateGrounded()
@@ -271,7 +275,6 @@ public class MoveController : MonoBehaviour
             {
                 resetFlinchCount();
             }
-            Debug.Log(isStunned);
         }
     }
 

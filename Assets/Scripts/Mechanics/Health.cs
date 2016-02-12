@@ -9,7 +9,8 @@ public class Health : MonoBehaviour
     public GameObject deathObject;
     public float bonusHP = 0;
     public float bonusPercentHP = 0;
-    private bool isInvincible;
+    public bool isInvincible;
+    private float invincilityTimer;
     private Player player;
     private MoveController moveController;
     private CrowdControllable crowdControllable;
@@ -103,13 +104,30 @@ public class Health : MonoBehaviour
     public void setToInvincible()
     {
         isInvincible = true;
-        player.DisableInput();
+        if(player)
+           player.DisableInput();
     }
 
     public void setToNotInvincible()
     {
         isInvincible = false;
-        player.enableInput();
+        if(player)
+            player.enableInput();
+    }
+
+    public void StartInvincibilityTimer()
+    {
+        isInvincible = true;
+        StartCoroutine(InvincilityTimerCoroutine(1.5f));
+    }
+
+    IEnumerator InvincilityTimerCoroutine(float waitTime)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            isInvincible = false;
+        }
     }
 
     public void PlayerDown()

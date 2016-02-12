@@ -39,7 +39,7 @@ public class AttackController : MonoBehaviour
                 Combo();
          }
 
-        if (timer - lastPress > 0.25f)
+        if (timer - lastPress > 0.2f)
         {
             tap = 0;
             anim.SetInteger("Tap", 0);
