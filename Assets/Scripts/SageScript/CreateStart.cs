@@ -40,7 +40,7 @@ public class CreateStart : MonoBehaviour {
         int AreaYCoord = 1;
         int AreaZCoord = 1;
         Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord) + (40* roomC), AreaYCoord, AreaZCoord), transform.rotation);
-        Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, 11), transform.rotation); //set front limits
+        Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, 9), transform.rotation); //set front limits
         Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, -8), transform.rotation); //set back limits
 
         double doorRoll = rnd.NextDouble();

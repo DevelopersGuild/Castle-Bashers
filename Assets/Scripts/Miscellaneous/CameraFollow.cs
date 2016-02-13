@@ -16,7 +16,7 @@ public class CameraFollow : MonoBehaviour
     public bool canMoveLeft;
     private bool isLocked;
 
-    public bool camerShakeIsOn = false;
+    public bool cameraShakeIsOn = false;
 
 
     //local variables
@@ -95,7 +95,7 @@ public class CameraFollow : MonoBehaviour
 
 
             v3PreviousFrameCameraPosition = v3FinalCameraPosition;
-            if (camerShakeIsOn == true)
+            if (cameraShakeIsOn == true)
             {
                 Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
                 v3FinalCameraPosition.x += v2ScreenShakeVector.x;
@@ -143,6 +143,18 @@ public class CameraFollow : MonoBehaviour
     public void setLock(bool set)
     {
         isLocked = set;
+    }
+
+    public void startScreenShake(float time)
+    {
+        cameraShakeIsOn = true;
+        StartCoroutine(CameraShakeCoroutine(time));
+    }
+
+    IEnumerator CameraShakeCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        cameraShakeIsOn = false;
     }
 }
 

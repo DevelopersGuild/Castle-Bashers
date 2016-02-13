@@ -145,6 +145,7 @@ MonoBehaviour:
   agroRange: 25
   attackRange: 11
   attack_CD: 2
+  attackShakesScreen: 0
   experienceAmount: 0
   attackSound: {fileID: 8300000, guid: 1c9a2d44ef4abab41ae0b9b3e11e04f0, type: 3}
   target: {fileID: 0}
@@ -188,6 +189,9 @@ MonoBehaviour:
   currentHealth: 0
   maxhp: 0
   deathObject: {fileID: 154478, guid: 7b4b056d221328349b3b4546ab4e005e, type: 2}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
   hitParticle: {fileID: 0}
@@ -202,10 +206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a94afc4892a9e4ba09048cbb63d5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 100
+  dropChance: 0
+  coinValue: 120
   items:
-  - {fileID: 135736, guid: 6cce3f7174544db4085550faa4c0da9d, type: 2}
-  itemDropRates: 0a000000
+  - {fileID: 0}
+  itemDropRates: 
 --- !u!212 &21225504
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -245,7 +250,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemDropRates.Array.size
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
@@ -286,7 +291,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: dropChance
-      value: 100
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: itemDropRates.Array.data[0]
@@ -296,6 +301,10 @@ Prefab:
       propertyPath: attackSound
       value: 
       objectReference: {fileID: 8300000, guid: 1c9a2d44ef4abab41ae0b9b3e11e04f0, type: 3}
+    - target: {fileID: 0}
+      propertyPath: coinValue
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 107678}
