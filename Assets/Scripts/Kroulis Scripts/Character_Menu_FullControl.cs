@@ -174,6 +174,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
         Player_Mana = Player_PF.GetComponent<Mana>();
         Player_Defense = Player_PF.GetComponent<Defense>();
         Player_ATK = Player_Script.AttackCollider.GetComponent<DealDamage>();
+
         //if (!Player_ATK)
         //    Debug.Log("Cannot Get Player_ATK");
         ATK.text = Player_Script.GetStrength().ToString();
@@ -200,6 +201,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
         select_current = 1;
         gem_selecting = false;
         passive_selecting = false;
+        gem_system.manager = main_process.GetPlayerGemManager(playerid);
     }
 
     void Update()
@@ -244,6 +246,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 //Start Selecting Gems
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
+
                     gem_system.selecting=1;
                     gem_system.subselecting = false;
                     gem_selecting = true;

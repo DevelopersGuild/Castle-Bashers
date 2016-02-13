@@ -2017,6 +2017,7 @@ MonoBehaviour:
   - {fileID: 764625533}
   - {fileID: 86277350}
   - {fileID: 1127136788}
+  NULL: {fileID: 0}
 --- !u!1 &845395257
 GameObject:
   m_ObjectHideFlags: 0
@@ -3980,6 +3981,7 @@ MonoBehaviour:
   - {fileID: 118895060}
   - {fileID: 114750792}
   - {fileID: 1797809387}
+  NULL: {fileID: 0}
   change: 0
   changing: 0
   playerid: 0
@@ -3987,6 +3989,7 @@ MonoBehaviour:
   selecting: 0
   subselecting: 0
   subindex: 0
+  manager: {fileID: 0}
 --- !u!1001 &1436991881
 Prefab:
   m_ObjectHideFlags: 0

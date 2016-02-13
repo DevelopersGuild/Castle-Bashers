@@ -7,6 +7,8 @@ public class Gem
     protected bool active = false;
     protected Player player;
     protected string gemName = "";
+    protected Sprite gemIcon;
+    protected int gemType; // 1: ATK 2. DEF 3.SUP 4.ADS
     protected string description;
     protected int quality; // 1: Normal 2: Rare  3: Epic
 
@@ -44,8 +46,24 @@ public class Gem
         player = p;
     }
 
+    public void setGemType(int type)
+    {
+        gemType = type;
+    }
+
+    public void setGemIcon(Sprite icon)
+    {
+        gemIcon = icon;
+    }
+
     public string getName() { return gemName; }
     public int getQuality() { return quality; }
+
+    public int getGemType() { return gemType; }
+
+    public Sprite getGemIcon() { return gemIcon; }
+
+    public string GetDescription() { return description; }
 }
 
 
@@ -58,7 +76,7 @@ class StrengthGem : Gem
         base.Start();
         gemName = "Strength Gem";
         description = "Increases Strength by 10";
-        
+        gemType = 2;
     }
 
     public override void activate()
@@ -91,7 +109,7 @@ class AgilityGem : Gem
         base.Start();
         gemName = "Strength Gem";
         description = "Increases Strength by 10";
-
+        gemType = 3;
     }
 
     public override void activate()
@@ -170,6 +188,18 @@ public class GemManager : MonoBehaviour {
         return 0;
     }
 
+    public bool unequip(int index)
+    {
+        if(equippedGems[index]==null)
+        {
+            return false;
+        }
+        equippedGems[index].deactivate();
+        addGem(equippedGems[index]);
+        equippedGems[index] = null;
+        return true;
+    }
+
 
     //Will sort the array after removing a gem from the array
     public void removeGem(int index)
@@ -198,5 +228,23 @@ public class GemManager : MonoBehaviour {
         return 1;
     }
     
+    public Gem GetEquippedGem(int index)
+    {
+        return equippedGems[index];
+    }
 
+    public Gem[] GetEquippedGems()
+    {
+        return equippedGems;
+    }
+
+    public Gem GetStoredGem(int index)
+    {
+        return storedGems[index];
+    }
+
+    public Gem[] GetStoredGems()
+    {
+        return storedGems;
+    }
 }
