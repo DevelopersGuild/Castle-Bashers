@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float agroRange;
     public float attackRange;
     public float attack_CD;
+    public bool attackShakesScreen;
     public int experienceAmount;
     public AudioClip attackSound;
 
@@ -40,6 +41,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public Health hp;
     public AnimationController animationController;
+    protected CameraFollow cameraShake;
 
     public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
@@ -56,6 +58,7 @@ public class Enemy : MonoBehaviour
         sprRend = GetComponent<SpriteRenderer>();
         hp = GetComponent<Health>();
         animationController = GetComponent<AnimationController>();
+        cameraShake = FindObjectOfType<CameraFollow>();
         isInvincible = false;
         invTime = 0;
         stunTimer = 0;

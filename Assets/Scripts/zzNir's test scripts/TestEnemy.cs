@@ -103,6 +103,10 @@ public class TestEnemy : Enemy
         {
             AudioSource.PlayClipAtPoint(attackSound, transform.position);
         }
+        if(attackShakesScreen)
+        {
+            cameraShake.startScreenShake(.4f);
+        }
         bool facing = distL <= distR;
         if (facing)
         {

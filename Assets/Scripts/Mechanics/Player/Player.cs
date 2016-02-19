@@ -20,6 +20,19 @@ public class Player : MonoBehaviour
     public int Strength = 10;
     public int Agility = 10;
     public int Intelligence = 10;
+
+    public int bonusStamina = 0;
+    public int bonusPercentStamina = 0;
+
+    public int bonusStrength = 0;
+    public int bonusPercentStrength = 0;
+
+    public int bonusAgility = 0;
+    public int bonusPercentAgility = 0;
+
+    public int bonusIntelligence = 0;
+    public int bonusPercentIntelligence = 0;
+
     //The stats should remain public to allow them to be set in the editor.
     [HideInInspector]
     public Character_Class_Info CCI;
@@ -70,11 +83,15 @@ public class Player : MonoBehaviour
     private DealDamage attack;
     private Defense defense;
     private DealDamage dealDamage;
+
     //These are for primarily calculating damages and to queu the stats for buffs
     private float basePhysicalDamage;
-    private float baseMagicalDamage;
     private float bonusPhysicalDamage;
+    private float bonusPercentPhysicalDamage = 0;
+
+    private float baseMagicalDamage;
     private float bonusMagicalDamage;
+    private float bonusPercentMagicalDamage = 0;
 
     [System.NonSerialized] // Don't serialize this so the value is lost on an editor script recompile.
     private bool initialized;
@@ -133,8 +150,8 @@ public class Player : MonoBehaviour
         threatLevel = damageDealt = 0;
 
         GetComponent<ID>().setTime(false);
-        //CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
-        //si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
+        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
         Fully_Update();
     }
 
@@ -142,7 +159,7 @@ public class Player : MonoBehaviour
     {
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
-       
+        Vector2 input;
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -173,8 +190,19 @@ public class Player : MonoBehaviour
             invTime = 0;
         }
 
-        HandleInput();
-        Vector2 input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
+
+
+        if(!GetMoveController().isStunned)
+        {
+            input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
+            HandleInput();
+        }
+        else
+        {
+            input = new Vector2(0, 0);
+        }
+
+        
 
         if ((input.x == 0 && input.y == 0))
         {
@@ -286,107 +314,24 @@ public class Player : MonoBehaviour
     {
         isNotStunned = x;
     }
-
-    public void SetStrength(int strength)
+    
+    public bool GetInvincible()
     {
-        if (strength > 0)
-        {
-            Strength = strength;
-        }
-        else
-        {
-            Strength = 1;
-        }
+        return isInvincible;
     }
 
-    public void AddStrength(int value)
+    public void SetInvincible(bool x)
     {
-        Strength = Strength + value;
+        isInvincible = x;
     }
 
 
-    public int GetStrength()
-    {
-        return Strength;
-    }
 
-    public void SetStamina(int value)
-    {
-        if (value > 0)
-        {
-            Stamina = value;
-        }
-        else
-        {
-            Stamina = 1;
-        }
-
-    }
-
-    public void AddStamina(int value)
-    {
-        Stamina = Stamina + value;
-    }
-
-    public int GetStamina()
-    {
-        return Stamina;
-    }
-
-    public void SetAgility(int agility)
-    {
-        if (agility > 0)
-        {
-            Agility = agility;
-        }
-        else
-        {
-            Agility = 1;
-        }
-    }
-
-    public void AddAgility(int value)
-    {
-        Agility = Agility + value;
-    }
-
-    public int GetAgility()
-    {
-        return Agility;
-    }
-
-    public void SetIntelligence(int intelligence)
-    {
-        if (intelligence > 0)
-        {
-            Intelligence = intelligence;
-        }
-        else
-        {
-            Intelligence = 1;
-        }
-    }
-
-    public void AddIntelligence(int value)
-    {
-        Intelligence = Intelligence + value;
-    }
-
-    public int GetIntelligence()
-    {
-        return Intelligence;
-
-    }
-
-    public void AddDefense(int value)
-    {
-        defense.AddDefense(value);
-    }
 
     public void Fully_Update()
     {
         //health.Updata_Maxhp_withFullRegen();
-        health.SetMaxHP(Stamina * 5 + Strength + Agility + Intelligence);
+        health.SetMaxHP((Stamina * 5 + Strength + Agility + Intelligence));
         health.Full_Regen();
         mana.SetMaxMana(Stamina * 2 + Intelligence * 3);
         mana.Full_Regen();
@@ -439,6 +384,11 @@ public class Player : MonoBehaviour
     public void enableInput()
     {
         disableInput = false;
+    }
+
+    public bool getInputDisabled()
+    {
+        return disableInput;
     }
 
     private void UpdateState()
@@ -515,12 +465,13 @@ public class Player : MonoBehaviour
 
     public void Reset()
     {
+        Debug.Log("If this function is getting called, there is a chance Damen broke something");
         for (int i = 0; i < skill.Length; i++)
         {
             skill[i] = null;
         }
         skillManager.Reset();
-        setDamage(0);
+        //setDamage(0); //And this is the thing he may have broken
         //not actual algorithm
         threatLevel = (Strength + Intelligence) / (Strength + Intelligence + Agility);
     }
@@ -596,10 +547,7 @@ public class Player : MonoBehaviour
         return ret;
     }
 
-    public void setDamage(float f)
-    {
-        damageDealt = f;
-    }
+
 
     public void setDown(bool t)
     {
@@ -738,37 +686,103 @@ public class Player : MonoBehaviour
         skill_unlock[id] = value;
     }
 
-    public float getPhysicalDamage()
+
+
+    public float getPhysicalDamage() { return (basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk) * (1 + bonusPercentPhysicalDamage*0.01f); }
+    public float getBasePhysicalDamage() { return basePhysicalDamage; }
+    public float getBonusPhysicalDamage() { return bonusPhysicalDamage; }
+    public float getBonusPercentPhysicalDamage() { return bonusPercentPhysicalDamage; }
+
+    public float getMagicalDamage(){ return (baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk) * (1+ bonusPercentMagicalDamage*0.01f);}
+    public float getBaseMagicalDamage() { return baseMagicalDamage;}
+    public float getBonusMagicalDamage() { return bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk;}
+    public float getBonusPercentMagicalDamage() { return bonusPercentMagicalDamage; }
+
+    public void addBonusPhysicalDamage(float i) { bonusPhysicalDamage += i; }
+    public void addBonusMagicalDamage(float i) { bonusMagicalDamage += i; }
+    public void AddDefense(int value) { defense.AddDefense(value); }
+
+    public void AddStrength(int value) { Strength += value; }
+    public void AddBonusStrength(int value) { bonusStrength += value; }
+    public void AddBonusPercentStrength(int value) { bonusPercentStrength += value; }
+
+    public void AddStamina(int value) { Stamina += value; }
+    public void AddBonusStamina(int value) { bonusStamina += value; }
+    public void AddBonusPercentStamina(int value) { bonusPercentStamina += value; }
+
+    public void AddAgility(int value) { Agility += value; }
+    public void AddBonusAgility(int value) { bonusAgility += value; }
+    public void AddBonusPercentAgility(int value) { bonusPercentAgility += value; }
+
+    public void AddIntelligence(int value) { Intelligence += value; }
+    public void AddBonusIntelligence(int value) { bonusIntelligence += value; }
+    public void AddBonusPercentIntelligence(int value) { bonusPercentIntelligence += value; }
+
+    public int GetStrength() { return Strength; }
+    public int GetStamina() { return Stamina; }
+    public int GetAgility() { return Agility; }
+    public int GetIntelligence() { return Intelligence; }
+
+    /*
+    public void setDamage(float f)
     {
-        Debug.Log(CCI.Class_info[class_id].weapon[weapon_level].patk);
-        return basePhysicalDamage + bonusPhysicalDamage + CCI.Class_info[class_id].weapon[weapon_level].patk;
-    }
-    public float getMagicalDamage()
+        damageDealt = f;
+    }*/
+
+
+    public void SetStrength(int strength)
     {
-        return baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk;
+        if (strength > 0)
+        {
+            Strength = strength;
+        }
+        else
+        {
+            Strength = 1;
+        }
     }
-    public float getBasePhysicalDamage()
+
+    public void SetStamina(int value)
     {
-        return basePhysicalDamage;
+        if (value > 0)
+        {
+            Stamina = value;
+        }
+        else
+        {
+            Stamina = 1;
+        }
+
     }
-    public float getBaseMagicalDamage()
+
+    public void SetAgility(int agility) {
+        if (agility > 0)
+        {
+            Agility = agility;
+        }
+        else
+        {
+            Agility = 1;
+        }
+    }
+
+
+    public void SetIntelligence(int intelligence)
     {
-        return baseMagicalDamage;
+        if (intelligence > 0)
+        {
+            Intelligence = intelligence;
+        }
+        else
+        {
+            Intelligence = 1;
+        }
     }
-    public float getBonusPhysicalDamage()
-    {
-        return bonusPhysicalDamage;
-    }
-    public float getBonusMagicalDamage()
-    {
-        return bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk; ;
-    }
-    public void addBonusPhysicalDamage(float i)
-    {
-        bonusPhysicalDamage += i;
-    }
-    public void addBonusMagicalDamage(float i)
-    {
-        bonusMagicalDamage += i;
-    }
+
+
+
+
+
 }
+
+
