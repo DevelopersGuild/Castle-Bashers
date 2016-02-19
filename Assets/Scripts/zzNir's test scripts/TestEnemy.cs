@@ -4,6 +4,8 @@ using System;
 
 public class TestEnemy : Enemy
 {
+
+
     public GameObject attackCollider;
     private GameObject attCol;
     public Type classification;
@@ -15,12 +17,22 @@ public class TestEnemy : Enemy
         base.Start();
         speed = 4;
         attack_CD = 2;
+        targetRefresh = 10;
     }
 
     // Update is called once per frame
     void Update()
     {
         base.Update();
+        if(targetRefresh > targetRefreshLimit)
+        {
+            actor.MoveOrder(targetPos);
+            actor.setTarg(target);
+            //actor.setZ(half.z);
+            targetRefresh = 0;
+        }
+        //targetRefresh += Time.deltaTime;
+        /*
         if (!freeFall)
         {
             if (target != null)
@@ -71,6 +83,7 @@ public class TestEnemy : Enemy
         animationController.isAttacking = isAttacking;
 
        // Debug.Log(moveController.isMoving);
+       */
 
         invTime -= Time.deltaTime;
         attack_CD += Time.deltaTime;
@@ -86,7 +99,7 @@ public class TestEnemy : Enemy
 
     private void spawnAttackCollider()
     {
-        if(attackSound)
+        if (attackSound)
         {
             AudioSource.PlayClipAtPoint(attackSound, transform.position);
         }
