@@ -93,9 +93,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 100
-  items:
-  - {fileID: 135736, guid: 0606b01ab26d2544084e1223b12f368e, type: 2}
-  itemDropRates: 0a000000
+  coinValue: 280
+  items: []
+  itemDropRates: 
 --- !u!114 &11469100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -111,7 +111,7 @@ MonoBehaviour:
   attackRange: 1
   attack_CD: 5
   attackShakesScreen: 1
-  experienceAmount: 0
+  experienceAmount: 500
   attackSound: {fileID: 8300000, guid: 52f5efe01edb13140a725b26ab255d26, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -131,6 +131,8 @@ MonoBehaviour:
   zDiff: 0
   distL: 0
   distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
@@ -138,6 +140,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   animationController: {fileID: 0}
   classification: 0
+  actor: {fileID: 0}
   attackCollider: {fileID: 130992, guid: 08e3a8e95a01cdb4fa2a9d488c5e35cd, type: 2}
   classification: 0
 --- !u!114 &11472708

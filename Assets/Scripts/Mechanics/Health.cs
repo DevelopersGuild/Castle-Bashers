@@ -167,9 +167,9 @@ public class Health : MonoBehaviour
         }
 
         // Reward all players with experience if an enemy died
-        if (GetComponent<Enemy>())
+        if (GetComponent<TestEnemy>())
         {
-            Enemy enemy = GetComponent<Enemy>();
+            TestEnemy enemy = GetComponent<TestEnemy>();
             if (currentHealth <= 0)
             {
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
