@@ -10,7 +10,7 @@ public class Enemy : MonoBehaviour
     public float attack_CD;
     public int experienceAmount;
     public AudioClip attackSound;
-    
+
     [HideInInspector]
     public GameObject target;
     [HideInInspector]
@@ -30,7 +30,7 @@ public class Enemy : MonoBehaviour
 
     //for melee
     [HideInInspector]
-    public float distL, distR;
+    public float distL, distR, targetRefresh, targetRefreshLimit;
     [HideInInspector]
     public bool toLeft;
     [HideInInspector]
@@ -44,6 +44,8 @@ public class Enemy : MonoBehaviour
     public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
 
+    [HideInInspector]
+    public Actor actor;
 
     // Use this for initialization
     public void Start()
@@ -58,7 +60,9 @@ public class Enemy : MonoBehaviour
         invTime = 0;
         stunTimer = 0;
         speed = 1;
-      
+
+        targetRefresh = 0;
+        targetRefreshLimit = 0.25f;
 
         distL = distR = 50;
         toLeft = true;
@@ -75,14 +79,17 @@ public class Enemy : MonoBehaviour
         zDiff = 0;
 
         vel = gravity;
+
+        actor = GetComponent<Actor>();
     }
 
     // Update is called once per frame
     public void Update()
     {
-        if(target == null)
+        if (target == null)
         {
             target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
+            actor.MoveOrder(targetPos);
             targetPos = target.transform.position;
         }
         if (!moveController.collisions.below)
@@ -134,7 +141,7 @@ public class Enemy : MonoBehaviour
         //velocity.x = Mathf.SmoothDamp(velocity.x, 6, ref velocityXSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         //velocity.z = Mathf.SmoothDamp(velocity.z, 10, ref velocityZSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         moveController.Move(velocity * Time.deltaTime * force);
-        
+
     }
 
 
@@ -193,7 +200,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
+
 
 }
 
