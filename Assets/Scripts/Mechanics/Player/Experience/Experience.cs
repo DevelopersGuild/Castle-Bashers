@@ -9,7 +9,7 @@ public class Experience : MonoBehaviour
     private int ExperincePoints;
     private int ExperincePointUsed = 0;
     private int currentExperince;
-    private int experinceUntilNextLevel = 1000;
+    private int experinceUntilNextLevel = 10;
     private Character_Class_Info class_info;
     private Player player;
     
@@ -60,6 +60,8 @@ public class Experience : MonoBehaviour
         {
             upgrade_flag = true;
             //experinceUntilNextLevel = currentExperince * 2;
+            //Debug.Log("EXP -- CUR: " + currentExperince.ToString() + " Need: " + experinceUntilNextLevel.ToString());
+            currentExperince -= experinceUntilNextLevel;
             ++currentLevel;
             experinceUntilNextLevel = (int)(Math.Pow(10, (int)(currentLevel / 10) + 1) * Math.Pow(1.2 + 0.001 * (currentLevel % 10), currentLevel % 10));
             //ExperincePoints = currentLevel * ExperincePointsPerLevel;
