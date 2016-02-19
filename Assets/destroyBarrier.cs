@@ -28,8 +28,11 @@ public class destroyBarrier : MonoBehaviour {
 
         room = FindObjectOfType<CreateStart>().GetComponent<CreateStart>();
 
-        if(CreateStart.roomCount!=1) //never create a mob in the first room
-        room.MakeMob(CreateStart.roomCount);
+        if (CreateStart.roomCount != 1) //never create a mob in the first room
+        {
+            room.MakeMob(CreateStart.roomCount);
+            room.MakeObjects(CreateStart.roomCount);
+        }
 
         if (CreateStart.squadSize == 0)
             E_Dead = true;
