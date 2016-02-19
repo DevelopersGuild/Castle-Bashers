@@ -7,36 +7,47 @@ public class UI_Gem_Selector : MonoBehaviour {
     public Text[] Gem_D=new Text[6];
     public Image[] Gem_I = new Image[6];
     public Sprite NULL;
+    public Image cur;
 
     private GemManager current_gemManager;
+    private int eqid;
     private int current_page;
     private int pages;
     private int current_select;
     private int size;
     private Gem[] gems;
 
-    public void StartSelecting(GemManager manager)
+    public void StartSelecting(GemManager manager,int _eqid)
     {
         current_gemManager = manager;
         gems = manager.GetStoredGems();
         size = gems.Length;
-        if( size%6 > 0 )
+        if (size % 6 > 0)
         {
             pages = size / 6 + 1;
         }
+        else
+            pages = size / 6;
         current_page = 1;
         current_select = 0;
+        eqid = _eqid-1;
+        if (size == 0)
+            cur.gameObject.SetActive(false);
+        else
+            cur.gameObject.SetActive(true);
+        gameObject.SetActive(true);
+        Debug.Log("size " + size.ToString());
     }
 
-    void Updata()
+    void Update()
     {
         if(current_gemManager!=null)
         {
-            page.text = current_page.ToString() + "//" + pages.ToString();
+            page.text = current_page.ToString() + "/" + pages.ToString();
             for(int i=1;i<=6;i++)
             {
                 int real_position=(current_page-1)*6+i;
-                if(real_position<=size)
+                if (real_position <= size && gems[real_position - 1]!=null)
                 {
                     Gem_I[i - 1].sprite = gems[real_position-1].getGemIcon();
                     string descri = "";
@@ -76,8 +87,8 @@ public class UI_Gem_Selector : MonoBehaviour {
                 }
                 else
                 {
-                    Gem_I[i].sprite = NULL;
-                    Gem_D[i].text = "";
+                    Gem_I[i-1].sprite = NULL;
+                    Gem_D[i-1].text = "";
                 }
             }
             
@@ -85,40 +96,50 @@ public class UI_Gem_Selector : MonoBehaviour {
         if (current_page<pages)
         {
             if (Input.GetKeyDown(KeyCode.PageDown))
+            {
                 current_page++;
+                current_select = 0;
+            }
+                
         }
         if (current_page>1)
         {
             if (Input.GetKeyDown(KeyCode.PageUp))
+            {
                 current_page--;
+                current_select = 5;
+            }
+                
         }
         if (current_select < 5 && ((current_page-1)*6+current_select+1)<size && (Input.GetKeyDown(KeyCode.DownArrow)|| Input.GetKeyDown(KeyCode.RightArrow)))
         {
             current_select++;
         }
-        if (current_select == 5 && current_page<pages && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow)))
+        else if (current_select == 5 && current_page<pages && (Input.GetKeyDown(KeyCode.DownArrow) || Input.GetKeyDown(KeyCode.RightArrow)))
         {
             current_page++;
             current_select = 0;
         }
-        if (current_select > 0 && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
+        else if (current_select > 0 && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
         {
             current_select--;
         }
-        if (current_select == 0 && current_page>1 && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
+        else if (current_select == 0 && current_page>1 && (Input.GetKeyDown(KeyCode.UpArrow) || Input.GetKeyDown(KeyCode.LeftArrow)))
         {
             current_page--;
             current_select=5;
         }
         //cur?
-
+        cur.transform.localPosition = Gem_I[current_select].transform.localPosition;
         //Enter -> Select
         if(Input.GetKeyDown(KeyCode.Return))
         {
             //unequip
-
+            if (current_gemManager.GetEquippedGem(eqid) != null)
+                current_gemManager.unequip(eqid);
             //equip
-
+            current_gemManager.equip((current_page-1)*6+current_select);
         }
     }
+    
 }

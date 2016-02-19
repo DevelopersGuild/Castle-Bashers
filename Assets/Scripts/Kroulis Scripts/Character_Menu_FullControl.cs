@@ -246,7 +246,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 //Start Selecting Gems
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
-
+                    //gem_system.manager = main_process.GetPlayerGemManager(playerid);
                     gem_system.selecting=1;
                     gem_system.subselecting = false;
                     gem_selecting = true;
