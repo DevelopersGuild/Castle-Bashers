@@ -26,6 +26,7 @@ public class Actor : MonoBehaviour
     float checkTime = 0;
     float elapsedTime = 0;
     float zDiff = -1;
+    bool toP = false;
 
     private GameObject target;
 
@@ -55,7 +56,7 @@ public class Actor : MonoBehaviour
                     {
                         checkTime = elapsedTime + 1;
                         //SetTarget();
-                        MoveOrder(target.transform.position);
+                        MoveOrder(target.transform.position, toP);
                     }
 
                     if (path != null)
@@ -94,7 +95,7 @@ public class Actor : MonoBehaviour
         if ((Xdistance < 0.1 && Ydistance < 0.1) && m_target == currNode) //Reached target
         {
             //ChangeState(State.IDLE);
-            MoveOrder(target.transform.position);
+            MoveOrder(target.transform.position, toP);
         }
         else if (Xdistance < 0.1 && Ydistance < 0.1)
         {
@@ -115,7 +116,6 @@ public class Actor : MonoBehaviour
         path = control.Path(transform.position, m_target, zDiff);
         nodeIndex = 0;
         onNode = true;
-
     }
 
     public void setZ(float z)
@@ -123,9 +123,17 @@ public class Actor : MonoBehaviour
         zDiff = z;
     }
 
-    public void MoveOrder(Vector3 pos)
+    public void MoveOrder(Vector3 pos, bool toPlayer = false)
     {
+        toP = toPlayer;
+        if (toPlayer)
+        {
+            float f = Mathf.Sign(pos.x - transform.position.x);
+            m_target = pos + new Vector3(-1.5f, 0, 0) * f;
+        }
+        else
         m_target = pos;
+
         SetTarget();
         ChangeState(State.MOVING);
     }

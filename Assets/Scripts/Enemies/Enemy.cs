@@ -92,7 +92,7 @@ public class Enemy : MonoBehaviour
         if (target == null)
         {
             target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
-            actor.MoveOrder(targetPos);
+            //actor.MoveOrder(targetPos, true);
             targetPos = target.transform.position;
         }
         if (!moveController.collisions.below)

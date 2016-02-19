@@ -93,7 +93,6 @@ public class NodeControl : MonoBehaviour {
 	{
 		//Can I see the exit
 		float exitDistance = Vector3.Distance(startPos, targetPos);
-        Debug.Log(exitDistance);
         if (!Physics.Raycast(startPos, targetPos - startPos, exitDistance/2f))
 		{
 			List<Vector3> path = new List<Vector3>();
