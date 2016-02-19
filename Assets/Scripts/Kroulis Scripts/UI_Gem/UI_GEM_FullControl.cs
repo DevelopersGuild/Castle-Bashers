@@ -6,6 +6,7 @@ public class UI_GEM_FullControl : MonoBehaviour {
 
     public Image[] Gem = new Image[3];
     public Image[] Gem_Upper = new Image[3];
+    public Image Cur;
     public Sprite NULL;
 
     [HideInInspector]
@@ -60,6 +61,8 @@ public class UI_GEM_FullControl : MonoBehaviour {
 	void Update () {
 	    if(changing==true)
         {
+            Cur.gameObject.SetActive(true);
+            Cur.transform.localPosition = Gem[selecting - 1].transform.localPosition;
             if(subselecting==true)
             {
                 //selector.gameObject.SetActive(true);
@@ -87,7 +90,7 @@ public class UI_GEM_FullControl : MonoBehaviour {
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
                     subindex= 0;
-                    selector.StartSelecting(manager);
+                    selector.StartSelecting(manager,selecting);
                     subselecting = true;
                 }
             }
@@ -95,6 +98,7 @@ public class UI_GEM_FullControl : MonoBehaviour {
         }
         else
         {
+            Cur.gameObject.SetActive(false);
             selector.gameObject.SetActive(false);
         }
 
