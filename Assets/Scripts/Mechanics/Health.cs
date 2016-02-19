@@ -6,10 +6,15 @@ public class Health : MonoBehaviour
     public float RegenAmount;
     public float currentHealth=0;
     public float maxhp;
-    private bool isInvincible;
+    public GameObject deathObject;
+    public float bonusHP = 0;
+    public float bonusPercentHP = 0;
+    public bool isInvincible;
+    private float invincilityTimer;
     private Player player;
     private MoveController moveController;
     private CrowdControllable crowdControllable;
+    private bool isDead;
     
     public Vector3 damageTextOffset;
     public AudioClip hitSound;
@@ -51,15 +56,15 @@ public class Health : MonoBehaviour
 
     public void Full_Regen()
     {
-        currentHealth = maxhp;
+        currentHealth = GetMaxHP();
     }
 
     public void Regen()
     {
         currentHealth += (player.GetStamina() / RegenAmount);
-        if (currentHealth > maxhp)
+        if (currentHealth > GetMaxHP())
         {
-            currentHealth = maxhp;
+            currentHealth = GetMaxHP();
         }
     }
 
@@ -99,13 +104,30 @@ public class Health : MonoBehaviour
     public void setToInvincible()
     {
         isInvincible = true;
-        player.DisableInput();
+        if(player)
+           player.DisableInput();
     }
 
     public void setToNotInvincible()
     {
         isInvincible = false;
-        player.enableInput();
+        if(player)
+            player.enableInput();
+    }
+
+    public void StartInvincibilityTimer()
+    {
+        isInvincible = true;
+        StartCoroutine(InvincilityTimerCoroutine(1.5f));
+    }
+
+    IEnumerator InvincilityTimerCoroutine(float waitTime)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            isInvincible = false;
+        }
     }
 
     public void PlayerDown()
@@ -129,7 +151,6 @@ public class Health : MonoBehaviour
         }
         GetComponent<Player>().setDown(false);
         AddHealth((percentHealth / 100) * maxhp);
-        GetComponent<Animator>().SetBool("IsDead", false);
         return true;
     }
 
@@ -165,7 +186,18 @@ public class Health : MonoBehaviour
             GetComponent<DropLoot>().DropItem();
         }
 
+        if(deathObject)
+        {
+            Instantiate(deathObject, transform.position, Quaternion.identity);
+        }
         Destroy(gameObject);
+
+        // Destroy(gameObject);
+    }
+
+    public bool getIsDead()
+    {
+        return isDead;
     }
 
     void createFloatingText(float f)
@@ -183,13 +215,13 @@ public class Health : MonoBehaviour
     */
     public virtual float GetCurrentHealth()
     {
-        return gameObject.GetComponent<Health>().currentHealth;
+        return currentHealth;
     }
 
     public void AddHealth(float healthAmount)
     {
         currentHealth = currentHealth + healthAmount;
-        if(currentHealth > maxhp)
+        if(currentHealth > GetMaxHP())
         {
             currentHealth = maxhp;
         }
@@ -197,7 +229,16 @@ public class Health : MonoBehaviour
 
     public float GetMaxHP()
     {
-        return maxhp;
+        return maxhp * (1+bonusPercentHP*0.01f) + bonusHP;
+    }
+
+    public float getBonusHP()
+    {
+        return bonusHP;
+    }
+    public float getBonusPercentHP()
+    {
+        return bonusPercentHP;
     }
 
     public void SetMaxHP(float f)
@@ -208,5 +249,14 @@ public class Health : MonoBehaviour
     public void SetCurrentHP(float f)
     {
         currentHealth = f;
+    }
+
+    public void addBonusHP(float f)
+    {
+        bonusHP += f;
+    }
+    public void addBonusPercentHP(float f)
+    {
+        bonusPercentHP += f;
     }
 }

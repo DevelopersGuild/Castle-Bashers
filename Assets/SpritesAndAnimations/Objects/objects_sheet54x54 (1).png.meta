@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: 7c71aab8808fff7429e39d86f36df32b
-timeCreated: 1449128176
+timeCreated: 1455323744
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -19,6 +19,10 @@ TextureImporter:
     21300024: objects_sheet54x54 (1)_12
     21300026: objects_sheet54x54 (1)_13
     21300028: objects_sheet54x54 (1)_14
+    21300030: objects_sheet54x54 (1)_15
+    21300032: objects_sheet54x54 (1)_16
+    21300034: objects_sheet54x54 (1)_17
+    21300036: objects_sheet54x54 (1)_18
   serializedVersion: 2
   mipmaps:
     mipMapMode: 0
@@ -210,6 +214,46 @@ TextureImporter:
         serializedVersion: 2
         x: 319
         y: 424
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: objects_sheet54x54 (1)_15
+      rect:
+        serializedVersion: 2
+        x: 36
+        y: 334
+        width: 26
+        height: 15
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: objects_sheet54x54 (1)_16
+      rect:
+        serializedVersion: 2
+        x: 129
+        y: 334
+        width: 28
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: objects_sheet54x54 (1)_17
+      rect:
+        serializedVersion: 2
+        x: 223
+        y: 334
+        width: 30
+        height: 17
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: objects_sheet54x54 (1)_18
+      rect:
+        serializedVersion: 2
+        x: 319
+        y: 334
         width: 28
         height: 16
       alignment: 0

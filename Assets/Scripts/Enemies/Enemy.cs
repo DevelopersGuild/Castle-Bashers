@@ -8,6 +8,7 @@ public class Enemy : MonoBehaviour
     public float agroRange;
     public float attackRange;
     public float attack_CD;
+    public bool attackShakesScreen;
     public int experienceAmount;
     public AudioClip attackSound;
     
@@ -40,6 +41,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public Health hp;
     public AnimationController animationController;
+    protected CameraFollow cameraShake;
 
     public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
@@ -49,17 +51,16 @@ public class Enemy : MonoBehaviour
     public void Start()
     {
         //later on make it only target living players, priority on tanks
-        target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
-        targetPos = target.transform.position;
+        target = null;
         moveController = GetComponent<MoveController>();
         sprRend = GetComponent<SpriteRenderer>();
         hp = GetComponent<Health>();
         animationController = GetComponent<AnimationController>();
+        cameraShake = FindObjectOfType<CameraFollow>();
         isInvincible = false;
         invTime = 0;
         stunTimer = 0;
         speed = 1;
-      
 
         distL = distR = 50;
         toLeft = true;
@@ -81,6 +82,11 @@ public class Enemy : MonoBehaviour
     // Update is called once per frame
     public void Update()
     {
+        if(target == null)
+        {
+            target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
+            targetPos = target.transform.position;
+        }
         if (!moveController.collisions.below)
         {
             gravity.y += -0.1f;

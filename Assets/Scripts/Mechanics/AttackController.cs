@@ -21,11 +21,12 @@ public class AttackController : MonoBehaviour
 
     void Update()
     {
+        //Debug.Log(player.GetMoveController().isStunned);
 
         timer = Time.timeSinceLevelLoad;
-        if (player.playerRewired!=null)
-            if (player.playerRewired.GetButtonDown("Fire1"))
-            {
+        if (player.playerRewired!=null && player.playerRewired.GetButtonDown("Fire1") && !player.getInputDisabled() && !player.GetMoveController().isStunned)
+        {
+                
                 lastPress = Time.timeSinceLevelLoad;
                 if (tap > 2 && player.GetMoveController().GetIsGrounded())
                 {
@@ -36,12 +37,12 @@ public class AttackController : MonoBehaviour
                     tap++;
                 }
                 Combo();
-            }
+         }
 
-        if (timer - lastPress > 0.25f)
+        if (timer - lastPress > 0.2f)
         {
             tap = 0;
-            //anim.SetInteger("Tap", 0);
+            anim.SetInteger("Tap", 0);
             attack = false;
         }
     }

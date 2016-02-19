@@ -390,6 +390,10 @@ Prefab:
       propertyPath: m_RootOrder
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 11478010, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
   m_IsPrefabParent: 0
@@ -631,6 +635,7 @@ MonoBehaviour:
   isFlinchable: 1
   knockbackVelocity: .150000006
   isStunned: 0
+  isKnockedDown: 0
   playerInput: {x: 0, y: 0}
 --- !u!65 &1232206349
 BoxCollider:
@@ -735,11 +740,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -31.7999992
+      value: -29.5300007
       objectReference: {fileID: 0}
     - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 17.1098785
+      value: 10.46
       objectReference: {fileID: 0}
     - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
       propertyPath: m_LocalPosition.z

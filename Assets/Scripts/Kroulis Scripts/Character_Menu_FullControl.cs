@@ -15,7 +15,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
     public Main_Process main_process;
     //Character Infos
     Text ATK, DEF, STA, SPI, AGI, BATK, MATK, PDEF, MDEF, CRIR, C_HP, C_MP, C_EXP, C_NEXP, C_Name, C_LV, C_PASP;
-    Image C_ICON, weapon, amror, accer, cm_current, pas1, pas2, pas3;
+    Image C_ICON, weapon, amror, accer, cm_current,upgrade;
 
     private int select_current;
     private int playerid;
@@ -145,22 +145,11 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 cm_current = i;
                 continue;
             }
-            if(i.name=="C_PAS1")
+            if(i.name=="CM_Hover_Upgrade")
             {
-                pas1 = i;
+                upgrade = i;
                 continue;
             }
-            if (i.name == "C_PAS2")
-            {
-                pas2 = i;
-                continue;
-            }
-            if (i.name == "C_PAS3")
-            {
-                pas3 = i;
-                continue;
-            }
-
         }
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
         gem_system = GetComponentInChildren<UI_GEM_FullControl>();
@@ -185,6 +174,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
         Player_Mana = Player_PF.GetComponent<Mana>();
         Player_Defense = Player_PF.GetComponent<Defense>();
         Player_ATK = Player_Script.AttackCollider.GetComponent<DealDamage>();
+
         //if (!Player_ATK)
         //    Debug.Log("Cannot Get Player_ATK");
         ATK.text = Player_Script.GetStrength().ToString();
@@ -207,10 +197,11 @@ public class Character_Menu_FullControl : MonoBehaviour {
         weapon.sprite = CI.Class_info[Player_Script.GetClassID()].weapon[Player_Script.GetWeaponLV()].icon;
         amror.sprite = CI.Class_info[Player_Script.GetClassID()].armor[Player_Script.GetWeaponLV()].icon;
         accer.sprite = CI.Class_info[Player_Script.GetClassID()].accessory[Player_Script.GetWeaponLV()].icon;
-        //C_PASP.text=
+        C_PASP.text = Player_PF.GetComponent<PassiveSkillManager>().getAvailablePoints().ToString();
         select_current = 1;
         gem_selecting = false;
         passive_selecting = false;
+        gem_system.manager = main_process.GetPlayerGemManager(playerid);
     }
 
     void Update()
@@ -218,33 +209,34 @@ public class Character_Menu_FullControl : MonoBehaviour {
         switch (select_current)
         {
             case 1: //weapon
+                upgrade.gameObject.SetActive(false);
+                cm_current.gameObject.SetActive(true);
                 cm_current.transform.localPosition = weapon.transform.localPosition;
                 break;
             case 2: //amr
+                upgrade.gameObject.SetActive(false);
+                cm_current.gameObject.SetActive(true);
                 cm_current.transform.localPosition = amror.transform.localPosition;
                 break;
             case 3: //acy
+                upgrade.gameObject.SetActive(false);
+                cm_current.gameObject.SetActive(true);
                 cm_current.transform.localPosition = accer.transform.localPosition;
                 break;
-            case 4: //passive 1
-                cm_current.transform.localPosition = pas1.transform.localPosition;
-                break;
-            case 5: //passive 2
-                cm_current.transform.localPosition = pas2.transform.localPosition;
-                break;
-            case 6: //passive 3
-                cm_current.transform.localPosition = pas3.transform.localPosition;
+            case 4://upgrade passive
+                cm_current.gameObject.SetActive(false);
+                upgrade.gameObject.SetActive(true);
                 break;
         }
         if(!gem_selecting && !passive_selecting)
         {
             if(Input.GetKeyDown(KeyCode.RightArrow) || Input.GetKeyDown(KeyCode.DownArrow))
             {
-                select_current = select_current == 6 ? 1 : select_current + 1;
+                select_current = select_current == 4 ? 1 : select_current + 1;
             }
             if (Input.GetKeyDown(KeyCode.LeftArrow) || Input.GetKeyDown(KeyCode.UpArrow))
             {
-                select_current = select_current == 1 ? 6 : select_current - 1;
+                select_current = select_current == 1 ? 4 : select_current - 1;
             }
             //Gems
             if(select_current<4)
@@ -254,6 +246,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
                 //Start Selecting Gems
                 if(Input.GetKeyDown(KeyCode.Return))
                 {
+
                     gem_system.selecting=1;
                     gem_system.subselecting = false;
                     gem_selecting = true;
@@ -264,9 +257,9 @@ public class Character_Menu_FullControl : MonoBehaviour {
             else
             {
                 //Start Selecting Passive Skills
-                if(Input.GetKeyDown(KeyCode.Return))
+                if (Input.GetKeyDown(KeyCode.Return))
                 {
-                    passive_selecting = true;
+                    main_process.UI_Passive_Skill_Panel_Open(playerid);
                 }
             }
         }

@@ -24,7 +24,7 @@ public class GrabDamage : MonoBehaviour {
         {
             //player set to invincible, still takes damage from hair grab (and only grab)
             //set invincible off OnDestroy
-            target.SetInvincible(true);
+            target.GetComponent<Health>().setInvincility(true);
             if (tick >= tickInterval)
             {
                 //This is if magical defense is a percentage, which it is not. Will change when final defense system is known
@@ -47,7 +47,7 @@ public class GrabDamage : MonoBehaviour {
 
     void OnDestroy()
     {
-        target.SetInvincible(false);
+        target.GetComponent<Health>().setInvincility(false);
         Debug.Log("Hello? Is this working?");
     }
 

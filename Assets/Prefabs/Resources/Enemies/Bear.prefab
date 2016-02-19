@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.3239851, y: .899161339, z: -5.25242615}
+  m_LocalPosition: {x: -17.1493397, y: 11.3152237, z: -5.25242615}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -110,13 +110,16 @@ MonoBehaviour:
   agroRange: 10
   attackRange: 1
   attack_CD: 5
-  attackSound: {fileID: 0}
+  attackShakesScreen: 1
+  experienceAmount: 0
+  attackSound: {fileID: 8300000, guid: 52f5efe01edb13140a725b26ab255d26, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
   gravity: {x: 0, y: 0, z: 0}
   xhalf: {x: 0, y: 0, z: 0}
   half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
   moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
@@ -155,9 +158,10 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 0
+  isFlinchable: 1
   knockbackVelocity: 0
-  knockbackTime: 0
-  flinchTime: 0
+  flinchVelocity: .00999999978
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11485732
@@ -185,12 +189,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
   RegenAmount: 0
   currentHealth: 20
   maxhp: 30
+  deathObject: {fileID: 112044, guid: 85044cebeacee884b9b1eebb9a6f01ae, type: 2}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11498572
 MonoBehaviour:
   m_ObjectHideFlags: 1
