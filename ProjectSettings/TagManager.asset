@@ -9,6 +9,8 @@ TagManager:
   - DProj
   - Destructible
   - Enemy
+  - floor
+  - point
   layers:
   - Default
   - TransparentFX
