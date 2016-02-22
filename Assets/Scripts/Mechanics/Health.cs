@@ -82,12 +82,12 @@ public class Health : MonoBehaviour
         dmg = Mathf.CeilToInt(dmg);
         currentHealth -= dmg;
         createFloatingText(dmg);
-        moveController.handleFlinch(flinch); 
+
+        if(moveController)
+            moveController.handleFlinch(flinch); 
 
         if (currentHealth <= 0)
-        {
             Death();
-        }
     }
 
 

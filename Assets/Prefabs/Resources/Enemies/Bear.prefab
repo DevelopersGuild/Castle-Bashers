@@ -18,7 +18,7 @@ GameObject:
   - 95: {fileID: 9541958}
   - 114: {fileID: 11411294}
   - 114: {fileID: 11498572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.79999995, y: 4.94999981, z: .800000012}
+  m_Size: {x: 3.79999995, y: 4.94999981, z: 1.79999995}
   m_Center: {x: .579999983, y: -.920000017, z: 0}
 --- !u!95 &9541958
 Animator:
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
   walkSound: {fileID: 0}
   isMoving: 0
   horizontalRayCount: 4
@@ -290,6 +290,22 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: experienceAmount
       value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionMask.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 1.79999995
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
