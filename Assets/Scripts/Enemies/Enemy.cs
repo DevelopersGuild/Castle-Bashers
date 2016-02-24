@@ -41,7 +41,7 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public Health hp;
     public AnimationController animationController;
-    protected CameraFollow cameraShake;
+    protected CameraFollow camera;
 
     public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
@@ -58,7 +58,8 @@ public class Enemy : MonoBehaviour
         sprRend = GetComponent<SpriteRenderer>();
         hp = GetComponent<Health>();
         animationController = GetComponent<AnimationController>();
-        cameraShake = FindObjectOfType<CameraFollow>();
+        camera = FindObjectOfType<CameraFollow>();
+        
         isInvincible = false;
         invTime = 0;
         stunTimer = 0;

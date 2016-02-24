@@ -284,7 +284,6 @@ public class MoveController : MonoBehaviour
         {
             isFlinched = true;
             flinchCount += flinchPower;
-            Debug.Log(flinchCount);
             resetToFlinchTime();
         }
     }

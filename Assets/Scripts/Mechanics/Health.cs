@@ -188,11 +188,16 @@ public class Health : MonoBehaviour
 
         if(deathObject)
         {
-            Instantiate(deathObject, transform.position, Quaternion.identity);
+            Instantiate(deathObject, new Vector3(transform.position.x, 3.7f, transform.position.z), Quaternion.identity);
         }
-        Destroy(gameObject);
+        transform.position = new Vector3(transform.position.x, 100, transform.position.z);
+        StartCoroutine(DestroyCountDown());
+    }
 
-        // Destroy(gameObject);
+    IEnumerator DestroyCountDown()
+    {
+        yield return new WaitForSeconds(0.1f);
+        Destroy(gameObject);
     }
 
     public bool getIsDead()

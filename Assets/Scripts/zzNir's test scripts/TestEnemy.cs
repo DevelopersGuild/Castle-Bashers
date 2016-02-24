@@ -94,7 +94,7 @@ public class TestEnemy : Enemy
     {
         float f = UnityEngine.Random.Range(40, 100) / 100.0f;
         attack_CD = -f;
-        Debug.Log(f);
+        // Debug.Log(f);
         isAttacking = true;
         vel = Vector3.zero;
         yield return new WaitForSeconds(f);
@@ -114,7 +114,7 @@ public class TestEnemy : Enemy
         }
         if(attackShakesScreen)
         {
-            cameraShake.startScreenShake(.4f);
+            camera.startScreenShake(.4f);
         }
         bool facing = distL <= distR;
         if (facing)
