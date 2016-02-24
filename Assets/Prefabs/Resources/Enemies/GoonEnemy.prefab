@@ -18,7 +18,7 @@ GameObject:
   - 95: {fileID: 9534238}
   - 114: {fileID: 11477108}
   - 114: {fileID: 11464618}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: GoonEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +62,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 3, z: .5}
+  m_Size: {x: 1.5, y: 3, z: 2}
   m_Center: {x: -.400000006, y: -.50999999, z: 0}
 --- !u!95 &9534238
 Animator:
@@ -94,7 +94,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1792
   walkSound: {fileID: 0}
   isMoving: 0
   horizontalRayCount: 4
@@ -140,6 +140,8 @@ MonoBehaviour:
   zDiff: 0
   distL: 0
   distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
@@ -147,6 +149,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   animationController: {fileID: 0}
   classification: 0
+  actor: {fileID: 0}
   attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
   classification: 0
 --- !u!114 &11461634
@@ -271,7 +274,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits
-      value: 256
+      value: 1792
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
@@ -279,7 +282,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Size.z
-      value: .5
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attack_CD
@@ -308,6 +311,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: coinValue
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

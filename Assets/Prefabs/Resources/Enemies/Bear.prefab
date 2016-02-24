@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -17.1493397, y: 11.3152237, z: -5.25242615}
+  m_LocalPosition: {x: -24.445034, y: 26.6023502, z: -11.6348629}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -62,7 +62,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.79999995, y: 4.94999981, z: 1.79999995}
+  m_Size: {x: 3.79999995, y: 4.94999981, z: 3.5}
   m_Center: {x: .579999983, y: -.920000017, z: 0}
 --- !u!95 &9541958
 Animator:
@@ -156,7 +156,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 768
+    m_Bits: 1792
   walkSound: {fileID: 0}
   isMoving: 0
   horizontalRayCount: 4
@@ -293,7 +293,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits
-      value: 768
+      value: 1792
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
@@ -305,7 +305,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Size.z
-      value: 1.79999995
+      value: 3.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
