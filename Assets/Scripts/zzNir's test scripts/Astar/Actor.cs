@@ -27,6 +27,7 @@ public class Actor : MonoBehaviour
     float elapsedTime = 0;
     float zDiff = -1;
     bool toP = false;
+    bool canMove = false;
 
     private GameObject target;
 
@@ -39,7 +40,7 @@ public class Actor : MonoBehaviour
 
     void Update()
     {
-        m_speed = Time.deltaTime * m_speed_multi;
+        //m_speed = Time.deltaTime * m_speed_multi;
         elapsedTime += Time.deltaTime;
 
         if (elapsedTime > OldTime)
@@ -81,34 +82,44 @@ public class Actor : MonoBehaviour
         {
             for (int i = 0; i < path.Count - 1; ++i)
             {
-                Debug.DrawLine((Vector3)path[i], (Vector3)path[i + 1], Color.red, 0.01f);
+                Debug.DrawLine((Vector3)path[i], (Vector3)path[i + 1], Color.magenta, 0.01f);
             }
         }
-
-        Vector3 newPos = transform.position;
-
-        float Xdistance = newPos.x - currNode.x;
-        if (Xdistance < 0) Xdistance -= Xdistance * 2;
-        float Ydistance = newPos.z - currNode.z;
-        if (Ydistance < 0) Ydistance -= Ydistance * 2;
-
-        if ((Xdistance < 0.1 && Ydistance < 0.1) && m_target == currNode) //Reached target
+        if (canMove)
         {
-            //ChangeState(State.IDLE);
-            MoveOrder(target.transform.position, toP);
-        }
-        else if (Xdistance < 0.1 && Ydistance < 0.1)
-        {
-            nodeIndex++;
-            onNode = true;
-        }
+            Vector3 newPos = transform.position;
 
-        /***Move toward waypoint***/
-        Vector3 motion = currNode - newPos;
-        motion.Normalize();
-        newPos += motion * m_speed;
+            float Xdistance = newPos.x - currNode.x;
+            if (Xdistance < 0) Xdistance -= Xdistance * 2;
+            float Ydistance = newPos.z - currNode.z;
+            if (Ydistance < 0) Ydistance -= Ydistance * 2;
 
-        transform.position = newPos;
+            if ((Xdistance < 0.1 && Ydistance < 0.1) && m_target == currNode) //Reached target
+            {
+                //ChangeState(State.IDLE);
+                MoveOrder(target.transform.position, toP);
+            }
+            else if (Xdistance < 0.1 && Ydistance < 0.1)
+            {
+                nodeIndex++;
+                onNode = true;
+            }
+
+            /***Move toward waypoint***/
+            Vector3 motion = currNode - newPos;
+
+            //newPos += motion;
+            Debug.DrawLine(transform.position, currNode, Color.red, 0.01f);
+            GetComponent<Enemy>().Move(motion, 10);
+            //newPos += motion * m_speed;
+
+            //transform.position = newPos;
+        }
+    }
+
+    public void setMove(bool c)
+    {
+        canMove = c;
     }
 
     private void SetTarget()

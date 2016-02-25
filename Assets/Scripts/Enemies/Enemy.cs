@@ -92,7 +92,11 @@ public class Enemy : MonoBehaviour
         if (target == null)
         {
             target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
-            //actor.MoveOrder(targetPos, true);
+            if(target == null)
+            {
+                Destroy(gameObject);
+            }
+            actor.MoveOrder(targetPos, true);
             targetPos = target.transform.position;
         }
         if (!moveController.collisions.below)
@@ -166,7 +170,7 @@ public class Enemy : MonoBehaviour
 
                 if (distance > agroRange)
                 {
-                    Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
+                   // Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
                 }
                 else
                 {
@@ -175,8 +179,8 @@ public class Enemy : MonoBehaviour
                     else
                         dir = (targetPos + right - transform.position);
 
-                    if (distL > attackRange && distR > attackRange)
-                        Move(dir, speed);
+                    if (distL > attackRange && distR > attackRange) { }
+                       // Move(dir, speed);
 
                 }
             }
@@ -189,7 +193,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    Move(targetPos - transform.position, speed);
+                   // Move(targetPos - transform.position, speed);
                 }
             }
             else if (t == Type.Other)

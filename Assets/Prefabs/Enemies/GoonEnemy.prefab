@@ -24,7 +24,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &456066
 Transform:
   m_ObjectHideFlags: 1
@@ -32,7 +32,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 110718}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.5300007, y: 10.46, z: 3.29999995}
+  m_LocalPosition: {x: -38.5999985, y: 17.1098785, z: 3.29999995}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -102,7 +102,7 @@ MonoBehaviour:
   isKnockbackable: 1
   isFlinchable: 1
   knockbackVelocity: .150000006
-  flinchVelocity: .00300000003
+  flinchVelocity: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11437056
@@ -140,6 +140,8 @@ MonoBehaviour:
   zDiff: 0
   distL: 0
   distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
@@ -147,6 +149,7 @@ MonoBehaviour:
   hp: {fileID: 0}
   animationController: {fileID: 0}
   classification: 0
+  actor: {fileID: 0}
   attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
   classification: 0
 --- !u!114 &11461634
@@ -161,15 +164,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RegenAmount: 0
-  currentHealth: 1
-  maxhp: 50
-  deathObject: {fileID: 139764, guid: f2ec1018d9457ad46b80776b44a4575e, type: 2}
+  currentHealth: 15
+  maxhp: 200
+  deathObject: {fileID: 0}
   bonusHP: 0
   bonusPercentHP: 0
   isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
-  hitSound: {fileID: 8300000, guid: 6f4364a421ed3a647899b794a55281cf, type: 3}
-  hitParticle: {fileID: 178844, guid: 549d59d3580cfc74ca9c08332b889cbd, type: 2}
+  hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11463478
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -208,9 +211,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 100
-  coinValue: 80
-  items: []
-  itemDropRates: 
+  coinValue: 0
+  items:
+  - {fileID: 0}
+  itemDropRates: 0a000000
 --- !u!212 &21231798
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -324,6 +328,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: coinValue
       value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DebugMode
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
