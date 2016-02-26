@@ -8,6 +8,7 @@ public class TestEnemy : Enemy
 
     public GameObject attackCollider;
     private GameObject attCol;
+    private CameraFollow cameraFollow;
     public Type classification;
 
 
@@ -18,21 +19,30 @@ public class TestEnemy : Enemy
         speed = 4;
         attack_CD = 2;
         targetRefresh = 10;
+        cameraFollow = FindObjectOfType<CameraFollow>();
     }
 
     // Update is called once per frame
     void Update()
     {
         base.Update();
-        if(targetRefresh > targetRefreshLimit)
+        if (targetRefresh > targetRefreshLimit)
         {
-            //actor.MoveOrder(targetPos, true);
-            //actor.setTarg(target);
-            //actor.setZ(half.z);
-            //targetRefresh = 0;
+            if (moveController.getCanMove() || isAttacking || isStunned || freeFall)
+            {
+                actor.setMove(false);
+            }
+            else
+            {
+                actor.setMove(true);
+            }
+            actor.MoveOrder(targetPos, true);
+            actor.setTarg(target);
+            actor.setZ(half.z);
+            targetRefresh = 0;
         }
-        //targetRefresh += Time.deltaTime;
-        
+        targetRefresh += Time.deltaTime;
+
         if (!freeFall)
         {
             if (target != null)
@@ -44,7 +54,7 @@ public class TestEnemy : Enemy
                     if (Math.Abs(zDiff) > half.z)
                     {
                         vel = new Vector3(0, 0, zDiff);
-                       // Move(new Vector3(0, 0, zDiff), speed);
+                        // Move(new Vector3(0, 0, zDiff), speed);
                     }
                     else if (distL <= attackRange || distR <= attackRange)
                     {
@@ -52,25 +62,31 @@ public class TestEnemy : Enemy
                         {
                             StartCoroutine(Attack());
                             //Attack();
-                            Move(new Vector3(0, 0, 0), 0);
+                            //Move(new Vector3(0, 0, 0), 0);
                         }
                     }
                 }
                 else
                 {
-                    Move(new Vector3(0, 0, 0), 0);
+                    // Move(new Vector3(0, 0, 0), 0);
+                }
+                if (target.GetComponent<Player>().getDown())
+                {
+                    if (FindObjectOfType<PlayerManager>().getUpPlayer() != null)
+                        target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
+                    else
+                        Destroy(gameObject);
+
                 }
             }
             else
             {
-                if (target.GetComponent<Player>().getDown())
+                if (FindObjectOfType<PlayerManager>().getUpPlayer() != null)
                     target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
                 else
-                {
-                    //player lost
-                    //Destroy(gameObject);
-                }
+                    Destroy(gameObject);
             }
+
             if (stunTimer > 0)
                 stunTimer -= Time.deltaTime;
             else
@@ -79,12 +95,15 @@ public class TestEnemy : Enemy
             if (invTime <= 0)
                 isInvincible = false;
         }
+        else
+        {
+            Move(vel, speed);
+        }
 
-        Move(vel, speed);
         animationController.isAttacking = isAttacking;
 
-       // Debug.Log(moveController.isMoving);
-       
+        // Debug.Log(moveController.isMoving);
+
 
         invTime -= Time.deltaTime;
         attack_CD += Time.deltaTime;
@@ -94,7 +113,6 @@ public class TestEnemy : Enemy
     {
         float f = UnityEngine.Random.Range(40, 100) / 100.0f;
         attack_CD = -f;
-        // Debug.Log(f);
         isAttacking = true;
         vel = Vector3.zero;
         yield return new WaitForSeconds(f);
@@ -112,9 +130,9 @@ public class TestEnemy : Enemy
         {
             AudioSource.PlayClipAtPoint(attackSound, transform.position);
         }
-        if(attackShakesScreen)
+        if (attackShakesScreen)
         {
-            camera.startScreenShake(.4f);
+            cameraFollow.startScreenShake(.4f);
         }
         bool facing = distL <= distR;
         if (facing)

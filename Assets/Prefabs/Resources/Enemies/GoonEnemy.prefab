@@ -18,7 +18,8 @@ GameObject:
   - 95: {fileID: 9534238}
   - 114: {fileID: 11477108}
   - 114: {fileID: 11464618}
-  m_Layer: 9
+  - 114: {fileID: 11459890}
+  m_Layer: 0
   m_Name: GoonEnemy
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -62,7 +63,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.5, y: 3, z: 2}
+  m_Size: {x: 1.5, y: 3, z: .5}
   m_Center: {x: -.400000006, y: -.50999999, z: 0}
 --- !u!95 &9534238
 Animator:
@@ -94,7 +95,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 1792
+    m_Bits: 256
   walkSound: {fileID: 0}
   isMoving: 0
   horizontalRayCount: 4
@@ -152,6 +153,18 @@ MonoBehaviour:
   actor: {fileID: 0}
   attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
   classification: 0
+--- !u!114 &11459890
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 110718}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba5a2ba574a7954cb91ecd188609c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugMode: 1
 --- !u!114 &11461634
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -274,7 +287,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits
-      value: 1792
+      value: 256
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
@@ -282,7 +295,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Size.z
-      value: 2
+      value: .5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: attack_CD
@@ -313,8 +326,8 @@ Prefab:
       value: 80
       objectReference: {fileID: 0}
     - target: {fileID: 0}
-      propertyPath: m_Layer
-      value: 9
+      propertyPath: DebugMode
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsActive

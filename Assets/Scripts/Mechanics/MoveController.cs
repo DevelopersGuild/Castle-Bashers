@@ -88,10 +88,14 @@ public class MoveController : MonoBehaviour
 
     }
 
+    public bool getCanMove()
+    {
+        return isMovementDisabled;
+    }
+
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
         // Debug.Log(isMovementDisabled + " " + isKnockedDown + " " + gameObject.name);
-
 
         if (!isMovementDisabled && !isKnockedDown)
         {

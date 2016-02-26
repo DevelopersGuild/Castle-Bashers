@@ -93,7 +93,11 @@ public class Enemy : MonoBehaviour
         if (target == null)
         {
             target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
-            //actor.MoveOrder(targetPos, true);
+            if(target == null)
+            {
+                Destroy(gameObject);
+            }
+            actor.MoveOrder(targetPos, true);
             targetPos = target.transform.position;
         }
         if (!moveController.collisions.below)
@@ -148,6 +152,14 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void MoveToDir(Vector3 vDirection, float force = 1)
+    {
+        Debug.Log(vDirection);
+        Vector3 velocity = vDirection - transform.position;
+        velocity = velocity.normalized;
+        moveController.Move(velocity * Time.deltaTime * force);
+    }
+
 
     //Next time I work on a game, it should use units for areas in the game and nice values for movements, too late now though
     //Everything would work a lot better if the ground was split into small squares that can be moved onto smoothly or something. Would help for pathfinding a lot too
@@ -167,7 +179,7 @@ public class Enemy : MonoBehaviour
 
                 if (distance > agroRange)
                 {
-                    Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
+                   // Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
                 }
                 else
                 {
@@ -176,8 +188,8 @@ public class Enemy : MonoBehaviour
                     else
                         dir = (targetPos + right - transform.position);
 
-                    if (distL > attackRange && distR > attackRange)
-                        Move(dir, speed);
+                    if (distL > attackRange && distR > attackRange) { }
+                       // Move(dir, speed);
 
                 }
             }
@@ -190,7 +202,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    Move(targetPos - transform.position, speed);
+                   // Move(targetPos - transform.position, speed);
                 }
             }
             else if (t == Type.Other)
