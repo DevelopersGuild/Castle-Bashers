@@ -83,7 +83,7 @@ public class UI_Gem_Selector : MonoBehaviour {
                             break;
                     }
                     descri += "<color=#ffffffff>" + gems[real_position - 1].GetDescription() + "</color>";
-                    Gem_D[i].text = descri;
+                    Gem_D[i-1].text = descri;
                 }
                 else
                 {

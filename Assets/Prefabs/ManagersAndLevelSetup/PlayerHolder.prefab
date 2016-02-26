@@ -58,6 +58,8 @@ GameObject:
   - 114: {fileID: 11450440}
   - 114: {fileID: 11445344}
   - 114: {fileID: 11413530}
+  - 114: {fileID: 11472232}
+  - 114: {fileID: 11454846}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -626,6 +628,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isAttacking: 0
+--- !u!114 &11454846
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902d3ebd0d827714283f9e5317fe70c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11455850
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -702,6 +715,18 @@ MonoBehaviour:
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
   hitParticle: {fileID: 0}
+--- !u!114 &11472232
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589665cc2b6990740a833a2f603b9b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availablePoints: 1
 --- !u!114 &11475768
 MonoBehaviour:
   m_ObjectHideFlags: 1
