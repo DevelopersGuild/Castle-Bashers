@@ -14,9 +14,9 @@ public class CameraFollow : MonoBehaviour
     public float flYAxisTolerance;
     public float flYChangeSpeed;
     public bool canMoveLeft;
-    private bool isLocked;
+    public bool isLocked;
 
-    public bool camerShakeIsOn = false;
+    public bool cameraShakeIsOn = false;
 
 
     //local variables
@@ -62,8 +62,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!isLocked)
-        {
+
             Vector3 totalAveragePosition = new Vector3();
             int size = 0;
 
@@ -95,7 +94,7 @@ public class CameraFollow : MonoBehaviour
 
 
             v3PreviousFrameCameraPosition = v3FinalCameraPosition;
-            if (camerShakeIsOn == true)
+            if (cameraShakeIsOn == true)
             {
                 Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
                 v3FinalCameraPosition.x += v2ScreenShakeVector.x;
@@ -103,11 +102,16 @@ public class CameraFollow : MonoBehaviour
 
             }
 
-            if (v3FinalCameraPosition.x > transform.position.x || canMoveLeft == true)
+
+            if (v3FinalCameraPosition.x > transform.position.x || canMoveLeft && !isLocked)
             {
-                transform.position = v3FinalCameraPosition;
+                transform.position = new Vector3(Mathf.Lerp(transform.position.x, v3FinalCameraPosition.x, 0.2f), v3FinalCameraPosition.y ,v3FinalCameraPosition.z);
             }
-        }
+            else if (isLocked)
+            {
+                transform.position = new Vector3(transform.position.x, v3FinalCameraPosition.y, v3FinalCameraPosition.z);
+            }
+       
 
     }
 
@@ -143,6 +147,18 @@ public class CameraFollow : MonoBehaviour
     public void setLock(bool set)
     {
         isLocked = set;
+    }
+
+    public void startScreenShake(float time)
+    {
+        cameraShakeIsOn = true;
+        StartCoroutine(CameraShakeCoroutine(time));
+    }
+
+    IEnumerator CameraShakeCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        cameraShakeIsOn = false;
     }
 }
 

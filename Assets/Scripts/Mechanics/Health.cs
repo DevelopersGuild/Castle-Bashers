@@ -6,12 +6,15 @@ public class Health : MonoBehaviour
     public float RegenAmount;
     public float currentHealth=0;
     public float maxhp;
+    public GameObject deathObject;
     public float bonusHP = 0;
     public float bonusPercentHP = 0;
-    private bool isInvincible;
+    public bool isInvincible;
+    private float invincilityTimer;
     private Player player;
     private MoveController moveController;
     private CrowdControllable crowdControllable;
+    private bool isDead;
     
     public Vector3 damageTextOffset;
     public AudioClip hitSound;
@@ -79,12 +82,12 @@ public class Health : MonoBehaviour
         dmg = Mathf.CeilToInt(dmg);
         currentHealth -= dmg;
         createFloatingText(dmg);
-        moveController.handleFlinch(flinch); 
+
+        if(moveController)
+            moveController.handleFlinch(flinch); 
 
         if (currentHealth <= 0)
-        {
             Death();
-        }
     }
 
 
@@ -101,13 +104,30 @@ public class Health : MonoBehaviour
     public void setToInvincible()
     {
         isInvincible = true;
-        player.DisableInput();
+        if(player)
+           player.DisableInput();
     }
 
     public void setToNotInvincible()
     {
         isInvincible = false;
-        player.enableInput();
+        if(player)
+            player.enableInput();
+    }
+
+    public void StartInvincibilityTimer()
+    {
+        isInvincible = true;
+        StartCoroutine(InvincilityTimerCoroutine(1.5f));
+    }
+
+    IEnumerator InvincilityTimerCoroutine(float waitTime)
+    {
+        while(true)
+        {
+            yield return new WaitForSeconds(waitTime);
+            isInvincible = false;
+        }
     }
 
     public void PlayerDown()
@@ -147,9 +167,9 @@ public class Health : MonoBehaviour
         }
 
         // Reward all players with experience if an enemy died
-        if (GetComponent<Enemy>())
+        if (GetComponent<TestEnemy>())
         {
-            Enemy enemy = GetComponent<Enemy>();
+            TestEnemy enemy = GetComponent<TestEnemy>();
             if (currentHealth <= 0)
             {
                 GameObject[] players = GameObject.FindGameObjectsWithTag("Player");
@@ -166,7 +186,23 @@ public class Health : MonoBehaviour
             GetComponent<DropLoot>().DropItem();
         }
 
+        if(deathObject)
+        {
+            Instantiate(deathObject, new Vector3(transform.position.x, 3.7f, transform.position.z), Quaternion.identity);
+        }
+        transform.position = new Vector3(transform.position.x, 100, transform.position.z);
+        StartCoroutine(DestroyCountDown());
+    }
+
+    IEnumerator DestroyCountDown()
+    {
+        yield return new WaitForSeconds(0.1f);
         Destroy(gameObject);
+    }
+
+    public bool getIsDead()
+    {
+        return isDead;
     }
 
     void createFloatingText(float f)

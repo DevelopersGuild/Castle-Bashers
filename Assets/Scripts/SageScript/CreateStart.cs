@@ -13,7 +13,8 @@ public class CreateStart : MonoBehaviour {
     public int Max_Objects; //nonnegative
     public int Min_Paths; //nonnegative
     public int Max_Paths; //nonnegative
-    public int position; //between 0 and 3
+    static public int position; //between 0 and 3
+    public int difficulty;
 
     public static int numRoom;
     int numEnemy;
@@ -40,14 +41,13 @@ public class CreateStart : MonoBehaviour {
         int AreaYCoord = 1;
         int AreaZCoord = 1;
         Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord) + (40* roomC), AreaYCoord, AreaZCoord), transform.rotation);
-        Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, 11), transform.rotation); //set front limits
+        Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, 9), transform.rotation); //set front limits
         Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, -8), transform.rotation); //set back limits
 
         double doorRoll = rnd.NextDouble();
 
         if (doorRoll >= DOORCHANCE)
         {
-            Debug.Log("hah");
             Instantiate(Resources.Load("LevelObjects/Door", typeof(GameObject)), new Vector3( AreaXCoord+ (40 * roomC), AreaYCoord, 8), Quaternion.Euler(90,0,0)); 
         }
 
@@ -56,6 +56,71 @@ public class CreateStart : MonoBehaviour {
         Instantiate(bg, new Vector3((AreaXCoord + roomC) * 40, 5, 13), transform.rotation);
 
         AreaID[roomC]= Instantiate(Resources.Load("LevelObjects/Right Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC)+20, 0, 0), transform.rotation).GetInstanceID();
+    }
+
+    public void MakeObjects(int room)
+    {
+        if (Min_Objects == 0 || Max_Objects == 0)
+            return;
+
+        else
+        {
+            numObj = rnd.Next(Min_Objects, Max_Objects);
+            int[] ObjectTypeArray = new int[numObj];
+            double[] X_coord = new double[numObj];
+            double[] Z_coord = new double[numObj];
+
+            for (int m = 0; m < numObj; m++) //creates object types
+            {
+                int testType = rnd.Next(0, 3);
+                ObjectTypeArray[m] = testType;
+                // Debug.Log("ObjectTypeArray at value" + m + "::" + ObjectTypeArray[m]);
+            }
+
+            double testtemp;
+            for (int m = 0; m < numObj; m++) //This loop gets us our X coordinates
+            {
+                testtemp = rnd.NextDouble(); //our X value
+                for (int n = 0; n < numObj; n++)//dummy test
+                {
+                    if (X_coord[n] == testtemp)
+                    {
+                        --m;
+                        testtemp = 0;
+                        n = numObj;
+                    }
+                    if (n == numObj - 1)
+                        X_coord[m] = testtemp;
+                }
+            }
+
+            for (int m = 0; m < numObj; m++) //This loop gets us our Z coordinates
+            {
+                testtemp = rnd.NextDouble(); //our Z value
+                for (int n = 0; n < numObj; n++) //dummy test
+                {
+                    if (Z_coord[n] == testtemp)
+                    {
+                        --m;
+                        testtemp = 0;
+                        n = numObj;
+                    }
+                    if (n == numObj - 1)
+                        Z_coord[m] = testtemp;
+                }
+            }
+
+            GameObject temp;
+
+            for (int m = 0; m < numObj; m++)
+            {
+                //Debug.Log("Created enemy number: " + squadSize + " succesffuly!");
+                temp = (GameObject)Resources.Load((string)Biome.Objects[(int)ActiveBiomeName, ObjectTypeArray[m]], typeof(GameObject));
+
+                if (temp != null)
+                    spawn(-1, temp, X_coord[m], Z_coord[m]);
+            }
+        }
     }
 
     public void MakeMob(int room)
@@ -111,7 +176,7 @@ public class CreateStart : MonoBehaviour {
             }
 
             GameObject temp;
-            position = rnd.Next(0, 3);
+            position = rnd.Next(3, 4);
 
             for (int m = 0; m < squadSize; m++)
             {
@@ -128,7 +193,10 @@ public class CreateStart : MonoBehaviour {
 
     public GameObject spawn(int position, GameObject enemy, double x, double z)
     {
-        if ((int)types.front == position)
+        if (position == -1)
+            return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount)* x)+10), 2, (float)z* 10), transform.rotation);
+
+        else if ((int)types.front == position)
             return(GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount - 1)) - (x * 5)), 5, (float)z * rnd.Next(-7, 10)), transform.rotation);
         
         else if ((int)types.back == position)
@@ -138,14 +206,14 @@ public class CreateStart : MonoBehaviour {
             return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount - 2)) + (x*5)+5), 15, (float)z * rnd.Next(-7, 10)), transform.rotation);
 
         else if ((int)types.surprise == position)
-             return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount-2)) - (x * 5)), 5, (float)z * rnd.Next(9, 10)), transform.rotation);
+             return (GameObject)Instantiate(enemy, new Vector3((float)((40 * (roomCount-2)) - (x*5)+ rnd.Next(-5,10)), 5, (float)z * rnd.Next(-7, 10)), transform.rotation);
 
         return enemy;
     }
 
 	// Use this for initialization
 	void Start () {
-        Debug.Log("Running");
+        // Debug.Log("Running");
         ///Preconditions///
         /// 
         //Debug.Log(Min_enemy + ", " + Max_enemy);

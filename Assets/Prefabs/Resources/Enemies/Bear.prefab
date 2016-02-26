@@ -18,7 +18,9 @@ GameObject:
   - 95: {fileID: 9541958}
   - 114: {fileID: 11411294}
   - 114: {fileID: 11498572}
-  m_Layer: 0
+  - 114: {fileID: 11470148}
+  - 114: {fileID: 11480916}
+  m_Layer: 9
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -32,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7.3239851, y: .899161339, z: -5.25242615}
+  m_LocalPosition: {x: -24.445034, y: 26.6023502, z: -11.6348629}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -59,10 +61,10 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155938}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 3.79999995, y: 4.94999981, z: .800000012}
+  m_Size: {x: 3.79999995, y: 4.94999981, z: 3.5}
   m_Center: {x: .579999983, y: -.920000017, z: 0}
 --- !u!95 &9541958
 Animator:
@@ -93,9 +95,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 100
-  items:
-  - {fileID: 135736, guid: 0606b01ab26d2544084e1223b12f368e, type: 2}
-  itemDropRates: 0a000000
+  coinValue: 280
+  items: []
+  itemDropRates: 
 --- !u!114 &11469100
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -110,13 +112,16 @@ MonoBehaviour:
   agroRange: 10
   attackRange: 1
   attack_CD: 5
-  attackSound: {fileID: 0}
+  attackShakesScreen: 1
+  experienceAmount: 5
+  attackSound: {fileID: 8300000, guid: 52f5efe01edb13140a725b26ab255d26, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
   gravity: {x: 0, y: 0, z: 0}
   xhalf: {x: 0, y: 0, z: 0}
   half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
   moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
@@ -128,6 +133,8 @@ MonoBehaviour:
   zDiff: 0
   distL: 0
   distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
@@ -135,8 +142,24 @@ MonoBehaviour:
   hp: {fileID: 0}
   animationController: {fileID: 0}
   classification: 0
+  actor: {fileID: 0}
+  pm: {fileID: 0}
+  difficulty: 0
+  spawn: 1
   attackCollider: {fileID: 130992, guid: 08e3a8e95a01cdb4fa2a9d488c5e35cd, type: 2}
   classification: 0
+--- !u!114 &11470148
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba5a2ba574a7954cb91ecd188609c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugMode: 0
 --- !u!114 &11472708
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -150,16 +173,32 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 1792
   walkSound: {fileID: 0}
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 0
+  isFlinchable: 1
   knockbackVelocity: 0
-  knockbackTime: 0
-  flinchTime: 0
+  flinchVelocity: .00999999978
   isStunned: 0
   playerInput: {x: 0, y: 0}
+--- !u!114 &11480916
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 155938}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a017986fc814841bf11ecb6ef5ad87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeTag: point
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 768
 --- !u!114 &11485732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -185,12 +224,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
   RegenAmount: 0
   currentHealth: 20
   maxhp: 30
+  deathObject: {fileID: 112044, guid: 85044cebeacee884b9b1eebb9a6f01ae, type: 2}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11498572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,6 +318,30 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxhp
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: experienceAmount
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionMask.m_Bits
+      value: 768
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 3.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nodeTag
+      value: point
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

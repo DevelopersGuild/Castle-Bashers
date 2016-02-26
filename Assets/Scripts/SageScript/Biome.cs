@@ -8,6 +8,7 @@ public class Biome : MonoBehaviour {
 
     public static string[,] EnemyList = new string[20, 30];
     public static string[,] Backgrounds = new string[20, 3];
+    public static string[,] Objects = new string[20, 10];
 
     int SnowyForest = 0;
     int Desert = 1;
@@ -27,6 +28,10 @@ public class Biome : MonoBehaviour {
 
         Backgrounds[SnowyForest, 0] = "Maps/BackgroundContainer";
         Backgrounds[SnowyForest, 1] = "Assets/SpritesAndAnimations/Objects/object_torch.png";
+
+        Objects[SnowyForest, 0] = "LevelObjects/Barrel";
+        Objects[SnowyForest, 1] = "Enemies/Traps/Spike Trap";
+        Objects[SnowyForest, 2] = "Enemies/Traps/StunTrap";
 
     }
 	

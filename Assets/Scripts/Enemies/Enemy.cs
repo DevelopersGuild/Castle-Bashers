@@ -8,9 +8,10 @@ public class Enemy : MonoBehaviour
     public float agroRange;
     public float attackRange;
     public float attack_CD;
+    public bool attackShakesScreen;
     public int experienceAmount;
     public AudioClip attackSound;
-    
+
     [HideInInspector]
     public GameObject target;
     [HideInInspector]
@@ -30,7 +31,7 @@ public class Enemy : MonoBehaviour
 
     //for melee
     [HideInInspector]
-    public float distL, distR;
+    public float distL, distR, targetRefresh, targetRefreshLimit;
     [HideInInspector]
     public bool toLeft;
     [HideInInspector]
@@ -40,10 +41,21 @@ public class Enemy : MonoBehaviour
     [HideInInspector]
     public Health hp;
     public AnimationController animationController;
+    protected CameraFollow camera;
 
     public Type classification;
     private float velocityXSmoothing, velocityZSmoothing;
 
+    [HideInInspector]
+    public Actor actor;
+    [HideInInspector]
+    public PlayerManager pm;
+
+    [HideInInspector]
+    public float difficulty;
+
+    [HideInInspector]
+    public bool spawn = true;
 
     // Use this for initialization
     public void Start()
@@ -54,11 +66,16 @@ public class Enemy : MonoBehaviour
         sprRend = GetComponent<SpriteRenderer>();
         hp = GetComponent<Health>();
         animationController = GetComponent<AnimationController>();
+        camera = FindObjectOfType<CameraFollow>();
+        pm = FindObjectOfType<PlayerManager>();
+
         isInvincible = false;
         invTime = 0;
         stunTimer = 0;
         speed = 1;
-      
+
+        targetRefresh = 0;
+        targetRefreshLimit = 0.25f;
 
         distL = distR = 50;
         toLeft = true;
@@ -75,14 +92,40 @@ public class Enemy : MonoBehaviour
         zDiff = 0;
 
         vel = gravity;
+
+        actor = GetComponent<Actor>();
+
+        difficulty = Globe.Map_difficulty;
+    }
+
+    void Awake()
+    {
+
     }
 
     // Update is called once per frame
     public void Update()
     {
-        if(target == null)
+        if (spawn)
+        {
+            spawn = false;
+
+            //not really final values, just showing scaling off num players and player level
+            //more enemies should spawn based on num players, but that's in robert's field
+            hp.SetMaxHP((int)(hp.GetMaxHP() * ((pm.getSize() * 0.25f) + 0.75f) * (pm.getAvgLevel() / 3.0f) * (1 + difficulty/20.0f)));
+            //armor = base armor * (numPlayers/4 + 0.75) * + (avgLevel/5);
+            //dmg increased on test enemy (will be enemy type by enemy type basis for all these really)
+            //avgLevel and numPlayers should be variables in enemy that are passed in by the spawning object, don't need a player manager on every enemy
+        }
+
+        if (target == null)
         {
             target = FindObjectOfType<PlayerManager>().getUpPlayer().gameObject;
+            if (target == null)
+            {
+                Destroy(gameObject);
+            }
+            actor.MoveOrder(targetPos, true);
             targetPos = target.transform.position;
         }
         if (!moveController.collisions.below)
@@ -129,12 +172,20 @@ public class Enemy : MonoBehaviour
     public void Move(Vector3 velocity, float force = 1)
     {
         velocity.y = gravity.y;
-
         velocity = velocity.normalized;
         //velocity.x = Mathf.SmoothDamp(velocity.x, 6, ref velocityXSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         //velocity.z = Mathf.SmoothDamp(velocity.z, 10, ref velocityZSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         moveController.Move(velocity * Time.deltaTime * force);
-        
+
+    }
+
+    public void MoveToDir(Vector3 vDirection, float force = 1)
+    {
+        Vector3 velocity = vDirection - transform.position;
+        velocity = velocity.normalized;
+        Debug.Log(velocity);
+        Debug.Log(vDirection);
+        moveController.Move(velocity * Time.deltaTime * force);
     }
 
 
@@ -156,7 +207,7 @@ public class Enemy : MonoBehaviour
 
                 if (distance > agroRange)
                 {
-                    Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
+                    // Move(new Vector3(targetPos.x - transform.position.x, 0, 0), 1.5f);
                 }
                 else
                 {
@@ -165,8 +216,8 @@ public class Enemy : MonoBehaviour
                     else
                         dir = (targetPos + right - transform.position);
 
-                    if (distL > attackRange && distR > attackRange)
-                        Move(dir, speed);
+                    if (distL > attackRange && distR > attackRange) { }
+                    // Move(dir, speed);
 
                 }
             }
@@ -179,7 +230,7 @@ public class Enemy : MonoBehaviour
                 }
                 else
                 {
-                    Move(targetPos - transform.position, speed);
+                    // Move(targetPos - transform.position, speed);
                 }
             }
             else if (t == Type.Other)
@@ -193,7 +244,7 @@ public class Enemy : MonoBehaviour
         }
     }
 
-    
+
 
 }
 

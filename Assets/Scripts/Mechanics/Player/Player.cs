@@ -150,8 +150,8 @@ public class Player : MonoBehaviour
         threatLevel = damageDealt = 0;
 
         GetComponent<ID>().setTime(false);
-        //CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
-        //si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
+        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
         Fully_Update();
     }
 
@@ -159,7 +159,7 @@ public class Player : MonoBehaviour
     {
         if (!ReInput.isReady) return; // Exit if Rewired isn't ready. This would only happen during a script recompile in the editor.
         if (!initialized) Initialize(); // Reinitialize after a recompile in the editor
-
+        Vector2 input;
 
         if (controller.collisions.above || controller.collisions.below)
         {
@@ -190,8 +190,19 @@ public class Player : MonoBehaviour
             invTime = 0;
         }
 
-        HandleInput();
-        Vector2 input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
+
+
+        if(!GetMoveController().isStunned)
+        {
+            input = new Vector2(playerRewired.GetAxisRaw("MoveHorizontal"), playerRewired.GetAxisRaw("MoveVertical"));
+            HandleInput();
+        }
+        else
+        {
+            input = new Vector2(0, 0);
+        }
+
+        
 
         if ((input.x == 0 && input.y == 0))
         {
@@ -373,6 +384,11 @@ public class Player : MonoBehaviour
     public void enableInput()
     {
         disableInput = false;
+    }
+
+    public bool getInputDisabled()
+    {
+        return disableInput;
     }
 
     private void UpdateState()

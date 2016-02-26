@@ -8,7 +8,7 @@ public class MeleeComboFinish : IAttack
     private float timer = 0;
     public IAttack HandleInput(Player player)
     {
-        if (player.playerRewired.GetButtonDown("Fire1"))
+        if (player.playerRewired.GetButtonDown("Fire1") && !player.getInputDisabled() && !player.GetMoveController().isStunned)
         {
             return new MeleeBasicAttack();
         }
@@ -21,7 +21,7 @@ public class MeleeComboFinish : IAttack
 
     public void EnterState(Player player)
     {
-        player.animator.SetBool("IsComboTriggered", true);
+      //  player.animator.SetBool("IsComboTriggered", true);
       //  player.GetAttackCollider().SetActive(true);
 
     }
@@ -33,7 +33,7 @@ public class MeleeComboFinish : IAttack
 
     public void ExitState(Player player)
     {
-        player.animator.SetBool("IsComboTriggered", false);
+     //   player.animator.SetBool("IsComboTriggered", false);
      //   player.GetAttackCollider().SetActive(false);
     }
 }

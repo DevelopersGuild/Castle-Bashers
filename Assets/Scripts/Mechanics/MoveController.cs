@@ -23,12 +23,13 @@ public class MoveController : MonoBehaviour
     // TODO: Make these things private after testing
     public bool isKnockbackable, isFlinchable;
     private bool isKnockedBack, isFlinched;
+    private bool isKnockedDown;
     public float knockbackVelocity;
+    public float flinchVelocity;
     private int flinchCount;
     private float knockbackTime = .075f, flinchTime = 0.75f;
     private float currentKnockbacktime, currentFlinchTime;
     public bool isStunned;
-    public bool isKnockedDown;
 
     private float height;
     private float screenWidthInPoints;
@@ -87,57 +88,68 @@ public class MoveController : MonoBehaviour
 
     }
 
+    public bool getCanMove()
+    {
+        return isMovementDisabled;
+    }
+
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
-        UpdateRaycastOrigins();
-        playerInput = input;
-        collisions.Reset();
+        // Debug.Log(isMovementDisabled + " " + isKnockedDown + " " + gameObject.name);
 
-        if (!isKnockedBack)
+        if (!isMovementDisabled && !isKnockedDown)
         {
-            if (velocity.x < 0 && facingRight)
+            UpdateRaycastOrigins();
+            playerInput = input;
+            collisions.Reset();
+
+            if (!isKnockedBack || !isKnockedDown)
             {
-                Flip();
+                if (velocity.x < 0 && facingRight)
+                {
+                    Flip();
+                }
+                else if (velocity.x > 0 && !facingRight)
+                {
+                    Flip();
+                }
             }
-            else if (velocity.x > 0 && !facingRight)
+            if (velocity.y != 0)
             {
-                Flip();
+                VerticalCollisions(ref velocity);
             }
-        }
-        if (velocity.y != 0)
-        {
-            VerticalCollisions(ref velocity);
-        }
 
-        updateGrounded();
-        updateKnockback(ref velocity);
-        updateFlinch();
-        updateKnockedDown();
+            updateGrounded();
+            updateKnockback(ref velocity);
+            updateFlinch(ref velocity);
+            // updateKnockedDown();
 
-        if (velocity.x != 0)
-        {
-            HorizontalCollisions(ref velocity);
-        }
+            if (velocity.x != 0)
+            {
+                HorizontalCollisions(ref velocity);
+            }
 
-        if (velocity.z != 0)
-        {
-            DepthCollisions(ref velocity);
-        }
+            if (velocity.z != 0)
+            {
+                DepthCollisions(ref velocity);
+            }
 
-        // Only move if the player isnt flinched or knocked down
-        if (!isFlinched && !isKnockedDown)
+            // Only move if the player isnt flinched or knocked down
+            // if (!isFlinched && !isKnockedDown)
             transform.Translate(velocity);
 
-        clampPosition(ref velocity);
+            clampPosition(ref velocity);
 
-        if(velocity.x == 0 && velocity.z == 0)
-        {
-            isMoving = false;
+            if (velocity.x == 0 && velocity.z == 0)
+            {
+                isMoving = false;
+            }
+            else
+            {
+                isMoving = true;
+            }
         }
-        else
-        {
-            isMoving = true;
-        }
+        updateKnockedDown();
     }
 
     private void updateGrounded()
@@ -157,23 +169,23 @@ public class MoveController : MonoBehaviour
         return isGrounded;
     }
 
-    private void disableMovement()
+    public void disableMovement()
     {
         isMovementDisabled = true;
     }
 
-    private void enableMovement()
+    public void enableMovement()
     {
         isMovementDisabled = false;
     }
 
     private void clampPosition(ref Vector3 veloctity)
     {
-        if(GetComponent<Player>())
+        if (GetComponent<Player>())
         {
-            if(transform.position.x > Camera.main.transform.position.x + screenWidthInPoints/2 || transform.position.x < Camera.main.transform.position.x - screenWidthInPoints/2)
+            if (transform.position.x > Camera.main.transform.position.x + screenWidthInPoints / 2 || transform.position.x < Camera.main.transform.position.x - screenWidthInPoints / 2)
             {
-                transform.position = new Vector3(Mathf.Clamp(transform.position.x, Camera.main.transform.position.x - screenWidthInPoints / 2, Camera.main.transform.position.x +(screenWidthInPoints / 2)), transform.position.y, transform.position.z);
+                transform.position = new Vector3(Mathf.Clamp(transform.position.x, Camera.main.transform.position.x - screenWidthInPoints / 2, Camera.main.transform.position.x + (screenWidthInPoints / 2)), transform.position.y, transform.position.z);
             }
         }
     }
@@ -197,13 +209,14 @@ public class MoveController : MonoBehaviour
 
                 if (GetComponent<ID>() && !GetComponent<Player>())
                 {
-                    if (GetComponent<ID>().getTime() )
+                    if (GetComponent<ID>().getTime())
                         currentKnockbacktime -= Time.unscaledDeltaTime;
                 }
-                else { 
+                else
+                {
                     currentKnockbacktime -= Time.deltaTime;
                 }
-    
+
                 // Stop pushing the player after knockbacktime and after hes hit the floor
                 if (currentKnockbacktime <= 0 && collisions.below == true)
                 {
@@ -214,29 +227,38 @@ public class MoveController : MonoBehaviour
             }
         }
     }
-    
+
     private void updateKnockedDown()
     {
         if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
         {
             isKnockedDown = true;
-            isMovementDisabled = true;
+            isStunned = true;
         }
-        else
+        else if (isKnockedDown)
         {
             isKnockedDown = false;
-            isMovementDisabled = false;
+            isStunned = false;
         }
     }
 
-    private void updateFlinch()
+    private void updateFlinch(ref Vector3 velocity)
     {
         if (isFlinched)
         {
             isStunned = true;
 
+            if (!facingRight)
+            {
+                velocity.x = flinchVelocity;
+            }
+            else
+            {
+                velocity.x = -flinchVelocity;
+            }
+
             // Knockback
-            if (flinchCount >= 10) 
+            if (flinchCount >= 10)
             {
                 resetFlinchCount();
                 isKnockedBack = true;
@@ -257,17 +279,15 @@ public class MoveController : MonoBehaviour
             {
                 resetFlinchCount();
             }
-
         }
     }
 
     public void handleFlinch(int flinchPower)
     {
-        if(isFlinchable)
+        if (isFlinchable)
         {
             isFlinched = true;
             flinchCount += flinchPower;
-            Debug.Log(flinchCount);
             resetToFlinchTime();
         }
     }
@@ -413,7 +433,7 @@ public class MoveController : MonoBehaviour
     {
         if (walkSound)
         {
-            source.pitch= Random.Range(0.4f, .6f);
+            source.pitch = Random.Range(0.4f, .6f);
             source.clip = walkSound;
             source.Play();
         }

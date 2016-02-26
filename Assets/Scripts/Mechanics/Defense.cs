@@ -26,8 +26,8 @@ public class Defense : MonoBehaviour
             if (Check_Block_Success())
                 damage = damage * 0.35f;
         damage = damage - GetPhysicalDefense();
-        if (!player)
-            Debug.Log(damage);
+        //if (!player)
+        //    Debug.Log(damage);
         if (damage > 0)
         {
             health.takeDamage(damage, flinch);
