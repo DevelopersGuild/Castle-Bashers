@@ -29,6 +29,7 @@ GameObject:
   m_Component:
   - 4: {fileID: 455118}
   - 65: {fileID: 6507004}
+  - 114: {fileID: 11439328}
   m_Layer: 0
   m_Name: CameraTrigger
   m_TagString: Untagged
@@ -140,7 +141,19 @@ MonoBehaviour:
   flYAxisTolerance: 3.3599999
   flYChangeSpeed: .100000001
   canMoveLeft: 1
+  isLocked: 0
   cameraShakeIsOn: 0
+--- !u!114 &11439328
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 195872}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: fd25e263df1215e43b2961ea3fe01e68, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!124 &12474074
 Behaviour:
   m_ObjectHideFlags: 1

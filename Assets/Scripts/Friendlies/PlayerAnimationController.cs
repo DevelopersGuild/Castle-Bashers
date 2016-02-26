@@ -7,6 +7,7 @@ public class PlayerAnimationController : MonoBehaviour {
     private Player player;
     private MoveController moveController;
     private AttackController attackController;
+    private CrowdControllable crowdControllable;
     private Health health;
     public bool isAttacking;
 
@@ -17,6 +18,7 @@ public class PlayerAnimationController : MonoBehaviour {
         moveController = GetComponent<MoveController>();
         animator = GetComponent<Animator>();
         attackController = GetComponent<AttackController>();
+        crowdControllable = GetComponent<CrowdControllable>();
         health = GetComponent<Health>();
         player = GetComponent<Player>();
     }
@@ -28,6 +30,7 @@ public class PlayerAnimationController : MonoBehaviour {
         {
             animator.SetBool("IsMoving", moveController.isMoving);
             animator.SetBool("IsFlinched", moveController.GetFlinched());
+            animator.SetBool("IsStunned", crowdControllable.getStun());
             animator.SetBool("IsKnockedBack", moveController.GetKnockedBack());
             animator.SetBool("IsJumping", player.getIsJumping());
             animator.SetBool("IsDead", player.getDown());
