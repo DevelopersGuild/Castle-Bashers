@@ -151,6 +151,14 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void MoveToDir(Vector3 vDirection, float force = 1)
+    {
+        Debug.Log(vDirection);
+        Vector3 velocity = vDirection - transform.position;
+        velocity = velocity.normalized;
+        moveController.Move(velocity * Time.deltaTime * force);
+    }
+
 
     //Next time I work on a game, it should use units for areas in the game and nice values for movements, too late now though
     //Everything would work a lot better if the ground was split into small squares that can be moved onto smoothly or something. Would help for pathfinding a lot too

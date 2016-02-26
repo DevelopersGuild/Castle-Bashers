@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -28,13 +29,16 @@ public class Actor : MonoBehaviour
     float zDiff = -1;
     bool toP = false;
     bool canMove = false;
+    Enemy me;
 
     private GameObject target;
 
     void Awake()
     {
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-        control = (NodeControl)cam.GetComponent(typeof(NodeControl));
+        me = GetComponent<Enemy>();
+        control = GetComponent<NodeControl>();
+        //control = (NodeControl)cam.GetComponent(typeof(NodeControl));
         target = null;
     }
 
@@ -42,7 +46,6 @@ public class Actor : MonoBehaviour
     {
         //m_speed = Time.deltaTime * m_speed_multi;
         elapsedTime += Time.deltaTime;
-
         if (elapsedTime > OldTime)
         {
             switch (state)
@@ -71,6 +74,10 @@ public class Actor : MonoBehaviour
                         else
                             MoveToward();
                     }
+                    else
+                    {
+                        me.MoveToDir(me.targetPos);
+                    }
                     break;
             }
         }
@@ -78,6 +85,7 @@ public class Actor : MonoBehaviour
 
     void MoveToward()
     {
+        Debug.Log("HER");
         if (DebugMode)
         {
             for (int i = 0; i < path.Count - 1; ++i)
@@ -90,27 +98,32 @@ public class Actor : MonoBehaviour
             Vector3 newPos = transform.position;
 
             float Xdistance = newPos.x - currNode.x;
-            if (Xdistance < 0) Xdistance -= Xdistance * 2;
-            float Ydistance = newPos.z - currNode.z;
-            if (Ydistance < 0) Ydistance -= Ydistance * 2;
+            float Ydistance = newPos.y - currNode.y;
+            float Zdistance = newPos.z - currNode.z;
 
-            if ((Xdistance < 0.1 && Ydistance < 0.1) && m_target == currNode) //Reached target
+            if ((Xdistance < 0.25 && Ydistance < 0.25) && m_target == currNode) //Reached target
             {
                 //ChangeState(State.IDLE);
                 MoveOrder(target.transform.position, toP);
             }
-            else if (Xdistance < 0.1 && Ydistance < 0.1)
+            else if (Math.Abs(Xdistance) < 0.25 && Math.Abs(Ydistance) < 0.25 && Math.Abs(Zdistance) < 0.25)
             {
                 nodeIndex++;
                 onNode = true;
+                if(nodeIndex < path.Count)
+                    currNode = path[nodeIndex];
+                else
+                {
+                    MoveOrder(target.transform.position, toP);
+                }
             }
 
             /***Move toward waypoint***/
             Vector3 motion = currNode - newPos;
-
+            Debug.Log(currNode);
             //newPos += motion;
             Debug.DrawLine(transform.position, currNode, Color.red, 0.01f);
-            GetComponent<Enemy>().Move(motion, 10);
+            me.MoveToDir(currNode, 10);
             //newPos += motion * m_speed;
 
             //transform.position = newPos;
@@ -144,7 +157,7 @@ public class Actor : MonoBehaviour
         }
         else
         m_target = pos;
-
+        elapsedTime += OldTime;
         SetTarget();
         ChangeState(State.MOVING);
     }

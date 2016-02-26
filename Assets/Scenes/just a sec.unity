@@ -85,25 +85,6 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
---- !u!1 &51440604 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 137518, guid: 7f801b4995f250345b855bbd8412441a, type: 2}
-  m_PrefabInternal: {fileID: 1830750085}
---- !u!114 &51440605
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 51440604}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 43a017986fc814841bf11ecb6ef5ad87, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  nodeTag: point
-  collisionMask:
-    serializedVersion: 2
-    m_Bits: 0
 --- !u!1001 &363384585
 Prefab:
   m_ObjectHideFlags: 0
@@ -246,6 +227,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   DebugMode: 1
+--- !u!114 &669366270
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 669366257}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a017986fc814841bf11ecb6ef5ad87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeTag: point
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!1 &807404321
 GameObject:
   m_ObjectHideFlags: 0
@@ -1185,7 +1181,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 9
+  m_RootOrder: 11
 --- !u!1 &1849645164 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 151902, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
@@ -1361,7 +1357,7 @@ Transform:
   m_LocalScale: {x: .675569534, y: .675569296, z: .828401089}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 12
+  m_RootOrder: 14
 --- !u!1 &1995052488
 GameObject:
   m_ObjectHideFlags: 0
