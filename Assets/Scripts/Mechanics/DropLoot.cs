@@ -72,21 +72,32 @@ public class DropLoot : MonoBehaviour
         int numBronze = currentValue / 5;
         currentValue %= 5;
 
+        GameObject coin;
+        // TODO: Make this cleaner
         for(int i = 0; i < numDiamond; i++)
         {
-            Instantiate(diamond, transform.position, transform.rotation);
+            coin = (GameObject)Instantiate(diamond, transform.position + 
+                new Vector3(Random.RandomRange(-.2f,.2f), Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f)), 
+                transform.rotation);
+            coin.GetComponent<Rigidbody>().AddExplosionForce(150, transform.position, 5);
         }
         for (int i = 0; i < numGold; i++)
         {
-            Instantiate(gold, transform.position, transform.rotation);
-        }
-        for (int i = 0; i < numGold; i++)
-        {
-            Instantiate(silver, transform.position, transform.rotation);
+            coin = (GameObject)Instantiate(gold, transform.position +
+                new Vector3(Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f)), transform.rotation);
+            coin.GetComponent<Rigidbody>().AddExplosionForce(100, transform.position, 5);
         }
         for (int i = 0; i < numSilver; i++)
         {
-            Instantiate(bronze, transform.position, transform.rotation);
+            coin = (GameObject)Instantiate(silver, transform.position +
+                new Vector3(Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f)), transform.rotation);
+            coin.GetComponent<Rigidbody>().AddExplosionForce(125, transform.position, 5);
+        }
+        for (int i = 0; i < numBronze; i++)
+        {
+            coin = (GameObject)Instantiate(bronze, transform.position +
+                new Vector3(Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f)), transform.rotation);
+            coin.GetComponent<Rigidbody>().AddExplosionForce(175, transform.position, 5);
         }
     }
 

@@ -152,6 +152,7 @@ public class Character_Menu_FullControl : MonoBehaviour {
             }
         }
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
+        CI = main_process.GetComponentInChildren<Character_Class_Info>();
         gem_system = GetComponentInChildren<UI_GEM_FullControl>();
         gem_system.mainp = main_process;
         select_current = 0;

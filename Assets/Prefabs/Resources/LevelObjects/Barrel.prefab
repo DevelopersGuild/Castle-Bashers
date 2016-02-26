@@ -14,7 +14,7 @@ GameObject:
   - 212: {fileID: 21247076}
   - 114: {fileID: 11434842}
   - 114: {fileID: 11473564}
-  m_Layer: 8
+  m_Layer: 10
   m_Name: Barrel
   m_TagString: Destructible
   m_Icon: {fileID: 0}
@@ -28,7 +28,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 185032}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -15.4799995, y: .829999983, z: 6.78999996}
+  m_LocalPosition: {x: -26.9899998, y: 1.75999999, z: .0199999996}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,7 +58,7 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2, y: 1, z: 1.52999997}
+  m_Size: {x: 1.00999999, y: 1.20000005, z: 1.52999997}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11409928
 MonoBehaviour:
@@ -72,9 +72,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 100
+  coinValue: 80
   items:
-  - {fileID: 135736, guid: 6cce3f7174544db4085550faa4c0da9d, type: 2}
-  itemDropRates: 0a000000
+  - {fileID: 0}
+  itemDropRates: 
 --- !u!114 &11434842
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -86,10 +87,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
-  startingHealth: 1
   RegenAmount: 0
+  currentHealth: 0
+  maxhp: 25
+  deathObject: {fileID: 0}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11473564
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -104,8 +111,6 @@ MonoBehaviour:
   defense: 0
   basePhysicalDefense: 0
   baseMagicalDefense: 0
-  PhysicalDefense: 0
-  MagicalDefense: 0
 --- !u!212 &21247076
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -130,7 +135,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300236, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 164284cbdad8f37448ff56f315851303, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -150,6 +155,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Enabled
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
