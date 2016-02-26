@@ -20,7 +20,6 @@ GameObject:
   - 114: {fileID: 11464618}
   - 114: {fileID: 11459890}
   - 114: {fileID: 11459304}
-  - 114: {fileID: 11497108}
   m_Layer: 0
   m_Name: GoonEnemy
   m_TagString: Untagged
@@ -153,6 +152,9 @@ MonoBehaviour:
   animationController: {fileID: 0}
   classification: 0
   actor: {fileID: 0}
+  pm: {fileID: 0}
+  difficulty: 0
+  spawn: 1
   attackCollider: {fileID: 167148, guid: 2ed29516e540352478fa98e478380812, type: 2}
   classification: 0
 --- !u!114 &11459304
@@ -244,18 +246,6 @@ MonoBehaviour:
   coinValue: 80
   items: []
   itemDropRates: 
---- !u!114 &11497108
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 110718}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 2ba5a2ba574a7954cb91ecd188609c6d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  DebugMode: 0
 --- !u!212 &21231798
 SpriteRenderer:
   m_ObjectHideFlags: 1

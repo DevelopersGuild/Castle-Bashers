@@ -246,7 +246,7 @@ MonoBehaviour:
   nodeTag: point
   collisionMask:
     serializedVersion: 2
-    m_Bits: 256
+    m_Bits: 768
 --- !u!212 &21231798
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -307,7 +307,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits
-      value: 256
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic

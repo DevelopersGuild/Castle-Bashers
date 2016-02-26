@@ -143,6 +143,9 @@ MonoBehaviour:
   animationController: {fileID: 0}
   classification: 0
   actor: {fileID: 0}
+  pm: {fileID: 0}
+  difficulty: 0
+  spawn: 1
   attackCollider: {fileID: 130992, guid: 08e3a8e95a01cdb4fa2a9d488c5e35cd, type: 2}
   classification: 0
 --- !u!114 &11470148
@@ -195,7 +198,7 @@ MonoBehaviour:
   nodeTag: point
   collisionMask:
     serializedVersion: 2
-    m_Bits: 0
+    m_Bits: 768
 --- !u!114 &11485732
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -322,7 +325,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits
-      value: 1792
+      value: 768
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
