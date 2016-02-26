@@ -10,7 +10,7 @@ public class PositionInit : MonoBehaviour {
         Player[] pls = playerholder.GetComponentsInChildren<Player>();
         foreach(Player pl in pls)
         {
-            pl.transform.position = new Vector3(12.4f, 0f, 0f);
+            pl.transform.localPosition = new Vector3(12.4f, 0f, 0f);
         }
 	}
 	
