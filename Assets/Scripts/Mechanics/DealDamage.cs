@@ -14,6 +14,11 @@ public class DealDamage : MonoBehaviour {
         return dmgAmount;
     }
 
+    void Update()
+    {
+        Debug.Log(dmgAmount);
+    }
+
     public int GetDamageI()
     {
         return (int)dmgAmount;

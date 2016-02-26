@@ -70,6 +70,18 @@ public class PlayerManager : MonoBehaviour
         return null;
     }
 
+    public float getAvgLevel()
+    {
+        float f = 0;
+        float i = 0;
+        foreach(Player p in players)
+        {
+            f += p.GetComponent<Experience>().GetCurrentLevel();
+            i++;
+        }
+        return f / i;
+    }
+
     /// <summary>
     /// 1 for threat, 2 for damage, 3 for priority
     /// </summary>

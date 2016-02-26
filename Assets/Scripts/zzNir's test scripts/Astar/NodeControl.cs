@@ -100,10 +100,11 @@ public class NodeControl : MonoBehaviour {
 		{
 			List<Vector3> path = new List<Vector3>();
 			path.Add(startPos);
-            if (zDiff == -1 || targetPos.z - startPos.z <= zDiff)
-                path.Add(targetPos);
-            else
-                path.Add(new Vector3(startPos.x, startPos.y, targetPos.z));
+            path.Add(targetPos);
+            //if (zDiff == -1 || targetPos.z - startPos.z <= zDiff)
+               
+           // else
+              //  path.Add(new Vector3(startPos.x, startPos.y, targetPos.z));
 
 			return path;
 		}

@@ -9,6 +9,8 @@ public class TestEnemy : Enemy
     public GameObject attackCollider;
     private GameObject attCol;
     public Type classification;
+    private bool spawn2 = true;
+    private float dmgAmount;
 
 
     // Use this for initialization
@@ -18,12 +20,25 @@ public class TestEnemy : Enemy
         speed = 4;
         attack_CD = 2;
         targetRefresh = 10;
+        dmgAmount = 30;
+    }
+
+    void Awake()
+    {
+        
     }
 
     // Update is called once per frame
     void Update()
     {
         base.Update();
+        if(spawn2)
+        {
+            spawn2 = false;
+
+            //not even close to final, just for scaling to work
+            dmgAmount = (1 + difficulty/20.0f) * attackCollider.GetComponent<DealDamage>().dmgAmount * ((0.9f + (0.1f * pm.getSize())) * (1 + pm.getAvgLevel() / 20));
+        }
         if (targetRefresh > targetRefreshLimit)
         {
             if (moveController.getCanMove() || isAttacking || isStunned || freeFall)
@@ -95,6 +110,7 @@ public class TestEnemy : Enemy
         }
         else
         {
+            Debug.Log("FREEEEEEEEEEEEEEEFALLING");
             Move(vel, speed);
         }
 
@@ -130,7 +146,7 @@ public class TestEnemy : Enemy
         }
         if (attackShakesScreen)
         {
-            cameraShake.startScreenShake(.4f);
+            //cameraShake.startScreenShake(.4f);
         }
         bool facing = distL <= distR;
         if (facing)
@@ -141,6 +157,7 @@ public class TestEnemy : Enemy
         {
             attCol = Instantiate(attackCollider, transform.position + (-1 * xhalf) + left, transform.rotation) as GameObject;
         }
+        attCol.GetComponent<DealDamage>().setDamage(dmgAmount);
         attack_CD = 0;
         Destroy(attCol, 0.5f);
     }

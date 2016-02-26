@@ -45,47 +45,60 @@ public class Actor : MonoBehaviour
     void Update()
     {
         //m_speed = Time.deltaTime * m_speed_multi;
-        elapsedTime += Time.deltaTime;
-        if (elapsedTime > OldTime)
+        if(state == State.MOVING)
         {
-            switch (state)
+            if(elapsedTime > 0.25)
             {
-                case State.IDLE:
-                    break;
-
-                case State.MOVING:
-                    OldTime = elapsedTime + 0.01f;
-
-                    if (elapsedTime > checkTime)
-                    {
-                        checkTime = elapsedTime + 1;
-                        //SetTarget();
-                        MoveOrder(target.transform.position, toP);
-                    }
-
-                    if (path != null)
-                    {
-                        if (onNode)
-                        {
-                            onNode = false;
-                            if (nodeIndex < path.Count)
-                                currNode = path[nodeIndex];
-                        }
-                        else
-                            MoveToward();
-                    }
-                    else
-                    {
-                        me.MoveToDir(me.targetPos);
-                    }
-                    break;
+                elapsedTime = 0;
+                MoveOrder(target.transform.position, toP);
             }
+            MoveToward();
         }
+        //if (elapsedTime > OldTime)
+        //{
+        //    switch (state)
+        //    {
+        //        case State.IDLE:
+        //            break;
+
+        //        case State.MOVING:
+        //            OldTime = elapsedTime + 0.01f;
+
+        //            if (elapsedTime > checkTime)
+        //            {
+        //                checkTime = elapsedTime + 1;
+        //                //SetTarget();
+        //                MoveOrder(target.transform.position, toP);
+        //            }
+
+        //            if (path != null)
+        //            {
+        //                if (onNode)
+        //                {
+        //                    onNode = false;
+        //                    if (nodeIndex < path.Count)
+        //                    {
+        //                        MoveOrder(target.transform.position, toP);
+        //                        currNode = path[nodeIndex];
+        //                    }
+        //                }
+        //                MoveToward();
+        //            }
+        //            else
+        //            {
+        //                me.MoveToDir(me.targetPos);
+        //            }
+        //            break;
+        //    }
+        //}
+        elapsedTime += Time.deltaTime;
+
     }
 
     void MoveToward()
     {
-        Debug.Log("HER");
+        currNode = path[nodeIndex];
+
         if (DebugMode)
         {
             for (int i = 0; i < path.Count - 1; ++i)
@@ -93,37 +106,37 @@ public class Actor : MonoBehaviour
                 Debug.DrawLine((Vector3)path[i], (Vector3)path[i + 1], Color.magenta, 0.01f);
             }
         }
+
         if (canMove)
         {
             Vector3 newPos = transform.position;
 
-            float Xdistance = newPos.x - currNode.x;
-            float Ydistance = newPos.y - currNode.y;
-            float Zdistance = newPos.z - currNode.z;
-
-            if ((Xdistance < 0.25 && Ydistance < 0.25) && m_target == currNode) //Reached target
+            if ((currNode - newPos).magnitude < 0.25) //Reached target
             {
-                //ChangeState(State.IDLE);
-                MoveOrder(target.transform.position, toP);
-            }
-            else if (Math.Abs(Xdistance) < 0.25 && Math.Abs(Ydistance) < 0.25 && Math.Abs(Zdistance) < 0.25)
-            {
-                nodeIndex++;
-                onNode = true;
-                if(nodeIndex < path.Count)
-                    currNode = path[nodeIndex];
+                if (m_target == currNode)
+                {
+                    //ChangeState(State.IDLE);
+                    MoveOrder(target.transform.position, toP);
+                }
                 else
                 {
-                    MoveOrder(target.transform.position, toP);
+                    nodeIndex++;
+                    onNode = true;
+                    if (nodeIndex < path.Count)
+                        currNode = path[nodeIndex];
+                    else
+                    {
+                        MoveOrder(target.transform.position, toP);
+                    }
                 }
             }
 
             /***Move toward waypoint***/
-            Vector3 motion = currNode - newPos;
-            Debug.Log(currNode);
+            //Debug.Log(currNode);
             //newPos += motion;
             Debug.DrawLine(transform.position, currNode, Color.red, 0.01f);
-            me.MoveToDir(currNode, 10);
+            Vector3 motion = new Vector3(currNode.x, 0, currNode.z);
+            me.MoveToDir(motion, 10);
             //newPos += motion * m_speed;
 
             //transform.position = newPos;
@@ -157,7 +170,6 @@ public class Actor : MonoBehaviour
         }
         else
         m_target = pos;
-        elapsedTime += OldTime;
         SetTarget();
         ChangeState(State.MOVING);
     }
