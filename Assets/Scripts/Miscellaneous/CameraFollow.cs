@@ -14,7 +14,7 @@ public class CameraFollow : MonoBehaviour
     public float flYAxisTolerance;
     public float flYChangeSpeed;
     public bool canMoveLeft;
-    private bool isLocked;
+    public bool isLocked;
 
     public bool cameraShakeIsOn = false;
 
@@ -62,8 +62,7 @@ public class CameraFollow : MonoBehaviour
 
     void LateUpdate()
     {
-        if (!isLocked)
-        {
+
             Vector3 totalAveragePosition = new Vector3();
             int size = 0;
 
@@ -103,11 +102,16 @@ public class CameraFollow : MonoBehaviour
 
             }
 
-            if (v3FinalCameraPosition.x > transform.position.x || canMoveLeft == true)
+
+            if (v3FinalCameraPosition.x > transform.position.x || canMoveLeft && !isLocked)
             {
-                transform.position = v3FinalCameraPosition;
+                transform.position = new Vector3(Mathf.Lerp(transform.position.x, v3FinalCameraPosition.x, 0.2f), v3FinalCameraPosition.y ,v3FinalCameraPosition.z);
             }
-        }
+            else if (isLocked)
+            {
+                transform.position = new Vector3(transform.position.x, v3FinalCameraPosition.y, v3FinalCameraPosition.z);
+            }
+       
 
     }
 

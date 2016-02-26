@@ -87,13 +87,13 @@ public class DropLoot : MonoBehaviour
                 new Vector3(Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f)), transform.rotation);
             coin.GetComponent<Rigidbody>().AddExplosionForce(100, transform.position, 5);
         }
-        for (int i = 0; i < numGold; i++)
+        for (int i = 0; i < numSilver; i++)
         {
             coin = (GameObject)Instantiate(silver, transform.position +
                 new Vector3(Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f)), transform.rotation);
             coin.GetComponent<Rigidbody>().AddExplosionForce(125, transform.position, 5);
         }
-        for (int i = 0; i < numSilver; i++)
+        for (int i = 0; i < numBronze; i++)
         {
             coin = (GameObject)Instantiate(bronze, transform.position +
                 new Vector3(Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f), Random.RandomRange(-.2f, .2f)), transform.rotation);
