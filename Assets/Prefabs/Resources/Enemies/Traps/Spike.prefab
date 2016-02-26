@@ -9,11 +9,11 @@ GameObject:
   m_Component:
   - 4: {fileID: 427504}
   - 65: {fileID: 6576506}
-  - 114: {fileID: 11404284}
   - 114: {fileID: 11454832}
   - 212: {fileID: 21232384}
   - 54: {fileID: 5400314}
   - 114: {fileID: 11426998}
+  - 114: {fileID: 11486044}
   m_Layer: 0
   m_Name: Spike
   m_TagString: Untagged
@@ -55,25 +55,11 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166374}
   m_Material: {fileID: 0}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.66999996, y: 7.55999994, z: .980000019}
+  m_Size: {x: 1.66999996, y: 7.55999994, z: 2}
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11404284
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 166374}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgAmount: 1
-  knockback: 4
-  flinch: 5
 --- !u!114 &11426998
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -87,6 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   speed: 2
   time: 1
+  transformRight: 0
   up: 1
   left: 0
   right: 0
@@ -103,6 +90,23 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lifeSpan: .200000003
+--- !u!114 &11486044
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 166374}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitAudio: {fileID: 0}
+  dmgAmount: 400
+  isMagic: 0
+  damagesPlayers: 1
+  damagesEnemies: 0
+  flinchPower: 1
 --- !u!212 &21232384
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -138,11 +142,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: m_Size.z
-      value: .980000019
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_IsKinematic
@@ -151,6 +155,18 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Constraints
       value: 112
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagesPlayers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: flinchPower
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: dmgAmount
+      value: 400
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

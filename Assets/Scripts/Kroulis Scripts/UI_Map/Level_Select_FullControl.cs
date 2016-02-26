@@ -11,13 +11,14 @@ public class Level_Select_FullControl : MonoBehaviour {
 
     Level_Select_mapinfo Level_Select_mapinfo_script;
     Map_Transfer_DB Map_Transfer_DB_Script;
-    Level_Select_Diff_ImageLib Diff_ImageLab;
+    //Level_Select_Diff_ImageLib Diff_ImageLab;
     Image Map_BG;
     Image Windows_BG;
     Text Map_name;
     Text Chapter_name;
     Image Bar;
-    Image Diff;
+    //Image Diff;
+    Text Diff_num;
     GameObject Mainprocess;
     GameObject Windows;
 
@@ -39,12 +40,12 @@ public class Level_Select_FullControl : MonoBehaviour {
                 Bar = i;
                 continue;
             }
-            if(i.name=="L_S_W_diff")
-            {
-                Diff = i;
-                Diff_ImageLab = Diff.GetComponent<Level_Select_Diff_ImageLib>();
-                continue;
-            }
+            //if(i.name=="L_S_W_diff")
+            //{
+            //    Diff = i;
+            //    Diff_ImageLab = Diff.GetComponent<Level_Select_Diff_ImageLib>();
+            //    continue;
+            //}
             if(i.name=="Level_Select_Window")
             {
                 Windows = i.gameObject;
@@ -65,6 +66,11 @@ public class Level_Select_FullControl : MonoBehaviour {
                 Chapter_name = t;
                 continue;
             }
+            if(t.name=="L_S_W_diff_nub")
+            {
+                Diff_num = t;
+                continue;
+            }
         }
         Mainprocess = GameObject.Find("Main Process");
         Level_Select_mapinfo_script = Mainprocess.GetComponentInChildren<Level_Select_mapinfo>();
@@ -82,7 +88,7 @@ public class Level_Select_FullControl : MonoBehaviour {
         }
         chapid = chapterid;
         currentmap = 0;
-        currentdiff = 0;
+        currentdiff = 1;
         Map_BG.sprite=Level_Select_mapinfo_script.Chapter[chapid].Map_Background;
         Chapter_name.text = chapid.ToString();
         gameObject.SetActive(true);
@@ -93,7 +99,8 @@ public class Level_Select_FullControl : MonoBehaviour {
         Windows.GetComponent<RectTransform>().localPosition=Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].Position;
         Map_name.text = Map_Transfer_DB_Script.mapinfo[Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid].name;
         Windows_BG.sprite= Map_Transfer_DB_Script.mapinfo[Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid].mini_bg_texture;
-        Diff.sprite = Diff_ImageLab.diff[currentdiff];
+        //Diff.sprite = Diff_ImageLab.diff[currentdiff];
+        Diff_num.text = "<   LEVEL "+ currentdiff.ToString() +"   >";
 	    if(Input.GetKeyDown(KeyCode.LeftArrow))
         {
             if (currentdiff != 0)
@@ -101,7 +108,8 @@ public class Level_Select_FullControl : MonoBehaviour {
         }
         else if(Input.GetKeyDown(KeyCode.RightArrow))
         {
-            if (currentdiff != 4)
+           // if (currentdiff != 4)
+              if (currentdiff != 99)
                 //if(the difficulty had unlocked)
                 currentdiff = currentdiff + 1;
         }
@@ -121,6 +129,7 @@ public class Level_Select_FullControl : MonoBehaviour {
         {
             Debug.Log("Go to the map:"+Map_name.text.ToString());
             Globe.Map_Load_id = Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid;
+            Globe.Map_Level = currentdiff;
             this.gameObject.SetActive(false);
             Mainprocess.GetComponent<Main_Process>().OtherWindows_Close();
             Application.LoadLevel("_loading");

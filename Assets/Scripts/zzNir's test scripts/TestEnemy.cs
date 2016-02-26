@@ -8,6 +8,7 @@ public class TestEnemy : Enemy
 
     public GameObject attackCollider;
     private GameObject attCol;
+    private CameraFollow cameraFollow;
     public Type classification;
     private bool spawn2 = true;
     private float dmgAmount;
@@ -26,6 +27,7 @@ public class TestEnemy : Enemy
     void Awake()
     {
         
+        cameraFollow = FindObjectOfType<CameraFollow>();
     }
 
     // Update is called once per frame
@@ -146,7 +148,7 @@ public class TestEnemy : Enemy
         }
         if (attackShakesScreen)
         {
-            //cameraShake.startScreenShake(.4f);
+            cameraFollow.startScreenShake(.4f);
         }
         bool facing = distL <= distR;
         if (facing)
