@@ -93,13 +93,13 @@ public class GemManager : MonoBehaviour {
         if (Input.GetKeyDown("u"))
         {
             Debug.Log("U PRESSED");
-            storedGems[0].activate();
-            count--;
+            equip(0);
+            
         }
         if (Input.GetKeyDown("i"))
         {
             Debug.Log("I PRESSED");
-            storedGems[0].deactivate();
+            unequip(0);
         }
 
         for (int i = 0; i < MAX_EQUIPPED_GEMS; i++)
