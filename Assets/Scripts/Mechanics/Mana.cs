@@ -7,6 +7,9 @@ public class Mana : MonoBehaviour
     public int ManaRegenRate = 1;
     public float MaxMana = 0;
     private float mana;
+    private float baseMana;
+    private float bonusMana;
+    private float bonusPercentMana;
     public float manaRegenPerSecond;
     private Player player;
 
@@ -14,7 +17,7 @@ public class Mana : MonoBehaviour
     void Start()
     {
 
-        mana = MaxMana;
+        mana = GetMaxMana();
 
 
     }
@@ -38,7 +41,7 @@ public class Mana : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if(mana < MaxMana)
+        if(mana < GetMaxMana())
         {
             RegenMana();
         }
@@ -46,7 +49,7 @@ public class Mana : MonoBehaviour
 
     public void Full_Regen()
     {
-        mana = MaxMana;
+        mana = GetMaxMana(); ;
     }
 
     /*
@@ -72,7 +75,7 @@ public class Mana : MonoBehaviour
 
     public float GetMaxMana()
     {
-        return MaxMana;
+        return baseMana * (1 + bonusPercentMana * 0.01f) + bonusMana;
     }
 
     public void addMana(int i)
@@ -83,4 +86,10 @@ public class Mana : MonoBehaviour
     {
         MaxMana = i;
     }
+
+    public void addBonusMana(float i) { bonusMana += i; }
+    public void addBonusPercentMana(float i) { bonusPercentMana += i; }
+    public float getBaseMana() { return baseMana; }
+    public float getBonusMana() { return bonusMana; }
+    public float getBonusPercentMana() { return bonusPercentMana; }
 }

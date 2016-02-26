@@ -56,6 +56,8 @@ GameObject:
   - 82: {fileID: 8245448}
   - 114: {fileID: 11497366}
   - 114: {fileID: 11450440}
+  - 114: {fileID: 11487576}
+  - 114: {fileID: 11418294}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -423,6 +425,7 @@ MonoBehaviour:
   isFlinchable: 1
   knockbackVelocity: .300000012
   isStunned: 0
+  isKnockedDown: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11411676
 MonoBehaviour:
@@ -451,6 +454,18 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 256
+--- !u!114 &11418294
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 589665cc2b6990740a833a2f603b9b8a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  availablePoints: 1
 --- !u!114 &11418902
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -564,6 +579,8 @@ MonoBehaviour:
   RegenAmount: 0
   currentHealth: 0
   maxhp: 100
+  bonusHP: 0
+  bonusPercentHP: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 8300000, guid: b45ac828d2c7a3741b9064f4cbd056bb, type: 3}
   hitParticle: {fileID: 128120, guid: 5011a44200ed9ec468b88a1244ce4a94, type: 2}
@@ -615,11 +632,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  health: {fileID: 0}
   Player_Name: 
   Stamina: 10
   Strength: 10
   Agility: 10
   Intelligence: 10
+  bonusStamina: 0
+  bonusPercentStamina: 0
+  bonusStrength: 0
+  bonusPercentStrength: 0
+  bonusAgility: 0
+  bonusPercentAgility: 0
+  bonusIntelligence: 0
+  bonusPercentIntelligence: 0
   CCI: {fileID: 0}
   si: {fileID: 0}
   jumpHeight: 4
@@ -656,6 +682,8 @@ MonoBehaviour:
   RegenAmount: 1
   currentHealth: 0
   maxhp: 0
+  bonusHP: 0
+  bonusPercentHP: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
   hitParticle: {fileID: 0}
@@ -678,11 +706,20 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 0}
+  health: {fileID: 0}
   Player_Name: 
   Stamina: 0
   Strength: 1
   Agility: 0
   Intelligence: 0
+  bonusStamina: 0
+  bonusPercentStamina: 0
+  bonusStrength: 0
+  bonusPercentStrength: 0
+  bonusAgility: 0
+  bonusPercentAgility: 0
+  bonusIntelligence: 0
+  bonusPercentIntelligence: 0
   CCI: {fileID: 0}
   si: {fileID: 0}
   jumpHeight: 4
@@ -750,6 +787,7 @@ MonoBehaviour:
   isFlinchable: 0
   knockbackVelocity: .400000006
   isStunned: 0
+  isKnockedDown: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11479498
 MonoBehaviour:
@@ -793,6 +831,17 @@ MonoBehaviour:
   defense: 1
   basePhysicalDefense: 0
   baseMagicalDefense: 0
+--- !u!114 &11487576
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 130900}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 902d3ebd0d827714283f9e5317fe70c5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11490144
 MonoBehaviour:
   m_ObjectHideFlags: 1
