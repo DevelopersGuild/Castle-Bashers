@@ -10,10 +10,12 @@ public class Gem
     protected Sprite gemIcon;
     protected int gemType; // 1: ATK 2. DEF 3.SUP 4.ADS
     protected string description;
-    protected int quality; // 1: Normal 2: Rare  3: Epic
+    protected int quality = 0; // 1: Normal 2: Rare  3: 
+    protected int bonus;
 
-    public virtual void Start()
+    public virtual void Initialize(int q)   //Be sure to always call base.Initialize in the Initialize function of every gem
     {
+        quality = q;
     }
 
     public virtual void onUpdate()
@@ -57,6 +59,7 @@ public class Gem
     }
 
     public string getName() { return gemName; }
+    public string getDescription() { return description; }
     public int getQuality() { return quality; }
 
     public int getGemType() { return gemType; }
@@ -68,67 +71,6 @@ public class Gem
 
 
 
-class StrengthGem : Gem
-{
-
-    public override void Start()
-    {
-        base.Start();
-        gemName = "Strength Gem";
-        description = "Increases Strength by 10";
-        gemType = 2;
-    }
-
-    public override void activate()
-    {
-        if (active == false)
-        {
-            Debug.Log(player.GetStrength());
-            player.AddStrength(10);
-            Debug.Log("Player gained 10 str!");
-            Debug.Log(player.GetStrength());
-            active = true;
-        }
-    }
-    public override void deactivate()
-    {
-        if(active == true)
-        {
-            player.AddStrength(-10);
-            active = false;
-        }
-    }
-
-}
-
-class AgilityGem : Gem
-{
-
-    public override void Start()
-    {
-        base.Start();
-        gemName = "Strength Gem";
-        description = "Increases Strength by 10";
-        gemType = 3;
-    }
-
-    public override void activate()
-    {
-        if (active == false)
-        {
-            player.AddAgility(10);
-            active = true;
-        }
-    }
-    public override void deactivate()
-    {
-        if (active == true)
-        {
-            player.AddStrength(-10);
-            active = false;
-        }
-    }
-}
 
 public class GemManager : MonoBehaviour {
     const int MAX_STORED_GEMS = 10;
@@ -151,13 +93,13 @@ public class GemManager : MonoBehaviour {
         if (Input.GetKeyDown("u"))
         {
             Debug.Log("U PRESSED");
-            storedGems[0].activate();
-            count--;
+            equip(0);
+            
         }
         if (Input.GetKeyDown("i"))
         {
             Debug.Log("I PRESSED");
-            storedGems[0].deactivate();
+            unequip(0);
         }
 
         for (int i = 0; i < MAX_EQUIPPED_GEMS; i++)
@@ -204,8 +146,14 @@ public class GemManager : MonoBehaviour {
     //Will sort the array after removing a gem from the array
     public void removeGem(int index)
     {
-        storedGems[index] = null;
+        storedGems[index] = storedGems[numGems];   //Move last gem into old gem position before sorting. might be able to find a better solution.
+        if (index == numGems)
+        {
+            storedGems[index] = null; //Handle special case that the gem being removed is the last gem
+        }
+
         numGems--;
+        sortGems();
         //SORT GEMS
     }
 
@@ -218,14 +166,34 @@ public class GemManager : MonoBehaviour {
         if(numGems <= MAX_STORED_GEMS)
         {
             storedGems[numGems] = gem;
+            Debug.Log("Stored " + gem.getName() + " in index " + numGems);
             numGems++;
+            sortGems();
         }
         else
         {
-            return 0;
+            return 0; //Give error message
         }
 
         return 1;
+    }
+
+    private void sortGems()
+    {
+        for(int i = 0; i < numGems; i++)
+        {
+            for(int j = i; j < numGems - i - 1; j++)
+            {
+                
+                if(storedGems[i].getQuality() > storedGems[j].getQuality())
+                {
+                    Gem temp = storedGems[i];
+                    storedGems[i] = storedGems[j];
+                    storedGems[j] = temp;
+
+                }
+            }
+        }
     }
     
     public Gem GetEquippedGem(int index)

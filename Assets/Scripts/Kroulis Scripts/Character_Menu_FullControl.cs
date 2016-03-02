@@ -178,11 +178,11 @@ public class Character_Menu_FullControl : MonoBehaviour {
 
         //if (!Player_ATK)
         //    Debug.Log("Cannot Get Player_ATK");
-        ATK.text = Player_Script.GetStrength().ToString();
+        ATK.text = Player_Script.GetTotalStrength().ToString();
         DEF.text = Player_Defense.defense.ToString();
-        STA.text = Player_Script.GetStamina().ToString();
-        SPI.text = Player_Script.GetIntelligence().ToString();
-        AGI.text = Player_Script.GetAgility().ToString();
+        STA.text = Player_Script.GetTotalStamina().ToString();
+        SPI.text = Player_Script.GetTotalIntelligence().ToString();
+        AGI.text = Player_Script.GetTotalAgility().ToString();
         BATK.text = "<color=#ffffffff>" + Player_ATK.GetDamageI().ToString() + "-" + Player_ATK.GetDamageI().ToString() + "</color>";
         MATK.text = "<color=#ffffffff>" + Player_ATK.GetDamageI().ToString() + "-" + Player_ATK.GetDamageI().ToString() + "</color>";
         PDEF.text = Player_Defense.GetPhysicalDefense().ToString();

@@ -85,6 +85,48 @@ NavMeshSettings:
     cellSize: .166666672
     manualCellSize: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1001 &83708904
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -12.3999996
+      objectReference: {fileID: 0}
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 484600, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+      propertyPath: m_RootOrder
+      value: 16
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1 &136067467 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 194560, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
@@ -436,6 +478,10 @@ Prefab:
       propertyPath: Other_Windows
       value: 
       objectReference: {fileID: 893236990}
+    - target: {fileID: 194560, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
   m_IsPrefabParent: 0
@@ -481,33 +527,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
   m_IsPrefabParent: 0
---- !u!1 &832949866 stripped
-GameObject:
-  m_PrefabParentObject: {fileID: 130900, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
-  m_PrefabInternal: {fileID: 1030033903}
---- !u!114 &832949868
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 832949866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 589665cc2b6990740a833a2f603b9b8a, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  availablePoints: 1
---- !u!114 &832949885
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 832949866}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 902d3ebd0d827714283f9e5317fe70c5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1001 &893236989
 Prefab:
   m_ObjectHideFlags: 0
@@ -685,11 +704,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 437722, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
       propertyPath: m_RootOrder
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 11402980, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
-      propertyPath: collisionMask.m_Bits
-      value: 1280
+    - target: {fileID: 163558, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
