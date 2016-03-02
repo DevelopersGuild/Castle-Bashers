@@ -150,8 +150,8 @@ public class Player : MonoBehaviour
         threatLevel = damageDealt = 0;
 
         GetComponent<ID>().setTime(false);
-        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
-        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
+        //CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        //si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
         Fully_Update();
     }
 

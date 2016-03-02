@@ -59,7 +59,7 @@ public class Malady : Boss
     //a for animation
     //[HideInInspector]
     //public bool aClaw, aTeleport
-
+    private bool spawnM = true;
 
     // Use this for initialization
     void Start()
@@ -140,9 +140,37 @@ public class Malady : Boss
     void Update()
     {
         base.Update();
+        if (spawnM)
+        {
+            playerM = FindObjectOfType<PlayerManager>();
+            players = playerM.getPlayers();
+            size = players.Length;
+            threatLevel = damageDealt = players;
+            damageDealt = new Player[size];
+            for (int i = 0; i < size; i++)
+            {
+                players[i].Reset();
+            }
+            one = two = three = four = 0;
+            tempThreat = 0;
+            tempDamage = 0;
+            temp1 = 0;
+            temp2 = 0;
+
+            Grouper.setPlayerGroup(players, size);
+
+            grouping = false;
+            getPlayerType();
+
+
+            int initialTarget = UnityEngine.Random.Range(0, size);
+            target = players[initialTarget].gameObject;
+            spawnM = false;
+        }
         targetPos = target.transform.position;
         CalcDirection();
 
+        
         if (refresh)
         {
             Debug.Log(ranged + " " + grouping + " " + melee + " " + support);
@@ -209,15 +237,15 @@ public class Malady : Boss
 
     public override void Act(Type t)
     {
-
         if (hands_CD > 2.5f)
         {
             hands_CD = 0;
-            //Debug.Log("Hands " + Time.time); //HandsAttack();
+            //Debug.Log("Hands " + Time.time); 
+            HandsAttack();//
         }
-        if (animationDelay > 1f + hp.GetCurrentHealth() / hp.GetMaxHP())
+        if (animationDelay > (1f + hp.GetCurrentHealth() / hp.GetMaxHP()))
         {
-            //getPlayerType();
+            getPlayerType();
             float randNum = UnityEngine.Random.Range(1, 100);
             if (randNum < 5 - 5 * (3 - size))
             {
@@ -303,6 +331,7 @@ public class Malady : Boss
 
     private void Claw()
     {
+        Debug.Log("CLAW");
         claw_CD = 0;
         clawLim = 4 + UnityEngine.Random.Range(0, 3);
         distance = target.transform.position.x - transform.position.x;
@@ -386,6 +415,7 @@ public class Malady : Boss
 
     private void teleClaw()
     {
+        Debug.Log("TELECLAW");
         setAnimating(true);
         teleClawStage = 1;
         teleClawUpdate();
@@ -451,6 +481,7 @@ public class Malady : Boss
 
     private void Swarm()
     {
+        Debug.Log("SWARM");
         swarm_CD = 0;
         swarmLim = 11 + UnityEngine.Random.Range(0, 5);
         Debug.Log("Swarm " + Time.time); //sClaw.UseSkill(gameObject);
@@ -478,6 +509,7 @@ public class Malady : Boss
 
     private void Summon()
     {
+        Debug.Log("SUMMON");
         summon_CD = 0;
         summonLim = 7 + UnityEngine.Random.Range(0, 6);
 
@@ -490,7 +522,7 @@ public class Malady : Boss
 
         //slightly wierd due to having a scale of 10, would be ok after we have actual stuff
 
-        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        ----------------------- run SummonPortal at end
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation              ----------------------- run SummonPortal at end
 
     }
 
@@ -527,6 +559,7 @@ public class Malady : Boss
     //used for teleClaw
     private void Teleport(GameObject targ)
     {
+        Debug.Log("TELEPORT");
         //set is Tel to true at end of anim, set true here for testing
         //isTeleporting = true;
         lerpDuration = teleDuration;
@@ -613,6 +646,7 @@ public class Malady : Boss
 
     private void Polymorph()
     {
+        Debug.Log("POLYMORPH");
         polymorph_CD = 0;
         polyLim = 9 + UnityEngine.Random.Range(0, 5);
 
@@ -735,6 +769,7 @@ public class Malady : Boss
 
     private void HairGrab()
     {
+        Debug.Log("HAIRGRAB");
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~  need animation for this before finishing
         //easy to do once animation exists, too many variables without animation
         hairG_CD = 0;
@@ -818,6 +853,7 @@ public class Malady : Boss
     private void HandsAttack()
     {
         Vector3 offset = new Vector3(UnityEngine.Random.Range(-300,300)/100.0f, 0, UnityEngine.Random.Range(-110,110)/100.0f);
+        Debug.Log("HANDS");
 
         if (ranged || grouping)
             hands_CD -= 0.5f;
