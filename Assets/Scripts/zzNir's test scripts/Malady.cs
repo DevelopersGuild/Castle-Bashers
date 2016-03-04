@@ -93,7 +93,6 @@ public class Malady : Boss
         teleDuration = 1f;
         //teleDuration = animation.GetClip("Teleport").length;
         refreshPriority = 10;
-
         refresh = false;
 
         isTeleporting = false;
@@ -103,10 +102,7 @@ public class Malady : Boss
 
         moveController.isFlinchable = false;
         moveController.isKnockbackable = false;
-
         numHairs = 2;
-
-
         lerpDuration = 0;
         grouping = false;
 
@@ -114,7 +110,6 @@ public class Malady : Boss
         ClawRight = new Vector3(ClawLeft.x * -1, transform.localScale.y, transform.localScale.z);
         MaladyLeft = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         MaladyRight = transform.localScale;
-
 
     }
 
