@@ -722,12 +722,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 847be65416c86e14bbadd4d5908e7142, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Min_Room: 20
-  Max_Room: 20
-  Min_enemy: 10
-  Max_enemy: 20
-  Min_Objects: 7
-  Max_Objects: 10
+  Min_Room: 2
+  Max_Room: 4
+  Min_enemy: 0
+  Max_enemy: 0
+  Min_Objects: 0
+  Max_Objects: 0
   Min_Paths: 0
   Max_Paths: 0
   difficulty: 0
