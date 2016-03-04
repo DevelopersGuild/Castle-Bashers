@@ -66,6 +66,7 @@ public class Malady : Boss
 
         base.Start();
         sClaw = ClawSkill.GetComponent<ClawAttack>();
+        animator = GetComponent<Animator>();
         claw_CD = 4 + UnityEngine.Random.Range(0, 3);
         clawLim = claw_CD;
         teleClaw_CD = 4 + UnityEngine.Random.Range(0, 3);
@@ -316,12 +317,14 @@ public class Malady : Boss
         if (ranged || support)
         {
             clawLim -= 1;
+            Debug.Log("num");
             teleClaw();
         }
         else if (melee)
         {
             if (zDiff < 4 && Math.Abs(distance) < 3)
             {
+                Debug.Log("num1");
                 clawLim -= 1;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
                 //play animation                                        -----------------------
@@ -333,6 +336,7 @@ public class Malady : Boss
             }
             else
             {
+                Debug.Log("num2");
                 teleClaw();
             }
         }
@@ -340,6 +344,7 @@ public class Malady : Boss
         {
             if (zDiff < 4 && distance < 3)
             {
+                Debug.Log("num3");
                 clawLim -= 2;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
@@ -347,6 +352,7 @@ public class Malady : Boss
             }
             else
             {
+                Debug.Log("num4");
                 teleClaw();
             }
         }
@@ -354,12 +360,16 @@ public class Malady : Boss
         {
             if (zDiff < 4 && distance < 3)
             {
+                Debug.Log("num5");
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
+            {
+                Debug.Log("num6");
                 teleClaw();
+            }
         }
         //if ranged/support, tele claw
         //if grouping, if close claw if far tele claw
@@ -705,7 +715,7 @@ public class Malady : Boss
             players[i].setPriorityID((tempVar));
         }
         players = playerM.getSortedPlayers(3);
-        Debug.Log("Reverse order of priority players : " + players);
+        //Debug.Log("Reverse order of priority players : " + players);
     }
 
     //can adjust number of hairs attacking through numHairs (1 = middle hair, 2 = middle, above, and below, 3 = middle, above, abover, below, belower, 4 = etc) 
