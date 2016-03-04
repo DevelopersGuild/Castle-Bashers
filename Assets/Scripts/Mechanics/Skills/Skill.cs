@@ -8,6 +8,7 @@ public class Skill : MonoBehaviour
     private float coolDown = 0;
     private float coolDownTimer = 0;
     private int price = 0;
+    private int level = 1;
     private int manaCost;
     private string skillName;
     private string skillDiscription;
@@ -136,6 +137,15 @@ public class Skill : MonoBehaviour
         return skillDiscription;
     }
 
+    public int GetLevel()
+    {
+        return level;
+    }
+
+    public void SetLevel(int i)
+    {
+        level = i;
+    }
 
 
     //Any number of other functions needed for your skill.

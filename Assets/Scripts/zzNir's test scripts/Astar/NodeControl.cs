@@ -6,8 +6,9 @@ using System.Collections.Generic;
 public class NodeControl : MonoBehaviour {
 	
 	public string nodeTag;
-	
-	class Point
+    public LayerMask collisionMask;
+
+    class Point
 	{
 		Vector3 m_pos;
 		char m_state = 'u';
@@ -93,14 +94,17 @@ public class NodeControl : MonoBehaviour {
 	{
 		//Can I see the exit
 		float exitDistance = Vector3.Distance(startPos, targetPos);
-        if (!Physics.Raycast(startPos, targetPos - startPos, exitDistance/2f))
+        //RaycastHit hitInfo;
+        Physics.Raycast(startPos, targetPos, exitDistance, collisionMask);
+        if (!Physics.Raycast(startPos, targetPos - startPos, exitDistance))
 		{
 			List<Vector3> path = new List<Vector3>();
 			path.Add(startPos);
-            if (zDiff == -1 || targetPos.z - startPos.z <= zDiff)
-                path.Add(targetPos);
-            else
-                path.Add(new Vector3(startPos.x, startPos.y, targetPos.z));
+            path.Add(targetPos);
+            //if (zDiff == -1 || targetPos.z - startPos.z <= zDiff)
+               
+           // else
+              //  path.Add(new Vector3(startPos.x, startPos.y, targetPos.z));
 
 			return path;
 		}

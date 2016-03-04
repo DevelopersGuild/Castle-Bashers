@@ -1,4 +1,5 @@
 using UnityEngine;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 
@@ -27,88 +28,124 @@ public class Actor : MonoBehaviour
     float elapsedTime = 0;
     float zDiff = -1;
     bool toP = false;
+    bool canMove = false;
+    Enemy me;
 
     private GameObject target;
 
     void Awake()
     {
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
-        control = (NodeControl)cam.GetComponent(typeof(NodeControl));
+        me = GetComponent<Enemy>();
+        control = GetComponent<NodeControl>();
+        //control = (NodeControl)cam.GetComponent(typeof(NodeControl));
         target = null;
     }
 
     void Update()
     {
-        m_speed = Time.deltaTime * m_speed_multi;
+        //m_speed = Time.deltaTime * m_speed_multi;
+        if(state == State.MOVING)
+        {
+            if(elapsedTime > 0.25)
+            {
+                elapsedTime = 0;
+                MoveOrder(target.transform.position, toP);
+            }
+            MoveToward();
+        }
+        //if (elapsedTime > OldTime)
+        //{
+        //    switch (state)
+        //    {
+        //        case State.IDLE:
+        //            break;
+
+        //        case State.MOVING:
+        //            OldTime = elapsedTime + 0.01f;
+
+        //            if (elapsedTime > checkTime)
+        //            {
+        //                checkTime = elapsedTime + 1;
+        //                //SetTarget();
+        //                MoveOrder(target.transform.position, toP);
+        //            }
+
+        //            if (path != null)
+        //            {
+        //                if (onNode)
+        //                {
+        //                    onNode = false;
+        //                    if (nodeIndex < path.Count)
+        //                    {
+        //                        MoveOrder(target.transform.position, toP);
+        //                        currNode = path[nodeIndex];
+        //                    }
+        //                }
+        //                MoveToward();
+        //            }
+        //            else
+        //            {
+        //                me.MoveToDir(me.targetPos);
+        //            }
+        //            break;
+        //    }
+        //}
         elapsedTime += Time.deltaTime;
 
-        if (elapsedTime > OldTime)
-        {
-            switch (state)
-            {
-                case State.IDLE:
-                    break;
-
-                case State.MOVING:
-                    OldTime = elapsedTime + 0.01f;
-
-                    if (elapsedTime > checkTime)
-                    {
-                        checkTime = elapsedTime + 1;
-                        //SetTarget();
-                        MoveOrder(target.transform.position, toP);
-                    }
-
-                    if (path != null)
-                    {
-                        if (onNode)
-                        {
-                            onNode = false;
-                            if (nodeIndex < path.Count)
-                                currNode = path[nodeIndex];
-                        }
-                        else
-                            MoveToward();
-                    }
-                    break;
-            }
-        }
     }
 
     void MoveToward()
     {
+        currNode = path[nodeIndex];
+
         if (DebugMode)
         {
             for (int i = 0; i < path.Count - 1; ++i)
             {
-                Debug.DrawLine((Vector3)path[i], (Vector3)path[i + 1], Color.red, 0.01f);
+                Debug.DrawLine((Vector3)path[i], (Vector3)path[i + 1], Color.magenta, 0.01f);
             }
         }
 
-        Vector3 newPos = transform.position;
-
-        float Xdistance = newPos.x - currNode.x;
-        if (Xdistance < 0) Xdistance -= Xdistance * 2;
-        float Ydistance = newPos.z - currNode.z;
-        if (Ydistance < 0) Ydistance -= Ydistance * 2;
-
-        if ((Xdistance < 0.1 && Ydistance < 0.1) && m_target == currNode) //Reached target
+        if (canMove)
         {
-            //ChangeState(State.IDLE);
-            MoveOrder(target.transform.position, toP);
-        }
-        else if (Xdistance < 0.1 && Ydistance < 0.1)
-        {
-            nodeIndex++;
-            onNode = true;
-        }
+            Vector3 newPos = transform.position;
 
-        /***Move toward waypoint***/
-        Vector3 motion = currNode - newPos;
-        motion.Normalize();
-        newPos += motion * m_speed;
+            if ((currNode - newPos).magnitude < 0.25) //Reached target
+            {
+                if (m_target == currNode)
+                {
+                    //ChangeState(State.IDLE);
+                    MoveOrder(target.transform.position, toP);
+                }
+                else
+                {
+                    nodeIndex++;
+                    onNode = true;
+                    if (nodeIndex < path.Count)
+                        currNode = path[nodeIndex];
+                    else
+                    {
+                        MoveOrder(target.transform.position, toP);
+                    }
+                }
+            }
 
-        transform.position = newPos;
+            /***Move toward waypoint***/
+            //Debug.Log(currNode);
+            //newPos += motion;
+            Debug.DrawLine(transform.position, currNode, Color.red, 0.01f);
+            Vector3 motion = new Vector3(currNode.x, 0, currNode.z);
+            me.MoveToDir(motion, 10);
+            //newPos += motion * m_speed;
+
+            //transform.position = newPos;
+        }
+    }
+
+    public void setMove(bool c)
+    {
+        canMove = c;
     }
 
     private void SetTarget()
@@ -133,7 +170,6 @@ public class Actor : MonoBehaviour
         }
         else
         m_target = pos;
-
         SetTarget();
         ChangeState(State.MOVING);
     }

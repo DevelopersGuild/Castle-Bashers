@@ -13,17 +13,24 @@ public class DroppedGem : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        quality = Random.Range(1, 3); //randomizes normal, rare, epic. Will change to incorporate percent chance of each
+        int qualityRoll = Random.Range(1, 11); //randomizes normal, rare, epic. Will change to incorporate percent chance of each
+        if (qualityRoll == 10)    //10% chance for epic
+            quality = 3;
+        else if (qualityRoll >= 7)   //30% chance for  rare
+            quality = 2;
+        else                    // 60% chance for normal
+            quality = 1;
+
         if(quality >= 2)
         {
-            gemType = Random.Range(1, 4); // If rare or epic, can roll skill gem
+            gemType = Random.Range(1, 6); // If rare or epic, can roll skill gem
         }
         else
         {
-            gemType = Random.Range(1, 3);
+            gemType = Random.Range(1, 5);
         }
         //Roll stats for gem
-        Debug.Log("stats rolled!");
+        Debug.Log("Rolled quality " + quality);
 	}
 
     void OnTriggerEnter(Collider col)
@@ -46,16 +53,34 @@ public class DroppedGem : MonoBehaviour {
     void PickedUp(Player player)
     {
 
-        //if(gemType == 1)
+        switch (gemType)
         {
-            gem = new StrengthGem();
-            Debug.Log("Created strength gem");
+            case 1:
+                gem = new StrengthGem();
+                break;
+            case 2:
+                gem = new AgilityGem();
+                break;
+            case 3:
+                gem = new IntelligenceGem();
+                break;
+            case 4:
+                gem = new HealthGem();
+                break;
+            case 5:
+                gem = new ManaGem();
+                break;
+            case 6:
+                Debug.Log("Would be skill Gem");
+                //insert skill gem here when done
+                break;
         }
-
         gem.setOwner(player);
-        Debug.Log("Set Player properly");
+
+        gem.Initialize(quality);  //MUST CALL. think of this as running the Start() function, but Gem does not inherit from monobehaviour. Its its own man, taking orders from no base class.
+        Debug.Log(gem.getDescription());
         //Set stats for gem before adding to play
- 
+
         player.GetComponent<GemManager>().addGem(gem);
         Destroy(gameObject);
     }

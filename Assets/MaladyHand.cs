@@ -8,9 +8,9 @@ public class MaladyHand : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        start = new Vector3(0, 0, 0);
-        end = new Vector3(0, 0, 90);
-        duration = 0.7f;
+        start = new Vector3(0, 0, 60);
+        end = new Vector3(0, 0, -120);
+        duration = 0f;
 	}
 	
 	// Update is called once per frame
@@ -21,11 +21,11 @@ public class MaladyHand : MonoBehaviour {
 
 
         //this is here while no animations
-        if(duration <= 0)
+        if(duration > 1.5f)
             Destroy(gameObject);
 
         set = Vector3.Lerp(start, end, duration);
-        transform.rotation.eulerAngles.Set(set.x, set.y, set.z);
-        duration -= Time.unscaledDeltaTime;
+        transform.eulerAngles = set;
+        duration += Time.unscaledDeltaTime;
     }
 }

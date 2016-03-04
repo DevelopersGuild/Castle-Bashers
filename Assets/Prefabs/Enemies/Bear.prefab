@@ -18,7 +18,7 @@ GameObject:
   - 95: {fileID: 9541958}
   - 114: {fileID: 11411294}
   - 114: {fileID: 11498572}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Bear
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -93,8 +93,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 100
+  coinValue: 0
   items:
-  - {fileID: 135736, guid: 0606b01ab26d2544084e1223b12f368e, type: 2}
+  - {fileID: 0}
   itemDropRates: 0a000000
 --- !u!114 &11469100
 MonoBehaviour:
@@ -110,6 +111,8 @@ MonoBehaviour:
   agroRange: 10
   attackRange: 1
   attack_CD: 5
+  attackShakesScreen: 0
+  experienceAmount: 0
   attackSound: {fileID: 0}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -117,6 +120,7 @@ MonoBehaviour:
   gravity: {x: 0, y: 0, z: 0}
   xhalf: {x: 0, y: 0, z: 0}
   half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
   moveController: {fileID: 0}
   isInvincible: 0
   isStunned: 0
@@ -128,6 +132,8 @@ MonoBehaviour:
   zDiff: 0
   distL: 0
   distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
@@ -135,6 +141,10 @@ MonoBehaviour:
   hp: {fileID: 0}
   animationController: {fileID: 0}
   classification: 0
+  actor: {fileID: 0}
+  pm: {fileID: 0}
+  difficulty: 0
+  spawn: 1
   attackCollider: {fileID: 130992, guid: 08e3a8e95a01cdb4fa2a9d488c5e35cd, type: 2}
   classification: 0
 --- !u!114 &11472708
@@ -155,9 +165,10 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 0
+  isFlinchable: 0
   knockbackVelocity: 0
-  knockbackTime: 0
-  flinchTime: 0
+  flinchVelocity: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11485732
@@ -185,12 +196,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ExperinceAmount: 0
   RegenAmount: 0
   currentHealth: 20
   maxhp: 30
+  deathObject: {fileID: 0}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11498572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -275,6 +290,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: maxhp
       value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Layer
+      value: 9
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

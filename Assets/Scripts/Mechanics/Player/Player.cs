@@ -150,8 +150,8 @@ public class Player : MonoBehaviour
         threatLevel = damageDealt = 0;
 
         GetComponent<ID>().setTime(false);
-        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
-        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
+        //CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        //si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
         Fully_Update();
     }
 
@@ -693,13 +693,16 @@ public class Player : MonoBehaviour
     public float getBonusPhysicalDamage() { return bonusPhysicalDamage; }
     public float getBonusPercentPhysicalDamage() { return bonusPercentPhysicalDamage; }
 
-    public float getMagicalDamage(){ return (baseMagicalDamage + bonusMagicalDamage + +CCI.Class_info[class_id].weapon[weapon_level].matk) * (1+ bonusPercentMagicalDamage*0.01f);}
+    public float getMagicalDamage(){ return (baseMagicalDamage + bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk) * (1+ bonusPercentMagicalDamage*0.01f);}
     public float getBaseMagicalDamage() { return baseMagicalDamage;}
     public float getBonusMagicalDamage() { return bonusMagicalDamage + CCI.Class_info[class_id].weapon[weapon_level].matk;}
     public float getBonusPercentMagicalDamage() { return bonusPercentMagicalDamage; }
 
     public void addBonusPhysicalDamage(float i) { bonusPhysicalDamage += i; }
     public void addBonusMagicalDamage(float i) { bonusMagicalDamage += i; }
+    public void addBonusPercentPhysicalDamage(float i) { bonusPercentPhysicalDamage += i; }
+    public void addBonusPercentMagicalDamage(float i) { bonusPercentMagicalDamage += i; }
+
     public void AddDefense(int value) { defense.AddDefense(value); }
 
     public void AddStrength(int value) { Strength += value; }
@@ -719,9 +722,15 @@ public class Player : MonoBehaviour
     public void AddBonusPercentIntelligence(int value) { bonusPercentIntelligence += value; }
 
     public int GetStrength() { return Strength; }
+    public int GetTotalStrength() { return (int)(Strength * 1 + bonusPercentStrength * 0.01f) + bonusStrength; }
     public int GetStamina() { return Stamina; }
+    public int GetTotalStamina() { return (int)(Stamina * 1 + bonusPercentStamina * 0.01f) + bonusStamina; }
     public int GetAgility() { return Agility; }
+    public int GetTotalAgility() { return (int)(Agility * 1 + bonusPercentAgility * 0.01f) + bonusAgility; }
     public int GetIntelligence() { return Intelligence; }
+    public int GetTotalIntelligence() { return (int)(Intelligence * 1 + bonusPercentIntelligence * 0.01f) + bonusIntelligence; }
+
+
 
     /*
     public void setDamage(float f)

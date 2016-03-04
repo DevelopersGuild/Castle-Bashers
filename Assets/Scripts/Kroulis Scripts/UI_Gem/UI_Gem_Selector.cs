@@ -10,12 +10,18 @@ public class UI_Gem_Selector : MonoBehaviour {
     public Image cur;
 
     private GemManager current_gemManager;
+    private UI_GEM_FullControl father;
     private int eqid;
     private int current_page;
     private int pages;
     private int current_select;
     private int size;
     private Gem[] gems;
+
+    public void Start()
+    {
+        father = GetComponentInParent<UI_GEM_FullControl>();
+    }
 
     public void StartSelecting(GemManager manager,int _eqid)
     {
@@ -83,7 +89,7 @@ public class UI_Gem_Selector : MonoBehaviour {
                             break;
                     }
                     descri += "<color=#ffffffff>" + gems[real_position - 1].GetDescription() + "</color>";
-                    Gem_D[i].text = descri;
+                    Gem_D[i-1].text = descri;
                 }
                 else
                 {
@@ -139,6 +145,7 @@ public class UI_Gem_Selector : MonoBehaviour {
                 current_gemManager.unequip(eqid);
             //equip
             current_gemManager.equip((current_page-1)*6+current_select);
+            father.Change();
         }
     }
     

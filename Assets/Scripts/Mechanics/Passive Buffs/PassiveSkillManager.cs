@@ -5,11 +5,18 @@ public class PassiveSkillManager : MonoBehaviour {
     public enum Passives : int
     {
         StrengthBonus = 0,
-        HealthBonus
+        AgilityBonus,
+        IntelligenceBonus,
+        HealthBonus,
+        ManaBonus,
     };
 
     string Name;
     string Description;
+
+    Player player;
+    Health health;
+    Mana mana;
 
 
     const int MAX_PASSIVE_SKILLS = 50;
@@ -36,12 +43,30 @@ public class PassiveSkillManager : MonoBehaviour {
         passiveMaxLevel = new int[MAX_PASSIVE_SKILLS];
         passiveName = new string[MAX_PASSIVE_SKILLS];
         passiveDescription = new string[MAX_PASSIVE_SKILLS];
-        passiveLevel[0] = 0;
-        passiveLevel[1] = 0;
-        passiveName[0] = "Strength Bonus";
-        passiveDescription[0] = "Adds 10 bonus strength";
-        passiveMaxLevel[0] = 3;
-        passiveMaxLevel[1] = 3;
+
+        passiveName[(int)Passives.StrengthBonus] = "Strength Bonus";
+        passiveName[(int)Passives.AgilityBonus] = "Agility Bonus";
+        passiveName[(int)Passives.IntelligenceBonus] = "Intelligence Bonus";
+        passiveName[(int)Passives.HealthBonus] = "Health Bonus";
+        passiveName[(int)Passives.ManaBonus] = "Mana Bonus";
+
+        passiveDescription[(int)Passives.StrengthBonus] = "Adds 5% bonus Strength per level";
+        passiveDescription[(int)Passives.AgilityBonus] = "Adds 5% bonus Agility per level";
+        passiveDescription[(int)Passives.IntelligenceBonus] = "Adds 5% bonus Intelligence per level";
+        passiveDescription[(int)Passives.HealthBonus] = "Adds 15% bonus Health per level";
+        passiveDescription[(int)Passives.ManaBonus] = "Adds 20% bonus Mana per level";
+        //passiveMaxLevel[0] = 3;
+        //passiveMaxLevel[1] = 3;
+
+        for (int i = 0; i < MAX_PASSIVE_SKILLS; i++)
+        {
+            passiveLevel[i] = 0;           //Initialize current level to 0   (I think theres a more efficient way to do this, not sure in C#)
+            passiveMaxLevel[i] = 3;      //All passives set to 3 for now. can change later
+        }
+
+        player = GetComponent<Player>();
+        health = player.GetComponent<Health>();
+        mana = player.GetComponent<Mana>();
     }
 
     void Update()
@@ -82,22 +107,38 @@ public class PassiveSkillManager : MonoBehaviour {
             Debug.Log("Passive has reached max level!");
             return -2;
         }
-        
+
 
         //Begin very long chain of ugly if statements that are probably far more comprehensable than
         //the equivelent would have been using classes
+        switch (passiveID)
+        {
+            case Passives.StrengthBonus:
+                player.AddBonusPercentStrength(5);    //5% strength per level
+                break;
 
-        if(passiveID == Passives.StrengthBonus)
-        {
-            Debug.Log("Running StrengthBonus logic!");
-        }
-        if(passiveID == Passives.HealthBonus)
-        {
-            //Check for preRequisits
-            if (passiveLevel[(int)Passives.StrengthBonus] != 0)
-                Debug.Log("Running HealthBonus logic!");
-            else
-                return -3;
+            case Passives.AgilityBonus:
+                player.AddBonusPercentAgility(5);     //5% agility per level
+                break;
+            case Passives.IntelligenceBonus:
+                player.AddBonusIntelligence(5);         //5% intelligence per level
+                break;
+            case Passives.HealthBonus:
+                //Check for preRequisits
+                if (passiveLevel[(int)Passives.StrengthBonus] > 0)
+                {
+                    health.addBonusPercentHP(15);      //15% health per level
+                    Debug.Log("Running HealthBonus logic!");
+                }
+                else
+                    return -3;
+                
+                break;
+            case Passives.ManaBonus:
+                mana.addBonusPercentMana(20);       //20% mana per level
+                break;
+
+                            
         }
         return 1;
     }

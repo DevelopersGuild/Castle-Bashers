@@ -30,6 +30,7 @@ public class Malady : Boss
     private float claw_CD, swarm_CD, swarm_Duration, hands_CD, summon_CD, polymorph_CD, teleport_CD, teleClaw_CD, hairG_CD, hairA_CD, refreshPriority;
     private float rnd, animationDelay, teleDuration, lerpDuration;
     //Maybe no hands_CD, could be a gameObject that creates hands every few seconds while Malady exists
+    //probably better ^^
     private bool isTeleporting;
     private Vector3 teleTarget, startPos, center;
 
@@ -52,12 +53,13 @@ public class Malady : Boss
     private Animator animator;
     private Animation animation;
     //if any animations are going on, it shouldn't be doing other stuff
+    //ANIMATION STUFF~~~~~~~~~~~~~~~~~ animating = true whenever animation starts, false when ends in most cases (not for combos of animations, false at end of combo)
     private bool animating = false;
     private bool running = false;
     //a for animation
     //[HideInInspector]
     //public bool aClaw, aTeleport
-
+    private bool spawnM = true;
 
     // Use this for initialization
     void Start()
@@ -138,9 +140,37 @@ public class Malady : Boss
     void Update()
     {
         base.Update();
+        if (spawnM)
+        {
+            playerM = FindObjectOfType<PlayerManager>();
+            players = playerM.getPlayers();
+            size = players.Length;
+            threatLevel = damageDealt = players;
+            damageDealt = new Player[size];
+            for (int i = 0; i < size; i++)
+            {
+                players[i].Reset();
+            }
+            one = two = three = four = 0;
+            tempThreat = 0;
+            tempDamage = 0;
+            temp1 = 0;
+            temp2 = 0;
+
+            Grouper.setPlayerGroup(players, size);
+
+            grouping = false;
+            getPlayerType();
+
+
+            int initialTarget = UnityEngine.Random.Range(0, size);
+            target = players[initialTarget].gameObject;
+            spawnM = false;
+        }
         targetPos = target.transform.position;
         CalcDirection();
 
+        
         if (refresh)
         {
             Debug.Log(ranged + " " + grouping + " " + melee + " " + support);
@@ -154,13 +184,21 @@ public class Malady : Boss
 
         if (isTeleporting)
         {
-            //isTeleporting set to true at end of transforming into swarm animation
-            //invincible set to true at start of transforming into swarm animation
+            //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
+            //How teleport works: transform to swarm -> isTel = true, swarm animations for moving around (same as
+            //normal swarm animations, low speed = circular, high speed = more horizontal, accel one way + low speed other way = turning
+            //remember to switch x scale on turn) -> isTel = false, transform to malady.
+            //if tele claw, then claw, tele process to new location (original unless people are clumping there)
+            //positions are already put in with a set time taken to get everywhere (lerp, teleduration, below) so animations have a set time
+
+            //ANIMATION STUFF~~~~~~~~~~~~~~~~~ isTeleporting set to true at end of transforming into swarm animation
+            //ANIMATION STUFF~~~~~~~~~~~~~~~~~ invincible set to true at start of transforming into swarm animation
             transform.position = Vector3.Lerp(startPos, teleTarget, teleDuration);
             if (lerpDuration <= 0)
             {
                 isTeleporting = false;
                 isInvincible = false;
+                //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
                 //stop current animation, start transform back to human animation
 
                 //not needed below
@@ -199,15 +237,15 @@ public class Malady : Boss
 
     public override void Act(Type t)
     {
-
         if (hands_CD > 2.5f)
         {
             hands_CD = 0;
-            //Debug.Log("Hands " + Time.time); //HandsAttack();
+            //Debug.Log("Hands " + Time.time); 
+            HandsAttack();//
         }
-        if (animationDelay > 1f + hp.GetCurrentHealth() / hp.GetMaxHP())
+        if (animationDelay > (1f + hp.GetCurrentHealth() / hp.GetMaxHP()))
         {
-            //getPlayerType();
+            getPlayerType();
             float randNum = UnityEngine.Random.Range(1, 100);
             if (randNum < 5 - 5 * (3 - size))
             {
@@ -293,6 +331,7 @@ public class Malady : Boss
 
     private void Claw()
     {
+        Debug.Log("CLAW");
         claw_CD = 0;
         clawLim = 4 + UnityEngine.Random.Range(0, 3);
         distance = target.transform.position.x - transform.position.x;
@@ -311,6 +350,7 @@ public class Malady : Boss
             if (zDiff < 4 && Math.Abs(distance) < 3)
             {
                 clawLim -= 1;
+                //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
                 //play animation                                        -----------------------
                 //animation sets animating to true using setAnimating()
                 //animating false at end
@@ -327,7 +367,7 @@ public class Malady : Boss
             if (zDiff < 4 && distance < 3)
             {
                 clawLim -= 2;
-                //play animation                                        -----------------------
+                //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
@@ -338,7 +378,7 @@ public class Malady : Boss
         else
         {
             if (zDiff < 4 && distance < 3)
-                //play animation                                        -----------------------
+                //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             else
                 teleClaw();
@@ -354,7 +394,7 @@ public class Malady : Boss
 
     }
 
-    //run at end of teleClaw animations (so transform to human animation and claw swipe animation)
+    //ANIMATION STUFF~~~~~~~~~~~~~~~~~ run at end of teleClaw animations (so transform to human animation and claw swipe animation)
     private void updateTeleClaw()
     {
         if (teleClawStage > 0)
@@ -366,7 +406,7 @@ public class Malady : Boss
 
     private void setAnimating(bool bl)
     {
-        //to keep animating on during the teleClaw combo
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~  to keep animating on during the teleClaw combo
         if (teleClawStage == 0 || bl)
         {
             animating = bl;
@@ -375,6 +415,7 @@ public class Malady : Boss
 
     private void teleClaw()
     {
+        Debug.Log("TELECLAW");
         setAnimating(true);
         teleClawStage = 1;
         teleClawUpdate();
@@ -404,7 +445,7 @@ public class Malady : Boss
 
                 running = true;
                 Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
-                //play animation                                        -----------------------
+                //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 Debug.Log("TeleClaw " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else if (teleClawStage == 3)
@@ -433,13 +474,14 @@ public class Malady : Boss
             }
             else
             {
-                Debug.Log("How did I get here?...here -Odesza");
+                Debug.Log("How did I get here?...here");
             }
         }
     }
 
     private void Swarm()
     {
+        Debug.Log("SWARM");
         swarm_CD = 0;
         swarmLim = 11 + UnityEngine.Random.Range(0, 5);
         Debug.Log("Swarm " + Time.time); //sClaw.UseSkill(gameObject);
@@ -452,13 +494,14 @@ public class Malady : Boss
             swarmLim -= 2;
         if (melee)
             swarmLim -= 1;
-        // play animation                               ---------------------- run spawnSwarm at end
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                          run spawnSwarm at end
     }
 
     private void spawnSwarm()
     {
         //spawn with an offset to match animation position
-        //SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position, transform.rotation) as SwarmBehaviour;
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ create vector3 offset to match animation
+        //SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position + offset, transform.rotation) as SwarmBehaviour;
         //swarm_Duration = swarm.Duration;
         //swarm.setTarget(target);
 
@@ -466,6 +509,7 @@ public class Malady : Boss
 
     private void Summon()
     {
+        Debug.Log("SUMMON");
         summon_CD = 0;
         summonLim = 7 + UnityEngine.Random.Range(0, 6);
 
@@ -478,7 +522,7 @@ public class Malady : Boss
 
         //slightly wierd due to having a scale of 10, would be ok after we have actual stuff
 
-        //play animation                                        ----------------------- run SummonPortal at end
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation              ----------------------- run SummonPortal at end
 
     }
 
@@ -515,9 +559,11 @@ public class Malady : Boss
     //used for teleClaw
     private void Teleport(GameObject targ)
     {
-        isTeleporting = true;
+        Debug.Log("TELEPORT");
+        //set is Tel to true at end of anim, set true here for testing
+        //isTeleporting = true;
         lerpDuration = teleDuration;
-        //play animation                                        ----------------------- set isTeleporting = true at end of anim
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play transform animation                     set isTeleporting = true at end of anim
         float dir = Mathf.Sign(center.x - targ.transform.position.x);
         if (dir == 0)
         {
@@ -531,9 +577,10 @@ public class Malady : Boss
     //for teleClaw. camped is if people around target, if true go to a different location (for return of teleClaw, for now camped always is false)
     private void Teleport(Vector3 targ, bool camped = false)
     {
-        isTeleporting = true;
+        //set true for testing, should be set at end of animation
+        //isTeleporting = true;
         lerpDuration = teleDuration;
-        //play animation                                        ----------------------- set isTel true at end of anim
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play transforming animation                       set isTel true at end of anim
         if (!camped)
         {
             teleTarget = targ;
@@ -557,7 +604,7 @@ public class Malady : Boss
         lerpDuration = teleDuration;
         Debug.Log("Teleport " + Time.time);
         isTeleporting = true;
-        //play animation                                        ----------------------- set isTel true if end of anim
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                       set isTel true if end of anim
         float f = 0;
         foreach (Player p in players)
         {
@@ -599,6 +646,7 @@ public class Malady : Boss
 
     private void Polymorph()
     {
+        Debug.Log("POLYMORPH");
         polymorph_CD = 0;
         polyLim = 9 + UnityEngine.Random.Range(0, 5);
 
@@ -612,7 +660,7 @@ public class Malady : Boss
             polyLim += 2;
 
 
-        //play animation                                        ----------------------- run PolyAttack() at end of anim
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                   run PolyAttack() at end of anim
 
     }
 
@@ -620,7 +668,7 @@ public class Malady : Boss
     {
         Vector3 polyPos = new Vector3(target.transform.position.x, 6, transform.position.z);
         Debug.Log("Poly " + Time.time);  //Instantiate(PolySkill, polyPos, transform.rotation);
-        //poly runs animation, then creates it's stuff
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ poly runs animation, then creates it's stuff (instantiate)
     }
 
     public float getDirection()
@@ -693,8 +741,11 @@ public class Malady : Boss
 
         //play animation                                        -----------------------
         //which animation?
+        //don't know what animation has the hair object thing
+        //Make work for one hair, then go on to multiple (in animation)
         GameObject hairAttackObj = hairExtendSkill;
         GameObject hairAttackObj2 = hairExtendSkill;
+        //for multiple hairs, just puts them at an angle (so not just a straight line, but multiple areas)
         for (int i = 0; i < numHairs; i++)
         {
             hairAttackObj.transform.rotation.eulerAngles.Set(transform.rotation.eulerAngles.x, i * 15, transform.rotation.eulerAngles.z);
@@ -705,8 +756,8 @@ public class Malady : Boss
             }
             else
             {
-                //Add offset? will need to match sprite
-                
+                //ANIMATION STUFF~~~~~~~~~~~~~~~~~ Add offset? will need to match sprite
+
                 hairAttackObj2.transform.rotation.eulerAngles.Set(transform.rotation.eulerAngles.x, i * 15, transform.rotation.eulerAngles.z);
 
                 Instantiate(hairAttackObj, transform.position, hairAttackObj.transform.rotation);
@@ -718,6 +769,9 @@ public class Malady : Boss
 
     private void HairGrab()
     {
+        Debug.Log("HAIRGRAB");
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~  need animation for this before finishing
+        //easy to do once animation exists, too many variables without animation
         hairG_CD = 0;
         hairGLim = 8 + UnityEngine.Random.Range(0, 7);
 
@@ -728,6 +782,12 @@ public class Malady : Boss
         //low cooldown (2 attacks)
         //No, should be high cooldown, not 2 attacks anymore
 
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ Debug.Log statements are for the attack
+        //3 possibilities:Teleport, Hair extends, or nothing
+        //after that grab in front (animation)
+        //if fail to hit, end attack (and tp back if tped)
+        //else play either throw animation or hold animation (hair throws the player || hair holds the player)
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ above
 
         //ranged grab can only target someone ___+ dist away
         //ranged grab has high hp steal (you can hit her and she can't move, so it's ok)
@@ -793,12 +853,13 @@ public class Malady : Boss
     private void HandsAttack()
     {
         Vector3 offset = new Vector3(UnityEngine.Random.Range(-300,300)/100.0f, 0, UnityEngine.Random.Range(-110,110)/100.0f);
+        Debug.Log("HANDS");
 
         if (ranged || grouping)
             hands_CD -= 0.5f;
         if (melee)
             hands_CD += 0.5f;
-        //play animation                                        ----------------------- 
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play create hands animation, if one exists 
         //instantiate collider
         Instantiate(handSkill, target.transform.position + offset, handSkill.transform.rotation);
     }
@@ -852,18 +913,19 @@ public class Malady : Boss
     encounter = died, came back to fight
     stage = 0;
 
+    //OLD, DUE FOR REVISION TO MAINTAIN LORE AND GAME CONTINUITIES
     Stage 0 - no dialogue (so that it can check all the time)
     Stage 1 - (first encounter) Finally, a new face in this lonely forest
     Stage 2 - (second encounter) I'm not contagious, honest. I'm 
     Stage 3 -  (third encounter) You again? I must be seeing things
-    Stage 4 - (fourth encounter) Who's that behind you? Is that spirit messing around in my forest again?
+    Stage 4 - (fourth encounter) Who's that behind you? Is that spirit messing around in my forest again? //SCRAPPED CHARACTER
     Stage 5 - (fifth encounter) You're really doing a number on my schedule.
 
-    Stage 21 - (first death) Oh, I just remembered why it was so lonely
+    Stage 21 - (first death) Oh, I just remembered why it was so lonely //REVISE?
     Stage 22 - (second death) Looks like you got a lot more than just cooties.
     Stage 23 - (third death)  Ugh, Deja-vu
     Stage 24 - (fourth death) Do you think the ghostbusters reach here?
-    Stage 25 - (fifth death) ~Yawn~ (special yawn font animation) I wish Magrat would visit more often
+    Stage 25 - (fifth death) ~Yawn~ (special yawn font animation) I wish _ would visit more often //NO (yawn is a nice touch though)
     Stage 26 - (sixth death)
 
     Stage 41 - (during fight) 
