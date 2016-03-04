@@ -10,6 +10,11 @@ GameObject:
   - 4: {fileID: 493678}
   - 95: {fileID: 9546262}
   - 212: {fileID: 21230142}
+  - 54: {fileID: 5440478}
+  - 65: {fileID: 6588668}
+  - 114: {fileID: 11464192}
+  - 114: {fileID: 11439024}
+  - 114: {fileID: 11434502}
   m_Layer: 0
   m_Name: Malady
   m_TagString: Untagged
@@ -29,6 +34,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!54 &5440478
+Rigidbody:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134714}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: .0500000007
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 0
+  m_CollisionDetection: 0
+--- !u!65 &6588668
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134714}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 3.25999999, y: 4.05999994, z: 2.54999995}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &9546262
 Animator:
   serializedVersion: 3
@@ -46,6 +78,111 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11434502
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 02d0c8954f7356e43a346229f33f5748, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  agroRange: 0
+  attackRange: 0
+  attack_CD: 0
+  attackShakesScreen: 0
+  experienceAmount: 0
+  attackSound: {fileID: 0}
+  target: {fileID: 0}
+  targetPos: {x: 0, y: 0, z: 0}
+  dir: {x: 0, y: 0, z: 0}
+  gravity: {x: 0, y: 0, z: 0}
+  xhalf: {x: 0, y: 0, z: 0}
+  half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
+  moveController: {fileID: 0}
+  isInvincible: 0
+  isStunned: 0
+  freeFall: 0
+  invTime: 0
+  stunTimer: 0
+  distance: 0
+  speed: 0
+  zDiff: 0
+  distL: 0
+  distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
+  toLeft: 0
+  left: {x: 0, y: 0, z: 0}
+  right: {x: 0, y: 0, z: 0}
+  sprRend: {fileID: 0}
+  hp: {fileID: 0}
+  animationController: {fileID: 0}
+  classification: 0
+  actor: {fileID: 0}
+  pm: {fileID: 0}
+  difficulty: 0
+  spawn: 1
+  players: []
+  threatLevel: []
+  damageDealt: []
+  CenterObj: {fileID: 0}
+  ClawSkill: {fileID: 145190, guid: 7829f3c6a8e9b21438ec42a662b9380a, type: 2}
+  SwarmObj: {fileID: 192390, guid: b4c6d25e58b780c4d8050fd6464f6b57, type: 2}
+  SummonSkill: {fileID: 117642, guid: e83d6811fffae9f449dceaf8c518f3df, type: 2}
+  PolySkill: {fileID: 171488, guid: 554c2f3106797da46b4bc9ecb0e4675a, type: 2}
+  hairExtendSkill: {fileID: 171668, guid: 0cedb940733a9dd4681a52f41841a36c, type: 2}
+  hairGrabSkill: {fileID: 168664, guid: d19cd858aab96fa4daaa91cd4f32e353, type: 2}
+  handSkill: {fileID: 119178, guid: 2670bb0ba3d45514dbc714851c56b537, type: 2}
+  Grouper: {fileID: 0}
+--- !u!114 &11439024
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 805732d8b0797b745ad2b746b8ef13e1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RegenAmount: 0
+  currentHealth: 50
+  maxhp: 50
+  deathObject: {fileID: 0}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
+--- !u!114 &11464192
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 134714}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7b0f8416ad849e64486fe9ba9c5500a4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
+  walkSound: {fileID: 0}
+  isMoving: 0
+  horizontalRayCount: 4
+  verticalRayCount: 4
+  isKnockbackable: 0
+  isFlinchable: 0
+  knockbackVelocity: 0
+  flinchVelocity: 0
+  isStunned: 0
+  playerInput: {x: 0, y: 0}
 --- !u!212 &21230142
 SpriteRenderer:
   m_ObjectHideFlags: 1

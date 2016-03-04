@@ -24,7 +24,7 @@ Transform:
   m_GameObject: {fileID: 145190}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: -9.84239864, y: 11.5398636, z: 10.5826159}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -39,6 +39,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 44b7f55e5524d8748bd14b8265030897, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  useSkillAudio: {fileID: 0}
+  value: 0
+  augment: 0
+  skillType: 0
   claw1: {fileID: 11478498, guid: 6df33ee52a1c1ce4ca5278997cb5384e, type: 2}
   claw2: {fileID: 11438268, guid: 34c4c27852a031d4996c122c741083d4, type: 2}
   claw3: {fileID: 11441430, guid: 0d7d47a45c8086b428bda100e54f4fbe, type: 2}

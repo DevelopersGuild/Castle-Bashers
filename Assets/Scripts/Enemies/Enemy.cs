@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer sprRend;
     [HideInInspector]
     public Health hp;
+    [HideInInspector]
     public AnimationController animationController;
     protected CameraFollow camera;
 

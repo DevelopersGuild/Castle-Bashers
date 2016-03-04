@@ -51,7 +51,6 @@ public class Malady : Boss
     private float range, group, mel, supp;
 
     private Animator animator;
-    private Animation animation;
     //if any animations are going on, it shouldn't be doing other stuff
     //ANIMATION STUFF~~~~~~~~~~~~~~~~~ animating = true whenever animation starts, false when ends in most cases (not for combos of animations, false at end of combo)
     private bool animating = false;
@@ -66,9 +65,6 @@ public class Malady : Boss
     {
         base.Start();
         sClaw = ClawSkill.GetComponent<ClawAttack>();
-        animator = GetComponent<Animator>();
-        animation = GetComponent<Animation>();
-
         claw_CD = 4 + UnityEngine.Random.Range(0, 3);
         clawLim = claw_CD;
         teleClaw_CD = 4 + UnityEngine.Random.Range(0, 3);
@@ -257,7 +253,7 @@ public class Malady : Boss
             }
             else if (randNum < 45 - 15 * (3 - size))
             {
-                target = players[1].gameObject;
+                target = players[0].gameObject;
             }
             else
             {
@@ -355,6 +351,7 @@ public class Malady : Boss
                 //animation sets animating to true using setAnimating()
                 //animating false at end
                 //for all animations
+                animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
@@ -368,6 +365,7 @@ public class Malady : Boss
             {
                 clawLim -= 2;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
+                animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
@@ -378,8 +376,11 @@ public class Malady : Boss
         else
         {
             if (zDiff < 4 && distance < 3)
+            {
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
+                animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
+            }
             else
                 teleClaw();
         }
@@ -446,6 +447,7 @@ public class Malady : Boss
                 running = true;
                 Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
+                animator.SetTrigger("useClaw");
                 Debug.Log("TeleClaw " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else if (teleClawStage == 3)
@@ -501,6 +503,7 @@ public class Malady : Boss
     {
         //spawn with an offset to match animation position
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ create vector3 offset to match animation
+        animator.SetTrigger("usePuke");
         //SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position + offset, transform.rotation) as SwarmBehaviour;
         //swarm_Duration = swarm.Duration;
         //swarm.setTarget(target);
@@ -581,6 +584,7 @@ public class Malady : Boss
         //isTeleporting = true;
         lerpDuration = teleDuration;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play transforming animation                       set isTel true at end of anim
+        animator.SetTrigger("useTransform");
         if (!camped)
         {
             teleTarget = targ;
@@ -605,6 +609,7 @@ public class Malady : Boss
         Debug.Log("Teleport " + Time.time);
         isTeleporting = true;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                       set isTel true if end of anim
+        animator.SetTrigger("useTransform");
         float f = 0;
         foreach (Player p in players)
         {
@@ -740,6 +745,7 @@ public class Malady : Boss
             hairALim += 1;
 
         //play animation                                        -----------------------
+        animator.SetBool("isCrazy", true);
         //which animation?
         //don't know what animation has the hair object thing
         //Make work for one hair, then go on to multiple (in animation)
@@ -772,6 +778,7 @@ public class Malady : Boss
         Debug.Log("HAIRGRAB");
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~  need animation for this before finishing
         //easy to do once animation exists, too many variables without animation
+        animator.SetBool("isCrazy", true);
         hairG_CD = 0;
         hairGLim = 8 + UnityEngine.Random.Range(0, 7);
 
