@@ -97,7 +97,15 @@ public class Actor : MonoBehaviour
 
     void MoveToward()
     {
-        currNode = path[nodeIndex];
+        if (path == null)
+        {
+            currNode = target.transform.position;
+        }
+        else
+        {
+            currNode = path[nodeIndex];
+        }
+      
 
         if (DebugMode)
         {
@@ -122,7 +130,7 @@ public class Actor : MonoBehaviour
                 {
                     nodeIndex++;
                     onNode = true;
-                    if (nodeIndex < path.Count)
+                    if (path != null && nodeIndex < path.Count)
                         currNode = path[nodeIndex];
                     else
                     {
@@ -150,7 +158,12 @@ public class Actor : MonoBehaviour
 
     private void SetTarget()
     {
-        path = control.Path(transform.position, m_target, zDiff);
+        int temp = 0;
+        do
+        {
+            path = control.Path(transform.position, m_target, zDiff);
+            temp++;
+        } while (path == null && temp < 5);
         nodeIndex = 0;
         onNode = true;
     }

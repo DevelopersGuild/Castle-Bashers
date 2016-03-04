@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer sprRend;
     [HideInInspector]
     public Health hp;
+    [HideInInspector]
     public AnimationController animationController;
     protected CameraFollow camera;
 
@@ -183,8 +184,6 @@ public class Enemy : MonoBehaviour
     {
         Vector3 velocity = vDirection - transform.position;
         velocity = velocity.normalized;
-        Debug.Log(velocity);
-        Debug.Log(vDirection);
         moveController.Move(velocity * Time.deltaTime * force);
     }
 

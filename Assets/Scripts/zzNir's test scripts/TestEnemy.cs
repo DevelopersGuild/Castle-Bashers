@@ -112,7 +112,6 @@ public class TestEnemy : Enemy
         }
         else
         {
-            Debug.Log("FREEEEEEEEEEEEEEEFALLING");
             Move(vel, speed);
         }
 
