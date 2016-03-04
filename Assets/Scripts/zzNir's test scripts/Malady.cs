@@ -64,6 +64,7 @@ public class Malady : Boss
     // Use this for initialization
     void Start()
     {
+
         base.Start();
         sClaw = ClawSkill.GetComponent<ClawAttack>();
         animator = GetComponent<Animator>();
@@ -103,35 +104,16 @@ public class Malady : Boss
         moveController.isFlinchable = false;
         moveController.isKnockbackable = false;
 
-        playerM = FindObjectOfType<PlayerManager>();
-        players = playerM.getPlayers();
-        size = players.Length;
-        threatLevel = damageDealt = players;
-        damageDealt = new Player[size];
-        for (int i = 0; i < size; i++)
-        {
-            players[i].Reset();
-        }
-        one = two = three = four = 0;
-        tempThreat = 0;
-        tempDamage = 0;
-        temp1 = 0;
-        temp2 = 0;
         numHairs = 2;
 
-        Grouper.setPlayerGroup(players, size);
 
         lerpDuration = 0;
         grouping = false;
-        getPlayerType();
 
         ClawLeft = ClawSkill.transform.localScale;
         ClawRight = new Vector3(ClawLeft.x * -1, transform.localScale.y, transform.localScale.z);
         MaladyLeft = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         MaladyRight = transform.localScale;
-
-        int initialTarget = UnityEngine.Random.Range(0, size);
-        target = players[initialTarget].gameObject;
 
 
     }
@@ -247,15 +229,15 @@ public class Malady : Boss
         {
             getPlayerType();
             float randNum = UnityEngine.Random.Range(1, 100);
-            if (randNum < 5 - 5 * (3 - size))
+            if (randNum < 5 - 5 * (4 - size))
             {
                 target = players[3].gameObject;
             }
-            else if (randNum < 20 - 10 * (3 - size))
+            else if (randNum < 20 - 10 * (4 - size))
             {
                 target = players[2].gameObject;
             }
-            else if (randNum < 45 - 15 * (3 - size))
+            else if (randNum < 45 - 15 * (4 - size))
             {
                 target = players[1].gameObject;
             }
