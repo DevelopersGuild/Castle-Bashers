@@ -33,6 +33,11 @@ public class CreateStart : MonoBehaviour {
 
     private System.Random rnd;
 
+    public void EnemyScale(GameObject Enemy)
+    {
+        DealDamage.setDamage(DealDamage.getDamage()*100f);
+    }
+
     public void MakeRoom(int roomC, GameObject bg)
     //makes a room
 
@@ -185,6 +190,7 @@ public class CreateStart : MonoBehaviour {
 
                 if (temp != null)
                     AreaLog[m] = spawn(position, temp, X_coord[m], Z_coord[m]);
+                EnemyScale(AreaLog[m]);
             }
 
         }
