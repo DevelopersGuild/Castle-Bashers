@@ -493,7 +493,7 @@ public class Main_Process : MonoBehaviour {
     private void TEST()
     {
         CancelInvoke();
-        OpenDialog("10000", "test");
+        //OpenDialog("10000", "test");
         UI_Level_Selector_Open(0);
     }
 
