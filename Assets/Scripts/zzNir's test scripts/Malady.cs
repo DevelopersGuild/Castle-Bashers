@@ -317,14 +317,12 @@ public class Malady : Boss
         if (ranged || support)
         {
             clawLim -= 1;
-            Debug.Log("num");
             teleClaw();
         }
         else if (melee)
         {
             if (zDiff < 4 && Math.Abs(distance) < 3)
             {
-                Debug.Log("num1");
                 clawLim -= 1;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
                 //play animation                                        -----------------------
@@ -336,7 +334,6 @@ public class Malady : Boss
             }
             else
             {
-                Debug.Log("num2");
                 teleClaw();
             }
         }
@@ -344,7 +341,6 @@ public class Malady : Boss
         {
             if (zDiff < 4 && distance < 3)
             {
-                Debug.Log("num3");
                 clawLim -= 2;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
@@ -352,7 +348,6 @@ public class Malady : Boss
             }
             else
             {
-                Debug.Log("num4");
                 teleClaw();
             }
         }
@@ -360,14 +355,12 @@ public class Malady : Boss
         {
             if (zDiff < 4 && distance < 3)
             {
-                Debug.Log("num5");
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
             {
-                Debug.Log("num6");
                 teleClaw();
             }
         }
