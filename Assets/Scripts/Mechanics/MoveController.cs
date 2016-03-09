@@ -264,15 +264,15 @@ public class MoveController : MonoBehaviour
                 isKnockedBack = true;
             }
 
-            if (GetComponent<ID>() && !GetComponent<Player>())
-            {
-                if (GetComponent<ID>().getTime())
-                    currentFlinchTime -= Time.unscaledDeltaTime;
-            }
-            else
+            //if (GetComponent<ID>() && !GetComponent<Player>())
+            //{
+            //    if (GetComponent<ID>().getTime())
+            //        currentFlinchTime -= Time.unscaledDeltaTime;
+            //}
+            //else
                 currentFlinchTime -= Time.deltaTime;
 
-            // Debug.Log(currentFlinchTime);
+            Debug.Log(currentFlinchTime);
 
             // Stop flinching after timer has passed
             if (currentFlinchTime <= 0) // && collisions.below == true)
