@@ -397,6 +397,48 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5185cc835ea492a4f898e4ab64ed4e37, type: 2}
   m_IsPrefabParent: 0
+--- !u!1001 &491897217
+Prefab:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_LocalPosition.x
+      value: -25.25
+      objectReference: {fileID: 0}
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_LocalPosition.y
+      value: 9.46977997
+      objectReference: {fileID: 0}
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_LocalPosition.z
+      value: -7.36999989
+      objectReference: {fileID: 0}
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 493678, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_ParentPrefab: {fileID: 100100000, guid: d2811a08895bf3d4aaf6de0f86890146, type: 2}
+  m_IsPrefabParent: 0
 --- !u!1001 &517105051
 Prefab:
   m_ObjectHideFlags: 0
@@ -1228,7 +1270,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 14
+  m_RootOrder: 15
 --- !u!1 &1849645164 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 151902, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
@@ -1488,7 +1530,7 @@ Transform:
   m_LocalScale: {x: .5, y: .5, z: .5}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!95 &2016734819
 Animator:
   serializedVersion: 3
