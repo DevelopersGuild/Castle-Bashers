@@ -491,6 +491,7 @@ public class Main_Process : MonoBehaviour {
         {
             p.DisableInput();
         }
+        Globe.talking = true;
         Other_Windows.SetActive(true);
         Other_Windows.GetComponent<Other_Windows_FullControl>().Dialog.GetComponent<Dialog_FullControl>().OpenDialog(id,npcname);
     }

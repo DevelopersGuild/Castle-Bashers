@@ -12,4 +12,5 @@ public class Globe {
     public static float music_volume = 1;
     public static float sound_volume = 1;
     public static float dialogue_volume = 1;
+    public static bool talking = false;
 }
