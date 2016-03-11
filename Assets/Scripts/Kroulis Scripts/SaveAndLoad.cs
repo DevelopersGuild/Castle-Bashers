@@ -25,9 +25,10 @@ public class SaveAndLoad : MonoBehaviour {
 
         PlayerHolder = GameObject.Find("PlayerHolder");
         Player_Script = PlayerHolder.GetComponentsInChildren<Player>();
-        //Debug.Log("Player Object Found: " + Player_Script.Length.ToString());
-        for (int i = 0; i <= 1;i++ )
+        Debug.Log("Player Object Found: " + Player_Script.Length.ToString());
+        for (int i = 0; i <= 1; i++)
         {
+
             Player_PF[i] = Player_Script[i].gameObject;
             Player_Health[i] = Player_PF[i].GetComponent<Health>();
             Player_Mana[i] = Player_PF[i].GetComponent<Mana>();
