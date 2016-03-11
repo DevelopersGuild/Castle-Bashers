@@ -11,6 +11,7 @@ public class FireballSkill : Skill
         base.Start();
         base.SetBaseValues(5, 5000, 5, "fireBall", SkillLevel.EnemyOnly);
         damage = 15;
+        
         base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/fireball"));
     }
     protected override void Update()
@@ -29,6 +30,7 @@ public class FireballSkill : Skill
     public override void UseSkill(GameObject caller, GameObject target = null, object optionalParameters = null)
     {
         Debug.Log("Using Fireball!");
+        Debug.Log("Checking");
         base.UseSkill(caller, target, optionalParameters);
         fireBall = Instantiate(Resources.Load("Fireball")) as GameObject;   //was FireBall
         fireBall.GetComponent<DealDamage>().setDamage(damage);
