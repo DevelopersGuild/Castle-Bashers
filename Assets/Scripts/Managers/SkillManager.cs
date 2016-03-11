@@ -36,9 +36,10 @@ public class SkillManager : MonoBehaviour
         unlockedSkills.Add(newSkill);
     }
 
-    public void UnlockSkillI(Skill newSkill)
-    {
-        unlockedSkills.Add(newSkill);
+    
+    public void UnlockSkillI<T>(T newSkill) where T : Skill
+    { 
+        unlockedSkills.Add(gameObject.AddComponent<T>());
     }
 
     public Skill UnlockSkillC(Skill newSkill)
@@ -72,7 +73,7 @@ public class SkillManager : MonoBehaviour
         }
         if(flag)
         {
-            //currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
+            currentSkillLoadout[replaceIndex].GetComponent<ID>().SetID(player.getManagerID());
         }
         else
         {
@@ -90,7 +91,7 @@ public class SkillManager : MonoBehaviour
         if (currentSkillLoadout[0].GetCoolDownTimer() <= 0)
         {
             currentSkillLoadout[0].UseSkill(gameObject, null);
-            //AudioSource.PlayClipAtPoint(currentSkillLoadout[0].useSkillAudio, transform.position);
+            AudioSource.PlayClipAtPoint(currentSkillLoadout[0].useSkillAudio, transform.position);
             Debug.Log("Use Skill 1");
 
             if (player || true)
