@@ -1,0 +1,199 @@
+fileFormatVersion: 2
+guid: e1d72caabe600fc45bcf33b4ae90f2d7
+timeCreated: 1457687179
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: robo-o-wisp_sheet (1)_0
+    21300002: robo-o-wisp_sheet (1)_2
+    21300004: robo-o-wisp_sheet (1)_7
+    21300006: robo-o-wisp_sheet (1)_8
+    21300008: robo-o-wisp_sheet (1)_9
+    21300010: robo-o-wisp_sheet (1)_13
+    21300012: robo-o-wisp_sheet (1)_14
+    21300014: robo-o-wisp_sheet (1)_15
+    21300016: robo-o-wisp_sheet (1)_16
+    21300018: robo-o-wisp_sheet (1)_17
+    21300020: robo-o-wisp_sheet (1)_18
+    21300022: robo-o-wisp_sheet (1)_19
+    21300024: robo-o-wisp_sheet (1)_20
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: .25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 8
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: .5, y: .5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 30
+  alphaIsTransparency: 1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    sprites:
+    - name: robo-o-wisp_sheet (1)_0
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 298
+        width: 33
+        height: 66
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_2
+      rect:
+        serializedVersion: 2
+        x: 106
+        y: 298
+        width: 31
+        height: 67
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_7
+      rect:
+        serializedVersion: 2
+        x: 176
+        y: 298
+        width: 32
+        height: 71
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_8
+      rect:
+        serializedVersion: 2
+        x: 245
+        y: 298
+        width: 31
+        height: 70
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_9
+      rect:
+        serializedVersion: 2
+        x: 315
+        y: 296
+        width: 31
+        height: 75
+      alignment: 0
+      pivot: {x: .5, y: .5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_13
+      rect:
+        serializedVersion: 2
+        x: 254
+        y: 213
+        width: 13
+        height: 68
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_14
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 212
+        width: 13
+        height: 71
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_15
+      rect:
+        serializedVersion: 2
+        x: 394
+        y: 212
+        width: 13
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_16
+      rect:
+        serializedVersion: 2
+        x: 464
+        y: 212
+        width: 13
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_17
+      rect:
+        serializedVersion: 2
+        x: 534
+        y: 212
+        width: 13
+        height: 60
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_18
+      rect:
+        serializedVersion: 2
+        x: 34
+        y: 208
+        width: 32
+        height: 57
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_19
+      rect:
+        serializedVersion: 2
+        x: 108
+        y: 210
+        width: 23
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+    - name: robo-o-wisp_sheet (1)_20
+      rect:
+        serializedVersion: 2
+        x: 182
+        y: 211
+        width: 16
+        height: 53
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
