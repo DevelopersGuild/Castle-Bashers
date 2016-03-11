@@ -17,8 +17,9 @@ GameObject:
   - 95: {fileID: 9507210}
   - 114: {fileID: 11406560}
   - 114: {fileID: 11432224}
+  - 114: {fileID: 11430942}
   m_Layer: 0
-  m_Name: Meteor Caller
+  m_Name: goon_mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -125,6 +126,21 @@ MonoBehaviour:
   flinchVelocity: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
+--- !u!114 &11430942
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 47a94afc4892a9e4ba09048cbb63d5c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  dropChance: 0
+  coinValue: 120
+  items: []
+  itemDropRates: 
 --- !u!114 &11431110
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -165,7 +181,7 @@ MonoBehaviour:
   attackRange: 5
   attack_CD: 0
   attackShakesScreen: 0
-  experienceAmount: 0
+  experienceAmount: 10
   attackSound: {fileID: 0}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -231,7 +247,15 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: experienceAmount
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coinValue
+      value: 120
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 124154}

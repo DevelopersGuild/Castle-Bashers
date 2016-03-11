@@ -146,7 +146,7 @@ MonoBehaviour:
   attackRange: 11
   attack_CD: 2
   attackShakesScreen: 0
-  experienceAmount: 0
+  experienceAmount: 10
   attackSound: {fileID: 8300000, guid: 449582bb996f40a4fbd6e3db19390d84, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -318,6 +318,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_Layer
       value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: experienceAmount
+      value: 10
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

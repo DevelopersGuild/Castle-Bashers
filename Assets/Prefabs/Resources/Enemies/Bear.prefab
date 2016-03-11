@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 100
-  coinValue: 280
+  coinValue: 180
   items: []
   itemDropRates: 
 --- !u!114 &11469100
@@ -235,7 +235,7 @@ MonoBehaviour:
   attackRange: 1
   attack_CD: 5
   attackShakesScreen: 1
-  experienceAmount: 5
+  experienceAmount: 15
   attackSound: {fileID: 8300000, guid: 52f5efe01edb13140a725b26ab255d26, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -443,7 +443,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: experienceAmount
-      value: 5
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits
@@ -464,6 +464,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: nodeTag
       value: point
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coinValue
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

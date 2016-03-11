@@ -10,6 +10,11 @@ public class DroppedGem : MonoBehaviour {
     Gem gem;
     int gemType;
     Player player;
+    public Sprite blueGem;
+    public Sprite greenGem;
+    public Sprite redGem;
+    private SpriteRenderer sr;
+    private Sprite currentSprite;
 
 	// Use this for initialization
 	void Start () {
@@ -21,6 +26,8 @@ public class DroppedGem : MonoBehaviour {
         else                    // 60% chance for normal
             quality = 1;
 
+	    sr = GetComponent<SpriteRenderer>();
+
         if(quality >= 2)
         {
             gemType = Random.Range(1, 6); // If rare or epic, can roll skill gem
@@ -29,6 +36,21 @@ public class DroppedGem : MonoBehaviour {
         {
             gemType = Random.Range(1, 5);
         }
+
+	    if (quality == 1)
+	    {
+            currentSprite = greenGem;
+	    }else if (quality == 2)
+	    {
+            currentSprite = redGem;
+        }
+	    else
+	    {
+            currentSprite = blueGem;
+        }
+
+	    sr.sprite = currentSprite;
+
         //Roll stats for gem
         Debug.Log("Rolled quality " + quality);
 	}

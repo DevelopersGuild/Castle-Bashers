@@ -31,7 +31,7 @@ public class JumpState : IPlayerState
         if (player.GetMoveController().collisions.below)
         {
             player.EndJump();
-            player.attackController.resetTap();
+            player.attackController.ResetTap();
             player.animator.SetBool("JumpAttack", false);
             player.attackController.ResetTap();
         }
