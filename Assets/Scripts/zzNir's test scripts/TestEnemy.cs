@@ -128,14 +128,18 @@ public class TestEnemy : Enemy
     {
         float f = UnityEngine.Random.Range(40, 100) / 100.0f;
         attack_CD = -f;
+        Debug.Log("WHAT");
         isAttacking = true;
         vel = Vector3.zero;
         yield return new WaitForSeconds(f);
 
-        isAttacking = true;
-        distL = (transform.position - targetPos - left).magnitude;
-        distR = (transform.position - targetPos - right).magnitude;
-        toLeft = (attackRange + distL) <= distR;
+        if (isAttacking)
+        {
+            isAttacking = true;
+            distL = (transform.position - targetPos - left).magnitude;
+            distR = (transform.position - targetPos - right).magnitude;
+            toLeft = (attackRange + distL) <= distR;
+        }
 
     }
 

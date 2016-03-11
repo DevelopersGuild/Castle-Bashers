@@ -317,14 +317,12 @@ public class Malady : Boss
         if (ranged || support)
         {
             clawLim -= 1;
-            Debug.Log("num");
             teleClaw();
         }
         else if (melee)
         {
             if (zDiff < 4 && Math.Abs(distance) < 3)
             {
-                Debug.Log("num1");
                 clawLim -= 1;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
                 //play animation                                        -----------------------
@@ -336,7 +334,6 @@ public class Malady : Boss
             }
             else
             {
-                Debug.Log("num2");
                 teleClaw();
             }
         }
@@ -344,7 +341,6 @@ public class Malady : Boss
         {
             if (zDiff < 4 && distance < 3)
             {
-                Debug.Log("num3");
                 clawLim -= 2;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
@@ -352,7 +348,6 @@ public class Malady : Boss
             }
             else
             {
-                Debug.Log("num4");
                 teleClaw();
             }
         }
@@ -360,14 +355,12 @@ public class Malady : Boss
         {
             if (zDiff < 4 && distance < 3)
             {
-                Debug.Log("num5");
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
             {
-                Debug.Log("num6");
                 teleClaw();
             }
         }
@@ -483,6 +476,9 @@ public class Malady : Boss
             swarmLim -= 2;
         if (melee)
             swarmLim -= 1;
+
+        animator.SetTrigger("usePuke");
+
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                          run spawnSwarm at end
     }
 
@@ -490,7 +486,6 @@ public class Malady : Boss
     {
         //spawn with an offset to match animation position
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ create vector3 offset to match animation
-        animator.SetTrigger("usePuke");
         //SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position + offset, transform.rotation) as SwarmBehaviour;
         //swarm_Duration = swarm.Duration;
         //swarm.setTarget(target);
@@ -511,9 +506,21 @@ public class Malady : Boss
             summonLim += 1;
 
         //slightly wierd due to having a scale of 10, would be ok after we have actual stuff
-
+        //summoning = true
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation              ----------------------- run SummonPortal at end
 
+    }
+
+    public void endFunction()
+    {
+        ////if(summoning)
+        //{
+        //    summonPortal
+        //}
+        //if(poly) 
+        //{
+        //    PolyCloud
+        //}
     }
 
     public void SummonPortal()

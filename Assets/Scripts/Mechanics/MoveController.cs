@@ -246,6 +246,7 @@ public class MoveController : MonoBehaviour
     {
         if (isFlinched)
         {
+
             isStunned = true;
 
             if (!facingRight)
