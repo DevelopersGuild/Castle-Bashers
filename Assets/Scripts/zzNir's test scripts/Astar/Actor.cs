@@ -18,7 +18,7 @@ public class Actor : MonoBehaviour
 
     bool onNode = true;
     Vector3 m_target = new Vector3(0, 0, 0);
-    Vector3 currNode;
+    Vector3 currNode, targPos;
     int nodeIndex;
     List<Vector3> path = new List<Vector3>();
     NodeControl control;
@@ -38,13 +38,16 @@ public class Actor : MonoBehaviour
         GameObject cam = GameObject.FindGameObjectWithTag("MainCamera");
         me = GetComponent<Enemy>();
         control = GetComponent<NodeControl>();
+        canMove = false;
         //control = (NodeControl)cam.GetComponent(typeof(NodeControl));
         target = null;
+        targPos = gameObject.transform.position;
     }
 
     void Update()
     {
         //m_speed = Time.deltaTime * m_speed_multi;
+        canMove = me.getCanMove();
         if(state == State.MOVING)
         {
             if(elapsedTime > 0.25)
@@ -53,7 +56,10 @@ public class Actor : MonoBehaviour
                 MoveOrder(target.transform.position, toP);
             }
             MoveToward();
+            if(canMove)
+            me.MoveToDir(targPos, 10);
         }
+
         //if (elapsedTime > OldTime)
         //{
         //    switch (state)
@@ -97,7 +103,15 @@ public class Actor : MonoBehaviour
 
     void MoveToward()
     {
-        currNode = path[nodeIndex];
+        if (path == null)
+        {
+            currNode = target.transform.position;
+        }
+        else
+        {
+            currNode = path[nodeIndex];
+        }
+      
 
         if (DebugMode)
         {
@@ -122,7 +136,7 @@ public class Actor : MonoBehaviour
                 {
                     nodeIndex++;
                     onNode = true;
-                    if (nodeIndex < path.Count)
+                    if (path != null && nodeIndex < path.Count)
                         currNode = path[nodeIndex];
                     else
                     {
@@ -136,7 +150,7 @@ public class Actor : MonoBehaviour
             //newPos += motion;
             Debug.DrawLine(transform.position, currNode, Color.red, 0.01f);
             Vector3 motion = new Vector3(currNode.x, 0, currNode.z);
-            me.MoveToDir(motion, 10);
+            targPos = motion;
             //newPos += motion * m_speed;
 
             //transform.position = newPos;
@@ -150,7 +164,12 @@ public class Actor : MonoBehaviour
 
     private void SetTarget()
     {
-        path = control.Path(transform.position, m_target, zDiff);
+        int temp = 0;
+        do
+        {
+            path = control.Path(transform.position, m_target, zDiff);
+            temp++;
+        } while (path == null && temp < 5);
         nodeIndex = 0;
         onNode = true;
     }

@@ -40,6 +40,7 @@ public class Enemy : MonoBehaviour
     public SpriteRenderer sprRend;
     [HideInInspector]
     public Health hp;
+    [HideInInspector]
     public AnimationController animationController;
     protected CameraFollow camera;
 
@@ -112,7 +113,7 @@ public class Enemy : MonoBehaviour
 
             //not really final values, just showing scaling off num players and player level
             //more enemies should spawn based on num players, but that's in robert's field
-            hp.SetMaxHP((int)(hp.GetMaxHP() * ((pm.getSize() * 0.25f) + 0.75f) * (pm.getAvgLevel() / 3.0f) * (1 + difficulty/20.0f)));
+            hp.SetMaxHP((int)(hp.GetMaxHP() * ((pm.getSize() * 0.25f) + 0.75f) * (pm.getAvgLevel() / 3.0f) * (1 + difficulty / 20.0f)));
             //armor = base armor * (numPlayers/4 + 0.75) * + (avgLevel/5);
             //dmg increased on test enemy (will be enemy type by enemy type basis for all these really)
             //avgLevel and numPlayers should be variables in enemy that are passed in by the spawning object, don't need a player manager on every enemy
@@ -169,6 +170,12 @@ public class Enemy : MonoBehaviour
         isInvincible = true;
     }
 
+    public bool getCanMove()
+    {
+//        Debug.Log(moveController.getCanMove() + " " + isAttacking + " " + isStunned + " " + freeFall);
+        return !(moveController.getCanMove() || isAttacking || isStunned || freeFall);
+    }
+
     public void Move(Vector3 velocity, float force = 1)
     {
         velocity.y = gravity.y;
@@ -179,12 +186,20 @@ public class Enemy : MonoBehaviour
 
     }
 
+    public void setIsAttacking(bool b)
+    {
+        isAttacking = b;
+    }
+
     public void MoveToDir(Vector3 vDirection, float force = 1)
     {
         Vector3 velocity = vDirection - transform.position;
         velocity = velocity.normalized;
+<<<<<<< HEAD
         //Debug.Log(velocity);
         //Debug.Log(vDirection);
+=======
+>>>>>>> ae7a576e217dac912f20bf472f82b45e34507305
         moveController.Move(velocity * Time.deltaTime * force);
     }
 

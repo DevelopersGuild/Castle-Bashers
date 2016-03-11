@@ -514,9 +514,9 @@ public class Main_Process : MonoBehaviour {
                 Time.timeScale=1.0f;
                 if(Application.platform!=RuntimePlatform.WindowsEditor)
                 {
-                    if (Globe.Map_Load_id != 3)
-                        Start_Battle();
-                    Application.LoadLevel(2);
+                    //if (Globe.Map_Load_id != 3)
+                    //    Start_Battle();
+                    Application.LoadLevel(3);
                 }
             
             }
