@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 
 
 public class Gem
@@ -75,16 +76,14 @@ public class Gem
 public class GemManager : MonoBehaviour {
     const int MAX_STORED_GEMS = 10;
     const int MAX_EQUIPPED_GEMS = 3;
-    int count = 5;
-
-    Gem[] storedGems;
-    Gem[] equippedGems;
+    
     int numGems = 0;
+
+    List<Gem> storedGems = new List<Gem>();
+    List<Gem> equippedGems = new List<Gem>();
 
 	// Use this for initialization
 	void Start () {
-        storedGems = new Gem[MAX_STORED_GEMS];
-        equippedGems = new Gem[MAX_EQUIPPED_GEMS];
 	}
 	
 	// Update is called once per frame
@@ -115,17 +114,31 @@ public class GemManager : MonoBehaviour {
     //Will return 1 upon success, 0 if there is no room
     public int equip(int index)
     {
+        Debug.Log("Made it into equip");
         //Try to find an open slot
-        for(int i = 0; i < MAX_STORED_GEMS; i++)
+
+        if(equippedGems.Count < MAX_EQUIPPED_GEMS)
         {
-            if(equippedGems[i] == null)
-            {
-                equippedGems[i] = storedGems[index];
-                removeGem(index);
-                equippedGems[i].activate();
-                return 1;
-            }
+            storedGems[index].activate();
+            equippedGems.Add(storedGems[index]);
+            removeGem(index);
+            return 1;
         }
+        else
+        {
+            return 0;  /// no room.
+        }
+
+        //for(int i = 0; i < MAX_EQUIPPED_GEMS; i++)
+        //{
+        //    //if (equippedGems[i] == null)
+        //    {
+        //        equippedGems.Add(storedGems[index]);
+        //        removeGem(index);
+        //        equippedGems[i].activate();
+        //        return 1;
+        //    }
+        //}
 
         return 0;
     }
@@ -138,7 +151,8 @@ public class GemManager : MonoBehaviour {
         }
         equippedGems[index].deactivate();
         addGem(equippedGems[index]);
-        equippedGems[index] = null;
+        equippedGems.RemoveAt(index);
+        
         return true;
     }
 
@@ -146,11 +160,11 @@ public class GemManager : MonoBehaviour {
     //Will sort the array after removing a gem from the array
     public void removeGem(int index)
     {
-        storedGems[index] = storedGems[numGems];   //Move last gem into old gem position before sorting. might be able to find a better solution.
-        if (index == numGems)
-        {
-            storedGems[index] = null; //Handle special case that the gem being removed is the last gem
-        }
+        //storedGems[index] = storedGems[numGems];   //Move last gem into old gem position before sorting. might be able to find a better solution.
+        //if (index == numGems)
+        //{
+        storedGems.RemoveAt(index); //Handle special case that the gem being removed is the last gem
+                                      //}
 
         numGems--;
         sortGems();
@@ -165,9 +179,9 @@ public class GemManager : MonoBehaviour {
     {
         if(numGems <= MAX_STORED_GEMS)
         {
-            storedGems[numGems] = gem;
-            Debug.Log("Stored " + gem.getName() + " in index " + numGems);
+            storedGems.Add(gem);
             numGems++;
+            Debug.Log("Stored " + gem.getName() + " in index " + numGems);
             sortGems();
         }
         else
@@ -182,16 +196,13 @@ public class GemManager : MonoBehaviour {
     {
         for(int i = 0; i < numGems; i++)
         {
-            for(int j = i; j < numGems - i - 1; j++)
+            if(storedGems[i] == null)
             {
-                
-                if(storedGems[i].getQuality() > storedGems[j].getQuality())
+                for(int j = i; j < numGems - i; j++)
                 {
-                    Gem temp = storedGems[i];
-                    storedGems[i] = storedGems[j];
-                    storedGems[j] = temp;
-
+                    storedGems[j] = storedGems[j + 1];
                 }
+                storedGems[numGems] = null;
             }
         }
     }
@@ -201,7 +212,7 @@ public class GemManager : MonoBehaviour {
         return equippedGems[index];
     }
 
-    public Gem[] GetEquippedGems()
+    public List<Gem> GetEquippedGems()
     {
         return equippedGems;
     }
@@ -211,7 +222,7 @@ public class GemManager : MonoBehaviour {
         return storedGems[index];
     }
 
-    public Gem[] GetStoredGems()
+    public List<Gem> GetStoredGems()
     {
         return storedGems;
     }

@@ -4,10 +4,13 @@ using System.Collections;
 public class FireballSkill : Skill
 {
     private GameObject fireBall;
+    private float damage;
+
     protected override void Start()
     {
         base.Start();
-        base.SetBaseValues(5, 16000, 85, "fireBall", SkillLevel.EnemyOnly);
+        base.SetBaseValues(5, 16000, 5, "fireBall", SkillLevel.EnemyOnly);
+        damage = 15;
         base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/fireball"));
     }
     protected override void Update()
@@ -20,7 +23,9 @@ public class FireballSkill : Skill
     {
         Debug.Log("Using Fireball!");
         base.UseSkill(caller, target, optionalParameters);
-        fireBall = Instantiate(Resources.Load("FireBall")) as GameObject;
+        fireBall = Instantiate(Resources.Load("Fireball")) as GameObject;   //was FireBall
+        fireBall.GetComponent<DealDamage>().setDamage(damage);
+        fireBall.GetComponent<DealDamage>().damagesEnemies = true;
         fireBall.transform.position = caller.transform.position;
         if (GetComponent<MoveController>().GetFacing() == -1)
         {
@@ -35,5 +40,21 @@ public class FireballSkill : Skill
         Destroy(fireBall, 0.75f);
 
 
+    }
+
+    public override void addLevel()
+    {
+        base.addLevel();
+        switch (level)
+        {
+            case 2:
+                manaCost = 10;
+                damage = 30;
+                break;
+            case 3:
+                manaCost = 20;
+                damage = 75;
+                break;
+        }
     }
 }

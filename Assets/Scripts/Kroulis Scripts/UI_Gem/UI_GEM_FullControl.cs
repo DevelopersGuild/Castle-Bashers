@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class UI_GEM_FullControl : MonoBehaviour {
@@ -28,7 +29,7 @@ public class UI_GEM_FullControl : MonoBehaviour {
     [HideInInspector]
     public GemManager manager;
 
-    private Gem[] EquipedGems=new Gem[3];
+    private List<Gem> EquipedGems = new List<Gem>(3);
 	// Use this for initialization
 	void Start () {
         selector = GetComponentInChildren<UI_Gem_Selector>();
