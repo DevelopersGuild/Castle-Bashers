@@ -265,12 +265,12 @@ public class MoveController : MonoBehaviour
                 isKnockedBack = true;
             }
 
-            if (GetComponent<ID>() && !GetComponent<Player>())
-            {
-                if (GetComponent<ID>().getTime())
-                    currentFlinchTime -= Time.unscaledDeltaTime;
-            }
-            else
+            //if (GetComponent<ID>() && !GetComponent<Player>())
+            //{
+            //    if (GetComponent<ID>().getTime())
+            //        currentFlinchTime -= Time.unscaledDeltaTime;
+            //}
+            //else
                 currentFlinchTime -= Time.deltaTime;
 
             // Debug.Log(currentFlinchTime);

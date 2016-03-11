@@ -21,8 +21,6 @@ public class MeleeComboStart : IAttack
 
     public void EnterState(Player player)
     {
-        player.animator.SetBool("IsUsingBasicAttack", true);
-        player.GetAttackCollider().SetActive(true);
 
     }
 
@@ -33,7 +31,6 @@ public class MeleeComboStart : IAttack
 
     public void ExitState(Player player)
     {
-        player.animator.SetBool("IsUsingBasicAttack", false);
-        player.GetAttackCollider().SetActive(false);
+
     }
 }

@@ -9,6 +9,7 @@ public class AttackController : MonoBehaviour
     private bool attack;
     private Player player;
     private Animator anim;
+    private float cooldown;
 
     void Start()
     {
@@ -16,15 +17,17 @@ public class AttackController : MonoBehaviour
         anim = GetComponent<Animator>();
         attack = false;
         tap = 0;
+        cooldown = 0;
     }
 
 
     void Update()
     {
         //Debug.Log(player.GetMoveController().isStunned);
-
+        cooldown -= Time.deltaTime;
         timer = Time.timeSinceLevelLoad;
-        if (player.playerRewired!=null && player.playerRewired.GetButtonDown("Fire1") && !player.getInputDisabled() && !player.GetMoveController().isStunned)
+
+        if (player.playerRewired!=null && player.playerRewired.GetButtonDown("Fire1") && !player.getInputDisabled() && !player.GetMoveController().isStunned && cooldown < 0)
         {
                 
                 lastPress = Time.timeSinceLevelLoad;
@@ -80,12 +83,19 @@ public class AttackController : MonoBehaviour
         tap = 0;
         attack = false;
         anim.SetInteger("Tap", 0);
+        cooldown = .1f;
+    }
+
+    public void resetAttack()
+    {
+        
     }
 
     public void finishedAnimation()
     {
-        player.GetAttackCollider().SetActive(false);
+
         player.setIsMoving(true);
+        player.GetMoveController().enableMovement();
         anim.SetBool("Finished", true);
     }
 
@@ -94,12 +104,21 @@ public class AttackController : MonoBehaviour
         AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
         attack = true;
         anim.SetBool("Finished", false);
-        if(!player.GetMoveController().GetIsGrounded())
+        if(player.GetMoveController().GetIsGrounded())
         {
             player.setIsMoving(false);
+            player.GetMoveController().disableMovement();
         }
-        player.GetAttackCollider().GetComponent<DealDamage>().setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
+        // player.GetAttackCollider().GetComponent<DealDamage>().setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
+        player.GetAttackCollider().GetComponent<DealDamage>().setDamage(20);
         player.GetAttackCollider().SetActive(true);
+        StartCoroutine(attackCoroutine(0.1f));
+    }
+
+    IEnumerator attackCoroutine(float time)
+    {
+        yield return new WaitForSeconds(time);
+        player.GetAttackCollider().SetActive(false);
     }
 
     public bool GetIsAttack()

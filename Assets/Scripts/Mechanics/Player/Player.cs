@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
     private float velocityZSmoothing;
     private bool isJumping;
     private MoveController controller;
-    private AttackController attackController;
+    public AttackController attackController;
     private CrowdControllable crowdControllable;
 
     private Mana mana;
