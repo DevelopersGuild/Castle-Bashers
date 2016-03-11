@@ -36,7 +36,7 @@ public class FireballSkill : Skill
         fireBall.GetComponent<DealDamage>().setDamage(damage);
         fireBall.GetComponent<DealDamage>().damagesEnemies = true;
         fireBall.transform.position = caller.transform.position;
-        if (GetComponent<MoveController>().GetFacing() == -1)
+        if (caller.GetComponent<MoveController>().GetFacing() == -1)
         {
             fireBall.GetComponent<SimpleObjectMover>().right = true;
             fireBall.GetComponent<SimpleObjectMover>().left = false;
