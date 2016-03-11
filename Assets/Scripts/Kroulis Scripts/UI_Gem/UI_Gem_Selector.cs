@@ -11,12 +11,18 @@ public class UI_Gem_Selector : MonoBehaviour {
     public Image cur;
 
     private GemManager current_gemManager;
+    private UI_GEM_FullControl father;
     private int eqid;
     private int current_page;
     private int pages;
     private int current_select;
     private int size;
     private List<Gem> gems;
+
+    public void Start()
+    {
+        father = GetComponentInParent<UI_GEM_FullControl>();
+    }
 
     public void StartSelecting(GemManager manager,int _eqid)
     {
@@ -141,6 +147,7 @@ public class UI_Gem_Selector : MonoBehaviour {
             //equip
             Debug.Log((current_page - 1) * 6 + current_select);
             current_gemManager.equip((current_page-1)*6+current_select);
+            father.Change();
         }
     }
     

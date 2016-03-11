@@ -9,13 +9,20 @@ public class FireballSkill : Skill
     protected override void Start()
     {
         base.Start();
-        base.SetBaseValues(5, 16000, 5, "fireBall", SkillLevel.EnemyOnly);
+        base.SetBaseValues(5, 5000, 5, "fireBall", SkillLevel.EnemyOnly);
         damage = 15;
         base.SetSkillIcon(Resources.Load<Sprite>("Skillicons/fireball"));
     }
     protected override void Update()
     {
         base.Update();
+
+        if (Input.GetKeyDown("g"))
+        {
+            Debug.Log("Name of fireball object: " + gameObject.name);
+            Debug.Log("Fireball position: " + gameObject.transform.position);
+            UseSkill(gameObject);
+        }
 
     }
 

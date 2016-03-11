@@ -16,7 +16,7 @@ public class DealDamage : MonoBehaviour {
 
     void Update()
     {
-        Debug.Log(dmgAmount);
+        //Debug.Log(dmgAmount);
     }
 
     public int GetDamageI()

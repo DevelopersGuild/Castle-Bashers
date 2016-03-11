@@ -51,7 +51,6 @@ public class Malady : Boss
     private float range, group, mel, supp;
 
     private Animator animator;
-    private Animation animation;
     //if any animations are going on, it shouldn't be doing other stuff
     //ANIMATION STUFF~~~~~~~~~~~~~~~~~ animating = true whenever animation starts, false when ends in most cases (not for combos of animations, false at end of combo)
     private bool animating = false;
@@ -59,16 +58,15 @@ public class Malady : Boss
     //a for animation
     //[HideInInspector]
     //public bool aClaw, aTeleport
-
+    private bool spawnM = true;
 
     // Use this for initialization
     void Start()
     {
+
         base.Start();
         sClaw = ClawSkill.GetComponent<ClawAttack>();
         animator = GetComponent<Animator>();
-        animation = GetComponent<Animation>();
-
         claw_CD = 4 + UnityEngine.Random.Range(0, 3);
         clawLim = claw_CD;
         teleClaw_CD = 4 + UnityEngine.Random.Range(0, 3);
@@ -92,7 +90,6 @@ public class Malady : Boss
         teleDuration = 1f;
         //teleDuration = animation.GetClip("Teleport").length;
         refreshPriority = 10;
-
         refresh = false;
 
         isTeleporting = false;
@@ -102,37 +99,14 @@ public class Malady : Boss
 
         moveController.isFlinchable = false;
         moveController.isKnockbackable = false;
-
-        playerM = FindObjectOfType<PlayerManager>();
-        players = playerM.getPlayers();
-        size = players.Length;
-        threatLevel = damageDealt = players;
-        damageDealt = new Player[size];
-        for (int i = 0; i < size; i++)
-        {
-            players[i].Reset();
-        }
-        one = two = three = four = 0;
-        tempThreat = 0;
-        tempDamage = 0;
-        temp1 = 0;
-        temp2 = 0;
         numHairs = 2;
-
-        Grouper.setPlayerGroup(players, size);
-
         lerpDuration = 0;
         grouping = false;
-        getPlayerType();
 
         ClawLeft = ClawSkill.transform.localScale;
         ClawRight = new Vector3(ClawLeft.x * -1, transform.localScale.y, transform.localScale.z);
         MaladyLeft = new Vector3(transform.localScale.x * -1, transform.localScale.y, transform.localScale.z);
         MaladyRight = transform.localScale;
-
-        int initialTarget = UnityEngine.Random.Range(0, size);
-        target = players[initialTarget].gameObject;
-
 
     }
 
@@ -140,9 +114,37 @@ public class Malady : Boss
     void Update()
     {
         base.Update();
+        if (spawnM)
+        {
+            playerM = FindObjectOfType<PlayerManager>();
+            players = playerM.getPlayers();
+            size = players.Length;
+            threatLevel = damageDealt = players;
+            damageDealt = new Player[size];
+            for (int i = 0; i < size; i++)
+            {
+                players[i].Reset();
+            }
+            one = two = three = four = 0;
+            tempThreat = 0;
+            tempDamage = 0;
+            temp1 = 0;
+            temp2 = 0;
+
+            Grouper.setPlayerGroup(players, size);
+
+            grouping = false;
+            getPlayerType();
+
+
+            int initialTarget = UnityEngine.Random.Range(0, size);
+            target = players[initialTarget].gameObject;
+            spawnM = false;
+        }
         targetPos = target.transform.position;
         CalcDirection();
 
+        
         if (refresh)
         {
             Debug.Log(ranged + " " + grouping + " " + melee + " " + support);
@@ -209,27 +211,27 @@ public class Malady : Boss
 
     public override void Act(Type t)
     {
-
         if (hands_CD > 2.5f)
         {
             hands_CD = 0;
-            //Debug.Log("Hands " + Time.time); //HandsAttack();
+            //Debug.Log("Hands " + Time.time); 
+            HandsAttack();//
         }
-        if (animationDelay > 1f + hp.GetCurrentHealth() / hp.GetMaxHP())
+        if (animationDelay > (1f + hp.GetCurrentHealth() / hp.GetMaxHP()))
         {
-            //getPlayerType();
+            getPlayerType();
             float randNum = UnityEngine.Random.Range(1, 100);
-            if (randNum < 5 - 5 * (3 - size))
+            if (randNum < 5 - 5 * (4 - size))
             {
                 target = players[3].gameObject;
             }
-            else if (randNum < 20 - 10 * (3 - size))
+            else if (randNum < 20 - 10 * (4 - size))
             {
                 target = players[2].gameObject;
             }
-            else if (randNum < 45 - 15 * (3 - size))
+            else if (randNum < 45 - 15 * (4 - size))
             {
-                target = players[1].gameObject;
+                target = players[0].gameObject;
             }
             else
             {
@@ -303,6 +305,7 @@ public class Malady : Boss
 
     private void Claw()
     {
+        Debug.Log("CLAW");
         claw_CD = 0;
         clawLim = 4 + UnityEngine.Random.Range(0, 3);
         distance = target.transform.position.x - transform.position.x;
@@ -326,6 +329,7 @@ public class Malady : Boss
                 //animation sets animating to true using setAnimating()
                 //animating false at end
                 //for all animations
+                animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
@@ -339,6 +343,7 @@ public class Malady : Boss
             {
                 clawLim -= 2;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
+                animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
@@ -349,10 +354,15 @@ public class Malady : Boss
         else
         {
             if (zDiff < 4 && distance < 3)
+            {
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
+                animator.SetTrigger("useClaw");
                 Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
+            }
             else
+            {
                 teleClaw();
+            }
         }
         //if ranged/support, tele claw
         //if grouping, if close claw if far tele claw
@@ -386,6 +396,7 @@ public class Malady : Boss
 
     private void teleClaw()
     {
+        Debug.Log("TELECLAW");
         setAnimating(true);
         teleClawStage = 1;
         teleClawUpdate();
@@ -416,6 +427,7 @@ public class Malady : Boss
                 running = true;
                 Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
+                animator.SetTrigger("useClaw");
                 Debug.Log("TeleClaw " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else if (teleClawStage == 3)
@@ -451,6 +463,7 @@ public class Malady : Boss
 
     private void Swarm()
     {
+        Debug.Log("SWARM");
         swarm_CD = 0;
         swarmLim = 11 + UnityEngine.Random.Range(0, 5);
         Debug.Log("Swarm " + Time.time); //sClaw.UseSkill(gameObject);
@@ -470,6 +483,7 @@ public class Malady : Boss
     {
         //spawn with an offset to match animation position
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ create vector3 offset to match animation
+        animator.SetTrigger("usePuke");
         //SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position + offset, transform.rotation) as SwarmBehaviour;
         //swarm_Duration = swarm.Duration;
         //swarm.setTarget(target);
@@ -478,6 +492,7 @@ public class Malady : Boss
 
     private void Summon()
     {
+        Debug.Log("SUMMON");
         summon_CD = 0;
         summonLim = 7 + UnityEngine.Random.Range(0, 6);
 
@@ -490,7 +505,7 @@ public class Malady : Boss
 
         //slightly wierd due to having a scale of 10, would be ok after we have actual stuff
 
-        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        ----------------------- run SummonPortal at end
+        //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation              ----------------------- run SummonPortal at end
 
     }
 
@@ -527,6 +542,7 @@ public class Malady : Boss
     //used for teleClaw
     private void Teleport(GameObject targ)
     {
+        Debug.Log("TELEPORT");
         //set is Tel to true at end of anim, set true here for testing
         //isTeleporting = true;
         lerpDuration = teleDuration;
@@ -548,6 +564,7 @@ public class Malady : Boss
         //isTeleporting = true;
         lerpDuration = teleDuration;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play transforming animation                       set isTel true at end of anim
+        animator.SetTrigger("useTransform");
         if (!camped)
         {
             teleTarget = targ;
@@ -572,6 +589,7 @@ public class Malady : Boss
         Debug.Log("Teleport " + Time.time);
         isTeleporting = true;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                       set isTel true if end of anim
+        animator.SetTrigger("useTransform");
         float f = 0;
         foreach (Player p in players)
         {
@@ -613,6 +631,7 @@ public class Malady : Boss
 
     private void Polymorph()
     {
+        Debug.Log("POLYMORPH");
         polymorph_CD = 0;
         polyLim = 9 + UnityEngine.Random.Range(0, 5);
 
@@ -689,7 +708,7 @@ public class Malady : Boss
             players[i].setPriorityID((tempVar));
         }
         players = playerM.getSortedPlayers(3);
-        Debug.Log("Reverse order of priority players : " + players);
+        //Debug.Log("Reverse order of priority players : " + players);
     }
 
     //can adjust number of hairs attacking through numHairs (1 = middle hair, 2 = middle, above, and below, 3 = middle, above, abover, below, belower, 4 = etc) 
@@ -706,6 +725,7 @@ public class Malady : Boss
             hairALim += 1;
 
         //play animation                                        -----------------------
+        animator.SetBool("isCrazy", true);
         //which animation?
         //don't know what animation has the hair object thing
         //Make work for one hair, then go on to multiple (in animation)
@@ -735,8 +755,10 @@ public class Malady : Boss
 
     private void HairGrab()
     {
+        Debug.Log("HAIRGRAB");
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~  need animation for this before finishing
         //easy to do once animation exists, too many variables without animation
+        animator.SetBool("isCrazy", true);
         hairG_CD = 0;
         hairGLim = 8 + UnityEngine.Random.Range(0, 7);
 
@@ -818,6 +840,7 @@ public class Malady : Boss
     private void HandsAttack()
     {
         Vector3 offset = new Vector3(UnityEngine.Random.Range(-300,300)/100.0f, 0, UnityEngine.Random.Range(-110,110)/100.0f);
+        Debug.Log("HANDS");
 
         if (ranged || grouping)
             hands_CD -= 0.5f;

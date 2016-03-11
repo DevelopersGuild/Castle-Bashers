@@ -20,6 +20,7 @@ public class SkillshopTrigger : MonoBehaviour {
         allSkills.Add(gameObject.AddComponent<FireballSkill>());
         allSkills.Add(gameObject.AddComponent<FireblastSkill>());
         allSkills.Add(gameObject.AddComponent<ShockSkill>());
+        allSkills.Add(gameObject.AddComponent<sMeteor>());
 
 
     }

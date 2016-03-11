@@ -9,9 +9,9 @@ public class Skill_BoostV2 : Skill
     private GameObject call;
     private Animator anim;
     private int spdDelta;
-    List<UnityEditor.Animations.AnimatorControllerLayer> layers = new List<UnityEditor.Animations.AnimatorControllerLayer>();
-    List<UnityEditor.Animations.AnimatorState> animationsStates_Base = new List<UnityEditor.Animations.AnimatorState>();
-    List<UnityEditor.Animations.AnimatorState> animationsStates_Attack = new List<UnityEditor.Animations.AnimatorState>();
+    //List<UnityEditor.Animations.AnimatorControllerLayer> layers = new List<UnityEditor.Animations.AnimatorControllerLayer>();
+    //List<UnityEditor.Animations.AnimatorState> animationsStates_Base = new List<UnityEditor.Animations.AnimatorState>();
+    //List<UnityEditor.Animations.AnimatorState> animationsStates_Attack = new List<UnityEditor.Animations.AnimatorState>();
 
     /*
        Boost Up skill (buff) - Increases attack speed of the caller
@@ -37,23 +37,23 @@ public class Skill_BoostV2 : Skill
         anim = call.GetComponent<Animator>();
         if (anim != null)
         {
-            UnityEditor.Animations.AnimatorController ac = (UnityEditor.Animations.AnimatorController)anim.runtimeAnimatorController;
-            foreach (UnityEditor.Animations.AnimatorControllerLayer acl in ac.layers)
-            {
-                layers.Add(acl);
-            }
+            //UnityEditor.Animations.AnimatorController ac = (UnityEditor.Animations.AnimatorController)anim.runtimeAnimatorController;
+            //foreach (UnityEditor.Animations.AnimatorControllerLayer acl in ac.layers)
+            //{
+            //    layers.Add(acl);
+            //}
 
             // Base layer states
-            foreach (UnityEditor.Animations.ChildAnimatorState s in layers[0].stateMachine.states)
+            /*foreach (UnityEditor.Animations.ChildAnimatorState s in layers[0].stateMachine.states)
             {
                 animationsStates_Base.Add(s.state);
-            }
+            }*/
 
 
         }
 
 
-        foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
+        /*foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
         {
             if (state.name == "Walk" || state.name == "Jump")
             {
@@ -63,7 +63,7 @@ public class Skill_BoostV2 : Skill
             {
                 state.speed = 0.9f;
             }
-        }
+        }*/
     }
 
     protected override void Update()
@@ -127,13 +127,13 @@ public class Skill_BoostV2 : Skill
             val = 1 / val;
 
 
-        foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
+        /*foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
         {
             if (state.name == "BasicAttack" || state.name == "PowerAttack")
             {
                 state.speed *= val;
             }
-        }
+        }*/
 
         
         //caller.GetComponent<Animation>().GetClip("BasicAttack").frameRate = (caller.GetComponent<Animation>().GetClip("BasicAttack").frameRate * val);
@@ -171,14 +171,14 @@ public class Skill_BoostV2 : Skill
         //caller.GetComponent<Player>().SetAgility(caller.GetComponent<Player>().GetAgility() + spdDelta);
         call.GetComponent<Player>().SetAgility(call.GetComponent<Player>().GetAgility() + spdDelta);
 
-        foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
+        /*foreach (UnityEditor.Animations.AnimatorState state in animationsStates_Base)
         {
             if (state.name == "Walk" || state.name == "Jump")
             {
                 Debug.Log(state.speed);
                 state.speed *= val;
             }
-        }
+        }*/
     }
 
 

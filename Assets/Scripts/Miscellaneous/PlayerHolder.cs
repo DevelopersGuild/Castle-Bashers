@@ -34,11 +34,15 @@ public class PlayerHolder : MonoBehaviour
         }
     }
 
-    void resetPositions()
+    public void resetPositions()
     {
         foreach (Transform child in transform)
         {
-            child.position = new Vector3(20, 10, 0);
+            //child.position = new Vector3(-20, -6, 0);
+            if(Globe.Map_Load_id==3)
+                child.localPosition = new Vector3(20, 10, 0);
+            else if(Globe.Map_Load_id==1)
+                child.localPosition = new Vector3(-20, -6, 0);
         }
     }
 

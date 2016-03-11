@@ -222,7 +222,7 @@ public class Player : MonoBehaviour
             input = new Vector2(0, 0);
         }
 
-        if (isDown == false)
+        if (!isDown && !disableInput)
         {
             if (!crowdControllable.getStun() && !isThrown)
             {
@@ -285,6 +285,7 @@ public class Player : MonoBehaviour
         {
             skillManager.UseSkill4();
         }
+
     }
 
     public void throwPlayer(Vector3 v)
@@ -324,9 +325,6 @@ public class Player : MonoBehaviour
     {
         isInvincible = x;
     }
-
-
-
 
     public void Fully_Update()
     {

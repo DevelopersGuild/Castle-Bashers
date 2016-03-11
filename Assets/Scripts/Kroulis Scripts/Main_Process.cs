@@ -493,7 +493,7 @@ public class Main_Process : MonoBehaviour {
     private void TEST()
     {
         CancelInvoke();
-        OpenDialog("10000", "test");
+        //OpenDialog("10000", "test");
         UI_Level_Selector_Open(0);
     }
 
@@ -514,9 +514,9 @@ public class Main_Process : MonoBehaviour {
                 Time.timeScale=1.0f;
                 if(Application.platform!=RuntimePlatform.WindowsEditor)
                 {
-                    if (Globe.Map_Load_id != 3)
-                        Start_Battle();
-                    Application.LoadLevel(2);
+                    //if (Globe.Map_Load_id != 3)
+                    //    Start_Battle();
+                    Application.LoadLevel(3);
                 }
             
             }
