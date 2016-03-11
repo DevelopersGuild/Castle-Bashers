@@ -93,10 +93,16 @@ public class MoveController : MonoBehaviour
         return isMovementDisabled;
     }
 
+    public void updateMove(Vector3 velocity)
+    {
+        updateGrounded();
+        updateKnockback(ref velocity);
+        updateFlinch(ref velocity);
+    }
+
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
         // Debug.Log(isMovementDisabled + " " + isKnockedDown + " " + gameObject.name);
-
         if (!isMovementDisabled && !isKnockedDown)
         {
             UpdateRaycastOrigins();
@@ -265,12 +271,12 @@ public class MoveController : MonoBehaviour
                 isKnockedBack = true;
             }
 
-            if (GetComponent<ID>() && !GetComponent<Player>())
-            {
-                if (GetComponent<ID>().getTime())
-                    currentFlinchTime -= Time.unscaledDeltaTime;
-            }
-            else
+            //if (GetComponent<ID>() && !GetComponent<Player>())
+            //{
+            //    if (GetComponent<ID>().getTime())
+            //        currentFlinchTime -= Time.unscaledDeltaTime;
+            //}
+            //else
                 currentFlinchTime -= Time.deltaTime;
 
             // Debug.Log(currentFlinchTime);

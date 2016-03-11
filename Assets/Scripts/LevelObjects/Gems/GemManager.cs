@@ -101,7 +101,7 @@ public class GemManager : MonoBehaviour {
             unequip(0);
         }
 
-        for (int i = 0; i < MAX_EQUIPPED_GEMS; i++)
+        for (int i = 0; i < MAX_EQUIPPED_GEMS && i < equippedGems.Count; i++)
         {
             if(equippedGems[i] != null)
             {
