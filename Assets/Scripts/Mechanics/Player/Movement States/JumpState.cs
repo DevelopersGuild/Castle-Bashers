@@ -31,6 +31,7 @@ public class JumpState : IPlayerState
         if (player.GetMoveController().collisions.above || player.GetMoveController().collisions.below)
         {
             player.EndJump();
+            player.attackController.resetTap();
             //player.SetIsGrounded(true);
             //player.animator.SetBool("IsJumping", false);
             //player.animator.SetBool("IsGrounded", true);

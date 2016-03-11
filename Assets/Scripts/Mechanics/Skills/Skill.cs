@@ -5,11 +5,11 @@ public class Skill : MonoBehaviour
 {
     public AudioClip useSkillAudio;
     private Mana mana;
-    private float coolDown = 0;
-    private float coolDownTimer = 0;
-    private int price = 0;
-    private int level = 1;
-    private int manaCost;
+    protected float coolDown = 0;
+    protected float coolDownTimer = 0;
+    protected int price = 0;
+    protected int level = 1;
+    protected int manaCost;
     private string skillName;
     private string skillDiscription;
     private Sprite skillicon;
@@ -142,9 +142,9 @@ public class Skill : MonoBehaviour
         return level;
     }
 
-    public void SetLevel(int i)
+    public virtual void addLevel()
     {
-        level = i;
+        level++;
     }
 
 
