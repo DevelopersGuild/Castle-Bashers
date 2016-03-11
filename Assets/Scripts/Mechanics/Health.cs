@@ -83,8 +83,15 @@ public class Health : MonoBehaviour
         currentHealth -= dmg;
         createFloatingText(dmg);
 
-        if(moveController)
-            moveController.handleFlinch(flinch); 
+        if (moveController)
+        {
+            moveController.handleFlinch(flinch);
+
+            if (!player)
+            {
+                GetComponent<Enemy>().setIsAttacking(false);
+            }
+        } 
 
         if (currentHealth <= 0)
             Death();

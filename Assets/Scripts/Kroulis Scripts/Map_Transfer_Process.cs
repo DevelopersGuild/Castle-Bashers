@@ -11,10 +11,22 @@ public class Map_Transfer_Process : MonoBehaviour {
     private Map_Transfer_DB mapdb;
     private AudioSource audio;
     private Main_Process mp;
+    static int counter = 0;
 
     void Start()
     {
+        if(counter>=1)
+        {
+            Debug.Log("Find repeating teleport. Stop the process.");
+            if (Globe.Map_Load_id==1)
+                Application.LoadLevel("mainLevel");
+            else
+                Application.LoadLevel("mainTown");
+            counter = 0;
+            return;
+        }
         //Globe.Map_Load_id = 1;
+        Debug.Log("Teleport to Level: " + Globe.Map_Load_id);
         //link the UI
         GameObject GOResult;
         GOResult = GameObject.Find("TransferUI");
@@ -40,7 +52,7 @@ public class Map_Transfer_Process : MonoBehaviour {
             }
                 
         }
-            
+        counter++;
         //start to load scene
         StartCoroutine(loadScene());
     }
@@ -54,7 +66,8 @@ public class Map_Transfer_Process : MonoBehaviour {
     }
     void Update()
     {
-        Map_Transfer_UI_Control_Script.Progress = async.progress;
+        if(counter==0 && async!=null)
+            Map_Transfer_UI_Control_Script.Progress = async.progress;
     }
 
 }

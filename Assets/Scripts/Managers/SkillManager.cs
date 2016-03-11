@@ -90,7 +90,7 @@ public class SkillManager : MonoBehaviour
         if (currentSkillLoadout[0].GetCoolDownTimer() <= 0)
         {
             currentSkillLoadout[0].UseSkill(gameObject, null);
-            AudioSource.PlayClipAtPoint(currentSkillLoadout[0].useSkillAudio, transform.position);
+            //AudioSource.PlayClipAtPoint(currentSkillLoadout[0].useSkillAudio, transform.position);
             Debug.Log("Use Skill 1");
 
             if (player || true)
