@@ -11,6 +11,7 @@ public class AttackController : MonoBehaviour
     private Animator anim;
     private Queue attackQueue;
     public float coolDown;
+
     void Start()
     {
         player = GetComponentInParent<Player>();
@@ -24,8 +25,7 @@ public class AttackController : MonoBehaviour
     void Update()
     {
         coolDown -= Time.deltaTime;
-        if (attackQueue.Count > 0) Debug.Log(attackQueue.Peek());
-        else Debug.Log(0);
+        Debug.Log(attackQueue.Count);
 
         timer = Time.timeSinceLevelLoad;
 
