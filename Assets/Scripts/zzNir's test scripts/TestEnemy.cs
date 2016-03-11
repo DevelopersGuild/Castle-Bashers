@@ -26,7 +26,7 @@ public class TestEnemy : Enemy
 
     void Awake()
     {
-        
+
         cameraFollow = FindObjectOfType<CameraFollow>();
     }
 
@@ -34,16 +34,16 @@ public class TestEnemy : Enemy
     void Update()
     {
         base.Update();
-        if(spawn2)
+        if (spawn2)
         {
             spawn2 = false;
 
             //not even close to final, just for scaling to work
-            dmgAmount = (1 + difficulty/20.0f) * attackCollider.GetComponent<DealDamage>().dmgAmount * ((0.9f + (0.1f * pm.getSize())) * (1 + pm.getAvgLevel() / 20));
+            dmgAmount = (1 + difficulty / 20.0f) * attackCollider.GetComponent<DealDamage>().dmgAmount * ((0.9f + (0.1f * pm.getSize())) * (1 + pm.getAvgLevel() / 20));
         }
         if (targetRefresh > targetRefreshLimit)
         {
-            if (moveController.getCanMove() || isAttacking || isStunned || freeFall)
+            if (getCanMove())
             {
                 actor.setMove(false);
             }
@@ -114,7 +114,6 @@ public class TestEnemy : Enemy
         {
             Move(vel, speed);
         }
-
         animationController.isAttacking = isAttacking;
 
         // Debug.Log(moveController.isMoving);
@@ -128,18 +127,18 @@ public class TestEnemy : Enemy
     {
         float f = UnityEngine.Random.Range(40, 100) / 100.0f;
         attack_CD = -f;
-        Debug.Log("WHAT");
-        isAttacking = true;
+        //isAttacking = true;
         vel = Vector3.zero;
         yield return new WaitForSeconds(f);
 
-        if (isAttacking)
+        if (!moveController.GetFlinched())
         {
             isAttacking = true;
             distL = (transform.position - targetPos - left).magnitude;
             distR = (transform.position - targetPos - right).magnitude;
             toLeft = (attackRange + distL) <= distR;
         }
+
 
     }
 

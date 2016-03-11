@@ -7,6 +7,7 @@ public class NPCDialogControl : MonoBehaviour {
 
     private Main_Process MainProcess;
     private int count = 0;
+    private int processingid = 0;
 
     public string NPC_Name = "";
 
@@ -33,9 +34,9 @@ public class NPCDialogControl : MonoBehaviour {
                 {
                     if (count == Dialogs.Count)
                         count = 0;
+                    processingid = count;
+                    Invoke("waitingf", 1.00f);
                     MainProcess.OpenDialog(Dialogs[count].id, NPC_Name);
-                    if (Dialogs[count].action!=null)
-                        Dialogs[count].action.Action();
                     count++;
 
                 }
@@ -45,9 +46,9 @@ public class NPCDialogControl : MonoBehaviour {
                     {
                         if(Dialogs[i].requirement==null || Dialogs[i].requirement.MeetRequirement())
                         {
+                            processingid = i;
+                            Invoke("waitingf", 1.00f);
                             MainProcess.OpenDialog(Dialogs[i].id,NPC_Name);
-                            if (Dialogs[i].action != null)
-                                Dialogs[i].action.Action();
                             break;
                         }
                     }
@@ -79,17 +80,17 @@ public class NPCDialogControl : MonoBehaviour {
                     }
                     if(minindex!=-1)
                     {
+                        processingid = minindex;
+                        Invoke("waitingf", 1.00f);
                         MainProcess.OpenDialog(Dialogs[minindex].id, NPC_Name);
-                        if (Dialogs[minindex].action != null)
-                            Dialogs[minindex].action.Action();
                     }
                 }
                 else//Run in random.
                 {
                     int rdm = Random.Range(0,Dialogs.Count-1);
+                    processingid = rdm;
+                    Invoke("waitingf", 1.00f);
                     MainProcess.OpenDialog(Dialogs[rdm].id, NPC_Name);
-                    if (Dialogs[rdm].action != null)
-                        Dialogs[rdm].action.Action();
                 }
             }
         }
@@ -98,5 +99,20 @@ public class NPCDialogControl : MonoBehaviour {
     public Main_Process GetMainProcess()
     {
         return MainProcess;
+    }
+
+    public void waitingf()
+    {
+        //Debug.Log("waitingf invoked once. And the talking status is: " +Globe.talking.ToString());
+        if(Globe.talking==false)
+        {
+            CancelInvoke();
+            if (Dialogs[processingid].action != null)
+            {
+                Dialogs[processingid].action.Action();
+            }
+        }
+        else
+            Invoke("waitingf", 1.00f);
     }
 }

@@ -588,6 +588,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 }
             }
         }
+        Invoke("SkillCoolDownUpdate", 0.5f);
     }
 
 	// Update is called once per frame

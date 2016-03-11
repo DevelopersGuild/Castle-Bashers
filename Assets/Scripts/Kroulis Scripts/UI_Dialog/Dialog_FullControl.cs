@@ -53,6 +53,7 @@ public class Dialog_FullControl : MonoBehaviour {
         }
         else
         {
+            Globe.talking = false;
             mainprocess.OtherWindows_Close();
         }
     }
@@ -91,6 +92,7 @@ public class Dialog_FullControl : MonoBehaviour {
             }
             else
             {
+                Globe.talking = false;
                 gameObject.SetActive(false);
                 mainprocess.OtherWindows_Close();
             }

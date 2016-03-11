@@ -15,16 +15,14 @@ public class Map_Transfer_Process : MonoBehaviour {
 
     void Start()
     {
-        if(counter>=1)
+        /*if(Application.platform!=RuntimePlatform.WindowsEditor)
         {
-            Debug.Log("Find repeating teleport. Stop the process.");
-            if (Globe.Map_Load_id==1)
+            if (Globe.Map_Load_id == 1)
                 Application.LoadLevel("mainLevel");
             else
                 Application.LoadLevel("mainTown");
-            counter = 0;
             return;
-        }
+        }*/
         //Globe.Map_Load_id = 1;
         Debug.Log("Teleport to Level: " + Globe.Map_Load_id);
         //link the UI
@@ -40,7 +38,7 @@ public class Map_Transfer_Process : MonoBehaviour {
             if (GOResult.GetComponent<SaveAndLoad>()!=null)
                 GOResult.GetComponent<SaveAndLoad>().SaveData();
             //play the bgm
-            if (mapdb.mapinfo[Globe.Map_Load_id].have_bgm)
+            if (mapdb.mapinfo[Globe.Map_Load_id].have_bgm && Globe.Map_Load_id!=1)
             {
                 audio.clip = mapdb.mapinfo[Globe.Map_Load_id].bgm;
                 audio.Play();

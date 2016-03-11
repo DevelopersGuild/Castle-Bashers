@@ -267,7 +267,6 @@ public class Player : MonoBehaviour
         //  if (Input.GetButtonDown("UseSkill1"))
         if (playerRewired.GetButtonDown("UseSkill1"))
         {
-            health.PlayerRevive(100);
             skillManager.UseSkill1();
         }
 
