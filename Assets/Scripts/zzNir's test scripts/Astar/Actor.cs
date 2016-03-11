@@ -18,7 +18,7 @@ public class Actor : MonoBehaviour
 
     bool onNode = true;
     Vector3 m_target = new Vector3(0, 0, 0);
-    Vector3 currNode, targPos;
+    Vector3 currNode, targPos, movVec;
     int nodeIndex;
     List<Vector3> path = new List<Vector3>();
     NodeControl control;
@@ -30,6 +30,7 @@ public class Actor : MonoBehaviour
     bool toP = false;
     bool canMove = false;
     Enemy me;
+    float force;
 
     private GameObject target;
 
@@ -42,6 +43,7 @@ public class Actor : MonoBehaviour
         //control = (NodeControl)cam.GetComponent(typeof(NodeControl));
         target = null;
         targPos = gameObject.transform.position;
+        force = 10;
     }
 
     void Update()
@@ -56,9 +58,11 @@ public class Actor : MonoBehaviour
                 MoveOrder(target.transform.position, toP);
             }
             MoveToward();
-            if(canMove)
-            me.MoveToDir(targPos, 10);
+            if (canMove)
+                me.MoveToDir(targPos, 10);
         }
+        me.updateMove(targPos);
+
 
         //if (elapsedTime > OldTime)
         //{
