@@ -25,7 +25,6 @@ public class AttackController : MonoBehaviour
     void Update()
     {
         coolDown -= Time.deltaTime;
-        Debug.Log(attackQueue.Count);
 
         timer = Time.timeSinceLevelLoad;
 
