@@ -14,6 +14,9 @@ GameObject:
   - 114: {fileID: 11431110}
   - 114: {fileID: 11440306}
   - 114: {fileID: 11430272}
+  - 95: {fileID: 9507210}
+  - 114: {fileID: 11406560}
+  - 114: {fileID: 11432224}
   m_Layer: 0
   m_Name: Meteor Caller
   m_TagString: Untagged
@@ -28,7 +31,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -5.84186792, y: 2.16000009, z: -1.72000003}
+  m_LocalPosition: {x: -28.455122, y: 10.7274895, z: .718869209}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,8 +61,46 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.79999995, y: 3, z: .200000003}
+  m_Size: {x: 1.79999995, y: 3, z: 1.48000002}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9507210
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124154}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 94376c95a5a0ab642991693345220511, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11406560
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30c08a5620c42694289fd78370e87caf, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  RegenAmount: 0
+  currentHealth: 120
+  maxhp: 0
+  deathObject: {fileID: 154478, guid: 53a28a6a49ffc7240a73ba01c2a116d4, type: 2}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
+  damageTextOffset: {x: 0, y: 0, z: 0}
+  hitSound: {fileID: 0}
+  hitParticle: {fileID: 0}
 --- !u!114 &11430272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -74,11 +115,14 @@ MonoBehaviour:
   collisionMask:
     serializedVersion: 2
     m_Bits: 4294967295
+  walkSound: {fileID: 0}
+  isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
+  isKnockbackable: 1
+  isFlinchable: 1
   knockbackVelocity: 0
-  knockbackTime: 1
-  flinchTime: .400000006
+  flinchVelocity: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11431110
@@ -93,6 +137,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   castCooldown: 2
+  meteor: {fileID: 0}
+--- !u!114 &11432224
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0a2d15bf272d4734bbcda46974c194a6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  isAttacking: 0
 --- !u!114 &11440306
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -107,12 +164,16 @@ MonoBehaviour:
   agroRange: 5
   attackRange: 5
   attack_CD: 0
+  attackShakesScreen: 0
+  experienceAmount: 0
+  attackSound: {fileID: 0}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
   gravity: {x: 0, y: 0, z: 0}
   xhalf: {x: 0, y: 0, z: 0}
   half: {x: 0, y: 0, z: 0}
+  vel: {x: 0, y: 0, z: 0}
   moveController: {fileID: 11430272}
   isInvincible: 0
   isStunned: 0
@@ -124,11 +185,20 @@ MonoBehaviour:
   zDiff: 0
   distL: 0
   distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
-  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
+  sprRend: {fileID: 0}
+  hp: {fileID: 0}
+  animationController: {fileID: 0}
   classification: 1
+  actor: {fileID: 0}
+  pm: {fileID: 0}
+  difficulty: 0
+  spawn: 1
+  shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
 --- !u!212 &21279812
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -153,7 +223,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300516, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 69cbdb2528f326e419c4338f91d3b6c7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:

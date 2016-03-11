@@ -7,7 +7,7 @@ public class JumpState : IPlayerState
 
     public void EnterState(Player player)
     {
-        if (player.GetMoveController().isStunned == false)
+        if (!player.GetMoveController().isStunned && !player.attackController.GetIsAttack())
         {
             player.Jump();
             //player.SetIsGrounded(false);
@@ -28,13 +28,12 @@ public class JumpState : IPlayerState
 
     public void UpdateState(Player player)
     {
-        if (player.GetMoveController().collisions.above || player.GetMoveController().collisions.below)
+        if (player.GetMoveController().collisions.below)
         {
             player.EndJump();
             player.attackController.resetTap();
-            //player.SetIsGrounded(true);
-            //player.animator.SetBool("IsJumping", false);
-            //player.animator.SetBool("IsGrounded", true);
+            player.animator.SetBool("JumpAttack", false);
+            player.attackController.ResetTap();
         }
     }
 

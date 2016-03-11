@@ -134,7 +134,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &408594
 Transform:
   m_ObjectHideFlags: 1
@@ -286,7 +286,7 @@ BoxCollider:
   m_GameObject: {fileID: 187680}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Size: {x: 1.5, y: 2.01999998, z: 1}
   m_Center: {x: .574211121, y: -.788249016, z: 0}
@@ -301,7 +301,7 @@ AudioSource:
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 0}
   m_PlayOnAwake: 1
-  m_Volume: .200000003
+  m_Volume: .100000001
   m_Pitch: 1
   Loop: 0
   Mute: 0
@@ -679,8 +679,9 @@ MonoBehaviour:
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
   playerId: 1
-  jumpAudio: {fileID: 8300000, guid: e1733ae4624398848bf161d2e3808eb1, type: 3}
-  attackAudio: {fileID: 8300000, guid: bd8de7631d47efc409a40b5f4a7da536, type: 3}
+  jumpAudio: {fileID: 8300000, guid: 1b89b1003e1322140b48655c326cc669, type: 3}
+  attackAudio: {fileID: 8300000, guid: 835f450b201c93c4e9cb1f2e3796c6da, type: 3}
+  attackController: {fileID: 0}
   threatLevel: 0
   damageDealt: 0
 --- !u!114 &11467776
@@ -769,6 +770,7 @@ MonoBehaviour:
   playerId: 0
   jumpAudio: {fileID: 0}
   attackAudio: {fileID: 0}
+  attackController: {fileID: 0}
   threatLevel: 0
   damageDealt: 0
 --- !u!114 &11477180
@@ -835,7 +837,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 187680}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
   m_Name: 
@@ -916,6 +918,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7101d6d1db5534aaee459dbceea783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackCollider: {fileID: 0}
+  coolDown: 0
 --- !u!114 &11497366
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -927,6 +931,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 6b7101d6d1db5534aaee459dbceea783, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  attackCollider: {fileID: 11416392, guid: 17dcdf2a357aa5e48937e49f9063cf8d, type: 2}
+  coolDown: 0
 --- !u!114 &11499146
 MonoBehaviour:
   m_ObjectHideFlags: 1

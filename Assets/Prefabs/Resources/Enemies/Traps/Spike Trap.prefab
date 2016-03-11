@@ -12,6 +12,7 @@ GameObject:
   - 114: {fileID: 11444320}
   - 65: {fileID: 6524994}
   - 54: {fileID: 5493338}
+  - 95: {fileID: 9548976}
   m_Layer: 0
   m_Name: Spike Trap
   m_TagString: Untagged
@@ -26,7 +27,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 140278}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: .889999986, z: .370000005}
+  m_LocalPosition: {x: -24.1334496, y: 7.18376684, z: .25999999}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -58,6 +59,23 @@ BoxCollider:
   serializedVersion: 2
   m_Size: {x: 2, y: 1, z: 1}
   m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9548976
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 140278}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 2c44762644c498141873b845eeaf0605, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11444320
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -69,7 +87,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ebdae89db3f41ea42a7af390122efd44, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  spike: {fileID: 166374, guid: 025f85af920e76743865cada7904be9b, type: 2}
+  spike: {fileID: 166374, guid: e242e7d42761de443a0f650aab137823, type: 2}
   delayTime: .5
 --- !u!212 &21278854
 SpriteRenderer:
@@ -95,7 +113,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300166, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d91799341a62279469ff3f2cc8f5e396, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -108,6 +126,10 @@ Prefab:
       propertyPath: m_Enabled
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: spike
+      value: 
+      objectReference: {fileID: 166374, guid: e242e7d42761de443a0f650aab137823, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 140278}
