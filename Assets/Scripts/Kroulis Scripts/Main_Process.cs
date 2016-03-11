@@ -22,6 +22,7 @@ public class Main_Process : MonoBehaviour {
     public bool Team_Mode;
     public bool esckey_up; // Avoid key conflict
     bool had_init = false;
+    bool teleport_once = false;
     AudioSource BGM_Player;
     GameObject[] Player_GO=new GameObject[2];
     Health[] Player_Health=new Health[2];
@@ -524,7 +525,7 @@ public class Main_Process : MonoBehaviour {
             {
                 GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
             }
-            else if(start_to_play==true)
+            else if(start_to_play==true && teleport_once == false)
             {
                 Time.timeScale=1.0f;
                 if(Application.platform!=RuntimePlatform.WindowsEditor)
@@ -532,7 +533,9 @@ public class Main_Process : MonoBehaviour {
                     //if (Globe.Map_Load_id != 3)
                     //    Start_Battle();
                     Globe.Map_Load_id = 3;
+                    //Application.LoadLevel("_loading");
                     Application.LoadLevel("_loading");
+                    teleport_once = true;
                 }
             
             }
