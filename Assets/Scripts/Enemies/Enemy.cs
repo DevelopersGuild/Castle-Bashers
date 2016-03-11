@@ -172,8 +172,8 @@ public class Enemy : MonoBehaviour
 
     public bool getCanMove()
     {
-//        Debug.Log(moveController.getCanMove() + " " + isAttacking + " " + isStunned + " " + freeFall);
-        return !(moveController.getCanMove() || isAttacking || isStunned || freeFall);
+        //Debug.Log(moveController.getCanMove() + " " + isAttacking + " " + isStunned + " " + freeFall);
+        return !(moveController.getCanMove() || moveController.GetFlinched() || isAttacking || isStunned || freeFall);
     }
 
     public void Move(Vector3 velocity, float force = 1)
@@ -184,6 +184,11 @@ public class Enemy : MonoBehaviour
         //velocity.z = Mathf.SmoothDamp(velocity.z, 10, ref velocityZSmoothing, (moveController.collisions.below) ? 0.1f : 0.2f);
         moveController.Move(velocity * Time.deltaTime * force);
 
+    }
+
+    public void updateMove(Vector3 velocity)
+    {
+        moveController.updateMove(velocity);
     }
 
     public void setIsAttacking(bool b)
