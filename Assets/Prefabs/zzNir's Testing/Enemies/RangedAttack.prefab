@@ -46,7 +46,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 138262}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -24.4453621, y: 12.7001247, z: 21.731514}
+  m_LocalPosition: {x: -31.8991356, y: 20.5538292, z: -45.3049126}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 452222}
@@ -191,9 +191,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   skill1: {fileID: 0}
   projectileSpeed: 11
-  damageAmount: 20
+  destroyOnCollision: 1
+  destroyedParticle: {fileID: 129252, guid: f659550b9afda6c4e9126fde516f030b, type: 2}
+  destroyedSound: {fileID: 8300000, guid: ee140413eae4aba45abeb46654b77c22, type: 3}
   TimeToLive: 2
-  destroyOnCollision: 0
 --- !u!114 &11470008
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -205,7 +206,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  hitAudio: {fileID: 0}
+  hitAudio: {fileID: 8300000, guid: 4f114eb86440d2842b7a0ea42db8dfc6, type: 3}
   dmgAmount: 30
   isMagic: 0
   damagesPlayers: 1

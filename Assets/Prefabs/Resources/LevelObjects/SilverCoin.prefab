@@ -88,7 +88,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   coinValue: 25
-  pickupSound: {fileID: 8300000, guid: de445aded17de394f8eeed6d87d42455, type: 3}
+  pickupSound: {fileID: 8300000, guid: 607a9e70093d20d46947f3cc0dc5d355, type: 3}
 --- !u!212 &21260368
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -121,7 +121,11 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: pickupSound
+      value: 
+      objectReference: {fileID: 8300000, guid: 607a9e70093d20d46947f3cc0dc5d355, type: 3}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 189046}
