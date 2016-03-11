@@ -44,7 +44,7 @@ public class CreateStart : MonoBehaviour {
         int AreaZCoord = 1;
 
         int Wavechance = rnd.Next(1, 3);
-        if (Wavechance != 1 )
+        if (Wavechance == 1 )
             SecondWave = true;
 
         Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord) + (40* roomC), AreaYCoord, AreaZCoord), transform.rotation);
@@ -183,7 +183,7 @@ public class CreateStart : MonoBehaviour {
             }
 
             GameObject temp;
-            position = rnd.Next(3, 4);
+            position = rnd.Next(1, 4);
 
             for (int m = 0; m < squadSize; m++)
             {

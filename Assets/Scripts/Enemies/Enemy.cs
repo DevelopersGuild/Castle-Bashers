@@ -195,11 +195,8 @@ public class Enemy : MonoBehaviour
     {
         Vector3 velocity = vDirection - transform.position;
         velocity = velocity.normalized;
-<<<<<<< HEAD
         //Debug.Log(velocity);
         //Debug.Log(vDirection);
-=======
->>>>>>> ae7a576e217dac912f20bf472f82b45e34507305
         moveController.Move(velocity * Time.deltaTime * force);
     }
 

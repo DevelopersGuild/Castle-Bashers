@@ -69,7 +69,7 @@ public class destroyBarrier : MonoBehaviour {
                     CreateStart.SecondWave = false;
                     Debug.Log("WAVECHANCE:" + Wavechance);
 
-                    if (Wavechance != 9)
+                    if (Wavechance == 9)
                       {
                           CreateStart.SecondWave = true; }
                     else
