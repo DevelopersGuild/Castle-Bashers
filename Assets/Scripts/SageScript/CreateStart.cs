@@ -15,6 +15,7 @@ public class CreateStart : MonoBehaviour {
     public int Max_Paths; //nonnegative
     static public int position; //between 0 and 3
     public int difficulty;
+    static public bool SecondWave = false;
 
     public static int numRoom;
     int numEnemy;
@@ -33,6 +34,7 @@ public class CreateStart : MonoBehaviour {
 
     private System.Random rnd;
 
+
     public void MakeRoom(int roomC, GameObject bg)
     //makes a room
 
@@ -40,6 +42,11 @@ public class CreateStart : MonoBehaviour {
         int AreaXCoord = -20;
         int AreaYCoord = 1;
         int AreaZCoord = 1;
+
+        int Wavechance = rnd.Next(1, 3);
+        if (Wavechance == 1 )
+            SecondWave = true;
+
         Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord) + (40* roomC), AreaYCoord, AreaZCoord), transform.rotation);
         Instantiate(Resources.Load("LevelObjects/Front Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, 9), transform.rotation); //set front limits
         Instantiate(Resources.Load("LevelObjects/Back Limit", typeof(GameObject)), new Vector3((AreaXCoord) + (40 * roomC), AreaYCoord, -8), transform.rotation); //set back limits
@@ -176,7 +183,7 @@ public class CreateStart : MonoBehaviour {
             }
 
             GameObject temp;
-            position = rnd.Next(3, 4);
+            position = rnd.Next(1, 4);
 
             for (int m = 0; m < squadSize; m++)
             {
@@ -185,6 +192,7 @@ public class CreateStart : MonoBehaviour {
 
                 if (temp != null)
                     AreaLog[m] = spawn(position, temp, X_coord[m], Z_coord[m]);
+               // EnemyScale(AreaLog[m]);
             }
 
         }

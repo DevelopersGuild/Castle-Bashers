@@ -11,13 +11,15 @@ public class destroyBarrier : MonoBehaviour {
     private CameraFollow cameraFollow;
     public CreateStart room;
     public Main_Process end;
+    private System.Random rnd;
+    int Wavechance;
 
     GameObject[] enemies;
 
     // Use this for initialization
     void Start()
     {
-        
+        rnd = new System.Random(System.Guid.NewGuid().GetHashCode());
         Camera camera = Camera.main;
         cameraFollow = camera.GetComponent<CameraFollow>();
         mainprocess = FindObjectOfType<Main_Process>();
@@ -55,7 +57,28 @@ public class destroyBarrier : MonoBehaviour {
                     i = count = CreateStart.squadSize;
             }
             if (count == 0)
+            {
                 E_Dead = true;
+                Debug.Log("HEP");
+                if (CreateStart.SecondWave == true)
+                {
+                    Debug.Log("HEP2");
+                    room.MakeMob(CreateStart.roomCount);
+                    E_Dead = false;
+                    Wavechance = rnd.Next(1, 10);
+                    CreateStart.SecondWave = false;
+                    Debug.Log("WAVECHANCE:" + Wavechance);
+
+                    if (Wavechance == 9)
+                      {
+                          CreateStart.SecondWave = true; }
+                    else
+                    CreateStart.SecondWave = false;
+
+                }
+
+            }
+
         }
     }   
         // Debug.Log("A Gen number=" + AreaGen.EnemyNumber[InstanceID]);
@@ -66,15 +89,16 @@ public class destroyBarrier : MonoBehaviour {
     {
         if (E_Dead==true)
         {
-            if (CreateStart.roomCount != CreateStart.numRoom)
-            {
-                GameObject background = (GameObject)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName, 0], typeof(GameObject));
-                room.MakeRoom(CreateStart.roomCount, background);
-                CreateStart.roomCount++;
-            }
-            else
-                end.UI_Mission_Success_Open();
 
+                if (CreateStart.roomCount != CreateStart.numRoom)
+                {
+                    GameObject background = (GameObject)Resources.Load(Biome.Backgrounds[(int)ActiveBiomeName, 0], typeof(GameObject));
+                    room.MakeRoom(CreateStart.roomCount, background);
+                    CreateStart.roomCount++;
+                }
+                else
+                    end.UI_Mission_Success_Open();
+ 
             Destroy(gameObject);
             cameraFollow.setLock(false);
 
