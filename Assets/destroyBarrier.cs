@@ -65,11 +65,11 @@ public class destroyBarrier : MonoBehaviour {
                     Debug.Log("HEP2");
                     room.MakeMob(CreateStart.roomCount);
                     E_Dead = false;
-                    Wavechance = rnd.Next(1, 50);
+                    Wavechance = rnd.Next(1, 10);
                     CreateStart.SecondWave = false;
                     Debug.Log("WAVECHANCE:" + Wavechance);
 
-                    if (Wavechance != 49)
+                    if (Wavechance != 9)
                       {
                           CreateStart.SecondWave = true; }
                     else
