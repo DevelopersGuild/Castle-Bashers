@@ -235,7 +235,7 @@ MonoBehaviour:
   attackRange: 1
   attack_CD: 5
   attackShakesScreen: 1
-  experienceAmount: 15
+  experienceAmount: 8
   attackSound: {fileID: 8300000, guid: 52f5efe01edb13140a725b26ab255d26, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -348,7 +348,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RegenAmount: 0
   currentHealth: 20
-  maxhp: 30
+  maxhp: 100
   deathObject: {fileID: 112044, guid: 85044cebeacee884b9b1eebb9a6f01ae, type: 2}
   bonusHP: 0
   bonusPercentHP: 0
@@ -439,11 +439,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxhp
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: experienceAmount
-      value: 15
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits

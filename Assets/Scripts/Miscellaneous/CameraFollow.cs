@@ -63,55 +63,54 @@ public class CameraFollow : MonoBehaviour
     void LateUpdate()
     {
 
-            Vector3 totalAveragePosition = new Vector3();
-            int size = 0;
+        Vector3 totalAveragePosition = new Vector3();
+        int size = 0;
 
-            foreach (Transform child in gobjCameraTarget.transform)
+        foreach (Transform child in gobjCameraTarget.transform)
+        {
+            if (child.gameObject.active)
             {
-                if (child.gameObject.active)
+                if (!child.gameObject.GetComponent<Player>().getDown())
                 {
-                    if (!child.gameObject.GetComponent<Player>().getDown())
-                    {
-                        totalAveragePosition += child.position;
-                        size++;
-                    }
+                    totalAveragePosition += child.position;
+                    size++;
                 }
             }
-            totalAveragePosition /= size;
+        }
+        totalAveragePosition /= size;
 
-            // Camera cant move left
-            Vector3 v3CameraTargetPosition = totalAveragePosition;
-
-
-
-            Vector3 v3FinalCameraPosition;
-
-            v3FinalCameraPosition.x = GetXCameraPosition(v3CameraTargetPosition.x);
-            v3FinalCameraPosition.z = flDepthOffset;
-            v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
+        // Camera cant move left
+        Vector3 v3CameraTargetPosition = totalAveragePosition;
 
 
 
+        Vector3 v3FinalCameraPosition;
 
-            v3PreviousFrameCameraPosition = v3FinalCameraPosition;
-            if (cameraShakeIsOn == true)
-            {
-                Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
-                v3FinalCameraPosition.x += v2ScreenShakeVector.x;
-                v3FinalCameraPosition.y += v2ScreenShakeVector.y;
-
-            }
+        v3FinalCameraPosition.x = GetXCameraPosition(v3CameraTargetPosition.x);
+        v3FinalCameraPosition.z = flDepthOffset;
+        v3FinalCameraPosition.y = GetYCameraPosition(v3CameraTargetPosition.y);
 
 
-            if (v3FinalCameraPosition.x > transform.position.x || canMoveLeft && !isLocked)
-            {
-                transform.position = new Vector3(Mathf.Lerp(transform.position.x, v3FinalCameraPosition.x, 0.2f), v3FinalCameraPosition.y ,v3FinalCameraPosition.z);
-            }
-            else if (isLocked)
-            {
-                transform.position = new Vector3(transform.position.x, v3FinalCameraPosition.y, v3FinalCameraPosition.z);
-            }
-       
+
+
+        v3PreviousFrameCameraPosition = v3FinalCameraPosition;
+        if (cameraShakeIsOn == true)
+        {
+            Vector2 v2ScreenShakeVector = ScreenShake.ScreenShakeTest();
+            v3FinalCameraPosition.x += v2ScreenShakeVector.x;
+            v3FinalCameraPosition.y += v2ScreenShakeVector.y;
+
+        }
+
+
+        if (isLocked)
+        {
+            transform.position = new Vector3(transform.position.x, v3FinalCameraPosition.y, v3FinalCameraPosition.z);
+        }
+        else
+        {
+            transform.position = new Vector3(Mathf.Lerp(transform.position.x, v3FinalCameraPosition.x, 0.4f), v3FinalCameraPosition.y, v3FinalCameraPosition.z);
+        }
 
     }
 

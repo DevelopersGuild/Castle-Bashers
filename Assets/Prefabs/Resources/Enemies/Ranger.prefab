@@ -59,7 +59,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107678}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.75999999, y: 2.86999989, z: 2}
@@ -146,7 +146,7 @@ MonoBehaviour:
   attackRange: 11
   attack_CD: 2
   attackShakesScreen: 0
-  experienceAmount: 10
+  experienceAmount: 5
   attackSound: {fileID: 8300000, guid: 449582bb996f40a4fbd6e3db19390d84, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -321,7 +321,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: experienceAmount
-      value: 10
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

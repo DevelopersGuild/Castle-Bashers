@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6571896}
   - 114: {fileID: 11448278}
   m_Layer: 0
-  m_Name: Big Attack
+  m_Name: BearAttack
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -54,11 +54,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 0}
-  dmgAmount: 22
+  dmgAmount: 40
   isMagic: 0
   damagesPlayers: 1
-  damagesEnemies: 1
-  flinchPower: 10
+  damagesEnemies: 0
+  flinchPower: 15
 --- !u!212 &21276866
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -106,7 +106,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dmgAmount
-      value: 22
+      value: 40
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damagesPlayers
@@ -114,11 +114,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: flinchPower
-      value: 10
+      value: 15
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damagesEnemies
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

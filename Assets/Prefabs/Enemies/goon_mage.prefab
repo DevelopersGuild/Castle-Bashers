@@ -181,7 +181,7 @@ MonoBehaviour:
   attackRange: 5
   attack_CD: 0
   attackShakesScreen: 0
-  experienceAmount: 10
+  experienceAmount: 5
   attackSound: {fileID: 0}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
@@ -250,7 +250,7 @@ Prefab:
     m_Modifications:
     - target: {fileID: 0}
       propertyPath: experienceAmount
-      value: 10
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: coinValue

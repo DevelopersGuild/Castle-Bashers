@@ -102,6 +102,13 @@ public class AttackController : MonoBehaviour
         coolDown = .2f;
     }
 
+    public void ResetIdle()
+    {
+        attackQueue.Clear();
+        isAttacking = false;
+        anim.SetInteger("Tap", 0);
+    }
+
     public bool GetIsAttack()
     {
         return isAttacking;
@@ -118,9 +125,10 @@ public class AttackController : MonoBehaviour
     public void InstantiateAttack()
     {
         AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
-        //attackColliderInstance.setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
+        //
         DealDamage attackColliderInstance = (DealDamage)Instantiate(attackCollider, player.GetAttackCollider().transform.position, Quaternion.identity);
-        attackCollider.setDamage(20);
+        attackColliderInstance.setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
+        //attackCollider.setDamage(20);
         Destroy(attackColliderInstance, 0.1f);
     }
 
