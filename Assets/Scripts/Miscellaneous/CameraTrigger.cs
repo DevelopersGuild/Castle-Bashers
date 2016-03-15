@@ -27,7 +27,6 @@ public class CameraTrigger : MonoBehaviour
         if (other.GetComponent<Enemy>())
         {
             enemyCount--;
-            Debug.Log(enemyCount);
         }
 
         if (enemyCount <= 0)

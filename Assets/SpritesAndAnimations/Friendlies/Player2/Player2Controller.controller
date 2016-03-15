@@ -154,9 +154,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: Tap
     m_EventTreshold: 3
-  - m_ConditionMode: 1
-    m_ConditionEvent: Finished
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110221184}
   m_Solo: 0
@@ -310,7 +307,7 @@ AnimatorStateTransition:
   m_Mute: 0
   m_IsExit: 0
   serializedVersion: 3
-  m_TransitionDuration: .25
+  m_TransitionDuration: 0
   m_TransitionOffset: 0
   m_ExitTime: .625
   m_HasExitTime: 0
@@ -541,9 +538,6 @@ AnimatorStateTransition:
   - m_ConditionMode: 6
     m_ConditionEvent: Tap
     m_EventTreshold: 2
-  - m_ConditionMode: 1
-    m_ConditionEvent: Finished
-    m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: 110248120}
   m_Solo: 0

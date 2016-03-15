@@ -71,27 +71,31 @@ public class Health : MonoBehaviour
 
     public virtual void takeDamage(float dmg, int flinch = 4)
     {
-        AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
-
-        if(hitParticle)
+        if (!isInvincible)
         {
-            Destroy(Instantiate(hitParticle, gameObject.transform.position, Quaternion.identity), 2f);
-        }
-        //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
-        //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
-        dmg = Mathf.CeilToInt(dmg);
-        currentHealth -= dmg;
-        createFloatingText(dmg);
+            AudioSource.PlayClipAtPoint(hitSound, transform.position, 1);
 
-        if (moveController)
-        {
-            moveController.handleFlinch(flinch);
-
-            if (!player)
+            if (hitParticle)
             {
-                GetComponent<Enemy>().setIsAttacking(false);
+                Destroy(Instantiate(hitParticle, gameObject.transform.position, Quaternion.identity), 2f);
             }
-        } 
+            //Rounding damage up to the nearest int for a clean display. It may make some situations easier in the early game
+            //but considering the nature of a hack and slash, that shouldn't be an issue. Will keep an eye on the effects.
+            dmg = Mathf.CeilToInt(dmg);
+            currentHealth -= dmg;
+            createFloatingText(dmg);
+
+            if (moveController)
+            {
+                moveController.handleFlinch(flinch);
+
+                if (!player)
+                {
+                    GetComponent<Enemy>().setIsAttacking(false);
+                }
+            }
+        }
+
 
         if (currentHealth <= 0)
             Death();
@@ -122,10 +126,10 @@ public class Health : MonoBehaviour
             player.enableInput();
     }
 
-    public void StartInvincibilityTimer()
+    public void StartInvincibilityTimer(float time = 1.5f)
     {
         isInvincible = true;
-        StartCoroutine(InvincilityTimerCoroutine(1.5f));
+        StartCoroutine(InvincilityTimerCoroutine(time));
     }
 
     IEnumerator InvincilityTimerCoroutine(float waitTime)

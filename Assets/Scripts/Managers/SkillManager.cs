@@ -91,7 +91,11 @@ public class SkillManager : MonoBehaviour
         if (currentSkillLoadout[0].GetCoolDownTimer() <= 0)
         {
             currentSkillLoadout[0].UseSkill(gameObject, null);
-            AudioSource.PlayClipAtPoint(currentSkillLoadout[0].useSkillAudio, transform.position);
+
+            if (currentSkillLoadout[0].useSkillAudio)
+            {
+                AudioSource.PlayClipAtPoint(currentSkillLoadout[0].useSkillAudio, transform.position);
+            }
             Debug.Log("Use Skill 1");
 
             if (player || true)
@@ -113,7 +117,11 @@ public class SkillManager : MonoBehaviour
         if (currentSkillLoadout[1].GetCoolDownTimer() <= 0)
         {
             currentSkillLoadout[1].UseSkill(gameObject, null);
-            AudioSource.PlayClipAtPoint(currentSkillLoadout[1].useSkillAudio, transform.position);
+            if (currentSkillLoadout[1].useSkillAudio)
+            {
+                AudioSource.PlayClipAtPoint(currentSkillLoadout[1].useSkillAudio, transform.position);
+            }
+
             Debug.Log("Use Skill 2");
 
             if (player)
@@ -152,7 +160,10 @@ public class SkillManager : MonoBehaviour
         if (currentSkillLoadout[3].GetCoolDownTimer() <= 0)
         {
             currentSkillLoadout[3].UseSkill(gameObject, null);
-            AudioSource.PlayClipAtPoint(currentSkillLoadout[3].useSkillAudio, transform.position);
+            if (currentSkillLoadout[3].useSkillAudio)
+            {
+                AudioSource.PlayClipAtPoint(currentSkillLoadout[3].useSkillAudio, transform.position);
+            }
             Debug.Log("Use Skill 4");
 
             if (player)
