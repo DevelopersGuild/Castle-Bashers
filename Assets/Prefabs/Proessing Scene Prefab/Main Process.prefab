@@ -416,7 +416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4a96d5f2e9db2e4793ce3242ac9fc15, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  movTexture: {fileID: 15200000, guid: 758b7ca3ca16ff0488a9f567cda1dc1c, type: 3}
+  movTexture: {fileID: 15200000, guid: 45a7ed326b11ba545a73d0e87c412373, type: 3}
   Main_UI: {fileID: 0}
   Menu_UI: {fileID: 0}
   Other_Windows: {fileID: 0}
