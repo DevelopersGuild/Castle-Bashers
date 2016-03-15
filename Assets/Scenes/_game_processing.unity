@@ -178,7 +178,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 468296, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
       propertyPath: m_RootOrder
-      value: 2
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11445864, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
       propertyPath: Main_UI

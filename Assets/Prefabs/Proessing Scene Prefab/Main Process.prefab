@@ -325,13 +325,13 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   BGM:
   - name: BossFight
-    aud: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
+    aud: {fileID: 8300000, guid: a8a842f32d52dd14bb8146fb157c24e0, type: 3}
   - name: BattleMusic1
-    aud: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
+    aud: {fileID: 8300000, guid: 6b794c02e9ef0584fb652b9bbf09b1a5, type: 3}
   - name: BattleMusic2
-    aud: {fileID: 8300000, guid: 92e19b6c3c168c343a486dae58f4fbf2, type: 3}
+    aud: {fileID: 8300000, guid: 6b794c02e9ef0584fb652b9bbf09b1a5, type: 3}
   - name: Town
-    aud: {fileID: 8300000, guid: 19c59e348e460ad45b2a90f4d9179785, type: 3}
+    aud: {fileID: 8300000, guid: 4e595720a26bdbc40892b44cc7420fbc, type: 3}
 --- !u!114 &11445072
 MonoBehaviour:
   m_ObjectHideFlags: 1
