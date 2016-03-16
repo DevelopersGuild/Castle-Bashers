@@ -167,7 +167,7 @@ public class ScreenShake : MonoBehaviour
 {
     public static Vector2 ScreenShakeTest()
     {
-        float Magnitude = 0.1f;
+        float Magnitude = 0.2f;
         Vector2 random_direction = Random.insideUnitCircle;
 
         return random_direction * Magnitude;

@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.3217144, y: 19.8350983, z: -11.6348629}
+  m_LocalPosition: {x: -17.3392487, y: 12.2960777, z: -11.6348629}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 479418}
@@ -236,7 +236,7 @@ MonoBehaviour:
   attack_CD: 5
   attackShakesScreen: 1
   experienceAmount: 8
-  attackSound: {fileID: 8300000, guid: 52f5efe01edb13140a725b26ab255d26, type: 3}
+  attackSound: {fileID: 8300000, guid: 59ecc4a7a32450647b33bdbc5aa8376d, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
