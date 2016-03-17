@@ -83,7 +83,7 @@ public class CreateStart : MonoBehaviour {
 
             for (int m = 0; m < numObj; m++) //creates object types
             {
-                int testType = rnd.Next(0, 3);
+                int testType = rnd.Next(0, 4);
                 ObjectTypeArray[m] = testType;
                 // Debug.Log("ObjectTypeArray at value" + m + "::" + ObjectTypeArray[m]);
             }
