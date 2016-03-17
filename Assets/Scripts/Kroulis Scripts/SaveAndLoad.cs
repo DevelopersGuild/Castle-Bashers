@@ -26,8 +26,9 @@ public class SaveAndLoad : MonoBehaviour {
         PlayerHolder = GameObject.Find("PlayerHolder");
         Player_Script = PlayerHolder.GetComponentsInChildren<Player>();
         //Debug.Log("Player Object Found: " + Player_Script.Length.ToString());
-        for (int i = 0; i <= 1;i++ )
+        for (int i = 0; i <= 1; i++)
         {
+
             Player_PF[i] = Player_Script[i].gameObject;
             Player_Health[i] = Player_PF[i].GetComponent<Health>();
             Player_Mana[i] = Player_PF[i].GetComponent<Mana>();
@@ -38,6 +39,7 @@ public class SaveAndLoad : MonoBehaviour {
         }
             
         Invoke("LoadData",1.00f);
+        //LoadData();
         //character_data.Load(path + "/" + Globe.Character_Data_File);
         //character_data.Save();
 	}
@@ -154,6 +156,8 @@ public class SaveAndLoad : MonoBehaviour {
         }
         if (File.Exists(path + "/" + Globe.Character_Data_File) == false || Globe.Character_Data_File=="null")
         {
+            //Debug.Log("Saver File: "+ path + "/" + Globe.Character_Data_File);
+            //Debug.Log("Cannot Find The Saver File. Exit...");
             ErrorCatching.WriteCharacterDataXML();
             Application.Quit();
         }
@@ -161,7 +165,7 @@ public class SaveAndLoad : MonoBehaviour {
         {
             string md5;
             md5 = "CB" + FileVerify.getFileHash(path + "/" + Globe.Character_Data_File) + "D";
-            Debug.Log(md5);
+            //Debug.Log(md5);
             //File Verify
             if (Application.platform != RuntimePlatform.WindowsEditor)
             {
@@ -178,6 +182,7 @@ public class SaveAndLoad : MonoBehaviour {
             int player_id_load;
             foreach (XmlElement xl in character_info)
             {
+                //Debug.Log("Detected id " + xl.GetAttribute("id"));
                 if (xl.GetAttribute("id") == "1")
                 {
                     player_id_load = 1;

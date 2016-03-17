@@ -20,8 +20,6 @@ public class MeleeBasicAttack : IAttack
 
     public void EnterState(Player player)
     {
-        player.animator.SetBool("IsUsingBasicAttack", true);
-       // player.GetAttackCollider().SetActive(true);
 
     }
 
@@ -32,7 +30,6 @@ public class MeleeBasicAttack : IAttack
 
     public void ExitState(Player player)
     {
-        player.animator.SetBool("IsUsingBasicAttack", false);
-      //  player.GetAttackCollider().SetActive(false);
+
     }
 }

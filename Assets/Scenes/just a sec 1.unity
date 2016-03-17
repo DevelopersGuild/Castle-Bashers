@@ -314,8 +314,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RegenAmount: 0
-  currentHealth: 10
-  maxhp: 10
+  currentHealth: 50
+  maxhp: 50
   deathObject: {fileID: 0}
   bonusHP: 0
   bonusPercentHP: 0
@@ -818,6 +818,18 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 11475768, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
       propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408752, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408752, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 408752, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+      propertyPath: m_LocalScale.z
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
@@ -1632,7 +1644,7 @@ Transform:
   m_LocalScale: {x: .675569534, y: .675569296, z: .828401089}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 8
+  m_RootOrder: 11
 --- !u!1 &2023959706
 GameObject:
   m_ObjectHideFlags: 0
@@ -1745,7 +1757,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 7
+  m_RootOrder: 9
 --- !u!1001 &2064697083
 Prefab:
   m_ObjectHideFlags: 0

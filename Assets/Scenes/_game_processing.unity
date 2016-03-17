@@ -148,6 +148,18 @@ Prefab:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.size
+      value: 9
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.size
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.size
+      value: 6
+      objectReference: {fileID: 0}
     - target: {fileID: 468296, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -178,7 +190,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 468296, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 11445864, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
       propertyPath: Main_UI
@@ -192,6 +204,586 @@ Prefab:
       propertyPath: Other_Windows
       value: 
       objectReference: {fileID: 1091903623}
+    - target: {fileID: 11449026, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: m_Enabled
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11438920, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: BGM.Array.data[1].aud
+      value: 
+      objectReference: {fileID: 8300000, guid: a8a842f32d52dd14bb8146fb157c24e0, type: 3}
+    - target: {fileID: 11438920, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: BGM.Array.data[2].aud
+      value: 
+      objectReference: {fileID: 8300000, guid: a8a842f32d52dd14bb8146fb157c24e0, type: 3}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[3].bgm
+      value: 
+      objectReference: {fileID: 8300000, guid: 4e595720a26bdbc40892b44cc7420fbc, type: 3}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].limit_time
+      value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].limit_death
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].limit_gold
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].Reward_EXP.Array.data[1]
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].Reward_EXP.Array.data[2]
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].Reward_EXP.Array.data[3]
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].Reward_Gold.Array.data[0]
+      value: 50
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].Reward_Gold.Array.data[1]
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].Reward_Gold.Array.data[2]
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11445072, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: mapinfo.Array.data[1].Reward_Gold.Array.data[3]
+      value: 1300
+      objectReference: {fileID: 0}
+    - target: {fileID: 11490410, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: music
+      value: .800000012
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: a17f81daa2cddfd4c857b4eb0e71ce40,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[1].name
+      value: Iron Sword (LV1)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[1].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 53d62a38b45d02140af553d229ccbf5f,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[2].name
+      value: Iron Sword (LV3)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[2].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: c941823bae81e374aa71b855ede848dd,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[2].lim_lv
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[2].up_gold
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[2].atk
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[3].name
+      value: Iron Sword (LV5)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[3].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 64dc872b783008d40af30893836082fb,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[3].lim_lv
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[3].up_gold
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[3].atk
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[4].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 05c309122077ceb47baa3836900157c3,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[4].name
+      value: Steel Sword (LV7)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[4].lim_lv
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[4].up_gold
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[4].atk
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[4].def
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[5].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 970a0e78543ac634baeeb6a867e7da29,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[5].name
+      value: Steel Sword (LV10)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[5].lim_lv
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[5].up_gold
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[5].atk
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[5].def
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[6].name
+      value: King Sword (LV15)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[6].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 092030be5e67933479ce5314d58edd54,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[6].lim_lv
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[6].up_gold
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[6].atk
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[6].def
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[7].name
+      value: King Sword (LV20)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[7].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 1b57ba15b7868ea46875ca3ee60c0f3c,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[7].lim_lv
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[7].up_gold
+      value: 30000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[7].atk
+      value: 45
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[7].def
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[8].name
+      value: King Sword (LV25)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[8].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8fb3045a7d4c26340a88ac14846aa4fd,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[8].lim_lv
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[8].up_gold
+      value: 70000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[8].atk
+      value: 65
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[8].def
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[9].name
+      value: King Sword (MAX)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[9].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8669db28898e3f242a23e8191be75598,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[9].lim_lv
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[9].up_gold
+      value: 120000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[9].atk
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].weapon.Array.data[9].def
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[0].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 45bff47d1cc9f4c43bf7b182647dacec,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[0].name
+      value: Normal Clothes
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[0].def
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[1].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 31507c70160b19c4abcfe6b9d67372e7,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[1].name
+      value: Leather Armor (LV2)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[1].lim_lv
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[1].up_gold
+      value: 500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[1].def
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[2].name
+      value: Leather Armor (LV6)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[2].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 7daa621e7441f994fb552baec1d07440,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[2].lim_lv
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[2].up_gold
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[2].def
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[3].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 86d0cd438a432ca458e15a486c6d1d7f,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[3].name
+      value: Light Armor (LV8)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[3].lim_lv
+      value: 8
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[3].up_gold
+      value: 3000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[3].def
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[4].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: e2715793cef61654cb09ea5ae6ea0241,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[4].name
+      value: Light Armor (LV12)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[4].lim_lv
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[4].up_gold
+      value: 8000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[4].def
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[5].name
+      value: Light Armor (LV16)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[5].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 8d0b02601e37301459429bf3a37f117d,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[5].lim_lv
+      value: 16
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[5].up_gold
+      value: 12000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[5].def
+      value: 18
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[6].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: b437b06d097f53b4f8649d03c90c7ded,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[6].name
+      value: Steel Armor (LV21)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[6].lim_lv
+      value: 21
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[6].up_gold
+      value: 45000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[6].def
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[7].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 33c86b1544c900146b4b81549806a545,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[7].name
+      value: Steel Armor (LV26)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[7].lim_lv
+      value: 26
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[7].up_gold
+      value: 70000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[7].def
+      value: 40
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[8].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 590108ccc5a404b48a4ec7ce4d506a63,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[8].name
+      value: Steel Armor (MAX)
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[8].lim_lv
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[8].up_gold
+      value: 120000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].armor.Array.data[8].def
+      value: 80
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[0].name
+      value: No Accessory
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[1].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: c0390a69e4f7cf54a8b5be7e9fea8fcd,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[1].lim_lv
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[1].up_gold
+      value: 1000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[1].name
+      value: Copper Bracelet
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[1].maxhp
+      value: 30
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[1].maxmp
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[1].cri
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[2].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: f34d328f31fa1294b8e4ac4527254959,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[2].lim_lv
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[2].up_gold
+      value: 5000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[2].name
+      value: Ruby Ring
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[2].maxhp
+      value: 100
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[2].maxmp
+      value: 55
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[3].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 05a2977dc30a0244086bc0fcdfe27325,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[3].name
+      value: Emerald Necklace
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[3].lim_lv
+      value: 15
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[3].up_gold
+      value: 10000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[3].maxhp
+      value: 300
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[3].maxmp
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[4].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: c6739e3d74bdb824aa40b1d4ffebfd8d,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[4].name
+      value: Magic Necklace
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[4].lim_lv
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[4].up_gold
+      value: 50000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[4].maxhp
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[4].maxmp
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[5].icon
+      value: 
+      objectReference: {fileID: 21300000, guid: 2bb0aaf9ce3d36c49ad6893fd6f663f3,
+        type: 3}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[5].name
+      value: Magic Bracelet
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[5].lim_lv
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[5].up_gold
+      value: 100000
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[5].maxhp
+      value: 1500
+      objectReference: {fileID: 0}
+    - target: {fileID: 11467792, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
+      propertyPath: Class_info.Array.data[0].accessory.Array.data[5].maxmp
+      value: 1500
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
   m_IsPrefabParent: 0
@@ -234,59 +826,23 @@ Prefab:
       propertyPath: m_RootOrder
       value: 7
       objectReference: {fileID: 0}
-    m_RemovedComponents: []
+    - target: {fileID: 105182, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 168672, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    m_RemovedComponents:
+    - {fileID: 11417956, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
+    - {fileID: 11424218, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: a01b62c960b8c464e810464ae662b63f, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &1091903623 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 141562, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
   m_PrefabInternal: {fileID: 1750388931}
---- !u!1001 &1436991881
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456994, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 168500, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 9c7287d472bb54640824af2f464100b7, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &1478041577
 Prefab:
   m_ObjectHideFlags: 0
@@ -378,6 +934,22 @@ Prefab:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 136580, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 185948, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 159154, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 108550, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
   m_IsPrefabParent: 0
@@ -464,6 +1036,10 @@ Prefab:
       propertyPath: Main_Process
       value: 
       objectReference: {fileID: 1829866592}
+    - target: {fileID: 141562, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
   m_IsPrefabParent: 0

@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine.UI;
 
 public class UI_Gem_Selector : MonoBehaviour {
@@ -16,7 +17,7 @@ public class UI_Gem_Selector : MonoBehaviour {
     private int pages;
     private int current_select;
     private int size;
-    private Gem[] gems;
+    private List<Gem> gems;
 
     public void Start()
     {
@@ -27,7 +28,7 @@ public class UI_Gem_Selector : MonoBehaviour {
     {
         current_gemManager = manager;
         gems = manager.GetStoredGems();
-        size = gems.Length;
+        size = gems.Count;
         if (size % 6 > 0)
         {
             pages = size / 6 + 1;
@@ -42,7 +43,7 @@ public class UI_Gem_Selector : MonoBehaviour {
         else
             cur.gameObject.SetActive(true);
         gameObject.SetActive(true);
-        Debug.Log("size " + size.ToString());
+        //Debug.Log("size " + size.ToString());
     }
 
     void Update()
@@ -141,9 +142,10 @@ public class UI_Gem_Selector : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.Return))
         {
             //unequip
-            if (current_gemManager.GetEquippedGem(eqid) != null)
-                current_gemManager.unequip(eqid);
+            //if (current_gemManager.GetEquippedGem(eqid) != null)
+            //    current_gemManager.unequip(eqid);
             //equip
+            Debug.Log((current_page - 1) * 6 + current_select);
             current_gemManager.equip((current_page-1)*6+current_select);
             father.Change();
         }

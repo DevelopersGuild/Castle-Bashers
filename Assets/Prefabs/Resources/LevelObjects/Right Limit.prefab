@@ -12,7 +12,7 @@ GameObject:
   - 65: {fileID: 6586676}
   - 23: {fileID: 2319880}
   - 114: {fileID: 11418112}
-  m_Layer: 8
+  m_Layer: 0
   m_Name: Right Limit
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -85,6 +85,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1ee1f5f322ef54940a670144ffdf7325, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  room: {fileID: 0}
+  end: {fileID: 0}
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1
@@ -122,7 +124,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_Layer
-      value: 8
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

@@ -135,51 +135,51 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 5f0e591e416ccd643a8abddf88de2615, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &487875838
+--- !u!1001 &455526981
 Prefab:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_LocalPosition.x
-      value: -29.5300007
+      value: -28.5056896
       objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_LocalPosition.y
-      value: 10.46
+      value: 9.61682224
       objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_LocalPosition.z
-      value: 3.29999995
+      value: -2.27999997
       objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_LocalRotation.x
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_LocalRotation.y
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_LocalRotation.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_LocalRotation.w
       value: 1
       objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
       propertyPath: m_RootOrder
-      value: 4
+      value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (1)
+    - target: {fileID: 110718, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
+  m_ParentPrefab: {fileID: 100100000, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &517105051
 Prefab:
@@ -256,98 +256,6 @@ Prefab:
     m_RemovedComponents:
     - {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &599473212
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -29.5300007
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.29999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_RootOrder
-      value: 6
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (7)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &803170029
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -29.5300007
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.29999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_RootOrder
-      value: 5
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (6)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &898191970
 Prefab:
@@ -488,52 +396,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 9ff4bc96f20aed843a3851f0da8155dd, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1006269105
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -29.5300007
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.29999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_RootOrder
-      value: 10
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (8)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1030033903
 Prefab:
@@ -892,7 +754,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 19
+  m_RootOrder: 12
 --- !u!1001 &1601653879
 Prefab:
   m_ObjectHideFlags: 0
@@ -934,160 +796,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 296b22d2b1c2a4a46b10174058d552e3, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1693840635
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -29.5300007
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.29999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_RootOrder
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (9)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1750991074
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -29.5300007
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.29999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (2)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1821509192
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -28.8999996
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 17.1098785
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.29999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_RootOrder
-      value: 15
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (3)
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 6545914, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_IsTrigger
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Layer
-      value: 9
-      objectReference: {fileID: 0}
-    - target: {fileID: 11416722, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: collisionMask.m_Bits
-      value: 768
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
   m_IsPrefabParent: 0
 --- !u!1001 &1830750085
 Prefab:
@@ -1194,7 +902,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 18
+  m_RootOrder: 9
 --- !u!1 &1849645164 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 151902, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
@@ -1310,52 +1018,6 @@ Prefab:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: e3e784f667145394d8ee9fb97d5b40c7, type: 2}
-  m_IsPrefabParent: 0
---- !u!1001 &1885540970
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -29.5300007
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 10.46
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.29999995
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_RootOrder
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 110718, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
-      propertyPath: m_Name
-      value: GoonEnemy (5)
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 02ea76d47d60375449ee7fbb6ac01490, type: 2}
   m_IsPrefabParent: 0
 --- !u!1 &2023959706
 GameObject:

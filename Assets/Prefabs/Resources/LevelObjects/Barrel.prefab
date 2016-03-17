@@ -73,8 +73,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   dropChance: 100
   coinValue: 80
-  items:
-  - {fileID: 0}
+  items: []
   itemDropRates: 
 --- !u!114 &11434842
 MonoBehaviour:
@@ -89,14 +88,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RegenAmount: 0
   currentHealth: 0
-  maxhp: 25
+  maxhp: 20
   deathObject: {fileID: 0}
   bonusHP: 0
   bonusPercentHP: 0
   isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
-  hitSound: {fileID: 0}
-  hitParticle: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 1cf5d7a4c0d92084ea068e0bce47671a, type: 3}
+  hitParticle: {fileID: 128120, guid: 5011a44200ed9ec468b88a1244ce4a94, type: 2}
 --- !u!114 &11473564
 MonoBehaviour:
   m_ObjectHideFlags: 1

@@ -22,6 +22,7 @@ public class Main_Process : MonoBehaviour {
     public bool Team_Mode;
     public bool esckey_up; // Avoid key conflict
     bool had_init = false;
+    bool teleport_once = false;
     AudioSource BGM_Player;
     GameObject[] Player_GO=new GameObject[2];
     Health[] Player_Health=new Health[2];
@@ -178,6 +179,7 @@ public class Main_Process : MonoBehaviour {
     //for forcing open Menu (Do not use it when other windows UI is opening)
     public void Menu_Force_Open(int menu_id)
     {
+
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StopChangingIcon();
         Menu_id = menu_id;
         Menu_UI.GetComponent<Menu_UI_FullControl>().UpdateGold();
@@ -186,12 +188,14 @@ public class Main_Process : MonoBehaviour {
             Menu_UI.GetComponent<Menu_UI_FullControl>().Character_Menu.GetComponent<Character_Menu_FullControl>().Change();
         if(menu_id==3)
             Menu_UI.GetComponent<Menu_UI_FullControl>().Ability_Menu.GetComponent<Menu_Ability_Fullcontrol>().Change();
+        deinput();
         Hide_UI = false;
     }
 
     public void Menu_Normal_Close()
     {
         Main_UI.GetComponent<Main_UI_FULLControl>().Main_UI_StartChangingIcon();
+        eninput();
     }
 
     //when the mission start, use this to start the timer and ban the menu
@@ -207,6 +211,7 @@ public class Main_Process : MonoBehaviour {
     //for opening Other Windows -> UI
     public void UI_Level_Selector_Open(int chapter_id)
     {
+        deinput();
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject LS = Other_Windows.GetComponent<Other_Windows_FullControl>().Level_Select;
@@ -215,6 +220,7 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_Death_Window_Open_Withmusic()
     {
+        deinput();
         Hide_UI = true;
         Other_Windows.SetActive(true);
         Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
@@ -225,6 +231,7 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_SkillShop_Open(int class_id, int[] skill_id)
     {
+
         Debug.LogWarning("This Function is out of date. Please use UI_SkillShop_Open(int class_id) as new method.");
         Hide_UI = true;
         Other_Windows.SetActive(true);
@@ -237,6 +244,7 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_SkillShop_Open(int class_id)
     {
+        deinput();
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
@@ -247,6 +255,7 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_Upgrade_Window_Open(int equipment_type)
     {
+        deinput();
         Other_Windows.SetActive(true);
         Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
         Other_Windows.GetComponent<Other_Windows_FullControl>().Upgrade.SetActive(true);
@@ -256,6 +265,7 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_Mission_Success_Open()
     {
+        deinput();
         Other_Windows.SetActive(true);
         Other_Windows.GetComponent<Other_Windows_FullControl>().Black.SetActive(true);
         GameObject MS= Other_Windows.GetComponent<Other_Windows_FullControl>().Mission_Success;
@@ -267,6 +277,7 @@ public class Main_Process : MonoBehaviour {
 
     public void UI_Passive_Skill_Panel_Open(int ? playerid)
     {
+        deinput();
         Hide_UI = true;
         Other_Windows.SetActive(true);
         Other_Windows.GetComponent<Other_Windows_FullControl>().PassiveSkill.GetComponent<Passive_Skill_Updater_Fullcontrol>().Change(playerid);
@@ -275,6 +286,7 @@ public class Main_Process : MonoBehaviour {
 
     public void OtherWindows_Close()
     {
+        eninput();
         Other_Windows.SetActive(false);
         Hide_UI = false;
     }
@@ -475,6 +487,11 @@ public class Main_Process : MonoBehaviour {
 
     public void OpenDialog(string id,string npcname)
     {
+        foreach (Player p in Player_Script)
+        {
+            p.DisableInput();
+        }
+        Globe.talking = true;
         Other_Windows.SetActive(true);
         Other_Windows.GetComponent<Other_Windows_FullControl>().Dialog.GetComponent<Dialog_FullControl>().OpenDialog(id,npcname);
     }
@@ -509,16 +526,38 @@ public class Main_Process : MonoBehaviour {
             {
                 GUI.DrawTexture(new Rect(0, 0, Screen.width, Screen.height), movTexture, ScaleMode.StretchToFill);
             }
-            else if(start_to_play==true)
+            else if(start_to_play==true && teleport_once == false)
             {
                 Time.timeScale=1.0f;
                 if(Application.platform!=RuntimePlatform.WindowsEditor)
                 {
                     //if (Globe.Map_Load_id != 3)
                     //    Start_Battle();
-                    Application.LoadLevel(3);
+                    Globe.Map_Load_id = 3;
+                    //Application.LoadLevel("_loading");
+                    Application.LoadLevel("_loading");
+                    OtherWindows_Close();
+                    teleport_once = true;
                 }
             
             }
+    }
+
+    void deinput()
+    {
+        foreach (Player p in Player_Script)
+        {
+            if(p!=null)
+                p.DisableInput();
+        }
+    }
+
+    void eninput()
+    {
+        foreach (Player p in Player_Script)
+        {
+            if (p != null)
+                p.enableInput();
+        }
     }
 }

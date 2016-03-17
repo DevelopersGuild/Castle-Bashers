@@ -40,7 +40,7 @@ public class PlayerHolder : MonoBehaviour
         {
             //child.position = new Vector3(-20, -6, 0);
             if(Globe.Map_Load_id==3)
-                child.localPosition = new Vector3(20, 10, 0);
+                child.localPosition = new Vector3(-20, 0, 0);
             else if(Globe.Map_Load_id==1)
                 child.localPosition = new Vector3(-20, -6, 0);
         }

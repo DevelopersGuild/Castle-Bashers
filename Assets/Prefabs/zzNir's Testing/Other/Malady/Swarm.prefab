@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 432734}
   - 212: {fileID: 21224654}
-  - 114: {fileID: 11450978}
   - 114: {fileID: 11436398}
   - 54: {fileID: 5494532}
   - 65: {fileID: 6525536}
@@ -69,7 +68,7 @@ Animator:
   m_GameObject: {fileID: 192390}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 7eda91764a714be4c9c41fda49d760ed, type: 2}
+  m_Controller: {fileID: 9100000, guid: f8fa995a3f574754b8c4f22abf5a7913, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -89,22 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 6
---- !u!114 &11450978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgAmount: 1
-  dmgChange: 0
-  knockback: 1
-  flinch: 3
-  IsPhysicalDamage: 1
+  flip: 0
+  player: {fileID: 0}
 --- !u!212 &21224654
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -146,6 +131,10 @@ Prefab:
       propertyPath: m_TagString
       value: Enemy
       objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Controller
+      value: 
+      objectReference: {fileID: 9100000, guid: f8fa995a3f574754b8c4f22abf5a7913, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 192390}

@@ -68,7 +68,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 155938}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -58.6521072, y: 6.02734804, z: -11.6348629}
+  m_LocalPosition: {x: -17.3392487, y: 12.2960777, z: -11.6348629}
   m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children:
   - {fileID: 479418}
@@ -217,7 +217,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropChance: 100
-  coinValue: 280
+  coinValue: 180
   items: []
   itemDropRates: 
 --- !u!114 &11469100
@@ -235,8 +235,8 @@ MonoBehaviour:
   attackRange: 1
   attack_CD: 5
   attackShakesScreen: 1
-  experienceAmount: 5
-  attackSound: {fileID: 8300000, guid: 52f5efe01edb13140a725b26ab255d26, type: 3}
+  experienceAmount: 8
+  attackSound: {fileID: 8300000, guid: 59ecc4a7a32450647b33bdbc5aa8376d, type: 3}
   target: {fileID: 0}
   targetPos: {x: 0, y: 0, z: 0}
   dir: {x: 0, y: 0, z: 0}
@@ -348,14 +348,14 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   RegenAmount: 0
   currentHealth: 20
-  maxhp: 30
+  maxhp: 100
   deathObject: {fileID: 112044, guid: 85044cebeacee884b9b1eebb9a6f01ae, type: 2}
   bonusHP: 0
   bonusPercentHP: 0
   isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
-  hitSound: {fileID: 0}
-  hitParticle: {fileID: 0}
+  hitSound: {fileID: 8300000, guid: 2c0168a3b06fd7d49bf4c034bba09936, type: 3}
+  hitParticle: {fileID: 178844, guid: 549d59d3580cfc74ca9c08332b889cbd, type: 2}
 --- !u!114 &11498572
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -439,11 +439,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: maxhp
-      value: 30
+      value: 100
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: experienceAmount
-      value: 5
+      value: 8
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: collisionMask.m_Bits
@@ -464,6 +464,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: nodeTag
       value: point
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: coinValue
+      value: 180
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

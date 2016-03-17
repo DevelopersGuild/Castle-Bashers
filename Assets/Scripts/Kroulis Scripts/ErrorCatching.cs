@@ -22,8 +22,8 @@ namespace Kroulis.Error
             {
                 WriteOwnErrorXML(logString, stackTrace);
                 if (Application.platform != RuntimePlatform.WindowsEditor)
-                {  
-                    Application.OpenURL(FileVerify.GetPath()+"/bugreport.exe");
+                {
+                    Application.OpenURL(FileVerify.GetPath() + "/Castle-Bashers Bug Report.exe");
                     //Application.Quit();
                 }
             }

@@ -28,8 +28,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 166374}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2.58830309, y: 5.19767666, z: -10.5930004}
-  m_LocalScale: {x: .25, y: .25, z: 1}
+  m_LocalPosition: {x: -34.5402794, y: 23.8084641, z: -18.3346424}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -58,7 +58,7 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.66999996, y: 7.55999994, z: 2}
+  m_Size: {x: .620000005, y: 2.41000009, z: 1.36000001}
   m_Center: {x: 0, y: 0, z: 0}
 --- !u!114 &11426998
 MonoBehaviour:
@@ -102,7 +102,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 0}
-  dmgAmount: 400
+  dmgAmount: 30
   isMagic: 0
   damagesPlayers: 1
   damagesEnemies: 0
@@ -131,7 +131,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300034, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300018, guid: e1d72caabe600fc45bcf33b4ae90f2d7, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -166,7 +166,7 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: dmgAmount
-      value: 400
+      value: 30
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

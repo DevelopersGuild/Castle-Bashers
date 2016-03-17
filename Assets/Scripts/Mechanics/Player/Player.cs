@@ -76,7 +76,7 @@ public class Player : MonoBehaviour
     private float velocityZSmoothing;
     private bool isJumping;
     private MoveController controller;
-    private AttackController attackController;
+    public AttackController attackController;
     private CrowdControllable crowdControllable;
 
     private Mana mana;
@@ -150,8 +150,8 @@ public class Player : MonoBehaviour
         threatLevel = damageDealt = 0;
 
         GetComponent<ID>().setTime(false);
-        //CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
-        //si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
+        CCI = GameObject.Find("Main Process").GetComponentInChildren<Character_Class_Info>();
+        si = GameObject.Find("Main Process").GetComponentInChildren<Skill_info>();
         Fully_Update();
     }
 
@@ -267,7 +267,6 @@ public class Player : MonoBehaviour
         //  if (Input.GetButtonDown("UseSkill1"))
         if (playerRewired.GetButtonDown("UseSkill1"))
         {
-            health.PlayerRevive(100);
             skillManager.UseSkill1();
         }
 
