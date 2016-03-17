@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<datacounter>
+  <data id="1">
+    <pid>OP00007</pid>
+    <name>Hose</name>
+    <cid>0</cid>
+    <lv>1</lv>
+    <gold>0</gold>
+    <weapon_level>0</weapon_level>
+    <armor_level>0</armor_level>
+    <accessories_level>0</accessories_level>
+    <atk>10</atk>
+    <def>10</def>
+    <sta>10</sta>
+    <spi>10</spi>
+    <agi>10</agi>
+    <map>3</map>
+  </data>
+  <data id="2">
+    <pid>OP00008</pid>
+    <name>Stevin</name>
+    <cid>0</cid>
+    <lv>1</lv>
+    <gold>0</gold>
+    <weapon_level>0</weapon_level>
+    <armor_level>0</armor_level>
+    <accessories_level>0</accessories_level>
+    <atk>10</atk>
+    <def>10</def>
+    <sta>10</sta>
+    <spi>10</spi>
+    <agi>10</agi>
+    <map>3</map>
+  </data>
+</datacounter>

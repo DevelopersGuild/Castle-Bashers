@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+//using UnityEditor;
 
 public class SwarmBehaviour : MonoBehaviour {
 
@@ -9,10 +10,13 @@ public class SwarmBehaviour : MonoBehaviour {
     private Rigidbody rigBod;
     //private MoveController moveCon;
     private Malady mal;
+    private Animator animator;
     private Vector3 direction, currentPos, max;
 
 	// Use this for initialization
-	void Start () {
+	void Start ()
+	{
+	    animator = GetComponent<Animator>();
         Duration -= 1;
         max = new Vector3(20, 5, 10);
         player = FindObjectOfType<Player>().gameObject;
@@ -33,12 +37,19 @@ public class SwarmBehaviour : MonoBehaviour {
         //anim set 4 = if velocity != direction && velocity < 0.7f;
         //maybe have no slow down in turns? we'll see
 
+
         if(flip)
         {
             Flip();
             Debug.Log(flip + " heyyyyy " + transform.localScale);
             flip = false;
         }
+	    if (Vector3.Angle(rigBod.velocity, direction) > 90 && rigBod.velocity.magnitude < 15)
+	    {
+	        animator.SetTrigger("isTurning");
+	    }
+
+        animator.SetFloat("Speed", rigBod.velocity.magnitude);
         if (true)
         {
             if (transform.position.y <= 2f)

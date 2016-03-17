@@ -17,7 +17,7 @@ public class Title_GetLancherData : MonoBehaviour {
 	void Start () {
         string path = "";
         path = FileVerify.GetPath();
-        Debug.Log(path + "/config.xml");
+        //Debug.Log(path + "/config.xml");
         if (File.Exists(path + "/config.xml"))
         {
             set.IgnoreComments = true;
@@ -54,7 +54,7 @@ public class Title_GetLancherData : MonoBehaviour {
                 }
                 if(xl.Name=="playerid")
                 {
-                    Globe.Character_Data_File = xl.InnerText;
+                    Globe.Character_id = xl.InnerText;
                     continue;
                 }
                 if(xl.Name=="savefile")

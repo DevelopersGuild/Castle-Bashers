@@ -24,7 +24,7 @@ public class Map_Transfer_Process : MonoBehaviour {
             return;
         }*/
         //Globe.Map_Load_id = 1;
-        Debug.Log("Teleport to Level: " + Globe.Map_Load_id);
+        //Debug.Log("Teleport to Level: " + Globe.Map_Load_id);
         //link the UI
         GameObject GOResult;
         GOResult = GameObject.Find("TransferUI");
@@ -35,8 +35,9 @@ public class Map_Transfer_Process : MonoBehaviour {
         mp = GOResult.GetComponent<Main_Process>();
         if(GOResult)
         {
-            if (GOResult.GetComponent<SaveAndLoad>()!=null)
-                GOResult.GetComponent<SaveAndLoad>().SaveData();
+            if(Application.platform!=RuntimePlatform.WindowsEditor)
+                if (GOResult.GetComponent<SaveAndLoad>()!=null)
+                    GOResult.GetComponent<SaveAndLoad>().SaveData();
             //play the bgm
             if (mapdb.mapinfo[Globe.Map_Load_id].have_bgm && Globe.Map_Load_id!=1)
             {
