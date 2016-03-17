@@ -36,7 +36,7 @@ public class SwarmBehaviour : MonoBehaviour {
         //anim set 3 = velocity > 1.1f;
         //anim set 4 = if velocity != direction && velocity < 0.7f;
         //maybe have no slow down in turns? we'll see
-        animator.SetFloat("Speed", rigBod.velocity.magnitude);
+
 
         if(flip)
         {
@@ -44,6 +44,12 @@ public class SwarmBehaviour : MonoBehaviour {
             Debug.Log(flip + " heyyyyy " + transform.localScale);
             flip = false;
         }
+	    if (Vector3.Angle(rigBod.velocity, direction) > 90 && rigBod.velocity.magnitude < 15)
+	    {
+	        animator.SetTrigger("isTurning");
+	    }
+
+        animator.SetFloat("Speed", rigBod.velocity.magnitude);
         if (true)
         {
             if (transform.position.y <= 2f)
