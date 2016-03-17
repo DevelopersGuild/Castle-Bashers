@@ -127,7 +127,7 @@ public class Level_Select_FullControl : MonoBehaviour {
         }
         else if(Input.GetKeyDown(KeyCode.Return))
         {
-            Debug.Log("Go to the map:"+Map_name.text.ToString());
+            //Debug.Log("Go to the map:"+Map_name.text.ToString());
             Globe.Map_Load_id = Level_Select_mapinfo_script.Chapter[chapid].mapinfo[currentmap].mapid;
             Globe.Map_Level = currentdiff;
             this.gameObject.SetActive(false);

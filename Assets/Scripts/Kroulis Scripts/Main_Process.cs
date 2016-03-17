@@ -536,6 +536,7 @@ public class Main_Process : MonoBehaviour {
                     Globe.Map_Load_id = 3;
                     //Application.LoadLevel("_loading");
                     Application.LoadLevel("_loading");
+                    OtherWindows_Close();
                     teleport_once = true;
                 }
             

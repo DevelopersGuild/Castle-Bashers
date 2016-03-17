@@ -43,7 +43,7 @@ public class UI_Gem_Selector : MonoBehaviour {
         else
             cur.gameObject.SetActive(true);
         gameObject.SetActive(true);
-        Debug.Log("size " + size.ToString());
+        //Debug.Log("size " + size.ToString());
     }
 
     void Update()

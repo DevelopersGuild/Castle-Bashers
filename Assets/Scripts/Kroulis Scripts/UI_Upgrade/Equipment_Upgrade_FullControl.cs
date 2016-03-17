@@ -12,7 +12,7 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
     public GameObject Accessories;
     public Image Old, New;
     public Text LV, GO, HGO, Tips;
-    public Text[] weapons= new Text[3], amrors= new Text[3], accessories = new Text[3]; 
+    public Text[] weapons= new Text[3], amrors= new Text[3], accessories = new Text[3];
 
     private int currentlevel,nextlevel;
     private int classid;
@@ -21,6 +21,7 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
     private int[] diff = new int[3];
     private bool upg = true;
     private int current_id=0;
+    private int playerid;
 	// Use this for initialization
 	void Start () {
         main_process = GameObject.Find("Main Process").GetComponent<Main_Process>();
@@ -36,6 +37,7 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
         havegold = main_process.GetPlayerCoinManager(player_id).getCoins();
         playerlv = main_process.GetPlayerExperience(player_id).GetCurrentLevel();
         current_id = id;
+        playerid = player_id == null ? 0 : (int)player_id;
         upg = true;
 
         GO.text = havegold.ToString();
@@ -172,6 +174,7 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
         {
             if(Input.GetKeyDown(KeyCode.Return))
             {
+                main_process.GetPlayerCoinManager(playerid).addCoins(-1 * needgold);
                 switch(current_id)
                 {
                     case 1:
