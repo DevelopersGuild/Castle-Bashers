@@ -22,6 +22,7 @@ public class Biome : MonoBehaviour {
     void Start () {
         EnemyList[SnowyForest, 0] = "Enemies/GoonEnemy";
         EnemyList[SnowyForest, 1] = "Enemies/Bear";
+        //EnemyList[SnowyForest, 2] = "Enemies/goon_mage";
         EnemyList[Desert, 0] = "Enemies/SpecialEnemyV1";
         EnemyList[Desert, 1] = "Enemies/RangedEnemy";
         EnemyList[Fort, 0] = "Enemies/GoonEnemy";
@@ -33,6 +34,7 @@ public class Biome : MonoBehaviour {
         Objects[SnowyForest, 0] = "LevelObjects/Barrel";
         Objects[SnowyForest, 1] = "Enemies/Traps/Spike Trap";
         Objects[SnowyForest, 2] = "Enemies/Traps/StunTrap";
+
 
         MaxEnemyType[SnowyForest] = 2;
 
