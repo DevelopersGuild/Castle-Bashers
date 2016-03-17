@@ -27,7 +27,7 @@ public class Setting_FullControl : MonoBehaviour {
             }
             else//quit game
             {
-                GetComponentInParent<SaveAndLoad>().SaveData();
+                MC.GetComponent<SaveAndLoad>().SaveData();
                 Application.Quit();
             }
         }
