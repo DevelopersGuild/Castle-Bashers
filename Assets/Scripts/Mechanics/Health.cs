@@ -88,7 +88,6 @@ public class Health : MonoBehaviour
             if (moveController)
             {
                 moveController.handleFlinch(flinch);
-
                 if (!player)
                 {
                     GetComponent<Enemy>().setIsAttacking(false);

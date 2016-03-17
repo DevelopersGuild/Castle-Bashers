@@ -6,7 +6,7 @@ public class SwarmBehaviour : MonoBehaviour {
 
     public float Duration = 8;
     public bool flip = false;
-    private GameObject player;
+    public GameObject player;
     private Rigidbody rigBod;
     //private MoveController moveCon;
     private Malady mal;
@@ -62,11 +62,14 @@ public class SwarmBehaviour : MonoBehaviour {
                     rigBod.velocity = new Vector3(rigBod.velocity.x, rigBod.velocity.y, max.z * Mathf.Sign(rigBod.velocity.z));
 
                 currentPos = transform.position;
+                Debug.Log(Vector3.Angle(rigBod.velocity, direction));
+
             }
             else
             {
                 if (mal)
                 {
+                    direction = mal.transform.position - transform.position;
                     transform.position = Vector3.Lerp(currentPos, mal.transform.position, Mathf.Abs(Duration));
                 }
                 else

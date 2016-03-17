@@ -55,7 +55,13 @@ public class Actor : MonoBehaviour
             if(elapsedTime > 0.25)
             {
                 elapsedTime = 0;
+                if(target != null)
                 MoveOrder(target.transform.position, toP);
+                else
+                {
+                    target = me.target;
+                    MoveOrder(target.transform.position, toP);
+                }
             }
             MoveToward();
             if (canMove)
