@@ -279,7 +279,6 @@ public class MoveController : MonoBehaviour
             //else
                 currentFlinchTime -= Time.deltaTime;
 
-            Debug.Log(currentFlinchTime);
 
             // Stop flinching after timer has passed
             if (currentFlinchTime <= 0) // && collisions.below == true)
@@ -324,6 +323,7 @@ public class MoveController : MonoBehaviour
     public void SetFlinch(bool flinch)
     {
         isFlinched = flinch;
+        Debug.Log("Eh" + flinch);
     }
 
     public bool GetFlinched()

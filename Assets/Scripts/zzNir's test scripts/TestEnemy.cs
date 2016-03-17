@@ -19,6 +19,7 @@ public class TestEnemy : Enemy
     {
         base.Start();
         speed = 4;
+        vel = gravity;
         attack_CD = 2;
         targetRefresh = 10;
         dmgAmount = 30;

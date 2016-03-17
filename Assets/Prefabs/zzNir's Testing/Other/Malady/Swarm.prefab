@@ -9,7 +9,6 @@ GameObject:
   m_Component:
   - 4: {fileID: 432734}
   - 212: {fileID: 21224654}
-  - 114: {fileID: 11450978}
   - 114: {fileID: 11436398}
   - 54: {fileID: 5494532}
   - 65: {fileID: 6525536}
@@ -89,22 +88,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Duration: 6
---- !u!114 &11450978
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 192390}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b88f7d66eadb4404b9866ec9bfc0290b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  dmgAmount: 1
-  dmgChange: 0
-  knockback: 1
-  flinch: 3
-  IsPhysicalDamage: 1
+  flip: 0
+  player: {fileID: 0}
 --- !u!212 &21224654
 SpriteRenderer:
   m_ObjectHideFlags: 1
