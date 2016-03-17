@@ -26,7 +26,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &456066
 Transform:
   m_ObjectHideFlags: 1
@@ -101,8 +101,8 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
-  isKnockbackable: 0
-  isFlinchable: 0
+  isKnockbackable: 1
+  isFlinchable: 1
   knockbackVelocity: 0
   flinchVelocity: 0
   isStunned: 0
@@ -363,6 +363,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: experienceAmount
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isFlinchable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isKnockbackable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
