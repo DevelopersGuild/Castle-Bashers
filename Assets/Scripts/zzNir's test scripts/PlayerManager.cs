@@ -7,6 +7,7 @@ public class PlayerManager : MonoBehaviour
 
     private Player[] players;
     private int size;
+    private bool deathsign = false;
 
     // Use this for initialization
     void Start()
@@ -19,13 +20,41 @@ public class PlayerManager : MonoBehaviour
             player.GetComponent<ID>().SetID(size);
             size++;
         }
-
+        Invoke("GetAllDown", 1.00f);
     }
 
     // Update is called once per frame
     void Update()
     {
 
+    }
+
+    void GetAllDown()
+    {
+        int playernumber=0,deathnumber=0;
+
+        foreach(Player player in players)
+        {
+            if(player.gameObject.activeInHierarchy==true)
+            {
+                playernumber++;
+                if(player.getDown())
+                {
+                    deathnumber++;
+                }
+            }
+        }
+        if (playernumber != 0 && playernumber == deathnumber)
+        {
+            if (!deathsign)
+            {
+                GameObject.Find("Main Process").GetComponent<Main_Process>().UI_Death_Window_Open_Withmusic();
+            }
+            deathsign = true;
+        }
+        else
+            deathsign = false;
+        Invoke("GetAllDown", 1.00f);
     }
 
     public Vector3 getPosition(int f = 0)
