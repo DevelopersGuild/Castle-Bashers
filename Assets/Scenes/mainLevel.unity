@@ -127,48 +127,6 @@ Prefab:
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 59ab2a112a16b464f8139f12773d45e7, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &313807693
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -26.0808506
-      objectReference: {fileID: 0}
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 7.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: 3.5
-      objectReference: {fileID: 0}
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 473730, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-      propertyPath: m_RootOrder
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 13292668f5247744491260abd3fd44c3, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &321259675
 Prefab:
   m_ObjectHideFlags: 0
@@ -333,48 +291,6 @@ Prefab:
     - {fileID: 11432890, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_ParentPrefab: {fileID: 100100000, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
   m_IsPrefabParent: 0
---- !u!1001 &697835318
-Prefab:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_LocalPosition.x
-      value: -29.0466633
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_LocalPosition.y
-      value: 19.25
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_LocalPosition.z
-      value: -2.27999997
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 456066, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-      propertyPath: m_RootOrder
-      value: 1
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-  m_ParentPrefab: {fileID: 100100000, guid: 44e209635c306754d81bcfd939b72a1b, type: 2}
-  m_IsPrefabParent: 0
 --- !u!1001 &959853141
 Prefab:
   m_ObjectHideFlags: 0
@@ -522,7 +438,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 4
+  m_RootOrder: 2
 --- !u!1 &1849645164 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 151902, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}
@@ -547,5 +463,6 @@ MonoBehaviour:
   Min_Paths: 0
   Max_Paths: 0
   difficulty: 0
+  Second_Wave_Chance: 0
   AreaLog: []
   ActiveBiomeName: 0

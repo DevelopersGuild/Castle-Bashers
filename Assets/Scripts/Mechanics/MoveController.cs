@@ -102,7 +102,6 @@ public class MoveController : MonoBehaviour
 
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
-        // Debug.Log(isMovementDisabled + " " + isKnockedDown + " " + gameObject.name);
         if (!isMovementDisabled && !isKnockedDown)
         {
             UpdateRaycastOrigins();
@@ -140,8 +139,7 @@ public class MoveController : MonoBehaviour
                 DepthCollisions(ref velocity);
             }
 
-            // Only move if the player isnt flinched or knocked down
-            // if (!isFlinched && !isKnockedDown)
+
             transform.Translate(velocity);
 
             clampPosition(ref velocity);
@@ -326,7 +324,6 @@ public class MoveController : MonoBehaviour
     public void SetFlinch(bool flinch)
     {
         isFlinched = flinch;
-        Debug.Log("Eh" + flinch);
     }
 
     public bool GetFlinched()
