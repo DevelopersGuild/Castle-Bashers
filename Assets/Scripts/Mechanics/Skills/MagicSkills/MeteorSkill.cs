@@ -28,6 +28,7 @@ public class sMeteor : Skill
 
             projectile.GetComponent<DealDamage>().damagesPlayers = true;
             projectile.GetComponent<DealDamage>().damagesEnemies = false;
+            projectile.transform.Rotate(0, 180, 0);
         }
             
 
