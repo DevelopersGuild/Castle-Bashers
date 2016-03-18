@@ -538,7 +538,9 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 }
                 else
                 {
-                    skillid_icon[0, i].sprite = Resources.Load<Sprite>("null");
+                    Debug.Log("Checking " + i);
+                    if (skillid_icon[0, i]!=null)
+                        skillid_icon[0, i].sprite = Resources.Load<Sprite>("null");
                 }
             }
             if (!One_player_per_client)
@@ -553,7 +555,8 @@ public class Main_UI_FULLControl : MonoBehaviour {
                     }
                     else
                     {
-                        skillid_icon[1, i].sprite = Resources.Load<Sprite>("null");
+                        if (skillid_icon[1, i] != null)
+                            skillid_icon[1, i].sprite = Resources.Load<Sprite>("null");
                     }
                 }
             }

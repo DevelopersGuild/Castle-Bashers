@@ -32,6 +32,10 @@ public class Defense : MonoBehaviour
         {
             health.takeDamage(damage, flinch);
         }
+        else
+        {
+            health.takeDamage(1, flinch);
+        }
     }
 
     public void CheckMagicalDefense(float damage, int flinch = 4)
@@ -44,7 +48,11 @@ public class Defense : MonoBehaviour
         {
             Debug.Log("took " + damage);
             health.takeDamage(damage, flinch);
-        } 
+        }
+        else
+        {
+            health.takeDamage(1, flinch);
+        }
     }
 
     public void SetPhysicalDefense(int value)

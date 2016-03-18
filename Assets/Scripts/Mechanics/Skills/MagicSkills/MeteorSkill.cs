@@ -17,6 +17,16 @@ public class sMeteor : Skill
         base.UseSkill(caller, target, optionalParameters);
         GameObject projectile = Instantiate(Resources.Load("Meteor")) as GameObject;
         projectile.transform.position = target.transform.position + new Vector3(3, 6, 0);
+        if (gameObject.GetComponent<Player>())
+        {
+            projectile.GetComponent<DealDamage>().damagesPlayers = false;
+        }
+
+        if(gameObject.GetComponent<MoveController>().GetFacing() == -1)
+        {
+            projectile.GetComponent<MeteorMover>().faceLeft();
+ 
+        }
 
     }
 
