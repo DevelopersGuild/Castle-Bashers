@@ -93,8 +93,8 @@ MonoBehaviour:
   isMagic: 1
   damagesPlayers: 1
   damagesEnemies: 0
-  flinchPower: 1
-  invTime: 1
+  flinchPower: 4
+  invTime: 2
 --- !u!114 &11449272
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -156,11 +156,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: flinchPower
-      value: 1
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: invTime
-      value: 1
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

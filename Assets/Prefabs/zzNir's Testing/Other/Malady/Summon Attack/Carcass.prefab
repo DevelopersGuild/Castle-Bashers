@@ -97,8 +97,8 @@ MonoBehaviour:
   isMagic: 1
   damagesPlayers: 1
   damagesEnemies: 0
-  flinchPower: 2
-  invTime: 1.20000005
+  flinchPower: 4
+  invTime: 2
 --- !u!114 &11450068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -318,11 +318,11 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: invTime
-      value: 1.20000005
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: flinchPower
-      value: 2
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damagesPlayers

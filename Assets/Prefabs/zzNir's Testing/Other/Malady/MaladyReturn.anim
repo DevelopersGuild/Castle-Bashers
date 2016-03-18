@@ -89,14 +89,28 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: .583333313
+  - time: 0
+    functionName: setInvinTrue
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: .5
+    functionName: setInvinFalse
+    data: 
+    objectReferenceParameter: {fileID: 0}
+    floatParameter: 0
+    intParameter: 0
+    messageOptions: 0
+  - time: .5
     functionName: updateTeleClaw
     data: 
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: .583333313
+  - time: .5
     functionName: setAnimating
     data: 
     objectReferenceParameter: {fileID: 0}

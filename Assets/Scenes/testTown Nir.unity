@@ -1217,8 +1217,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   defense: 0
-  basePhysicalDefense: 5
-  baseMagicalDefense: 5
+  basePhysicalDefense: 1
+  baseMagicalDefense: 1
 --- !u!1001 &1311509567
 Prefab:
   m_ObjectHideFlags: 0

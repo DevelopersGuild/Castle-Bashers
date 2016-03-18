@@ -48,11 +48,11 @@ public class dealConsistentDamage : MonoBehaviour
                             invTimer = -invTime;
                             if (isMagic)
                             {
-                                targetDefense.CheckMagicalDefense(dmgAmount, flinchPower, invTime);
+                                targetDefense.CheckMagicalDefense(dmgAmount, flinchPower);
                             }
                             else
                             {
-                                targetDefense.CheckPhysicalDefense(dmgAmount, flinchPower, invTime);
+                                targetDefense.CheckPhysicalDefense(dmgAmount, flinchPower);
                             }
                         }
                     }
