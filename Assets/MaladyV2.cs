@@ -42,6 +42,8 @@ public class MaladyV2 : Boss
     //public bool aClaw, aTeleport
     private bool summoning = true;
     private bool spawnM = true;
+    private bool updateTele;
+    private Vector3 updateTeleVec;
 
     // Use this for initialization
     void Start()
@@ -70,7 +72,9 @@ public class MaladyV2 : Boss
         refresh = false;
 
         isTeleporting = false;
+        updateTele = false;
         teleTarget = new Vector3(0, 0, 0);
+        updateTeleVec = teleTarget;
         startPos = teleTarget;
         center = CenterObj.transform.position;
 
@@ -133,6 +137,10 @@ public class MaladyV2 : Boss
         animator.SetBool("isTeleporting", isTeleporting);
         if (isTeleporting)
         {
+            if(updateTele)
+            {
+                teleTarget = target.transform.position;
+            }
             //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
             //How teleport works: transform to swarm -> isTel = true, swarm animations for moving around (same as
             //normal swarm animations, low speed = circular, high speed = more horizontal, accel one way + low speed other way = turning
@@ -143,12 +151,14 @@ public class MaladyV2 : Boss
             //ANIMATION STUFF~~~~~~~~~~~~~~~~~ isTeleporting set to true at end of transforming into swarm animation
             //ANIMATION STUFF~~~~~~~~~~~~~~~~~ invincible set to true at start of transforming into swarm animation
 //            Debug.Log(teleDuration + "    " + transform.position + "           vs               " + startPos + "       vs         " + teleTarget);
-            transform.position = Vector3.Lerp(startPos, teleTarget, teleDuration);
+            transform.position = Vector3.Lerp(startPos, teleTarget + updateTeleVec, teleDuration);
             if (teleDuration >= 1)
             {
                 teleDuration = 0;
                 isTeleporting = false;
                 isInvincible = false;
+                updateTele = false;
+                updateTeleVec = Vector3.zero;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
                 //stop current animation, start transform back to human animation
 
@@ -158,7 +168,7 @@ public class MaladyV2 : Boss
             }
             else
             {
-                teleDuration += Time.unscaledDeltaTime;
+                teleDuration += Time.unscaledDeltaTime * (10/(teleTarget - startPos).magnitude);
             }
 
         }
@@ -221,8 +231,7 @@ public class MaladyV2 : Boss
             //Debug.Log(claw_CD + " " + swarm_CD + " " + swarm_Duration + " " + summon_CD + " " + teleport_CD);
             if (claw_CD >= clawLim)
             {
-                //Claw();
-                claw_CD -= 5;
+                Claw();
             }
             else if (swarm_CD >= swarmLim && swarm_Duration <= 0)
             {
@@ -234,8 +243,7 @@ public class MaladyV2 : Boss
             }
             else if (teleport_CD >= teleLim)
             {
-                //Teleport();
-                teleport_CD -= 5;
+                Teleport();
             }
             else
             {
@@ -243,13 +251,13 @@ public class MaladyV2 : Boss
                 if (x == 0)
                     Summon();
                 else if (x == 1)
-                    Debug.Log("tele");//Teleport();
+                    Teleport();
                 else if (x == 2 && swarm_Duration <= 0)
                     Swarm();
                 else if (x == 3 && zDiff < 4)
-                    Debug.Log("claw");//Claw();
+                    Claw();
                 else
-                    Debug.Log("teleClaw");// teleClaw();
+                    teleClaw();
 
 
                 //animationDelay = 1;
@@ -375,6 +383,7 @@ public class MaladyV2 : Boss
         setAnimating(1);
         teleClawStage = 1;
         teleClawUpdate();
+        updateTele = true;
     }
 
     private void teleClawUpdate()
@@ -388,6 +397,7 @@ public class MaladyV2 : Boss
                 running = true;
                 float f = (UnityEngine.Random.Range(100, 200) / 100.0f) * ((UnityEngine.Random.Range(0, 2) - 0.5f) * 2);
                 //transform.position = new Vector3(target.transform.position.x + f, transform.position.y, target.transform.position.z);
+                updateTeleVec = new Vector3(f, 0, 0);
                 Teleport(new Vector3(target.transform.position.x + f, transform.position.y, target.transform.position.z));
             }
             else if (teleClawStage == 2)
@@ -498,7 +508,7 @@ public class MaladyV2 : Boss
     {
         float dir = Mathf.Sign(center.x - transform.position.x);
         Vector3 summonPos = new Vector3(UnityEngine.Random.Range(5, 9) * dir,0, (UnityEngine.Random.Range(10, 20) / 4.0f) * (target.transform.position.z - transform.position.z));
-        summonPos /= 10;
+        summonPos /= 2;
         summonPos += transform.position;
         SummoningPortal sp = Instantiate(SummonSkill, summonPos, SummonSkill.transform.rotation) as SummoningPortal;
         sp.setTarget(target);
@@ -578,7 +588,7 @@ public class MaladyV2 : Boss
     {
         teleLim = UnityEngine.Random.Range(0, 5) + 6;
         lerpDuration = teleDuration;
-        isTeleporting = true;
+        //isTeleporting = true;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                       set isTel true if end of anim
         animator.SetTrigger("useTransform");
         float f = 0;

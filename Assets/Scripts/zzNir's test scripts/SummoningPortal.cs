@@ -22,10 +22,25 @@ public class SummoningPortal : Skill
 
     }
 
-    public override void UseSkill(GameObject caller, GameObject target = null, System.Object optionalParameters = null)
+
+        //objects would actually be empty objects that show the spawning animations, then spawn the enemy
+        
+        //delay to show it exists, in actual game destroy after enemy animation ends
+        //use basic functions to destroy self
+        //maybe keep this, just get correct time for spawn animation
+        //Destroy(gameObject, 2f);
+        //Assign the value of coolDownTimer to the coolDown varible so we can check the cooldown.
+    
+
+    public void setTarget(GameObject p)
+    {
+        player = p;
+    }
+
+    public void spawn()
     {
         offset = new Vector3(0, 2, 0);
-        //objects would actually be empty objects that show the spawning animations, then spawn the enemy
+
         foreach (Enemy obj in Summons)
         {
             //play animation for enemy spawn (crawls out of portal or whatever)
@@ -36,15 +51,10 @@ public class SummoningPortal : Skill
 
             Instantiate(obj, transform.position + offset, obj.transform.rotation);
         }
-        //delay to show it exists, in actual game destroy after enemy animation ends
-        //use basic functions to destroy self
-        //maybe keep this, just get correct time for spawn animation
-        Destroy(gameObject, 2f);
-        //Assign the value of coolDownTimer to the coolDown varible so we can check the cooldown.
     }
 
-    public void setTarget(GameObject p)
+    public void DestroySelf()
     {
-        player = p;
+        Destroy(gameObject);
     }
 }
