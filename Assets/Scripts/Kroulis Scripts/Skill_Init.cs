@@ -22,6 +22,7 @@ public class Skill_Init : MonoBehaviour {
         allSkills.Add(gameObject.AddComponent<FireballSkill>());
         allSkills.Add(gameObject.AddComponent<FireblastSkill>());
         allSkills.Add(gameObject.AddComponent<ShockSkill>());
+        allSkills.Add(gameObject.AddComponent<MeteorShowerSkill>());
 
         si = GetComponent<Skill_info>();
         si.init(allSkills.Count, allSkills);

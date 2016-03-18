@@ -539,7 +539,7 @@ public class Main_UI_FULLControl : MonoBehaviour {
                 else
                 {
                     Debug.Log("Checking " + i);
-                    if (skillid_icon[0, i]!=null)
+                    //if (skillid_icon[0, i]!=null)
                         skillid_icon[0, i].sprite = Resources.Load<Sprite>("null");
                 }
             }
