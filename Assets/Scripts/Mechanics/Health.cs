@@ -143,15 +143,17 @@ public class Health : MonoBehaviour
     public void PlayerDown()
     {
         GetComponent<Player>().setDown(true);
+        isDead = true;
         //use other object to check if all players down, if so then Death() + lose level
 
-       // GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
+        // GameManager.Notifications.PostNotification(new Message(this.gameObject, MessageTypes.PLAYER_DEATH));
         //Death();
     }
 
     public bool PlayerRevive(int percentHealth)
     {
-        if(GetComponent<Player>().getDown() == false)
+        Player player = GetComponent<Player>();
+        if (player.getDown() == false)
         {
             return false;
         }
@@ -159,8 +161,10 @@ public class Health : MonoBehaviour
         {
             percentHealth = 100;
         }
-        GetComponent<Player>().setDown(false);
+        player.setDown(false);
         AddHealth((percentHealth / 100) * maxhp);
+        player.enableInput();
+        player.GetMoveController().SetFlinch(false);
         return true;
     }
 

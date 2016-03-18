@@ -68,16 +68,9 @@ AnimationClip:
   m_GenerateMotionCurves: 0
   m_Events:
   - time: 0
-    functionName: setToInvincible
+    functionName: StartInvincibilityTimer
     data: 
     objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.33333337
-    functionName: setToNotInvincible
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
+    floatParameter: 2
     intParameter: 0
     messageOptions: 0
