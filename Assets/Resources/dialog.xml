@@ -9,7 +9,7 @@
     <text order="2" speaker="#player1" aud="">Ok, let me see what you can teach me!</text>
   </data>
   <data id="10002" comment="Player2 Skillshop">
-    <text order="1" speaker="Johnny" aud="">Hi, what's up? Want to learn something?</text>
+    <text order="1" speaker="" aud="">Welcome to the skill shop! Let me take your money.</text>
     <text order="2" speaker="#player2" aud="">Yes, please.</text>
   </data>
 </dialog>
