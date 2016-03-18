@@ -384,6 +384,26 @@ Prefab:
       propertyPath: CenterObj
       value: 
       objectReference: {fileID: 1262363690}
+    - target: {fileID: 11476876, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
+      propertyPath: currentHealth
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11476876, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
+      propertyPath: maxhp
+      value: 150
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414520, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
+      propertyPath: defense
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414520, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
+      propertyPath: basePhysicalDefense
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 11414520, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
+      propertyPath: baseMagicalDefense
+      value: 5
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
   m_IsPrefabParent: 0
@@ -515,7 +535,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 1
+  m_RootOrder: 0
 --- !u!1 &1849645164 stripped
 GameObject:
   m_PrefabParentObject: {fileID: 151902, guid: b67e12bc9e94c594ab8f911c22548bd7, type: 2}

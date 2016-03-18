@@ -10,7 +10,7 @@ namespace Kroulis.Demo
         public override void Action()
         {
             Main_Process mainprocess = GameObject.Find("Main Process").GetComponent<Main_Process>();
-            mainprocess.UI_SkillShop_Open(1);
+            mainprocess.UI_SkillShop_Open(0);
         }
     }
 }
