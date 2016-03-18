@@ -59,17 +59,15 @@ public class destroyBarrier : MonoBehaviour {
             if (count == 0)
             {
                 E_Dead = true;
-                Debug.Log("HEP");
                 if (CreateStart.SecondWave == true)
                 {
-                    Debug.Log("HEP2");
                     room.MakeMob(CreateStart.roomCount);
                     E_Dead = false;
-                    Wavechance = rnd.Next(1, 10);
+                    Wavechance = rnd.Next(1, 100);
                     CreateStart.SecondWave = false;
                     Debug.Log("WAVECHANCE:" + Wavechance);
 
-                    if (Wavechance == 9)
+                    if (CreateStart.SecondWaveChance>Wavechance)
                       {
                           CreateStart.SecondWave = true; }
                     else

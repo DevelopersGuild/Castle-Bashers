@@ -9,6 +9,7 @@ public class Biome : MonoBehaviour {
     public static string[,] EnemyList = new string[20, 30];
     public static string[,] Backgrounds = new string[20, 3];
     public static string[,] Objects = new string[20, 10];
+    public static int[] MaxEnemyType = new int[20];
 
     int SnowyForest = 0;
     int Desert = 1;
@@ -21,6 +22,9 @@ public class Biome : MonoBehaviour {
     void Start () {
         EnemyList[SnowyForest, 0] = "Enemies/GoonEnemy";
         EnemyList[SnowyForest, 1] = "Enemies/Bear";
+        EnemyList[SnowyForest, 2] = "Enemies/Ranger";
+        //EnemyList[SnowyForst, 3] = "goon_mage";
+
         EnemyList[Desert, 0] = "Enemies/SpecialEnemyV1";
         EnemyList[Desert, 1] = "Enemies/RangedEnemy";
         EnemyList[Fort, 0] = "Enemies/GoonEnemy";
@@ -32,6 +36,10 @@ public class Biome : MonoBehaviour {
         Objects[SnowyForest, 0] = "LevelObjects/Barrel";
         Objects[SnowyForest, 1] = "Enemies/Traps/Spike Trap";
         Objects[SnowyForest, 2] = "Enemies/Traps/StunTrap";
+        Objects[SnowyForest, 3] = "LevelObjects/ZombieHands";
+
+
+        MaxEnemyType[SnowyForest] = 3;
 
     }
 	
