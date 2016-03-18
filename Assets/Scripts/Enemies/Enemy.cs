@@ -126,7 +126,14 @@ public class Enemy : MonoBehaviour
             {
                 Destroy(gameObject);
             }
-            actor.MoveOrder(targetPos, true);
+            if (actor != null)
+            {
+                actor.MoveOrder(targetPos, true);
+            }
+            else
+            {
+                actor = GetComponent<Actor>();
+            }
             targetPos = target.transform.position;
         }
         if (!moveController.collisions.below)
