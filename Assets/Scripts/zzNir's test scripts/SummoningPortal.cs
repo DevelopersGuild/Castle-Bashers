@@ -49,8 +49,9 @@ public class SummoningPortal : Skill
             if (player != null)
                 obj.SetTarget(player);
 
-            Instantiate(obj, transform.position + offset, obj.transform.rotation);
+            Instantiate(obj, transform.position, obj.transform.rotation);
         }
+        DestroySelf();
     }
 
     public void DestroySelf()

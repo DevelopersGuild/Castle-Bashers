@@ -1,7 +1,8 @@
 ﻿using UnityEngine;
 using System.Collections;
 
-public class DealDamage : MonoBehaviour {
+public class DealDamage : MonoBehaviour
+{
     public AudioClip hitAudio;
     public float dmgAmount = 1;
     public bool isMagic = false;
@@ -32,6 +33,7 @@ public class DealDamage : MonoBehaviour {
 
         if (targetHealth)
         {
+
             // Check for whether the target is an enemy or a player
             if (!targetHealth.getInvincibility())
             {
@@ -72,6 +74,8 @@ public class DealDamage : MonoBehaviour {
         }
 
     }
+
+    
 
     //void OnCollisionEnter(Collision col)
     //{

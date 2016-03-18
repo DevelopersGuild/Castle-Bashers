@@ -14,7 +14,10 @@ GameObject:
   - 54: {fileID: 5468934}
   - 114: {fileID: 11486974}
   - 114: {fileID: 11450068}
-  - 114: {fileID: 11448554}
+  - 95: {fileID: 9514268}
+  - 114: {fileID: 11491986}
+  - 114: {fileID: 11469510}
+  - 114: {fileID: 11424952}
   m_Layer: 0
   m_Name: Carcass
   m_TagString: Untagged
@@ -29,8 +32,8 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 135014}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -23.5637283, y: .794429779, z: -5.2580018}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalPosition: {x: -43.3738785, y: 1.92760134, z: -5.2580018}
+  m_LocalScale: {x: -1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -59,9 +62,26 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 2.4000001, y: 2.29999995, z: .5}
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &11448554
+  m_Size: {x: 2, y: 3.79999995, z: 2}
+  m_Center: {x: .100000001, y: -.400000006, z: 0}
+--- !u!95 &9514268
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135014}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f8fa238239e915f41a31b3ec3233415f, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11424952
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -69,15 +89,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 135014}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 9ff5b540c8712724fb92d35a777b409d, type: 3}
+  m_Script: {fileID: 11500000, guid: de7ffbcca72109642aa03a2eb71cf4e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 0}
   dmgAmount: 1
   isMagic: 1
-  damagesPlayers: 0
+  damagesPlayers: 1
   damagesEnemies: 0
-  flinchPower: 0
+  flinchPower: 2
+  invTime: 1.20000005
 --- !u!114 &11450068
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -92,6 +113,7 @@ MonoBehaviour:
   agroRange: 1000
   attackRange: 1
   attack_CD: 3
+  attackShakesScreen: 0
   experienceAmount: 0
   attackSound: {fileID: 0}
   target: {fileID: 0}
@@ -112,6 +134,8 @@ MonoBehaviour:
   zDiff: 0
   distL: 0
   distR: 0
+  targetRefresh: 0
+  targetRefreshLimit: 0
   toLeft: 0
   left: {x: 0, y: 0, z: 0}
   right: {x: 0, y: 0, z: 0}
@@ -119,9 +143,28 @@ MonoBehaviour:
   hp: {fileID: 0}
   animationController: {fileID: 0}
   classification: 0
-  attackCollider: {fileID: 167148, guid: c102b43560d112f40b7b1b4d75ead218, type: 2}
+  actor: {fileID: 0}
+  pm: {fileID: 0}
+  difficulty: 0
+  spawn: 1
+  attackCollider: {fileID: 0}
   TimeToLive: 5
   Explosion: {fileID: 186334, guid: 673c232db88f5294c8f3d7509605c4ba, type: 2}
+--- !u!114 &11469510
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43a017986fc814841bf11ecb6ef5ad87, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  nodeTag: point
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!114 &11486974
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -134,11 +177,27 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RegenAmount: 0
-  currentHealth: 0
-  maxhp: 0
+  currentHealth: 5
+  maxhp: 8
+  deathObject: {fileID: 0}
+  bonusHP: 0
+  bonusPercentHP: 0
+  isInvincible: 0
   damageTextOffset: {x: 0, y: 0, z: 0}
   hitSound: {fileID: 0}
   hitParticle: {fileID: 0}
+--- !u!114 &11491986
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 135014}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2ba5a2ba574a7954cb91ecd188609c6d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  DebugMode: 0
 --- !u!114 &11492072
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -160,6 +219,7 @@ MonoBehaviour:
   isKnockbackable: 0
   isFlinchable: 0
   knockbackVelocity: 0
+  flinchVelocity: 0
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!212 &21261418
@@ -186,7 +246,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300502, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300022, guid: 958766b6a8e08d24aac6ff416eccd2ae, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -202,7 +262,7 @@ Prefab:
         type: 3}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.x
-      value: 1
+      value: -1
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: m_LocalScale.y
@@ -238,6 +298,34 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: isMagic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: nodeTag
+      value: point
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: collisionMask.m_Bits
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: DebugMode
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: invTime
+      value: 1.20000005
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: flinchPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagesPlayers
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

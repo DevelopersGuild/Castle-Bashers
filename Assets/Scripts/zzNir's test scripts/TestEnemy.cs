@@ -113,8 +113,8 @@ public class TestEnemy : Enemy
         }
         else
         {
-            if(moveController)
-            Move(vel, speed);
+            if (moveController)
+                Move(vel, speed);
         }
         animationController.isAttacking = isAttacking;
 
@@ -172,6 +172,8 @@ public class TestEnemy : Enemy
     {
         isAttacking = false;
     }
+
+    
 
 
 }

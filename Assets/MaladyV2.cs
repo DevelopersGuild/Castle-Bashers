@@ -9,8 +9,9 @@ public class MaladyV2 : Boss
 
 
     private float clawLim, swarmLim, summonLim, teleLim, teleClawLim;
-    private float claw_CD, swarm_CD, swarm_Duration, hands_CD, summon_CD, teleport_CD, teleClaw_CD, refreshPriority;
+    private float claw_CD, swarm_CD, swarm_Duration, summon_CD, teleport_CD, teleClaw_CD, refreshPriority;
     private float rnd, animationDelay, teleDuration, lerpDuration;
+    private float hands_CD = 3;
     //Maybe no hands_CD, could be a gameObject that creates hands every few seconds while Malady exists
     //probably better ^^
     private bool isTeleporting;
@@ -20,7 +21,7 @@ public class MaladyV2 : Boss
     public GameObject CenterObj;
 
     //Skills and scales (for facing directions)
-    public GameObject ClawSkill, SwarmObj, SummonSkill, handSkill;
+    public GameObject ClawSkill, SwarmObj, SummonSkill, handSkill, clawSk;
     private Vector3 tempVec, MaladyLeft, MaladyRight, ClawLeft, ClawRight;
     private float teleClawStage = 0;
     public GroupingManager Grouper;
@@ -60,7 +61,6 @@ public class MaladyV2 : Boss
         swarm_CD = 5 + UnityEngine.Random.Range(0, 5);
         swarmLim = swarm_CD;
         //only starts counting when duration is over
-        hands_CD = 3;
         summon_CD = 5 + UnityEngine.Random.Range(0, 5);
         summonLim = summon_CD;
         teleport_CD = 6 + UnityEngine.Random.Range(0, 4);
@@ -191,11 +191,13 @@ public class MaladyV2 : Boss
         }
 
 
-
-        refreshPriority += Time.unscaledDeltaTime;
-        hands_CD += Time.unscaledDeltaTime;
-        animationDelay += Time.unscaledDeltaTime;
-        invTime -= Time.unscaledDeltaTime;
+        if (Time.unscaledDeltaTime <= 1)
+        {
+            refreshPriority += Time.unscaledDeltaTime;
+            hands_CD += Time.unscaledDeltaTime;
+            animationDelay += Time.unscaledDeltaTime;
+            invTime -= Time.unscaledDeltaTime;
+        }
     }
 
     public override void Act(Type t)
@@ -203,7 +205,6 @@ public class MaladyV2 : Boss
         if (hands_CD > 2.5f)
         {
             hands_CD = 0;
-            //Debug.Log("Hands " + Time.time); 
             HandsAttack();//
         }
         if (animationDelay > (1f + hp.GetCurrentHealth() / hp.GetMaxHP()))
@@ -274,6 +275,18 @@ public class MaladyV2 : Boss
         }
 
 
+    }
+
+    private void setInvinTrue()
+    {
+        isInvincible = true;
+        hp.isInvincible = true;
+    }
+
+    private void setInvinFalse()
+    {
+        isInvincible = false;
+        hp.isInvincible = false;
     }
 
 
@@ -352,8 +365,13 @@ public class MaladyV2 : Boss
 
     private void InstantiateClaw()
     {
-        Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
+        Vector3 offset = new Vector3(transform.localScale.x * -1, 0.2f, 0);
+        clawSk = Instantiate(ClawSkill, transform.position +  offset, ClawSkill.transform.rotation) as GameObject;
+    }
 
+    private void DestroyClaw()
+    {
+        Destroy(clawSk);
     }
 
     //ANIMATION STUFF~~~~~~~~~~~~~~~~~ run at end of teleClaw animations (so transform to human animation and claw swipe animation)
@@ -409,7 +427,7 @@ public class MaladyV2 : Boss
                     ClawSkill.transform.localScale = ClawRight;
 
                 running = true;
-                Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
+                //Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
             }
@@ -447,7 +465,7 @@ public class MaladyV2 : Boss
     private void Swarm()
     {
         swarm_CD = 0;
-        swarmLim = 11 + UnityEngine.Random.Range(0, 5);
+        swarmLim = 8 + UnityEngine.Random.Range(0, 5);
 
         swarm_Duration = 8;
 
@@ -467,9 +485,10 @@ public class MaladyV2 : Boss
     {
         //spawn with an offset to match animation position
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ create vector3 offset to match animation
-        SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position, transform.rotation) as SwarmBehaviour;
-        swarm_Duration = swarm.Duration;
-        swarm.setTarget(target);
+        SwarmObj.GetComponent<SwarmBehaviour>().setTarget(target);
+        swarm_Duration = SwarmObj.GetComponent<SwarmBehaviour>().Duration;
+        Vector3 offset = new Vector3(transform.localScale.x * -1 * 0.5f, 0.5f, 0);
+        SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position + offset, transform.rotation) as SwarmBehaviour;
 
     }
 
@@ -507,11 +526,12 @@ public class MaladyV2 : Boss
     public void SummonPortal()
     {
         float dir = Mathf.Sign(center.x - transform.position.x);
-        Vector3 summonPos = new Vector3(UnityEngine.Random.Range(5, 9) * dir,0, (UnityEngine.Random.Range(10, 20) / 4.0f) * (target.transform.position.z - transform.position.z));
+        Vector3 summonPos = new Vector3(UnityEngine.Random.Range(5, 9) * dir,4, (UnityEngine.Random.Range(10, 20) / 4.0f) * (target.transform.position.z - transform.position.z));
         summonPos /= 2;
         summonPos += transform.position;
+        SummonSkill.GetComponent<SummoningPortal>().setTarget(target);
         SummoningPortal sp = Instantiate(SummonSkill, summonPos, SummonSkill.transform.rotation) as SummoningPortal;
-        sp.setTarget(target);
+       
     }
 
 
@@ -578,7 +598,6 @@ public class MaladyV2 : Boss
             startPos = transform.position;
             teleTarget = new Vector3(target.transform.position.x + dir * UnityEngine.Random.Range(0, 10) / 10.0f, transform.position.y, target.transform.position.z);
             //teleTarget = target.transform.position + new Vector3(dir * UnityEngine.Random.Range(0, 10) / 10f, 0, 0);
-            Debug.Log(teleTarget);
         }
         
 
@@ -690,15 +709,17 @@ public class MaladyV2 : Boss
 
     private void HandsAttack()
     {
-        Vector3 offset = new Vector3(target.transform.position.x + UnityEngine.Random.Range(-300, 300) / 100.0f, 7,target.transform.position.z + UnityEngine.Random.Range(-110, 110) / 100.0f);
+        Vector3 offset = new Vector3(target.transform.position.x + UnityEngine.Random.Range(-300, 300) / 100.0f, 7, target.transform.position.z + UnityEngine.Random.Range(-110, 110) / 100.0f);
+        Instantiate(handSkill, offset, handSkill.transform.rotation);
+
+        hands_CD = 0.5f;
 
         if (ranged || grouping)
-            hands_CD -= 0.5f;
+            hands_CD = 1f;
         if (melee)
-            hands_CD += 0.5f;
+            hands_CD = 0f;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play create hands animation, if one exists 
         //instantiate collider
-        Instantiate(handSkill, offset, handSkill.transform.rotation);
     }
 
     private void getPlayerType()

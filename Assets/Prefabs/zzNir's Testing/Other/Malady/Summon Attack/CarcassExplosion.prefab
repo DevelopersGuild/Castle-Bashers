@@ -11,6 +11,9 @@ GameObject:
   - 212: {fileID: 21210814}
   - 114: {fileID: 11482662}
   - 114: {fileID: 11455160}
+  - 95: {fileID: 9508846}
+  - 114: {fileID: 11411144}
+  - 65: {fileID: 6579060}
   m_Layer: 0
   m_Name: CarcassExplosion
   m_TagString: Untagged
@@ -25,11 +28,51 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 186334}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -19.2700005, y: 3.29999995, z: -3}
+  m_LocalPosition: {x: -45.3773842, y: 6.51377106, z: -3}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!65 &6579060
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186334}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 5, y: 5.25, z: 4}
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!95 &9508846
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186334}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 98084a9b709301f41baf0add4c9a7f25, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11411144
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 186334}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2277377dc840a0d4cbf0c71dcdce377c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!114 &11455160
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -42,11 +85,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   hitAudio: {fileID: 0}
-  dmgAmount: 3
+  dmgAmount: 5
   isMagic: 1
-  damagesPlayers: 0
+  damagesPlayers: 1
   damagesEnemies: 0
-  flinchPower: 0
+  flinchPower: 20
 --- !u!114 &11482662
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -58,7 +101,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0e5cb4e8b1c73f4f8fd908714e4f686, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animDelay: .5
   rotField: {fileID: 182826, guid: e8d5fc5f6f62aaf4884cbbedc8735f22, type: 2}
 --- !u!212 &21210814
 SpriteRenderer:
@@ -82,9 +124,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: -2094568089
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300524, guid: 97e4e29e536724a48832d0557cdbd7a6, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d233dbd91daf22b43b028cdf530bb19f, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -99,7 +141,7 @@ Prefab:
       objectReference: {fileID: 182826, guid: e8d5fc5f6f62aaf4884cbbedc8735f22, type: 2}
     - target: {fileID: 0}
       propertyPath: dmgAmount
-      value: 3
+      value: 5
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: isMagic
@@ -107,6 +149,34 @@ Prefab:
       objectReference: {fileID: 0}
     - target: {fileID: 0}
       propertyPath: damagePlayers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagesPlayers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagesEnemies
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: flinchPower
+      value: 20
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.x
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: invTime
       value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []

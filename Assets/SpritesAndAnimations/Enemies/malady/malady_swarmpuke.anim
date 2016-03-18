@@ -113,7 +113,7 @@ AnimationClip:
     floatParameter: 0
     intParameter: 1
     messageOptions: 0
-  - time: .916666687
+  - time: .75
     functionName: spawnSwarm
     data: 
     objectReferenceParameter: {fileID: 0}
