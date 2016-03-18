@@ -45,6 +45,21 @@ TagManager:
   - 
   - 
   m_SortingLayers:
+  - name: Behinder
+    uniqueID: 2603148987
+    locked: 0
+  - name: 'Behind '
+    uniqueID: 370020365
+    locked: 0
   - name: Default
     uniqueID: 0
+    locked: 0
+  - name: In Front
+    uniqueID: 2200399207
+    locked: 0
+  - name: Even Frontier
+    uniqueID: 3211980909
+    locked: 0
+  - name: The Final Frontier
+    uniqueID: 1726166985
     locked: 0

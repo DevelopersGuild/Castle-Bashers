@@ -68,7 +68,7 @@ public class SwarmBehaviour : MonoBehaviour {
                     rigBod.velocity = new Vector3(rigBod.velocity.x, rigBod.velocity.y, max.z * Mathf.Sign(rigBod.velocity.z));
 
                 currentPos = transform.position;
-                Debug.Log(Vector3.Angle(rigBod.velocity, direction));
+//                Debug.Log(Vector3.Angle(rigBod.velocity, direction));
 
             }
             else
@@ -80,10 +80,12 @@ public class SwarmBehaviour : MonoBehaviour {
                 }
                 else
                 {
+                    Debug.Log("WHAT");
                     Destroy(gameObject);
                 }
                 if (direction.magnitude < 0.2f)
                 {
+                    Debug.Log("OH");
                     Destroy(gameObject);
                 }
 

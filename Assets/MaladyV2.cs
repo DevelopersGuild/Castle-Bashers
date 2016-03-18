@@ -40,6 +40,7 @@ public class MaladyV2 : Boss
     //a for animation
     //[HideInInspector]
     //public bool aClaw, aTeleport
+    private bool summoning = true;
     private bool spawnM = true;
 
     // Use this for initialization
@@ -63,7 +64,7 @@ public class MaladyV2 : Boss
         teleport_CD = 6 + UnityEngine.Random.Range(0, 4);
         teleLim = teleport_CD;
         animationDelay = 2;
-        teleDuration = 1f;
+        teleDuration = 0f;
         //teleDuration = animation.GetClip("Teleport").length;
         refreshPriority = 10;
         refresh = false;
@@ -119,7 +120,6 @@ public class MaladyV2 : Boss
         targetPos = target.transform.position;
         CalcDirection();
 
-
         if (refresh)
         {
             Debug.Log(ranged + " " + grouping + " " + melee + " " + support);
@@ -130,7 +130,7 @@ public class MaladyV2 : Boss
         {
             teleClawUpdate();
         }
-
+        animator.SetBool("isTeleporting", isTeleporting);
         if (isTeleporting)
         {
             //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
@@ -142,9 +142,11 @@ public class MaladyV2 : Boss
 
             //ANIMATION STUFF~~~~~~~~~~~~~~~~~ isTeleporting set to true at end of transforming into swarm animation
             //ANIMATION STUFF~~~~~~~~~~~~~~~~~ invincible set to true at start of transforming into swarm animation
+//            Debug.Log(teleDuration + "    " + transform.position + "           vs               " + startPos + "       vs         " + teleTarget);
             transform.position = Vector3.Lerp(startPos, teleTarget, teleDuration);
-            if (lerpDuration <= 0)
+            if (teleDuration >= 1)
             {
+                teleDuration = 0;
                 isTeleporting = false;
                 isInvincible = false;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ 
@@ -154,7 +156,10 @@ public class MaladyV2 : Boss
                 //isTeleporting set to false at start of transforming into malady animation
                 //invincible set false at end of anim
             }
-
+            else
+            {
+                teleDuration += Time.unscaledDeltaTime;
+            }
 
         }
 
@@ -181,7 +186,6 @@ public class MaladyV2 : Boss
         hands_CD += Time.unscaledDeltaTime;
         animationDelay += Time.unscaledDeltaTime;
         invTime -= Time.unscaledDeltaTime;
-        lerpDuration -= Time.unscaledDeltaTime;
     }
 
     public override void Act(Type t)
@@ -214,9 +218,11 @@ public class MaladyV2 : Boss
             }
 
             animationDelay = 0;
+            //Debug.Log(claw_CD + " " + swarm_CD + " " + swarm_Duration + " " + summon_CD + " " + teleport_CD);
             if (claw_CD >= clawLim)
             {
-                Claw();
+                //Claw();
+                claw_CD -= 5;
             }
             else if (swarm_CD >= swarmLim && swarm_Duration <= 0)
             {
@@ -228,7 +234,8 @@ public class MaladyV2 : Boss
             }
             else if (teleport_CD >= teleLim)
             {
-                Teleport();
+                //Teleport();
+                teleport_CD -= 5;
             }
             else
             {
@@ -236,13 +243,13 @@ public class MaladyV2 : Boss
                 if (x == 0)
                     Summon();
                 else if (x == 1)
-                    Teleport();
+                    Debug.Log("tele");//Teleport();
                 else if (x == 2 && swarm_Duration <= 0)
                     Swarm();
                 else if (x == 3 && zDiff < 4)
-                    Claw();
+                    Debug.Log("claw");//Claw();
                 else
-                    teleClaw();
+                    Debug.Log("teleClaw");// teleClaw();
 
 
                 //animationDelay = 1;
@@ -261,9 +268,20 @@ public class MaladyV2 : Boss
 
     }
 
+
+    private void setTelTrue(float f)
+    {
+        isTeleporting = true;
+    }
+
+    private void setTelFalse(float f)
+    {
+        isTeleporting = false;
+    }
+
+
     private void Claw()
     {
-        Debug.Log("CLAW");
         claw_CD = 0;
         clawLim = 4 + UnityEngine.Random.Range(0, 3);
         distance = target.transform.position.x - transform.position.x;
@@ -288,7 +306,6 @@ public class MaladyV2 : Boss
                 //animating false at end
                 //for all animations
                 animator.SetTrigger("useClaw");
-                Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
             {
@@ -302,7 +319,6 @@ public class MaladyV2 : Boss
                 clawLim -= 2;
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
-                Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
             {
@@ -315,7 +331,6 @@ public class MaladyV2 : Boss
             {
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
-                Debug.Log("claw anim " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else
             {
@@ -343,19 +358,21 @@ public class MaladyV2 : Boss
         }
     }
 
-    private void setAnimating(bool bl)
+    public void setAnimating(int bl)
     {
+
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~  to keep animating on during the teleClaw combo
-        if (teleClawStage == 0 || bl)
+        if (teleClawStage > 0 || bl == 1)
         {
-            animating = bl;
+            animating = true;
         }
+        else
+            animating = false;
     }
 
     private void teleClaw()
     {
-        Debug.Log("TELECLAW");
-        setAnimating(true);
+        setAnimating(1);
         teleClawStage = 1;
         teleClawUpdate();
     }
@@ -369,13 +386,12 @@ public class MaladyV2 : Boss
                 tempVec = transform.position;
                 //if player next to wall, tele to other side
                 running = true;
-                float f = (UnityEngine.Random.Range(100, 400) / 100.0f) * ((UnityEngine.Random.Range(0, 2) - 0.5f) * 2);
+                float f = (UnityEngine.Random.Range(100, 200) / 100.0f) * ((UnityEngine.Random.Range(0, 2) - 0.5f) * 2);
                 //transform.position = new Vector3(target.transform.position.x + f, transform.position.y, target.transform.position.z);
                 Teleport(new Vector3(target.transform.position.x + f, transform.position.y, target.transform.position.z));
             }
             else if (teleClawStage == 2)
             {
-
                 distance = target.transform.position.x - transform.position.x;
                 if (distance < 0)
                     ClawSkill.transform.localScale = ClawLeft;
@@ -386,7 +402,6 @@ public class MaladyV2 : Boss
                 Instantiate(ClawSkill, transform.position, ClawSkill.transform.rotation);
                 //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                                        -----------------------
                 animator.SetTrigger("useClaw");
-                Debug.Log("TeleClaw " + Time.time); //sClaw.UseSkill(gameObject);
             }
             else if (teleClawStage == 3)
             {
@@ -421,10 +436,8 @@ public class MaladyV2 : Boss
 
     private void Swarm()
     {
-        Debug.Log("SWARM");
         swarm_CD = 0;
         swarmLim = 11 + UnityEngine.Random.Range(0, 5);
-        Debug.Log("Swarm " + Time.time); //sClaw.UseSkill(gameObject);
 
         swarm_Duration = 8;
 
@@ -444,15 +457,14 @@ public class MaladyV2 : Boss
     {
         //spawn with an offset to match animation position
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ create vector3 offset to match animation
-        //SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position + offset, transform.rotation) as SwarmBehaviour;
-        //swarm_Duration = swarm.Duration;
-        //swarm.setTarget(target);
+        SwarmBehaviour swarm = Instantiate(SwarmObj, transform.position, transform.rotation) as SwarmBehaviour;
+        swarm_Duration = swarm.Duration;
+        swarm.setTarget(target);
 
     }
 
     private void Summon()
     {
-        Debug.Log("SUMMON");
         summon_CD = 0;
         summonLim = 7 + UnityEngine.Random.Range(0, 6);
 
@@ -464,17 +476,18 @@ public class MaladyV2 : Boss
             summonLim += 1;
 
         //slightly wierd due to having a scale of 10, would be ok after we have actual stuff
-        //summoning = true
+        summoning = true;
+        animator.SetTrigger("useSpell");
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation              ----------------------- run SummonPortal at end
 
     }
 
     public void endFunction()
     {
-        ////if(summoning)
-        //{
-        //    summonPortal
-        //}
+        if(summoning)
+        {
+            SummonPortal();
+        }
         //if(poly) 
         //{
         //    PolyCloud
@@ -484,10 +497,11 @@ public class MaladyV2 : Boss
     public void SummonPortal()
     {
         float dir = Mathf.Sign(center.x - transform.position.x);
-        Vector3 summonPos = transform.position + new Vector3(UnityEngine.Random.Range(5, 9) * dir, SummonSkill.transform.position.y, (UnityEngine.Random.Range(10, 20) / 4.0f) * (target.transform.position.z - transform.position.z));
-        Debug.Log("Summon " + Time.time); //sClaw.UseSkill(gameObject);
-        //SummoningPortal sp = Instantiate(SummonSkill, summonPos / 10, SummonSkill.transform.rotation) as SummoningPortal;
-        //sp.setTarget(target);
+        Vector3 summonPos = new Vector3(UnityEngine.Random.Range(5, 9) * dir,0, (UnityEngine.Random.Range(10, 20) / 4.0f) * (target.transform.position.z - transform.position.z));
+        summonPos /= 10;
+        summonPos += transform.position;
+        SummoningPortal sp = Instantiate(SummonSkill, summonPos, SummonSkill.transform.rotation) as SummoningPortal;
+        sp.setTarget(target);
     }
 
 
@@ -527,6 +541,7 @@ public class MaladyV2 : Boss
 
         startPos = transform.position;
         teleTarget = targ.transform.position + new Vector3(dir * UnityEngine.Random.Range(0, 10) / 10f, 0, 0);
+        Debug.Log(dir + "   " + (teleTarget - startPos));
     }
 
     //for teleClaw. camped is if people around target, if true go to a different location (for return of teleClaw, for now camped always is false)
@@ -535,6 +550,7 @@ public class MaladyV2 : Boss
         //set true for testing, should be set at end of animation
         //isTeleporting = true;
         lerpDuration = teleDuration;
+        startPos = transform.position;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play transforming animation                       set isTel true at end of anim
         animator.SetTrigger("useTransform");
         if (!camped)
@@ -550,15 +566,18 @@ public class MaladyV2 : Boss
             }
 
             startPos = transform.position;
-            teleTarget = target.transform.position + new Vector3(dir * UnityEngine.Random.Range(0, 10) / 10f, 0, 0);
+            teleTarget = new Vector3(target.transform.position.x + dir * UnityEngine.Random.Range(0, 10) / 10.0f, transform.position.y, target.transform.position.z);
+            //teleTarget = target.transform.position + new Vector3(dir * UnityEngine.Random.Range(0, 10) / 10f, 0, 0);
+            Debug.Log(teleTarget);
         }
+        
+
     }
 
     private void Teleport()
     {
         teleLim = UnityEngine.Random.Range(0, 5) + 6;
         lerpDuration = teleDuration;
-        Debug.Log("Teleport " + Time.time);
         isTeleporting = true;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play animation                       set isTel true if end of anim
         animator.SetTrigger("useTransform");
@@ -596,6 +615,7 @@ public class MaladyV2 : Boss
             teleLim -= 2;
 
         teleDuration = 0;
+
     }
 
 
@@ -660,8 +680,7 @@ public class MaladyV2 : Boss
 
     private void HandsAttack()
     {
-        Vector3 offset = new Vector3(UnityEngine.Random.Range(-300, 300) / 100.0f, 0, UnityEngine.Random.Range(-110, 110) / 100.0f);
-        Debug.Log("HANDS");
+        Vector3 offset = new Vector3(target.transform.position.x + UnityEngine.Random.Range(-300, 300) / 100.0f, 7,target.transform.position.z + UnityEngine.Random.Range(-110, 110) / 100.0f);
 
         if (ranged || grouping)
             hands_CD -= 0.5f;
@@ -669,7 +688,7 @@ public class MaladyV2 : Boss
             hands_CD += 0.5f;
         //ANIMATION STUFF~~~~~~~~~~~~~~~~~ play create hands animation, if one exists 
         //instantiate collider
-        Instantiate(handSkill, target.transform.position + offset, handSkill.transform.rotation);
+        Instantiate(handSkill, offset, handSkill.transform.rotation);
     }
 
     private void getPlayerType()
