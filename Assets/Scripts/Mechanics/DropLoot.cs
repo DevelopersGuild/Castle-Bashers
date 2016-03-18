@@ -20,23 +20,22 @@ public class DropLoot : MonoBehaviour
 
     public void Start()
     {
-        diamond = Resources.Load("LevelObjects/DiamondCoin") as GameObject;
-        gold = Resources.Load("LevelObjects/GoldCoin") as GameObject;
-        silver = Resources.Load("LevelObjects/SilverCoin") as GameObject;
-        bronze = Resources.Load("LevelObjects/BronzeCoin") as GameObject;
+        //diamond = Resources.Load("LevelObjects/DiamondCoin") as GameObject;
+        //gold = Resources.Load("LevelObjects/GoldCoin") as GameObject;
+        //silver = Resources.Load("LevelObjects/SilverCoin") as GameObject;
+        //bronze = Resources.Load("LevelObjects/BronzeCoin") as GameObject;
     }
 
     public void DropItem()
     {
         DropCoins();
-        //DropOther();
+        DropOther();
     }
 
     public void DropOther()
     {
         // Check if an item will drop
         int currentDropChance = Random.Range(0, 100);
-
         // If an item does drop, pick one randomly with the given drop chances
         if (currentDropChance <= dropChance)
         {
