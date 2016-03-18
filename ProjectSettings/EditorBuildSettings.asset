@@ -5,8 +5,10 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/_Title.unity
+  - enabled: 1
+    path: Assets/Scenes/animatedTitleScreen.unity
   - enabled: 1
     path: Assets/Scenes/mainLevel.unity
   - enabled: 1
