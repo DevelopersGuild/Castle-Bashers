@@ -15,7 +15,7 @@ public class CameraFollow : MonoBehaviour
     public float flYChangeSpeed;
     public bool canMoveLeft;
     public bool isLocked;
-
+    public MaladyV2 mal;
     public bool cameraShakeIsOn = false;
 
 
@@ -31,7 +31,9 @@ public class CameraFollow : MonoBehaviour
         gobjCameraTarget = GameObject.Find("PlayerHolder");
         flCameraYBaseLine = gobjCameraTarget.transform.position.y;
 
+        
         initalizePosition();
+
     }
 
     void initalizePosition()
