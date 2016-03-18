@@ -11,6 +11,7 @@ GameObject:
   - 212: {fileID: 21205924}
   - 114: {fileID: 11415080}
   - 114: {fileID: 11400956}
+  - 95: {fileID: 9593554}
   m_Layer: 0
   m_Name: SummoningCircle
   m_TagString: Untagged
@@ -24,12 +25,29 @@ Transform:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 117642}
-  m_LocalRotation: {x: .707106829, y: 0, z: 0, w: .707106709}
-  m_LocalPosition: {x: -18.5, y: .409999996, z: -3.49000001}
-  m_LocalScale: {x: 10, y: 10, z: 10}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -44.8499985, y: 4.11999989, z: -3.49000001}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!95 &9593554
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 117642}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ee6c9699d84a8f44f8ca4aab8f10aa06, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
 --- !u!114 &11400956
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -80,9 +98,9 @@ SpriteRenderer:
   m_AutoUVMaxDistance: .5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
-  m_SortingLayerID: 0
+  m_SortingLayerID: 370020365
   m_SortingOrder: 0
-  m_Sprite: {fileID: 21300000, guid: 883b6dc844107b24586f16fb94249957, type: 3}
+  m_Sprite: {fileID: 21300000, guid: 958766b6a8e08d24aac6ff416eccd2ae, type: 3}
   m_Color: {r: .82015866, g: .132839561, b: .860294104, a: 1}
 --- !u!1001 &100100000
 Prefab:
@@ -99,6 +117,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_LocalScale.z
       value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_SortingLayerID
+      value: 370020365
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

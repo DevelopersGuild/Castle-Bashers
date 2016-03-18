@@ -109,6 +109,7 @@ public class Player : MonoBehaviour
     private Vector3 thrownVelocity;
     private float throwCheck = 0.3f;
 
+
     /*
     void Awake()
     {
@@ -786,8 +787,7 @@ public class Player : MonoBehaviour
     }
 
 
-
-
+  
 
 }
 
