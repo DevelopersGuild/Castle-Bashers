@@ -20,13 +20,16 @@ public class sMeteor : Skill
         if (gameObject.GetComponent<Player>())
         {
             projectile.GetComponent<DealDamage>().damagesPlayers = false;
-        }
-
-        if(gameObject.GetComponent<MoveController>().GetFacing() == -1)
-        {
+            projectile.GetComponent<DealDamage>().damagesEnemies = true;
             projectile.GetComponent<MeteorMover>().faceLeft();
- 
         }
+        else
+        {
+
+            projectile.GetComponent<DealDamage>().damagesPlayers = true;
+            projectile.GetComponent<DealDamage>().damagesEnemies = false;
+        }
+            
 
     }
 
