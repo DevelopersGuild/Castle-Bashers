@@ -601,6 +601,10 @@ Prefab:
       propertyPath: Main_Process
       value: 
       objectReference: {fileID: 52022050}
+    - target: {fileID: 141562, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 3e97feaf02afbfc4d85add96fdaf5a9a, type: 2}
   m_IsPrefabParent: 0
@@ -1716,6 +1720,10 @@ Prefab:
       propertyPath: m_Pivot.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 120608, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: bc2df5e9fd075d64b8edfd6733b589e1, type: 2}
   m_IsPrefabParent: 0
@@ -1980,6 +1988,10 @@ Prefab:
       propertyPath: Main_Process
       value: 
       objectReference: {fileID: 52022050}
+    - target: {fileID: 130046, guid: dcd067534813c7a4285ac582e722120b, type: 2}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: dcd067534813c7a4285ac582e722120b, type: 2}
   m_IsPrefabParent: 0
