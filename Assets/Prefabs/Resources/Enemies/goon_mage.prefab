@@ -18,13 +18,14 @@ GameObject:
   - 114: {fileID: 11406560}
   - 114: {fileID: 11432224}
   - 114: {fileID: 11430942}
+  - 114: {fileID: 11470802}
   m_Layer: 0
   m_Name: goon_mage
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &453432
 Transform:
   m_ObjectHideFlags: 1
@@ -32,7 +33,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124154}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -35.2513008, y: 17.5215893, z: -3.70000005}
+  m_LocalPosition: {x: -28.6700001, y: 11.7909908, z: -3.70000005}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +49,7 @@ Rigidbody:
   m_Drag: 0
   m_AngularDrag: .0500000007
   m_UseGravity: 0
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 0
   m_CollisionDetection: 0
@@ -59,7 +60,7 @@ BoxCollider:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 124154}
   m_Material: {fileID: 0}
-  m_IsTrigger: 1
+  m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1.79999995, y: 3, z: 1.48000002}
@@ -93,8 +94,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   RegenAmount: 0
-  currentHealth: 50
-  maxhp: 0
+  currentHealth: 100
+  maxhp: 100
   deathObject: {fileID: 154478, guid: 53a28a6a49ffc7240a73ba01c2a116d4, type: 2}
   bonusHP: 0
   bonusPercentHP: 0
@@ -152,7 +153,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5ff867d7d944e1c42943ba03660649b1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  castCooldown: 2
+  castCooldown: 4
   meteor: {fileID: 0}
 --- !u!114 &11432224
 MonoBehaviour:
@@ -215,6 +216,20 @@ MonoBehaviour:
   difficulty: 0
   spawn: 1
   shotObj: {fileID: 11418366, guid: da4b28d5713b24a4d8629b568802d596, type: 2}
+--- !u!114 &11470802
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 124154}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a9fa61da49e0b141940165a4d7ba1e2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  defense: 0
+  basePhysicalDefense: 0
+  baseMagicalDefense: 0
 --- !u!212 &21279812
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -255,6 +270,10 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: coinValue
       value: 120
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

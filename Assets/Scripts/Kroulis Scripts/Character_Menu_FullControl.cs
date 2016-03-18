@@ -197,8 +197,8 @@ public class Character_Menu_FullControl : MonoBehaviour {
         C_NEXP.text = (Player_EXP.GetNEXP()-Player_EXP.GetExperience()).ToString();
         C_Name.text = Player_Script.Player_Name;
         weapon.sprite = CI.Class_info[Player_Script.GetClassID()].weapon[Player_Script.GetWeaponLV()].icon;
-        amror.sprite = CI.Class_info[Player_Script.GetClassID()].armor[Player_Script.GetWeaponLV()].icon;
-        accer.sprite = CI.Class_info[Player_Script.GetClassID()].accessory[Player_Script.GetWeaponLV()].icon;
+        amror.sprite = CI.Class_info[Player_Script.GetClassID()].armor[Player_Script.GetAmrorLV()].icon;
+        accer.sprite = CI.Class_info[Player_Script.GetClassID()].accessory[Player_Script.GetAccessoriesLV()].icon;
         C_PASP.text = Player_PF.GetComponent<PassiveSkillManager>().getAvailablePoints().ToString();
         select_current = 1;
         gem_selecting = false;

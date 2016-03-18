@@ -28,7 +28,7 @@ public class AttackController : MonoBehaviour
 
         timer = Time.timeSinceLevelLoad;
 
-        if (player.playerRewired.GetButtonDown("Fire1"))
+        if (player.playerRewired != null && player.playerRewired.GetButtonDown("Fire1"))
         {
             lastPress = Time.timeSinceLevelLoad;
         }
@@ -125,17 +125,16 @@ public class AttackController : MonoBehaviour
     public void InstantiateAttack()
     {
         AudioSource.PlayClipAtPoint(player.attackAudio, player.transform.position);
-        //
         DealDamage attackColliderInstance = (DealDamage)Instantiate(attackCollider, player.GetAttackCollider().transform.position, Quaternion.identity);
         attackColliderInstance.setDamage(gameObject.GetComponent<Player>().getPhysicalDamage());
-        //attackCollider.setDamage(20);
-        Destroy(attackColliderInstance, 0.1f);
+        Destroy(attackColliderInstance.gameObject, 0.2f);
     }
 
     IEnumerator activateAttack(float time)
     {
         yield return new WaitForSeconds(time);
-        attackQueue.Dequeue();
+        if(attackQueue.Count > 0)
+            attackQueue.Dequeue();
         isAttacking = false;
     }
 }

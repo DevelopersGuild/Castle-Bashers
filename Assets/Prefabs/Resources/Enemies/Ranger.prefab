@@ -113,8 +113,8 @@ MonoBehaviour:
   isMoving: 0
   horizontalRayCount: 4
   verticalRayCount: 4
-  isKnockbackable: 0
-  isFlinchable: 0
+  isKnockbackable: 1
+  isFlinchable: 1
   knockbackVelocity: .150000006
   flinchVelocity: .00300000003
   isStunned: 0
@@ -355,6 +355,14 @@ Prefab:
     - target: {fileID: 0}
       propertyPath: m_IsTrigger
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isKnockbackable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: isFlinchable
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}

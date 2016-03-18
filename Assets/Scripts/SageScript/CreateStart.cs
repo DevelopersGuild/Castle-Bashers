@@ -15,6 +15,8 @@ public class CreateStart : MonoBehaviour {
     public int Max_Paths; //nonnegative
     static public int position; //between 0 and 3
     public int difficulty;
+    public int Second_Wave_Chance;
+    static public int SecondWaveChance;
     static public bool SecondWave = false;
 
     public static int numRoom;
@@ -43,8 +45,10 @@ public class CreateStart : MonoBehaviour {
         int AreaYCoord = 1;
         int AreaZCoord = 1;
 
-        int Wavechance = rnd.Next(1, 3);
-        if (Wavechance == 1 )
+        SecondWaveChance = Second_Wave_Chance;
+
+        int Wavechance = rnd.Next(1, 100);
+        if (Wavechance < SecondWaveChance);
             SecondWave = true;
 
         Instantiate(Resources.Load("LevelObjects/3DFloorB", typeof(GameObject)), new Vector3((AreaXCoord) + (40* roomC), AreaYCoord, AreaZCoord), transform.rotation);
@@ -79,7 +83,7 @@ public class CreateStart : MonoBehaviour {
 
             for (int m = 0; m < numObj; m++) //creates object types
             {
-                int testType = rnd.Next(0, 3);
+                int testType = rnd.Next(0, 4);
                 ObjectTypeArray[m] = testType;
                 // Debug.Log("ObjectTypeArray at value" + m + "::" + ObjectTypeArray[m]);
             }
@@ -144,7 +148,7 @@ public class CreateStart : MonoBehaviour {
 
             for (int m = 0; m < squadSize; m++) //creates enemy types
             {
-                int testType = rnd.Next(0, 2);
+                int testType = rnd.Next(0, Biome.MaxEnemyType[(int)ActiveBiomeName]); ///adjust for various enemy size types. IE add mage here
                 EnemyTypeArray[m] = testType;
                 // Debug.Log("EnemyTypeArray at value" + m + "::" + EnemyTypeArray[m]);
             }
