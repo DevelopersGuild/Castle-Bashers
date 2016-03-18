@@ -25,6 +25,7 @@ public class UI_Death_MusicControl : MonoBehaviour {
         if(Input.GetKeyDown(KeyCode.UpArrow))
         {
             mp.ReviveAllPlayers();
+            gameObject.SetActive(false);
             mp.OtherWindows_Close();
 
         }
@@ -32,6 +33,7 @@ public class UI_Death_MusicControl : MonoBehaviour {
         {
             mp.ReviveAllPlayers();
             mp.CancelLevel();
+            gameObject.SetActive(false);
             mp.OtherWindows_Close();
             Globe.Map_Load_id = 3;
             Application.LoadLevel(2);

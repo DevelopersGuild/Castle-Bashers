@@ -40,7 +40,7 @@ public class Equipment_Upgrade_FullControl : MonoBehaviour {
         playerid = player_id == null ? 0 : (int)player_id;
         upg = true;
 
-        GO.text = havegold.ToString();
+        HGO.text = havegold.ToString();
 
         if(id==1)
         {
