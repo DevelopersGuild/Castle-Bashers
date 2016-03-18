@@ -799,6 +799,10 @@ Prefab:
       propertyPath: m_Size.z
       value: 4
       objectReference: {fileID: 0}
+    - target: {fileID: 11476876, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
+      propertyPath: gemObj
+      value: 
+      objectReference: {fileID: 158722, guid: fa1812c4e9680d54dbeef6c2c933c699, type: 2}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 100100000, guid: 2aaa6c43d7c3fbf4aa44f7e537076540, type: 2}
   m_IsPrefabParent: 0
