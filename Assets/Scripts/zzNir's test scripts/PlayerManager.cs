@@ -48,7 +48,8 @@ public class PlayerManager : MonoBehaviour
         {
             if (!deathsign)
             {
-                GameObject.Find("Main Process").GetComponent<Main_Process>().UI_Death_Window_Open_Withmusic();
+                if (GameObject.Find("Main Process")!=null)
+                    GameObject.Find("Main Process").GetComponent<Main_Process>().UI_Death_Window_Open_Withmusic();
             }
             deathsign = true;
         }
