@@ -851,12 +851,12 @@ MonoBehaviour:
   Min_Room: 6
   Max_Room: 9
   Min_enemy: 2
-  Max_enemy: 3
-  Min_Objects: 2
-  Max_Objects: 3
+  Max_enemy: 5
+  Min_Objects: 3
+  Max_Objects: 7
   Min_Paths: 0
   Max_Paths: 0
   difficulty: 0
-  Second_Wave_Chance: 66
+  Second_Wave_Chance: 99
   AreaLog: []
   ActiveBiomeName: 0

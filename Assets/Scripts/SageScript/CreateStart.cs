@@ -225,7 +225,7 @@ public class CreateStart : MonoBehaviour {
 
 	// Use this for initialization
 	void Start () {
-        // Debug.Log("Running");
+         Debug.Log("Running Start" + roomCount);
         ///Preconditions///
         /// 
         //Debug.Log(Min_enemy + ", " + Max_enemy);
@@ -267,4 +267,9 @@ public class CreateStart : MonoBehaviour {
 	void Update () {
 	
 	}
+
+    void OnDestroy()
+    {
+        roomCount = 0;
+    }
 }

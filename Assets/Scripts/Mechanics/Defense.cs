@@ -20,9 +20,9 @@ public class Defense : MonoBehaviour
 
     }
 
-    public void CheckPhysicalDefense(float damage, int flinch = 4, float invTime = -1)
+    public void CheckPhysicalDefense(float damage, int flinch = 4)
     {
-        if (player)
+        if(player)
             if (Check_Block_Success())
                 damage = damage * 0.35f;
         damage = damage - GetPhysicalDefense();
@@ -31,14 +31,14 @@ public class Defense : MonoBehaviour
         if (damage > 0)
         {
             health.takeDamage(damage, flinch);
-            if(player && invTime != -1)
-            {
-                health.StartInvincibilityTimer(invTime);
-            }
+        }
+        else
+        {
+            health.takeDamage(1, flinch);
         }
     }
 
-    public void CheckMagicalDefense(float damage, int flinch = 4, float invTime = -1)
+    public void CheckMagicalDefense(float damage, int flinch = 4)
     {
         if(player)
             if (Check_Block_Success())
@@ -46,13 +46,13 @@ public class Defense : MonoBehaviour
         damage = damage - GetMagicalDefense();
         if(damage > 0)
         {
-            //Debug.Log("took " + damage);
+            Debug.Log("took " + damage);
             health.takeDamage(damage, flinch);
-            if (player && invTime != -1)
-            {
-                health.StartInvincibilityTimer(invTime);
-            }
-        } 
+        }
+        else
+        {
+            health.takeDamage(1, flinch);
+        }
     }
 
     public void SetPhysicalDefense(int value)

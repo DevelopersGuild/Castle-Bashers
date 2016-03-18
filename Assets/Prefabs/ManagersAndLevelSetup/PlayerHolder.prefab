@@ -228,7 +228,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 159124}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -12.3999996, y: 10, z: 0}
+  m_LocalPosition: {x: 0, y: 48.2000008, z: -2}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 455500}
@@ -491,7 +491,7 @@ Animator:
   m_GameObject: {fileID: 168672}
   m_Enabled: 1
   m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: 910b975581f4d534499a4681ca275c40, type: 2}
+  m_Controller: {fileID: 9100000, guid: dbafe18e28d73a646a6fc55e914fc5b7, type: 2}
   m_CullingMode: 0
   m_UpdateMode: 0
   m_ApplyRootMotion: 0
@@ -713,7 +713,7 @@ MonoBehaviour:
   timeToJumpApex: .600000024
   horizontalMoveSpeed: 6
   verticalMoveSpeed: 10
-  playerId: 1
+  playerId: 0
   jumpAudio: {fileID: 8300000, guid: 1b89b1003e1322140b48655c326cc669, type: 3}
   attackAudio: {fileID: 8300000, guid: 835f450b201c93c4e9cb1f2e3796c6da, type: 3}
   attackController: {fileID: 0}
@@ -1213,7 +1213,19 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.z
+      value: -2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_LocalPosition.y
+      value: 48.2000008
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 159124}

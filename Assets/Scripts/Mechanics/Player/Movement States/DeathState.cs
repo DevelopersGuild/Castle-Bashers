@@ -10,7 +10,6 @@ public class DeathState : IPlayerState
 
     public IPlayerState HandleInput(Player player)
     {
-        player.DisableInput();
         return null;
     }
 
