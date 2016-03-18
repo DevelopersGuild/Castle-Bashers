@@ -31,6 +31,18 @@ public class SkillManager : MonoBehaviour
         */
     }
 
+    void Update()
+    {
+        if (Input.GetKeyDown("m"))
+        {
+            UnlockSkillI<MeteorShowerSkill>(new MeteorShowerSkill());
+        }
+        if (Input.GetKeyDown("n"))
+        {
+            gameObject.GetComponent<MeteorShowerSkill>().UseSkill(gameObject);
+        }
+    }
+
     public void UnlockSkill(Skill newSkill)
     {
         unlockedSkills.Add(newSkill);

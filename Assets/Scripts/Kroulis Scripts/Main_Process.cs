@@ -242,14 +242,14 @@ public class Main_Process : MonoBehaviour {
         Shop.SetActive(true);
     }
 
-    public void UI_SkillShop_Open(int class_id)
+    public void UI_SkillShop_Open(int player_id)
     {
         deinput();
         Hide_UI = true;
         Other_Windows.SetActive(true);
         GameObject Shop = Other_Windows.GetComponent<Other_Windows_FullControl>().Skill_Shop;
-        Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = class_id;
-        Shop.GetComponent<Skill_Shop_Fullcontrol>().Change();
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().shop_class_id = 0;
+        Shop.GetComponent<Skill_Shop_Fullcontrol>().Change(player_id);
         Shop.SetActive(true);
     }
 
@@ -388,6 +388,13 @@ public class Main_Process : MonoBehaviour {
         GetComponentInChildren<Mission_Timer>().Clear_Timer();
         GetComponentInChildren<Mission_Database>().clear_db();
         End_Battle();
+    }
+
+    public void ReviveAllPlayers()
+    {
+        Player_Health[0].PlayerRevive(100);
+        if (One_player_per_client == false)
+            Player_Health[1].PlayerRevive(100);
     }
 
     public GameObject GetPlayerObject(int ? id=null)

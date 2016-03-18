@@ -4,13 +4,13 @@ using System.Collections;
 public class MeteorMover : MonoBehaviour {
     private Vector3 moveIncrement;
     public float speed = 1;
-    public float speedIncrement = 0; //speeds meteor up by this amount each frame
+    public float speedIncrement = 0.1f; //speeds meteor up by this amount each frame
     public GameObject destroyedParticle;
     public AudioClip destroyedSound;
     private DealDamage dealDamage;
 	// Use this for initialization
 	void Start () {
-        moveIncrement = new Vector3(-1, -2, 0);
+        moveIncrement = new Vector3(1, -2, 0);
 	    dealDamage = GetComponent<DealDamage>();
         Destroy(gameObject, 5);
 	}
@@ -41,5 +41,16 @@ public class MeteorMover : MonoBehaviour {
             }
             Destroy(gameObject);
         }
+    }
+
+    public void faceRight()
+    {
+        moveIncrement = new Vector3(-1, -2, 0);
+    }
+
+    public void faceLeft()
+    {
+        moveIncrement = new Vector3(-1, -2, 0);
+        gameObject.transform.Rotate(0, 180, 0);
     }
 }

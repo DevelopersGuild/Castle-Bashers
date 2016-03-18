@@ -102,7 +102,6 @@ public class MoveController : MonoBehaviour
 
     public void Move(Vector3 velocity, Vector2 input = default(Vector2))
     {
-        // Debug.Log(isMovementDisabled + " " + isKnockedDown + " " + gameObject.name);
         if (!isMovementDisabled && !isKnockedDown)
         {
             UpdateRaycastOrigins();
@@ -140,8 +139,7 @@ public class MoveController : MonoBehaviour
                 DepthCollisions(ref velocity);
             }
 
-            // Only move if the player isnt flinched or knocked down
-            // if (!isFlinched && !isKnockedDown)
+
             transform.Translate(velocity);
 
             clampPosition(ref velocity);
@@ -236,15 +234,18 @@ public class MoveController : MonoBehaviour
 
     private void updateKnockedDown()
     {
-        if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
+        if (animator)
         {
-            isKnockedDown = true;
-            isStunned = true;
-        }
-        else if (isKnockedDown)
-        {
-            isKnockedDown = false;
-            isStunned = false;
+            if (this.animator.GetCurrentAnimatorStateInfo(0).IsName("KnockedDown"))
+            {
+                isKnockedDown = true;
+                isStunned = true;
+            }
+            else if (isKnockedDown)
+            {
+                isKnockedDown = false;
+                isStunned = false;
+            }
         }
     }
 
@@ -277,7 +278,7 @@ public class MoveController : MonoBehaviour
             //        currentFlinchTime -= Time.unscaledDeltaTime;
             //}
             //else
-                currentFlinchTime -= Time.deltaTime;
+            currentFlinchTime -= Time.deltaTime;
 
 
             // Stop flinching after timer has passed
@@ -323,7 +324,6 @@ public class MoveController : MonoBehaviour
     public void SetFlinch(bool flinch)
     {
         isFlinched = flinch;
-        Debug.Log("Eh" + flinch);
     }
 
     public bool GetFlinched()
@@ -409,13 +409,17 @@ public class MoveController : MonoBehaviour
 
     void UpdateRaycastOrigins()
     {
-        Bounds bounds = coll.bounds;
-        bounds.Expand(skinWidth * -2);
+        if (coll)
+        {
+            Bounds bounds = coll.bounds;
+            bounds.Expand(skinWidth * -2);
+            raycastOrigins.bottomLeft = new Vector3(bounds.min.x, bounds.min.y, transform.position.z);
+            raycastOrigins.bottomRight = new Vector3(bounds.max.x, bounds.min.y, transform.position.z);
+            raycastOrigins.topLeft = new Vector3(bounds.min.x, bounds.max.y, transform.position.z);
+            raycastOrigins.topRight = new Vector3(bounds.max.x, bounds.max.y, transform.position.z);
+        }
 
-        raycastOrigins.bottomLeft = new Vector3(bounds.min.x, bounds.min.y, transform.position.z);
-        raycastOrigins.bottomRight = new Vector3(bounds.max.x, bounds.min.y, transform.position.z);
-        raycastOrigins.topLeft = new Vector3(bounds.min.x, bounds.max.y, transform.position.z);
-        raycastOrigins.topRight = new Vector3(bounds.max.x, bounds.max.y, transform.position.z);
+
     }
 
     void CalculateRaySpacing()
