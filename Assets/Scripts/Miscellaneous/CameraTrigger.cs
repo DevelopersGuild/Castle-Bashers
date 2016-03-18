@@ -17,7 +17,6 @@ public class CameraTrigger : MonoBehaviour
         if (other.GetComponent<Enemy>())
         {
             enemyCount++;
-            Debug.Log(enemyCount);
             camera.setLock(true);
         }
     }
