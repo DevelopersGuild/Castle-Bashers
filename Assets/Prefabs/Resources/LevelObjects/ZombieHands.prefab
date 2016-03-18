@@ -10,6 +10,9 @@ GameObject:
   - 4: {fileID: 427044}
   - 212: {fileID: 21271972}
   - 95: {fileID: 9531438}
+  - 114: {fileID: 11499930}
+  - 114: {fileID: 11497982}
+  - 65: {fileID: 6527420}
   m_Layer: 0
   m_Name: ZombieHands
   m_TagString: Untagged
@@ -24,11 +27,23 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 115708}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -29.2694836, y: 11.2927799, z: -33.1613312}
+  m_LocalPosition: {x: -15655.6963, y: -679.359985, z: -33.1613312}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
+--- !u!65 &6527420
+BoxCollider:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115708}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 1
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 4.30000019, y: 2, z: 2}
+  m_Center: {x: .100000001, y: -1, z: 0}
 --- !u!95 &9531438
 Animator:
   serializedVersion: 3
@@ -46,6 +61,35 @@ Animator:
   m_WarningMessage: 
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
+--- !u!114 &11497982
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de7ffbcca72109642aa03a2eb71cf4e4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  hitAudio: {fileID: 0}
+  dmgAmount: 1
+  isMagic: 1
+  damagesPlayers: 1
+  damagesEnemies: 0
+  flinchPower: 2
+  invTime: 3
+--- !u!114 &11499930
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 115708}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bfac3dc90e970924c82642cad1358eeb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!212 &21271972
 SpriteRenderer:
   m_ObjectHideFlags: 1
@@ -78,7 +122,31 @@ Prefab:
   serializedVersion: 2
   m_Modification:
     m_TransformParent: {fileID: 0}
-    m_Modifications: []
+    m_Modifications:
+    - target: {fileID: 0}
+      propertyPath: isMagic
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: damagesPlayers
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: flinchPower
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: invTime
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_IsTrigger
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 0}
+      propertyPath: m_Size.z
+      value: 2
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 115708}

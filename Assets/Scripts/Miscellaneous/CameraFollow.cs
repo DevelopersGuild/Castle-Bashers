@@ -145,7 +145,7 @@ public class CameraFollow : MonoBehaviour
 
     public void setLock(bool set)
     {
-        //isLocked = set;
+        isLocked = set;
     }
 
     public void startScreenShake(float time)
