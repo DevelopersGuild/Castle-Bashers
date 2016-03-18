@@ -31,23 +31,7 @@ public class BossHealth : Health
         return currentHealth;
     }
 
-    public override void takeDamage(float dmg, int flinch = 0)
-    {
-        if (!enemy.GetInvincible())
-        {
-            currentHealth -= dmg;
-            GameObject floatText = Instantiate(Resources.Load("FloatingText")) as GameObject;
-            floatText.GetComponent<TextMesh>().text = "" + dmg;
-            floatText.transform.position = gameObject.transform.position + damageTextOffset;
-            enemy.setInvTime(2);
-            enemy.TurnOnBlink();
-            if (currentHealth <= 0)
-            {
-                //Player can be revived by teammates
-                Death();
-            }
-        }
-    }
+
 
     public override void Death()
     {

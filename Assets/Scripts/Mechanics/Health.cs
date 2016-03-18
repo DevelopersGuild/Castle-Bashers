@@ -33,7 +33,6 @@ public class Health : MonoBehaviour
         damageTextOffset = new Vector3(0, 2, 0);
     }
 
-    
     public void Update_Maxhp()
     {
         Debug.Log("You are using Update_Maxhp() which is an outdated function");

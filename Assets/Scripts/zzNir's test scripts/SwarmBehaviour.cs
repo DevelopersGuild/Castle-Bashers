@@ -9,7 +9,7 @@ public class SwarmBehaviour : MonoBehaviour {
     public GameObject player;
     private Rigidbody rigBod;
     //private MoveController moveCon;
-    private Malady mal;
+    private Boss mal;
     private Animator animator;
     private Vector3 direction, currentPos, max;
 
@@ -21,8 +21,8 @@ public class SwarmBehaviour : MonoBehaviour {
         max = new Vector3(20, 5, 10);
         player = FindObjectOfType<Player>().gameObject;
         rigBod = GetComponent<Rigidbody>();
-       // moveCon = GetComponent<MoveController>();
-        mal = FindObjectOfType<Malady>();
+        // moveCon = GetComponent<MoveController>();
+        mal = FindObjectOfType<Boss>();
         direction = new Vector3(0, 0, 0);
         rigBod.velocity = direction;
 	}
@@ -68,7 +68,7 @@ public class SwarmBehaviour : MonoBehaviour {
                     rigBod.velocity = new Vector3(rigBod.velocity.x, rigBod.velocity.y, max.z * Mathf.Sign(rigBod.velocity.z));
 
                 currentPos = transform.position;
-                Debug.Log(Vector3.Angle(rigBod.velocity, direction));
+//                Debug.Log(Vector3.Angle(rigBod.velocity, direction));
 
             }
             else
@@ -105,4 +105,8 @@ public class SwarmBehaviour : MonoBehaviour {
     {
         player = p;
     }
+
+    private void setInvinTrue() { }
+
+    private void setInvinFalse() { }
 }

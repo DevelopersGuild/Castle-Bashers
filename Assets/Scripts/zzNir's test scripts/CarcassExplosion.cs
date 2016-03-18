@@ -4,7 +4,6 @@ using System.Collections;
 public class CarcassExplosion : MonoBehaviour
 {
 
-    public float animDelay;
     public GameObject rotField;
 
     // Use this for initialization
@@ -16,11 +15,7 @@ public class CarcassExplosion : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (animDelay <= 0)
-        {
-            Instantiate(rotField, transform.position, rotField.transform.rotation);
-            Destroy(gameObject);
-        }
-        animDelay -= Time.deltaTime;
+           // Instantiate(rotField, transform.position, rotField.transform.rotation);
+           // Destroy(gameObject);
     }
 }

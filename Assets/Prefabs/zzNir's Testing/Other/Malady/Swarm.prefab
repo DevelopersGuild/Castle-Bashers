@@ -132,9 +132,15 @@ Prefab:
       value: Enemy
       objectReference: {fileID: 0}
     - target: {fileID: 0}
+<<<<<<< HEAD
+      propertyPath: m_SortingLayerID
+      value: 0
+      objectReference: {fileID: 0}
+=======
       propertyPath: m_Controller
       value: 
       objectReference: {fileID: 9100000, guid: f8fa995a3f574754b8c4f22abf5a7913, type: 2}
+>>>>>>> 0a0e62c951f109b4568829d769ca04519943ed8b
     m_RemovedComponents: []
   m_ParentPrefab: {fileID: 0}
   m_RootGameObject: {fileID: 192390}
