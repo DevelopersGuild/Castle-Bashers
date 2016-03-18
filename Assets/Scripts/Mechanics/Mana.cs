@@ -5,7 +5,7 @@ public class Mana : MonoBehaviour
 {
     //public float StartingMana = 0;
     public int ManaRegenRate = 1;
-    public float MaxMana = 0;
+    public float MaxMana = 80;
     private float mana;
     private float baseMana;
     private float bonusMana;
@@ -49,7 +49,7 @@ public class Mana : MonoBehaviour
 
     public void Full_Regen()
     {
-        mana = GetMaxMana(); ;
+        mana = GetMaxMana();
     }
 
     /*
