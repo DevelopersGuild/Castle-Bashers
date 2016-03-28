@@ -34,7 +34,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 107678}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -18.3993263, y: 19.0420265, z: -4.94000006}
+  m_LocalPosition: {x: -18.399326, y: 19.042027, z: -4.94}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -48,7 +48,7 @@ Rigidbody:
   serializedVersion: 2
   m_Mass: 1
   m_Drag: 0
-  m_AngularDrag: .0500000007
+  m_AngularDrag: 0.05
   m_UseGravity: 0
   m_IsKinematic: 1
   m_Interpolate: 0
@@ -64,8 +64,8 @@ BoxCollider:
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 1.75999999, y: 2.86999989, z: 2}
-  m_Center: {x: -.00999999978, y: -.340000004, z: 0}
+  m_Size: {x: 1.76, y: 2.87, z: 2}
+  m_Center: {x: -0.01, y: -0.34, z: 0}
 --- !u!95 &9523190
 Animator:
   serializedVersion: 3
@@ -115,8 +115,8 @@ MonoBehaviour:
   verticalRayCount: 4
   isKnockbackable: 1
   isFlinchable: 1
-  knockbackVelocity: .150000006
-  flinchVelocity: .00300000003
+  knockbackVelocity: 0.15
+  flinchVelocity: 0.003
   isStunned: 0
   playerInput: {x: 0, y: 0}
 --- !u!114 &11432526
@@ -226,10 +226,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 47a94afc4892a9e4ba09048cbb63d5c1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  dropChance: 0
   coinValue: 120
-  items:
-  - {fileID: 0}
+  items: []
   itemDropRates: 
 --- !u!114 &11484060
 MonoBehaviour:
@@ -264,14 +262,18 @@ SpriteRenderer:
   m_ProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
   m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
   m_ImportantGI: 0
-  m_AutoUVMaxDistance: .5
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300008, guid: d4a5d2e2e0126244fa028d3b1dbece43, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
 --- !u!1001 &100100000
 Prefab:
   m_ObjectHideFlags: 1

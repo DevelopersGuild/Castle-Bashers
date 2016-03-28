@@ -279,14 +279,20 @@ public class MaladyV2 : Boss
 
     private void setInvinTrue()
     {
-        isInvincible = true;
-        hp.isInvincible = true;
+        if (hp)
+        {
+            isInvincible = true;
+            hp.isInvincible = true;
+        }
     }
 
     private void setInvinFalse()
     {
-        isInvincible = false;
-        hp.isInvincible = false;
+        if (hp)
+        {
+            isInvincible = false;
+            hp.isInvincible = false;
+        }
     }
 
 
