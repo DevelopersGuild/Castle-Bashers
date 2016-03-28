@@ -55,20 +55,14 @@ public class DroppedGem : MonoBehaviour {
         Debug.Log("Rolled quality " + quality);
 	}
 
-    void OnTriggerEnter(Collider col)
+    void OnCollisionEnter(Collision col)
     {
 
         if (player = col.gameObject.GetComponent<Player>())
         {
-            Debug.Log("Detected the collision!");
             PickedUp(player);
         }
     }
-	
-	// Update is called once per frame
-	void Update () {
-	
-	}
 
     //include setters for manually setting stats
 
